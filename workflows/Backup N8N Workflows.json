@@ -442,7 +442,9 @@
     },
     {
       "parameters": {
-        "filters": {},
+        "filters": {
+          "tags": "Backup"
+        },
         "requestOptions": {}
       },
       "id": "926f0d45-31e5-4322-a9d8-36b8f8020076",
@@ -488,8 +490,15 @@
   "pinData": {},
   "settings": {},
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-27T17:37:37.443Z",
-  "versionId": "59da6457-b1a6-4048-904a-8ec86f923016"
+  "updatedAt": "2024-09-27T17:42:31.911Z",
+  "versionId": "3c0605a5-a16b-433e-ba76-8fee1f003699"
 }
