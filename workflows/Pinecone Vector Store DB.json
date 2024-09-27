@@ -1,0 +1,397 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "get vector tb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get Store Details",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get vector tb": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Details": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-22T04:18:43.812Z",
+  "id": "CH8B8jHan7BGlK5w",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Pinecone Vector Store DB",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "06b1ce15-d63a-4ad9-ae87-9311cc67d8ee",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "1cf503c9-4a04-4ca3-a412-a28408547ef9",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        540
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8c0bca97-acae-4886-a042-4f53eaef0bc9",
+      "name": "Default Data Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c20cd8e3-2a73-4758-bfbf-88d49edd563d",
+              "name": "ibox_api",
+              "value": "https://ibox.delivery/api/whatsapp",
+              "type": "string"
+            },
+            {
+              "id": "4735dedc-34eb-43e7-81b5-9fba04146f14",
+              "name": "instance_name",
+              "value": "ibox_cli_23",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "538db4a5-e98c-4bfa-9faf-4bb703615f9b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        300,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "3fabbdb0-5754-4ae4-ba59-f0f6714ce73a",
+              "leftValue": "={{ $json.instance_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5a9972b8-b202-4155-a4f4-b1fc00a69f9a",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "34508740-8640-4ded-91d2-332fe66d3044",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        660,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Edit Fields').first().json.ibox_api }}/store",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "format",
+              "value": "markdown"
+            },
+            {
+              "name": "style",
+              "value": "text"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "store",
+              "value": "="
+            },
+            {
+              "name": "instance_name",
+              "value": "={{ $('Edit Fields').first().json.instance_name }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "text",
+              "outputPropertyName": "context"
+            }
+          }
+        }
+      },
+      "id": "089920f9-95a2-4402-ba9b-5d646d035aca",
+      "name": "Get Store Details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "={{ $json.vector_name }}",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "gt",
+              "keyValue": "0"
+            }
+          ]
+        }
+      },
+      "id": "722c8eb7-2c8e-487d-816c-2f7aa9557713",
+      "name": "reset tb",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        440,
+        580
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $json.instance_name }}"
+            }
+          ]
+        }
+      },
+      "id": "a1b628bc-c253-45a1-8fc8-8a797244e622",
+      "name": "get vector tb",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        480,
+        380
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Adiciona os dados da Empresa na Base de Dados",
+        "height": 536.7915690866513,
+        "width": 1284.2483715659505,
+        "color": 2
+      },
+      "id": "bec8e467-2483-4c50-8db5-7adde1c3d33e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        60,
+        290.468384074941
+      ]
+    },
+    {
+      "parameters": {
+        "separator": "|---*---|",
+        "chunkSize": 400,
+        "chunkOverlap": 100
+      },
+      "id": "5e0cf4d7-53b1-4af8-9cda-bed33f23702c",
+      "name": "Character Text Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "={{ $('get vector tb').item.json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "1ec49ddf-c67b-4502-8760-3f4805793f52",
+      "name": "Pinecone Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        400
+      ],
+      "credentials": {
+        "pineconeApi": {
+          "id": "yVOtmyXYQBSZWo09",
+          "name": "william"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-22T04:20:02.782Z",
+  "versionId": "f6535de7-c679-4789-9ea0-618bbf4e6cf8"
+}
