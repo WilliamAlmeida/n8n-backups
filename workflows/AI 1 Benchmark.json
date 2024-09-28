@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "baseInfo",
+            "node": "n8n",
             "type": "main",
             "index": 0
           }
@@ -36,13 +36,7 @@
     },
     "Loop Over Items": {
       "main": [
-        [
-          {
-            "node": "active debounce",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Code",
@@ -95,6 +89,46 @@
           }
         ]
       ]
+    },
+    "Debounce is active?": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "active debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "active debounce": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n": {
+      "main": [
+        [
+          {
+            "node": "Debounce is active?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-26T02:19:33.236Z",
@@ -111,8 +145,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        600,
-        220
+        320,
+        240
       ]
     },
     {
@@ -125,7 +159,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1520,
+        1740,
         360
       ]
     },
@@ -160,7 +194,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        780,
+        980,
         220
       ]
     },
@@ -173,7 +207,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1300,
+        1520,
         220
       ]
     },
@@ -189,7 +223,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        940,
+        1160,
         220
       ]
     },
@@ -202,7 +236,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1840,
+        2060,
         360
       ],
       "webhookId": "8cbe7c67-f45e-4574-83bc-5f59a04172aa"
@@ -214,7 +248,7 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        1120,
+        1340,
         220
       ]
     },
@@ -229,8 +263,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        580,
-        48.289458783158594
+        300,
+        60
       ]
     },
     {
@@ -249,8 +283,8 @@
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1,
       "position": [
-        1520,
-        120
+        840,
+        380
       ],
       "credentials": {
         "n8nApi": {
@@ -274,10 +308,69 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1680,
+        1900,
         360
       ],
       "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "filters": {
+          "activeWorkflows": false,
+          "tags": "Debounce"
+        },
+        "requestOptions": {}
+      },
+      "id": "31c5955d-15c9-450e-9682-24080513ec07",
+      "name": "n8n",
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        500,
+        240
+      ],
+      "credentials": {
+        "n8nApi": {
+          "id": "kuCc4NOcDaUS3bF4",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "68ddab78-6782-443f-9682-326e7712f0d8",
+              "leftValue": "={{ $json.active }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3657833a-0879-4d34-b60e-c202bc4e6da8",
+      "name": "Debounce is active?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        240
+      ],
+      "disabled": true
     }
   ],
   "pinData": {
@@ -395,6 +488,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-09-28T03:35:36.881Z",
-  "versionId": "9e67da4f-e962-4aa4-b96e-4645f3f2a154"
+  "updatedAt": "2024-09-28T04:20:16.657Z",
+  "versionId": "1582e1ba-6b4f-4f05-a6b9-3a75742cfe28"
 }
