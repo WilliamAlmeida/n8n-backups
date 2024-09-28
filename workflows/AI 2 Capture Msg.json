@@ -1,24 +1,6 @@
 {
   "active": true,
   "connections": {
-    "user found": {
-      "main": [
-        [
-          {
-            "node": "get session",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "create user",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "baseInfo": {
       "main": [
         [
@@ -35,79 +17,6 @@
         [
           {
             "node": "msg to queue",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get user": {
-      "main": [
-        [
-          {
-            "node": "user found",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "create user": {
-      "main": [
-        [
-          {
-            "node": "get user",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get session": {
-      "main": [
-        [
-          {
-            "node": "session found",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "session found": {
-      "main": [
-        [
-          {
-            "node": "sessionInfo",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "create session",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "create session": {
-      "main": [
-        [
-          {
-            "node": "get session",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "sessionInfo": {
-      "main": [
-        [
-          {
-            "node": "check session status",
             "type": "main",
             "index": 0
           }
@@ -218,6 +127,11 @@
         [
           {
             "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "debounce active?",
             "type": "main",
             "index": 0
           }
@@ -438,6 +352,39 @@
           }
         ]
       ]
+    },
+    "debounce active?": {
+      "main": [
+        [
+          {
+            "node": "Debounce is active?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Debounce is active?": {
+      "main": [
+        [
+          {
+            "node": "active debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "active debounce": {
+      "main": [
+        [
+          {
+            "node": "set wk debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-26T18:07:32.826Z",
@@ -447,103 +394,6 @@
   },
   "name": "AI 2 Capture Msg",
   "nodes": [
-    {
-      "parameters": {
-        "tableId": "contacts",
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "whatsapp",
-              "fieldValue": "={{ $('baseInfo').first().json.userNumber }}"
-            },
-            {
-              "fieldId": "nome",
-              "fieldValue": "={{ $('baseInfo').first().json.userName }}"
-            }
-          ]
-        }
-      },
-      "id": "63e21163-0bc6-49dc-9f01-898d22b5c335",
-      "name": "create user",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -4060,
-        2140
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "contacts",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "whatsapp",
-              "keyValue": "={{ $('baseInfo').first().json.userNumber }}"
-            }
-          ]
-        }
-      },
-      "id": "a1296210-b214-472a-be5c-490c526fa8e5",
-      "name": "get user",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -4080,
-        1940
-      ],
-      "alwaysOutputData": true,
-      "executeOnce": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
-            {
-              "id": "97535799-6397-461d-831d-1eec2f59e9fe",
-              "leftValue": "={{ $('get user').first().json.whatsapp }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "da166cbc-00c7-4e8f-b478-60c976671bcf",
-      "name": "user found",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.1,
-      "position": [
-        -3940,
-        1940
-      ],
-      "executeOnce": true
-    },
     {
       "parameters": {
         "assignments": {
@@ -605,8 +455,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -5740,
-        920
+        -5720,
+        1100
       ],
       "alwaysOutputData": false,
       "executeOnce": false
@@ -621,8 +471,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2540,
-        1160
+        -2360,
+        1100
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -630,23 +480,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## Gerenciamento de Usuário\n*Tenta recuperar uma Conta, se não existir cria uma*",
-        "height": 520.6796357098343,
-        "width": 407.67094826370743,
-        "color": 6
       },
-      "id": "e1934caa-f655-4373-9ea1-d447fafc4739",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -4160,
-        1820
-      ]
+      "disabled": true
     },
     {
       "parameters": {
@@ -666,136 +501,6 @@
     },
     {
       "parameters": {
-        "content": "## Gerenciamento de Sessão\n*Tenta recuperar Sessão, se não existir cria uma*\n*Obs.: Se já existir verifica se ela não esta `pausada`*",
-        "height": 528.112839562227,
-        "width": 750.3768203968939
-      },
-      "id": "73e6a4dc-48e3-4597-a4ab-82c3ed2d8352",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -3700,
-        1820
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "tableId": "sessions",
-        "returnAll": true,
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "condition": "eq",
-              "keyValue": "={{ $('baseInfo').first().json.instance }}"
-            },
-            {
-              "keyName": "whatsapp",
-              "condition": "eq",
-              "keyValue": "={{ $('baseInfo').first().json.userNumber }}"
-            },
-            {
-              "keyName": "session_status",
-              "condition": "neq",
-              "keyValue": "closed"
-            }
-          ]
-        }
-      },
-      "id": "0f3cc0a9-33b0-4187-9120-f7fe9de49e11",
-      "name": "get session",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -3620,
-        1926
-      ],
-      "alwaysOutputData": true,
-      "executeOnce": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
-            {
-              "id": "97535799-6397-461d-831d-1eec2f59e9fe",
-              "leftValue": "={{ $('get session').item.json.whatsapp }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "664da234-0e25-42d5-bf74-3b8e5fb61211",
-      "name": "session found",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.1,
-      "position": [
-        -3480,
-        1926
-      ],
-      "executeOnce": true,
-      "alwaysOutputData": false
-    },
-    {
-      "parameters": {
-        "tableId": "sessions",
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "instance_name",
-              "fieldValue": "={{ $('baseInfo').first().json.instance }}"
-            },
-            {
-              "fieldId": "whatsapp",
-              "fieldValue": "={{ $('baseInfo').first().json.userNumber }}"
-            },
-            {
-              "fieldId": "session_status",
-              "fieldValue": "opened"
-            }
-          ]
-        }
-      },
-      "id": "1e6a9b45-4492-420e-8592-f545080b8f15",
-      "name": "create session",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -3600,
-        2140
-      ],
-      "alwaysOutputData": false,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "mode": "runOnceForEachItem",
         "jsCode": "const data = $('Webhook').first().json.body.data;\nlet response = '';\n\nconst conversation = data.message.conversation;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
       },
@@ -806,24 +511,6 @@
       "position": [
         -3222,
         900
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={\n  \"session_status\": \"{{ $json.session_status }}\",\n  \"session_id\": \"{{ $json.session_id }}\"\n}\n",
-        "includeOtherFields": true,
-        "include": "selected",
-        "includeFields": "id,created_at",
-        "options": {}
-      },
-      "id": "9e613e7a-02d4-4aa7-9542-ab3a4707aa11",
-      "name": "sessionInfo",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -3280,
-        1920
       ]
     },
     {
@@ -979,74 +666,6 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.session_status }}",
-                    "rightValue": "opened",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "aberta"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "efaf1d90-23b6-425a-b994-402e4e925d85",
-                    "leftValue": "={{ $json.session_status }}",
-                    "rightValue": "paused",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "pausada"
-            }
-          ]
-        },
-        "options": {
-          "fallbackOutput": "extra",
-          "renameFallbackOutput": "vazio"
-        }
-      },
-      "id": "650ef41f-5f19-47e4-ac28-87fb6e3431ef",
-      "name": "check session status",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        -3120,
-        1926
-      ]
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -1138,8 +757,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2580,
-        1060
+        -2620,
+        1000
       ]
     },
     {
@@ -1242,7 +861,7 @@
       "typeVersion": 2.2,
       "position": [
         -4511,
-        940
+        1000
       ]
     },
     {
@@ -1256,7 +875,7 @@
       "typeVersion": 1,
       "position": [
         -4831,
-        940
+        1000
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1264,7 +883,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1278,7 +898,7 @@
       "typeVersion": 3.4,
       "position": [
         -4140,
-        940
+        1000
       ]
     },
     {
@@ -1289,7 +909,7 @@
       "typeVersion": 3,
       "position": [
         -4291,
-        940
+        1000
       ]
     },
     {
@@ -1304,7 +924,7 @@
       "typeVersion": 1,
       "position": [
         -4531,
-        1140
+        1200
       ],
       "credentials": {
         "redis": {
@@ -1325,8 +945,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2380,
-        1160
+        -2200,
+        1100
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -1350,7 +970,7 @@
       "typeVersion": 1,
       "position": [
         -4671,
-        940
+        1000
       ],
       "credentials": {
         "redis": {
@@ -1373,7 +993,7 @@
       "typeVersion": 1,
       "position": [
         -4391,
-        1140
+        1200
       ],
       "credentials": {
         "redis": {
@@ -1389,8 +1009,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -2020,
-        1160
+        -1800,
+        1100
       ]
     },
     {
@@ -1423,8 +1043,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5540,
-        920
+        -5500,
+        1100
       ]
     },
     {
@@ -1440,8 +1060,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5320,
-        780
+        -5297,
+        1011
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1464,8 +1084,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5320,
-        940
+        -5297,
+        1171
       ],
       "credentials": {
         "redis": {
@@ -1503,23 +1123,23 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5120,
-        940
+        -5100,
+        1080
       ]
     },
     {
       "parameters": {
         "content": "## Gerencia o Bloqueio da AI\n*Se enviado pelo dono do whatsapp, ele bloqueia por N segundos*",
         "height": 407.0742534707905,
-        "width": 672.5700006919383
+        "width": 647.429041213283
       },
       "id": "e9574eeb-2ab6-4a0f-b4f9-cc82c6bb59ef",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -5582.98100208216,
-        688.5965729167327
+        -5560,
+        920
       ]
     },
     {
@@ -1534,7 +1154,7 @@
       "typeVersion": 1,
       "position": [
         -4860,
-        860
+        920
       ]
     },
     {
@@ -1549,8 +1169,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2180,
-        1160
+        -2000,
+        1100
       ],
       "credentials": {
         "redis": {
@@ -1711,10 +1331,114 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -5940,
-        920
+        -5920,
+        1100
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "68ddab78-6782-443f-9682-326e7712f0d8",
+              "leftValue": "={{ $json.active }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0ad8cde9-2d35-46e4-abf0-99e8ce41dd47",
+      "name": "Debounce is active?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2380,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "active",
+        "key": "workflow_debounce",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "3249e2f3-faf0-4261-af61-49bb0d6a0952",
+      "name": "debounce active?",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2540,
+        1360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "activate",
+        "workflowId": {
+          "__rl": true,
+          "value": "KCzwyXp5E0KjdlRc",
+          "mode": "list",
+          "cachedResultName": "AI Processa Msgs (#KCzwyXp5E0KjdlRc)"
+        },
+        "requestOptions": {}
+      },
+      "id": "d69f0d7c-4801-4c28-af6a-e279c0b117e8",
+      "name": "active debounce",
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -2160,
+        1320
+      ],
+      "credentials": {
+        "n8nApi": {
+          "id": "kuCc4NOcDaUS3bF4",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "workflow_debounce",
+        "value": "1",
+        "keyType": "string"
+      },
+      "id": "9e003447-ea6c-49ae-bc20-d8ea1bb42100",
+      "name": "set wk debounce",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1980,
+        1320
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1739,6 +1463,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-28T03:35:18.286Z",
-  "versionId": "2157922c-cb49-4477-ae77-d98f202121ec"
+  "updatedAt": "2024-09-28T04:23:59.861Z",
+  "versionId": "268993dc-746f-4871-88bc-19a3fcf4074f"
 }
