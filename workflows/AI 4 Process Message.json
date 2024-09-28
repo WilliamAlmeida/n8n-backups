@@ -197,17 +197,6 @@
         ]
       ]
     },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow Trigger": {
       "main": [
         [
@@ -250,6 +239,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        []
       ]
     }
   },
@@ -718,23 +712,6 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "425a712d-f598-4e72-a99e-65efb704c401",
-        "options": {}
-      },
-      "id": "3c5eed35-156b-4ad2-abb7-1e167337622c",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        3500,
-        1620
-      ],
-      "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
-      "disabled": true
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
@@ -764,42 +741,26 @@
         3680,
         1740
       ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "425a712d-f598-4e72-a99e-65efb704c401",
+        "options": {}
+      },
+      "id": "3c5eed35-156b-4ad2-abb7-1e167337622c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        1620
+      ],
+      "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
+      "disabled": true
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "connection": "close",
-            "host": "n8n.wmst.com.br",
-            "x-forwarded-scheme": "https",
-            "x-forwarded-proto": "https",
-            "x-forwarded-for": "10.0.0.2",
-            "x-real-ip": "10.0.0.2",
-            "content-length": "206",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "content-type": "application/json",
-            "user-agent": "axios/1.7.4",
-            "accept-encoding": "gzip, compress, deflate, br"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "evo_api": "https://apiwp.wmst.com.br",
-            "instance": "ibox_cli_23",
-            "remoteJid": "5512982184879@s.whatsapp.net",
-            "pushName": "William",
-            "fromMe": false,
-            "unique_id": "ibox_cli_23_5512982184879",
-            "conversation": "1. oi"
-          },
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/425a712d-f598-4e72-a99e-65efb704c401",
-          "executionMode": "test"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -819,6 +780,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-09-28T04:17:13.538Z",
-  "versionId": "0be4f019-2511-4a4a-980a-24ad11b27f9c"
+  "updatedAt": "2024-09-28T04:36:01.396Z",
+  "versionId": "48865542-b563-4c96-87e2-3e55048f5646"
 }
