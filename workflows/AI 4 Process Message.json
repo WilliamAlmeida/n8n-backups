@@ -1,0 +1,824 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Media": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Media",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Beautify URL": {
+      "main": [
+        [
+          {
+            "node": "Fix Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Categorizing Message": {
+      "main": [
+        [
+          {
+            "node": "Split Out Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Messages": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text": {
+      "main": [
+        [
+          {
+            "node": "Categorizing Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Status": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Address": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Delivery Fee": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get vector store": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "get vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-27T18:14:53.380Z",
+  "id": "BZ9o5Ey8QpAJn1OB",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Process Message",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "id": "fcc04773-9928-4818-b8ba-a2b884091ec5",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        2120
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "store_info",
+        "description": "Informações sobre a loja, produtos/serviços, horários de atendimento, localização e etc.",
+        "topK": 20
+      },
+      "id": "75787e8f-f383-423d-8072-f298f43be002",
+      "name": "Vector Store Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        4040,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "b60e20b2-bfc3-4f9a-89a6-2ec0ac322bcf",
+      "name": "Embeddings OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        2160
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 676.5132170704966,
+        "width": 768.3093052403206
+      },
+      "id": "616d42e8-0824-4274-ac56-1de481719926",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3860,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}",
+        "sessionTTL": 120,
+        "contextWindowLength": 10
+      },
+      "id": "1cd8fe75-b529-4067-b2b5-9c7a4f494cbc",
+      "name": "Redis Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        3880,
+        1940
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendText/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": 2000,\n  \"linkPreview\": true\n} ",
+        "options": {}
+      },
+      "id": "c58a63b9-5d50-4a43-88d8-45a305004ec1",
+      "name": "Send Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5889,
+        2000
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "12e19b24-c845-442d-b7d1-0c0232d02c58",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5529,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendMedia/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replace(/^\\n+/g, '') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
+        "options": {}
+      },
+      "id": "325ffb13-8647-440f-bc8e-2db27bc86837",
+      "name": "Send Media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5889,
+        1740
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Enviar o Resultado para o Whatsapp",
+        "height": 610.094292552082,
+        "width": 661.5465394209826,
+        "color": 4
+      },
+      "id": "f4487622-d883-4b03-a955-1c1dc138b757",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5440,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Faz o tratamento da Resposta",
+        "height": 287.8890179152787,
+        "width": 716.27642378082,
+        "color": 5
+      },
+      "id": "8a0acc9c-3d77-483f-b68e-533a5ae023e9",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4671,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "bd6c6ac4-8ebd-4d14-9935-1fd270106c48",
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "8a8907db-2f29-4fc3-a50d-264a2c5d015e",
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "=video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "229e4c8d-f804-4054-84ca-2a5a2ccff6c6",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        5669,
+        1940
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
+      },
+      "id": "a884fb1c-54af-4f00-9cac-ee14d6af3a50",
+      "name": "Beautify URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4740,
+        1740
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nconst message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    parts.push({ type: 'text', content: message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim() });\n  }\n  \n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    // Se o link é uma imagem, considere como uma imagem também\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    // Aqui, garantimos que seja considerado como imagem se for uma URL de imagem\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  parts.push({ type: 'text', content: message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim() });\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\n// Exibe o resultado\n//console.log(JSON.stringify(parts, null, 2));\n\nreturn {output: parts};\n"
+      },
+      "id": "a2fedc6c-2e7c-4e62-9a76-33344fb43994",
+      "name": "Categorizing Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5060,
+        1740
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "f7fac150-0f90-45a6-b072-69028144693c",
+      "name": "Split Out Messages",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        5240,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "feb0c8d6-7508-49fa-9d65-b625e6345322",
+      "name": "Fix Text",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4900,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar status da loja, se ela esta aberta ou fechada, funcionando no momento ou não",
+        "url": "=https://ibox.delivery/api/whatsapp/store?instance_name={{ $('messageInfo').first().json.instance }}&only=status",
+        "optimizeResponse": true,
+        "dataField": "status"
+      },
+      "id": "86a16bdc-5365-4934-8ad2-78ad201c769c",
+      "name": "Get Store Status",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4420,
+        1900
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar endereço da loja",
+        "url": "=https://ibox.delivery/api/whatsapp/store?instance_name={{ $('messageInfo').first().json.instance }}&only=address",
+        "optimizeResponse": true
+      },
+      "id": "9ac3adc2-6e64-4899-8d02-45a505e30afd",
+      "name": "Get Store Address",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4520,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar taxas de entrega cobrada pela loja, consultar tempo médio das entregas, valor mínimo, se entrega em outras localidades que não estejam registradas",
+        "url": "=https://ibox.delivery/api/whatsapp/store?instance_name={{ $('messageInfo').first().json.instance }}&only=delivery_fee",
+        "optimizeResponse": true
+      },
+      "id": "1818b113-f25a-415f-bb8d-cb05b4a58e5c",
+      "name": "Get Store Delivery Fee",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4300,
+        1920
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3f14b9dc-8fb1-4f34-bcdc-8184780fc64b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        1860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $json.instance }}"
+            }
+          ]
+        }
+      },
+      "id": "ff61eaf7-7f85-4437-90ec-df0bb2db3408",
+      "name": "get vector store",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1740
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "={{ $json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "96a6d9bb-13f4-4ff4-b343-c071e2229c4d",
+      "name": "Pinecone Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        4100,
+        2100
+      ],
+      "credentials": {
+        "pineconeApi": {
+          "id": "yVOtmyXYQBSZWo09",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "425a712d-f598-4e72-a99e-65efb704c401",
+        "options": {}
+      },
+      "id": "3c5eed35-156b-4ad2-abb7-1e167337622c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        1620
+      ],
+      "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=Função: Responder a perguntas do usuário\n\n<user-name>{{ $('messageInfo').first().json.pushName }}</user-name>\n\nObjetivo:\n- Processar as mensagens dos clientes e fornecer respostas com base nas regras e informações da base de dados TOOL \"store_info\".\n\nResponsabilidades:\n1. Analisar a intenção da pergunta do cliente (fazer pedido, horários, endereço, formas de pagamento, status da loja, etc.).\n2. Fornecer informações claras, educadas, informais e humoradas de acordo com a base de informações.\n3. Utilizar no máximo 2 emojis por resposta para manter a interação leve e amigável.\n4. Sugerir produtos e taxas de entrega conforme as regras:\n   - Mencionar no máximo 3 produtos.\n   - Mencionar até 3 taxas de entrega por vez.\n5. Fornecer o link direto do cardápio, sem formatação, quando aplicável.\n6. Manter o tom de conversa descontraído, com mensagens objetivas e curtas.\n7. Enviar o link do cardápio digital para que ele possa realizar um pedido, quando ele tiver intenção de comprar.\n8. Enviar imagens apenas de produtos específicos quando solicitado, sempre pegando na base de dados TOOL \"store_info\".\n9. Dividir respostas longas em partes para facilitar a compreensão.\n10. NUNCA INVENTE INFORMAÇÃO que não esteja na base de dados TOOL \"store_info\".\n11. Pode adicionar o [nome do usuário] na resposta, quando achar necessário.\n\nExemplo de Resposta:\n- \"Oi! Nosso horário de funcionamento é das 9h às 22h, todos os dias. 🍔 Se quiser dar uma olhada no nosso cardápio, é só acessar: [link do cardápio]. 😉\"\n- \"Estamos localizado no endereço: [endereco da loja]. Venha nos visitas! 😉\"\n- \"Você pode estar realizando a seu pedido, acessando [link do cardápio]. É simples e rápido.\""
+        }
+      },
+      "id": "c616ed39-d60c-4598-8d32-ede436945b26",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        4040,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "f4ff752d-cbdf-4f2c-adba-9c9dbe0703ca",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3680,
+        1740
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "connection": "close",
+            "host": "n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "content-length": "206",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.4",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "ibox_cli_23",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "William",
+            "fromMe": false,
+            "unique_id": "ibox_cli_23_5512982184879",
+            "conversation": "1. oi"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/425a712d-f598-4e72-a99e-65efb704c401",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 6,
+  "updatedAt": "2024-09-28T03:33:29.756Z",
+  "versionId": "1ed780ec-a155-4855-9dc8-fa83fc2b7366"
+}
