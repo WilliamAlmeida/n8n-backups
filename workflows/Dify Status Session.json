@@ -617,8 +617,15 @@
     "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-21T18:20:37.176Z",
-  "versionId": "3b876d58-44ee-4300-bb3a-b71a8248a24c"
+  "updatedAt": "2024-09-27T17:43:43.707Z",
+  "versionId": "a71a98d9-ccb0-48a4-87ce-addcc5e0e275"
 }
