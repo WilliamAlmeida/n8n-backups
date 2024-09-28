@@ -186,17 +186,6 @@
         ]
       ]
     },
-    "get vector store": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Pinecone Vector Store": {
       "ai_vectorStore": [
         [
@@ -246,6 +235,17 @@
         [
           {
             "node": "get vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get vector store": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -819,6 +819,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-09-28T03:33:29.756Z",
-  "versionId": "1ed780ec-a155-4855-9dc8-fa83fc2b7366"
+  "updatedAt": "2024-09-28T04:17:13.538Z",
+  "versionId": "0be4f019-2511-4a4a-980a-24ad11b27f9c"
 }
