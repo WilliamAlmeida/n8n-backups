@@ -1,0 +1,556 @@
+{
+  "active": false,
+  "connections": {
+    "get msgs": {
+      "main": [
+        [
+          {
+            "node": "has msgs?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete msgs": {
+      "main": [
+        [
+          {
+            "node": "messages",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "delete debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get debounce": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has msgs?": {
+      "main": [
+        [
+          {
+            "node": "delete msgs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "delete debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "get chats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get msgs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messages": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "chatInfo": {
+      "main": [
+        [
+          {
+            "node": "get debounce",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "chatInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get chats": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "WK Process Msg",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-26T15:44:44.997Z",
+  "id": "KCzwyXp5E0KjdlRc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 3 Debounce Msgs",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 5
+            }
+          ]
+        }
+      },
+      "id": "1f6c23c2-fac0-4569-af9a-bbfe1989942b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        20,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "msgs",
+        "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}",
+        "keyType": "list",
+        "options": {}
+      },
+      "id": "1363a69f-d724-462d-b4a8-3b3cfa20b940",
+      "name": "get msgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        900
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "msgs_ibox_cli_23_5512982184879"
+      },
+      "id": "348af206-a895-45d0-823d-374c6d161e62",
+      "name": "delete msgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        780
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "session_ibox_cli_23_5512982184879"
+      },
+      "id": "b1bdb8e5-ba9f-47a7-af19-145e9fa9292b",
+      "name": "delete debounce",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        920
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "debounce",
+        "key": "=debounce_{{ $json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "79f79b28-ff13-443d-a237-b60ffcd54034",
+      "name": "get debounce",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        780,
+        900
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "698fdd1c-49fd-4e0a-b418-c21417923e8a",
+              "leftValue": "={{ $json.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "19f0d7dd-38a0-48fa-abe7-15c777c39f46",
+      "name": "has msgs?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1420,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "Do Nothing"
+      },
+      "id": "757e3972-14b8-450d-aca1-d738141c96c9",
+      "name": "Stop and Error",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        960,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "In Debounce"
+      },
+      "id": "c785bf11-93b4-4db9-b2d3-fe71528330cd",
+      "name": "Stop and Error1",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        960,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "BZ9o5Ey8QpAJn1OB",
+          "cachedResultName": "AI 4 Process Message"
+        },
+        "options": {}
+      },
+      "id": "b994ddd9-8104-4bae-83db-cb2f4b9880af",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        2340,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.debounce }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "not started"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5aa6ed30-d48a-499c-82a9-026844311d1e",
+                    "leftValue": "={{ $now.toSeconds().round() }}",
+                    "rightValue": "={{ DateTime.fromISO($json.debounce).toSeconds().round() }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "continue"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "in debounce"
+        }
+      },
+      "id": "1b851a7f-67d6-46fd-a6ea-7e9f38fb5304",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        960,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8666de43-4b2b-4e75-8506-9b106f1a626c",
+              "name": "conversation",
+              "value": "={{ $json.msgs.map(item => JSON.parse(item).output).join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "73641a73-57f0-4094-8c38-7983ca8d4efc",
+      "name": "messages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1960,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.wmst.com.br/webhook-test/425a712d-f598-4e72-a99e-65efb704c401",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.chat }}",
+        "options": {}
+      },
+      "id": "1e59934d-98a3-45fd-b220-91e8557de18d",
+      "name": "WK Process Msg",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        420
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.values().first() }}",
+        "options": {}
+      },
+      "id": "8be96710-6c8f-4f10-8169-a5adb8ff8038",
+      "name": "chatInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        600,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "97514986-9e0b-4c53-b2e8-079affd85095",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        400,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "keys",
+        "keyPattern": "chat_*"
+      },
+      "id": "e48bb554-5642-4578-ac90-c4de7ddcfc56",
+      "name": "get chats",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        220,
+        880
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "90c5b594-b9d6-4f61-98b8-516e3e500cb2",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-28T03:37:13.010Z",
+  "versionId": "70520cc5-c091-45ae-9dab-6876d8f8da86"
+}
