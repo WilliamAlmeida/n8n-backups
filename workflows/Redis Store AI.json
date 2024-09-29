@@ -1,0 +1,861 @@
+{
+  "active": false,
+  "connections": {
+    "getStore": {
+      "main": [
+        [
+          {
+            "node": "storeInCache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getStoreInfo": {
+      "main": [
+        [
+          {
+            "node": "setStore",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "storeInCache": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "getStoreInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "getStore",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Media": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separa em Msgs": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpando Url": {
+      "main": [
+        [
+          {
+            "node": "Fix Break Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Break Line": {
+      "main": [
+        [
+          {
+            "node": "Fix Whatsapp MK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Whatsapp MK": {
+      "main": [
+        [
+          {
+            "node": "Categorizando Mensagem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Categorizando Mensagem1": {
+      "main": [
+        [
+          {
+            "node": "Separa em Msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "setStore": {
+      "main": [
+        [
+          {
+            "node": "getStore",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Media",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Limpando Url",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-26T04:06:03.958Z",
+  "id": "LcgEV87n9srqLwcK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Redis Store AI",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 1,
+          "topP": 1
+        }
+      },
+      "id": "a87db4ad-2090-4387-a327-dbc0e617794e",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        1680
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "store",
+        "key": "=store-{{ $('baseInfo').first().json.instance_name }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "a9eb1973-16cf-4944-8d8c-2cb2843a68be",
+      "name": "getStore",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        1440
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=store-{{ $('baseInfo').first().json.instance_name }}",
+        "value": "={{ $json.store }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "id": "ae19a739-1ff4-4d99-ac85-bf7120d71c76",
+      "name": "setStore",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        1660
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.ibox_api }}/store",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "store",
+              "value": "="
+            },
+            {
+              "name": "instance_name",
+              "value": "={{ $('baseInfo').first().json.instance_name }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text",
+              "outputPropertyName": "store"
+            }
+          }
+        }
+      },
+      "id": "9c3b1e5d-bda1-4177-a26a-e6f6761d5005",
+      "name": "getStoreInfo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -560,
+        1660
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "240e1aa3-40e1-4791-a5ea-3c3c1d27801b",
+              "leftValue": "={{ $json.store }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e999982a-10b5-4eab-9890-db72c9d4b8ed",
+      "name": "storeInCache",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        -380,
+        1440
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ade9c1c-88f7-4ea0-9a4c-9068f76d9399",
+              "name": "ibox_api",
+              "value": "https://ibox.delivery/api/whatsapp",
+              "type": "string"
+            },
+            {
+              "id": "11605b09-3747-4a68-b6c8-74175ff1076a",
+              "name": "instance_name",
+              "value": "={{ $json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "ed17b658-bfb3-404b-b845-e10288831a0d",
+              "name": "chatInput",
+              "value": "={{ $json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "68a003e7-f566-45ca-b0bd-8ed0751a3a2d",
+              "name": "evolution_api",
+              "value": "={{ $json.body.server_url }}",
+              "type": "string"
+            },
+            {
+              "id": "b6b82bb9-078a-4dea-abce-6f99bc88e49b",
+              "name": "fromMe",
+              "value": "={{ $json.body.data.key.fromMe }}",
+              "type": "string"
+            },
+            {
+              "id": "7b264a99-b238-4429-8cc0-fb82e96d8435",
+              "name": "idMessage",
+              "value": "={{ $json.body.data.key.id }}",
+              "type": "string"
+            },
+            {
+              "id": "06784e08-dc0b-4ea1-9ee6-28fa04c10bdd",
+              "name": "remoteJid",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "af6ea069-bfad-4d18-8bcc-ad6ae6f05ddb",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=store-ibox_cli_23"
+      },
+      "id": "9bc84258-bf06-4857-a50e-42be640e7456",
+      "name": "deleteStore",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -820,
+        1640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Faz o tratamento da Resposta",
+        "height": 256.01768064201184,
+        "width": 762.5347358994534
+      },
+      "id": "3d99465b-5869-4516-82f2-9639047e0b3d",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        220,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0daeaf9d-9112-42fa-b78e-5a0c3776d9d9",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        1500
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').first().json.body.server_url }}/message/sendMedia/{{ $('Webhook').first().json.body.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('Webhook').first().json.body.data.key.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replaceAll('**', '*') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
+        "options": {}
+      },
+      "id": "1d7507cb-4f96-4ca4-b5cd-f5926435378f",
+      "name": "Send Media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        1480
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = 'Você pode fazer o seu pedido acessando o menu da Hamburgueria através do seguinte link: [Menu da Hamburgueria](https://ibox.delivery/v2/hamburgueria). \\n\\nOs produtos disponíveis incluem:\\n\\n1. Combo Top Monster Burger - R$ 35,00\\n2. Refrigerante Coca-Cola Lata 350ml - R$ 3,50\\n3. Double Bacon Burger - R$ 13,50\\n4. Refrigerante Fanta Lata 350ml - R$ 1,00\\n5. Octopus Burger - R$ 22,00\\n6. Double Cheese Burger - R$ 15,49\\n7. Rib Stake Burger - R$ 19,99\\n8. Top Monster Burger - R$ 29,59\\n9. Milkshare De Chocolate - R$ 8,00\\n10. Red Hot Burger - R$ 23,60\\n11. Milkshare De Morango 500ML - R$ 8,00\\n12. Porção de Batata Frita 250g - R$ 11,99\\n\\nO horário de funcionamento é de segunda a sexta, das 08:00 às 22:00, e aos sábados e domingos, das 12:00 às 00:00. Aproveite seu pedido.';\n\nconst cleanedMessage = message.replaceAll('\\n','\\\\n').replaceAll('**', '*');\n\n// Expressão regular que pega tanto links quanto imagens\nconst regex = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(cleanedMessage)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    parts.push({ type: 'text', content: cleanedMessage.slice(lastIndex, match.index).trim() });\n  }\n\n  if (match[1]) {\n    // Link formatado com caption, verificar se é imagem\n    const url = match[2];\n    if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/i)) {\n      parts.push({ type: 'image', caption: match[1], url });\n    } else {\n      parts.push({ type: 'link', url, caption: match[1] });\n    }\n  } else if (match[3]) {\n    // Link direto sem caption\n    const url = match[3];\n    if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/i)) {\n      parts.push({ type: 'image', url });\n    } else if (url.match(/\\.(mp4|mov|avi|wmv)$/i)) {\n      parts.push({ type: 'video', url });\n    } else {\n      parts.push({ type: 'link', url });\n    }\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < cleanedMessage.length) {\n  parts.push({ type: 'text', content: cleanedMessage.slice(lastIndex).trim() });\n}\n\n// Exibe o resultado\nconsole.log(JSON.stringify(parts, null, 2));\n\nreturn { output: parts };"
+      },
+      "id": "5d7341f4-8a27-48e1-a47e-e70e4b67c62a",
+      "name": "Categorizando Mensagem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "6320d954-878a-41f8-b309-19a7504f71d8",
+      "name": "Separa em Msgs",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        860,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.text;\n// const message = 'Você pode fazer o seu pedido acessando o menu da Hamburgueria através do seguinte link: [Menu da Hamburgueria](https://ibox.delivery/v2/hamburgueria). \\n\\nOs produtos disponíveis incluem:\\n\\n1. Combo Top Monster Burger - R$ 35,00\\n2. Refrigerante Coca-Cola Lata 350ml - R$ 3,50\\n3. Double Bacon Burger - R$ 13,50\\n4. Refrigerante Fanta Lata 350ml - R$ 1,00\\n5. Octopus Burger - R$ 22,00\\n6. Double Cheese Burger - R$ 15,49\\n7. Rib Stake Burger - R$ 19,99\\n8. Top Monster Burger - R$ 29,59\\n9. Milkshare De Chocolate - R$ 8,00\\n10. Red Hot Burger - R$ 23,60\\n11. Milkshare De Morango 500ML - R$ 8,00\\n12. Porção de Batata Frita 250g - R$ 11,99\\n\\nO horário de funcionamento é de segunda a sexta, das 08:00 às 22:00, e aos sábados e domingos, das 12:00 às 00:00. Aproveite seu pedido.';\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
+      },
+      "id": "15f84ce4-a499-4c83-a02d-719517b9ea86",
+      "name": "Limpando Url",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        1500
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95a3e5a0-24bf-4600-8739-01dee9396123",
+      "name": "Fix Break Line",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('**', '*') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d1fed107-c724-4b1e-bad0-00de277a3780",
+      "name": "Fix Whatsapp MK",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Função 2: Processa imagens, vídeos separando do texto\nfunction processMediaLinks(text) {\n  const regexMedia = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)|((https?:\\/\\/[^\\s]+))/gi;\n  const parts = [];\n  let lastIndex = 0;\n  let match;\n\n  while ((match = regexMedia.exec(text)) !== null) {\n    // Adiciona o texto entre os matches\n    if (match.index > lastIndex) {\n      parts.push({ type: 'text', content: text.slice(lastIndex, match.index).trim() });\n    }\n\n    if (match[1]) {\n      const url = match[2];\n      if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/i)) {\n        parts.push({ type: 'image', caption: match[1], url });\n      } else if (url.match(/\\.(mp4|mov|avi|wmv)$/i)) {\n        parts.push({ type: 'video', url });\n      } else {\n        // Se não for imagem nem vídeo, adiciona como texto\n        parts.push({ type: 'text', content: `[${match[1]}](${url})` });\n      }\n    } else if (match[3]) {\n      const url = match[3];\n      if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/i)) {\n        parts.push({ type: 'image', url });\n      } else if (url.match(/\\.(mp4|mov|avi|wmv)$/i)) {\n        parts.push({ type: 'video', url });\n      } else {\n        // Se não for imagem nem vídeo, adiciona como texto\n        parts.push({ type: 'text', content: url });\n      }\n    }\n\n    // Atualiza o último índice processado\n    lastIndex = regexMedia.lastIndex;\n  }\n\n  // Adiciona o texto final, se houver\n  if (lastIndex < text.length) {\n    parts.push({ type: 'text', content: text.slice(lastIndex).trim() });\n  }\n\n  // Se não houver imagens ou vídeos, retorna como texto com o formato { type: 'text', content: ... }\n  if (parts.every(part => part.type === 'text')) {\n    return { type: 'text', content: text };\n  }\n\n  return parts;\n}\n\n// Exemplo de uso:\nconst message = $input.item.json.output;\n\n// Segunda função: processa imagens, vídeos e trata o restante como texto\nlet processedOutput = processMediaLinks(message);\n\nreturn { output: [processedOutput] };\n"
+      },
+      "id": "c47b5c1d-d9fb-4d76-8e2d-9005e09506e6",
+      "name": "Categorizando Mensagem1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        1500
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').first().json.body.server_url }}/message/sendText/{{ $('Webhook').first().json.body.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('Webhook').first().json.body.data.key.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content }}\",\n  \"delay\": 2000,\n  \"linkPreview\": true\n} ",
+        "options": {}
+      },
+      "id": "f2088663-bb99-48e4-aabe-0376fa90b15c",
+      "name": "Send Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        1680
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Enviar o Resultado para o Whatsapp",
+        "height": 471.86637752567003,
+        "width": 748.9191929295043
+      },
+      "id": "b801eb79-5be5-44d5-a164-c6a4152a7aa0",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "317d7e51-09c1-4258-a2e8-d2b6303e2040",
+        "options": {}
+      },
+      "id": "f7306752-8721-4b08-b390-fa658ac929fe",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1000,
+        1440
+      ],
+      "webhookId": "317d7e51-09c1-4258-a2e8-d2b6303e2040"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "bd6c6ac4-8ebd-4d14-9935-1fd270106c48",
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "8a8907db-2f29-4fc3-a50d-264a2c5d015e",
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "=video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "63c4997e-6775-454f-b756-5aba6fadcc99",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1360,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('baseInfo').first().json.chatInput }}",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "AIMessagePromptTemplate",
+              "message": "={{ $json.store }}"
+            },
+            {
+              "message": "Instruction: Respond to the customer based on the information from the snack bar and the available functions of the agent, never ending a sentence with a question.\n\nContext: The customer is seeking information about products, operating hours, order status, and other details of the snack bar.\n\nDescription: Your role is to clarify the customer's doubts about the snack bar. Do not ask questions; just provide the necessary and objective answers.\n\n# Tone of Voice: Friendly, Informal, Empathetic, Concise, Proactive, Humorous (where appropriate), ## Humanized.\n\nRule: NEVER ask questions; always end with a statement or a period.\nWriting Rule: If you need to bold something, do it like this: *[content]*, and if you need to use italics, do it like this: _[content]_.\n\nTasks:\n\n- Respond about location, hours, and available products.\n- Send the menu link or a product link when requested, but limit product suggestions to a maximum of 2 items per response.\n- Suggest products based on user inquiries without returning questions.\n\nOutput: Responses should always be in plain text, using lists for delivery fees or products when necessary. No questions at the end."
+            }
+          ]
+        }
+      },
+      "id": "9ff53376-733a-4b1e-930c-692c1327e795",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        -120,
+        1500
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": false
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "connection": "close",
+            "content-length": "1105",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.5",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "ibox_cli_23",
+            "data": {
+              "key": {
+                "remoteJid": "5512982184879@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB02FE9D8E3EEBC7BDEBF"
+              },
+              "pushName": "W.M. Soluções Tecnologicas",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "XmJzBOLylzgZMw==",
+                    "senderTimestamp": "1726843197",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "133dAnqlyPxFrg==",
+                    "recipientTimestamp": "1726774814"
+                  },
+                  "deviceListMetadataVersion": 2
+                },
+                "conversation": "me envie a imagem da porção de batata frita"
+              },
+              "contextInfo": {
+                "ephemeralSettingTimestamp": "1719835382",
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "messageType": "extendedTextMessage",
+              "messageTimestamp": 1726972736,
+              "instanceId": "88d98422-5c77-47d2-8405-c813d554530e",
+              "source": "web",
+              "chatwootMessageId": 597,
+              "chatwootInboxId": 4,
+              "chatwootConversationId": 3
+            },
+            "destination": "https://webhook.n8n.wmst.com.br/webhook/052fca95-88ff-4599-8473-89421ca6fc46",
+            "date_time": "2024-09-21T23:38:56.376Z",
+            "sender": "5512982471939@s.whatsapp.net",
+            "server_url": "https://apiwp.wmst.com.br",
+            "apikey": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/052fca95-88ff-4599-8473-89421ca6fc46",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-28T05:09:06.323Z",
+  "versionId": "6d316f07-e564-4d5b-9af7-0ddad09f0056"
+}
