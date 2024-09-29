@@ -1416,7 +1416,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -3640,
+        -3660,
         1280
       ],
       "retryOnFail": true,
@@ -1437,6 +1437,29 @@
       "position": [
         -4651,
         980
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8ab20a1-b06d-4840-b71f-4c53eb2b005c",
+              "name": "content",
+              "value": "={{ $json.choices[0].message.content ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "31af6356-e7a5-4a78-9834-51cc9d202dcf",
+      "name": "Groq Normalize Image",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3440,
+        1280
       ]
     },
     {
@@ -1469,29 +1492,6 @@
         }
       },
       "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "c8ab20a1-b06d-4840-b71f-4c53eb2b005c",
-              "name": "content",
-              "value": "={{ $json.choices[0].message.content ?? '' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "31af6356-e7a5-4a78-9834-51cc9d202dcf",
-      "name": "Groq Normalize Image",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -3440,
-        1280
-      ]
     },
     {
       "parameters": {
@@ -1533,6 +1533,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-29T03:46:47.262Z",
-  "versionId": "b16ab43e-37e6-48d3-be1b-694333c5cb3f"
+  "updatedAt": "2024-09-29T04:28:19.058Z",
+  "versionId": "e08cd995-c844-4a35-9870-3227e7fa3d5a"
 }
