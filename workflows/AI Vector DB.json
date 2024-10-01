@@ -10,13 +10,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "get vector tb": {
@@ -36,17 +30,6 @@
           {
             "node": "Qdrant Vector Store",
             "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Store Details": {
-      "main": [
-        [
-          {
-            "node": "Qdrant Vector Store",
-            "type": "main",
             "index": 0
           }
         ]
@@ -100,12 +83,81 @@
       "main": [
         [
           {
-            "node": "Get Store Details",
+            "node": "blocksInfo",
             "type": "main",
             "index": 0
-          },
+          }
+        ]
+      ]
+    },
+    "blocksInfo": {
+      "main": [
+        [
           {
-            "node": "Get Store Details1",
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get Store Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Info": {
+      "main": [
+        [
+          {
+            "node": "has output?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has output?": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -141,8 +193,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        1220,
-        540
+        1960,
+        560
       ],
       "credentials": {
         "openAiApi": {
@@ -153,15 +205,24 @@
     },
     {
       "parameters": {
-        "options": {}
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "block",
+                "value": "={{ $('Loop Over Items').item.json.block }}"
+              }
+            ]
+          }
+        }
       },
       "id": "8c0bca97-acae-4886-a042-4f53eaef0bc9",
       "name": "Default Data Loader",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1,
       "position": [
-        1320,
-        540
+        2080,
+        560
       ]
     },
     {
@@ -196,17 +257,6 @@
       "position": [
         640,
         380
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "34508740-8640-4ded-91d2-332fe66d3044",
-      "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        880,
-        580
       ]
     },
     {
@@ -250,9 +300,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1080,
-        360
-      ]
+        1600,
+        620
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -273,7 +324,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        440,
+        480,
         580
       ],
       "credentials": {
@@ -315,7 +366,7 @@
       "parameters": {
         "content": "# Atualiza os dados da Empresa no Vector DB",
         "height": 536.7915690866513,
-        "width": 1517.9458086165562,
+        "width": 2359.834811817428,
         "color": 2
       },
       "id": "bec8e467-2483-4c50-8db5-7adde1c3d33e",
@@ -338,8 +389,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        1340,
-        660
+        2080,
+        700
       ]
     },
     {
@@ -390,7 +441,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        900,
+        860,
         360
       ],
       "alwaysOutputData": true,
@@ -399,8 +450,99 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c20cd8e3-2a73-4758-bfbf-88d49edd563d",
+              "name": "blocks",
+              "value": "={{ ['basic_info,status,hours', 'products', 'delivery_fees'] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
       },
-      "disabled": true
+      "id": "09bb4fe9-ac61-4309-8fc8-3d12f780acc1",
+      "name": "blocksInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1020,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "402f67e2-00b7-4436-b2f9-a41a8c13e611",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "blocks",
+        "options": {
+          "destinationFieldName": "block"
+        }
+      },
+      "id": "609ebfc9-0af6-4bfb-8bb0-f9fe9c6266d7",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.ibox_api }}/store",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "instance_name",
+              "value": "={{ $('baseInfo').first().json.instance_name }}"
+            },
+            {
+              "name": "format",
+              "value": "markdown"
+            },
+            {
+              "name": "block",
+              "value": "={{ $json.block }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "text",
+              "outputPropertyName": "output"
+            }
+          }
+        }
+      },
+      "id": "a8ebf661-a1b4-4650-8e2c-99e722018551",
+      "name": "Get Store Info",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1600,
+        380
+      ]
     },
     {
       "parameters": {
@@ -417,8 +559,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        1260,
-        380
+        2000,
+        360
       ],
       "credentials": {
         "qdrantApi": {
@@ -429,47 +571,36 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').first().json.ibox_api }}/store",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "name": "format",
-              "value": "json"
-            },
-            {
-              "name": "style",
-              "value": "text"
+              "id": "21baa15a-f57d-49f4-8715-5fcd08e367af",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
             }
-          ]
+          ],
+          "combinator": "and"
         },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "instance_name",
-              "value": "={{ $('baseInfo').first().json.instance_name }}"
-            }
-          ]
-        },
-        "options": {
-          "allowUnauthorizedCerts": true,
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "text",
-              "outputPropertyName": "output"
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "e916f09a-63bd-47dd-88f7-182a6c587351",
-      "name": "Get Store Details1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "id": "8ecfaa85-e6ce-47f0-b13d-8b150bb4c504",
+      "name": "has output?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
       "position": [
-        1080,
-        140
+        1760,
+        380
       ]
     }
   ],
@@ -487,6 +618,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-01T03:29:27.562Z",
-  "versionId": "79cb5b96-10ff-4823-b197-b463f4ed5aeb"
+  "updatedAt": "2024-10-01T04:47:32.199Z",
+  "versionId": "d25d389a-53bd-4e73-b780-9a900f4179f8"
 }
