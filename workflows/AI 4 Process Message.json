@@ -12,17 +12,6 @@
         ]
       ]
     },
-    "Vector Store Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Redis Chat Memory": {
       "ai_memory": [
         [
@@ -276,17 +265,6 @@
         ]
       ]
     },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Status Pedido": {
       "ai_tool": [
         [
@@ -386,7 +364,7 @@
       "ai_embedding": [
         [
           {
-            "node": "Qdrant Vector Store",
+            "node": "Qdant Vector Store",
             "type": "ai_embedding",
             "index": 0
           }
@@ -426,7 +404,40 @@
         ]
       ]
     },
-    "Qdrant Vector Store": {
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store": {
       "ai_vectorStore": [
         [
           {
@@ -466,21 +477,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "name": "store_info",
-        "description": "use essa ferramenta para retornar produtos/serviços fornecidos pela loja, e demais informações não entregue pelas outras tools",
-        "topK": 10
-      },
-      "id": "75787e8f-f383-423d-8072-f298f43be002",
-      "name": "Vector Store Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
-      "typeVersion": 1,
-      "position": [
-        4380,
-        1820
-      ]
     },
     {
       "parameters": {
@@ -785,7 +781,7 @@
       "typeVersion": 1.1,
       "position": [
         4860,
-        2160
+        2040
       ]
     },
     {
@@ -800,7 +796,7 @@
       "typeVersion": 1.1,
       "position": [
         4980,
-        2160
+        2040
       ]
     },
     {
@@ -815,7 +811,7 @@
       "typeVersion": 1.1,
       "position": [
         4720,
-        2160
+        2040
       ]
     },
     {
@@ -1053,8 +1049,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        4500,
-        2040
+        4440,
+        2080
       ],
       "credentials": {
         "groqApi": {
@@ -1103,7 +1099,7 @@
       "typeVersion": 1.1,
       "position": [
         5220,
-        2160
+        2040
       ]
     },
     {
@@ -1157,7 +1153,7 @@
       "typeVersion": 1.1,
       "position": [
         5100,
-        2160
+        2040
       ]
     },
     {
@@ -1173,7 +1169,7 @@
       "typeVersion": 1,
       "position": [
         4680,
-        2080
+        1960
       ]
     },
     {
@@ -1334,8 +1330,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        4120,
-        2060
+        4060,
+        2080
       ],
       "credentials": {
         "openAiApi": {
@@ -1391,10 +1387,48 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        4160,
-        2240
+        3420,
+        2200
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}",
+        "sessionTTL": 300,
+        "contextWindowLength": 10
+      },
+      "id": "a0ff0cc5-52f7-471f-ad53-87f2c5b54957",
+      "name": "Redis Chat Memory 2",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        3540,
+        2380
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "store_info",
+        "description": "use essa ferramenta para retornar produtos/serviços fornecidos pela loja, e demais informações não entregue pelas outras tools",
+        "topK": 10
+      },
+      "id": "e69d35ed-0700-4d8e-9e44-a375746402b6",
+      "name": "Vector Store Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        4400,
+        1820
+      ]
     },
     {
       "parameters": {
@@ -1415,29 +1449,6 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}",
-        "sessionTTL": 300,
-        "contextWindowLength": 10
-      },
-      "id": "a0ff0cc5-52f7-471f-ad53-87f2c5b54957",
-      "name": "Redis Chat Memory 2",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.3,
-      "position": [
-        4020,
-        2260
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
         "qdrantCollection": {
           "__rl": true,
           "value": "={{ $('vector store').first().json.vector_name }}",
@@ -1445,12 +1456,12 @@
         },
         "options": {}
       },
-      "id": "4f11d3bd-759e-405f-b21d-c3c4bc1066cf",
-      "name": "Qdrant Vector Store",
+      "id": "1d215aea-6911-4753-9752-08826ff5741e",
+      "name": "Qdant Vector Store",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        4260,
+        4200,
         2040
       ],
       "credentials": {
@@ -1472,7 +1483,7 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "debounce_time": 5,
-          "conversation": "qual meu e-mail?"
+          "conversation": "quais produtos vocês tem?"
         }
       }
     ]
@@ -1496,6 +1507,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-01T03:25:12.270Z",
-  "versionId": "cf5ce0ff-f5e1-4cf0-9660-5ceed0bacf1b"
+  "updatedAt": "2024-10-01T05:35:03.531Z",
+  "versionId": "4be6a758-e5bb-49fd-8e09-f0df1bad397e"
 }
