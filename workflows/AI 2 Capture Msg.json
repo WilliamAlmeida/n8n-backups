@@ -252,7 +252,7 @@
         [],
         [
           {
-            "node": "delete chat",
+            "node": "get ignored numbers",
             "type": "main",
             "index": 0
           }
@@ -386,6 +386,90 @@
         ]
       ]
     },
+    "get ignored numbers": {
+      "main": [
+        [
+          {
+            "node": "has ignored numbers?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has ignored numbers?": {
+      "main": [
+        [
+          {
+            "node": "ignore numbers",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch ignored numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ignore numbers": {
+      "main": [
+        [
+          {
+            "node": "allow numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set ignored numbers": {
+      "main": [
+        [
+          {
+            "node": "ignore numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "allow numbers": {
+      "main": [
+        [
+          {
+            "node": "delete chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has ignored numbers? 2": {
+      "main": [
+        [
+          {
+            "node": "set ignored numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch ignored numbers": {
+      "main": [
+        [
+          {
+            "node": "has ignored numbers? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Webhook": {
       "main": [
         [
@@ -466,7 +550,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -6080,
+        -6920,
         1080
       ],
       "alwaysOutputData": false,
@@ -940,7 +1024,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5860,
+        -6731,
         1080
       ]
     },
@@ -957,7 +1041,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5657,
+        -6528,
         991
       ],
       "alwaysOutputData": true,
@@ -981,7 +1065,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5657,
+        -6528,
         1151
       ],
       "credentials": {
@@ -1020,7 +1104,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5460,
+        -6331,
         1060
       ]
     },
@@ -1028,14 +1112,14 @@
       "parameters": {
         "content": "## Gerencia o Bloqueio da AI\n*Se enviado pelo dono do whatsapp, ele bloqueia por N segundos*",
         "height": 407.0742534707905,
-        "width": 647.429041213283
+        "width": 586.0266008245178
       },
       "id": "e9574eeb-2ab6-4a0f-b4f9-cc82c6bb59ef",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -5920,
+        -6760,
         900
       ]
     },
@@ -1495,6 +1579,220 @@
     },
     {
       "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "479ad9fd-bb31-42db-a957-658e9e1d556f",
+              "leftValue": "={{ $json.ignored_id.split(',').indexOf($('baseInfo').item.json.remoteJid.split('@')[0]) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fac398fa-085e-4eb5-8468-0e09cf4834cb",
+      "name": "allow numbers",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -5411,
+        991
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "ignore_numbers",
+        "key": "=ignore_numbers_{{ $json.instance }}",
+        "keyType": "hash",
+        "options": {}
+      },
+      "id": "39fa209a-8632-47cd-b12e-0601c9f509f5",
+      "name": "get ignored numbers",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -6071,
+        1011
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.ignore_numbers.ignoreJids }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "641704b5-ec50-441c-8878-3fa5fae5ec42",
+      "name": "has ignored numbers?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -5871,
+        1011
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd480120-b53b-4c64-9cbf-d5bfd813e50c",
+              "name": "ignored_id",
+              "value": "={{ $('get ignored numbers').first().json.ignore_numbers?.ignoreJids ?? $('set ignored numbers').first().json.ignoreJids ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9f2b04b6-ba84-4f4c-81e3-ddc84b840a7d",
+      "name": "ignore numbers",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -5571,
+        991
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=ignore_numbers_{{ $('baseInfo').first().json.instance }}",
+        "value": "={{ $json }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": 2
+      },
+      "id": "8b7b0423-571f-4039-a2e7-879c08d7f31a",
+      "name": "set ignored numbers",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -5571,
+        1211
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Bloqueio de Números Ignorados\n*Se enviado pelo por um whatsapp na lista, ele não repassa a mensagem*",
+        "height": 503.26329788234716,
+        "width": 852.5550756813022
+      },
+      "id": "0b366ec1-5429-4a31-9849-d5b8b4f51ac3",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -6120,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.vector_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c0be1eec-34f4-4cd4-8cee-9fd4b9621c98",
+      "name": "has ignored numbers? 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -5811,
+        1231
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('baseInfo').first().json.instance }}"
+            }
+          ]
+        }
+      },
+      "id": "37d93d6b-708b-4b4d-9783-9736162d235d",
+      "name": "fetch ignored numbers",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -6031,
+        1231
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
         "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
         "responseMode": "lastNode",
@@ -1505,7 +1803,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -6280,
+        -7120,
         1080
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
@@ -1533,6 +1831,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-29T04:28:19.058Z",
-  "versionId": "e08cd995-c844-4a35-9870-3227e7fa3d5a"
+  "updatedAt": "2024-10-01T15:41:47.739Z",
+  "versionId": "d8328f9b-5bf1-4805-932f-8ef5aeae0552"
 }
