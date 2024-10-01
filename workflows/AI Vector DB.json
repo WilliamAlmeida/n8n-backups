@@ -103,6 +103,11 @@
             "node": "Get Store Details",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Get Store Details1",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -224,10 +229,6 @@
         "bodyParameters": {
           "parameters": [
             {
-              "name": "store",
-              "value": "="
-            },
-            {
               "name": "instance_name",
               "value": "={{ $('baseInfo').first().json.instance_name }}"
             }
@@ -239,7 +240,7 @@
             "response": {
               "neverError": true,
               "responseFormat": "text",
-              "outputPropertyName": "context"
+              "outputPropertyName": "output"
             }
           }
         }
@@ -425,6 +426,51 @@
           "name": "william"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.ibox_api }}/store",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "format",
+              "value": "json"
+            },
+            {
+              "name": "style",
+              "value": "text"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "instance_name",
+              "value": "={{ $('baseInfo').first().json.instance_name }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "text",
+              "outputPropertyName": "output"
+            }
+          }
+        }
+      },
+      "id": "e916f09a-63bd-47dd-88f7-182a6c587351",
+      "name": "Get Store Details1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        140
+      ]
     }
   ],
   "pinData": {},
@@ -441,6 +487,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-29T01:49:53.768Z",
-  "versionId": "833be77e-24b0-4a52-b28b-d3a9d0971a18"
+  "updatedAt": "2024-10-01T03:29:27.562Z",
+  "versionId": "79cb5b96-10ff-4823-b197-b463f4ed5aeb"
 }
