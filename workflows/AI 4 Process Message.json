@@ -426,17 +426,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Beautify URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Qdrant Vector Store": {
       "ai_vectorStore": [
         [
@@ -1136,8 +1125,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1508,6 +1496,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-09-30T03:40:38.576Z",
-  "versionId": "923d2ab2-fcb9-44be-b7b7-033b99b71399"
+  "updatedAt": "2024-10-01T03:25:12.270Z",
+  "versionId": "cf5ce0ff-f5e1-4cf0-9660-5ceed0bacf1b"
 }
