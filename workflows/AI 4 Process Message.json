@@ -12,17 +12,6 @@
         ]
       ]
     },
-    "Redis Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [],
@@ -143,28 +132,6 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "messageInfo": {
-      "main": [
-        [
-          {
-            "node": "delete vector store",
-            "type": "main",
             "index": 0
           }
         ]
@@ -437,12 +404,72 @@
         ]
       ]
     },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatInput": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
     "AI Agent": {
       "main": [
         [
           {
             "node": "Beautify URL",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -795,7 +822,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4860,
+        4720,
         2040
       ]
     },
@@ -825,7 +852,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4980,
+        4840,
         2040
       ]
     },
@@ -856,7 +883,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4720,
+        4940,
         2040
       ]
     },
@@ -1107,7 +1134,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "use essa ferramenta para retornar status do pedido do usuário na loja, somente se o código do pedido {code} foi informado ou se o usuário informou que não tinha e quer ver o ultimo pedido, então irá pesquisar o ultimo pedido realizado.",
+        "toolDescription": "use essa ferramenta para retornar status do pedido do usuário na loja, somente se o código do pedido {code} foi informado ou se o usuário informou que não tinha e quer ver o ultimo pedido, então irá pesquisar o ultimo pedido realizado.\n\n# pergunte se usuário deseja ver somente o status ou o pedido completo.",
         "url": "=https://ibox.delivery/api/whatsapp/order/status",
         "sendQuery": true,
         "parametersQuery": {
@@ -1126,6 +1153,11 @@
               "name": "code",
               "valueProvider": "fieldValue",
               "value": "{code}"
+            },
+            {
+              "name": "get_items",
+              "valueProvider": "fieldValue",
+              "value": "{get_items}"
             }
           ]
         },
@@ -1133,7 +1165,12 @@
           "values": [
             {
               "name": "code",
-              "description": "o código do pedido tem no máximo 6 dígitos numérico",
+              "description": "o código do pedido tem no máximo 6 dígitos numérico, se não for informado envie como vazio (null)",
+              "type": "string"
+            },
+            {
+              "name": "get_items",
+              "description": "preencha como 1 só se for solicitado o pedido completo, caso contrário coloque vazio (null)",
               "type": "string"
             }
           ]
@@ -1144,7 +1181,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5220,
+        5180,
         2040
       ]
     },
@@ -1199,7 +1236,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5100,
+        5060,
         2040
       ]
     },
@@ -1394,7 +1431,7 @@
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=## Função\nResponder a perguntas do usuário\n\n## Objetivo\nProcessar as mensagens dos clientes e fornecer respostas com base nas regras e informações da base de dados TOOL \"store_info\".\n\n## Sobre o atendiemnto\nSempre inicie sua conversa perguntando educadamente se o usuário deseja realizar um pedido ou precisa de ajuda com algo relacionado.\nA data e hora atuais são {{ $now.toISO() }}. Todas as datas devem ser fornecidas no formato ISO.\n\n## Responsabilidades\n1. Analisar a intenção da pergunta do cliente (fazer pedido, horários, endereço, formas de pagamento, status da loja, etc.).\n2. Fornecer informações claras, educadas, informais e humoradas de acordo com a base de informações.\n3. Utilizar no máximo 2 emojis por resposta para manter a interação leve e amigável.\n4. Sugerir produtos e taxas de entrega conforme as regras:\n   - Mencionar no máximo 3 produtos.\n   - Mencionar até 3 taxas de entrega por vez.\n5. Fornecer o link direto do menu, sem formatação, quando solicitado a intenção de compra.\n6. Manter o tom de conversa descontraído, com mensagens objetivas e curtas.\n7. Sempre que você encontrar um texto dentro de chaves `{}`, busque o valor correspondente na base de dados TOOL \"store_info\". Não retorne o texto literal, mas sim o valor real associado.\n8. Enviar imagens apenas de produtos específicos quando solicitado, sempre pegando na base de dados TOOL \"store_info\".\n9. Dividir respostas longas em partes para facilitar a compreensão.\n10. NUNCA INVENTE INFORMAÇÃO que não esteja na base de dados TOOL \"store_info\".\n11. Pode adicionar o nome do usuário na resposta, quando achar necessário.\n\n## Sobre o usuário\nO nome do usuário é {{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}, seu e-mail é {{ $('userAccount').first().json.email ?? '' }}, o endereço é {{ $('userAccount').first().json.endereco ?? '' }} e o ID da sessão do usuário é {{ $('messageInfo').first().json.unique_id }}",
+              "value": "=## Função\nResponder a perguntas do usuário\n\n## Objetivo\nProcessar as mensagens dos clientes e fornecer respostas com base nas regras e informações da base de dados TOOL \"store_info\".\n\n## Sobre o atendiemnto\nSempre inicie sua conversa perguntando educadamente se o usuário deseja realizar um pedido ou precisa de ajuda com algo relacionado.\nA data e hora atuais são {{ $now.toISO() }}. Todas as datas devem ser fornecidas no formato ISO nas requisições, não nas respostas para o usuário.\n\n## Responsabilidades\n1. Analisar a intenção da pergunta do cliente (fazer pedido, horários, endereço, formas de pagamento, status da loja, etc.).\n2. Fornecer informações claras, educadas, informais e humoradas de acordo com a base de informações.\n3. Utilizar no máximo 2 emojis por resposta para manter a interação leve e amigável.\n4. Sugerir produtos e taxas de entrega conforme as regras:\n   - Mencionar no máximo 3 produtos.\n   - Mencionar até 3 taxas de entrega por vez.\n5. Fornecer o link direto do menu, sem formatação, quando solicitado a intenção de compra.\n6. Manter o tom de conversa descontraído, com mensagens objetivas e curtas.\n7. Sempre que você encontrar um texto dentro de chaves `{}`, busque o valor correspondente na base de dados TOOL \"store_info\". Não retorne o texto literal, mas sim o valor real associado.\n8. Enviar imagens apenas de produtos específicos quando solicitado, sempre pegando na base de dados TOOL \"store_info\".\n9. Dividir respostas longas em partes para facilitar a compreensão.\n10. NUNCA INVENTE INFORMAÇÃO que não esteja na base de dados TOOL \"store_info\".\n11. Pode adicionar o nome do usuário na resposta, quando achar necessário.\n\n# Para cancelamento de pedido\n1. Primeiro, localize o pedido do usuário a ser cancelado.\n2. Se não tiver como cancelado, informe que o cancelamento é feito somente por ligação com o código do pedido.\n\n## Sobre o usuário\nO nome do usuário é {{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}, seu e-mail é {{ $('userAccount').first().json.email ?? '' }}, o endereço é {{ $('userAccount').first().json.endereco ?? '' }} e o ID da sessão do usuário é {{ $('messageInfo').first().json.unique_id }}",
               "type": "string"
             }
           ]
@@ -1465,7 +1502,7 @@
     {
       "parameters": {
         "name": "store_info",
-        "description": "use essa ferramenta para retornar produtos/serviços fornecidos pela loja, e demais informações não entregue pelas outras tools",
+        "description": "use essa ferramenta para retornar produtos/serviços fornecidos pela loja, formas de pagamento aceitas, e demais informações não entregue pelas outras tools",
         "topK": 10
       },
       "id": "e69d35ed-0700-4d8e-9e44-a375746402b6",
@@ -1503,6 +1540,68 @@
     },
     {
       "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"ibox_cli_23_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "99caae6f-ee6b-4cf3-a49b-f2d7e8dbc467",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2280,
+        1540
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "id": "8208ff06-8eaa-4afe-bddb-c522bcfdec41",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        4460,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "id": "a2f92e98-998e-47b0-8dfe-0202dbf5ada0",
+      "name": "chatInput",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        1540
+      ],
+      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=1",
+        "contextWindowLength": 10
+      },
+      "id": "f8de2099-bed4-4a7b-9f59-89423c2cb8f3",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        4280,
+        1480
+      ]
+    },
+    {
+      "parameters": {
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
@@ -1530,7 +1629,7 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "debounce_time": 5,
-          "conversation": "Gostaria de saber se vocês tem algum lanche com bacon?"
+          "conversation": "Gostaria de saber só o status do meu ultimo pedido"
         }
       }
     ]
@@ -1554,6 +1653,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-02T13:07:55.313Z",
-  "versionId": "aa257789-affd-41a2-9bab-39a75ff8bb03"
+  "updatedAt": "2024-10-02T15:42:52.239Z",
+  "versionId": "8f440669-584f-4098-a9a9-77cb13f757d1"
 }
