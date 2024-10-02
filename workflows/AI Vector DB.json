@@ -9,8 +9,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "get vector tb": {
@@ -135,17 +134,6 @@
         ]
       ]
     },
-    "Qdrant Vector Store": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "has output?": {
       "main": [
         [
@@ -155,6 +143,17 @@
             "index": 0
           }
         ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
         [
           {
             "node": "Loop Over Items",
@@ -459,7 +458,7 @@
             {
               "id": "c20cd8e3-2a73-4758-bfbf-88d49edd563d",
               "name": "blocks",
-              "value": "={{ ['basic_info,status,hours', 'products', 'delivery_fees'] }}",
+              "value": "={{ ['basic_info,status,hours,payment_methods', 'products', 'delivery_fees'] }}",
               "type": "array"
             }
           ]
@@ -546,31 +545,6 @@
     },
     {
       "parameters": {
-        "mode": "insert",
-        "qdrantCollection": {
-          "__rl": true,
-          "value": "={{ $('get vector tb').item.json.vector_name }}",
-          "mode": "id"
-        },
-        "options": {}
-      },
-      "id": "0e2a16c7-fdf0-4b6c-a75e-16925805c906",
-      "name": "Qdrant Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
-      "typeVersion": 1,
-      "position": [
-        2000,
-        360
-      ],
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -602,6 +576,31 @@
         1760,
         380
       ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('get vector tb').item.json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "0e2a16c7-fdf0-4b6c-a75e-16925805c906",
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        360
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -618,6 +617,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-01T04:47:32.199Z",
-  "versionId": "d25d389a-53bd-4e73-b780-9a900f4179f8"
+  "updatedAt": "2024-10-02T13:42:17.617Z",
+  "versionId": "1f080b84-d062-478e-901a-c4696ee9635b"
 }
