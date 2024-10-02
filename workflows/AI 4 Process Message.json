@@ -426,23 +426,23 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Beautify URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Qdant Vector Store": {
       "ai_vectorStore": [
         [
           {
             "node": "Vector Store Tool",
             "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
+            "type": "main",
             "index": 0
           }
         ]
@@ -771,7 +771,22 @@
     {
       "parameters": {
         "toolDescription": "use essa ferramenta para retornar status da loja, se ela esta aberta ou fechada, funcionando no momento ou não",
-        "url": "=https://ibox.delivery/api/whatsapp/store?instance_name={{ $('messageInfo').first().json.instance }}&only=status",
+        "url": "=https://ibox.delivery/api/whatsapp/store",
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "instance_name",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.instance }}"
+            },
+            {
+              "name": "block",
+              "valueProvider": "fieldValue",
+              "value": "status"
+            }
+          ]
+        },
         "optimizeResponse": true,
         "dataField": "status"
       },
@@ -787,7 +802,22 @@
     {
       "parameters": {
         "toolDescription": "use essa ferramenta para retornar endereço da loja",
-        "url": "=https://ibox.delivery/api/whatsapp/store?instance_name={{ $('messageInfo').first().json.instance }}&only=address",
+        "url": "=https://ibox.delivery/api/whatsapp/store",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "instance_name",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.instance }}"
+            },
+            {
+              "name": "block",
+              "valueProvider": "fieldValue",
+              "value": "address"
+            }
+          ]
+        },
         "optimizeResponse": true
       },
       "id": "9ac3adc2-6e64-4899-8d02-45a505e30afd",
@@ -802,8 +832,24 @@
     {
       "parameters": {
         "toolDescription": "use essa ferramenta para retornar taxas de entrega cobrada pela loja, consultar tempo médio das entregas, valor mínimo, se entrega em outras localidades que não estejam registradas",
-        "url": "=https://ibox.delivery/api/whatsapp/store?instance_name={{ $('messageInfo').first().json.instance }}&only=delivery_fee",
-        "optimizeResponse": true
+        "url": "=https://ibox.delivery/api/whatsapp/store",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "instance_name",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.instance }}"
+            },
+            {
+              "name": "block",
+              "valueProvider": "fieldValue",
+              "value": "delivery_fees"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "delivery_fees"
       },
       "id": "1818b113-f25a-415f-bb8d-cb05b4a58e5c",
       "name": "Get Store Delivery Fee",
@@ -1432,23 +1478,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').first().json.system }}"
-        }
-      },
-      "id": "c616ed39-d60c-4598-8d32-ede436945b26",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        4060,
-        1720
-      ]
-    },
-    {
-      "parameters": {
         "qdrantCollection": {
           "__rl": true,
           "value": "={{ $('vector store').first().json.vector_name }}",
@@ -1470,6 +1499,23 @@
           "name": "william"
         }
       }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}"
+        }
+      },
+      "id": "c616ed39-d60c-4598-8d32-ede436945b26",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        4060,
+        1720
+      ]
     }
   ],
   "pinData": {
@@ -1483,7 +1529,7 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "debounce_time": 5,
-          "conversation": "quais produtos vocês tem?"
+          "conversation": "por favor qual taxa de entrega para meu bairro Vila dos Comerciários 2?"
         }
       }
     ]
@@ -1507,6 +1553,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-01T05:35:03.531Z",
-  "versionId": "4be6a758-e5bb-49fd-8e09-f0df1bad397e"
+  "updatedAt": "2024-10-01T19:44:58.832Z",
+  "versionId": "d16db884-0585-4fba-8fd4-8ce2c06ad81e"
 }
