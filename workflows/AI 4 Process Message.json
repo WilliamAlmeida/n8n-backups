@@ -338,11 +338,6 @@
         ]
       ]
     },
-    "userAccount": {
-      "main": [
-        []
-      ]
-    },
     "Redis Chat Memory 2": {
       "ai_memory": [
         [
@@ -431,22 +426,33 @@
         ]
       ]
     },
-    "AI Agent": {
+    "Split Out Messages": {
       "main": [
         [
           {
-            "node": "Beautify URL",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Split Out Messages": {
+    "userAccount": {
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
             "type": "main",
             "index": 0
           }
@@ -1189,7 +1195,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "use essa ferramenta para gerar o link de pedido/compra se o usuário deseje realizar algum(a) pedido/compra",
+        "toolDescription": "use essa ferramenta para gerar o link para o usuário realizar um pedido/compra sempre que for solicitado",
         "method": "POST",
         "url": "=https://ibox.delivery/api/whatsapp/store/link",
         "sendQuery": true,
@@ -1619,6 +1625,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-03T03:07:34.957Z",
-  "versionId": "57059324-f738-46cd-ad41-eb4bd9a3b6b7"
+  "updatedAt": "2024-10-03T05:28:18.296Z",
+  "versionId": "98485650-b9d8-4efc-812d-c992910199aa"
 }
