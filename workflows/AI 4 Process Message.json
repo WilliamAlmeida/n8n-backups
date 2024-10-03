@@ -221,17 +221,6 @@
         ]
       ]
     },
-    "Split Out Messages": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Status Pedido": {
       "ai_tool": [
         [
@@ -351,13 +340,7 @@
     },
     "userAccount": {
       "main": [
-        [
-          {
-            "node": "config prompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Redis Chat Memory 2": {
@@ -415,17 +398,6 @@
         ]
       ]
     },
-    "chatConfig": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Redis Chat Memory": {
       "ai_memory": [
         [
@@ -464,6 +436,17 @@
         [
           {
             "node": "Beautify URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Messages": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -1616,22 +1599,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "evo_api": "https://apiwp.wmst.com.br",
-          "instance": "ibox_cli_23",
-          "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "W.M. Soluções Tecnologicas",
-          "fromMe": false,
-          "unique_id": "ibox_cli_23_5512982184879",
-          "debounce_time": 5,
-          "conversation": "gostaria de saber o preço de todos refrigerantes vocês tem"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -1651,6 +1619,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-03T00:49:24.874Z",
-  "versionId": "39332fa3-871b-4bf8-8d13-cb04ba48b209"
+  "updatedAt": "2024-10-03T03:07:34.957Z",
+  "versionId": "57059324-f738-46cd-ad41-eb4bd9a3b6b7"
 }
