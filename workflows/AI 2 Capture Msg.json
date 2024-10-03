@@ -611,7 +611,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const data = $('Webhook').first().json.body.data;\n\nreturn {\n  id: data.key.id,\n  origin: data.messageType,\n  output: $json.output,\n  timestamp: data.messageTimestamp,\n  datetime: DateTime.fromSeconds(data.messageTimestamp).toFormat('yyyy-MM-dd H:m:s')\n};"
+        "jsCode": "const data = $('Webhook').first().json.body.data;\n\n// data.messageTimestamp\n\nlet milis = $now.toMillis();\n\nreturn {\n  id: data.key.id,\n  origin: data.messageType,\n  output: $json.output,\n  timestamp: data.messageTimestamp,\n  datetime: DateTime.fromSeconds(data.messageTimestamp).toFormat('yyyy-MM-dd H:m:s'),\n  timestamp_local: milis,\n  datetime: DateTime.fromSeconds(milis).toFormat('yyyy-MM-dd H:m:s')\n};"
       },
       "id": "932c7e8c-5165-4096-8bfd-77d923ae2abc",
       "name": "Structure Message",
@@ -1830,6 +1830,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-03T03:05:49.982Z",
-  "versionId": "547c81be-e9d7-477c-b40b-a616ec74c50c"
+  "updatedAt": "2024-10-03T05:14:09.871Z",
+  "versionId": "b856bf45-4176-4e52-b978-32326eb59c13"
 }
