@@ -16,12 +16,12 @@
       "main": [
         [
           {
-            "node": "messages",
+            "node": "delete debounce",
             "type": "main",
             "index": 0
           },
           {
-            "node": "delete debounce",
+            "node": "Sort by Timestamp",
             "type": "main",
             "index": 0
           }
@@ -62,31 +62,6 @@
         [
           {
             "node": "get chats",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "get chats 2",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "get msgs",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Stop and Error1",
             "type": "main",
             "index": 0
           }
@@ -143,17 +118,6 @@
         [
           {
             "node": "has chats?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Execute Workflow",
             "type": "main",
             "index": 0
           }
@@ -251,6 +215,53 @@
         [
           {
             "node": "delete wk debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort by Timestamp": {
+      "main": [
+        [
+          {
+            "node": "messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "get chats 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get msgs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error1",
             "type": "main",
             "index": 0
           }
@@ -442,74 +453,6 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.debounce }}",
-                    "rightValue": "",
-                    "operator": {
-                      "type": "string",
-                      "operation": "empty",
-                      "singleValue": true
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "not started"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "5aa6ed30-d48a-499c-82a9-026844311d1e",
-                    "leftValue": "={{ $now.toSeconds().round() }}",
-                    "rightValue": "={{ DateTime.fromISO($json.debounce).toSeconds().round() }}",
-                    "operator": {
-                      "type": "number",
-                      "operation": "gt"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "continue"
-            }
-          ]
-        },
-        "options": {
-          "fallbackOutput": "extra",
-          "renameFallbackOutput": "in debounce"
-        }
-      },
-      "id": "1b851a7f-67d6-46fd-a6ea-7e9f38fb5304",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        1000,
-        900
-      ]
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -527,7 +470,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1960,
+        2040,
         700
       ]
     },
@@ -597,21 +540,6 @@
           "name": "vps"
         }
       }
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "90c5b594-b9d6-4f61-98b8-516e3e500cb2",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        2160,
-        540
-      ]
     },
     {
       "parameters": {
@@ -852,6 +780,103 @@
           "name": "vps"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function converterParaArrayJson(msgs) {\n    return msgs.map(msg => JSON.parse(msg)); // Convertendo string JSON para objeto\n}\n\nfunction ordenarPorTimestamp(msgs) {\n    return msgs.sort((a, b) => a.timestamp_local - b.timestamp_local); // Ordenando pelo timestamp\n}\n\nfunction converterParaJsonString(msgs) {\n    return msgs.map(msg => JSON.stringify(msg)); // Convertendo objetos de volta para string JSON\n}\n\nfunction processarDados(msgs) {\n    const arrayJson = converterParaArrayJson(msgs);\n    const arrayOrdenado = ordenarPorTimestamp(arrayJson);\n    return converterParaJsonString(arrayOrdenado);\n}\n\n// Supondo que msgs seja um array de strings JSON\nlet msgs = $input.item.json.msgs; // Acesso direto à array de mensagens\n\nreturn { msgs: processarDados(msgs)};"
+      },
+      "id": "a14defd6-4f7d-4a4c-8c86-ebe99713a4ca",
+      "name": "Sort by Timestamp",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1880,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "90c5b594-b9d6-4f61-98b8-516e3e500cb2",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.debounce }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "not started"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5aa6ed30-d48a-499c-82a9-026844311d1e",
+                    "leftValue": "={{ $now.toSeconds().round() }}",
+                    "rightValue": "={{ DateTime.fromISO($json.debounce).toSeconds().round() }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "continue"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "in debounce"
+        }
+      },
+      "id": "1b851a7f-67d6-46fd-a6ea-7e9f38fb5304",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        900
+      ]
     }
   ],
   "pinData": {},
@@ -878,6 +903,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-03T03:21:35.069Z",
-  "versionId": "47574738-579e-4b45-ac04-fb0f177fe6ba"
+  "updatedAt": "2024-10-03T05:28:10.082Z",
+  "versionId": "10b7eb6b-2b97-439f-a7d8-b0ac71b4ed66"
 }
