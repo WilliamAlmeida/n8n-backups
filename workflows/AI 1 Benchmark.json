@@ -12,50 +12,6 @@
         ]
       ]
     },
-    "baseInfo": {
-      "main": [
-        [
-          {
-            "node": "Messages",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Messages": {
-      "main": [
-        [
-          {
-            "node": "Limit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Limit": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "WF Capture Msg": {
       "main": [
         [
@@ -107,6 +63,134 @@
         ]
       ]
     },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "WF Capture Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "inscrement": {
+      "main": [
+        [
+          {
+            "node": "hit limit?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Messages": {
+      "main": [
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate ID": {
+      "main": [
+        [
+          {
+            "node": "Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message": {
+      "main": [
+        [
+          {
+            "node": "push on list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset inscrement": {
+      "main": [
+        [
+          {
+            "node": "inscrement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset msgs": {
+      "main": [
+        [
+          {
+            "node": "reset inscrement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "push on list": {
+      "main": [
+        [
+          {
+            "node": "inscrement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "hit limit?": {
+      "main": [
+        [
+          {
+            "node": "get list",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get list": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Loop Over Items": {
       "main": [
         [],
@@ -119,11 +203,22 @@
         ]
       ]
     },
-    "Code": {
+    "Split Out": {
       "main": [
         [
           {
-            "node": "WF Capture Msg",
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -146,7 +241,7 @@
       "typeVersion": 1,
       "position": [
         320,
-        240
+        340
       ]
     },
     {
@@ -170,6 +265,12 @@
               "name": "instance_name",
               "value": "ibox_cli_23",
               "type": "string"
+            },
+            {
+              "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
+              "name": "limit",
+              "value": 10,
+              "type": "number"
             }
           ]
         },
@@ -181,7 +282,7 @@
       "typeVersion": 3.4,
       "position": [
         980,
-        220
+        320
       ]
     },
     {
@@ -193,14 +294,21 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1520,
+        2420,
         220
       ]
     },
     {
       "parameters": {
         "assignments": {
-          "assignments": []
+          "assignments": [
+            {
+              "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
+              "name": "msgs",
+              "value": "={{ [\n  \"oi\",\n  \"tudo bem?\",\n  \"Como vai?\",\n  \"Quero pedir\",\n  \"De onde são?\",\n  \"Qual o horário de funcionamento?\",\n  \"Tem promoção?\",\n  \"Aceitam cartão?\",\n  \"Qual o tempo de entrega?\",\n  \"Qual o cardápio?\",\n  \"Vocês entregam no meu bairro?\",\n  \"Posso pagar no pix?\",\n  \"Qual o endereço?\",\n  \"Vocês têm sobremesa?\",\n  \"Obrigado!\"\n] }}",
+              "type": "array"
+            }
+          ]
         },
         "options": {}
       },
@@ -210,7 +318,7 @@
       "typeVersion": 3.4,
       "position": [
         1160,
-        220
+        320
       ]
     },
     {
@@ -222,23 +330,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2060,
-        360
+        2960,
+        240
       ],
       "webhookId": "8cbe7c67-f45e-4574-83bc-5f59a04172aa"
-    },
-    {
-      "parameters": {
-        "maxItems": 15
-      },
-      "id": "7fd08d31-1b55-4ac5-8cf5-1d636d4b9cbf",
-      "name": "Limit",
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        1340,
-        220
-      ]
     },
     {
       "parameters": {
@@ -272,7 +367,7 @@
       "typeVersion": 1,
       "position": [
         840,
-        380
+        480
       ],
       "credentials": {
         "n8nApi": {
@@ -296,8 +391,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1900,
-        360
+        2800,
+        240
       ],
       "alwaysOutputData": true
     },
@@ -315,7 +410,7 @@
       "typeVersion": 1,
       "position": [
         500,
-        240
+        340
       ],
       "credentials": {
         "n8nApi": {
@@ -356,7 +451,7 @@
       "typeVersion": 2.2,
       "position": [
         680,
-        240
+        340
       ],
       "disabled": true
     },
@@ -370,119 +465,226 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1680,
-        40
+        2680,
+        -40
       ]
     },
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "let timestamp  = Math.round($now.toSeconds());\n\nconst content = {\n  \"body\": {\n    \"event\": \"messages.upsert\",\n    \"instance\": \"ibox_cli_23\",\n    \"data\": {\n      \"key\": {\n        \"remoteJid\": $('baseInfo').first().json.remoteJid,\n        \"fromMe\": false,\n        \"id\": $('Loop Over Items').item.json.messageId\n      },\n      \"pushName\": $('baseInfo').first().json.pushName,\n      \"message\": {\n        \"messageContextInfo\": {\n          \"deviceListMetadata\": {\n            \"senderKeyHash\": \"XmJzBOLylzgZMw==\",\n            \"senderTimestamp\": \"1726978616\",\n            \"senderAccountType\": \"E2EE\",\n            \"receiverAccountType\": \"E2EE\",\n            \"recipientKeyHash\": \"133dAnqlyPxFrg==\",\n            \"recipientTimestamp\": timestamp\n          },\n          \"deviceListMetadataVersion\": 2\n        },\n        \"conversation\": $('Loop Over Items').item.json.conversation\n      },\n      \"contextInfo\": {\n        \"ephemeralSettingTimestamp\": timestamp,\n        \"disappearingMode\": {\n          \"initiator\": \"CHANGED_IN_CHAT\",\n          \"trigger\": \"CHAT_SETTING\"\n        }\n      },\n      \"messageType\": \"extendedTextMessage\",\n      \"messageTimestamp\": timestamp,\n      \"instanceId\": \"88d98422-5c77-47d2-8405-c813d554530e\",\n      \"source\": \"web\",\n      \"chatwootMessageId\": 762,\n      \"chatwootInboxId\": 4,\n      \"chatwootConversationId\": 3\n    },\n    \"destination\": \"https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n    \"date_time\": \"2024-09-25T14:42:39.164Z\",\n    \"sender\": \"5512982471939@s.whatsapp.net\",\n    \"server_url\": \"https://apiwp.wmst.com.br\",\n    \"apikey\": \"A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36\"\n  },\n  \"webhookUrl\": \"https://webhook.n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n  \"executionMode\": \"test\"\n};\n\nreturn content;"
+        "jsCode": "let timestamp  = Math.round($now.toSeconds());\n\nconst msg = JSON.parse($input.item.json.msgs);\n\nconst content = {\n  \"body\": {\n    \"event\": \"messages.upsert\",\n    \"instance\": \"ibox_cli_23\",\n    \"data\": {\n      \"key\": {\n        \"remoteJid\": $('baseInfo').first().json.remoteJid,\n        \"fromMe\": false,\n        \"id\": msg.messageId\n      },\n      \"pushName\": $('baseInfo').first().json.pushName,\n      \"message\": {\n        \"messageContextInfo\": {\n          \"deviceListMetadata\": {\n            \"senderKeyHash\": \"XmJzBOLylzgZMw==\",\n            \"senderTimestamp\": \"1726978616\",\n            \"senderAccountType\": \"E2EE\",\n            \"receiverAccountType\": \"E2EE\",\n            \"recipientKeyHash\": \"133dAnqlyPxFrg==\",\n            \"recipientTimestamp\": timestamp\n          },\n          \"deviceListMetadataVersion\": 2\n        },\n        \"conversation\": `${msg.order} - ${msg.conversation}`\n      },\n      \"contextInfo\": {\n        \"ephemeralSettingTimestamp\": timestamp,\n        \"disappearingMode\": {\n          \"initiator\": \"CHANGED_IN_CHAT\",\n          \"trigger\": \"CHAT_SETTING\"\n        }\n      },\n      \"messageType\": \"extendedTextMessage\",\n      \"messageTimestamp\": timestamp,\n      \"instanceId\": \"88d98422-5c77-47d2-8405-c813d554530e\",\n      \"source\": \"web\",\n      \"chatwootMessageId\": 762,\n      \"chatwootInboxId\": 4,\n      \"chatwootConversationId\": 3\n    },\n    \"destination\": \"https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n    \"date_time\": \"2024-09-25T14:42:39.164Z\",\n    \"sender\": \"5512982471939@s.whatsapp.net\",\n    \"server_url\": \"https://apiwp.wmst.com.br\",\n    \"apikey\": \"A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36\"\n  },\n  \"webhookUrl\": \"https://webhook.n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n  \"executionMode\": \"test\"\n};\n\nreturn content;"
       },
       "id": "14b81890-9a01-45e6-9b7b-712a755587eb",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1740,
-        340
+        2620,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "incr",
+        "key": "benchmark",
+        "expire": true
+      },
+      "id": "1fac71c4-8c6b-4595-9646-2ee4cffe4181",
+      "name": "inscrement",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        320
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0a722b2-85d2-4509-910a-0fec2cb34489",
+              "name": "id",
+              "value": "={{ [...Array(22)].map(() => Math.floor(Math.random() * 16).toString(16).toUpperCase()).join('') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99343f2c-2822-4e59-a305-696a35107fc8",
+      "name": "Generate ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2080,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "benchmark_msgs",
+        "messageData": "={{ $json.msg }}",
+        "tail": true
+      },
+      "id": "afff72b3-30af-4602-a797-3e27408caa95",
+      "name": "push on list",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2400,
+        440
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "msgs",
+        "key": "benchmark_msgs",
+        "keyType": "list",
+        "options": {}
+      },
+      "id": "48d164d1-1b33-4c72-85e6-6cd06e3b6a41",
+      "name": "get list",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        220
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2292c75f-b563-4411-85e1-cce1791ec97e",
+              "name": "msg",
+              "value": "={{ { order: $('inscrement').first().json.benchmark, messageId: $json.id, conversation: $('Messages').first().json.msgs.randomItem() } }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1eaebd92-5f3f-4263-8ae9-00970b19449e",
+      "name": "Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2240,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "benchmark"
+      },
+      "id": "60344d2f-e23d-4f7f-916f-f5ba908dffab",
+      "name": "reset inscrement",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        320
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "benchmark_msgs"
+      },
+      "id": "59ddf8dd-37ad-42f9-8835-b6c1b186e38c",
+      "name": "reset msgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        320
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dffa0a3e-feae-47c9-9840-be8106e0cf69",
+              "leftValue": "={{ $json.benchmark }}",
+              "rightValue": "={{ $('baseInfo').first().json.limit }}",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "41291ec2-e8f0-4e8b-86f5-4d5da9a977da",
+      "name": "hit limit?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1880,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msgs",
+        "options": {}
+      },
+      "id": "6dba112d-4db5-49dc-a7ce-881a41e4155b",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        220
       ]
     }
   ],
-  "pinData": {
-    "Messages": [
-      {
-        "json": {
-          "conversation": "1. oi",
-          "messageId": "3EB07F50F7183A4F5089A1"
-        }
-      },
-      {
-        "json": {
-          "conversation": "2. tudo bem?",
-          "messageId": "3EB07F50F7183A4F5089A2"
-        }
-      },
-      {
-        "json": {
-          "conversation": "3. Como vai?",
-          "messageId": "3EB07F50F7183A4F5089A3"
-        }
-      },
-      {
-        "json": {
-          "conversation": "4. Quero pedir",
-          "messageId": "3EB07F50F7183A4F5089A4"
-        }
-      },
-      {
-        "json": {
-          "conversation": "5. De onde são?",
-          "messageId": "3EB07F50F7183A4F5089A5"
-        }
-      },
-      {
-        "json": {
-          "conversation": "6. Qual o horário de funcionamento?",
-          "messageId": "3EB07F50F7183A4F5089A6"
-        }
-      },
-      {
-        "json": {
-          "conversation": "7. Tem promoção?",
-          "messageId": "3EB07F50F7183A4F5089A7"
-        }
-      },
-      {
-        "json": {
-          "conversation": "8. Aceitam cartão?",
-          "messageId": "3EB07F50F7183A4F5089A8"
-        }
-      },
-      {
-        "json": {
-          "conversation": "9. Qual o tempo de entrega?",
-          "messageId": "3EB07F50F7183A4F5089A9"
-        }
-      },
-      {
-        "json": {
-          "conversation": "10. Qual o cardápio?",
-          "messageId": "3EB07F50F7183A4F5089A10"
-        }
-      },
-      {
-        "json": {
-          "conversation": "11. Vocês entregam no meu bairro?",
-          "messageId": "3EB07F50F7183A4F5089A11"
-        }
-      },
-      {
-        "json": {
-          "conversation": "12. Posso pagar no pix?",
-          "messageId": "3EB07F50F7183A4F5089A12"
-        }
-      },
-      {
-        "json": {
-          "conversation": "13. Qual o endereço?",
-          "messageId": "3EB07F50F7183A4F5089A13"
-        }
-      },
-      {
-        "json": {
-          "conversation": "14. Vocês têm sobremesa?",
-          "messageId": "3EB07F50F7183A4F5089A14"
-        }
-      },
-      {
-        "json": {
-          "conversation": "15. Obrigado!",
-          "messageId": "3EB07F50F7183A4F5089A15"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
@@ -504,6 +706,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-03T03:20:17.832Z",
-  "versionId": "ae8de038-2fa7-4793-8c64-10a225ab2b58"
+  "updatedAt": "2024-10-03T05:12:46.970Z",
+  "versionId": "93f557cd-1cac-4ac0-adc3-4e1a924caac9"
 }
