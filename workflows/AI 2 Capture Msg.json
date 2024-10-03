@@ -116,24 +116,6 @@
         ]
       ]
     },
-    "Media Type": {
-      "main": [
-        [
-          {
-            "node": "Convert To Audio",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Convert To Image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "has chat?": {
       "main": [
         [
@@ -470,6 +452,24 @@
         ]
       ]
     },
+    "Media Type": {
+      "main": [
+        [
+          {
+            "node": "Convert To Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Convert To Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Webhook": {
       "main": [
         [
@@ -752,75 +752,6 @@
         -2620,
         1000
       ]
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.mediaType }}",
-                    "rightValue": "audioMessage",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "audio"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "bba31f6b-7dc3-4dac-a090-c38d70065d40",
-                    "leftValue": "={{ $json.mediaType }}",
-                    "rightValue": "imageMessage",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "image"
-            }
-          ]
-        },
-        "options": {
-          "fallbackOutput": "extra",
-          "renameFallbackOutput": "do nothing"
-        }
-      },
-      "id": "9f89fce2-c2b2-4030-b505-116004694722",
-      "name": "Media Type",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        -4100,
-        1220
-      ],
-      "alwaysOutputData": false
     },
     {
       "parameters": {
@@ -1548,37 +1479,6 @@
     },
     {
       "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini-2024-07-18",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI-2024-07-18"
-        },
-        "text": "Descreva todo o conteúdo da imagem, sem Acentos e sem hífens",
-        "inputType": "base64",
-        "options": {}
-      },
-      "id": "63b2215d-5cf2-457a-8c55-d8f98710e606",
-      "name": "Analyze Image",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.4,
-      "position": [
-        -2820,
-        820
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1793,9 +1693,108 @@
     },
     {
       "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mediaType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bba31f6b-7dc3-4dac-a090-c38d70065d40",
+                    "leftValue": "={{ $json.mediaType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "do nothing"
+        }
+      },
+      "id": "9f89fce2-c2b2-4030-b505-116004694722",
+      "name": "Media Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -4100,
+        1220
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "text": "Descreva todo o conteúdo da imagem, sem Acentos e sem hífens",
+        "inputType": "base64",
+        "options": {}
+      },
+      "id": "63b2215d-5cf2-457a-8c55-d8f98710e606",
+      "name": "Analyze Image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        -2820,
+        820
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
         "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "responseMode": "lastNode",
         "options": {}
       },
       "id": "d0674550-882c-43fc-bae5-5b0aef30b9e7",
@@ -1831,6 +1830,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-01T15:41:47.739Z",
-  "versionId": "d8328f9b-5bf1-4805-932f-8ef5aeae0552"
+  "updatedAt": "2024-10-03T03:05:49.982Z",
+  "versionId": "547c81be-e9d7-477c-b40b-a616ec74c50c"
 }
