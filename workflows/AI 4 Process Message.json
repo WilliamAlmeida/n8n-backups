@@ -382,17 +382,6 @@
         ]
       ]
     },
-    "messageInfo": {
-      "main": [
-        [
-          {
-            "node": "delete vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Redis Chat Memory": {
       "ai_memory": [
         [
@@ -415,33 +404,11 @@
         ]
       ]
     },
-    "Qdant Vector Store": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Split Out Messages": {
       "main": [
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "userAccount": {
-      "main": [
-        [
-          {
-            "node": "config prompt",
             "type": "main",
             "index": 0
           }
@@ -454,6 +421,17 @@
           {
             "node": "Beautify URL",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
             "index": 0
           }
         ]
@@ -474,13 +452,13 @@
           "temperature": 0.4
         }
       },
-      "id": "fcc04773-9928-4818-b8ba-a2b884091ec5",
+      "id": "caa3a8be-f9f5-4a70-ad79-d735a1556b03",
       "name": "OpenAI Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        4060,
-        1900
+        5260,
+        1800
       ],
       "credentials": {
         "openAiApi": {
@@ -495,13 +473,13 @@
         "height": 584.136756451777,
         "width": 768.3093052403206
       },
-      "id": "616d42e8-0824-4274-ac56-1de481719926",
+      "id": "9e0f2dda-1bde-4c91-a497-98a1c2b3354a",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3860,
-        1620
+        5060,
+        1520
       ]
     },
     {
@@ -511,13 +489,13 @@
         "sessionTTL": 300,
         "contextWindowLength": 10
       },
-      "id": "1cd8fe75-b529-4067-b2b5-9c7a4f494cbc",
+      "id": "7738dc21-5347-480e-9e3c-42d891d5d9d9",
       "name": "Redis Chat Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        4180,
-        1900
+        5380,
+        1800
       ],
       "credentials": {
         "redis": {
@@ -537,13 +515,13 @@
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": 2000,\n  \"linkPreview\": true\n} ",
         "options": {}
       },
-      "id": "c58a63b9-5d50-4a43-88d8-45a305004ec1",
+      "id": "4910e557-13fe-4be2-914d-98517841d501",
       "name": "Send Message",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5900,
-        2000
+        7100,
+        1900
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -556,13 +534,13 @@
       "parameters": {
         "options": {}
       },
-      "id": "12e19b24-c845-442d-b7d1-0c0232d02c58",
+      "id": "c2673b5a-71a7-46d4-9b6a-cec0ec064f93",
       "name": "Loop Over Items",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        5540,
-        1720
+        6740,
+        1620
       ]
     },
     {
@@ -576,13 +554,13 @@
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replace(/^\\n+/g, '') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
         "options": {}
       },
-      "id": "325ffb13-8647-440f-bc8e-2db27bc86837",
+      "id": "7f66c178-f8a3-4564-be52-123b96296fb7",
       "name": "Send Media",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5900,
-        1740
+        7100,
+        1640
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -598,13 +576,13 @@
         "width": 661.5465394209826,
         "color": 4
       },
-      "id": "f4487622-d883-4b03-a955-1c1dc138b757",
+      "id": "b4242adb-80e6-44df-b6ad-f959d80b133d",
       "name": "Sticky Note5",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5440,
-        1620
+        6640,
+        1520
       ]
     },
     {
@@ -614,13 +592,13 @@
         "width": 702.7265374935415,
         "color": 5
       },
-      "id": "8a0acc9c-3d77-483f-b68e-533a5ae023e9",
+      "id": "836105db-6b6e-463f-bea9-eeb02808b625",
       "name": "Sticky Note6",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4671,
-        1620
+        5871,
+        1520
       ]
     },
     {
@@ -702,13 +680,13 @@
         },
         "options": {}
       },
-      "id": "229e4c8d-f804-4054-84ca-2a5a2ccff6c6",
+      "id": "1bff5d6f-3969-4611-8ba9-4e9ba445655a",
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        5680,
-        1940
+        6880,
+        1840
       ]
     },
     {
@@ -716,13 +694,13 @@
         "mode": "runOnceForEachItem",
         "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
       },
-      "id": "a884fb1c-54af-4f00-9cac-ee14d6af3a50",
+      "id": "5345dd18-e49b-4550-92f3-b2ee39b6751a",
       "name": "Beautify URL",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4740,
-        1720
+        5940,
+        1620
       ],
       "executeOnce": false
     },
@@ -731,13 +709,13 @@
         "mode": "runOnceForEachItem",
         "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
       },
-      "id": "a2fedc6c-2e7c-4e62-9a76-33344fb43994",
+      "id": "7a0aaba7-7da9-45e4-a2c1-28578502eca5",
       "name": "Categorizing Message",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5060,
-        1720
+        6260,
+        1620
       ],
       "executeOnce": false
     },
@@ -747,13 +725,13 @@
         "include": "allOtherFields",
         "options": {}
       },
-      "id": "f7fac150-0f90-45a6-b072-69028144693c",
+      "id": "b652c820-d6da-440b-bfa0-176bef28c388",
       "name": "Split Out Messages",
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        5220,
-        1720
+        6420,
+        1620
       ]
     },
     {
@@ -770,13 +748,13 @@
         },
         "options": {}
       },
-      "id": "feb0c8d6-7508-49fa-9d65-b625e6345322",
+      "id": "59428878-6ac2-4da8-bc3f-a8dab4111cb6",
       "name": "Fix Text",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4900,
-        1720
+        6100,
+        1620
       ]
     },
     {
@@ -801,13 +779,13 @@
         "optimizeResponse": true,
         "dataField": "status"
       },
-      "id": "86a16bdc-5365-4934-8ad2-78ad201c769c",
+      "id": "0c10c1f3-e58e-4d52-b3ac-407d499fc7c0",
       "name": "Get Store Status",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4720,
-        2040
+        5920,
+        1940
       ]
     },
     {
@@ -831,13 +809,13 @@
         },
         "optimizeResponse": true
       },
-      "id": "9ac3adc2-6e64-4899-8d02-45a505e30afd",
+      "id": "4170408a-d68d-42ac-a08d-21721113ea96",
       "name": "Get Store Address",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4840,
-        2040
+        6040,
+        1940
       ],
       "disabled": true
     },
@@ -863,24 +841,24 @@
         "optimizeResponse": true,
         "dataField": "delivery_fees"
       },
-      "id": "1818b113-f25a-415f-bb8d-cb05b4a58e5c",
+      "id": "9dff6dee-9469-4fc5-9892-7a65f93b41c7",
       "name": "Get Store Delivery Fee",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4940,
-        2040
+        6140,
+        1940
       ]
     },
     {
       "parameters": {},
-      "id": "3f14b9dc-8fb1-4f34-bcdc-8184780fc64b",
+      "id": "19ca14eb-4d4e-4f35-b5b5-3bb2afd41bfb",
       "name": "Execute Workflow Trigger",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        2080,
-        1740
+        3262,
+        1598
       ]
     },
     {
@@ -889,13 +867,13 @@
         "jsonOutput": "={{ $json.body ?? $json }}",
         "options": {}
       },
-      "id": "f4ff752d-cbdf-4f2c-adba-9c9dbe0703ca",
+      "id": "f2394721-15d1-4255-97d2-b2abf4e834b9",
       "name": "messageInfo",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2280,
-        1740
+        3462,
+        1598
       ]
     },
     {
@@ -904,13 +882,13 @@
         "path": "425a712d-f598-4e72-a99e-65efb704c401",
         "options": {}
       },
-      "id": "3c5eed35-156b-4ad2-abb7-1e167337622c",
+      "id": "b49fe2d0-df17-4461-aa87-ca334fab6155",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        2080,
-        1920
+        3262,
+        1778
       ],
       "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
       "disabled": true
@@ -928,13 +906,13 @@
           ]
         }
       },
-      "id": "ff61eaf7-7f85-4437-90ec-df0bb2db3408",
+      "id": "e56a1edd-7616-4b7b-ab91-f8c10ed29930",
       "name": "fetch vector store",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2720,
-        1940
+        3902,
+        1798
       ],
       "credentials": {
         "supabaseApi": {
@@ -951,13 +929,13 @@
         "keyType": "hash",
         "options": {}
       },
-      "id": "3f63f233-fc19-4214-aa12-01a27a270138",
+      "id": "b7ffcc4e-42b2-4358-8475-234925396e5c",
       "name": "get vector store",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2520,
-        1940
+        3702,
+        1798
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -992,13 +970,13 @@
         },
         "options": {}
       },
-      "id": "63b28651-fd40-4e08-ae29-581cc7fff451",
+      "id": "3f055321-8f4c-4dc7-ab05-5eb95fc7bea4",
       "name": "has vector store?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2720,
-        1740
+        3902,
+        1598
       ]
     },
     {
@@ -1026,13 +1004,13 @@
         },
         "options": {}
       },
-      "id": "1b03ad6b-8a45-416d-a3b3-3490a4e25a3c",
+      "id": "c68a6219-a8d9-4895-8047-7449bbc8d652",
       "name": "has vector store? 2",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2880,
-        1820
+        4062,
+        1678
       ]
     },
     {
@@ -1044,13 +1022,13 @@
         "expire": true,
         "ttl": 600
       },
-      "id": "96f09154-4476-4c46-9ef9-f687fc45bd78",
+      "id": "c0118fef-5d72-49bd-8443-2dd0f752416f",
       "name": "set vector store",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3040,
-        1940
+        4222,
+        1798
       ],
       "credentials": {
         "redis": {
@@ -1065,13 +1043,13 @@
         "jsonOutput": "={{ $json.vector_store ?? $json }}",
         "options": {}
       },
-      "id": "e5121589-b49e-466b-8121-6269f92b054b",
+      "id": "bade6dff-2e36-4b18-90a7-5df87ec89839",
       "name": "vector store",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3060,
-        1720
+        4242,
+        1578
       ]
     },
     {
@@ -1079,13 +1057,13 @@
         "operation": "delete",
         "key": "=vector_store_{{ $json.instance }}"
       },
-      "id": "42468737-b870-4c07-bb3c-5198051c3d2d",
+      "id": "5b82fb6d-8bc1-4556-909e-380943422518",
       "name": "delete vector store",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2520,
-        1740
+        3702,
+        1598
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1103,13 +1081,13 @@
           "temperature": 0
         }
       },
-      "id": "74cd6dc1-4137-469f-a8a9-f78bf8db632d",
+      "id": "2e310bf8-1928-4b36-81a7-2e2fbcfb2b5e",
       "name": "Groq Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        4440,
-        2080
+        5640,
+        1980
       ],
       "credentials": {
         "groqApi": {
@@ -1162,13 +1140,13 @@
           ]
         }
       },
-      "id": "1bae8fb8-c033-4a2b-a2d3-6ef0a6afadc6",
+      "id": "d2f537b6-d593-4a7e-82cb-952f1a9d3fcf",
       "name": "Get Status Pedido",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5180,
-        2040
+        6380,
+        1940
       ]
     },
     {
@@ -1176,13 +1154,13 @@
         "operation": "delete",
         "key": "=memo_{{ $('messageInfo').first().json.unique_id }}"
       },
-      "id": "cff0f460-aa73-4041-8d62-a510800f32da",
+      "id": "4abbdefa-8589-4a85-857d-392932e90ee6",
       "name": "reset memo",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3920,
-        1720
+        5120,
+        1620
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1217,13 +1195,13 @@
         "fieldsToInclude": "selected",
         "fields": "url"
       },
-      "id": "a4bce77a-7356-4fab-bd69-39f906ff867a",
+      "id": "0c22ad90-792b-4057-ab13-264ab90bfdbd",
       "name": "Get Link Login",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5060,
-        2040
+        6260,
+        1940
       ]
     },
     {
@@ -1233,31 +1211,31 @@
         "width": 649.8050918862461,
         "color": 2
       },
-      "id": "ae5aab67-4e04-47ca-acaa-16a9c26a71be",
+      "id": "5bdff924-da49-46c6-b389-2d6f409793d2",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4680,
-        1960
+        5880,
+        1860
       ]
     },
     {
       "parameters": {
         "operation": "set",
         "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
-        "value": "={{ $json.user }}",
+        "value": "={{ $json.user ?? {} }}",
         "keyType": "hash",
         "expire": true,
-        "ttl": 120
+        "ttl": "={{ $json.user ? 120 : 60 }}"
       },
-      "id": "de355893-eb11-4edd-8e6e-003e196f75bf",
+      "id": "beed8ad8-7696-465c-a7c4-ec4411ce7e97",
       "name": "set user account",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3680,
-        1920
+        4842,
+        1779
       ],
       "credentials": {
         "redis": {
@@ -1271,13 +1249,13 @@
         "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
         "options": {}
       },
-      "id": "9cf62500-0979-4343-b41c-2d1e271b833d",
+      "id": "de296ef5-21b3-4230-9bc8-c0841488c21d",
       "name": "Get Account User",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3500,
-        1920
+        4682,
+        1779
       ]
     },
     {
@@ -1288,13 +1266,13 @@
         "keyType": "hash",
         "options": {}
       },
-      "id": "cec042f8-d062-444a-a7ed-579660755723",
+      "id": "e41a8a28-1f51-4eea-b0a0-574e9c2af4b0",
       "name": "get user account",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3300,
-        1940
+        4482,
+        1799
       ],
       "credentials": {
         "redis": {
@@ -1328,13 +1306,13 @@
         },
         "options": {}
       },
-      "id": "acaca42f-179d-46ce-8884-b6802780b353",
+      "id": "423741f5-681a-4b72-93a6-a200f2fd79e8",
       "name": "has user account?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3500,
-        1720
+        4682,
+        1579
       ]
     },
     {
@@ -1342,13 +1320,13 @@
         "operation": "delete",
         "key": "=use_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
       },
-      "id": "542cb33b-1c7a-45ac-9143-392437032a34",
+      "id": "f44bdfbf-0395-4b58-81f7-b9c4d6f9a83e",
       "name": "delete user account",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3300,
-        1720
+        4482,
+        1579
       ],
       "credentials": {
         "redis": {
@@ -1361,17 +1339,17 @@
     {
       "parameters": {
         "content": "## Tenta retornar os dados do Usuário",
-        "height": 498.29757875233673,
-        "width": 593.2775453391564,
+        "height": 435.2975787523367,
+        "width": 598.5677101799579,
         "color": 5
       },
-      "id": "08319eaf-34b8-4f47-9f4b-de8fe3b6c9e7",
+      "id": "1e7263c1-e627-4db5-817d-902936d1f17e",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3236.2282971357217,
-        1661.2216193313277
+        4420,
+        1520
       ]
     },
     {
@@ -1381,13 +1359,13 @@
         "width": 731.8422362672346,
         "color": 4
       },
-      "id": "2183c843-3d56-4bb0-8f36-61b37007577e",
+      "id": "382641e5-891d-4bf7-8a5c-9374286e2bdd",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2460,
-        1661.2216193313275
+        3642,
+        1519
       ]
     },
     {
@@ -1395,13 +1373,13 @@
         "model": "text-embedding-3-small",
         "options": {}
       },
-      "id": "b60e20b2-bfc3-4f9a-89a6-2ec0ac322bcf",
+      "id": "30943bf9-66f0-4006-92d0-45c67c30d6ac",
       "name": "Embeddings OpenAI",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        4080,
-        2080
+        5280,
+        1980
       ],
       "credentials": {
         "openAiApi": {
@@ -1424,41 +1402,41 @@
         },
         "options": {}
       },
-      "id": "f4f6c0e8-54eb-427f-a375-a443bb21d533",
+      "id": "d2bff534-d18d-4e55-94b7-e08280ffb1fd",
       "name": "config prompt",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3920,
-        1960
+        5120,
+        1860
       ]
     },
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={{ $json.user_account ?? $json.user ?? '' }}",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
         "options": {}
       },
-      "id": "80717b23-59e0-478a-bd6f-af83a7926939",
+      "id": "376054ee-1a07-46a6-abd0-f72e5816806b",
       "name": "userAccount",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3680,
-        1720
+        4882,
+        1559
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "2132168b-9a3a-48e9-bb3b-84203b78939d",
+      "id": "e03c53a9-dae7-419f-9984-77ba5c6612d6",
       "name": "Chat Memory Manager",
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        3420,
-        2200
+        4400,
+        2380
       ],
       "disabled": true
     },
@@ -1469,13 +1447,13 @@
         "sessionTTL": 300,
         "contextWindowLength": 10
       },
-      "id": "a0ff0cc5-52f7-471f-ad53-87f2c5b54957",
+      "id": "9f9dd74e-5b27-41d6-bd1f-063964b18591",
       "name": "Redis Chat Memory 2",
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        3540,
-        2380
+        4720,
+        2420
       ],
       "credentials": {
         "redis": {
@@ -1491,13 +1469,13 @@
         "description": "use essa ferramenta para retornar produtos/serviços fornecidos pela loja, formas de pagamento aceitas, endereço da loja e demais informações não entregue pelas outras tools",
         "topK": 10
       },
-      "id": "e69d35ed-0700-4d8e-9e44-a375746402b6",
+      "id": "1a5c3572-5e96-4785-b3dd-7ced5a3eac12",
       "name": "Vector Store Tool",
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        4400,
-        1820
+        5600,
+        1720
       ]
     },
     {
@@ -1506,13 +1484,13 @@
         "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"ibox_cli_23_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
         "options": {}
       },
-      "id": "99caae6f-ee6b-4cf3-a49b-f2d7e8dbc467",
+      "id": "71ebb7ec-ceb9-478b-87e4-5d85358fc811",
       "name": "chatConfig",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2280,
-        1540
+        3462,
+        1398
       ],
       "disabled": true
     },
@@ -1522,13 +1500,13 @@
         "responseBody": "={{ $json.output }}",
         "options": {}
       },
-      "id": "8208ff06-8eaa-4afe-bddb-c522bcfdec41",
+      "id": "744d1e63-bc94-4ce9-97c7-1cfb815c2b01",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        4460,
-        1460
+        5660,
+        1360
       ]
     },
     {
@@ -1537,13 +1515,13 @@
         "sessionKey": "=1",
         "contextWindowLength": 10
       },
-      "id": "f8de2099-bed4-4a7b-9f59-89423c2cb8f3",
+      "id": "4acd7fd4-2a6d-4289-b4fd-69445a47d79c",
       "name": "Window Buffer Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.2,
       "position": [
-        4260,
-        1440
+        5460,
+        1340
       ],
       "disabled": true
     },
@@ -1552,16 +1530,33 @@
         "public": true,
         "options": {}
       },
-      "id": "a2f92e98-998e-47b0-8dfe-0202dbf5ada0",
+      "id": "a9eaa593-3384-4f47-bc83-678ab4795e14",
       "name": "chatInput",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        2080,
-        1540
+        3262,
+        1398
       ],
       "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}"
+        }
+      },
+      "id": "3f94836d-2b83-4034-aa77-64745d4e75d1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5260,
+        1620
+      ]
     },
     {
       "parameters": {
@@ -1572,13 +1567,13 @@
         },
         "options": {}
       },
-      "id": "1d215aea-6911-4753-9752-08826ff5741e",
+      "id": "562f2cd3-2ff3-4966-acf5-f339f39a0c40",
       "name": "Qdant Vector Store",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        4200,
-        2040
+        5400,
+        1940
       ],
       "credentials": {
         "qdrantApi": {
@@ -1586,23 +1581,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').first().json.system }}"
-        }
-      },
-      "id": "c616ed39-d60c-4598-8d32-ede436945b26",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        4060,
-        1720
-      ]
     }
   ],
   "pinData": {},
@@ -1625,6 +1603,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-03T05:28:18.296Z",
-  "versionId": "98485650-b9d8-4efc-812d-c992910199aa"
+  "updatedAt": "2024-10-04T04:30:03.065Z",
+  "versionId": "59f38eb7-834e-45b4-b839-71241225b127"
 }
