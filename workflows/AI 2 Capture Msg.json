@@ -107,11 +107,6 @@
             "node": "reset msgs",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "debounce active?",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -150,6 +145,11 @@
         [
           {
             "node": "Message Type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "debounce active?",
             "type": "main",
             "index": 0
           }
@@ -306,17 +306,6 @@
       "main": [
         [
           {
-            "node": "active debounce",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "active debounce": {
-      "main": [
-        [
-          {
             "node": "set wk debounce",
             "type": "main",
             "index": 0
@@ -470,6 +459,55 @@
         ]
       ]
     },
+    "now_start": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "now_end": {
+      "main": [
+        [
+          {
+            "node": "nows_diff",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "nows_diff": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "set wk debounce": {
+      "main": [
+        [
+          {
+            "node": "active debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Webhook": {
       "main": [
         [
@@ -545,13 +583,13 @@
         },
         "options": {}
       },
-      "id": "ac5b9735-e518-4d2d-9639-0075ebad962c",
+      "id": "488d70e1-9a6a-446b-bda5-67bd220cd207",
       "name": "baseInfo",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -6920,
-        1080
+        -10109.325581395351,
+        1760
       ],
       "alwaysOutputData": false,
       "executeOnce": false
@@ -561,13 +599,13 @@
         "operation": "delete",
         "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}"
       },
-      "id": "4cad3558-a429-419b-849b-aa5950b43c86",
+      "id": "9d7686bc-7e8c-4627-82f2-2cf0bed949a4",
       "name": "reset msgs",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2560,
-        1120
+        -5740,
+        1800
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -585,13 +623,13 @@
         "width": 1629.5604480320626,
         "color": 5
       },
-      "id": "8ca16ba6-5cca-46f4-b6d8-d67420394032",
+      "id": "66c911da-8303-4f39-b219-ed31dc36e11b",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4310.67441860465,
-        780
+        -7500,
+        1460
       ]
     },
     {
@@ -599,27 +637,27 @@
         "mode": "runOnceForEachItem",
         "jsCode": "const data = $('Webhook').first().json.body.data;\nlet response = '';\n\nconst conversation = data.message.conversation;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
       },
-      "id": "fbb40570-9ab3-4078-b01a-ad5734bffb89",
+      "id": "d6b9a2b0-db7d-4d71-b5de-5ca1959b5a4f",
       "name": "Format Message",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -3222,
-        900
+        -6402,
+        1580
       ]
     },
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const data = $('Webhook').first().json.body.data;\n\n// data.messageTimestamp\n\nlet milis = $now.toMillis();\n\nreturn {\n  id: data.key.id,\n  origin: data.messageType,\n  output: $json.output,\n  timestamp: data.messageTimestamp,\n  datetime: DateTime.fromSeconds(data.messageTimestamp).toFormat('yyyy-MM-dd H:m:s'),\n  timestamp_local: milis,\n  datetime: DateTime.fromSeconds(milis).toFormat('yyyy-MM-dd H:m:s')\n};"
+        "jsCode": "const data = $('Webhook').first().json.body.data;\n\n// data.messageTimestamp\n\nlet milis = $now.toMillis();\n\nreturn {\n  id: data.key.id,\n  origin: data.messageType,\n  output: $json.output,\n  timestamp: data.messageTimestamp,\n  datetime: DateTime.fromSeconds(data.messageTimestamp).toFormat('yyyy-MM-dd H:m:s'),\n  timestamp_local: milis,\n  datetime_local: DateTime.fromSeconds(milis).toFormat('yyyy-MM-dd H:m:s')\n};"
       },
-      "id": "932c7e8c-5165-4096-8bfd-77d923ae2abc",
+      "id": "95e9347d-b808-4c90-967d-58e064567d4b",
       "name": "Structure Message",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2820,
-        1120
+        -6000,
+        1800
       ]
     },
     {
@@ -627,13 +665,13 @@
         "mode": "runOnceForEachItem",
         "jsCode": "const data = $('Webhook').first().json.body.data;\nconst caption = data.message?.imageMessage?.caption;\nconst content = $input.item.json.content;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = caption\n    ? `${content} Legenda: ${caption}`\n    : `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para imagem com legenda';\n}\n\nreturn { output: response };"
       },
-      "id": "aed4e2f7-5e27-4ff2-a2ff-5563719ea670",
+      "id": "2b71cb75-9e3c-456b-ba57-5eebc3c8a6d2",
       "name": "Format Transcription Image",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -3220,
-        1280
+        -6400,
+        1960
       ]
     },
     {
@@ -641,13 +679,13 @@
         "mode": "runOnceForEachItem",
         "jsCode": "const content = $input.item.json.text;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para aúdio';\n}\n\nreturn { output: response };"
       },
-      "id": "a9bb9317-d70e-4a72-a128-08dc23e57d01",
+      "id": "ac2506a7-5ae9-4fca-a6f7-226a654316fc",
       "name": "Format Transcription Audio",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -3220,
-        1120
+        -6400,
+        1800
       ]
     },
     {
@@ -661,13 +699,13 @@
         "jsonBody": "={\n  \"message\": {\"key\": {\"id\": \"{{ $('Webhook').item.json.body.data.key.id }}\"}},\n  \"convertToMp4\": false\n}",
         "options": {}
       },
-      "id": "b3f0ee87-f788-415e-aa32-a1b1ebd7f3a2",
+      "id": "5ab27e6a-ef49-4663-b19c-00e547c90ab8",
       "name": "Get Base64",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -4240,
-        1220
+        -7420,
+        1900
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -686,13 +724,13 @@
           "mimeType": "audio/ogg"
         }
       },
-      "id": "ed724591-ab8e-461b-b6af-b0cbffbfb677",
+      "id": "62840619-96b6-465a-b6a8-fc0bbe507dc8",
       "name": "Convert To Audio",
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -3880,
-        1120
+        -7060,
+        1800
       ]
     },
     {
@@ -704,13 +742,13 @@
           "mimeType": "image/jpeg"
         }
       },
-      "id": "b22beff8-c3bd-4f8e-9d10-995639d4acc3",
+      "id": "50a92fc1-af27-4f2b-ac9a-b78cc80d55c3",
       "name": "Convert To Image",
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -3880,
-        1280
+        -7060,
+        1960
       ]
     },
     {
@@ -727,13 +765,13 @@
         },
         "options": {}
       },
-      "id": "fa7955a6-93de-466e-8b8a-3b6c51654ecb",
+      "id": "a653ebe6-2cbf-41d5-a821-280b54847311",
       "name": "Fix Text 2",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2980,
-        1120
+        -6160,
+        1800
       ],
       "executeOnce": true
     },
@@ -741,16 +779,16 @@
       "parameters": {
         "content": "## Adiciona Mensagem na Fila\n*Adiciona mensagem no final da fila para ser processada após o Debounce Time expirar*",
         "height": 290.7734320620505,
-        "width": 780.546085159011,
+        "width": 719.3454738796464,
         "color": 3
       },
-      "id": "a939f220-b063-4bad-98fe-ebfb75a79e98",
+      "id": "7e7408e6-3ef4-405d-b8af-ddfac41aea37",
       "name": "Sticky Note5",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2620,
-        1000
+        -5809.32558139535,
+        1680
       ]
     },
     {
@@ -778,13 +816,13 @@
         },
         "options": {}
       },
-      "id": "4569783f-176b-44db-9f73-a2c15f9beafc",
+      "id": "93527fdb-b6cf-4db6-a8d5-5c75fe1eb28d",
       "name": "has chat?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4871,
-        980
+        -8060.32558139535,
+        1660
       ]
     },
     {
@@ -792,13 +830,13 @@
         "operation": "delete",
         "key": "=chat_{{ $('baseInfo').first().json.unique_id }}"
       },
-      "id": "7004266e-4e92-4327-9c0d-9dba5051647b",
+      "id": "84a340af-b8e7-4f48-a156-fc9f424613e2",
       "name": "delete chat",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5191,
-        980
+        -8380.325581395351,
+        1660
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -815,13 +853,13 @@
         "jsonOutput": "={{ $json.chat.parseJson().removeField('fromMe').removeField('debounce_time') }}",
         "options": {}
       },
-      "id": "c3e25da5-707b-4041-ac9a-9aabfdfabb1b",
+      "id": "df50881e-f6f8-48a1-82bc-317141f0ebaf",
       "name": "chatInfo",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4500,
-        980
+        -7689.32558139535,
+        1660
       ]
     },
     {
@@ -830,13 +868,13 @@
         "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
         "value": "={{ $('baseInfo').first().json.removeField('messageType').toJsonString() }}"
       },
-      "id": "1815bc53-4973-46e7-be7b-35e85cb2f8bb",
+      "id": "7dcb5bfc-4710-4460-ba5d-821fe867ad7b",
       "name": "init chat",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4891,
-        1180
+        -8080,
+        1860
       ],
       "credentials": {
         "redis": {
@@ -852,13 +890,13 @@
         "messageData": "={{ $('Structure Message').first().json.toJsonString() }}",
         "tail": true
       },
-      "id": "c717c175-f5cb-4dae-86a7-1c346b087db9",
+      "id": "3bad0a31-6bd7-4b3d-8b40-d19a49439b2a",
       "name": "msg to queue",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2400,
-        1120
+        -5571,
+        1800
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -876,13 +914,13 @@
         "keyType": "string",
         "options": {}
       },
-      "id": "75a596d4-8fcd-4c0f-800d-e0515f2a5d4d",
+      "id": "2fbc85fe-5cb3-4fd4-9f20-bf62def91931",
       "name": "get chat 1",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5031,
-        980
+        -8220.325581395351,
+        1660
       ],
       "credentials": {
         "redis": {
@@ -899,13 +937,13 @@
         "keyType": "string",
         "options": {}
       },
-      "id": "89c19440-a319-4ff1-87b8-87d03bb227ed",
+      "id": "2326486f-f517-4527-8a91-85f8886f0c2b",
       "name": "get chat 2",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4751,
-        1180
+        -7940.32558139535,
+        1860
       ],
       "credentials": {
         "redis": {
@@ -916,13 +954,13 @@
     },
     {
       "parameters": {},
-      "id": "e79d8d70-ee8b-4f06-956c-1853a432a948",
+      "id": "1957eab2-edfa-451a-883a-72cc0988a1b5",
       "name": "No Operation, do nothing",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -2000,
-        1120
+        -5251,
+        1800
       ]
     },
     {
@@ -950,13 +988,13 @@
         },
         "options": {}
       },
-      "id": "2b74184b-fba6-4131-9af8-346015ad8d4b",
+      "id": "a3d70f85-dc4e-4eda-9dbc-1f2058b96023",
       "name": "from me?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -6731,
-        1080
+        -9920.325581395351,
+        1760
       ]
     },
     {
@@ -967,13 +1005,13 @@
         "expire": true,
         "ttl": 30
       },
-      "id": "06f426b1-9f08-430a-ad1b-b0ae48cb36b1",
+      "id": "61eb2290-f9a5-4978-a24d-c488604a4070",
       "name": "set block AI",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6528,
-        991
+        -9717.325581395351,
+        1671
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -991,13 +1029,13 @@
         "keyType": "string",
         "options": {}
       },
-      "id": "61411fc0-a7e8-401d-aa8a-513446b1a4f6",
+      "id": "e8654a42-f559-409b-854c-782fa6cb92c5",
       "name": "get block AI",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6528,
-        1151
+        -9717.325581395351,
+        1831
       ],
       "credentials": {
         "redis": {
@@ -1030,13 +1068,13 @@
         },
         "options": {}
       },
-      "id": "473f67c4-92c4-4652-89fb-ce431386d7dd",
+      "id": "2d72492e-9124-4eb9-8368-62d3d71d258b",
       "name": "AI blocked?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -6331,
-        1060
+        -9520.325581395351,
+        1740
       ]
     },
     {
@@ -1045,13 +1083,13 @@
         "height": 407.0742534707905,
         "width": 586.0266008245178
       },
-      "id": "e9574eeb-2ab6-4a0f-b4f9-cc82c6bb59ef",
+      "id": "bc759cdd-1aad-4453-b032-1070bfd13ea4",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -6760,
-        900
+        -9949.325581395351,
+        1580
       ]
     },
     {
@@ -1060,29 +1098,29 @@
         "height": 440.5243062483743,
         "width": 856.5452909686502
       },
-      "id": "b6603952-fb9f-41bb-ba88-4c0882d12bce",
+      "id": "38305ef2-041b-4426-ad91-b35d0fb4af33",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -5220,
-        900
+        -8409.325581395351,
+        1580
       ]
     },
     {
       "parameters": {
         "operation": "set",
         "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}",
-        "value": "={{ $now.plus( $('baseInfo').first().debounce_time , 'seconds') }}",
+        "value": "={{ $now.plus( $('baseInfo').first().json.debounce_time , 'seconds').toMillis() }}",
         "keyType": "string"
       },
-      "id": "46b907b6-6f3e-44d8-8bb7-73c3281c6d46",
+      "id": "0639e6ae-8a2f-4e0a-a127-53bb29e116ce",
       "name": "set debounce",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2200,
-        1120
+        -5400,
+        1800
       ],
       "credentials": {
         "redis": {
@@ -1222,13 +1260,13 @@
         },
         "options": {}
       },
-      "id": "61e2a6cf-f195-40c5-b3f2-16e17ec37509",
+      "id": "782145e7-3743-4bea-bbed-ad816e8148dc",
       "name": "Message Type",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        -4220,
-        940
+        -7400,
+        1620
       ]
     },
     {
@@ -1255,13 +1293,13 @@
         },
         "options": {}
       },
-      "id": "0ad8cde9-2d35-46e4-abf0-99e8ce41dd47",
+      "id": "d4a1d7a9-76d7-4a19-bf22-a900ccbec3f1",
       "name": "Debounce is active?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2400,
-        1380
+        -7340,
+        2240
       ]
     },
     {
@@ -1272,13 +1310,13 @@
         "keyType": "string",
         "options": {}
       },
-      "id": "3249e2f3-faf0-4261-af61-49bb0d6a0952",
+      "id": "dc551730-05f3-4454-8d9c-f232c0316acd",
       "name": "debounce active?",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2560,
-        1380
+        -7500,
+        2240
       ],
       "credentials": {
         "redis": {
@@ -1294,17 +1332,17 @@
           "__rl": true,
           "value": "KCzwyXp5E0KjdlRc",
           "mode": "list",
-          "cachedResultName": "AI Processa Msgs (#KCzwyXp5E0KjdlRc)"
+          "cachedResultName": "AI 3 Debounce Msgs (#KCzwyXp5E0KjdlRc)"
         },
         "requestOptions": {}
       },
-      "id": "d69f0d7c-4801-4c28-af6a-e279c0b117e8",
+      "id": "002032de-3392-43c1-97d2-e4442ce8d23c",
       "name": "active debounce",
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1,
       "position": [
-        -2180,
-        1340
+        -6960,
+        2200
       ],
       "credentials": {
         "n8nApi": {
@@ -1320,13 +1358,13 @@
         "value": "1",
         "keyType": "string"
       },
-      "id": "9e003447-ea6c-49ae-bc20-d8ea1bb42100",
+      "id": "b7a160bc-7390-44ac-8323-403cf7821fe1",
       "name": "set wk debounce",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2000,
-        1340
+        -7120,
+        2200
       ],
       "credentials": {
         "redis": {
@@ -1370,13 +1408,13 @@
         },
         "options": {}
       },
-      "id": "771c77c2-5e99-4e6b-a901-5720af014909",
+      "id": "ba79be4a-67ce-4eb3-9429-368ff7a5ed3f",
       "name": "Groq Analyze Audio",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -3560,
-        1120
+        -6740,
+        1800
       ],
       "retryOnFail": true,
       "waitBetweenTries": 5000,
@@ -1386,34 +1424,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "resource": "audio",
-        "operation": "transcribe",
-        "binaryPropertyName": "=data",
-        "options": {
-          "language": "pt"
-        }
-      },
-      "id": "d6f4770c-4a4d-4e1e-a055-a47799437d30",
-      "name": "Analyze Audio",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.3,
-      "position": [
-        -2980,
-        820
-      ],
-      "retryOnFail": true,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -1426,13 +1436,13 @@
         "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Descreva todo o conteúdo da imagem, sem Acentos e sem hífens\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/jpeg;base64,{{ $('Convert To Image').item.binary.data.data }}\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"\"\n    }\n  ],\n  \"model\": \"llama-3.2-11b-vision-preview\",\n  \"temperature\": 1,\n  \"max_tokens\": 1024,\n  \"top_p\": 1,\n  \"stream\": false,\n  \"stop\": null\n}\n",
         "options": {}
       },
-      "id": "cae1a660-bf8e-4bcf-a09b-ca141b3a7ffe",
+      "id": "be36ec3f-089b-45eb-a453-6e69ef7bfb89",
       "name": "Groq Analyze Image",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -3660,
-        1280
+        -6840,
+        1960
       ],
       "retryOnFail": true,
       "waitBetweenTries": 5000,
@@ -1445,13 +1455,13 @@
     },
     {
       "parameters": {},
-      "id": "1b4100a8-78f3-43ba-a2b2-0b4f2a1111fe",
+      "id": "092b8c8a-0753-4587-afc5-ead0b9c6a11b",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -4651,
-        980
+        -7840.32558139535,
+        1660
       ]
     },
     {
@@ -1468,13 +1478,13 @@
         },
         "options": {}
       },
-      "id": "31af6356-e7a5-4a78-9834-51cc9d202dcf",
+      "id": "641b87c5-817e-4306-b6d5-2550020ccf55",
       "name": "Groq Normalize Image",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3440,
-        1280
+        -6620,
+        1960
       ]
     },
     {
@@ -1501,30 +1511,30 @@
         },
         "options": {}
       },
-      "id": "fac398fa-085e-4eb5-8468-0e09cf4834cb",
+      "id": "33cc66ad-aee3-4dd5-865c-b7fdb5df4769",
       "name": "allow numbers",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5411,
-        991
+        -8600.325581395351,
+        1671
       ]
     },
     {
       "parameters": {
         "operation": "get",
         "propertyName": "ignore_numbers",
-        "key": "=ignore_numbers_{{ $json.instance }}",
+        "key": "=ignore_numbers_{{ $('baseInfo').first().json.instance }}",
         "keyType": "hash",
         "options": {}
       },
-      "id": "39fa209a-8632-47cd-b12e-0601c9f509f5",
+      "id": "e895cadb-f620-4f52-8882-177da515bc60",
       "name": "get ignored numbers",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6071,
-        1011
+        -9260.325581395351,
+        1691
       ],
       "credentials": {
         "redis": {
@@ -1558,13 +1568,13 @@
         },
         "options": {}
       },
-      "id": "641704b5-ec50-441c-8878-3fa5fae5ec42",
+      "id": "6b155476-99f1-4600-b774-9e55be875330",
       "name": "has ignored numbers?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5871,
-        1011
+        -9060.325581395351,
+        1691
       ]
     },
     {
@@ -1581,13 +1591,13 @@
         },
         "options": {}
       },
-      "id": "9f2b04b6-ba84-4f4c-81e3-ddc84b840a7d",
+      "id": "028c093c-8fe0-43b8-a1fa-e6301ec22bb7",
       "name": "ignore numbers",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -5571,
-        991
+        -8760.325581395351,
+        1671
       ]
     },
     {
@@ -1597,15 +1607,15 @@
         "value": "={{ $json }}",
         "keyType": "hash",
         "expire": true,
-        "ttl": 2
+        "ttl": 600
       },
-      "id": "8b7b0423-571f-4039-a2e7-879c08d7f31a",
+      "id": "78a994ad-0b00-404e-acb5-258344fcba60",
       "name": "set ignored numbers",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5571,
-        1211
+        -8760.325581395351,
+        1891
       ],
       "credentials": {
         "redis": {
@@ -1620,13 +1630,13 @@
         "height": 503.26329788234716,
         "width": 852.5550756813022
       },
-      "id": "0b366ec1-5429-4a31-9849-d5b8b4f51ac3",
+      "id": "14980de3-c168-42a3-a79b-66960334ab34",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -6120,
-        900
+        -9309.325581395351,
+        1580
       ]
     },
     {
@@ -1654,13 +1664,13 @@
         },
         "options": {}
       },
-      "id": "c0be1eec-34f4-4cd4-8cee-9fd4b9621c98",
+      "id": "ce07478d-5404-4b4b-b831-29f4e5037e5b",
       "name": "has ignored numbers? 2",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5811,
-        1231
+        -9000.325581395351,
+        1911
       ]
     },
     {
@@ -1676,13 +1686,13 @@
           ]
         }
       },
-      "id": "37d93d6b-708b-4b4d-9783-9736162d235d",
+      "id": "34a4279a-e7cb-447b-9722-86831806bc71",
       "name": "fetch ignored numbers",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -6031,
-        1231
+        -9220.325581395351,
+        1911
       ],
       "credentials": {
         "supabaseApi": {
@@ -1750,15 +1760,173 @@
           "renameFallbackOutput": "do nothing"
         }
       },
-      "id": "9f89fce2-c2b2-4030-b505-116004694722",
+      "id": "754f8c30-4fbd-4aa3-93e7-1bee7546f716",
       "name": "Media Type",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -4100,
-        1220
+        -7280,
+        1900
       ],
       "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d4ebb3-bb32-4fc0-a6be-6635fda4b809",
+              "name": "now",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "8026ebf3-3645-41cc-82ac-c119aa13ec40",
+              "name": "seconds1",
+              "value": "={{ $now.toSeconds() }}",
+              "type": "string"
+            },
+            {
+              "id": "5c1102ab-5471-4c1b-8a36-fea2deda6c39",
+              "name": "seconds2",
+              "value": "={{ $now.toSeconds().round() }}",
+              "type": "string"
+            },
+            {
+              "id": "de88acd0-4459-4bde-b57a-fd1f3c8dd0a2",
+              "name": "seconds3",
+              "value": "={{ $now.toMillis() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5ec46875-9936-4162-8a92-8fd1e21f3395",
+      "name": "now_end",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -5580,
+        1280
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d4ebb3-bb32-4fc0-a6be-6635fda4b809",
+              "name": "now",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "8026ebf3-3645-41cc-82ac-c119aa13ec40",
+              "name": "seconds1",
+              "value": "={{ $now.toSeconds() }}",
+              "type": "string"
+            },
+            {
+              "id": "5c1102ab-5471-4c1b-8a36-fea2deda6c39",
+              "name": "seconds2",
+              "value": "={{ $now.toSeconds().round() }}",
+              "type": "string"
+            },
+            {
+              "id": "de88acd0-4459-4bde-b57a-fd1f3c8dd0a2",
+              "name": "seconds3",
+              "value": "={{ $now.toMillis() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "346a6279-1779-406c-9045-15ce6c3d6620",
+      "name": "now_start",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -10100,
+        1440
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8026ebf3-3645-41cc-82ac-c119aa13ec40",
+              "name": "seconds1",
+              "value": "={{ $json.seconds1 - $('now_start').item.json.seconds1 }}",
+              "type": "string"
+            },
+            {
+              "id": "5c1102ab-5471-4c1b-8a36-fea2deda6c39",
+              "name": "seconds2",
+              "value": "={{ $json.seconds2 - $('now_start').item.json.seconds2 }}",
+              "type": "string"
+            },
+            {
+              "id": "de88acd0-4459-4bde-b57a-fd1f3c8dd0a2",
+              "name": "seconds3",
+              "value": "={{ $json.seconds3 - $('now_start').item.json.seconds3 }}",
+              "type": "string"
+            },
+            {
+              "id": "b000494f-8e7c-4b21-9b32-9b79506dc3f8",
+              "name": "diff",
+              "value": "={{ ($json.seconds3 - $('now_start').item.json.seconds3)/1000 }}",
+              "type": "string"
+            },
+            {
+              "id": "1476423d-be33-45d0-8b1a-8163863853f8",
+              "name": "expire_at",
+              "value": "={{ $json.seconds3.toDateTime('ms').plus( $('baseInfo').first().json.debounce_time , 'seconds').toSeconds() }}",
+              "type": "string"
+            },
+            {
+              "id": "bfaad864-a656-46c7-97c9-89c51e5675e8",
+              "name": "expire_at2",
+              "value": "={{ $json.seconds3.toDateTime('ms').plus( $('baseInfo').first().json.debounce_time , 'seconds').toMillis() }}",
+              "type": "string"
+            },
+            {
+              "id": "4e1a1734-15c2-4912-a989-7bfdd2a698e7",
+              "name": "expire_at3",
+              "value": "={{ $json.seconds3.toDateTime('ms').plus( $('baseInfo').first().json.debounce_time , 'seconds') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "22772664-508e-4915-8088-2913690ea630",
+      "name": "nows_diff",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -5400,
+        1400
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "5d084383-e2f2-4cfc-8884-dae483ba091e",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -5220,
+        1180
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1774,15 +1942,43 @@
         "inputType": "base64",
         "options": {}
       },
-      "id": "63b2215d-5cf2-457a-8c55-d8f98710e606",
+      "id": "52707c7b-441d-44ca-ba13-1c6fc5dca2ed",
       "name": "Analyze Image",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.4,
       "position": [
-        -2820,
-        820
+        -6009.32558139535,
+        1500
       ],
       "alwaysOutputData": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "id": "5975e4f2-4c0e-4e4f-8eb8-5a8609f91bef",
+      "name": "Analyze Audio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        -6169.32558139535,
+        1500
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "openAiApi": {
           "id": "dRR3EqW0FEAbSHgt",
@@ -1797,13 +1993,13 @@
         "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
         "options": {}
       },
-      "id": "d0674550-882c-43fc-bae5-5b0aef30b9e7",
+      "id": "975667de-642b-4bbd-83be-3999190f2b88",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -7120,
-        1080
+        -10309.325581395351,
+        1760
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
     }
@@ -1830,6 +2026,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-03T05:14:09.871Z",
-  "versionId": "b856bf45-4176-4e52-b978-32326eb59c13"
+  "updatedAt": "2024-10-04T04:33:02.747Z",
+  "versionId": "a1462464-9723-4d46-9a5d-ed3515507c85"
 }
