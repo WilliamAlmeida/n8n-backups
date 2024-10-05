@@ -382,11 +382,6 @@
         ]
       ]
     },
-    "messageInfo": {
-      "main": [
-        []
-      ]
-    },
     "Redis Chat Memory": {
       "ai_memory": [
         [
@@ -414,6 +409,28 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
             "type": "main",
             "index": 0
           }
@@ -860,8 +877,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        -1738,
-        718
+        -1660,
+        700
       ]
     },
     {
@@ -875,8 +892,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1538,
-        718
+        -1500,
+        700
       ]
     },
     {
@@ -914,8 +931,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -1098,
-        918
+        -1120,
+        920
       ],
       "credentials": {
         "supabaseApi": {
@@ -978,8 +995,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1098,
-        718
+        -1120,
+        700
       ]
     },
     {
@@ -1051,8 +1068,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -758,
-        698
+        -760,
+        700
       ]
     },
     {
@@ -1065,8 +1082,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1298,
-        718
+        -1300,
+        700
       ],
       "alwaysOutputData": true,
       "disabled": true
@@ -1574,7 +1591,22 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "William",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "debounce_time": 5,
+          "conversation": "1 - Quero pedir"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1594,6 +1626,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-04T03:01:13.321Z",
-  "versionId": "8d02ff69-5e10-4f72-a57a-971f0baee689"
+  "updatedAt": "2024-10-05T05:56:49.529Z",
+  "versionId": "b42b8587-0bec-42b6-81d5-b0cb27d91aeb"
 }
