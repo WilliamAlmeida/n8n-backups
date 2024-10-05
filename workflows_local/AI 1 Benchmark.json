@@ -289,7 +289,7 @@
             {
               "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
               "name": "limit",
-              "value": 50,
+              "value": 1,
               "type": "number"
             }
           ]
@@ -711,7 +711,7 @@
             {
               "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
               "name": "msgs",
-              "value": "={{ [\n  { remoteJid: \"5512982184879@s.whatsapp.net\", pushName: 'William' },\n  { remoteJid: \"558299515825@s.whatsapp.net\", pushName: 'Rafael' },\n  { remoteJid: \"5512981793016@s.whatsapp.net\", pushName: 'Stephany' }\n] }}",
+              "value": "={{ [\n  { remoteJid: \"5512982184879@s.whatsapp.net\", pushName: 'William' }\n] }}",
               "type": "array"
             }
           ]
@@ -725,6 +725,29 @@
       "position": [
         -1060,
         820
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
+              "name": "msgs",
+              "value": "={{ [\n  { remoteJid: \"5512982184879@s.whatsapp.net\", pushName: 'William' },\n  { remoteJid: \"558299515825@s.whatsapp.net\", pushName: 'Rafael' },\n  { remoteJid: \"5512981793016@s.whatsapp.net\", pushName: 'Stephany' }\n] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "abab7552-a2e7-409a-a478-766a0f05d1cb",
+      "name": "RemoteJids1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1060,
+        640
       ]
     }
   ],
@@ -751,6 +774,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-04T18:41:34.413Z",
-  "versionId": "d55aa1e9-aa42-4622-b77c-eeb27973de10"
+  "updatedAt": "2024-10-05T01:46:48.318Z",
+  "versionId": "e9a4f6fb-c801-4e9f-a4d6-3f02943d18a2"
 }
