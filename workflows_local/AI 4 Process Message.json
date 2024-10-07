@@ -437,23 +437,23 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Beautify URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Qdant Vector Store": {
       "ai_vectorStore": [
         [
           {
             "node": "Vector Store Tool",
             "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
+            "type": "main",
             "index": 0
           }
         ]
@@ -507,7 +507,7 @@
         "sessionIdType": "customKey",
         "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}",
         "sessionTTL": 300,
-        "contextWindowLength": 10
+        "contextWindowLength": 4
       },
       "id": "73f103db-d66f-4b16-88ad-c26c1c6b74f2",
       "name": "Redis Chat Memory",
@@ -528,8 +528,15 @@
       "parameters": {
         "method": "POST",
         "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendText/{{ $('messageInfo').first().json.instance }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('messageInfo').first().json.evo_api_key }}"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": 2000,\n  \"linkPreview\": true\n} ",
@@ -542,13 +549,7 @@
       "position": [
         2100,
         1020
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "zqMmAuGQEqlSQI88",
-          "name": "evolution local"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -567,8 +568,15 @@
       "parameters": {
         "method": "POST",
         "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendMedia/{{ $('messageInfo').first().json.instance }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('messageInfo').first().json.evo_api_key }}"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replace(/^\\n+/g, '') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
@@ -581,13 +589,7 @@
       "position": [
         2100,
         760
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "zqMmAuGQEqlSQI88",
-          "name": "evolution local"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -1248,8 +1250,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -158,
-        899
+        -160,
+        900
       ],
       "credentials": {
         "redis": {
@@ -1276,7 +1278,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "user_account",
-        "key": "=use_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
         "keyType": "hash",
         "options": {}
       },
@@ -1332,7 +1334,7 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "=use_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
       },
       "id": "6c396874-1a47-4ff5-a291-992c57fb8f67",
       "name": "delete user account",
@@ -1436,8 +1438,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -118,
-        679
+        -120,
+        680
       ]
     },
     {
@@ -1551,23 +1553,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').first().json.system }}"
-        }
-      },
-      "id": "ee921695-9051-4976-b192-19bfd7844fda",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        260,
-        740
-      ]
-    },
-    {
-      "parameters": {
         "qdrantCollection": {
           "__rl": true,
           "value": "={{ $('vector store').first().json.vector_name }}",
@@ -1589,20 +1574,45 @@
           "name": "qdrant local"
         }
       }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}"
+        }
+      },
+      "id": "ee921695-9051-4976-b192-19bfd7844fda",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        260,
+        740
+      ]
     }
   ],
   "pinData": {
     "Execute Workflow Trigger": [
       {
         "json": {
-          "evo_api": "https://apiwp.wmst.com.br",
+          "evo_api": "http://evo.wsl.local",
           "instance": "ibox_cli_23",
-          "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "William",
+          "remoteJid": "5512982471939@s.whatsapp.net",
+          "pushName": "iBox Delivery",
           "fromMe": false,
-          "unique_id": "ibox_cli_23_5512982184879",
+          "unique_id": "ibox_cli_23_5512982471939",
           "debounce_time": 5,
-          "conversation": "1 - Quero pedir"
+          "evo_api_key": "5B839DC7-3A90-4300-A826-33A0CDC66381",
+          "conversation": "oi"
+        }
+      }
+    ],
+    "AI Agent": [
+      {
+        "json": {
+          "output": "Oi, iBox! 😊 Como posso te ajudar hoje? Você deseja fazer um pedido ou precisa de alguma informação?"
         }
       }
     ]
@@ -1626,6 +1636,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-05T05:56:49.529Z",
-  "versionId": "b42b8587-0bec-42b6-81d5-b0cb27d91aeb"
+  "updatedAt": "2024-10-07T12:19:14.446Z",
+  "versionId": "07602155-0453-43ea-85e6-3c46708d225a"
 }
