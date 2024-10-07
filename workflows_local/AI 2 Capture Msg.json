@@ -435,17 +435,6 @@
         ]
       ]
     },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "baseInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "debounce enabled?": {
       "main": [
         [
@@ -507,6 +496,17 @@
           }
         ]
       ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-03T14:12:18.120Z",
@@ -521,7 +521,7 @@
             {
               "id": "5f5addd6-12c4-4bbd-bce7-6448e90cb9d0",
               "name": "evo_api",
-              "value": "https://apiwp.wmst.com.br",
+              "value": "={{ $('Webhook').first().json.body.server_url ?? 'http://evo.wsl.local' }}",
               "type": "string"
             },
             {
@@ -565,6 +565,12 @@
               "name": "debounce_time",
               "value": 5,
               "type": "number"
+            },
+            {
+              "id": "c6cd82b0-7666-4391-911e-87e0f132ba7b",
+              "name": "evo_api_key",
+              "value": "={{ $json.body.apikey ?? '' }}",
+              "type": "string"
             }
           ]
         },
@@ -678,9 +684,16 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ $('baseInfo').first().json.evo_api }}/chat/getBase64FromMediaMessage/{{ $('baseInfo').item.json.instance }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "url": "={{ $('baseInfo').first().json.evo_api }}/chat/getBase64FromMediaMessage/{{ $('baseInfo').first().json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('baseInfo').first().json.evo_api_key }}"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"message\": {\"key\": {\"id\": \"{{ $('Webhook').item.json.body.data.key.id }}\"}},\n  \"convertToMp4\": false\n}",
@@ -694,13 +707,7 @@
         1260,
         860
       ],
-      "alwaysOutputData": false,
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "zqMmAuGQEqlSQI88",
-          "name": "evolution local"
-        }
-      }
+      "alwaysOutputData": false
     },
     {
       "parameters": {
@@ -1788,22 +1795,6 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "options": {}
-      },
-      "id": "ce0d8050-1dbb-4164-a5a3-551968440575",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -1629.3255813953501,
-        700
-      ],
-      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1972,6 +1963,22 @@
           "name": "redis local"
         }
       }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "options": {}
+      },
+      "id": "ce0d8050-1dbb-4164-a5a3-551968440575",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1620,
+        700
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
     }
   ],
   "pinData": {
@@ -1980,15 +1987,14 @@
         "json": {
           "headers": {
             "connection": "keep-alive",
-            "host": "webhook.n8n.wsl.local",
+            "host": "n8n.wsl.local",
             "x-forwarded-scheme": "http",
             "x-forwarded-proto": "http",
             "x-forwarded-for": "10.0.0.2",
             "x-real-ip": "10.0.0.2",
-            "content-length": "1090",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-length": "995",
             "content-type": "application/json",
-            "user-agent": "axios/1.7.4",
+            "user-agent": "axios/1.7.7",
             "accept-encoding": "gzip, compress, deflate, br"
           },
           "params": {},
@@ -1998,48 +2004,45 @@
             "instance": "ibox_cli_23",
             "data": {
               "key": {
-                "remoteJid": "558299515825@s.whatsapp.net",
+                "remoteJid": "5512982471939@s.whatsapp.net",
                 "fromMe": false,
-                "id": "C4DE4D66A4690158A2B453"
+                "id": "3EB0B2A17A4D0251D47763"
               },
-              "pushName": "Rafael",
+              "pushName": "iBox Delivery",
               "message": {
                 "messageContextInfo": {
                   "deviceListMetadata": {
-                    "senderKeyHash": "XmJzBOLylzgZMw==",
-                    "senderTimestamp": "1726978616",
+                    "senderKeyHash": "hOuxCTtJobGdhA==",
+                    "senderTimestamp": "1727909376",
                     "senderAccountType": "E2EE",
                     "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "133dAnqlyPxFrg==",
-                    "recipientTimestamp": 1728004591
+                    "recipientKeyHash": "j5TOQ3Zp+a7pGw==",
+                    "recipientTimestamp": "1728182541"
                   },
                   "deviceListMetadataVersion": 2
                 },
-                "conversation": "1 - Posso pagar no pix?"
+                "conversation": "oi"
               },
               "contextInfo": {
-                "ephemeralSettingTimestamp": 1728004591,
+                "ephemeralSettingTimestamp": "1719835382",
                 "disappearingMode": {
                   "initiator": "CHANGED_IN_CHAT",
                   "trigger": "CHAT_SETTING"
                 }
               },
-              "messageType": "extendedTextMessage",
-              "messageTimestamp": 1728004591,
-              "instanceId": "88d98422-5c77-47d2-8405-c813d554530e",
-              "source": "web",
-              "chatwootMessageId": 762,
-              "chatwootInboxId": 4,
-              "chatwootConversationId": 3
+              "messageType": "conversation",
+              "messageTimestamp": 1728302257,
+              "instanceId": "1e90a280-8d92-4457-a697-290fbd687738",
+              "source": "web"
             },
-            "destination": "https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46",
-            "date_time": "2024-09-25T14:42:39.164Z",
-            "sender": "5512982471939@s.whatsapp.net",
-            "server_url": "https://apiwp.wmst.com.br",
-            "apikey": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36"
+            "destination": "http://n8n.wsl.local/webhook-test/f67c8094-022b-4aef-bb16-c7e430158fd9",
+            "date_time": "2024-10-07T08:57:39.700Z",
+            "sender": "5512982184879@s.whatsapp.net",
+            "server_url": "http://evo.wsl.local",
+            "apikey": "5B839DC7-3A90-4300-A826-33A0CDC66381"
           },
-          "webhookUrl": "http://webhook.n8n.wsl.local/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
-          "executionMode": "production"
+          "webhookUrl": "http://webhook.n8n.wsl.local/webhook-test/f67c8094-022b-4aef-bb16-c7e430158fd9",
+          "executionMode": "test"
         }
       }
     ]
@@ -2063,6 +2066,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-04T18:09:25.575Z",
-  "versionId": "471558ea-f404-4c57-811d-c31f693f5d20"
+  "updatedAt": "2024-10-07T12:22:20.885Z",
+  "versionId": "98dbcb31-acb4-4ebb-9372-cd672897a3b1"
 }
