@@ -1,0 +1,643 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WF Capture Msg": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "WF Capture Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "inscrement": {
+      "main": [
+        [
+          {
+            "node": "hit limit?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "RemoteJids",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Messages": {
+      "main": [
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate ID": {
+      "main": [
+        [
+          {
+            "node": "Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message": {
+      "main": [
+        [
+          {
+            "node": "push on list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset inscrement": {
+      "main": [
+        [
+          {
+            "node": "inscrement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset msgs": {
+      "main": [
+        [
+          {
+            "node": "reset inscrement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "push on list": {
+      "main": [
+        [
+          {
+            "node": "inscrement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "hit limit?": {
+      "main": [
+        [
+          {
+            "node": "get list",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get list": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RemoteJids": {
+      "main": [
+        [
+          {
+            "node": "Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-26T02:19:33.236Z",
+  "id": "oP5YO3BHpV60LW5H",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 1 Benchmark",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "bb32789f-74bf-438a-81c6-43f0e0c4d920",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4900,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b5edd299-4d0b-4d92-823b-78da55fbad50",
+              "name": "remoteJid",
+              "value": "5512982184879@s.whatsapp.net",
+              "type": "string"
+            },
+            {
+              "id": "d8051e6b-5541-4d20-83bf-ee9e47bbc236",
+              "name": "pushName",
+              "value": "William",
+              "type": "string"
+            },
+            {
+              "id": "2f1550de-1622-490d-bbcb-d550e66455a2",
+              "name": "instance_name",
+              "value": "ibox_cli_23",
+              "type": "string"
+            },
+            {
+              "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
+              "name": "limit",
+              "value": 1,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bb27cba8-dda4-4dfb-8d39-0dbbc8953b4e",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4720,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c67320d3-8a95-4b40-9b70-3a6b166a0d0d",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -2840,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
+              "name": "msgs",
+              "value": "={{ [\n  \"oi\",\n  \"tudo bem?\",\n  \"Como vai?\",\n  \"Quero pedir\",\n  \"De onde são?\",\n  \"Qual o horário de funcionamento?\",\n  \"Tem promoção?\",\n  \"Aceitam cartão?\",\n  \"Qual o tempo de entrega?\",\n  \"Qual o cardápio?\",\n  \"Vocês entregam no meu bairro?\",\n  \"Posso pagar no pix?\",\n  \"Qual o endereço?\",\n  \"Vocês têm sobremesa?\",\n  \"Obrigado!\"\n] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b21b22d6-108e-4d79-947e-905a90227217",
+      "name": "Messages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4360,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.2
+      },
+      "id": "ec98065e-a2fa-45d9-b038-c362e6dcba09",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2300,
+        840
+      ],
+      "webhookId": "8cbe7c67-f45e-4574-83bc-5f59a04172aa"
+    },
+    {
+      "parameters": {
+        "content": "# Stress Test\n## Envio de mensagem",
+        "height": 113.7105412168414,
+        "width": 454.9276353042105
+      },
+      "id": "dd4d25a0-56c4-453b-8ccd-d21e5da83831",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -5040,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {}
+      },
+      "id": "694cf099-91ef-4e09-91b1-200ecf35111d",
+      "name": "WF Capture Msg",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2460,
+        840
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "let timestamp  = Math.round($now.toSeconds());\n\nconst content = {\n  \"body\": {\n    \"event\": \"messages.upsert\",\n    \"instance\": \"shake_serraria\",\n    \"data\": {\n      \"key\": {\n        \"remoteJid\": $('baseInfo').first().json.remoteJid,\n        \"fromMe\": false,\n        \"id\": $('Loop Over Items').item.json.messageId\n      },\n      \"pushName\": $('baseInfo').first().json.pushName,\n      \"message\": {\n        \"conversation\": $('Loop Over Items').item.json.conversation,\n        \"messageContextInfo\": {\n          \"deviceListMetadata\": {\n            \"senderKeyHash\": \"XmJzBOLylzgZMw==\",\n            \"senderTimestamp\": \"1726978616\",\n            \"senderAccountType\": \"E2EE\",\n            \"receiverAccountType\": \"E2EE\",\n            \"recipientKeyHash\": \"I8VCc5TteJywHg==\",\n            \"recipientTimestamp\": \"1727477157\"\n          },\n          \"deviceListMetadataVersion\": 2,\n          \"messageSecret\": \"pdwWR8j0uXhfIhPDgkn0V81XiAf9kXtezdO29U5q6pc=\"\n        }\n      },\n      \"messageType\": \"conversation\",\n      \"messageTimestamp\": 1727921856,\n      \"owner\": \"shake_serraria\",\n      \"source\": \"web\"\n    },\n    \"destination\": \"https://n8n.entiliber.com/webhook/c768e41c-091a-49f0-816f-587b563d8cdb/:TESTEssss\",\n    \"date_time\": \"2024-10-02T23:17:36.461Z\",\n    \"sender\": \"558287107712@s.whatsapp.net\",\n    \"server_url\": \"https://wapi.entiliber.com\",\n    \"apikey\": \"hw32bvv1fqtfmlio7n934q\"\n  },\n  \"webhookUrl\": \"https://webhook.n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n  \"executionMode\": \"test\"\n};\n\nreturn content;"
+      },
+      "id": "323516c8-60cb-4cb3-a1c2-cf9246e25b13",
+      "name": "Code Rafael",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2640,
+        660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "let timestamp  = Math.round($now.toSeconds());\n\nconst msg = JSON.parse($input.item.json.msgs);\n\nconst content = {\n  \"body\": {\n    \"event\": \"messages.upsert\",\n    \"instance\": \"ibox_cli_23\",\n    \"data\": {\n      \"key\": {\n        \"remoteJid\": msg.user.remoteJid,\n        \"fromMe\": false,\n        \"id\": msg.messageId\n      },\n      \"pushName\": msg.user.pushName,\n      \"message\": {\n        \"messageContextInfo\": {\n          \"deviceListMetadata\": {\n            \"senderKeyHash\": \"XmJzBOLylzgZMw==\",\n            \"senderTimestamp\": \"1726978616\",\n            \"senderAccountType\": \"E2EE\",\n            \"receiverAccountType\": \"E2EE\",\n            \"recipientKeyHash\": \"133dAnqlyPxFrg==\",\n            \"recipientTimestamp\": timestamp\n          },\n          \"deviceListMetadataVersion\": 2\n        },\n        \"conversation\": `${msg.order} - ${msg.conversation}`\n      },\n      \"contextInfo\": {\n        \"ephemeralSettingTimestamp\": timestamp,\n        \"disappearingMode\": {\n          \"initiator\": \"CHANGED_IN_CHAT\",\n          \"trigger\": \"CHAT_SETTING\"\n        }\n      },\n      \"messageType\": \"extendedTextMessage\",\n      \"messageTimestamp\": timestamp,\n      \"instanceId\": \"88d98422-5c77-47d2-8405-c813d554530e\",\n      \"source\": \"web\",\n      \"chatwootMessageId\": 762,\n      \"chatwootInboxId\": 4,\n      \"chatwootConversationId\": 3\n    },\n    \"destination\": \"https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n    \"date_time\": \"2024-09-25T14:42:39.164Z\",\n    \"sender\": \"5512982471939@s.whatsapp.net\",\n    \"server_url\": \"https://apiwp.wmst.com.br\",\n    \"apikey\": \"A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36\"\n  },\n  \"webhookUrl\": \"https://webhook.n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n  \"executionMode\": \"test\"\n};\n\nreturn content;"
+      },
+      "id": "98fb131b-e8d6-4daf-b389-e1e89a34348c",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2640,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "incr",
+        "key": "benchmark",
+        "expire": true
+      },
+      "id": "bd625c61-f3e8-42bd-a29f-4bd4f714ef9b",
+      "name": "inscrement",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3780,
+        920
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0a722b2-85d2-4509-910a-0fec2cb34489",
+              "name": "id",
+              "value": "={{ [...Array(22)].map(() => Math.floor(Math.random() * 16).toString(16).toUpperCase()).join('') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fdd8ea27-5c37-427d-a74b-f69c1b564099",
+      "name": "Generate ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3400,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "benchmark_msgs",
+        "messageData": "={{ $json.msg }}",
+        "tail": true
+      },
+      "id": "03ff8aa0-8547-4ad6-8c48-bed4cf881e43",
+      "name": "push on list",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3080,
+        1040
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "msgs",
+        "key": "benchmark_msgs",
+        "keyType": "list",
+        "options": {}
+      },
+      "id": "a0df2617-4999-44fe-96d7-88181c37cbaf",
+      "name": "get list",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3180,
+        820
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2292c75f-b563-4411-85e1-cce1791ec97e",
+              "name": "msg",
+              "value": "={{ { order: $('inscrement').first().json.benchmark, messageId: $json.id, conversation: $('Messages').first().json.msgs.randomItem(), user: $('RemoteJids').first().json.msgs.randomItem() } }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb252a11-4d0f-4aac-bd41-aff02840899e",
+      "name": "Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3240,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "benchmark"
+      },
+      "id": "0657351a-7f11-40b7-8612-f552e33341b5",
+      "name": "reset inscrement",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3980,
+        920
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "benchmark_msgs"
+      },
+      "id": "116f840b-fb8f-4fad-b9ed-9b5c5a8e46c7",
+      "name": "reset msgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -4160,
+        920
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dffa0a3e-feae-47c9-9840-be8106e0cf69",
+              "leftValue": "={{ $json.benchmark }}",
+              "rightValue": "={{ $('baseInfo').first().json.limit }}",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "8b6a52a9-bce6-4d46-96f1-7554644d38a9",
+      "name": "hit limit?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3600,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msgs",
+        "options": {}
+      },
+      "id": "516ec705-59f0-4ef9-a939-7ac5a5fcaab3",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -3020,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
+              "name": "msgs",
+              "value": "={{ [\n  { remoteJid: \"5512982184879@s.whatsapp.net\", pushName: 'William' }\n] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86ce6c31-7ea3-4a01-9916-291b1f3e78dc",
+      "name": "RemoteJids",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4540,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
+              "name": "msgs",
+              "value": "={{ [\n  { remoteJid: \"5512982184879@s.whatsapp.net\", pushName: 'William' },\n  { remoteJid: \"558299515825@s.whatsapp.net\", pushName: 'Rafael' },\n  { remoteJid: \"5512981793016@s.whatsapp.net\", pushName: 'Stephany' }\n] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0eb6801b-ff5a-4ec8-9ff3-a2e76db88b19",
+      "name": "RemoteJids1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4540,
+        740
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-08T13:43:07.493Z",
+  "versionId": "5922787f-d60c-4470-9316-146eb353a28e"
+}
