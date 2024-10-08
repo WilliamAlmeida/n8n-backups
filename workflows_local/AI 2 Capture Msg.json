@@ -1,0 +1,2071 @@
+{
+  "active": true,
+  "connections": {
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "from me?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset msgs": {
+      "main": [
+        [
+          {
+            "node": "msg to queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          {
+            "node": "Fix Text 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Transcription Image": {
+      "main": [
+        [
+          {
+            "node": "Fix Text 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Transcription Audio": {
+      "main": [
+        [
+          {
+            "node": "Fix Text 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Base64": {
+      "main": [
+        [
+          {
+            "node": "Media Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert To Audio": {
+      "main": [
+        [
+          {
+            "node": "Groq Analyze Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert To Image": {
+      "main": [
+        [
+          {
+            "node": "Groq Analyze Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text 2": {
+      "main": [
+        [
+          {
+            "node": "Structure Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structure Message": {
+      "main": [
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has chat?": {
+      "main": [
+        [
+          {
+            "node": "merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "init chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete chat": {
+      "main": [
+        [
+          {
+            "node": "get chat 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatInfo": {
+      "main": [
+        [
+          {
+            "node": "Message Type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get debounce status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "init chat": {
+      "main": [
+        [
+          {
+            "node": "get chat 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg to queue": {
+      "main": [
+        [
+          {
+            "node": "update debounce time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get chat 1": {
+      "main": [
+        [
+          {
+            "node": "has chat?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get chat 2": {
+      "main": [
+        [
+          {
+            "node": "merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "from me?": {
+      "main": [
+        [
+          {
+            "node": "set block AI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get block AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get block AI": {
+      "main": [
+        [
+          {
+            "node": "AI blocked?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI blocked?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "get ignored numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Type": {
+      "main": [
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Analyze Audio": {
+      "main": [
+        [
+          {
+            "node": "Format Transcription Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Analyze Image": {
+      "main": [
+        [
+          {
+            "node": "Groq Normalize Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Normalize Image": {
+      "main": [
+        [
+          {
+            "node": "Format Transcription Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get ignored numbers": {
+      "main": [
+        [
+          {
+            "node": "has ignored numbers? 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ignore numbers": {
+      "main": [
+        [
+          {
+            "node": "allow numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set ignored numbers": {
+      "main": [
+        [
+          {
+            "node": "ignore numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "allow numbers": {
+      "main": [
+        [
+          {
+            "node": "delete chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has ignored numbers? 2": {
+      "main": [
+        [
+          {
+            "node": "set ignored numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch ignored numbers": {
+      "main": [
+        [
+          {
+            "node": "has ignored numbers? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Media Type": {
+      "main": [
+        [
+          {
+            "node": "Convert To Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Convert To Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "now_start": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "now_end": {
+      "main": [
+        [
+          {
+            "node": "nows_diff",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "nows_diff": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "debounce enabled?": {
+      "main": [
+        [
+          {
+            "node": "set debounce enabled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set debounce enabled": {
+      "main": [
+        [
+          {
+            "node": "wk debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has ignored numbers? 1": {
+      "main": [
+        [
+          {
+            "node": "ignore numbers",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch ignored numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "merge": {
+      "main": [
+        [
+          {
+            "node": "chatInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get debounce status": {
+      "main": [
+        [
+          {
+            "node": "debounce enabled?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-03T14:12:18.120Z",
+  "id": "wDyXcP645992Gl9Z",
+  "meta": null,
+  "name": "AI 2 Capture Msg",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f5addd6-12c4-4bbd-bce7-6448e90cb9d0",
+              "name": "evo_api",
+              "value": "={{ $('Webhook').first().json.body.server_url ?? 'http://evo.wsl.local' }}",
+              "type": "string"
+            },
+            {
+              "id": "d8fa0cad-0b2f-4e61-8d05-5d29829d0156",
+              "name": "instance",
+              "value": "={{ $('Webhook').first().json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "e390ea49-44e4-4aa2-8f1f-9044fd4b27f8",
+              "name": "remoteJid",
+              "value": "={{ $('Webhook').first().json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "375453f5-c979-48d0-9a77-f2e837c80da5",
+              "name": "pushName",
+              "value": "={{ $('Webhook').first().json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "c1179eef-b150-4d05-89c1-3b85660ec6bd",
+              "name": "fromMe",
+              "value": "={{ $('Webhook').first().json.body.data.key.fromMe }}",
+              "type": "boolean"
+            },
+            {
+              "id": "2ca406cb-0c5a-4e69-a005-ba35e81128da",
+              "name": "messageType",
+              "value": "={{ $('Webhook').first().json.body.data.messageType }}",
+              "type": "string"
+            },
+            {
+              "id": "f9189c75-e206-4c9d-a538-fadff9121f07",
+              "name": "unique_id",
+              "value": "={{ $('Webhook').first().json.body.instance }}_{{ $('Webhook').first().json.body.data.key.remoteJid.split('@')[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "f305da1c-b096-4af0-ab8b-1af6798dcac8",
+              "name": "debounce_time",
+              "value": 5,
+              "type": "number"
+            },
+            {
+              "id": "c6cd82b0-7666-4391-911e-87e0f132ba7b",
+              "name": "evo_api_key",
+              "value": "={{ $json.body.apikey ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "42139f2e-80b7-4fd8-b497-cff0857ff00a",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1429.3255813953501,
+        700
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "6372b255-d99c-4662-bc5c-2d811a9ee089",
+      "name": "reset msgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        760
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Captura Mensagem\n### Nota: Se for áudios/imagens transcreve para formato de texto\n*Obs.: No final monta estrutura JSON que será usada no restante do fluxo*",
+        "height": 699.3376778124559,
+        "width": 1629.5604480320626,
+        "color": 5
+      },
+      "id": "ae7b2e23-e001-4779-a30a-86d11da1ed67",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const data = $('Webhook').first().json.body.data;\nlet response = '';\n\nconst conversation = data.message.conversation;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
+      },
+      "id": "4ddbbbc8-4f8e-43ec-9775-6a4f2037b3d0",
+      "name": "Format Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2278,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const data = $('Webhook').first().json.body.data;\n\n// data.messageTimestamp\n\nlet milis = $now.toMillis();\n\nreturn {\n  id: data.key.id,\n  origin: data.messageType,\n  output: $json.output,\n  timestamp: data.messageTimestamp,\n  datetime: DateTime.fromSeconds(data.messageTimestamp).toFormat('yyyy-MM-dd H:m:s'),\n  timestamp_local: milis,\n  datetime_local: DateTime.fromSeconds(milis).toFormat('yyyy-MM-dd H:m:s')\n};"
+      },
+      "id": "c3ba85d0-a767-4597-bd0b-60762efff219",
+      "name": "Structure Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const data = $('Webhook').first().json.body.data;\nconst caption = data.message?.imageMessage?.caption;\nconst content = $input.item.json.content;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = caption\n    ? `${content} Legenda: ${caption}`\n    : `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para imagem com legenda';\n}\n\nreturn { output: response };"
+      },
+      "id": "e5ec9764-0ee1-4ced-9f79-b11e44789073",
+      "name": "Format Transcription Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2280,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const content = $input.item.json.text;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para aúdio';\n}\n\nreturn { output: response };"
+      },
+      "id": "a2cdc954-e8a1-4582-bf43-35b88a8c139c",
+      "name": "Format Transcription Audio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2280,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.evo_api }}/chat/getBase64FromMediaMessage/{{ $('baseInfo').first().json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('baseInfo').first().json.evo_api_key }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": {\"key\": {\"id\": \"{{ $('Webhook').item.json.body.data.key.id }}\"}},\n  \"convertToMp4\": false\n}",
+        "options": {}
+      },
+      "id": "da50ca33-e9aa-4e07-b8f9-e2490f560818",
+      "name": "Get Base64",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1260,
+        860
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "fileName": "transcricao.ogg",
+          "mimeType": "audio/ogg"
+        }
+      },
+      "id": "598c2b02-8ddf-438e-b009-c2558f651682",
+      "name": "Convert To Audio",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1620,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "fileName": "imagem.jpeg",
+          "mimeType": "image/jpeg"
+        }
+      },
+      "id": "2e21def5-8abc-4ddc-a8ed-3e49c3e875ab",
+      "name": "Convert To Image",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1620,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "baec1dc9-e24f-4502-bee0-7fed9c8f52d0",
+      "name": "Fix Text 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        760
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "content": "## Adiciona Mensagem na Fila\n*Adiciona mensagem no final da fila para ser processada após o Debounce Time expirar*",
+        "height": 290.7734320620505,
+        "width": 555.5307700228434,
+        "color": 3
+      },
+      "id": "3e3a90c1-d8db-4a01-8c81-a2a393768854",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2871,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0a106bfb-7d1a-4eaa-9d4e-2d933ed51839",
+              "leftValue": "={{ $('get chat 1').first().json.chat }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "916c6784-a8cd-4b97-8308-303edd2fab8b",
+      "name": "has chat?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        619.6744186046499,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}"
+      },
+      "id": "e5fc64bf-dac3-4222-bff8-a60c88012b8d",
+      "name": "delete chat",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        299.6744186046499,
+        600
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.chat.parseJson().removeField('fromMe').removeField('debounce_time') }}",
+        "options": {}
+      },
+      "id": "8813bd5f-6905-4b2a-ab3d-8f1290c78845",
+      "name": "chatInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        990.6744186046499,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
+        "value": "={{ $('baseInfo').first().json.removeField('messageType').toJsonString() }}"
+      },
+      "id": "3137c457-3035-4efb-af97-bce4ff4e4643",
+      "name": "init chat",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        620,
+        800
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=msgs_{{ $('chatInfo').first().json.unique_id }}",
+        "messageData": "={{ $('Structure Message').first().json.toJsonString() }}",
+        "tail": true
+      },
+      "id": "3bd02484-c5fa-4e3a-af89-9dcb040b5fd7",
+      "name": "msg to queue",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        760
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "chat",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "72463d19-f267-46f8-a378-1dcca245b016",
+      "name": "get chat 1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        459.6744186046499,
+        600
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "chat",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "2d26dc84-8aab-4dee-b623-eba342e308b5",
+      "name": "get chat 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        760,
+        800
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "431dcbe2-fb2e-4864-803d-d968ddcb255f",
+              "leftValue": "={{ $json.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3819ec62-6770-4fed-bba9-7f426da89fd6",
+      "name": "from me?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1240.3255813953501,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=block_{{ $json.unique_id }}",
+        "value": "1",
+        "expire": true,
+        "ttl": 30
+      },
+      "id": "67eb3b0b-fa5e-46e6-be4d-afbf8a110db0",
+      "name": "set block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1037.3255813953501,
+        611
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "=block_{{ $json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "fc35a278-418a-4cb8-98f6-87bd6911d665",
+      "name": "get block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1037.3255813953501,
+        771
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "af15b823-b848-4adf-be57-5ce022c321a8",
+              "leftValue": "={{ $json.block }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1432d9f8-d914-4eb2-8f3e-d23208d34931",
+      "name": "AI blocked?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -840.3255813953501,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Bloqueio da AI\n*Se enviado pelo dono do whatsapp, ele bloqueia por N segundos*",
+        "height": 407.0742534707905,
+        "width": 586.0266008245178
+      },
+      "id": "73fd779f-9268-4b26-a835-9bee37d8ecfa",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1269.3255813953501,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Chat/Sessão\n*Verifica se tem sessão, se não tiver cria com os dados do usuário*",
+        "height": 440.5243062483743,
+        "width": 856.5452909686502
+      },
+      "id": "30686ec6-7df1-43bd-82ee-42f23b2b9920",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        270.6744186046499,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "conversation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "86e7e773-8586-458f-a1fb-2890f2030230",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "extendedTextMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "msg"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "7f108034-a1be-4e90-b42e-e4f8a719e311",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "editedMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "msg edited"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "256e7cf8-be54-4c41-ba80-2d9eb0a07563",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "da03e413-3422-419c-af1a-71ff87c307e2",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "63974e48-4e35-44ef-99e6-04ce1ab458d6",
+      "name": "Message Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/audio/transcriptions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "groqApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "model",
+              "value": "whisper-large-v3"
+            },
+            {
+              "name": "temperature",
+              "value": "0.5"
+            },
+            {
+              "name": "response_format",
+              "value": "json"
+            },
+            {
+              "name": "language",
+              "value": "pt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "85ab61e1-70bd-493f-bf19-85f71dbb52c0",
+      "name": "Groq Analyze Audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1940,
+        760
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "groqApi": {
+          "id": "yOzNKNU8zoJ0SLOd",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "id": "8ae57d80-c332-4f6d-899f-2e4aa5792ec6",
+      "name": "Analyze Audio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        2511,
+        460
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "groqApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Descreva todo o conteúdo da imagem, sem Acentos e sem hífens\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/jpeg;base64,{{ $('Convert To Image').item.binary.data.data }}\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"\"\n    }\n  ],\n  \"model\": \"llama-3.2-11b-vision-preview\",\n  \"temperature\": 1,\n  \"max_tokens\": 1024,\n  \"top_p\": 1,\n  \"stream\": false,\n  \"stop\": null\n}\n",
+        "options": {}
+      },
+      "id": "2ef2fc98-bc18-4d15-9550-2af95c3686e5",
+      "name": "Groq Analyze Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        920
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "groqApi": {
+          "id": "yOzNKNU8zoJ0SLOd",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8ab20a1-b06d-4840-b71f-4c53eb2b005c",
+              "name": "content",
+              "value": "={{ $json.choices[0].message.content ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ed7c4b6b-c297-49b4-aacf-a735fd2226a3",
+      "name": "Groq Normalize Image",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2060,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "479ad9fd-bb31-42db-a957-658e9e1d556f",
+              "leftValue": "={{ $json.ignored_id.split(',').indexOf($('baseInfo').item.json.remoteJid.split('@')[0]) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d6dab0f9-d4c0-4b5a-9304-ee90871c19f9",
+      "name": "allow numbers",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        79.67441860464987,
+        611
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "ignore_numbers",
+        "key": "=ignore_numbers_{{ $('baseInfo').first().json.instance }}",
+        "keyType": "hash",
+        "options": {}
+      },
+      "id": "887bfc73-b3e3-4aa0-b365-08132b0ef62e",
+      "name": "get ignored numbers",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -580.3255813953501,
+        631
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd480120-b53b-4c64-9cbf-d5bfd813e50c",
+              "name": "ignored_id",
+              "value": "={{ $('get ignored numbers').first().json.ignore_numbers?.ignoreJids ?? $('set ignored numbers').first().json.ignoreJids ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d5287406-207a-4681-bd58-7c3f432daf39",
+      "name": "ignore numbers",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -80.32558139535013,
+        611
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=ignore_numbers_{{ $('baseInfo').first().json.instance }}",
+        "value": "={{ $json }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "949dc527-6753-4bd5-a774-d4bd4b9db280",
+      "name": "set ignored numbers",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -80.32558139535013,
+        831
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Bloqueio de Números Ignorados\n*Se enviado pelo por um whatsapp na lista, ele não repassa a mensagem*",
+        "height": 503.26329788234716,
+        "width": 852.5550756813022
+      },
+      "id": "ed39e715-caf8-425e-b7e8-e795eed656b4",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -629.3255813953501,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.vector_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2cc84689-7d54-40cd-b9c1-57fbdece9eed",
+      "name": "has ignored numbers? 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -320.3255813953501,
+        851
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('baseInfo').first().json.instance }}"
+            }
+          ]
+        }
+      },
+      "id": "d3b2e218-b6b9-44d7-aeaa-a9b8b453154b",
+      "name": "fetch ignored numbers",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -540.3255813953501,
+        851
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "B0o4LzzvJ6puFW0g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mediaType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bba31f6b-7dc3-4dac-a090-c38d70065d40",
+                    "leftValue": "={{ $json.mediaType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "do nothing"
+        }
+      },
+      "id": "bb841718-70f7-4790-9ca4-0081c7add5bd",
+      "name": "Media Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1400,
+        860
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "text": "Descreva todo o conteúdo da imagem, sem Acentos e sem hífens",
+        "inputType": "base64",
+        "options": {}
+      },
+      "id": "40489ca0-cf1d-44fe-bd9c-8fefdf8dfdfc",
+      "name": "Analyze Image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        2671,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "apFg4kZ0LYjZ2viY",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d4ebb3-bb32-4fc0-a6be-6635fda4b809",
+              "name": "now",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "8026ebf3-3645-41cc-82ac-c119aa13ec40",
+              "name": "seconds1",
+              "value": "={{ $now.toSeconds() }}",
+              "type": "string"
+            },
+            {
+              "id": "5c1102ab-5471-4c1b-8a36-fea2deda6c39",
+              "name": "seconds2",
+              "value": "={{ $now.toSeconds().round() }}",
+              "type": "string"
+            },
+            {
+              "id": "de88acd0-4459-4bde-b57a-fd1f3c8dd0a2",
+              "name": "seconds3",
+              "value": "={{ $now.toMillis() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "643f82eb-45b9-4744-b831-c23830ddbbdb",
+      "name": "now_end",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3100,
+        220
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d4ebb3-bb32-4fc0-a6be-6635fda4b809",
+              "name": "now",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "8026ebf3-3645-41cc-82ac-c119aa13ec40",
+              "name": "seconds1",
+              "value": "={{ $now.toSeconds() }}",
+              "type": "string"
+            },
+            {
+              "id": "5c1102ab-5471-4c1b-8a36-fea2deda6c39",
+              "name": "seconds2",
+              "value": "={{ $now.toSeconds().round() }}",
+              "type": "string"
+            },
+            {
+              "id": "de88acd0-4459-4bde-b57a-fd1f3c8dd0a2",
+              "name": "seconds3",
+              "value": "={{ $now.toMillis() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "151247aa-65ed-483b-99c2-de73a13c143d",
+      "name": "now_start",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1420,
+        380
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8026ebf3-3645-41cc-82ac-c119aa13ec40",
+              "name": "seconds1",
+              "value": "={{ $json.seconds1 - $('now_start').item.json.seconds1 }}",
+              "type": "string"
+            },
+            {
+              "id": "5c1102ab-5471-4c1b-8a36-fea2deda6c39",
+              "name": "seconds2",
+              "value": "={{ $json.seconds2 - $('now_start').item.json.seconds2 }}",
+              "type": "string"
+            },
+            {
+              "id": "de88acd0-4459-4bde-b57a-fd1f3c8dd0a2",
+              "name": "seconds3",
+              "value": "={{ $json.seconds3 - $('now_start').item.json.seconds3 }}",
+              "type": "string"
+            },
+            {
+              "id": "b000494f-8e7c-4b21-9b32-9b79506dc3f8",
+              "name": "diff",
+              "value": "={{ ($json.seconds3 - $('now_start').item.json.seconds3)/1000 }}",
+              "type": "string"
+            },
+            {
+              "id": "1476423d-be33-45d0-8b1a-8163863853f8",
+              "name": "expire_at",
+              "value": "={{ $json.seconds3.toDateTime('ms').plus( $('baseInfo').first().json.debounce_time , 'seconds').toSeconds() }}",
+              "type": "string"
+            },
+            {
+              "id": "bfaad864-a656-46c7-97c9-89c51e5675e8",
+              "name": "expire_at2",
+              "value": "={{ $json.seconds3.toDateTime('ms').plus( $('baseInfo').first().json.debounce_time , 'seconds').toMillis() }}",
+              "type": "string"
+            },
+            {
+              "id": "4e1a1734-15c2-4912-a989-7bfdd2a698e7",
+              "name": "expire_at3",
+              "value": "={{ $json.seconds3.toDateTime('ms').plus( $('baseInfo').first().json.debounce_time , 'seconds') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "26455b2c-d6c9-457f-a0cb-5949d7138514",
+      "name": "nows_diff",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3280,
+        340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "a1b9e375-d319-4171-b3f9-cfd35ba98a08",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3460,
+        120
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "68ddab78-6782-443f-9682-326e7712f0d8",
+              "leftValue": "={{ $json.active }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "375de665-753c-47f4-9769-2c99785cfa1c",
+      "name": "debounce enabled?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1360,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "workflow_debounce",
+        "value": "1",
+        "keyType": "string"
+      },
+      "id": "1b6e7448-c62a-42d9-9d10-03339f3c39af",
+      "name": "set debounce enabled",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        1140
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}",
+        "value": "={{ $now.plus( $('baseInfo').first().json.debounce_time , 'seconds').toMillis() }}",
+        "keyType": "string"
+      },
+      "id": "61ce3abb-f64d-4862-a1f3-d794334da683",
+      "name": "update debounce time",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3260,
+        760
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.ignore_numbers.ignoreJids }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "77dfc212-61d2-4e1c-950e-aed96432c709",
+      "name": "has ignored numbers? 1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -380.3255813953501,
+        631
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "activate",
+        "workflowId": {
+          "__rl": true,
+          "value": "40mOpS82gYyyfA3M",
+          "mode": "list",
+          "cachedResultName": "AI 3 Debounce Msgs (#40mOpS82gYyyfA3M)"
+        },
+        "requestOptions": {}
+      },
+      "id": "46dd82c9-689a-4bdf-a0a6-d6dbae402234",
+      "name": "wk debounce",
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        1140
+      ],
+      "credentials": {
+        "n8nApi": {
+          "id": "8wURX0waPeHOUde3",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "1fc46d9f-63ff-4197-aac4-6a4c767732c5",
+      "name": "merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        839.6744186046499,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "active",
+        "key": "workflow_debounce",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "ce39e1ef-aab6-4eed-b1f1-bbb52853d710",
+      "name": "get debounce status",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        1140
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "redis local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "options": {}
+      },
+      "id": "ce0d8050-1dbb-4164-a5a3-551968440575",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1620,
+        700
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "connection": "keep-alive",
+            "host": "n8n.wsl.local",
+            "x-forwarded-scheme": "http",
+            "x-forwarded-proto": "http",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "content-length": "995",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.7",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "ibox_cli_23",
+            "data": {
+              "key": {
+                "remoteJid": "5512982471939@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0B2A17A4D0251D47763"
+              },
+              "pushName": "iBox Delivery",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "hOuxCTtJobGdhA==",
+                    "senderTimestamp": "1727909376",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "j5TOQ3Zp+a7pGw==",
+                    "recipientTimestamp": "1728182541"
+                  },
+                  "deviceListMetadataVersion": 2
+                },
+                "conversation": "oi"
+              },
+              "contextInfo": {
+                "ephemeralSettingTimestamp": "1719835382",
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1728302257,
+              "instanceId": "1e90a280-8d92-4457-a697-290fbd687738",
+              "source": "web"
+            },
+            "destination": "http://n8n.wsl.local/webhook-test/f67c8094-022b-4aef-bb16-c7e430158fd9",
+            "date_time": "2024-10-07T08:57:39.700Z",
+            "sender": "5512982184879@s.whatsapp.net",
+            "server_url": "http://evo.wsl.local",
+            "apikey": "5B839DC7-3A90-4300-A826-33A0CDC66381"
+          },
+          "webhookUrl": "http://webhook.n8n.wsl.local/webhook-test/f67c8094-022b-4aef-bb16-c7e430158fd9",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-10-03T14:02:12.218Z",
+      "updatedAt": "2024-10-03T14:02:12.218Z",
+      "id": "ePaEfPWjwBhgkRd0",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-03T14:02:12.218Z",
+      "updatedAt": "2024-10-03T14:02:12.218Z",
+      "id": "Qx5hdtOeGw5RMkau",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-08T01:02:54.306Z",
+  "versionId": "dd137115-e55c-43cc-be1a-90e0ad7d9cf2"
+}
