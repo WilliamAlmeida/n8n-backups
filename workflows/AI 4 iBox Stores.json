@@ -1,0 +1,1267 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Status": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Address": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Delivery Fee": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get vector store": {
+      "main": [
+        [
+          {
+            "node": "has vector store?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has vector store?": {
+      "main": [
+        [
+          {
+            "node": "vector store",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch vector store": {
+      "main": [
+        [
+          {
+            "node": "has vector store? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has vector store? 2": {
+      "main": [
+        [
+          {
+            "node": "set vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set vector store": {
+      "main": [
+        [
+          {
+            "node": "vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete vector store": {
+      "main": [
+        [
+          {
+            "node": "get vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "vector store": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Status Pedido": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Link Login": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Account User": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "has user account?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has user account?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Account User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatInput": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete vector store",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-27T18:14:53.380Z",
+  "id": "BZ9o5Ey8QpAJn1OB",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 iBox Stores",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "id": "bc3f1db3-f44e-435b-8672-375697f9cbbd",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5118,
+        1502
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 584.136756451777,
+        "width": 768.3093052403206
+      },
+      "id": "23420b61-325d-4418-a8ac-e1fd12f06c1c",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4958,
+        1242
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_stores",
+        "sessionTTL": 300,
+        "contextWindowLength": 4
+      },
+      "id": "b758ba43-3584-460f-8961-c6e2aa0e4a05",
+      "name": "Redis Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5218,
+        1502
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar status da loja, se ela esta aberta ou fechada, funcionando no momento ou não",
+        "url": "=https://ibox.delivery/api/whatsapp/store",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "instance_name",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.instance }}"
+            },
+            {
+              "name": "block",
+              "valueProvider": "fieldValue",
+              "value": "status"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "status"
+      },
+      "id": "8e2855e4-e83e-4cfd-a360-fcb7f6fe8fbb",
+      "name": "Get Store Status",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5258,
+        1882
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar endereço da loja",
+        "url": "=https://ibox.delivery/api/whatsapp/store",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "instance_name",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.instance }}"
+            },
+            {
+              "name": "block",
+              "valueProvider": "fieldValue",
+              "value": "address"
+            }
+          ]
+        },
+        "optimizeResponse": true
+      },
+      "id": "39464e33-0634-410a-ae9b-4c64797d2ba4",
+      "name": "Get Store Address",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4998,
+        1922
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar taxas de entrega cobrada pela loja, consultar tempo médio das entregas, valor mínimo, se entrega em outras localidades que não estejam registradas",
+        "url": "=https://ibox.delivery/api/whatsapp/store",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "instance_name",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.instance }}"
+            },
+            {
+              "name": "block",
+              "valueProvider": "fieldValue",
+              "value": "delivery_fees"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "delivery_fees"
+      },
+      "id": "13b1145a-d6b9-424d-8db5-b7823ff4b761",
+      "name": "Get Store Delivery Fee",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5378,
+        1882
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "86b14e78-5214-4c72-8839-75be13ea6608",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        3158,
+        1302
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "1bf3d75b-84fe-49a6-be10-3cf02e586c80",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3318,
+        1302
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "425a712d-f598-4e72-a99e-65efb704c401",
+        "options": {}
+      },
+      "id": "9bec5045-d1bb-49c6-9912-33003ae65bd5",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3158,
+        1482
+      ],
+      "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('messageInfo').first().json.instance }}"
+            }
+          ]
+        }
+      },
+      "id": "a824a837-7943-4416-ab1e-f4d31a96c8e5",
+      "name": "fetch vector store",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3776,
+        1603
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=vector_store",
+        "key": "=vector_store_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "hash",
+        "options": {}
+      },
+      "id": "2163daa6-77f0-45e5-96cd-e208e0b031d0",
+      "name": "get vector store",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3598,
+        1601
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.vector_store.vector_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "633b76d4-47b7-4e24-95fe-336191c0584b",
+      "name": "has vector store?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3776,
+        1383
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.vector_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "911060c3-9447-423f-95e8-206795ab31e5",
+      "name": "has vector store? 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3958,
+        1481
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=vector_store_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "aec68a3c-e53a-4f20-b214-fc1922a612d1",
+      "name": "set vector store",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4118,
+        1601
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.vector_store ?? $json }}",
+        "options": {}
+      },
+      "id": "d3355da0-c7c0-4a79-b57f-3773ed18f582",
+      "name": "vector store",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4136,
+        1383
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=vector_store_{{ $json.instance }}"
+      },
+      "id": "c92f739e-3252-4b0c-b85e-2e878dafbcf1",
+      "name": "delete vector store",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3596,
+        1383
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-3b-preview",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "6901e02d-468b-458b-99df-b6fe20508705",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        5618,
+        1582
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para retornar status do pedido do usuário na loja, somente se o código do pedido {code} foi informado ou se o usuário informou que não tinha e quer ver o ultimo pedido, então irá pesquisar o ultimo pedido realizado.\n\n# pergunte se usuário deseja ver somente o status ou o pedido completo.",
+        "url": "=https://ibox.delivery/api/whatsapp/order/status",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "store",
+              "valueProvider": "fieldValue",
+              "value": "hamburgueria"
+            },
+            {
+              "name": "number",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
+            },
+            {
+              "name": "code",
+              "valueProvider": "fieldValue",
+              "value": "{code}"
+            },
+            {
+              "name": "get_items",
+              "valueProvider": "fieldValue",
+              "value": "{get_items}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "code",
+              "description": "o código do pedido tem no máximo 6 dígitos numérico, se não for informado envie como vazio (null)",
+              "type": "string"
+            },
+            {
+              "name": "get_items",
+              "description": "preencha como 1 só se for solicitado o pedido completo, caso contrário coloque vazio (null)",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "5302a334-052a-478b-8572-f05ed103eabf",
+      "name": "Get Status Pedido",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5618,
+        1882
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_stores"
+      },
+      "id": "660d684a-0ea6-47dd-8ae5-966a137935d0",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5018,
+        1362
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa ferramenta para gerar o link para o usuário realizar um pedido/compra sempre que for solicitado",
+        "method": "POST",
+        "url": "=https://ibox.delivery/api/whatsapp/store/link",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "store",
+              "valueProvider": "fieldValue",
+              "value": "hamburgueria"
+            },
+            {
+              "name": "number",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "fieldsToInclude": "selected",
+        "fields": "url"
+      },
+      "id": "2c46d072-5a10-4b4f-b433-26f21038f190",
+      "name": "Get Link Login",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5498,
+        1882
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Tools iBox Delivery",
+        "height": 240.3217863972307,
+        "width": 766.5677686161994,
+        "color": 2
+      },
+      "id": "dc7a02a1-fbb5-4083-9865-ae6e1ae2420a",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4958,
+        1862
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.user ?? {} }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": "={{ $json.user ? 120 : 60 }}"
+      },
+      "id": "2cb74e21-d8eb-4516-b663-de2c26c67613",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4736,
+        1583
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "options": {}
+      },
+      "id": "e31d322b-141e-4c7b-9642-8a3a15bb2b5c",
+      "name": "Get Account User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4578,
+        1582
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "hash",
+        "options": {}
+      },
+      "id": "2c2665eb-54f2-479a-830c-7ab2ee36be46",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4378,
+        1602
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cc923949-fc12-45de-b49b-c9471b2ad337",
+      "name": "has user account?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4578,
+        1382
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "dd3b2fbc-7fda-4180-bc8f-d10d46a8fc07",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4378,
+        1382
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 435.2975787523367,
+        "width": 598.5677101799579,
+        "color": 5
+      },
+      "id": "2a22d9a7-c54e-4c88-b699-4eaa2db4cd9e",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4316,
+        1303
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Retorna os dados da Loja com base na Instância",
+        "height": 483.3176121655175,
+        "width": 731.8422362672346,
+        "color": 4
+      },
+      "id": "1c5c9cb8-1ba0-4a45-84ac-f583181800af",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3538,
+        1302
+      ]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "4adec6ef-c4c4-4c83-833b-840a6ec8170c",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5498,
+        1682
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=## Função\nResponder a perguntas do usuário\n\n## Objetivo\nProcessar as mensagens dos clientes e fornecer respostas com base nas regras e informações da base de dados TOOL \"store_info\".\n\n## Sobre o atendiemnto\nSempre inicie sua conversa perguntando educadamente se o usuário deseja realizar um pedido ou precisa de ajuda com algo relacionado.\nA data e hora atuais são {{ $now.toISO() }}. Todas as datas devem ser fornecidas no formato ISO nas requisições, não nas respostas para o usuário.\n\n## Responsabilidades\n1. Analisar a intenção da pergunta do cliente (fazer pedido, horários, endereço, formas de pagamento, status da loja, etc.).\n2. Fornecer informações claras, educadas, informais e humoradas de acordo com a base de informações.\n3. Utilizar no máximo 2 emojis por resposta para manter a interação leve e amigável.\n4. Sugerir produtos e taxas de entrega conforme as regras:\n   - Mencionar no máximo 3 produtos.\n   - Mencionar até 3 taxas de entrega por vez.\n5. Fornecer o link direto do menu, sem formatação, quando solicitado a intenção de compra.\n6. Manter o tom de conversa descontraído, com mensagens objetivas e curtas.\n7. Sempre que você encontrar um texto dentro de chaves `{}`, busque o valor correspondente na base de dados TOOL \"store_info\". Não retorne o texto literal, mas sim o valor real associado.\n8. Enviar imagens apenas de produtos específicos quando solicitado, sempre usando a base de dados TOOL \"store_info\".\n9. Dividir respostas longas em partes para facilitar a compreensão.\n10. NUNCA INVENTE INFORMAÇÃO que não esteja na base de dados TOOL \"store_info\".\n11. Pode adicionar o nome do usuário na resposta, quando achar necessário.\n12. Sugira produtos disponíveis na loja usando a base de dados 'store_info'.\n\n# Para cancelamento de pedido\n1. Primeiro, localize o pedido do usuário a ser cancelado.\n2. Se não tiver como cancelado, informe que o cancelamento é feito somente por ligação com o código do pedido.\n\n## Sobre o usuário\nO nome do usuário é {{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}, seu e-mail é {{ $('userAccount').first().json.email ?? '' }}, o endereço é {{ $('userAccount').first().json.endereco ?? '' }} e o ID da sessão do usuário é {{ $('messageInfo').first().json.unique_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "297a56b0-8523-41fd-826f-b5cbf1253ef7",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5018,
+        1602
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
+        "options": {}
+      },
+      "id": "8f327b21-5a0c-4659-8351-440d21c210ce",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4778,
+        1382
+      ]
+    },
+    {
+      "parameters": {
+        "name": "store_info",
+        "description": "use essa ferramenta para retornar produtos/serviços fornecidos pela loja, formas de pagamento aceitas, endereço da loja e demais informações não entregue pelas outras tools",
+        "topK": 10
+      },
+      "id": "13a4ee89-51d4-4527-9750-ecf77d4cc967",
+      "name": "Vector Store Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        5498,
+        1462
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"ibox_cli_23_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "034e7f23-c375-4171-bc57-045dac7a206d",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3318,
+        1122
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "id": "87ac63ce-0436-4dc7-acd3-3b0fb869667a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        5778,
+        1162
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "id": "c8c1c7bb-cae9-4a78-b818-0344040ba487",
+      "name": "chatInput",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3160,
+        1120
+      ],
+      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "b8089608-ec86-4d91-a17d-82e3eea2eabd",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        5778,
+        1322
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "079a5d2b-d859-41b1-91da-bf2f43cd062f",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        5498,
+        1322
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}"
+        }
+      },
+      "id": "c1a95cb8-92f4-4a69-b1ec-f96b81748804",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5158,
+        1362
+      ]
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('vector store').first().json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "bdfa8110-4f9c-44bc-af66-1a6f5644233d",
+      "name": "Qdant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        5378,
+        1582
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    }
+  ],
+  "triggerCount": 6,
+  "updatedAt": "2024-10-08T13:40:25.780Z",
+  "versionId": "d783a9aa-19a9-4a0b-b554-8a15f8ef931b"
+}
