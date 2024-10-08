@@ -12,45 +12,18 @@
         ]
       ]
     },
-    "delete msgs": {
-      "main": [
-        [
-          {
-            "node": "Sort by Timestamp",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "delete debounce 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get debounce": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "has msgs?": {
       "main": [
         [
           {
-            "node": "delete msgs",
+            "node": "delete msgs 1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "delete debounce",
+            "node": "delete debounce time",
             "type": "main",
             "index": 0
           }
@@ -61,7 +34,7 @@
       "main": [
         [
           {
-            "node": "get reading chats?",
+            "node": "get schedule status",
             "type": "main",
             "index": 0
           }
@@ -72,7 +45,7 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "merge",
             "type": "main",
             "index": 1
           }
@@ -83,12 +56,12 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "merge",
             "type": "main",
             "index": 0
           },
           {
-            "node": "now",
+            "node": "get debounce time",
             "type": "main",
             "index": 0
           }
@@ -124,22 +97,11 @@
         ]
       ]
     },
-    "get chats 2": {
-      "main": [
-        [
-          {
-            "node": "has chats? 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items 2": {
       "main": [
         [
           {
-            "node": "reset reading chats 2",
+            "node": "unlock schedule 2",
             "type": "main",
             "index": 0
           }
@@ -193,40 +155,18 @@
         ]
       ]
     },
-    "has chats? 2": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "has chats?": {
       "main": [
         [
           {
-            "node": "set reading chats",
+            "node": "prepare chats",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "deactivate debounce",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "deactivate debounce": {
-      "main": [
-        [
-          {
-            "node": "delete wk debounce",
+            "node": "wk debounce",
             "type": "main",
             "index": 0
           }
@@ -244,17 +184,6 @@
         ]
       ]
     },
-    "now": {
-      "main": [
-        [
-          {
-            "node": "get debounce",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "delete chat": {
       "main": [
         [
@@ -266,11 +195,172 @@
         ]
       ]
     },
+    "reset chats": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "get chats  2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Chats": {
+      "main": [
+        [
+          {
+            "node": "lock schedule",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get schedule status": {
+      "main": [
+        [
+          {
+            "node": "schedule locked?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "schedule locked?": {
+      "main": [
+        [
+          {
+            "node": "Reading Chat",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get chats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lock schedule": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "unlock schedule 1": {
+      "main": [
+        [
+          {
+            "node": "End Debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get chats 2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "unlock wk debounce": {
+      "main": [
+        [
+          {
+            "node": "unlock schedule 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prepare chats": {
+      "main": [
+        [
+          {
+            "node": "Split Out Chats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk debounce": {
+      "main": [
+        [
+          {
+            "node": "unlock wk debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk process msg": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get debounce time": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Switch": {
       "main": [
         [
           {
-            "node": "get chats 2",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -291,63 +381,67 @@
         ]
       ]
     },
-    "reset chats": {
+    "delete debounce time": {
       "main": [
         [
           {
-            "node": "Loop Over Items1",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "has chats?1": {
+    "merge": {
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "wk process msg",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "get chats1": {
+    "delete msgs 1": {
       "main": [
         [
           {
-            "node": "has chats?1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items1": {
-      "main": [
-        [
-          {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "reset chats",
+            "node": "Sort by Timestamp",
             "type": "main",
             "index": 0
           },
           {
-            "node": "delete msgs1",
+            "node": "delete debounce time 2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields": {
+    "get chats  2": {
+      "main": [
+        [
+          {
+            "node": "has chats? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has chats? 2": {
+      "main": [
+        [
+          {
+            "node": "prepare chats 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prepare chats 2": {
       "main": [
         [
           {
@@ -358,117 +452,17 @@
         ]
       ]
     },
-    "Split Out": {
+    "Loop Over Items ": {
       "main": [
+        [],
         [
           {
-            "node": "Loop Over Items1",
+            "node": "reset chats",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
+          },
           {
-            "node": "get chats1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get reading chats?": {
-      "main": [
-        [
-          {
-            "node": "reading chat?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "reading chat?": {
-      "main": [
-        [
-          {
-            "node": "Reading Chat",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "get chats",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "set reading chats": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "delete wk debounce": {
-      "main": [
-        [
-          {
-            "node": "reset reading chats",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Execute Workflow",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "delete debounce": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "reset reading chats": {
-      "main": [
-        [
-          {
-            "node": "End Debounce",
+            "node": "delete msgs 2",
             "type": "main",
             "index": 0
           }
@@ -494,13 +488,13 @@
           ]
         }
       },
-      "id": "49ea90a0-4fa1-4431-a4c8-4b6450d9c5c1",
+      "id": "0cc927bd-a6a7-4a0a-8c36-9993f3be9e39",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -3440,
-        2000
+        -3620,
+        2120
       ]
     },
     {
@@ -511,78 +505,15 @@
         "keyType": "list",
         "options": {}
       },
-      "id": "2bbdcd77-1076-4fe7-96d4-1ea10d8c5a96",
+      "id": "5e81b727-d6f9-4997-800a-a8d3c6b826f9",
       "name": "get msgs",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1540,
-        2020
+        -1500,
+        2200
       ],
       "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}"
-      },
-      "id": "2eebc120-0bbb-45b8-b215-6ef4ca4281bd",
-      "name": "delete msgs",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1200,
-        1900
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}"
-      },
-      "id": "d3a4eafa-0d92-4fb2-a3d2-b0df25f75b98",
-      "name": "delete debounce",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1200,
-        2060
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "debounce",
-        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "73cece30-6c79-4a07-a6d1-b220baa9eee2",
-      "name": "get debounce",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1940,
-        2020
-      ],
       "credentials": {
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
@@ -615,34 +546,13 @@
         },
         "options": {}
       },
-      "id": "123fdf34-05f7-4876-b9d4-6ee793c4ba57",
+      "id": "6fa006dd-bc7d-44a7-9742-d966b47ca2da",
       "name": "has msgs?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1380,
-        2020
-      ]
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "BZ9o5Ey8QpAJn1OB",
-          "mode": "list",
-          "cachedResultName": "AI 4 Process Message"
-        },
-        "options": {
-          "waitForSubWorkflow": false
-        }
-      },
-      "id": "f6d57b96-6072-481b-8a88-f776aef54775",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.1,
-      "position": [
-        -660,
-        2080
+        -1340,
+        2200
       ]
     },
     {
@@ -659,13 +569,13 @@
         },
         "options": {}
       },
-      "id": "1faef3c5-37ae-42b9-b1fb-7ddc7c6c9286",
+      "id": "c904cae6-b2e3-423b-a335-7d0e48875bc8",
       "name": "messages",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -840,
-        1900
+        -800,
+        2060
       ]
     },
     {
@@ -677,42 +587,42 @@
         "jsonBody": "={{ $json.chat }}",
         "options": {}
       },
-      "id": "db1234dd-8e3f-4568-b04f-19e960c8da51",
+      "id": "7b21feba-8270-48ac-98f8-e46be44e45ba",
       "name": "WK Process Msg",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -300,
-        1360
+        -480,
+        1540
       ],
       "disabled": true
     },
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={{ $json.values().first() }}",
+        "jsonOutput": "={{ $json.chat }}",
         "options": {}
       },
-      "id": "f47bdda4-6997-427d-82fe-9291bce18fc8",
+      "id": "87d1e114-5fbf-46f4-b050-efe27e9c1ba9",
       "name": "chatInfo",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2260,
-        2020
+        -2120,
+        2140
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "2169479c-70a5-432f-ac40-f9419e651264",
+      "id": "002768f9-25f1-4add-ad7c-86378ac4f879",
       "name": "Loop Over Items",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -2440,
-        2000
+        -2280,
+        2120
       ]
     },
     {
@@ -720,33 +630,13 @@
         "operation": "keys",
         "keyPattern": "chat_*"
       },
-      "id": "5cd2ac05-e7be-497c-b282-2d26cef0490d",
+      "id": "68cf10e5-a68d-4aea-afdf-d5298571872e",
       "name": "get chats",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2940,
-        2020
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "keys",
-        "keyPattern": "chat_*"
-      },
-      "id": "cf830bf1-62a0-4d72-b75f-268810e01904",
-      "name": "get chats 2",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1940,
-        1540
+        -3120,
+        2140
       ],
       "credentials": {
         "redis": {
@@ -759,45 +649,45 @@
       "parameters": {
         "options": {}
       },
-      "id": "a3f17cf9-6969-4088-84dc-288a0491090a",
+      "id": "2d623d73-b4af-4b78-a65a-cb347dcef893",
       "name": "Loop Over Items 2",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1560,
-        1520
+        -2060,
+        1840
       ]
     },
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={{ $json.values().first() }}",
+        "jsonOutput": "={{ $json.chat }}",
         "options": {}
       },
-      "id": "5d87fc0c-13b9-4fcd-9000-cee5b6661fd4",
+      "id": "5817160c-8e2f-45b7-85a5-ba32c8bf45c8",
       "name": "chatInfo 2",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1380,
-        1540
+        -1880,
+        1860
       ]
     },
     {
       "parameters": {
         "operation": "get",
         "propertyName": "msgs",
-        "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}",
+        "key": "=msgs_{{ $('chatInfo 2').item.json.unique_id }}",
         "keyType": "list",
         "options": {}
       },
-      "id": "0d40ac24-bf44-4c1f-ab55-52684240e9c7",
+      "id": "f03baa75-9c50-4d68-a6b0-0b055134a4f2",
       "name": "get msgs 2",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1220,
-        1540
+        -1720,
+        1860
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -832,27 +722,27 @@
         },
         "options": {}
       },
-      "id": "5550c056-770d-47c1-9582-13c06bb25f97",
+      "id": "4172eb89-6404-4fc2-84e5-d596efac6a87",
       "name": "has msgs? 2",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1060,
-        1540
+        -1560,
+        1860
       ]
     },
     {
       "parameters": {
         "operation": "delete",
-        "key": "=chat_{{ $('chatInfo').first().json.unique_id }}"
+        "key": "=chat_{{ $('chatInfo 2').item.json.unique_id }}"
       },
-      "id": "82a60ef2-a95a-4caf-90d7-4b9512c18ef4",
+      "id": "25fe437b-62b0-44ed-ad4a-f5a4a12fce80",
       "name": "delete chat",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -880,
-        1560
+        -1380,
+        1880
       ],
       "credentials": {
         "redis": {
@@ -886,14 +776,136 @@
         },
         "options": {}
       },
-      "id": "230c5092-feb2-4812-85c9-fbc15e5de337",
-      "name": "has chats? 2",
+      "id": "b212aa45-7353-487d-a32a-238c59a60ea4",
+      "name": "has chats?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1780,
-        1540
+        -2960,
+        2140
       ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function converterParaArrayJson(msgs) {\n    return msgs.map(msg => JSON.parse(msg)); // Convertendo string JSON para objeto\n}\n\nfunction ordenarPorTimestamp(msgs) {\n    return msgs.sort((a, b) => a.timestamp_local - b.timestamp_local); // Ordenando pelo timestamp\n}\n\nfunction converterParaJsonString(msgs) {\n    return msgs.map(msg => JSON.stringify(msg)); // Convertendo objetos de volta para string JSON\n}\n\nfunction processarDados(msgs) {\n    const arrayJson = converterParaArrayJson(msgs);\n    const arrayOrdenado = ordenarPorTimestamp(arrayJson);\n    return converterParaJsonString(arrayOrdenado);\n}\n\n// Supondo que msgs seja um array de strings JSON\nlet msgs = $input.item.json.msgs; // Acesso direto à array de mensagens\n\nreturn { msgs: processarDados(msgs)};"
+      },
+      "id": "eed830ef-c3a0-4181-8fd2-961dcc46b9c5",
+      "name": "Sort by Timestamp",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -980,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=chat_{{ $json.unique_id }}"
+      },
+      "id": "f7843d97-915c-42bb-a7c2-aa9666493859",
+      "name": "reset chats",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2507,
+        3019
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "chats",
+        "options": {}
+      },
+      "id": "5db990b7-3e1f-435f-9e73-991ccc56795f",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -2927,
+        2839
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8669e01f-886b-4fb8-b154-e11be9286708",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3607,
+        2859
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "end debounce"
+      },
+      "id": "9833d80a-ef52-402e-b07e-140d1e09fff2",
+      "name": "End Debounce",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        2380
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "reading chat"
+      },
+      "id": "aadae190-5ae4-4031-bb55-0478ea3b2c2f",
+      "name": "Reading Chat",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -3120,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "chat",
+        "options": {}
+      },
+      "id": "f59f3c7e-deef-4d9e-a796-f3955230fe78",
+      "name": "Split Out Chats",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -2620,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "reading_chats",
+        "key": "reading_chats",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "14102ee1-3262-401c-bf3d-0f9e2cd434a9",
+      "name": "get schedule status",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3460,
+        2120
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
     },
     {
       "parameters": {
@@ -906,11 +918,11 @@
           },
           "conditions": [
             {
-              "id": "698fdd1c-49fd-4e0a-b418-c21417923e8a",
-              "leftValue": "={{ $json }}",
+              "id": "d8b38257-545d-4f4e-bb2f-5678b8d1f42c",
+              "leftValue": "={{ $json.reading_chats }}",
               "rightValue": "",
               "operator": {
-                "type": "object",
+                "type": "string",
                 "operation": "notEmpty",
                 "singleValue": true
               }
@@ -920,13 +932,133 @@
         },
         "options": {}
       },
-      "id": "00b53b27-546a-4c68-aa31-d26f43715aa6",
-      "name": "has chats?",
+      "id": "96bed680-6b6b-4e7c-a4d9-09875df5d700",
+      "name": "schedule locked?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
+        -3300,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "reading_chats",
+        "value": "1",
+        "keyType": "string"
+      },
+      "id": "43b6c96d-a997-4082-8f89-e274c767059e",
+      "name": "lock schedule",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2460,
+        2120
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "reading_chats"
+      },
+      "id": "e45e2672-c1a7-43c3-8da3-9993224f8e49",
+      "name": "unlock schedule 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1880,
+        1700
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "reading_chats"
+      },
+      "id": "0ba2dec1-841f-4ff9-a28a-e4f33f1983bb",
+      "name": "unlock schedule 1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2640,
+        2360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $('Split Out Chats').item.json }}",
+        "options": {}
+      },
+      "id": "b11e4fef-af1a-4c40-8f94-012cece51db8",
+      "name": "get chats 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2240,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "workflow_debounce"
+      },
+      "id": "8b4de41d-f5b0-42f6-91fb-63be7f7f1a17",
+      "name": "unlock wk debounce",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2800,
+        2380
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7cd1411-d669-4ebb-b10b-f9a8499023e1",
+              "name": "chat",
+              "value": "={{ $json }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "215c8b36-24c7-4100-a261-035ab5c295a7",
+      "name": "prepare chats",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
         -2780,
-        2020
+        2120
       ]
     },
     {
@@ -934,19 +1066,18 @@
         "operation": "deactivate",
         "workflowId": {
           "__rl": true,
-          "value": "KCzwyXp5E0KjdlRc",
-          "mode": "list",
-          "cachedResultName": "AI 3 Debounce Msgs (#KCzwyXp5E0KjdlRc)"
+          "mode": "id",
+          "value": "KCzwyXp5E0KjdlRc"
         },
         "requestOptions": {}
       },
-      "id": "68ff5950-0193-4592-b534-bc66877cb557",
-      "name": "deactivate debounce",
+      "id": "cd35b1a1-2526-4bee-8311-2a17b9c44318",
+      "name": "wk debounce",
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1,
       "position": [
-        -2620,
-        2280
+        -2960,
+        2360
       ],
       "credentials": {
         "n8nApi": {
@@ -957,16 +1088,40 @@
     },
     {
       "parameters": {
-        "operation": "delete",
-        "key": "workflow_debounce"
+        "workflowId": {
+          "__rl": true,
+          "value": "BZ9o5Ey8QpAJn1OB",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox Stores"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
       },
-      "id": "035f2de3-1bbe-4ab7-90f2-2a3b42854045",
-      "name": "delete wk debounce",
+      "id": "f0de6c27-582f-4086-8506-07670c0b92b0",
+      "name": "wk process msg",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        -620,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "debounce",
+        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "5dd96b21-e79d-4fac-8e74-4d4a4512d9ab",
+      "name": "get debounce time",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2460,
-        2280
+        -1900,
+        2200
       ],
       "credentials": {
         "redis": {
@@ -974,43 +1129,6 @@
           "name": "vps"
         }
       }
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "function converterParaArrayJson(msgs) {\n    return msgs.map(msg => JSON.parse(msg)); // Convertendo string JSON para objeto\n}\n\nfunction ordenarPorTimestamp(msgs) {\n    return msgs.sort((a, b) => a.timestamp_local - b.timestamp_local); // Ordenando pelo timestamp\n}\n\nfunction converterParaJsonString(msgs) {\n    return msgs.map(msg => JSON.stringify(msg)); // Convertendo objetos de volta para string JSON\n}\n\nfunction processarDados(msgs) {\n    const arrayJson = converterParaArrayJson(msgs);\n    const arrayOrdenado = ordenarPorTimestamp(arrayJson);\n    return converterParaJsonString(arrayOrdenado);\n}\n\n// Supondo que msgs seja um array de strings JSON\nlet msgs = $input.item.json.msgs; // Acesso direto à array de mensagens\n\nreturn { msgs: processarDados(msgs)};"
-      },
-      "id": "5bcdbe0c-771d-45aa-b5a2-679c58e21c7a",
-      "name": "Sort by Timestamp",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1020,
-        1900
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "d83b9900-325f-44d0-972b-f82607c37698",
-              "name": "now",
-              "value": "={{ $now.toMillis() }}",
-              "type": "number"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8a3ec3bd-bcec-4f72-a320-b139459e8fcf",
-      "name": "now",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -2100,
-        2020
-      ]
     },
     {
       "parameters": {
@@ -1051,7 +1169,7 @@
                 "conditions": [
                   {
                     "id": "5aa6ed30-d48a-499c-82a9-026844311d1e",
-                    "leftValue": "={{ $json.debounce?.toNumber() - $('now').first().json.now }}",
+                    "leftValue": "={{ $json.debounce?.toNumber() - $now.toMillis() }}",
                     "rightValue": "={{ 0 }}",
                     "operator": {
                       "type": "number",
@@ -1071,27 +1189,117 @@
           "renameFallbackOutput": "in debounce"
         }
       },
-      "id": "0f2647b9-60ac-4331-a1de-33ec6f73e896",
+      "id": "1bb06cd5-03c8-45aa-837b-6850bc12f292",
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1780,
-        2020
+        -1700,
+        2200
       ]
     },
     {
       "parameters": {
         "operation": "delete",
-        "key": "=chat_{{ $json.unique_id }}"
+        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}"
       },
-      "id": "c70a0a7d-b3e2-4563-a4de-01f55520e223",
-      "name": "reset chats",
+      "id": "a98a0b98-e086-4c62-9840-5a3a9438112e",
+      "name": "delete debounce time",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1860,
-        2860
+        -1160,
+        2240
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "dbe8fe83-8546-416b-bdaf-1aaba8eaab17",
+      "name": "delete debounce time 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        2220
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "327ee41d-1b4a-42c9-b98a-c42e9ded4793",
+      "name": "merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -620,
+        1940
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Reset All Chats",
+        "height": 435.019835192051,
+        "width": 1296.4969625137264
+      },
+      "id": "6895f12a-9e22-4af9-b343-f6557f9f0f75",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3640,
+        2780
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "msgs_ibox_cli_23_5512982184879"
+      },
+      "id": "84240b61-f846-40e5-8537-26b4972d605e",
+      "name": "delete msgs 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2507,
+        2859
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "c86d8420-a56a-43f6-8a01-3c5a8710a504",
+      "name": "delete msgs 1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1160,
+        2060
       ],
       "credentials": {
         "redis": {
@@ -1105,13 +1313,13 @@
         "operation": "keys",
         "keyPattern": "chat_*"
       },
-      "id": "b106a402-4190-44cb-b99b-8d0d4ac9666e",
-      "name": "get chats1",
+      "id": "c9dc0494-8ed4-4fcf-85d1-958d4df79867",
+      "name": "get chats  2",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2800,
-        2580
+        -3447,
+        2859
       ],
       "credentials": {
         "redis": {
@@ -1145,37 +1353,13 @@
         },
         "options": {}
       },
-      "id": "dfd22a59-ed17-452f-8aa0-5b7b3d5116c0",
-      "name": "has chats?1",
+      "id": "3718c2d1-2bd8-4363-b592-88ce9a21e894",
+      "name": "has chats? 2",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2640,
-        2580
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "db22ad34-4434-469b-9144-33151836c6c5",
-      "name": "Loop Over Items1",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        -2100,
-        2560
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "e36a12b3-492d-48df-8fd7-d7587ffbeec5",
-      "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        -1860,
-        2540
+        -3287,
+        2859
       ]
     },
     {
@@ -1192,238 +1376,26 @@
         },
         "options": {}
       },
-      "id": "5f725abe-01ff-483d-9182-0644be9d4259",
-      "name": "Edit Fields",
+      "id": "bfa0e27e-8da2-4afb-b77b-525298748c45",
+      "name": "prepare chats 2",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2440,
-        2560
+        -3087,
+        2839
       ]
     },
     {
       "parameters": {
-        "fieldToSplitOut": "chats",
         "options": {}
       },
-      "id": "7a8f1948-003c-41c7-aae4-1c0d3d8ca239",
-      "name": "Split Out",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        -2280,
-        2560
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "3b07af88-e504-4945-a68a-4b72fe021dd3",
-      "name": "When clicking ‘Test workflow’",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -2980,
-        2580
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "msgs_ibox_cli_23_5512982184879"
-      },
-      "id": "a0249f83-2960-423c-b43f-6bccce29cef4",
-      "name": "delete msgs1",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1860,
-        2700
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "d8b38257-545d-4f4e-bb2f-5678b8d1f42c",
-              "leftValue": "={{ $json.reading_chats }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "9d728801-936a-4506-b998-6b37081fde07",
-      "name": "reading chat?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -3120,
-        2000
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "reading_chats",
-        "key": "reading_chats",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "eacc27d7-15bd-4822-aff7-fd947e2b49d1",
-      "name": "get reading chats?",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -3280,
-        2000
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "reading_chats",
-        "value": "1",
-        "keyType": "string"
-      },
-      "id": "ccd248c2-56a3-4660-9642-6c522d304200",
-      "name": "set reading chats",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -2620,
-        2000
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "reading_chats"
-      },
-      "id": "9aece0cc-99ed-4f22-b5de-6970a625ff13",
-      "name": "reset reading chats",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -2300,
-        2280
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "reading_chats"
-      },
-      "id": "d754d560-310f-419f-9d22-40430e5da536",
-      "name": "reset reading chats 2",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1380,
-        1380
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "d24c1097-b160-4e9d-9b6b-618d19f171d7",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
+      "id": "b1830840-6803-4220-aeab-a7138cb09bb9",
+      "name": "Loop Over Items ",
+      "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -660,
-        1800
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}"
-      },
-      "id": "dc1115a6-21d0-4c5d-8b68-53e0fccd2e3f",
-      "name": "delete debounce 2",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -1020,
-        2060
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "errorMessage": "end debounce"
-      },
-      "id": "d161efae-3812-4cbc-bb68-a96108e8d1ef",
-      "name": "End Debounce",
-      "type": "n8n-nodes-base.stopAndError",
-      "typeVersion": 1,
-      "position": [
-        -2140,
-        2280
-      ]
-    },
-    {
-      "parameters": {
-        "errorMessage": "reading chat"
-      },
-      "id": "8241fa5d-a987-48d1-882b-e318f1b18441",
-      "name": "Reading Chat",
-      "type": "n8n-nodes-base.stopAndError",
-      "typeVersion": 1,
-      "position": [
-        -2940,
-        1860
+        -2747,
+        2839
       ]
     }
   ],
@@ -1451,6 +1423,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-08T02:03:45.109Z",
-  "versionId": "e85cf35b-fab7-4e10-a6ef-adfaa68dba80"
+  "updatedAt": "2024-10-08T13:43:25.386Z",
+  "versionId": "91d727b3-d245-4f55-9f27-42eb102603be"
 }
