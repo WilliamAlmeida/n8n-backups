@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "n8n",
+            "node": "baseInfo",
             "type": "main",
             "index": 0
           }
@@ -17,46 +17,6 @@
         [
           {
             "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Debounce is active?": {
-      "main": [
-        [
-          {
-            "node": "baseInfo",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "active debounce",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "active debounce": {
-      "main": [
-        [
-          {
-            "node": "baseInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "n8n": {
-      "main": [
-        [
-          {
-            "node": "Debounce is active?",
             "type": "main",
             "index": 0
           }
@@ -166,7 +126,7 @@
       "main": [
         [
           {
-            "node": "Wait1",
+            "node": "get list",
             "type": "main",
             "index": 0
           }
@@ -225,17 +185,6 @@
         ]
       ]
     },
-    "Wait1": {
-      "main": [
-        [
-          {
-            "node": "get list",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "RemoteJids": {
       "main": [
         [
@@ -257,13 +206,13 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "626a9d7d-b642-4c4d-ac98-f2b8bfe5ca43",
+      "id": "bb32789f-74bf-438a-81c6-43f0e0c4d920",
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -4620,
-        940
+        -4900,
+        920
       ]
     },
     {
@@ -291,19 +240,19 @@
             {
               "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
               "name": "limit",
-              "value": 3,
+              "value": 1,
               "type": "number"
             }
           ]
         },
         "options": {}
       },
-      "id": "c5548e3f-9b38-4a6a-8df9-f11837393fb0",
+      "id": "bb27cba8-dda4-4dfb-8d39-0dbbc8953b4e",
       "name": "baseInfo",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3960,
+        -4720,
         920
       ]
     },
@@ -311,12 +260,12 @@
       "parameters": {
         "options": {}
       },
-      "id": "63648496-599a-4519-a15c-87a6c171916c",
+      "id": "c67320d3-8a95-4b40-9b70-3a6b166a0d0d",
       "name": "Loop Over Items",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -2080,
+        -2840,
         820
       ]
     },
@@ -334,12 +283,12 @@
         },
         "options": {}
       },
-      "id": "d2f00c38-f23c-4e27-9e16-108c3d267ae5",
+      "id": "b21b22d6-108e-4d79-947e-905a90227217",
       "name": "Messages",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3600,
+        -4360,
         920
       ]
     },
@@ -347,12 +296,12 @@
       "parameters": {
         "amount": 0.2
       },
-      "id": "8509a90e-8d4d-4315-aa14-b6b19d2f4893",
+      "id": "ec98065e-a2fa-45d9-b038-c362e6dcba09",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -1540,
+        -2300,
         840
       ],
       "webhookId": "8cbe7c67-f45e-4574-83bc-5f59a04172aa"
@@ -363,41 +312,14 @@
         "height": 113.7105412168414,
         "width": 454.9276353042105
       },
-      "id": "6b0335db-d4e3-449b-83e9-647971811088",
+      "id": "dd4d25a0-56c4-453b-8ccd-d21e5da83831",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4640,
-        660
+        -5040,
+        740
       ]
-    },
-    {
-      "parameters": {
-        "operation": "activate",
-        "workflowId": {
-          "__rl": true,
-          "value": "BZ9o5Ey8QpAJn1OB",
-          "mode": "list",
-          "cachedResultName": "AI 4 Process Message (#BZ9o5Ey8QpAJn1OB)"
-        },
-        "requestOptions": {}
-      },
-      "id": "eb792928-383a-4ddb-bb09-9de424982930",
-      "name": "active debounce",
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -4100,
-        1080
-      ],
-      "credentials": {
-        "n8nApi": {
-          "id": "kuCc4NOcDaUS3bF4",
-          "name": "william"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -408,100 +330,42 @@
         "jsonBody": "={{ $json.body }}",
         "options": {}
       },
-      "id": "955f2843-16eb-4f18-a8d2-5a52c2ca1b09",
+      "id": "694cf099-91ef-4e09-91b1-200ecf35111d",
       "name": "WF Capture Msg",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1700,
+        -2460,
         840
       ],
       "alwaysOutputData": true
     },
     {
       "parameters": {
-        "filters": {
-          "activeWorkflows": false,
-          "tags": "Debounce"
-        },
-        "requestOptions": {}
-      },
-      "id": "b5ee0b8d-9082-44f5-ac39-b602e3a27afa",
-      "name": "n8n",
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -4440,
-        940
-      ],
-      "credentials": {
-        "n8nApi": {
-          "id": "kuCc4NOcDaUS3bF4",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "68ddab78-6782-443f-9682-326e7712f0d8",
-              "leftValue": "={{ $json.active }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "f3f3cb1e-eb09-43b0-bdf9-7ebcb8ad1bb5",
-      "name": "Debounce is active?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -4260,
-        940
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
         "mode": "runOnceForEachItem",
         "jsCode": "let timestamp  = Math.round($now.toSeconds());\n\nconst content = {\n  \"body\": {\n    \"event\": \"messages.upsert\",\n    \"instance\": \"shake_serraria\",\n    \"data\": {\n      \"key\": {\n        \"remoteJid\": $('baseInfo').first().json.remoteJid,\n        \"fromMe\": false,\n        \"id\": $('Loop Over Items').item.json.messageId\n      },\n      \"pushName\": $('baseInfo').first().json.pushName,\n      \"message\": {\n        \"conversation\": $('Loop Over Items').item.json.conversation,\n        \"messageContextInfo\": {\n          \"deviceListMetadata\": {\n            \"senderKeyHash\": \"XmJzBOLylzgZMw==\",\n            \"senderTimestamp\": \"1726978616\",\n            \"senderAccountType\": \"E2EE\",\n            \"receiverAccountType\": \"E2EE\",\n            \"recipientKeyHash\": \"I8VCc5TteJywHg==\",\n            \"recipientTimestamp\": \"1727477157\"\n          },\n          \"deviceListMetadataVersion\": 2,\n          \"messageSecret\": \"pdwWR8j0uXhfIhPDgkn0V81XiAf9kXtezdO29U5q6pc=\"\n        }\n      },\n      \"messageType\": \"conversation\",\n      \"messageTimestamp\": 1727921856,\n      \"owner\": \"shake_serraria\",\n      \"source\": \"web\"\n    },\n    \"destination\": \"https://n8n.entiliber.com/webhook/c768e41c-091a-49f0-816f-587b563d8cdb/:TESTEssss\",\n    \"date_time\": \"2024-10-02T23:17:36.461Z\",\n    \"sender\": \"558287107712@s.whatsapp.net\",\n    \"server_url\": \"https://wapi.entiliber.com\",\n    \"apikey\": \"hw32bvv1fqtfmlio7n934q\"\n  },\n  \"webhookUrl\": \"https://webhook.n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n  \"executionMode\": \"test\"\n};\n\nreturn content;"
       },
-      "id": "45dd0b9e-150a-459f-8ad5-dfcd48cb4f29",
+      "id": "323516c8-60cb-4cb3-a1c2-cf9246e25b13",
       "name": "Code Rafael",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2260,
-        560
-      ]
+        -2640,
+        660
+      ],
+      "disabled": true
     },
     {
       "parameters": {
         "mode": "runOnceForEachItem",
         "jsCode": "let timestamp  = Math.round($now.toSeconds());\n\nconst msg = JSON.parse($input.item.json.msgs);\n\nconst content = {\n  \"body\": {\n    \"event\": \"messages.upsert\",\n    \"instance\": \"ibox_cli_23\",\n    \"data\": {\n      \"key\": {\n        \"remoteJid\": msg.user.remoteJid,\n        \"fromMe\": false,\n        \"id\": msg.messageId\n      },\n      \"pushName\": msg.user.pushName,\n      \"message\": {\n        \"messageContextInfo\": {\n          \"deviceListMetadata\": {\n            \"senderKeyHash\": \"XmJzBOLylzgZMw==\",\n            \"senderTimestamp\": \"1726978616\",\n            \"senderAccountType\": \"E2EE\",\n            \"receiverAccountType\": \"E2EE\",\n            \"recipientKeyHash\": \"133dAnqlyPxFrg==\",\n            \"recipientTimestamp\": timestamp\n          },\n          \"deviceListMetadataVersion\": 2\n        },\n        \"conversation\": `${msg.order} - ${msg.conversation}`\n      },\n      \"contextInfo\": {\n        \"ephemeralSettingTimestamp\": timestamp,\n        \"disappearingMode\": {\n          \"initiator\": \"CHANGED_IN_CHAT\",\n          \"trigger\": \"CHAT_SETTING\"\n        }\n      },\n      \"messageType\": \"extendedTextMessage\",\n      \"messageTimestamp\": timestamp,\n      \"instanceId\": \"88d98422-5c77-47d2-8405-c813d554530e\",\n      \"source\": \"web\",\n      \"chatwootMessageId\": 762,\n      \"chatwootInboxId\": 4,\n      \"chatwootConversationId\": 3\n    },\n    \"destination\": \"https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n    \"date_time\": \"2024-09-25T14:42:39.164Z\",\n    \"sender\": \"5512982471939@s.whatsapp.net\",\n    \"server_url\": \"https://apiwp.wmst.com.br\",\n    \"apikey\": \"A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36\"\n  },\n  \"webhookUrl\": \"https://webhook.n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46\",\n  \"executionMode\": \"test\"\n};\n\nreturn content;"
       },
-      "id": "868eb6c3-8381-47a6-a5b8-37ece576cb64",
+      "id": "98fb131b-e8d6-4daf-b389-e1e89a34348c",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1880,
+        -2640,
         840
       ]
     },
@@ -511,12 +375,12 @@
         "key": "benchmark",
         "expire": true
       },
-      "id": "f7aca530-fe68-42f9-b5ba-c291baf5de61",
+      "id": "bd625c61-f3e8-42bd-a29f-4bd4f714ef9b",
       "name": "inscrement",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3020,
+        -3780,
         920
       ],
       "credentials": {
@@ -540,12 +404,12 @@
         },
         "options": {}
       },
-      "id": "7229faed-c1ec-4b59-959c-7e0c2b94c86f",
+      "id": "fdd8ea27-5c37-427d-a74b-f69c1b564099",
       "name": "Generate ID",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2640,
+        -3400,
         1040
       ]
     },
@@ -556,12 +420,12 @@
         "messageData": "={{ $json.msg }}",
         "tail": true
       },
-      "id": "2bb01564-841e-4664-9558-95d71248bb59",
+      "id": "03ff8aa0-8547-4ad6-8c48-bed4cf881e43",
       "name": "push on list",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2320,
+        -3080,
         1040
       ],
       "credentials": {
@@ -579,12 +443,12 @@
         "keyType": "list",
         "options": {}
       },
-      "id": "01713868-eff8-4701-b033-ed03b42c0243",
+      "id": "a0df2617-4999-44fe-96d7-88181c37cbaf",
       "name": "get list",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2420,
+        -3180,
         820
       ],
       "credentials": {
@@ -608,12 +472,12 @@
         },
         "options": {}
       },
-      "id": "922aa216-1d14-4e71-a247-a23695a75a3e",
+      "id": "cb252a11-4d0f-4aac-bd41-aff02840899e",
       "name": "Message",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2480,
+        -3240,
         1040
       ]
     },
@@ -622,12 +486,12 @@
         "operation": "delete",
         "key": "benchmark"
       },
-      "id": "bd8cbbce-13c7-4d2b-993b-c6c94799e873",
+      "id": "0657351a-7f11-40b7-8612-f552e33341b5",
       "name": "reset inscrement",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3220,
+        -3980,
         920
       ],
       "credentials": {
@@ -642,12 +506,12 @@
         "operation": "delete",
         "key": "benchmark_msgs"
       },
-      "id": "aa0fd909-736e-4692-9c39-0542be43b1ed",
+      "id": "116f840b-fb8f-4fad-b9ed-9b5c5a8e46c7",
       "name": "reset msgs",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3400,
+        -4160,
         920
       ],
       "credentials": {
@@ -682,12 +546,12 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "2fdc9001-c94f-4b9f-89cd-19662bd77a14",
+      "id": "8b6a52a9-bce6-4d46-96f1-7554644d38a9",
       "name": "hit limit?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2840,
+        -3600,
         920
       ]
     },
@@ -696,27 +560,37 @@
         "fieldToSplitOut": "msgs",
         "options": {}
       },
-      "id": "9407e97d-20d6-499b-beaa-0afe89a4fbef",
+      "id": "516ec705-59f0-4ef9-a939-7ac5a5fcaab3",
       "name": "Split Out",
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -2260,
+        -3020,
         820
       ]
     },
     {
-      "parameters": {},
-      "id": "9a0d3984-8214-4a11-8c54-23dbe52bbab7",
-      "name": "Wait1",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ef743ff9-0d57-46a2-80b7-290327b707f6",
+              "name": "msgs",
+              "value": "={{ [\n  { remoteJid: \"5512982184879@s.whatsapp.net\", pushName: 'William' }\n] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86ce6c31-7ea3-4a01-9916-291b1f3e78dc",
+      "name": "RemoteJids",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        -2620,
-        820
-      ],
-      "webhookId": "64c3bb36-2eba-43ab-9b77-159557a76a05",
-      "disabled": true
+        -4540,
+        920
+      ]
     },
     {
       "parameters": {
@@ -732,22 +606,21 @@
         },
         "options": {}
       },
-      "id": "da55a35d-1e74-4992-bd6f-c411b62785ee",
-      "name": "RemoteJids",
+      "id": "0eb6801b-ff5a-4ec8-9ff3-a2e76db88b19",
+      "name": "RemoteJids1",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3780,
-        920
-      ]
+        -4540,
+        740
+      ],
+      "disabled": true
     }
   ],
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "saveManualExecutions": false,
-    "callerPolicy": "workflowsFromSameOwner",
-    "saveDataSuccessExecution": "none"
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [
@@ -765,6 +638,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-04T04:40:46.271Z",
-  "versionId": "7fa0bcd4-ff94-4435-abca-a4c3a4736dab"
+  "updatedAt": "2024-10-08T13:43:07.493Z",
+  "versionId": "5922787f-d60c-4470-9316-146eb353a28e"
 }
