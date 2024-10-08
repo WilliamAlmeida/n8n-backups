@@ -289,7 +289,7 @@
             {
               "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
               "name": "limit",
-              "value": 1,
+              "value": 10,
               "type": "number"
             }
           ]
@@ -508,7 +508,7 @@
       "credentials": {
         "redis": {
           "id": "OBaygrKwLFGSUCWa",
-          "name": "redis local"
+          "name": "vps"
         }
       }
     },
@@ -553,7 +553,7 @@
       "credentials": {
         "redis": {
           "id": "OBaygrKwLFGSUCWa",
-          "name": "redis local"
+          "name": "vps"
         }
       }
     },
@@ -576,7 +576,7 @@
       "credentials": {
         "redis": {
           "id": "OBaygrKwLFGSUCWa",
-          "name": "redis local"
+          "name": "vps"
         }
       }
     },
@@ -619,7 +619,7 @@
       "credentials": {
         "redis": {
           "id": "OBaygrKwLFGSUCWa",
-          "name": "redis local"
+          "name": "vps"
         }
       }
     },
@@ -639,7 +639,7 @@
       "credentials": {
         "redis": {
           "id": "OBaygrKwLFGSUCWa",
-          "name": "redis local"
+          "name": "vps"
         }
       }
     },
@@ -774,6 +774,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-05T01:46:48.318Z",
-  "versionId": "e9a4f6fb-c801-4e9f-a4d6-3f02943d18a2"
+  "updatedAt": "2024-10-08T04:07:28.198Z",
+  "versionId": "cb87ba5d-ed71-4b3e-a819-935d583c9259"
 }
