@@ -328,17 +328,6 @@
         ]
       ]
     },
-    "userAccount": {
-      "main": [
-        [
-          {
-            "node": "config prompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent": {
       "main": [
         [
@@ -355,6 +344,17 @@
         [
           {
             "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
             "type": "main",
             "index": 0
           }
@@ -815,7 +815,7 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}"
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_stores"
       },
       "id": "8f778c06-1163-4a8c-a9b2-bcaa16ba952c",
       "name": "reset memo",
@@ -1278,6 +1278,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-08T04:04:23.793Z",
-  "versionId": "06ed3a66-31ad-439c-96fe-eebe1c736eaf"
+  "updatedAt": "2024-10-08T04:09:58.221Z",
+  "versionId": "c86f7e88-7031-4b2e-9ffa-8d845a5ccff3"
 }
