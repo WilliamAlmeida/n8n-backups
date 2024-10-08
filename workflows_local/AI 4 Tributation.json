@@ -1,0 +1,707 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatInput": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_ncm_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_cfop_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "get_cest_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-08T01:45:48.002Z",
+  "id": "Oo4fOsOIkPmE7v9C",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Tributation",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "id": "eb78da70-b696-4672-8d0c-c71e2f657842",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -1240,
+        900
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "apFg4kZ0LYjZ2viY",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 584.136756451777,
+        "width": 768.3093052403206
+      },
+      "id": "6a7fb0cc-d569-4f40-b550-db1c5e30bcda",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1400,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_trib",
+        "sessionTTL": 300,
+        "contextWindowLength": 4
+      },
+      "id": "f249b0fc-518d-4f55-a035-217917c69b7b",
+      "name": "Redis Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        -1100,
+        900
+      ],
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "8148def1-414d-4c51-bd2a-df144d35a55e",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1740,
+        700
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "ed4d28cf-6dbf-4291-8154-6c4ae07328c8",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1580,
+        700
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_trib"
+      },
+      "id": "53e28fc0-1be0-4b62-b39b-958fc02457b7",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1340,
+        760
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "OBaygrKwLFGSUCWa",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Tools Tributation",
+        "height": 138.51388152998462,
+        "width": 766.5677686161994,
+        "color": 2
+      },
+      "id": "04616a30-3681-49e4-bd07-2df2466f440c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1400,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=Você é um especialista em tributação, que irá ajudar ao usuário em suas duvidas sobre tributações de produtos/serviços.\n\nA data e hora atuais são {{ $now.toISO() }}. Todas as datas devem ser fornecidas no formato ISO nas requisições, não nas respostas para o usuário.\n\n# Funções\n1. Especialista em Tributos Federais\n- Focado em tributos de competência da União, como Imposto de Renda (IR), Contribuição Social sobre o Lucro Líquido (CSLL), PIS/PASEP, COFINS e Imposto sobre Produtos Industrializados (IPI).\n- Atua em empresas e setores que precisam de conformidade com a legislação federal, auxiliando em apurações, deduções, e planejamentos fiscais.\n\n2. Especialista em Tributos Estaduais\n- Trabalha com tributos de competência dos estados, como o ICMS (Imposto sobre Circulação de Mercadorias e Serviços).\n- Ajuda empresas a entender as regras específicas de cada estado, já que o ICMS pode variar bastante dependendo da localidade.\n\n# Para consultar um NCM use a tool \"get_ncm_tool\"\n1. Pergunte o código ncm\n\n# Para consultar um CFOP use a tool \"get_cfop_tool\"\n1. Pergunte o código cfop\n\n# Para consultar um CEST use a tool \"get_cest_tool\"\n1. Pergunte o código cest\n\n## NUNCA informe nada sobre NCM e CFOP, CEST que não tenha vindo das bases de conhecimento.\n\n## Sobre o usuário\nO ID da sessão do usuário é {{ $('messageInfo').first().json.unique_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1895ae28-f516-43ad-b614-c4dc9c95cb1f",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1340,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"http://evo.wsl.local\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982471939@s.whatsapp.net\",\n    \"pushName\": \"iBox Delivery\",\n    \"fromMe\": false,\n    \"unique_id\": \"ibox_cli_23_5512982471939\",\n    \"debounce_time\": 5,\n    \"evo_api_key\": \"5B839DC7-3A90-4300-A826-33A0CDC66381\",\n    \"conversation\": \"{{ $json.chatInput ?? '' }}\"\n  }",
+        "options": {}
+      },
+      "id": "84eb6d0d-c988-4bd3-92f2-d65b96ad5840",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1580,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "id": "31c1f8b1-fcef-4d6e-a869-00e9ed885d1f",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -580,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "id": "50034a21-0304-47dd-b9dd-48ecda6b130a",
+      "name": "chatInput",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1738,
+        518
+      ],
+      "webhookId": "493101b5-0065-4f8a-93b8-86281b77de1e"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onvCaMZuilCgNp0u",
+          "mode": "list",
+          "cachedResultName": "AI 5 Response"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "791f0c67-050e-4050-9953-291a4476ba05",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        -580,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "name": "get_ncm_tool",
+        "description": "use esta ferramenta para consultar ncm (Nomenclatura Comum do Mercosul) de produtos/serviços.",
+        "workflowId": {
+          "__rl": true,
+          "value": "4JjaSJxWxmF5eLMf",
+          "mode": "list",
+          "cachedResultName": "TOOLs Tributation"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "module",
+              "stringValue": "ncm"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"ncm\": {\n          \"type\": \"string\",\n          \"description\": \"código ncm não pode conter letra, somente números e ponto em sua formatação\"\n        }\n      },\n      \"required\": [\n        \"ncm\"\n      ]\n    }\n  },\n  \"required\": [\n    \"data\"\n  ]\n}"
+      },
+      "id": "77262882-5948-4f6f-a87e-3a19f2c70d5d",
+      "name": "get_ncm_tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -1180,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-11b-text-preview",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "bf6d3819-9be7-45c8-bc93-acca2dcd9c57",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -740,
+        1000
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "yOzNKNU8zoJ0SLOd",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "list_ncm",
+        "description": "use essa ferramenta para retornar informações sobre sobre (Nomenclatura Comum do Mercosul) baseados em descrição."
+      },
+      "id": "d2e31a49-6d7e-4369-a2ea-20f0e93ed19e",
+      "name": "Vector Store Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "b839bd48-7a07-406c-a21f-097f0f75de7a",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        1100
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "apFg4kZ0LYjZ2viY",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e9b584c9-5d69-46a0-b1ec-5de13eb1d7d2",
+        "options": {}
+      },
+      "id": "5ad769b5-76a5-48a2-a6b9-e11b288cdd85",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1740,
+        880
+      ],
+      "webhookId": "e9b584c9-5d69-46a0-b1ec-5de13eb1d7d2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "853f7764-d8d0-42a7-9590-ad1f6290fcaa",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -860,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "name": "get_cfop_tool",
+        "description": "use esta ferramenta para consultar cfop (Código Fiscal de Operações e de Prestações) de produtos/serviços.",
+        "workflowId": {
+          "__rl": true,
+          "value": "4JjaSJxWxmF5eLMf",
+          "mode": "list",
+          "cachedResultName": "TOOLs Tributation"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "module",
+              "stringValue": "cfop"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"cfop\": {\n          \"type\": \"string\",\n          \"description\": \"código cfop no formato 0.000\"\n        }\n      },\n      \"required\": [\n        \"cfop\"\n      ]\n    }\n  },\n  \"required\": [\n    \"data\"\n  ]\n}"
+      },
+      "id": "80cf27ea-4193-4aee-8cf9-7809ca14abb4",
+      "name": "get_cfop_tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -1060,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "id": "98d86a94-a19f-4ded-8df3-c898e7666efd",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -1180,
+        1020
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "yOzNKNU8zoJ0SLOd",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}"
+        }
+      },
+      "id": "16172012-cafe-4847-b862-4efd827063c1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -1200,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "name": "get_cest_tool",
+        "description": "use esta ferramenta para consultar cest (Código Especificador da Substituição Tributária) de produtos/serviços.",
+        "workflowId": {
+          "__rl": true,
+          "value": "4JjaSJxWxmF5eLMf",
+          "mode": "list",
+          "cachedResultName": "TOOLs Tributation"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "module",
+              "stringValue": "cest"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"cest\": {\n          \"type\": \"string\",\n          \"description\": \"código cest no formato 00.000.00\"\n        }\n      },\n      \"required\": [\n        \"cest\"\n      ]\n    }\n  },\n  \"required\": [\n    \"data\"\n  ]\n}"
+      },
+      "id": "bd5f2645-c32a-4d36-89e1-77e2c8e6eef4",
+      "name": "get_cest_tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -940,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "tributation",
+          "mode": "list",
+          "cachedResultName": "tributation"
+        },
+        "options": {}
+      },
+      "id": "86dfe689-6d67-4deb-b605-bbc9e07f7243",
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        1000
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "bBhkyjVVPesLbbM6",
+          "name": "qdrant local"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "http://evo.wsl.local",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982471939@s.whatsapp.net",
+          "pushName": "iBox Delivery",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982471939",
+          "debounce_time": 5,
+          "evo_api_key": "5B839DC7-3A90-4300-A826-33A0CDC66381",
+          "conversation": "oi, poderia me informar se o ncm 9619.00.00 expirou?"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-10-03T14:02:12.218Z",
+      "updatedAt": "2024-10-03T14:02:12.218Z",
+      "id": "Qx5hdtOeGw5RMkau",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-03T14:02:12.218Z",
+      "updatedAt": "2024-10-03T14:02:12.218Z",
+      "id": "ePaEfPWjwBhgkRd0",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-08T04:04:22.548Z",
+      "updatedAt": "2024-10-08T04:04:22.548Z",
+      "id": "2JyCCnNv9L8yRjjq",
+      "name": "Agent"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-08T04:04:32.315Z",
+  "versionId": "9e6c7f86-b7d6-416c-8e29-76004a218568"
+}
