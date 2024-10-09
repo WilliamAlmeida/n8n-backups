@@ -138,15 +138,8 @@
       "parameters": {
         "method": "POST",
         "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendText/{{ $('messageInfo').first().json.instance }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{ $('messageInfo').first().json.evo_api_key }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": 2000,\n  \"linkPreview\": true\n} ",
@@ -159,7 +152,13 @@
       "position": [
         2380,
         540
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
     },
     {
       "parameters": {
@@ -178,15 +177,8 @@
       "parameters": {
         "method": "POST",
         "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendMedia/{{ $('messageInfo').first().json.instance }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{ $('messageInfo').first().json.evo_api_key }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replace(/^\\n+/g, '') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
@@ -199,7 +191,13 @@
       "position": [
         2380,
         280
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
     },
     {
       "parameters": {
@@ -416,7 +414,24 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "debounce_time": 5,
+          "evo_api_key": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36",
+          "conversation": "oi",
+          "output": "Oi, William! 😊 Como posso te ajudar hoje? Você gostaria de fazer um pedido ou precisa de ajuda com algo relacionado?"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -436,6 +451,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-08T13:38:08.148Z",
-  "versionId": "31211ccc-c18d-4f4b-9f78-d095214782a1"
+  "updatedAt": "2024-10-09T02:39:17.035Z",
+  "versionId": "a11e941a-3da8-4998-a84e-8e03d5e454d7"
 }
