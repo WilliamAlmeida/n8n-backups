@@ -360,6 +360,17 @@
           }
         ]
       ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-27T18:14:53.380Z",
@@ -530,7 +541,8 @@
       "position": [
         3158,
         1302
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1125,8 +1137,7 @@
       "position": [
         3318,
         1122
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1156,8 +1167,7 @@
         3160,
         1120
       ],
-      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
-      "disabled": true
+      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef"
     },
     {
       "parameters": {
@@ -1262,6 +1272,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-08T13:40:25.780Z",
-  "versionId": "d783a9aa-19a9-4a0b-b554-8a15f8ef931b"
+  "updatedAt": "2024-10-12T01:46:34.638Z",
+  "versionId": "df2917e5-82ec-406a-b951-e98746cfaa67"
 }
