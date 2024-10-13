@@ -328,17 +328,6 @@
         ]
       ]
     },
-    "userAccount": {
-      "main": [
-        [
-          {
-            "node": "config prompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent": {
       "main": [
         [
@@ -350,23 +339,23 @@
         ]
       ]
     },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Qdant Vector Store": {
       "ai_vectorStore": [
         [
           {
             "node": "Vector Store Tool",
             "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "chatConfig": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
             "index": 0
           }
         ]
@@ -541,8 +530,7 @@
       "position": [
         3158,
         1302
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1137,7 +1125,8 @@
       "position": [
         3318,
         1122
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1152,7 +1141,8 @@
       "position": [
         5778,
         1162
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1167,7 +1157,8 @@
         3160,
         1120
       ],
-      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef"
+      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1228,15 +1219,17 @@
           "value": "={{ $('vector store').first().json.vector_name }}",
           "mode": "id"
         },
-        "options": {}
+        "options": {
+          "searchFilterJson": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.category\",\n      \"match\": {\n        \"value\": \"products\"\n      }\n    }\n  ]\n}"
+        }
       },
       "id": "bdfa8110-4f9c-44bc-af66-1a6f5644233d",
       "name": "Qdant Vector Store",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        5378,
-        1582
+        5380,
+        1580
       ],
       "credentials": {
         "qdrantApi": {
@@ -1272,6 +1265,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-12T01:46:34.638Z",
-  "versionId": "df2917e5-82ec-406a-b951-e98746cfaa67"
+  "updatedAt": "2024-10-13T02:36:16.227Z",
+  "versionId": "bfeeb95d-49b7-4c35-93b2-29631f49da92"
 }
