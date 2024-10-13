@@ -469,6 +469,11 @@
           }
         ]
       ]
+    },
+    "set block AI": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-09-26T18:07:32.826Z",
@@ -1402,21 +1407,6 @@
     },
     {
       "parameters": {
-        "content": "## Gerencia o Bloqueio de Números Ignorados\n*Se enviado pelo por um whatsapp na lista, ele não repassa a mensagem*",
-        "height": 503.26329788234716,
-        "width": 852.5550756813022
-      },
-      "id": "fc8fb021-73dc-4ab6-98df-70ddbf3b5e9e",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -14549.325581395351,
-        1120
-      ]
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1746,6 +1736,22 @@
     },
     {
       "parameters": {
+        "httpMethod": "POST",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "options": {}
+      },
+      "id": "8d951bba-44fa-45a9-8177-626158b30a42",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -15520,
+        1300
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+    },
+    {
+      "parameters": {
         "resource": "image",
         "operation": "analyze",
         "modelId": {
@@ -1777,19 +1783,18 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "options": {}
+        "content": "## Gerencia o Bloqueio de Números Ignorados\n*Se enviado pelo por um whatsapp na lista, ele não repassa a mensagem*",
+        "height": 503.26329788234716,
+        "width": 852.5550756813022
       },
-      "id": "8d951bba-44fa-45a9-8177-626158b30a42",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "id": "07c432c3-c8cb-41d5-8b79-2efe3a0f9d9d",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
       "position": [
-        -15520,
-        1300
-      ],
-      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+        -14549.325581395351,
+        1120
+      ]
     }
   ],
   "pinData": {},
@@ -1814,6 +1819,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-09T04:36:33.723Z",
-  "versionId": "bc125a5a-02c5-4eba-96fe-05f2855d463c"
+  "updatedAt": "2024-10-13T00:55:57.615Z",
+  "versionId": "6571d107-a9c5-4f81-837f-e7cd94d164f7"
 }
