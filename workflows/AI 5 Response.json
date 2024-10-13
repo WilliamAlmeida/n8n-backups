@@ -421,13 +421,13 @@
           "evo_api": "https://apiwp.wmst.com.br",
           "instance": "ibox_cli_23",
           "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "W.M. Soluções Tecnologicas",
+          "pushName": "William",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "debounce_time": 5,
           "evo_api_key": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36",
-          "conversation": "oi",
-          "output": "Oi, William! 😊 Como posso te ajudar hoje? Você gostaria de fazer um pedido ou precisa de ajuda com algo relacionado?"
+          "conversation": "1 - Como vai?",
+          "output": "Estou ótimo, obrigado por perguntar, William! 😊 E você, como está? Se precisar de ajuda com algo ou quiser fazer um pedido, é só me avisar!"
         }
       }
     ]
@@ -451,6 +451,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-09T02:39:17.035Z",
-  "versionId": "a11e941a-3da8-4998-a84e-8e03d5e454d7"
+  "updatedAt": "2024-10-13T00:11:53.176Z",
+  "versionId": "03a346e0-c5a5-4096-99e0-9ae3aebae946"
 }
