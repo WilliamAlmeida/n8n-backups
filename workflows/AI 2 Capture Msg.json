@@ -469,11 +469,6 @@
           }
         ]
       ]
-    },
-    "set block AI": {
-      "main": [
-        []
-      ]
     }
   },
   "createdAt": "2024-09-26T18:07:32.826Z",
@@ -532,7 +527,7 @@
             {
               "id": "f305da1c-b096-4af0-ab8b-1af6798dcac8",
               "name": "debounce_time",
-              "value": 5,
+              "value": 2.5,
               "type": "number"
             },
             {
@@ -1819,6 +1814,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-13T00:55:57.615Z",
-  "versionId": "6571d107-a9c5-4f81-837f-e7cd94d164f7"
+  "updatedAt": "2024-10-15T14:08:21.421Z",
+  "versionId": "c3e49215-028d-4a9a-a971-a1d3790cc411"
 }
