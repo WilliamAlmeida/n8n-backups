@@ -17,7 +17,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Loop Over Items 2",
             "type": "main",
             "index": 0
           }
@@ -39,7 +39,7 @@
       "main": [
         [
           {
-            "node": "Send Message",
+            "node": "Split Msg by Break Line",
             "type": "main",
             "index": 0
           }
@@ -125,6 +125,46 @@
           }
         ]
       ]
+    },
+    "Split Msg by Break Line": {
+      "main": [
+        [
+          {
+            "node": "Split Out Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Content": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items 2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-08T13:37:37.409Z",
@@ -142,7 +182,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": 2000,\n  \"linkPreview\": true\n} ",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.content }}\",\n  \"delay\": {{ Math.floor(Math.max(500, Math.min(($json.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 5000))) }}\n,\n  \"linkPreview\": false\n}",
         "options": {}
       },
       "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
@@ -150,7 +190,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2380,
+        2840,
         540
       ],
       "credentials": {
@@ -169,7 +209,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2029,
+        1820,
         260
       ]
     },
@@ -189,8 +229,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2380,
-        280
+        2180,
+        260
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -202,8 +242,8 @@
     {
       "parameters": {
         "content": "# Enviar o Resultado para o Whatsapp",
-        "height": 610.094292552082,
-        "width": 661.5465394209826,
+        "height": 597.6434405787044,
+        "width": 1280.3538824978605,
         "color": 4
       },
       "id": "70aca7a6-084d-4541-9026-32578ef3f7af",
@@ -211,15 +251,15 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1929,
+        1734.7667092153047,
         160
       ]
     },
     {
       "parameters": {
         "content": "# Faz o tratamento da Resposta",
-        "height": 286.6572100709807,
-        "width": 686.4982403578199,
+        "height": 282.92195447896734,
+        "width": 693.968751541847,
         "color": 5
       },
       "id": "adbc430b-bf85-465c-80e5-1345b9a8b319",
@@ -227,7 +267,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1176.2282971357224,
+        980,
         160
       ]
     },
@@ -315,7 +355,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        2169,
+        1960,
         480
       ]
     },
@@ -329,7 +369,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1229,
+        1033,
         260
       ],
       "executeOnce": false
@@ -344,7 +384,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1549,
+        1353,
         260
       ],
       "executeOnce": false
@@ -360,7 +400,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1709,
+        1513,
         260
       ]
     },
@@ -383,7 +423,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1389,
+        1193,
         260
       ]
     },
@@ -394,7 +434,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        849,
+        653,
         260
       ]
     },
@@ -409,8 +449,58 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1009,
+        813,
         260
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d815c1e4-ca3f-4778-bf56-9d878e7118ec",
+              "name": "content",
+              "value": "={{ $json.output.content.split('\\\\n\\\\n').map(item => item.replace(/^\\n+/g, '')) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "67f5b03c-7ee9-46b3-a87f-80747d8fb47b",
+      "name": "Split Msg by Break Line",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2220,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "content",
+        "options": {}
+      },
+      "id": "4198197a-ac7d-46fb-9cf4-a39351a33dab",
+      "name": "Split Out Content",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1af83e7b-4138-47ac-8c23-080b6f2f245f",
+      "name": "Loop Over Items 2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2620,
+        520
       ]
     }
   ],
@@ -421,13 +511,13 @@
           "evo_api": "https://apiwp.wmst.com.br",
           "instance": "ibox_cli_23",
           "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "William",
+          "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
-          "debounce_time": 5,
-          "evo_api_key": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36",
-          "conversation": "1 - Como vai?",
-          "output": "Estou ótimo, obrigado por perguntar, William! 😊 E você, como está? Se precisar de ajuda com algo ou quiser fazer um pedido, é só me avisar!"
+          "debounce_time": 2.5,
+          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
+          "conversation": "me envie 2 frases separando por \\n\\n",
+          "output": "Claro! Aqui estão as frases:\n\n1. Estou aqui para ajudar com qualquer dúvida que você tenha!\n\n2. Se precisar de informações sobre nossos produtos ou quiser fazer um pedido, é só avisar!"
         }
       }
     ]
@@ -451,6 +541,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-13T00:11:53.176Z",
-  "versionId": "03a346e0-c5a5-4096-99e0-9ae3aebae946"
+  "updatedAt": "2024-10-15T15:05:28.242Z",
+  "versionId": "5fe429a2-7319-456f-8c4a-59880320d3f1"
 }
