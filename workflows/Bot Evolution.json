@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Format Message": {
       "main": [
@@ -221,7 +221,7 @@
       "main": [
         [
           {
-            "node": "Execute Workflow",
+            "node": "wk process msg",
             "type": "main",
             "index": 0
           }
@@ -919,27 +919,6 @@
     },
     {
       "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "BZ9o5Ey8QpAJn1OB",
-          "mode": "list",
-          "cachedResultName": "AI 4 iBox Stores"
-        },
-        "options": {
-          "waitForSubWorkflow": false
-        }
-      },
-      "id": "67bc6801-349b-4f21-bfa6-fd0e38f0eb88",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.1,
-      "position": [
-        3760,
-        80
-      ]
-    },
-    {
-      "parameters": {
         "mode": "combine",
         "combineBy": "combineByPosition",
         "options": {}
@@ -970,6 +949,27 @@
         240
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "BZ9o5Ey8QpAJn1OB",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox Stores"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "67bc6801-349b-4f21-bfa6-fd0e38f0eb88",
+      "name": "wk process msg",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        3760,
+        80
+      ]
     }
   ],
   "pinData": {
@@ -1071,6 +1071,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-13T02:54:57.166Z",
-  "versionId": "705a6705-6188-43eb-b938-629fe776ee6d"
+  "updatedAt": "2024-10-15T15:07:12.395Z",
+  "versionId": "b6355afb-5ef7-4fa8-95bd-b65ca9b0289c"
 }
