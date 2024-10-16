@@ -257,17 +257,6 @@
         ]
       ]
     },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow Trigger": {
       "main": [
         [
@@ -356,6 +345,22 @@
           {
             "node": "Vector Store Tool",
             "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Litellm Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -757,8 +762,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        5618,
-        1582
+        5620,
+        1600
       ],
       "credentials": {
         "groqApi": {
@@ -1235,6 +1240,29 @@
           "name": "william"
         }
       }
+    },
+    {
+      "parameters": {
+        "options": {
+          "baseURL": "https://litellm.wmst.com.br/v1",
+          "temperature": 0
+        }
+      },
+      "id": "8990d1a2-23f8-4f8b-9892-723d600bf646",
+      "name": "Litellm Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5760,
+        1600
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm"
+        }
+      },
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -1263,6 +1291,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-15T14:23:29.611Z",
-  "versionId": "536354fd-01b4-4510-992f-3647ad7e9dad"
+  "updatedAt": "2024-10-15T18:03:24.415Z",
+  "versionId": "0344e85c-072b-4d33-b3f6-5058f26a3f55"
 }
