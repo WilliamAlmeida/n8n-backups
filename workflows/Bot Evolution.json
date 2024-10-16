@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Format Message": {
       "main": [
@@ -167,45 +167,6 @@
         ]
       ]
     },
-    "Message Type": {
-      "main": [
-        [
-          {
-            "node": "Format Message",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Format Message",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Format Message",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Base64",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Base64",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "messages": {
       "main": [
         [
@@ -243,7 +204,7 @@
       "main": [
         [
           {
-            "node": "config prompt",
+            "node": "delete user account",
             "type": "main",
             "index": 0
           }
@@ -338,39 +299,6 @@
         ]
       ]
     },
-    "Qdant Vector Store": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Groq Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Information Extractor",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Respond to Webhook": {
-      "main": [
-        [
-          {
-            "node": "Information Extractor",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Beautify URL": {
       "main": [
         [
@@ -404,33 +332,6 @@
         ]
       ]
     },
-    "Information Extractor": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Redis2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Beautify URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Webhook": {
       "main": [
         [
@@ -442,46 +343,136 @@
         ]
       ]
     },
-    "Edit Fields": {
+    "Message Type": {
       "main": [
         [
           {
-            "node": "Merge1",
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Base64",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Redis1": {
+    "Chat": {
       "main": [
         [
           {
-            "node": "Edit Fields1",
+            "node": "baseInfo",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Redis2": {
+    "Qdant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
       "main": [
         [
           {
-            "node": "Redis1",
+            "node": "userAccount",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields1": {
+    "Get Account User": {
       "main": [
         [
           {
-            "node": "Merge1",
+            "node": "set user account",
             "type": "main",
-            "index": 1
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "has user account?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has user account?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Account User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -580,7 +571,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const data = $('Webhook').first().json.body;\nlet response = '';\n\nconst conversation = data.query;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message?.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
+        "jsCode": "const data = $('Webhook').first().json.body;\nlet response = '';\n\nconst conversation = data.query;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message?.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: $('Chat').first().json.chatInput };\n// return { output: response };"
       },
       "id": "f5da58ea-7399-48d9-b363-e96e527cd96e",
       "name": "Format Message",
@@ -969,6 +960,437 @@
     },
     {
       "parameters": {
+        "httpMethod": "POST",
+        "path": "bot-evolution",
+        "options": {}
+      },
+      "id": "e9fdfa98-f4ae-419c-a26b-77550474c99d",
+      "name": "Webhook img",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        660
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bot-evolution",
+        "options": {}
+      },
+      "id": "02b09d48-1e1a-40f7-87ef-69d546caf5df",
+      "name": "Webhook audio",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        440
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8227619e-aacd-4288-bc21-052d97b77d87",
+              "name": "conversation",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5153bcd1-e9ee-40c6-8a04-48c74b612f98",
+      "name": "messages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3440,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"response\": \"{{ $json.output }}\"\n} ",
+        "options": {}
+      },
+      "id": "11b3fc07-09e4-4877-9f39-03c609177892",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        5720,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "id": "94080bbb-f4d6-41cb-8fd6-6ee881a1306c",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        4662,
+        558
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 584.136756451777,
+        "width": 768.3093052403206
+      },
+      "id": "dd62d711-11db-40d2-b269-4132bd4f956f",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox",
+        "sessionTTL": 300
+      },
+      "id": "a8d675ea-121d-471b-bcd8-06fe05d8e56d",
+      "name": "Redis Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        4760,
+        560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "0a8fb6f0-8dbe-4113-8321-d13ba4b27978",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3660,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "dd365391-a68b-4e7c-a8b1-0547dc894dc5",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        5162,
+        638
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox"
+      },
+      "id": "72c445a6-7a8f-40ec-b2f3-e07eccbf8be4",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4560,
+        420
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "7a428660-f673-4692-af26-d8b252f51466",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5042,
+        758
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=## Função\nResponder às perguntas do usuário e esclarecer suas dúvidas de maneira precisa e amigável.\n\n## Objetivo\nProcessar as mensagens do usuário e fornecer respostas claras e corretas, utilizando **sempre** as informações da TOOL \"store_info\" quando necessário.\n\n## Diretrizes de Atendimento\n- **Sempre** inicie a conversa de forma educada e cordial, perguntando se o usuário precisa de ajuda.\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Sempre que encontrar textos entre chaves `{}`, **obrigatoriamente** substitua pelo valor correspondente da TOOL \"store_info\". **Nunca** mostre o texto literal ao usuário.\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- **Sempre** personalize as respostas usando o nome do usuário, quando possível e apropriado.\n\n## Regras Essenciais\n- **Nunca invente informações.** A IA deve **sempre consultar** a TOOL \"store_info\" antes de fornecer qualquer resposta. Se a informação não estiver disponível, a IA deve dizer claramente que a informação não está disponível no momento.\n- **Nunca ofereça descontos** em planos ou serviços, a menos que esta informação esteja explicitamente disponível na TOOL \"store_info\".\n- **Toda resposta depende da consulta prévia** à TOOL \"store_info\". Se não houver dados disponíveis na TOOL, a IA deve **informar explicitamente** que não há dados suficientes no momento.\n\n## Sobre o Usuário\n- Nome do usuário: `{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}`\n- E-mail do usuário: `{{ $('userAccount').first().json.email ?? '' }}`\n- Endereço: `{{ $('userAccount').first().json.endereco ?? '' }}`\n- ID da sessão do usuário: `{{ $('messageInfo').first().json.unique_id }}`\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8be868f5-7a41-4968-a950-5bf0acff123f",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4560,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "name": "store_info",
+        "description": "use essa ferramenta para retornar informações sobre a empresa e seus produtos e serviços.",
+        "topK": 5
+      },
+      "id": "b37609db-d772-465a-8992-025f1e2555b4",
+      "name": "Vector Store Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "name": "post_status_whatsapp",
+        "description": "use essa ferramenta para postar uma mensagem no status do usuário, mas somente após a confirmação dele, lembre-se de pergunta a cor de fundo e fonte se usuário não tiver informado.\n\n# O texto a ser enviado na precisa ter entre entre 100 e 300 caracteres, você pode sugerir um alternativa, se ele desejar e aceitar.\n\n# Recomende no máximo 5 linhas com 44 caracteres por linha, mas aceite mais se o usuário deseja.\n\n# Formatação de Texto no Status\n* + texto + * = deixa o texto em negrito;\n_ + texto + _ = deixa o texto em itálico;\n~+ texto + ~ = deixa o texto sublinhado;",
+        "workflowId": {
+          "__rl": true,
+          "value": "LS8CfvECZu2puiXb",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "extra",
+              "type": "objectValue",
+              "objectValue": "={\n    \"tool\": \"post_status_whatsapp\",\n    \"evo_params\": {\n        \"url\": \"{{ $('messageInfo').first().json.evo_api }}\",\n        \"api_key\": \"{{ $('messageInfo').first().json.evo_api_key }}\",\n        \"instance\": \"{{ $('messageInfo').first().json.instance }}\"\n    },\n    \"query\":\n    {\n        \"type\": \"text\",\n        \"caption\": \"\",\n        \"allContacts\": false,\n        \"statusJidList\":\n        [\n            \"{{ $('messageInfo').first().json.remoteJid }}\"\n        ]\n    }\n}"
+            },
+            {
+              "name": "extra.evo_params.url",
+              "stringValue": "={{ $('messageInfo').first().json.evo_api }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"content\": {\n      \"type\": \"string\",\n      \"description\": \"texto a ser enviado\"\n    },\n    \"backgroundColor\": {\n      \"type\": \"string\",\n      \"description\": \"cor de fundo a ser usado, sempre enviar como hexadeicmal: #000000\"\n    },\n    \"font\": {\n      \"type\": \"number\",\n      \"description\": \"Escolha entre as fontes mais adequadas ao texto informado, somente se o usuário não especificar uma fonte das opções: 1 = SERIF, 2 = NORICAN_REGULAR, 3 = BRYNDAN_WRITE, 4 = BEBASNEUE_REGULAR ou 5 = OSWALD_HEAVY.\"\n    }\n  },\n  \"required\": [\n    \"content\",\n    \"backgroundColor\",\n    \"font\"\n  ]\n}"
+      },
+      "id": "eea9c392-094f-4f66-82df-5dcf96a44ea0",
+      "name": "post status whatsapp",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        4802,
+        738
+      ]
+    },
+    {
+      "parameters": {
+        "name": "reset_memory",
+        "description": "use essa ferramenta para limpar a memória da conversa",
+        "workflowId": {
+          "__rl": true,
+          "value": "LS8CfvECZu2puiXb",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "extra.tool",
+              "stringValue": "reset_memory"
+            },
+            {
+              "name": "unique_id",
+              "stringValue": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox"
+            }
+          ]
+        }
+      },
+      "id": "6dbb4dcc-9bcf-439d-bef8-2918c93ee68e",
+      "name": "reset memory",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        4922,
+        778
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "e48769e7-5358-406e-ae6d-e7c4572d09a6",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3600,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Faz o tratamento da Resposta",
+        "height": 282.92195447896734,
+        "width": 364.75697615056833,
+        "color": 5
+      },
+      "id": "3ab33dd0-105d-487e-917f-d3328e036342",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5300,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
+      },
+      "id": "982cbb6c-46b8-4f2a-9a79-eaaa3fc33521",
+      "name": "Beautify URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5360,
+        420
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
+      },
+      "id": "ca1a8883-af2d-4691-b53b-dbe9d1c0c712",
+      "name": "Categorizing Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5440,
+        860
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "708ac8ef-d996-41ee-b844-c5c2e148b1f2",
+      "name": "Split Out Messages",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        5600,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"').replace(/^\\n+/g, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "50129688-0df5-4315-9f15-b15c96ecd7e7",
+      "name": "Fix Text",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5520,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e0a0f323-1ded-4cdf-91da-20666ff76af1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        240
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+    },
+    {
+      "parameters": {
         "rules": {
           "values": [
             {
@@ -1109,333 +1531,20 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "bot-evolution",
-        "options": {}
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
       },
-      "id": "e9fdfa98-f4ae-419c-a26b-77550474c99d",
-      "name": "Webhook img",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        1240,
-        660
-      ],
-      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "bot-evolution",
-        "options": {}
-      },
-      "id": "02b09d48-1e1a-40f7-87ef-69d546caf5df",
-      "name": "Webhook audio",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        1240,
-        440
-      ],
-      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "8227619e-aacd-4288-bc21-052d97b77d87",
-              "name": "conversation",
-              "value": "={{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "5153bcd1-e9ee-40c6-8a04-48c74b612f98",
-      "name": "messages",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3440,
-        640
-      ]
-    },
-    {
-      "parameters": {
-        "respondWith": "json",
-        "responseBody": "={\n  \"message\": \"{{ $json.output }}\"\n} ",
-        "options": {}
-      },
-      "id": "11b3fc07-09e4-4877-9f39-03c609177892",
-      "name": "Respond to Webhook",
-      "type": "n8n-nodes-base.respondToWebhook",
+      "id": "30338ccf-16e0-49f8-808e-d2720eb2899b",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        5340,
-        380
-      ]
-    },
-    {
-      "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
-        "options": {
-          "temperature": 0.4
-        }
-      },
-      "id": "94080bbb-f4d6-41cb-8fd6-6ee881a1306c",
-      "name": "OpenAI Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        4082,
-        538
+        1080,
+        40
       ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
-        "height": 584.136756451777,
-        "width": 768.3093052403206
-      },
-      "id": "dd62d711-11db-40d2-b269-4132bd4f956f",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        3920,
-        280
-      ]
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox",
-        "sessionTTL": 300
-      },
-      "id": "a8d675ea-121d-471b-bcd8-06fe05d8e56d",
-      "name": "Redis Chat Memory",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.3,
-      "position": [
-        4180,
-        540
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $json.body ?? $json }}",
-        "options": {}
-      },
-      "id": "0a8fb6f0-8dbe-4113-8321-d13ba4b27978",
-      "name": "messageInfo",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3760,
-        640
-      ]
-    },
-    {
-      "parameters": {
-        "model": "llama-3.2-90b-text-preview",
-        "options": {
-          "temperature": 0
-        }
-      },
-      "id": "dd365391-a68b-4e7c-a8b1-0547dc894dc5",
-      "name": "Groq Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        4582,
-        618
-      ],
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox"
-      },
-      "id": "72c445a6-7a8f-40ec-b2f3-e07eccbf8be4",
-      "name": "reset memo",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        3980,
-        400
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "model": "text-embedding-3-small",
-        "options": {}
-      },
-      "id": "7a428660-f673-4692-af26-d8b252f51466",
-      "name": "Embeddings OpenAI",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1,
-      "position": [
-        4462,
-        738
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
-              "name": "system",
-              "value": "=**Você é um agente especializado em suporte e vendas.**\n\n**Nome do Agente:** William\n\n**Objetivo principal:** Tirar duvida sobre serviços/sistemas fornecidos pela empresa e  convencer o usuário de adquirir um plano, caso ele não tenha ainda.\n\nA data e hora atuais são **{{ $now.toISO() }}**. Todas as datas devem ser fornecidas no formato ISO nas requisições, não nas respostas para o usuário.\n\n# Responsabilidades\n1. Fornecer informações claras, educadas, informais e humoradas de acordo com a base de informações.\n2. Utilizar no **máximo 2 emojis** por resposta para manter a interação leve e amigável.\n3. Fornecer os **links direto, sem formatação**, quando solicitado.\n4. Manter o tom de conversa descontraído, com mensagens objetivas e curtas.\n5. **Dividir respostas longas** em partes para facilitar a compreensão.\n6. **NUNCA INVENTE INFORMAÇÃO** que não esteja na base de dados TOOL **ibox_info**.\n7. Pode adicionar o nome do usuário na resposta, quando achar necessário.\n8. **Sugira planos disponíveis** no sistema com base na necessidade do usuário, sempre consultando a base de dados **ibox_info**.",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8be868f5-7a41-4968-a950-5bf0acff123f",
-      "name": "config prompt",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3980,
-        640
-      ]
-    },
-    {
-      "parameters": {
-        "name": "ibox_info",
-        "description": "use essa ferramenta para retornar informações para serem usadas na geração das respostas, mas somente se tiver haver com a empresa ibox",
-        "topK": 3
-      },
-      "id": "b37609db-d772-465a-8992-025f1e2555b4",
-      "name": "Vector Store Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
-      "typeVersion": 1,
-      "position": [
-        4460,
-        500
-      ]
-    },
-    {
-      "parameters": {
-        "name": "post_status_whatsapp",
-        "description": "use essa ferramenta para postar uma mensagem no status do usuário, mas somente após a confirmação dele, lembre-se de pergunta a cor de fundo e fonte se usuário não tiver informado.\n\n# O texto a ser enviado na precisa ter entre entre 100 e 300 caracteres, você pode sugerir um alternativa, se ele desejar e aceitar.\n\n# Recomende no máximo 5 linhas com 44 caracteres por linha, mas aceite mais se o usuário deseja.\n\n# Formatação de Texto no Status\n* + texto + * = deixa o texto em negrito;\n_ + texto + _ = deixa o texto em itálico;\n~+ texto + ~ = deixa o texto sublinhado;",
-        "workflowId": {
-          "__rl": true,
-          "value": "LS8CfvECZu2puiXb",
-          "mode": "list",
-          "cachedResultName": "AI 4 iBox"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "extra",
-              "type": "objectValue",
-              "objectValue": "={\n    \"tool\": \"post_status_whatsapp\",\n    \"evo_params\": {\n        \"url\": \"{{ $('messageInfo').first().json.evo_api }}\",\n        \"api_key\": \"{{ $('messageInfo').first().json.evo_api_key }}\",\n        \"instance\": \"{{ $('messageInfo').first().json.instance }}\"\n    },\n    \"query\":\n    {\n        \"type\": \"text\",\n        \"caption\": \"\",\n        \"allContacts\": false,\n        \"statusJidList\":\n        [\n            \"{{ $('messageInfo').first().json.remoteJid }}\"\n        ]\n    }\n}"
-            },
-            {
-              "name": "extra.evo_params.url",
-              "stringValue": "={{ $('messageInfo').first().json.evo_api }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"content\": {\n      \"type\": \"string\",\n      \"description\": \"texto a ser enviado\"\n    },\n    \"backgroundColor\": {\n      \"type\": \"string\",\n      \"description\": \"cor de fundo a ser usado, sempre enviar como hexadeicmal: #000000\"\n    },\n    \"font\": {\n      \"type\": \"number\",\n      \"description\": \"Escolha entre as fontes mais adequadas ao texto informado, somente se o usuário não especificar uma fonte das opções: 1 = SERIF, 2 = NORICAN_REGULAR, 3 = BRYNDAN_WRITE, 4 = BEBASNEUE_REGULAR ou 5 = OSWALD_HEAVY.\"\n    }\n  },\n  \"required\": [\n    \"content\",\n    \"backgroundColor\",\n    \"font\"\n  ]\n}"
-      },
-      "id": "eea9c392-094f-4f66-82df-5dcf96a44ea0",
-      "name": "post status whatsapp",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        4222,
-        718
-      ]
-    },
-    {
-      "parameters": {
-        "name": "reset_memory",
-        "description": "use essa ferramenta para limpar a memória da conversa",
-        "workflowId": {
-          "__rl": true,
-          "value": "LS8CfvECZu2puiXb",
-          "mode": "list",
-          "cachedResultName": "AI 4 iBox"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "extra.tool",
-              "stringValue": "reset_memory"
-            },
-            {
-              "name": "unique_id",
-              "stringValue": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox"
-            }
-          ]
-        }
-      },
-      "id": "6dbb4dcc-9bcf-439d-bef8-2918c93ee68e",
-      "name": "reset memory",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        4342,
-        758
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "e48769e7-5358-406e-ae6d-e7c4572d09a6",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        3600,
-        260
-      ]
+      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa"
     },
     {
       "parameters": {
@@ -1452,8 +1561,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        4340,
-        620
+        4920,
+        640
       ],
       "credentials": {
         "qdrantApi": {
@@ -1464,176 +1573,183 @@
     },
     {
       "parameters": {
-        "text": "={{ $('messageInfo').item.json.conversation }}",
-        "schemaType": "manual",
-        "inputSchema": "{\n\t\"type\": \"object\",\n    \"properties\": {\n      \"info_identified\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"value\": {\n              \"type\": \"string\",\n              \"description\": \"Information provided by the user, such as name, email, phone number, or other relevant details\"\n            },\n            \"key\": {\n              \"type\": \"string\",\n              \"description\": \"any index of information collected\"\n            }\n          },\n          \"required\": [\n            \"value\",\n            \"key\"\n          ]\n        }\n      },\n      \"user_intent\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"description\": {\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"description\"\n        ]\n      }\n    }\n}",
+        "categories": {
+          "categories": [
+            {
+              "category": "duvidas",
+              "description": "usuário deseja tirar duvidas sobre a empresa, planos, etc"
+            },
+            {
+              "category": "compras",
+              "description": "usuário deseja efetuar assinatura de um pedido"
+            },
+            {
+              "category": "suporte",
+              "description": "usuário precisa de ajuda com sistema"
+            },
+            {
+              "category": "reclamacao",
+              "description": "usuário deseja fazer uma reclamação"
+            }
+          ]
+        },
         "options": {}
       },
-      "id": "b3e7663f-7d8c-4edc-b007-52397556091f",
-      "name": "Information Extractor",
-      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "id": "36cca171-c017-47f0-b936-f8ae521309e8",
+      "name": "Text Classifier",
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
       "typeVersion": 1,
       "position": [
-        5520,
-        380
-      ]
+        5420,
+        660
+      ],
+      "disabled": true
     },
     {
       "parameters": {
-        "model": "llama-3.2-11b-text-preview",
-        "options": {
-          "maxTokensToSample": 200,
-          "temperature": 0
-        }
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.user ?? {} }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": "={{ $json.user ? 120 : 60 }}"
       },
-      "id": "8f0d4541-8f97-4571-b7db-fcff5d184369",
-      "name": "Groq Chat Model1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "id": "78b72b0a-979e-4aa7-b68e-c640189b5561",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5520,
+        4260,
         580
       ],
       "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
         }
       }
     },
     {
       "parameters": {
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
         "options": {}
       },
-      "id": "a47881b3-7557-4bbf-a9d7-8d9bc971406c",
-      "name": "Sentiment Analysis",
-      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "id": "876e795b-9de0-45bf-9cff-35fe7a9793da",
+      "name": "Get Account User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4102,
+        579
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "hash",
+        "options": {}
+      },
+      "id": "9702f77f-ef44-4391-9f35-b22ec979793e",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        6460,
-        380
+        3902,
+        599
       ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e5304a61-5591-4381-a576-2664a0a2dde5",
+      "name": "has user account?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4102,
+        379
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "e51a9df4-46ab-46bc-a987-f44119f5accd",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3902,
+        379
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
       "disabled": true
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "id": "18585b09-05b2-4ae3-a4fc-039a9eab487c",
-      "name": "Text Classifier",
-      "type": "@n8n/n8n-nodes-langchain.textClassifier",
-      "typeVersion": 1,
-      "position": [
-        5680,
-        760
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "content": "# Faz o tratamento da Resposta",
-        "height": 282.92195447896734,
-        "width": 561.4289458648389,
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 435.2975787523367,
+        "width": 598.5677101799579,
         "color": 5
       },
-      "id": "3ab33dd0-105d-487e-917f-d3328e036342",
-      "name": "Sticky Note6",
+      "id": "223adefc-8236-4e11-989f-54f17bf2317e",
+      "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4720,
-        280
+        3840,
+        300
       ]
     },
     {
       "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
-      },
-      "id": "982cbb6c-46b8-4f2a-9a79-eaaa3fc33521",
-      "name": "Beautify URL",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4860,
-        380
-      ],
-      "executeOnce": false
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
-      },
-      "id": "ca1a8883-af2d-4691-b53b-dbe9d1c0c712",
-      "name": "Categorizing Message",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        5100,
-        600
-      ],
-      "executeOnce": false
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "output",
-        "include": "allOtherFields",
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
         "options": {}
       },
-      "id": "708ac8ef-d996-41ee-b844-c5c2e148b1f2",
-      "name": "Split Out Messages",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        5260,
-        600
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
-              "name": "output",
-              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"').replace(/^\\n+/g, '') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "50129688-0df5-4315-9f15-b15c96ecd7e7",
-      "name": "Fix Text",
+      "id": "f567771d-7ac9-4e7f-90e6-4e0160090056",
+      "name": "userAccount",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5060,
-        380
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "606ce8e5-61b9-4f02-8058-dd8f8caa683f",
-              "name": "values",
-              "value": "={{ $json.output.info_identified }}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "23bfcd97-9cc3-4e18-a5dd-933915215b56",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        6040,
-        260
+        4302,
+        379
       ]
     },
     {
@@ -1649,131 +1765,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        4120,
-        400
-      ]
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "id": "e0a0f323-1ded-4cdf-91da-20666ff76af1",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        1240,
-        240
-      ],
-      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user",
-        "value": "={{ $('Edit Fields').first().json.values }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 20
-      },
-      "id": "7ab32fbb-8b3f-4e71-8de6-0fc539f95611",
-      "name": "Redis",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        6680,
-        140
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "values",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "28fc3eba-b048-410f-8d48-0bcab576b53e",
-      "name": "Redis1",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        5880,
-        440
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user"
-      },
-      "id": "631c839b-7621-47f0-8761-6fbeffff33df",
-      "name": "Redis2",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        5740,
-        580
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "7acaaac2-306f-40b6-8eb7-f4f3fd84de0d",
-              "name": "values",
-              "value": "={{ $json.values() }}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "524a735e-9fac-4286-b779-7da4f36e9a22",
-      "name": "Edit Fields1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        6040,
-        440
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "5a198543-8638-4b44-b4ca-8d931010ad8c",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        6220,
-        280
+        4700,
+        420
       ]
     }
   ],
@@ -1856,13 +1849,6 @@
         }
       }
     ],
-    "AI Agent": [
-      {
-        "json": {
-          "output": "Oi, **William**! Que coincidência, meu nome também é William! 😄\nComo posso te ajudar hoje?"
-        }
-      }
-    ],
     "Webhook": [
       {
         "json": {
@@ -1890,36 +1876,11 @@
               "serverUrl": "https://apiwp.wmst.com.br",
               "apiKey": "PxzMJa1fEWPgCdgpGjz7kftLwaV857RI"
             },
-            "query": "bot, oi, me chamo William, tenho uma lanchonete, sou de lorena, gostaria de saber se vocês tem sistema de delivery",
+            "query": "qual valor?",
             "user": "5512982184879@s.whatsapp.net"
           },
           "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
           "executionMode": "production"
-        }
-      }
-    ],
-    "Information Extractor": [
-      {
-        "json": {
-          "output": {
-            "info_identified": [
-              {
-                "value": "William",
-                "key": "nome"
-              },
-              {
-                "value": "Lorena",
-                "key": "cidade"
-              },
-              {
-                "value": "sistema de delivery",
-                "key": "interesse"
-              }
-            ],
-            "user_intent": {
-              "description": "pesquisar sobre sistema de delivery"
-            }
-          }
         }
       }
     ]
@@ -1942,7 +1903,7 @@
       "name": "Backup"
     }
   ],
-  "triggerCount": 1,
-  "updatedAt": "2024-10-16T03:24:00.329Z",
-  "versionId": "1720236a-fb8a-4f48-be01-ec868d26aba1"
+  "triggerCount": 3,
+  "updatedAt": "2024-10-16T05:36:56.147Z",
+  "versionId": "56abbb22-68e0-4525-a65b-124389be3772"
 }
