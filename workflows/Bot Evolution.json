@@ -255,39 +255,6 @@
         ]
       ]
     },
-    "Vector Store Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "post status whatsapp": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "reset memory": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Merge": {
       "main": [
         [
@@ -393,17 +360,6 @@
         ]
       ]
     },
-    "Qdant Vector Store": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "set user account": {
       "main": [
         [
@@ -472,6 +428,226 @@
           {
             "node": "config prompt",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion1": {
+      "main": [
+        [
+          {
+            "node": "Notion3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion3": {
+      "main": [
+        [
+          {
+            "node": "Notion2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis save user info": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis get user info": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis reset user info": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Redis4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Redis7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis4": {
+      "main": [
+        [
+          {
+            "node": "Redis5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis5": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis3": {
+      "main": [
+        [
+          {
+            "node": "Redis6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis7": {
+      "main": [
+        [
+          {
+            "node": "Redis3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get current prompt": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "save new prompt": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -1026,8 +1202,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        5720,
-        420
+        5820,
+        260
       ]
     },
     {
@@ -1042,7 +1218,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        4662,
+        4642,
         558
       ],
       "credentials": {
@@ -1071,14 +1247,15 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox",
-        "sessionTTL": 300
+        "sessionTTL": 300,
+        "contextWindowLength": 2
       },
       "id": "a8d675ea-121d-471b-bcd8-06fe05d8e56d",
       "name": "Redis Chat Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        4760,
+        4740,
         560
       ],
       "credentials": {
@@ -1115,7 +1292,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        5162,
+        5142,
         638
       ],
       "credentials": {
@@ -1135,7 +1312,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4560,
+        4540,
         420
       ],
       "alwaysOutputData": true,
@@ -1157,7 +1334,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        5042,
+        5022,
         758
       ],
       "credentials": {
@@ -1174,7 +1351,7 @@
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=## Função\nResponder às perguntas do usuário e esclarecer suas dúvidas de maneira precisa e amigável.\n\n## Objetivo\nProcessar as mensagens do usuário e fornecer respostas claras e corretas, utilizando **sempre** as informações da TOOL \"store_info\" quando necessário.\n\n## Diretrizes de Atendimento\n- **Sempre** inicie a conversa de forma educada e cordial, perguntando se o usuário precisa de ajuda.\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Sempre que encontrar textos entre chaves `{}`, **obrigatoriamente** substitua pelo valor correspondente da TOOL \"store_info\". **Nunca** mostre o texto literal ao usuário.\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- **Sempre** personalize as respostas usando o nome do usuário, quando possível e apropriado.\n\n## Regras Essenciais\n- **Nunca invente informações.** A IA deve **sempre consultar** a TOOL \"store_info\" antes de fornecer qualquer resposta. Se a informação não estiver disponível, a IA deve dizer claramente que a informação não está disponível no momento.\n- **Nunca ofereça descontos** em planos ou serviços, a menos que esta informação esteja explicitamente disponível na TOOL \"store_info\".\n- **Toda resposta depende da consulta prévia** à TOOL \"store_info\". Se não houver dados disponíveis na TOOL, a IA deve **informar explicitamente** que não há dados suficientes no momento.\n\n## Sobre o Usuário\n- Nome do usuário: `{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}`\n- E-mail do usuário: `{{ $('userAccount').first().json.email ?? '' }}`\n- Endereço: `{{ $('userAccount').first().json.endereco ?? '' }}`\n- ID da sessão do usuário: `{{ $('messageInfo').first().json.unique_id }}`\n",
+              "value": "## Função\nResponder às perguntas do usuário e esclarecer suas dúvidas de maneira precisa e amigável.\n\n## Objetivo\nProcessar as mensagens do usuário e fornecer respostas claras e corretas, utilizando **sempre** as informações da TOOL \"store_info\" quando necessário.\n\n## Diretrizes de Atendimento\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n\n## **Sempre salve informações relevantes para que possa ser usados posteriormente**\n\n## Sobre o Usuário\n- ID da sessão do usuário: `{{ $('messageInfo').first().json.unique_id }}`\n",
               "type": "string"
             }
           ]
@@ -1186,22 +1363,22 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4560,
-        660
+        4540,
+        680
       ]
     },
     {
       "parameters": {
         "name": "store_info",
         "description": "use essa ferramenta para retornar informações sobre a empresa e seus produtos e serviços.",
-        "topK": 5
+        "topK": 10
       },
       "id": "b37609db-d772-465a-8992-025f1e2555b4",
       "name": "Vector Store Tool",
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        5040,
+        5020,
         520
       ]
     },
@@ -1237,40 +1414,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        4802,
-        738
-      ]
-    },
-    {
-      "parameters": {
-        "name": "reset_memory",
-        "description": "use essa ferramenta para limpar a memória da conversa",
-        "workflowId": {
-          "__rl": true,
-          "value": "LS8CfvECZu2puiXb",
-          "mode": "list",
-          "cachedResultName": "AI 4 iBox"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "extra.tool",
-              "stringValue": "reset_memory"
-            },
-            {
-              "name": "unique_id",
-              "stringValue": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox"
-            }
-          ]
-        }
-      },
-      "id": "6dbb4dcc-9bcf-439d-bef8-2918c93ee68e",
-      "name": "reset memory",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        4922,
-        778
+        5020,
+        920
       ]
     },
     {
@@ -1300,8 +1445,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5300,
-        300
+        5420,
+        120
       ]
     },
     {
@@ -1314,8 +1459,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5360,
-        420
+        5460,
+        260
       ],
       "executeOnce": false
     },
@@ -1329,8 +1474,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5440,
-        860
+        5640,
+        840
       ],
       "executeOnce": false
     },
@@ -1345,8 +1490,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        5600,
-        860
+        5800,
+        840
       ]
     },
     {
@@ -1368,8 +1513,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5520,
-        420
+        5620,
+        260
       ]
     },
     {
@@ -1548,31 +1693,6 @@
     },
     {
       "parameters": {
-        "qdrantCollection": {
-          "__rl": true,
-          "value": "ibox_delivery",
-          "mode": "list",
-          "cachedResultName": "ibox_delivery"
-        },
-        "options": {}
-      },
-      "id": "49ad216b-e33b-4cc7-8141-da6cd41ec389",
-      "name": "Qdant Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
-      "typeVersion": 1,
-      "position": [
-        4920,
-        640
-      ],
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "categories": {
           "categories": [
             {
@@ -1600,8 +1720,8 @@
       "type": "@n8n/n8n-nodes-langchain.textClassifier",
       "typeVersion": 1,
       "position": [
-        5420,
-        660
+        5640,
+        640
       ],
       "disabled": true
     },
@@ -1754,6 +1874,424 @@
     },
     {
       "parameters": {
+        "resource": "user",
+        "userId": "a2e0deed-baee-4e49-b704-463e78c525de"
+      },
+      "id": "9e20f7a8-fd3c-4a42-8ae4-412a2e334e9d",
+      "name": "Notion1",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        1100
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "returnAll": true
+      },
+      "id": "417a2534-f3e2-4f66-88b3-4dbd07dcc144",
+      "name": "Notion2",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        4060,
+        1100
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "options": {}
+      },
+      "id": "64326f43-c90e-4a9c-bc2d-8fdbf38edd36",
+      "name": "Notion3",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        3900,
+        1100
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "1efcdae3-5c36-41d0-b2c5-510a3ebccce9",
+      "name": "Calculator",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        4920,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user",
+        "messageData": "={{ $fromAI('value', 'informação que julge necessário guardar', 'string') }}",
+        "tail": true
+      },
+      "id": "7a9c38a6-f379-4733-aa14-b14773a81a0c",
+      "name": "Redis save user info",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        4500,
+        1060
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "keys",
+        "keyPattern": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user"
+      },
+      "id": "c5c78d58-ffca-4bcb-99f5-3b2677ed02ee",
+      "name": "Redis get user info",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        4460,
+        920
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user"
+      },
+      "id": "a0e93bc4-ad14-4fc3-a6c0-a5daceeed351",
+      "name": "Redis reset user info",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        4540,
+        1200
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "call this tool to reset chat memory",
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox"
+      },
+      "id": "561d8b47-267b-4eff-8b03-21594e4d2b5d",
+      "name": "reset memory",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        4820,
+        920
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "keys",
+        "keyPattern": "memo_ibox_cli_23_5512982184879_ibox_user"
+      },
+      "id": "f069dc5b-01c5-4805-844a-ac10c5408f11",
+      "name": "Redis",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5000,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "memo_ibox_cli_23_5512982184879_ibox_user",
+        "messageData": "teste",
+        "tail": true
+      },
+      "id": "bffdeceb-1e3d-4b26-873a-2a5af4d24fef",
+      "name": "Redis1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4480,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "memo_ibox_cli_23_5512982184879_ibox_user"
+      },
+      "id": "5af55b08-3381-40f8-89d2-1fd3c0335356",
+      "name": "Redis2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50e81348-9d87-4dcf-81d7-8a8a8472955f",
+              "name": "content",
+              "value": "={{ $json.memo_ibox_cli_23_5512982184879_ibox_user.unique() }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1b7dd2a7-c694-4e25-aa11-e379910b5a29",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5180,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "memo_ibox_cli_23_5512982184879_ibox_user",
+        "messageData": "={{ $json.content }}"
+      },
+      "id": "09b76f24-9441-4ce2-880c-4024c02411b7",
+      "name": "Redis3",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5480,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "memo_ibox_cli_23_5512982184879_ibox_user",
+        "messageData": "teste",
+        "tail": true
+      },
+      "id": "88aa2799-c8a2-4112-9ab8-191acb0bde79",
+      "name": "Redis4",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4660,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "memo_ibox_cli_23_5512982184879_ibox_user",
+        "messageData": "william",
+        "tail": true
+      },
+      "id": "7af347fb-ad2b-4d15-b614-5ef0c55e65e9",
+      "name": "Redis5",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4820,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "memo_ibox_cli_23_5512982184879_ibox_user",
+        "key": "memo_ibox_cli_23_5512982184879_ibox_user",
+        "options": {}
+      },
+      "id": "e99a7c3c-6652-4c4a-9708-afc64f1fb349",
+      "name": "Redis6",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5640,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "be2ac622-2a87-4484-9b84-1758159b48bf",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        4160,
+        1460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "memo_ibox_cli_23_5512982184879_ibox_user"
+      },
+      "id": "f3e2b1b5-9f5b-43f8-a1be-35c8236e22ce",
+      "name": "Redis7",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5340,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "ibox_delivery",
+          "mode": "list",
+          "cachedResultName": "ibox_delivery"
+        },
+        "options": {}
+      },
+      "id": "49ad216b-e33b-4cc7-8141-da6cd41ec389",
+      "name": "Qdant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        4900,
+        640
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "prompt",
+        "value": "## Função\nResponder às perguntas do usuário e esclarecer suas dúvidas de maneira precisa e amigável.\n\n## Objetivo\nProcessar as mensagens do usuário e fornecer respostas claras e corretas, utilizando **sempre** as informações da TOOL \"store_info\" quando necessário.\n\n## Diretrizes de Atendimento\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n\n## **Sempre salve informações relevantes para que possa ser usados posteriormente**\n\n## Sobre o Usuário\n- ID da sessão do usuário: `{{ $('messageInfo').first().json.unique_id }}`\n",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "e484ddbe-b3df-4b1e-9838-bda582f4dedb",
+      "name": "Redis8",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4160,
+        880
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
@@ -1765,9 +2303,54 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        4700,
+        4680,
         420
       ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "prompt",
+        "key": "prompt",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "2741a72e-828b-4f5d-9096-824d42390038",
+      "name": "get current prompt",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        4680,
+        1060
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "prompt",
+        "value": "={{ $fromAI('prompt', 'prompt final gerado pela AI', 'string') }}",
+        "keyType": "string"
+      },
+      "id": "3e567622-54c1-452f-93e6-894578b8547f",
+      "name": "save new prompt",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        4720,
+        1200
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1904,6 +2487,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-10-16T05:36:56.147Z",
-  "versionId": "56abbb22-68e0-4525-a65b-124389be3772"
+  "updatedAt": "2024-10-16T22:05:50.445Z",
+  "versionId": "5c23e7b5-e3e5-4b3b-bd2b-251805f1d864"
 }
