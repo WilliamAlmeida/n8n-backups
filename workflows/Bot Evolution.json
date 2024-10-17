@@ -477,17 +477,6 @@
         ]
       ]
     },
-    "Redis get user info": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Vector Store Tool": {
       "ai_tool": [
         [
@@ -626,28 +615,6 @@
           {
             "node": "Vector Store Tool",
             "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get current prompt": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "save new prompt": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -1962,26 +1929,6 @@
       "typeVersion": 1,
       "position": [
         4500,
-        1060
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "keys",
-        "keyPattern": "=memo_{{ $('messageInfo').first().json.unique_id }}_ibox_user"
-      },
-      "id": "c5c78d58-ffca-4bcb-99f5-3b2677ed02ee",
-      "name": "Redis get user info",
-      "type": "n8n-nodes-base.redisTool",
-      "typeVersion": 1,
-      "position": [
-        4460,
         920
       ],
       "credentials": {
@@ -2002,7 +1949,7 @@
       "typeVersion": 1,
       "position": [
         4540,
-        1200
+        1060
       ],
       "credentials": {
         "redis": {
@@ -2268,30 +2215,6 @@
     },
     {
       "parameters": {
-        "operation": "set",
-        "key": "prompt",
-        "value": "## Função\nResponder às perguntas do usuário e esclarecer suas dúvidas de maneira precisa e amigável.\n\n## Objetivo\nProcessar as mensagens do usuário e fornecer respostas claras e corretas, utilizando **sempre** as informações da TOOL \"store_info\" quando necessário.\n\n## Diretrizes de Atendimento\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n\n## **Sempre salve informações relevantes para que possa ser usados posteriormente**\n\n## Sobre o Usuário\n- ID da sessão do usuário: `{{ $('messageInfo').first().json.unique_id }}`\n",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "e484ddbe-b3df-4b1e-9838-bda582f4dedb",
-      "name": "Redis8",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4160,
-        880
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
@@ -2306,51 +2229,6 @@
         4680,
         420
       ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "prompt",
-        "key": "prompt",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "2741a72e-828b-4f5d-9096-824d42390038",
-      "name": "get current prompt",
-      "type": "n8n-nodes-base.redisTool",
-      "typeVersion": 1,
-      "position": [
-        4680,
-        1060
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "prompt",
-        "value": "={{ $fromAI('prompt', 'prompt final gerado pela AI', 'string') }}",
-        "keyType": "string"
-      },
-      "id": "3e567622-54c1-452f-93e6-894578b8547f",
-      "name": "save new prompt",
-      "type": "n8n-nodes-base.redisTool",
-      "typeVersion": 1,
-      "position": [
-        4720,
-        1200
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
     }
   ],
   "pinData": {
@@ -2487,6 +2365,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-10-16T22:05:50.445Z",
-  "versionId": "5c23e7b5-e3e5-4b3b-bd2b-251805f1d864"
+  "updatedAt": "2024-10-16T23:38:34.621Z",
+  "versionId": "2501475f-b5f5-498a-89ff-039f192d4cee"
 }
