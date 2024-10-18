@@ -175,11 +175,6 @@
             "index": 0
           },
           {
-            "node": "Notion - Retrieve Page Content",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Scroll Points",
             "type": "main",
             "index": 0
@@ -302,17 +297,6 @@
         ]
       ]
     },
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "When clicking ‘Test workflow’": {
       "main": [
         [
@@ -372,30 +356,19 @@
       "ai_outputParser": [
         [
           {
-            "node": "Auto-fixing Output Parser",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Groq Chat Model3": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Auto-fixing Output Parser",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser1": {
-      "ai_outputParser": [
-        [
-          {
             "node": "Basic LLM Chain1",
             "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Summarize1",
+            "type": "main",
             "index": 0
           }
         ]
@@ -406,17 +379,6 @@
         [
           {
             "node": "Summarize",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Basic LLM Chain1": {
-      "main": [
-        [
-          {
-            "node": "Qdrant Vector Store2",
             "type": "main",
             "index": 0
           }
@@ -1025,7 +987,7 @@
         "nodeCredentialType": "qdrantApi",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n    \"with_payload\": [\"content\", \"metadata\"],\n    \"filter\": {\n      \"must\": [\n        {\n          \"key\": \"metadata.pageId\",\n          \"match\": {\n            \"value\": \"1227c386-d922-80f6-a189-da47933003d0\"\n          }\n        }\n      ]\n    }\n}",
+        "jsonBody": "{\n    \"with_payload\": [\"content\", \"metadata\"],\n    \"filter\": {\n      \"must\": [\n        {\n          \"key\": \"metadata.pageTitle\",\n          \"match\": {\n            \"value\": \"1227c386-d922-80f6-a189-da47933003d0\"\n          }\n        }\n      ]\n    }\n}",
         "options": {
           "response": {
             "response": {
@@ -1176,8 +1138,7 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1475,8 +1436,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1300,
-        960
+        1000,
+        940
       ],
       "credentials": {
         "groqApi": {
@@ -1486,60 +1447,63 @@
       }
     },
     {
-      "parameters": {},
-      "id": "b265c92b-ec6d-46c7-b454-e08584620aa5",
-      "name": "Auto-fixing Output Parser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
-      "typeVersion": 1,
-      "position": [
-        1440,
-        1100
-      ]
-    },
-    {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.tags\",\n      \"match\": {\n        \"value\": \"\"\n      }\n    }\n  ]\n}"
+        "schemaType": "manual",
+        "inputSchema": "{\"type\":\"object\",\"properties\":{\"should\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\",\"description\":\"sempre coloque metadata.tags\",\"value\":\"metadata.tags\"},\"match\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}},\"required\":[\"value\"]}},\"required\":[\"key\",\"match\"]}}},\"required\":[\"should\"]}"
       },
-      "id": "24b0097f-7fd9-4bb0-b5a0-d7a57df31df7",
+      "id": "3eb61933-22be-43fb-9fe6-eb11bbf4e56c",
       "name": "Structured Output Parser",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        1500,
-        1220
+        1140,
+        940
       ]
     },
     {
       "parameters": {
-        "model": "llama3-groq-70b-8192-tool-use-preview",
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "document.pageContent",
+              "separateBy": "other",
+              "customSeparator": "\\n\\n"
+            }
+          ]
+        },
+        "fieldsToSplitBy": "document.metadata.pageTitle",
         "options": {}
       },
-      "id": "7ff78c5e-9ca5-4937-b17f-939d215de29c",
-      "name": "Groq Chat Model3",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "id": "268948dd-8c0e-4f0e-bf0d-e2a7be193347",
+      "name": "Summarize1",
+      "type": "n8n-nodes-base.summarize",
       "typeVersion": 1,
       "position": [
-        1380,
-        1240
-      ],
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
+        1360,
+        760
+      ]
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.tags\",\n      \"match\": {\n        \"value\": \"\"\n      }\n    }\n  ]\n}"
+        "promptType": "define",
+        "text": "=oi, quais planos vocês tem?",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are an expert in keyword identification. Your task is to generate highly relevant keywords based on the content provided by the user."
+            }
+          ]
+        }
       },
-      "id": "3eb61933-22be-43fb-9fe6-eb11bbf4e56c",
-      "name": "Structured Output Parser1",
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.2,
+      "id": "b96e61c6-a51a-46c4-a60c-b47f7e452eef",
+      "name": "Basic LLM Chain1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
       "position": [
-        1460,
-        940
+        1000,
+        760
       ]
     },
     {
@@ -1551,11 +1515,9 @@
           "mode": "list",
           "cachedResultName": "notion_ibox"
         },
-        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
-        "topK": 3,
-        "options": {
-          "searchFilterJson": "={\n  \"should\": [\n    {\n      \"key\": \"metadata.batch\",\n      \"match\": {\n        \"value\": 12345\n      }\n    }\n  ]\n}\n\n{{ $json.output.should }}"
-        }
+        "prompt": "=oi, quais planos vocês tem?",
+        "topK": 1,
+        "options": {}
       },
       "id": "ab9808e5-b326-44d0-8eca-f075a84ec464",
       "name": "Qdrant Vector Store2",
@@ -1571,28 +1533,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.chatInput }}",
-        "hasOutputParser": true,
-        "messages": {
-          "messageValues": [
-            {
-              "message": "You are an expert in keyword identification. Your task is to generate highly relevant keywords based on the content provided by the user."
-            }
-          ]
-        }
-      },
-      "id": "b96e61c6-a51a-46c4-a60c-b47f7e452eef",
-      "name": "Basic LLM Chain1",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        1340,
-        760
-      ]
     }
   ],
   "pinData": {
@@ -2744,6 +2684,27 @@
         "json": {
           "object": "block",
           "parent_id": "1227c386-d922-80f6-a189-da47933003d0",
+          "id": "1227c386-d922-8073-82dc-d5f3a46c4f24",
+          "parent": {
+            "type": "page_id",
+            "page_id": "1227c386-d922-80f6-a189-da47933003d0"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "121d872b-594c-8122-8b02-0002916a30c8"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "root_id": "1227c386-d922-80f6-a189-da47933003d0",
+          "content": ""
+        }
+      },
+      {
+        "json": {
+          "object": "block",
+          "parent_id": "1227c386-d922-80f6-a189-da47933003d0",
           "id": "1227c386-d922-8080-920d-e53c44d9ec3e",
           "parent": {
             "type": "page_id",
@@ -2845,6 +2806,46 @@
           "content": "Tempo de Resposta: Até 24 horas"
         }
       }
+    ],
+    "Basic LLM Chain1": [
+      {
+        "json": {
+          "output": {
+            "should": [
+              {
+                "key": "metadata.tags",
+                "match": {
+                  "value": "Planos"
+                }
+              },
+              {
+                "key": "metadata.tags",
+                "match": {
+                  "value": "Assinaturas"
+                }
+              },
+              {
+                "key": "metadata.tags",
+                "match": {
+                  "value": "Ofertas"
+                }
+              },
+              {
+                "key": "metadata.tags",
+                "match": {
+                  "value": "Preços"
+                }
+              },
+              {
+                "key": "metadata.tags",
+                "match": {
+                  "value": "Serviços"
+                }
+              }
+            ]
+          }
+        }
+      }
     ]
   },
   "settings": {},
@@ -2858,6 +2859,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-17T15:40:04.245Z",
-  "versionId": "d1da09f6-ea3e-43d0-85d0-c01f442f7ce5"
+  "updatedAt": "2024-10-18T03:02:11.904Z",
+  "versionId": "d658c2af-0d87-4332-b1e1-abd47c5c3116"
 }
