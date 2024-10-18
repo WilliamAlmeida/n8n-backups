@@ -297,11 +297,6 @@
             "node": "delete vector store",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -330,13 +325,7 @@
     },
     "userAccount": {
       "main": [
-        [
-          {
-            "node": "config prompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Qdant Vector Store": {
@@ -348,11 +337,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Litellm Chat Model": {
-      "ai_languageModel": [
-        []
       ]
     },
     "Groq Chat Model": {
@@ -1291,6 +1275,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-15T18:03:24.415Z",
-  "versionId": "0344e85c-072b-4d33-b3f6-5058f26a3f55"
+  "updatedAt": "2024-10-18T03:05:07.156Z",
+  "versionId": "d5072345-e7e1-43f8-bf4e-c7ed4feb92af"
 }
