@@ -122,7 +122,7 @@
       "main": [
         [
           {
-            "node": "Qdrant Vector Store",
+            "node": "Loop Over Items1",
             "type": "main",
             "index": 0
           }
@@ -155,32 +155,7 @@
       "main": [
         [
           {
-            "node": "Get Collection Details",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "List Collections",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Retrive Points",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Check Collection Existence",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Scroll Points",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Scroll Points All",
+            "node": "Notion - Retrieve Page Content",
             "type": "main",
             "index": 0
           }
@@ -198,17 +173,6 @@
         ]
       ]
     },
-    "Qdrant Vector Store": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Embeddings OpenAI1": {
       "ai_embedding": [
         [
@@ -220,44 +184,11 @@
         ]
       ]
     },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Summarize": {
       "main": [
         [
           {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
+            "node": "Join Question Content",
             "type": "main",
             "index": 0
           }
@@ -297,17 +228,6 @@
         ]
       ]
     },
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
-          {
-            "node": "baseInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Recursive Character Text Splitter": {
       "ai_textSplitter": [
         [
@@ -341,33 +261,226 @@
         ]
       ]
     },
-    "Groq Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Basic LLM Chain1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Structured Output Parser": {
       "ai_outputParser": [
         [
           {
-            "node": "Basic LLM Chain1",
+            "node": "Generate Keywords",
             "type": "ai_outputParser",
             "index": 0
           }
         ]
       ]
     },
-    "Basic LLM Chain1": {
+    "messageInfo": {
       "main": [
         [
           {
-            "node": "Summarize1",
+            "node": "Generate Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Join Question Content": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Keywords2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI3": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create metadata and load content1": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter1": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Create metadata and load content1",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store3": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Keywords2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Keywords2",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Keywords2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Keywords",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Keywords": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store2",
             "type": "main",
             "index": 0
           }
@@ -418,8 +531,8 @@
       "name": "Embeddings OpenAI",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "position": [
-        3240,
-        580
+        3440,
+        -240
       ],
       "typeVersion": 1,
       "credentials": {
@@ -431,19 +544,6 @@
     },
     {
       "parameters": {
-        "chunkOverlap": 100
-      },
-      "id": "6d2579b8-376f-44c3-82e8-9dc608efd98b",
-      "name": "Token Splitter",
-      "type": "@n8n/n8n-nodes-langchain.textSplitterTokenSplitter",
-      "position": [
-        3380,
-        760
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
         "resource": "block",
         "operation": "getAll",
         "blockId": {
@@ -451,7 +551,7 @@
           "value": "https://www.notion.so/iBox-Delivery-1217c386d92280e5b2d2f380fec51672",
           "mode": "url"
         },
-        "limit": 1,
+        "limit": 2,
         "simplifyOutput": false
       },
       "id": "e4a6f524-e3f5-4d02-949a-8523f2d21965",
@@ -507,7 +607,7 @@
       "type": "n8n-nodes-base.filter",
       "position": [
         2240,
-        20
+        -100
       ],
       "typeVersion": 2
     },
@@ -533,6 +633,10 @@
               {
                 "name": "pageType",
                 "value": "={{ $('Loop Over Items').item.json.type.split('_')[1] }}"
+              },
+              {
+                "name": "keywords",
+                "value": "={{ $fromAI(\"keywords\", \"\", \"string\", null) }}"
               }
             ]
           }
@@ -542,8 +646,8 @@
       "name": "Create metadata and load content",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "position": [
-        3420,
-        600
+        3520,
+        -240
       ],
       "typeVersion": 1
     },
@@ -568,7 +672,7 @@
       "type": "n8n-nodes-base.summarize",
       "position": [
         2440,
-        20
+        -100
       ],
       "typeVersion": 1,
       "notes": "Summarize - Concatenate Notion's blocks content"
@@ -582,7 +686,8 @@
       "position": [
         920,
         340
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -599,18 +704,17 @@
     },
     {
       "parameters": {
-        "amount": 1
+        "amount": 0.5
       },
       "id": "12cf521a-ce7a-487d-96d5-e5fe0262dae4",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3640,
-        380
+        3740,
+        -100
       ],
-      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc",
-      "disabled": true
+      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc"
     },
     {
       "parameters": {
@@ -740,7 +844,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3040,
+        2640,
         380
       ]
     },
@@ -761,7 +865,7 @@
       "typeVersion": 2.2,
       "position": [
         2060,
-        20
+        -100
       ],
       "executeOnce": true,
       "credentials": {
@@ -841,7 +945,7 @@
             {
               "id": "54e5667d-a9d0-443a-9807-d15c93656348",
               "name": "content",
-              "value": "={{ $('Summarize - Concatenate').item.json.concatenated_content }}",
+              "value": "={{ $json.concatenated_content }}",
               "type": "string"
             }
           ]
@@ -853,8 +957,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3040,
-        20
+        2640,
+        -100
       ]
     },
     {
@@ -873,8 +977,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1540,
-        -100
+        1260,
+        -160
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -904,8 +1008,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1260,
-        -380
+        980,
+        -440
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -935,8 +1039,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1260,
-        -240
+        980,
+        -300
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -966,8 +1070,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1260,
-        -100
+        980,
+        -160
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1002,8 +1106,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1540,
-        -380
+        1260,
+        -440
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1039,7 +1143,7 @@
       "typeVersion": 4.2,
       "position": [
         2060,
-        200
+        80
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1048,7 +1152,8 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1073,8 +1178,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1540,
-        -240
+        1260,
+        -300
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1103,7 +1208,7 @@
       "typeVersion": 4.2,
       "position": [
         2060,
-        580
+        540
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1114,31 +1219,6 @@
         }
       },
       "disabled": true
-    },
-    {
-      "parameters": {
-        "mode": "insert",
-        "qdrantCollection": {
-          "__rl": true,
-          "value": "={{ $('baseInfo').item.json.vector_name }}",
-          "mode": "id"
-        },
-        "options": {}
-      },
-      "id": "14fb9cf2-2164-49ac-8558-88cc90a0270c",
-      "name": "Qdrant Vector Store",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
-      "typeVersion": 1,
-      "position": [
-        3280,
-        380
-      ],
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      }
     },
     {
       "parameters": {
@@ -1162,28 +1242,6 @@
     },
     {
       "parameters": {
-        "model": "llama-3.2-90b-text-preview",
-        "options": {
-          "temperature": 0.3
-        }
-      },
-      "id": "3367cc85-f24c-4e15-a881-480714f3adc9",
-      "name": "Groq Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        2640,
-        920
-      ],
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "fieldsToSummarize": {
           "values": [
             {
@@ -1195,38 +1253,17 @@
           ]
         },
         "fieldsToSplitBy": "document.metadata.pageTitle",
-        "options": {}
+        "options": {
+          "continueIfFieldNotFound": true
+        }
       },
       "id": "b8647a48-5de3-42e4-a6b0-a240cd2726a3",
       "name": "Summarize",
       "type": "n8n-nodes-base.summarize",
       "typeVersion": 1,
       "position": [
-        2040,
-        760
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "8e2d740b-6861-4b2e-a6c9-aca75b551540",
-              "name": "content",
-              "value": "={{ $json.document_metadata_pageTitle }}: {{ $json.concatenated_document_pageContent }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "9ca1a45b-e6cb-404d-8b93-7094c2bd4318",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2200,
-        760
+        2120,
+        840
       ]
     },
     {
@@ -1238,17 +1275,15 @@
             }
           ]
         },
-        "options": {
-          "mergeLists": true
-        }
+        "options": {}
       },
       "id": "b66a1b47-5ee9-4dfd-84eb-e10aec98cd52",
       "name": "Aggregate",
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2360,
-        760
+        2480,
+        840
       ]
     },
     {
@@ -1288,32 +1323,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $('When chat message received').item.json.chatInput }}",
-        "messages": {
-          "messageValues": [
-            {
-              "type": "AIMessagePromptTemplate",
-              "message": "={{ $json.content.join('\\\\n\\\\n').replaceAll('\\\\n', '\\n') }}"
-            },
-            {
-              "message": "- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n\n## Diretrizes\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais."
-            }
-          ]
-        }
-      },
-      "id": "97702057-35be-49db-af74-beda09c4efda",
-      "name": "Basic LLM Chain",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        2620,
-        760
-      ],
-      "executeOnce": true
-    },
-    {
-      "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
           "temperature": 0.3
@@ -1336,20 +1345,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "id": "5fbc7e7b-49a5-4007-801c-381e1b95b38a",
-      "name": "When chat message received",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        1000,
-        1240
-      ],
-      "webhookId": "ad878379-a6a9-43c2-9734-ae0ce55a7ec8"
-    },
-    {
-      "parameters": {
         "chunkOverlap": 100,
         "options": {
           "splitCode": "markdown"
@@ -1360,8 +1355,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        3500,
-        760
+        3520,
+        -360
       ]
     },
     {
@@ -1374,8 +1369,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        1700,
-        920
+        1780,
+        1000
       ],
       "credentials": {
         "openAiApi": {
@@ -1428,16 +1423,132 @@
     },
     {
       "parameters": {
-        "model": "llama-3.2-90b-text-preview",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"keywords\": {\n      \"type\": \"array\",\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  }\n}"
+      },
+      "id": "3eb61933-22be-43fb-9fe6-eb11bbf4e56c",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function documentClean(text, processingRule) {…}\n\nconst processingRule = {\n    rules: JSON.stringify({\n        pre_processing_rules: [\n            { id: \"remove_extra_spaces\", enabled: true },\n            { id: \"remove_urls_emails\", enabled: true }\n        ]\n    })\n};\n\nreturn { concatenated_content: documentClean($json.concatenated_content, processingRule) };"
+      },
+      "id": "6a6414d4-8abe-4bea-923b-d716b5334d85",
+      "name": "documentClean",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        160
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e4a3a0f5-0c9b-4c9b-9b9b-02705b44bc89",
+              "name": "conversation",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
         "options": {}
       },
-      "id": "f0ebf9d0-cf7f-476f-8f37-9db9d74256f3",
-      "name": "Groq Chat Model2",
+      "id": "facf036f-0a35-4beb-92bb-718034133a95",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8e2d740b-6861-4b2e-a6c9-aca75b551540",
+              "name": "content",
+              "value": "={{ $json.document_metadata_pageTitle }}: {{ $json.concatenated_document_pageContent }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ca1a45b-e6cb-404d-8b93-7094c2bd4318",
+      "name": "Join Question Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2300,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "18d118f1-5967-493c-a31c-479d7b251d47",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2800,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('baseInfo').item.json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "14fb9cf2-2164-49ac-8558-88cc90a0270c",
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        -100
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "8cb5ee63-86a8-43aa-87cf-7dce497fa780",
+      "name": "Groq Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1000,
-        940
+        2680,
+        1000
       ],
       "credentials": {
         "groqApi": {
@@ -1448,62 +1559,312 @@
     },
     {
       "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\"type\":\"object\",\"properties\":{\"should\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"key\":{\"type\":\"string\",\"description\":\"sempre coloque metadata.tags\",\"value\":\"metadata.tags\"},\"match\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\"}},\"required\":[\"value\"]}},\"required\":[\"key\",\"match\"]}}},\"required\":[\"should\"]}"
+        "model": "text-embedding-3-small",
+        "options": {}
       },
-      "id": "3eb61933-22be-43fb-9fe6-eb11bbf4e56c",
-      "name": "Structured Output Parser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.2,
+      "id": "50c1e074-ded6-4b26-b4c7-61e981df770e",
+      "name": "Embeddings OpenAI3",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "position": [
-        1140,
-        940
+        3440,
+        260
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "pageId",
+                "value": "={{ $('Loop Over Items').item.json.id }}"
+              },
+              {
+                "name": "createdTime",
+                "value": "={{ $('Loop Over Items').item.json.created_time }}"
+              },
+              {
+                "name": "pageTitle",
+                "value": "={{ $('Loop Over Items').item.json[$('Loop Over Items').item.json.type].title }}"
+              },
+              {
+                "name": "pageType",
+                "value": "={{ $('Loop Over Items').item.json.type.split('_')[1] }}"
+              },
+              {
+                "name": "keywords",
+                "value": "={{ $('Generate Keywords2').item.json.output.keywords.filter(item => item.length > 4).unique() }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "fe6284f4-7554-47df-973d-0fe6583e9465",
+      "name": "Create metadata and load content1",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "position": [
+        3520,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 100,
+        "options": {
+          "splitCode": "markdown"
+        }
+      },
+      "id": "81fe5c5f-44ab-4684-b100-26d32d4b0d9a",
+      "name": "Recursive Character Text Splitter1",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        160
       ]
     },
     {
       "parameters": {
-        "fieldsToSummarize": {
-          "values": [
+        "content": "## Qdrant",
+        "height": 512.0662957622236,
+        "width": 457.9458021385195
+      },
+      "id": "a5540eb3-5939-4192-ae38-5688fd0f4136",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -492.0582304950616
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('baseInfo').item.json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "01b8514f-e8f0-473f-8680-604b02cb0c26",
+      "name": "Qdrant Vector Store3",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        400
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"keywords\": {\n      \"type\": \"array\",\n      \"description\": \"Palavras-chave individuais relevantes, no máximo 5\",\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"keywords\"]\n}"
+      },
+      "id": "a95b290f-af4e-42c6-a4e4-e54346859c91",
+      "name": "Structured Output Parser2",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        3160,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "id": "058b174e-9bd4-459f-b928-2ae0bb27f14f",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3740,
+        400
+      ],
+      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
             {
-              "aggregation": "concatenate",
-              "field": "document.pageContent",
-              "separateBy": "other",
-              "customSeparator": "\\n\\n"
+              "id": "9bacc086-2e2a-4af0-abde-5a129cd33b74",
+              "name": "content",
+              "value": "={{ $('Loop Over Items1').item.json.content }}",
+              "type": "string"
             }
           ]
         },
-        "fieldsToSplitBy": "document.metadata.pageTitle",
         "options": {}
       },
-      "id": "268948dd-8c0e-4f0e-bf0d-e2a7be193347",
-      "name": "Summarize1",
-      "type": "n8n-nodes-base.summarize",
+      "id": "b5eefe46-912a-476e-a781-3b8141089e95",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3280,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "27fff0b8-26d3-44f1-8293-7989daff1857",
+      "name": "Auto-fixing Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
       "typeVersion": 1,
       "position": [
-        1360,
-        760
+        3080,
+        580
       ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "maxTokens": 2048,
+          "maxRetries": 2
+        }
+      },
+      "id": "0089d2a4-8d3f-4939-9366-a6dcc295c370",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3000,
+        580
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
     },
     {
       "parameters": {
         "promptType": "define",
-        "text": "=oi, quais planos vocês tem?",
+        "text": "={{ $json.content }}",
         "hasOutputParser": true,
         "messages": {
           "messageValues": [
             {
-              "message": "You are an expert in keyword identification. Your task is to generate highly relevant keywords based on the content provided by the user."
+              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes, tags e metadados com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica. Forneça até 5 itens em cada categoria (keywords, tags, metadatas)."
+            }
+          ]
+        }
+      },
+      "id": "78fe49a0-6528-4aca-b5e6-5d072eedb56c",
+      "name": "Generate Keywords2",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        2980,
+        400
+      ],
+      "retryOnFail": true,
+      "notesInFlow": false,
+      "waitBetweenTries": 4000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "43d0a942-408e-4b14-841a-7ab2c7a30ba4",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        840
+      ],
+      "webhookId": "19a29629-c6aa-47ec-82b1-2f4ca64783ad"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {}
+      },
+      "id": "da3f870c-ae17-461a-af60-ce312e17e6de",
+      "name": "OpenAI Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        1020
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').item.json.conversation }}",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "AIMessagePromptTemplate",
+              "message": "=\n{{ $json.content.join('\\\\n\\\\n').replaceAll('\\\\n', '\\n') }}\n"
+            },
+            {
+              "message": "=\nVocê é uma assistente virtual chamada **Stephany**.\n\n## Diretrizes\n- Não responda nada que não tenha certeza do que esteja falando, evite inventar informação que não veio da \"AI\".\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais.\n"
+            }
+          ]
+        }
+      },
+      "id": "97702057-35be-49db-af74-beda09c4efda",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        2660,
+        840
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.conversation }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes, tags e metadados com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica. Forneça até 5 itens em cada categoria (keywords, tags, metadatas). Se não conseguir gerar nada, retorne um array vazio."
             }
           ]
         }
       },
       "id": "b96e61c6-a51a-46c4-a60c-b47f7e452eef",
-      "name": "Basic LLM Chain1",
+      "name": "Generate Keywords",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        1000,
-        760
+        1440,
+        840
       ]
     },
     {
@@ -1515,8 +1876,8 @@
           "mode": "list",
           "cachedResultName": "notion_ibox"
         },
-        "prompt": "=oi, quais planos vocês tem?",
-        "topK": 1,
+        "prompt": "={{ $('messageInfo').item.json.conversation }}",
+        "topK": 3,
         "options": {}
       },
       "id": "ab9808e5-b326-44d0-8eca-f075a84ec464",
@@ -1524,15 +1885,17 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        1700,
-        760
+        1780,
+        840
       ],
+      "alwaysOutputData": true,
       "credentials": {
         "qdrantApi": {
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "notes": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.keywords\",\n      \"match\": {\n        \"any\": {{ $json.output.keywords.filter(item => item.length > 4).unique().toJsonString() }}\n      }\n    }\n  ]\n}"
     }
   ],
   "pinData": {
@@ -1547,7 +1910,7 @@
             "page_id": "1217c386-d922-80e5-b2d2-f380fec51672"
           },
           "created_time": "2024-10-17T02:45:00.000Z",
-          "last_edited_time": "2024-10-17T14:29:00.000Z",
+          "last_edited_time": "2024-10-17T14:47:00.000Z",
           "created_by": {
             "object": "user",
             "id": "121d872b-594c-8122-8b02-0002916a30c8"
@@ -1562,6 +1925,34 @@
           "type": "child_page",
           "child_page": {
             "title": "Base de Conhecimento"
+          }
+        }
+      },
+      {
+        "json": {
+          "object": "block",
+          "parent_id": "1217c386d92280e5b2d2f380fec51672",
+          "id": "1227c386-d922-80ab-993b-c2d4c8b17c7b",
+          "parent": {
+            "type": "page_id",
+            "page_id": "1217c386-d922-80e5-b2d2-f380fec51672"
+          },
+          "created_time": "2024-10-17T02:50:00.000Z",
+          "last_edited_time": "2024-10-17T03:14:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "121d872b-594c-8122-8b02-0002916a30c8"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "121d872b-594c-8122-8b02-0002916a30c8"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "child_database",
+          "child_database": {
+            "title": "Perguntas Frequentes (FAQ)"
           }
         }
       }
@@ -2807,43 +3198,215 @@
         }
       }
     ],
-    "Basic LLM Chain1": [
+    "Notion Get Database": [
       {
         "json": {
-          "output": {
-            "should": [
-              {
-                "key": "metadata.tags",
-                "match": {
-                  "value": "Planos"
-                }
-              },
-              {
-                "key": "metadata.tags",
-                "match": {
-                  "value": "Assinaturas"
-                }
-              },
-              {
-                "key": "metadata.tags",
-                "match": {
-                  "value": "Ofertas"
-                }
-              },
-              {
-                "key": "metadata.tags",
-                "match": {
-                  "value": "Preços"
-                }
-              },
-              {
-                "key": "metadata.tags",
-                "match": {
-                  "value": "Serviços"
-                }
-              }
-            ]
-          }
+          "id": "1227c386-d922-80a4-8544-e3d8ec788600",
+          "name": "Existe algum treinamento ou material de apoio disponível para os funcionários aprenderem a usar o sistema?",
+          "url": "https://www.notion.so/Existe-algum-treinamento-ou-material-de-apoio-dispon-vel-para-os-funcion-rios-aprenderem-a-usar-o-si-1227c386d92280a48544e3d8ec788600",
+          "property_answer": "Sim, oferecemos treinamento online e material de apoio para auxiliar os funcionários a aprenderem a usar o sistema de forma eficiente. Além disso, nosso suporte está disponível para esclarecer dúvidas e fornecer suporte técnico.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Existe algum treinamento ou material de apoio disponível para os funcionários aprenderem a usar o sistema?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80ef-b24a-c322df1a9f2b",
+          "name": "O sistema oferece suporte para múltiplos idiomas?",
+          "url": "https://www.notion.so/O-sistema-oferece-suporte-para-m-ltiplos-idiomas-1227c386d92280efb24ac322df1a9f2b",
+          "property_answer": "No momento, o sistema está disponível apenas em português, mas estamos trabalhando para adicionar suporte a outros idiomas em breve.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "O sistema oferece suporte para múltiplos idiomas?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80c3-978f-c2f0e2996e13",
+          "name": "Qual é a política de backup e segurança dos dados?",
+          "url": "https://www.notion.so/Qual-a-pol-tica-de-backup-e-seguran-a-dos-dados-1227c386d92280c3978fc2f0e2996e13",
+          "property_answer": "Realizamos backups diários dos dados dos clientes e utilizamos criptografia para garantir a segurança das informações. Além disso, nossos servidores são protegidos por firewalls e outras medidas de segurança.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Qual é a política de backup e segurança dos dados?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80f8-9e38-f5a43b6d0d16",
+          "name": "Existe um programa de afiliados ou indicação para parceiros?",
+          "url": "https://www.notion.so/Existe-um-programa-de-afiliados-ou-indica-o-para-parceiros-1227c386d92280f89e38f5a43b6d0d16",
+          "property_answer": "No momento, não possuímos um programa de afiliados, mas estamos abertos a parcerias e indicações. Entre em contato conosco para mais informações.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Existe um programa de afiliados ou indicação para parceiros?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80cf-b180-d7b741ac9447",
+          "name": "Há um limite de produtos ou categorias que podem ser cadastrados no sistema?",
+          "url": "https://www.notion.so/H-um-limite-de-produtos-ou-categorias-que-podem-ser-cadastrados-no-sistema-1227c386d92280cfb180d7b741ac9447",
+          "property_answer": "Por padrão, não há limite de produtos ou categorias que podem ser cadastrados. Caso haja necessidade de um número muito grande de produtos, entre em contato com o suporte para avaliação.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Há um limite de produtos ou categorias que podem ser cadastrados no sistema?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80b4-81bb-ce09f53a52b5",
+          "name": "O sistema é compatível com quais sistemas operacionais e dispositivos?",
+          "url": "https://www.notion.so/O-sistema-compat-vel-com-quais-sistemas-operacionais-e-dispositivos-1227c386d92280b481bbce09f53a52b5",
+          "property_answer": "Nosso sistema é compatível com Windows, MacOS, Android e iOS, podendo ser acessado por computadores, tablets e smartphones.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "O sistema é compatível com quais sistemas operacionais e dispositivos?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80f3-88cc-cc3846c08c43",
+          "name": "Existe um período de teste gratuito para experimentar o sistema antes de assinar?",
+          "url": "https://www.notion.so/Existe-um-per-odo-de-teste-gratuito-para-experimentar-o-sistema-antes-de-assinar-1227c386d92280f388cccc3846c08c43",
+          "property_answer": "Sim, oferecemos um período de teste gratuito de 7 dias para que você possa experimentar todas as funcionalidades do sistema antes de decidir pela contratação.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Existe um período de teste gratuito para experimentar o sistema antes de assinar?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-8005-b3b4-e788b3a2eb79",
+          "name": "Qual é o tempo médio de implementação do sistema após a contratação?",
+          "url": "https://www.notion.so/Qual-o-tempo-m-dio-de-implementa-o-do-sistema-ap-s-a-contrata-o-1227c386d9228005b3b4e788b3a2eb79",
+          "property_answer": "Não possuímos um tempo fixo, mas a maioria dos clientes consegue configurar e começar a usar o sistema em menos de 24 horas. O suporte está disponível para auxiliar em qualquer etapa do processo.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Qual é o tempo médio de implementação do sistema após a contratação?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80eb-99cf-e5c45fb5e5b1",
+          "name": "Posso personalizar o cardápio digital?",
+          "url": "https://www.notion.so/Posso-personalizar-o-card-pio-digital-1227c386d92280eb99cfe5c45fb5e5b1",
+          "property_answer": "Sim, você pode personalizar o cardápio com fotos e descrições dos produtos, além de alterar preços e categorias conforme sua necessidade. Outras personalizações podem ser feitas sob consulta.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Posso personalizar o cardápio digital?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80fe-8f37-df2dc15cc0cb",
+          "name": "Quais são os métodos de pagamento aceitos?",
+          "url": "https://www.notion.so/Quais-s-o-os-m-todos-de-pagamento-aceitos-1227c386d92280fe8f37df2dc15cc0cb",
+          "property_answer": "Aceitamos os principais métodos de pagamento, como PIX, dinheiro, cartões de crédito e débito para contratação dos planos.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Quais são os métodos de pagamento aceitos?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-800e-9224-daf18877b6b3",
+          "name": "É possível usar o sistema de mesa e delivery ao mesmo tempo?",
+          "url": "https://www.notion.so/poss-vel-usar-o-sistema-de-mesa-e-delivery-ao-mesmo-tempo-1227c386d922800e9224daf18877b6b3",
+          "property_answer": "Sim, ambos são integrados e podem ser usados simultaneamente.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "É possível usar o sistema de mesa e delivery ao mesmo tempo?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-80a5-9a92-f3cc14285ab5",
+          "name": "Como posso cancelar meu plano?",
+          "url": "https://www.notion.so/Como-posso-cancelar-meu-plano-1227c386d92280a59a92f3cc14285ab5",
+          "property_answer": "Basta não realizar o pagamento. Nossos planos são pré-pagos, então não há fidelidade.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Como posso cancelar meu plano?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-8022-9093-e91396fe107c",
+          "name": "Há algum custo adicional além do valor mensal do plano?",
+          "url": "https://www.notion.so/H-algum-custo-adicional-al-m-do-valor-mensal-do-plano-1227c386d92280229093e91396fe107c",
+          "property_answer": "Não, exceto a taxa de R$ 1,00 por pedido finalizado via PIX Online no plano Professional.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Há algum custo adicional além do valor mensal do plano?"
+        }
+      },
+      {
+        "json": {
+          "id": "1227c386-d922-805f-90f2-e33e4d48b63f",
+          "name": "Como é o processo de instalação e configuração do sistema?",
+          "url": "https://www.notion.so/Como-o-processo-de-instala-o-e-configura-o-do-sistema-1227c386d922805f90f2e33e4d48b63f",
+          "property_answer": "Rápido e simples, inicie o cadastro no site e siga as instruções, em poucos minutos você já estará pronto para começar a usar. Se precisar de ajuda, nosso suporte está disponível para auxiliá-lo.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Como é o processo de instalação e configuração do sistema?"
+        }
+      },
+      {
+        "json": {
+          "id": "a7338ab8-3770-411c-ae56-f3fb21524221",
+          "name": "Posso alterar meu plano após a assinatura?",
+          "url": "https://www.notion.so/Posso-alterar-meu-plano-ap-s-a-assinatura-a7338ab83770411cae56f3fb21524221",
+          "property_answer": "Sim, basta entrar em contato com o suporte.",
+          "property_updated_at": {
+            "start": "2024-10-17T00:13:00.000-03:00",
+            "end": null,
+            "time_zone": null
+          },
+          "property_question": "Posso alterar meu plano após a assinatura?"
         }
       }
     ]
@@ -2859,6 +3422,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-18T03:02:11.904Z",
-  "versionId": "d658c2af-0d87-4332-b1e1-abd47c5c3116"
+  "updatedAt": "2024-10-19T00:59:43.486Z",
+  "versionId": "7f196e8c-177a-4fe1-995e-119bf9440a92"
 }
