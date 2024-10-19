@@ -250,17 +250,6 @@
         ]
       ]
     },
-    "Qdrant Vector Store1": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Structured Output Parser": {
       "ai_outputParser": [
         [
@@ -276,7 +265,7 @@
       "main": [
         [
           {
-            "node": "Generate Keywords",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -493,6 +482,17 @@
           {
             "node": "Summarize",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
             "index": 0
           }
         ]
@@ -1309,8 +1309,8 @@
     {
       "parameters": {
         "name": "store_info",
-        "description": "all information about store",
-        "topK": 3
+        "description": "informações sobre a empresa e serviços prestados.",
+        "topK": 10
       },
       "id": "a133c64f-53f6-4251-9a91-fb4217cbcbeb",
       "name": "Vector Store Tool",
@@ -1381,48 +1381,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.chatInput }}",
-        "options": {
-          "systemMessage": "=You are a helpful assistant\n\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n\n## Diretrizes\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais."
-        }
-      },
-      "id": "2f9d4095-de7b-48db-bc02-ac4d85b36802",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1700,
-        1220
-      ]
-    },
-    {
-      "parameters": {
-        "qdrantCollection": {
-          "__rl": true,
-          "value": "notion_ibox",
-          "mode": "list",
-          "cachedResultName": "notion_ibox"
-        },
-        "options": {}
-      },
-      "id": "6d0bc975-6ef1-4c8a-86bd-9544ce3c8803",
-      "name": "Qdrant Vector Store1",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
-      "typeVersion": 1,
-      "position": [
-        1800,
-        1580
-      ],
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "schemaType": "manual",
         "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"keywords\": {\n      \"type\": \"array\",\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  }\n}"
       },
@@ -1469,8 +1427,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1260,
-        840
+        1520,
+        1220
       ]
     },
     {
@@ -1794,8 +1752,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        1080,
-        840
+        1340,
+        1220
       ],
       "webhookId": "19a29629-c6aa-47ec-82b1-2f4ca64783ad"
     },
@@ -1818,32 +1776,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').item.json.conversation }}",
-        "messages": {
-          "messageValues": [
-            {
-              "type": "AIMessagePromptTemplate",
-              "message": "=\n{{ $json.content.join('\\\\n\\\\n').replaceAll('\\\\n', '\\n') }}\n"
-            },
-            {
-              "message": "=\nVocê é uma assistente virtual chamada **Stephany**.\n\n## Diretrizes\n- Não responda nada que não tenha certeza do que esteja falando, evite inventar informação que não veio da \"AI\".\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais.\n"
-            }
-          ]
-        }
-      },
-      "id": "97702057-35be-49db-af74-beda09c4efda",
-      "name": "Basic LLM Chain",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        2660,
-        840
-      ],
-      "executeOnce": true
     },
     {
       "parameters": {
@@ -1896,6 +1828,74 @@
         }
       },
       "notes": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.keywords\",\n      \"match\": {\n        \"any\": {{ $json.output.keywords.filter(item => item.length > 4).unique().toJsonString() }}\n      }\n    }\n  ]\n}"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').item.json.conversation }}",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "AIMessagePromptTemplate",
+              "message": "=\n{{ $json.content.join('\\\\n\\\\n').replaceAll('\\\\n', '\\n') }}\n"
+            },
+            {
+              "message": "=\nVocê é uma assistente virtual chamada **Stephany**.\n\n## Diretrizes\n- Não responda nada que não tenha certeza do que esteja falando, evite inventar informação que não veio da \"AI\".\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais.\n"
+            }
+          ]
+        }
+      },
+      "id": "97702057-35be-49db-af74-beda09c4efda",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        2660,
+        840
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "notion_ibox",
+          "mode": "list",
+          "cachedResultName": "notion_ibox"
+        },
+        "options": {}
+      },
+      "id": "6d0bc975-6ef1-4c8a-86bd-9544ce3c8803",
+      "name": "Qdrant Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        1580
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.conversation }}",
+        "options": {
+          "systemMessage": "=Você é uma assistente virtual chamada **Stephany** da empresa **ibox delivery**, você irá responder e tirar duvidas dos usuários.\n\n## Diretrizes\n- Não responda nada que não tenha certeza do que esteja falando, evite inventar informação que não veio da \"AI\".\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais.\n"
+        }
+      },
+      "id": "2f9d4095-de7b-48db-bc02-ac4d85b36802",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1700,
+        1220
+      ]
     }
   ],
   "pinData": {
@@ -3422,6 +3422,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-19T00:59:43.486Z",
-  "versionId": "7f196e8c-177a-4fe1-995e-119bf9440a92"
+  "updatedAt": "2024-10-19T14:22:03.641Z",
+  "versionId": "d099fae4-e870-4a00-85a9-c6c3f0ffd2ff"
 }
