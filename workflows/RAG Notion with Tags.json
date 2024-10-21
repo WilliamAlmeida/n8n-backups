@@ -206,17 +206,6 @@
         ]
       ]
     },
-    "Vector Store Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
@@ -250,22 +239,11 @@
         ]
       ]
     },
-    "Structured Output Parser": {
-      "ai_outputParser": [
-        [
-          {
-            "node": "Generate Keywords",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "messageInfo": {
       "main": [
         [
           {
-            "node": "Generate Keywords",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -406,17 +384,6 @@
           {
             "node": "Edit Fields",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Generate Keywords",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -593,6 +560,28 @@
         ]
       ]
     },
+    "Vector Store Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store2": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Qdrant Vector Store1": {
       "ai_vectorStore": [
         [
@@ -604,12 +593,56 @@
         ]
       ]
     },
-    "Generate Keywords": {
-      "main": [
+    "Google Calendar": {
+      "ai_tool": [
         [
           {
-            "node": "Qdrant Vector Store2",
-            "type": "main",
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar3": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar4": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -1332,8 +1365,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        1680,
-        1680
+        1600,
+        1800
       ],
       "credentials": {
         "openAiApi": {
@@ -1364,9 +1397,10 @@
       "type": "n8n-nodes-base.summarize",
       "typeVersion": 1,
       "position": [
-        2120,
-        880
-      ]
+        2100,
+        840
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1384,15 +1418,16 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2480,
-        880
-      ]
+        2420,
+        840
+      ],
+      "disabled": true
     },
     {
       "parameters": {
-        "model": "llama-3.2-90b-text-preview",
+        "model": "llama-3.2-3b-preview",
         "options": {
-          "temperature": 0.5
+          "temperature": 0
         }
       },
       "id": "da2bc313-62e4-438a-829e-68377c829e67",
@@ -1400,8 +1435,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1920,
-        1560
+        1840,
+        1680
       ],
       "credentials": {
         "groqApi": {
@@ -1413,16 +1448,16 @@
     {
       "parameters": {
         "name": "store_info",
-        "description": "informações sobre a empresa e serviços prestados.",
-        "topK": 10
+        "description": "informações sobre empresa, planos do sistema fornecido, contatos para suporte humanizado, link para contratação/assinatura, funcionalidades do sistema e etc.",
+        "topK": 5
       },
       "id": "a133c64f-53f6-4251-9a91-fb4217cbcbeb",
       "name": "Vector Store Tool",
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        1800,
-        1420
+        1720,
+        1560
       ]
     },
     {
@@ -1475,28 +1510,15 @@
       "typeVersion": 1,
       "position": [
         1780,
-        1060
+        1020
       ],
       "credentials": {
         "openAiApi": {
           "id": "dRR3EqW0FEAbSHgt",
           "name": "william"
         }
-      }
-    },
-    {
-      "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"keywords\": {\n      \"type\": \"array\",\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  }\n}"
       },
-      "id": "3eb61933-22be-43fb-9fe6-eb11bbf4e56c",
-      "name": "Structured Output Parser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.2,
-      "position": [
-        1580,
-        1060
-      ]
+      "disabled": true
     },
     {
       "parameters": {
@@ -1532,8 +1554,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1240,
-        880
+        1540,
+        1220
       ]
     },
     {
@@ -1555,9 +1577,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2300,
-        880
-      ]
+        2260,
+        840
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1787,30 +1810,8 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "temperature": 0.7,
-          "maxRetries": 3
-        }
-      },
-      "id": "da3f870c-ae17-461a-af60-ce312e17e6de",
-      "name": "OpenAI Chat Model2",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        1420,
-        1060
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
-        "options": {
           "maxTokens": 512,
+          "temperature": 0.5,
           "maxRetries": 3
         }
       },
@@ -1819,15 +1820,16 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        2660,
-        1060
+        2580,
+        1020
       ],
       "credentials": {
         "openAiApi": {
           "id": "dRR3EqW0FEAbSHgt",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -2011,46 +2013,25 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        1060,
-        880
+        1380,
+        1220
       ],
       "webhookId": "19a29629-c6aa-47ec-82b1-2f4ca64783ad"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.conversation }}",
-        "hasOutputParser": true,
-        "messages": {
-          "messageValues": [
-            {
-              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes, tags e metadados com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica. Forneça até 5 itens em cada categoria (keywords, tags, metadatas). Se não conseguir gerar nada, retorne um array vazio."
-            }
-          ]
-        }
-      },
-      "id": "b96e61c6-a51a-46c4-a60c-b47f7e452eef",
-      "name": "Generate Keywords",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        1420,
-        880
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "teste"
+        "sessionKey": "teste",
+        "sessionTTL": 300,
+        "contextWindowLength": 10
       },
       "id": "7206a58a-118b-48e9-8b91-9e16d882b327",
       "name": "Redis Chat Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        2200,
-        1400
+        2080,
+        1440
       ],
       "credentials": {
         "redis": {
@@ -2071,8 +2052,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        2100,
-        1480
+        1980,
+        1440
       ],
       "credentials": {
         "redis": {
@@ -2102,53 +2083,11 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        2660,
-        880
+        2580,
+        840
       ],
-      "executeOnce": true
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').item.json.conversation }}",
-        "options": {
-          "systemMessage": "=Você é um atendente de suporte e venda da iBox Delivery, seu nome é Tefinha.\n\n## Diretrizes\n- Não responda nada que não tenha certeza do que esteja falando, evite inventar informação que não veio da \"AI\".\n- Use a data e hora atuais no formato ISO para requisições: `{{ $now.toISO() }}`. No entanto, nas respostas para o usuário, utilize o formato mais comum (ex: DD/MM/AAAA).\n- Não informe sobre taxas a não ser que seja perguntado.\n- Utilize emojis de maneira equilibrada para criar uma interação amigável.\n- Ao compartilhar links, forneça-os sem formatação (puro texto).\n- Para respostas longas, divida-as em partes para facilitar a compreensão do usuário.\n- Personalize as respostas usando o nome do usuário, quando possível e apropriado.\n- Seja sempre cordial e educado em suas respostas.\n- Mantenha respostas concisas e claras para evitar mal-entendidos.\n- Se não souber a resposta, seja transparente sobre isso e ofereça alternativas.\n- Nunca ofereça promessas ou garantias que não possam ser cumpridas.\n- Verifique sempre se há mais algo com que o cliente precise de ajuda antes de encerrar a conversa.\n- Adapte sua comunicação ao nível de entendimento do cliente para garantir clareza.\n- Responda às mensagens de forma oportuna e evite atrasos desnecessários.\n- Encoraje sempre a honestidade e a clareza nas comunicações.\n- Evite usar gírias ou linguagem informal em contextos profissionais.\n"
-        }
-      },
-      "id": "2f9d4095-de7b-48db-bc02-ac4d85b36802",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1700,
-        1220
-      ]
-    },
-    {
-      "parameters": {
-        "qdrantCollection": {
-          "__rl": true,
-          "value": "notion_ibox",
-          "mode": "list",
-          "cachedResultName": "notion_ibox"
-        },
-        "options": {}
-      },
-      "id": "6d0bc975-6ef1-4c8a-86bd-9544ce3c8803",
-      "name": "Qdrant Vector Store1",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
-      "typeVersion": 1,
-      "position": [
-        1680,
-        1560
-      ],
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      },
-      "notes": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.keywords\",\n      \"match\": {\n        \"any\": {{ $json.output.keywords.filter(item => item.length > 4).unique().toJsonString() }}\n      }\n    }\n  ]\n}"
+      "executeOnce": true,
+      "disabled": true
     },
     {
       "parameters": {
@@ -2169,7 +2108,7 @@
       "typeVersion": 1,
       "position": [
         1780,
-        880
+        840
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -2178,7 +2117,192 @@
           "name": "william"
         }
       },
+      "disabled": true,
       "notes": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.keywords\",\n      \"match\": {\n        \"any\": {{ $json.output.keywords.filter(item => item.length > 4).unique().toJsonString() }}\n      }\n    }\n  ]\n}"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "notion_ibox",
+          "mode": "list",
+          "cachedResultName": "notion_ibox"
+        },
+        "options": {}
+      },
+      "id": "6d0bc975-6ef1-4c8a-86bd-9544ce3c8803",
+      "name": "Qdrant Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        1680
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "notes": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.keywords\",\n      \"match\": {\n        \"any\": {{ $json.output.keywords.filter(item => item.length > 4).unique().toJsonString() }}\n      }\n    }\n  ]\n}"
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "timeMin": "={{ $now.toISO().split('.')[0] }}",
+        "timeMax": "={{ $now.plus(5, 'days').toISO().split('.')[0] }}",
+        "options": {
+          "outputFormat": "availability"
+        }
+      },
+      "id": "44f9a7ac-1e64-4588-8190-102db94fd74e",
+      "name": "Google Calendar",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.1,
+      "position": [
+        2240,
+        1460
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "start": "={{ $fromAI('date_init', 'sempre a partir do horário atual') }}",
+        "end": "={{ $fromAI('date_end') }}",
+        "additionalFields": {
+          "description": "={{ $fromAI('description') }}",
+          "summary": "={{ $fromAI('summary') }}"
+        }
+      },
+      "id": "43e7f1ea-ceb6-4c43-992e-a8d1814a8a76",
+      "name": "Google Calendar1",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.1,
+      "position": [
+        2480,
+        1460
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "options": {}
+      },
+      "id": "99a7a71a-03d3-49b6-99b5-872c16867e6a",
+      "name": "Google Calendar2",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.1,
+      "position": [
+        2360,
+        1460
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "eventId": "={{ $fromAI('event_id', 'o id do evento que será cancelado') }}",
+        "options": {}
+      },
+      "id": "eb0f5f8b-b005-44d3-83c4-b24f508f7564",
+      "name": "Google Calendar3",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.1,
+      "position": [
+        2580,
+        1460
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "eventId": "={{ $fromAI('event_id', 'o id do evento que será cancelado') }}",
+        "updateFields": {}
+      },
+      "id": "4bb75b44-3cb4-4064-af3c-679636a95396",
+      "name": "Google Calendar4",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.1,
+      "position": [
+        2680,
+        1460
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').item.json.conversation }}",
+        "options": {
+          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}",
+          "returnIntermediateSteps": false
+        }
+      },
+      "id": "2f9d4095-de7b-48db-bc02-ac4d85b36802",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1700,
+        1220
+      ]
     }
   ],
   "pinData": {
@@ -3677,6 +3801,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-21T02:59:11.464Z",
-  "versionId": "f5c4d5a7-7f5a-46a3-89de-c6c786060061"
+  "updatedAt": "2024-10-21T06:14:05.582Z",
+  "versionId": "83497aec-fae5-40a1-9da8-70f8f947cf5f"
 }
