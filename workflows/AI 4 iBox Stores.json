@@ -323,11 +323,6 @@
         ]
       ]
     },
-    "userAccount": {
-      "main": [
-        []
-      ]
-    },
     "Qdant Vector Store": {
       "ai_vectorStore": [
         [
@@ -1275,6 +1270,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-18T03:05:07.156Z",
-  "versionId": "d5072345-e7e1-43f8-bf4e-c7ed4feb92af"
+  "updatedAt": "2024-10-21T14:00:45.424Z",
+  "versionId": "680fa72d-fc97-4d50-80e0-f86a3814e284"
 }
