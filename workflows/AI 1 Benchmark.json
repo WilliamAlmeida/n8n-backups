@@ -240,7 +240,7 @@
             {
               "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
               "name": "limit",
-              "value": 100,
+              "value": 1,
               "type": "number"
             }
           ]
@@ -638,6 +638,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-18T03:24:49.633Z",
-  "versionId": "c7f21cfa-cf9a-4d51-9b79-494a2ff5836e"
+  "updatedAt": "2024-10-21T13:58:06.797Z",
+  "versionId": "10de9812-3dc3-48a5-9b6b-b21f3ab28f13"
 }
