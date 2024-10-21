@@ -334,17 +334,6 @@
         ]
       ]
     },
-    "wk process msg": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "get debounce time": {
       "main": [
         [
@@ -396,7 +385,17 @@
       "main": [
         [
           {
-            "node": "wk process msg",
+            "node": "wk agent ibox",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "wk agent ibox stores",
             "type": "main",
             "index": 0
           }
@@ -575,7 +574,7 @@
       "typeVersion": 3.4,
       "position": [
         -800,
-        2060
+        2100
       ]
     },
     {
@@ -796,7 +795,7 @@
       "typeVersion": 2,
       "position": [
         -980,
-        2060
+        2100
       ]
     },
     {
@@ -817,7 +816,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -831,7 +831,8 @@
       "position": [
         -2927,
         2839
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {},
@@ -842,7 +843,8 @@
       "position": [
         -3607,
         2859
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1088,27 +1090,6 @@
     },
     {
       "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "BZ9o5Ey8QpAJn1OB",
-          "mode": "list",
-          "cachedResultName": "AI 4 iBox Stores"
-        },
-        "options": {
-          "waitForSubWorkflow": false
-        }
-      },
-      "id": "f0de6c27-582f-4086-8506-07670c0b92b0",
-      "name": "wk process msg",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.1,
-      "position": [
-        -620,
-        2260
-      ]
-    },
-    {
-      "parameters": {
         "operation": "get",
         "propertyName": "debounce",
         "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}",
@@ -1209,7 +1190,7 @@
       "typeVersion": 1,
       "position": [
         -1160,
-        2240
+        2280
       ],
       "credentials": {
         "redis": {
@@ -1229,7 +1210,7 @@
       "typeVersion": 1,
       "position": [
         -980,
-        2220
+        2260
       ],
       "credentials": {
         "redis": {
@@ -1250,7 +1231,7 @@
       "typeVersion": 3,
       "position": [
         -620,
-        1940
+        1900
       ]
     },
     {
@@ -1266,7 +1247,8 @@
       "position": [
         -3640,
         2780
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1286,7 +1268,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1299,7 +1282,7 @@
       "typeVersion": 1,
       "position": [
         -1160,
-        2060
+        2100
       ],
       "credentials": {
         "redis": {
@@ -1326,7 +1309,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1360,7 +1344,8 @@
       "position": [
         -3287,
         2859
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1383,7 +1368,8 @@
       "position": [
         -3087,
         2839
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1396,6 +1382,50 @@
       "position": [
         -2747,
         2839
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "BZ9o5Ey8QpAJn1OB",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox Stores"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "f0de6c27-582f-4086-8506-07670c0b92b0",
+      "name": "wk agent ibox stores",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        -380,
+        1980
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LS8CfvECZu2puiXb",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "b586ad87-5055-4a42-9149-f4e02ad0f1d9",
+      "name": "wk agent ibox",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        -380,
+        1800
       ]
     }
   ],
@@ -1423,6 +1453,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-18T03:18:50.101Z",
-  "versionId": "f5b58c4a-e87c-4ecf-8999-8dad9677ad34"
+  "updatedAt": "2024-10-21T13:58:28.066Z",
+  "versionId": "a8e39529-7032-47ed-8108-9bbdeefe61cd"
 }
