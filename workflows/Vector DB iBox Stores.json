@@ -130,25 +130,6 @@
         ]
       ]
     },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "Delete Collection",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [],
-        [
-          {
-            "node": "Delete Collection 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "has vector db?": {
       "main": [
         [
@@ -206,6 +187,25 @@
         [
           {
             "node": "update vector tb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Delete Collection",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Delete Collection 2",
             "type": "main",
             "index": 0
           }
@@ -390,7 +390,8 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -516,96 +517,6 @@
       "position": [
         1329,
         100
-      ]
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "sync",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "sync"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "052f4582-6de5-40c7-9d6b-de931fd4c535",
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "reset",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "reset"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "a6ebd99e-76a2-4866-bce8-d4b0f5e43b76",
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "delete",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "delete"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "58735e92-b276-4e1f-bfd3-18bab5434e87",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        240,
-        400
       ]
     },
     {
@@ -770,7 +681,8 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -864,6 +776,96 @@
     },
     {
       "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
+                    "rightValue": "sync",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "sync"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "052f4582-6de5-40c7-9d6b-de931fd4c535",
+                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
+                    "rightValue": "reset",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "reset"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a6ebd99e-76a2-4866-bce8-d4b0f5e43b76",
+                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
+                    "rightValue": "delete",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "delete"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58735e92-b276-4e1f-bfd3-18bab5434e87",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        240,
+        400
+      ]
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
         "path": "store/db",
         "options": {}
@@ -901,7 +903,7 @@
           "query": {
             "instance_name": "ibox_cli_9",
             "vector_name": "ibox_cli_9",
-            "method": "delete"
+            "method": "sync"
           },
           "body": {},
           "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/store/db",
@@ -923,6 +925,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-08T13:51:56.971Z",
-  "versionId": "a2091c1b-47b7-4a33-9b3b-bb71b2ba3985"
+  "updatedAt": "2024-10-21T17:52:03.852Z",
+  "versionId": "1e63e322-f8f5-4077-9c28-44032eef2ac6"
 }
