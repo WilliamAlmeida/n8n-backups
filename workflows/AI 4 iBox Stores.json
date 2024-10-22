@@ -312,17 +312,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "Qdant Vector Store": {
       "ai_vectorStore": [
         [
@@ -341,6 +330,17 @@
             "node": "Vector Store Tool",
             "type": "ai_languageModel",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -1181,23 +1181,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').first().json.system }}"
-        }
-      },
-      "id": "c1a95cb8-92f4-4a69-b1ec-f96b81748804",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        5158,
-        1362
-      ]
-    },
-    {
-      "parameters": {
         "qdrantCollection": {
           "__rl": true,
           "value": "={{ $('vector store').first().json.vector_name }}",
@@ -1242,6 +1225,23 @@
         }
       },
       "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}"
+        }
+      },
+      "id": "c1a95cb8-92f4-4a69-b1ec-f96b81748804",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5158,
+        1362
+      ]
     }
   ],
   "pinData": {},
@@ -1270,6 +1270,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-21T14:00:45.424Z",
-  "versionId": "680fa72d-fc97-4d50-80e0-f86a3814e284"
+  "updatedAt": "2024-10-21T18:47:15.561Z",
+  "versionId": "8a07d59a-630d-48fe-97b9-ab8226c0b107"
 }
