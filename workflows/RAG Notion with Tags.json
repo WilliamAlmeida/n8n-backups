@@ -173,17 +173,6 @@
         ]
       ]
     },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Recursive Character Text Splitter": {
       "ai_textSplitter": [
         [
@@ -201,17 +190,6 @@
           {
             "node": "Qdrant Vector Store2",
             "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "messageInfo": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
             "index": 0
           }
         ]
@@ -472,50 +450,6 @@
         ]
       ]
     },
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "reset memory chat": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Calendar1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Qdrant Vector Store": {
       "main": [
         [
@@ -555,72 +489,6 @@
           {
             "node": "Notion - Retrieve Page Content",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get calendar availability": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "List calendar unavailability": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Calendar List Events": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Calendar Get Event": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Calendar Update Event": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Calendar Cancel Event": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -1382,30 +1250,6 @@
     },
     {
       "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
-        "options": {
-          "maxTokens": 512,
-          "temperature": 0.3,
-          "maxRetries": 2
-        }
-      },
-      "id": "8d38f261-3ea9-490d-9b80-b23098d374b5",
-      "name": "OpenAI Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        1700,
-        1380
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "chunkOverlap": 100,
         "options": {
           "splitCode": "markdown"
@@ -1455,29 +1299,6 @@
         180
       ],
       "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "e4a3a0f5-0c9b-4c9b-9b9b-02705b44bc89",
-              "name": "conversation",
-              "value": "={{ $json.chatInput }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "facf036f-0a35-4beb-92bb-718034133a95",
-      "name": "messageInfo",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1520,
-        1220
-      ]
     },
     {
       "parameters": {
@@ -1875,94 +1696,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "id": "43d0a942-408e-4b14-841a-7ab2c7a30ba4",
-      "name": "When chat message received",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        1360,
-        1220
-      ],
-      "webhookId": "19a29629-c6aa-47ec-82b1-2f4ca64783ad"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "teste",
-        "sessionTTL": 300,
-        "contextWindowLength": 10
-      },
-      "id": "7206a58a-118b-48e9-8b91-9e16d882b327",
-      "name": "Redis Chat Memory",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.3,
-      "position": [
-        2080,
-        1460
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "operation": "delete",
-        "key": "teste"
-      },
-      "id": "8f594c47-67f3-4347-ac65-f780b312ef48",
-      "name": "reset memory chat",
-      "type": "n8n-nodes-base.redisTool",
-      "typeVersion": 1,
-      "position": [
-        1980,
-        1460
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "start": "={{ $fromAI('date_init', 'sempre a partir do horário atual') }}",
-        "end": "={{ $fromAI('date_end') }}",
-        "additionalFields": {
-          "description": "={{ $fromAI('description') }}",
-          "summary": "={{ $fromAI('summary') }}"
-        }
-      },
-      "id": "43e7f1ea-ceb6-4c43-992e-a8d1814a8a76",
-      "name": "Google Calendar1",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        2480,
-        1460
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
         "mode": "insert",
         "qdrantCollection": {
           "__rl": true,
@@ -2072,205 +1805,6 @@
       },
       "disabled": true,
       "notes": "{\n  \"should\": [\n    {\n      \"key\": \"metadata.keywords\",\n      \"match\": {\n        \"any\": {{ $json.output.keywords.filter(item => item.length > 4).unique().toJsonString() }}\n      }\n    }\n  ]\n}"
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Call this tool to get the calendar availability for a particular period on the calendar. The tool may refer to availability as \"Free\" or \"Busy\".\n\nIf the tool returns an empty response, it means that something went wrong. It does not mean that there is no availability.",
-        "resource": "calendar",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "timeMin": "={{ $fromAI('startTime', 'format 2024-10-27T23:48:34', 'string') }}",
-        "timeMax": "={{ $fromAI('endTime', 'format 2024-10-27T23:48:34', 'string') }}",
-        "options": {
-          "outputFormat": "availability"
-        }
-      },
-      "id": "44f9a7ac-1e64-4588-8190-102db94fd74e",
-      "name": "Get calendar availability",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        1600,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Call this tool to get the calendar unavailability for a particular period on the calendar. The tool may refer to unavailability as \"Busy\".\n\nIf the tool returns an empty response, it means that something went wrong. It does not mean that there is no unavailability.",
-        "resource": "calendar",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "timeMin": "={{ $fromAI('startTime', 'format 2024-10-27T23:48:34', 'string') }}",
-        "timeMax": "={{ $fromAI('endTime', 'format 2024-10-27T23:48:34', 'string') }}",
-        "options": {
-          "outputFormat": "bookedSlots"
-        }
-      },
-      "id": "63533f6f-6b78-4d75-8034-5dd02ae9d5ac",
-      "name": "List calendar unavailability",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        1740,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "options": {}
-      },
-      "id": "99a7a71a-03d3-49b6-99b5-872c16867e6a",
-      "name": "Google Calendar List Events",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        1880,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Call this tool to return details of an event using the ID found. If you don't have the ID at the moment, use the tool that lists the events and then use the ID of the event that the user wants.\n\nIf the tool returns an empty response, it means that something went wrong. This does not mean that there is no downtime.",
-        "operation": "get",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "eventId": "={{ $fromAI('id') }}",
-        "options": {
-          "maxAttendees": 10
-        }
-      },
-      "id": "269fd497-0147-4b16-b517-02b6e7811b5d",
-      "name": "Google Calendar Get Event",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        2020,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "eventId": "={{ $fromAI('id') }}",
-        "updateFields": {
-          "description": "={{ $fromAI('description') }}",
-          "end": "=",
-          "start": "="
-        }
-      },
-      "id": "4bb75b44-3cb4-4064-af3c-679636a95396",
-      "name": "Google Calendar Update Event",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        2160,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').item.json.conversation }}",
-        "options": {
-          "systemMessage": "=## About the appointments\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.",
-          "maxIterations": 10,
-          "returnIntermediateSteps": false
-        }
-      },
-      "id": "2f9d4095-de7b-48db-bc02-ac4d85b36802",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1700,
-        1220
-      ],
-      "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "eventId": "={{ $fromAI('id') }}",
-        "options": {}
-      },
-      "id": "eb0f5f8b-b005-44d3-83c4-b24f508f7564",
-      "name": "Google Calendar Cancel Event",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.1,
-      "position": [
-        2300,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
     }
   ],
   "pinData": {},
@@ -2285,6 +1819,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-28T03:44:29.707Z",
-  "versionId": "c75552b5-bfcb-467f-a13b-877de08e6118"
+  "updatedAt": "2024-10-28T15:20:40.730Z",
+  "versionId": "d4df614b-5407-4c76-9516-8f2a25340b76"
 }
