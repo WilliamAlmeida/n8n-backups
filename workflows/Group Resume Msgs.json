@@ -84,17 +84,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Beautify URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Msg": {
       "main": [
         [
@@ -167,6 +156,17 @@
         [
           {
             "node": "List Groups",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
             "type": "main",
             "index": 0
           }
@@ -367,24 +367,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "agent": "conversationalAgent",
-        "promptType": "define",
-        "text": "={{ $json.data3 }}",
-        "options": {
-          "systemMessage": "Você é um assistente especializado em resumir conversas de grupos de WhatsApp. Seu objetivo será receber as conversas num formato de array, e resumir a conversa do dia no formato de MarkDowns. Traga sempre os assuntos mais relevantes, como novidades, projetos e dúvidas que foram apresentadas (TENTE FILTRAR SE NÃO É UMA DÚVIDA MUITO BÁSICA OU ESPECÍFICA SE FOR PODE IGNORAR PARA O RESUMO, você pode identificar isso com base em se tem muitas conversas seguintes sobre aquele tópico).\n\nA mensagem estará sempre no campo \"mensagem\"."
-        }
-      },
-      "id": "53239cfc-73a5-4de5-b07a-edc13c7ac45a",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1860,
-        280
-      ]
     },
     {
       "parameters": {
@@ -663,6 +645,25 @@
         540,
         240
       ]
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "={{ $json.data3 }}",
+        "options": {
+          "systemMessage": "Você é um assistente especializado em resumir conversas de grupos de WhatsApp.  \nSua tarefa é receber conversas em formato de array e gerar um resumo diário em formato Markdown. Siga estas diretrizes:\n\n## Diretrizes:\n1. **Priorize os tópicos mais relevantes**, como atualizações, projetos e dúvidas importantes.\n2. **Ignore dúvidas muito básicas ou excessivamente específicas**, especialmente se não gerarem muitas interações ou discussões subsequentes no grupo.\n3. **Organize o resumo de forma clara e concisa**, destacando pontos principais e omitindo detalhes irrelevantes.\n\nTodas as conversas estarão no campo `\"mensagem\"`."
+        }
+      },
+      "id": "53239cfc-73a5-4de5-b07a-edc13c7ac45a",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1860,
+        280
+      ],
+      "notes": "Você é um assistente especializado em resumir conversas de grupos de WhatsApp. Seu objetivo será receber as conversas num formato de array, e resumir a conversa do dia no formato de MarkDowns. Traga sempre os assuntos mais relevantes, como novidades, projetos e dúvidas que foram apresentadas (TENTE FILTRAR SE NÃO É UMA DÚVIDA MUITO BÁSICA OU ESPECÍFICA SE FOR PODE IGNORAR PARA O RESUMO, você pode identificar isso com base em se tem muitas conversas seguintes sobre aquele tópico).\n\nA mensagem estará sempre no campo \"mensagem\"."
     }
   ],
   "pinData": {},
@@ -687,6 +688,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-29T15:24:45.970Z",
-  "versionId": "29e80eeb-0d0e-42cd-b153-e3a85456aed1"
+  "updatedAt": "2024-10-29T15:29:05.941Z",
+  "versionId": "070d10eb-26e0-4852-8c72-784419092c0c"
 }
