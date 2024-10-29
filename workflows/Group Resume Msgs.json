@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
-          {
-            "node": "List Groups",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [],
@@ -172,6 +161,17 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "List Groups",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-29T13:10:37.227Z",
@@ -181,17 +181,6 @@
   },
   "name": "Group Resume Msgs",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "d4bcc0f1-eb07-4019-8921-fe72e8b83c26",
-      "name": "When clicking ‘Test workflow’",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        540,
-        240
-      ]
-    },
     {
       "parameters": {
         "options": {}
@@ -217,8 +206,7 @@
         1360,
         60
       ],
-      "webhookId": "affe5866-a0d8-4579-ad33-9768aaa70e51",
-      "disabled": true
+      "webhookId": "affe5866-a0d8-4579-ad33-9768aaa70e51"
     },
     {
       "parameters": {
@@ -360,6 +348,7 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
+          "maxTokens": -1,
           "temperature": 0.9,
           "topP": 0.9
         }
@@ -482,7 +471,7 @@
       "typeVersion": 1,
       "position": [
         2660,
-        80
+        60
       ],
       "credentials": {
         "supabaseApi": {
@@ -546,7 +535,7 @@
       "typeVersion": 1,
       "position": [
         1860,
-        80
+        60
       ],
       "credentials": {
         "supabaseApi": {
@@ -655,6 +644,25 @@
           "name": "william"
         }
       }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 11
+            }
+          ]
+        }
+      },
+      "id": "2d247960-895c-44f8-a22e-6f0033809e39",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        540,
+        240
+      ]
     }
   ],
   "pinData": {},
@@ -679,6 +687,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-29T15:19:58.295Z",
-  "versionId": "87018830-f323-4bc8-ab29-dc4de6347714"
+  "updatedAt": "2024-10-29T15:24:45.970Z",
+  "versionId": "29e80eeb-0d0e-42cd-b153-e3a85456aed1"
 }
