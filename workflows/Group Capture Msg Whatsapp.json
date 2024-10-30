@@ -100,7 +100,9 @@
             "type": "main",
             "index": 0
           }
-        ]
+        ],
+        [],
+        []
       ]
     },
     "Groq Analyze Audio": {
@@ -1410,6 +1412,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-29T15:19:48.457Z",
-  "versionId": "7a73c9da-f981-42d6-91bb-db035bd600e4"
+  "updatedAt": "2024-10-30T03:31:09.660Z",
+  "versionId": "b67319ba-db03-4f02-9937-8148815d22fa"
 }
