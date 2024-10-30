@@ -357,17 +357,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "baseInfo": {
       "main": [
         [
@@ -545,33 +534,11 @@
         ]
       ]
     },
-    "Chat": {
-      "main": [
-        [
-          {
-            "node": "chatConfig",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Basic LLM Chain": {
       "main": [
         [
           {
             "node": "Response WK",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "chatConfig": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
             "type": "main",
             "index": 0
           }
@@ -617,6 +584,17 @@
         ]
       ]
     },
+    "Beautify URL": {
+      "main": [
+        [
+          {
+            "node": "Fix Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Webhook": {
       "main": [
         [
@@ -628,11 +606,33 @@
         ]
       ]
     },
-    "Merge 2": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
       "main": [
         [
           {
             "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
             "type": "main",
             "index": 0
           }
@@ -689,7 +689,7 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_{{ $workflow.id }}"
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_liquid_gas"
       },
       "id": "191215db-adea-40a9-87d9-5610f1a3cac4",
       "name": "reset memo",
@@ -724,8 +724,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6120,
-        1180
+        6160,
+        1160
       ],
       "disabled": true
     },
@@ -922,8 +922,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3980,
-        980
+        4040,
+        940
       ]
     },
     {
@@ -937,8 +937,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        5980,
-        1180
+        6020,
+        1160
       ],
       "disabled": true
     },
@@ -949,7 +949,7 @@
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=<prompt_mestre_liquigas>\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil.\n\n<funcoes_principais>\nReceber pedidos\nEsclarecer dúvidas sobre produtos\nInformar sobre segurança\nDisponibilizar horários e locais\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem acessível, sem termos técnicos\nEncaminhar casos complexos a um atendente humano\nSempre consultar a base de dados antes de responder dúvidas\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nPerguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e apresentação\nIdentificar necessidade\nApresentar produtos\nEsclarecer dúvidas\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<cliente_direto>\nResponder diretamente a links/produtos específicos. Exemplo:\n\"Interessado no Gás P-13! Posso enviar o link do pedido?\"\n\n<recomendacoes_produtos>\nEm caso de dúvidas, sugerir até 3 opções.\n\n<seguranca>\nInformar que produtos são seguros, cuidados básicos e links adicionais de segurança, se solicitado.\n\n<agendamento_entrega>\nPara agendamento, solicitar:\nNome, Endereço, Telefone, Data e horário, Produto\nConfirmar informações e avisar que um atendente entrará em contato.\n\n<dicas_uso_produtos>\nDicas práticas: troca de botijão, manutenção, procedimentos de segurança.\n\n<informacoes_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<dados_cliente>\nJá é cliente? {{ $('userAccount').item.json.id ? 'yes' : 'no' }}\nNome: {{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\nE-mail: {{ $('userAccount').first().json.email ?? '' }}\nTelefone: {{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\nEndereço: {{ $('userAccount').first().json.endereco ?? '' }}\n</prompt_mestre_liquigas>",
+              "value": "=<prompt_mestre_liquigas>\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil.\n\n<funcoes_principais>\nReceber pedidos\nEsclarecer dúvidas sobre produtos\nInformar sobre segurança\nDisponibilizar horários e locais\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem acessível, sem termos técnicos\nEncaminhar casos complexos a um atendente humano\nSempre consultar a base de dados antes de responder dúvidas\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nPerguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e apresentação\nIdentificar necessidade\nApresentar produtos\nEsclarecer dúvidas\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<cliente_direto>\nResponder diretamente a links/produtos específicos. Exemplo:\n\"Interessado no Gás P-13! Posso enviar o link do pedido?\"\n\n<recomendacoes_produtos>\nEm caso de dúvidas, sugerir até 3 opções.\n\n<seguranca>\nInformar que produtos são seguros, cuidados básicos e links adicionais de segurança, se solicitado.\n\n<agendamento_entrega>\nPara agendamento, preciso confirmar algumas informações:\n- Nome do Cliente: {{ $('userAccount').first().json.nome ?? 'Nome não informado' }}\n- Endereço: {{ $('userAccount').first().json.endereco ?? 'Endereço não informado' }} (Se precisar alterar, informe o novo endereço)\n- Telefone: {{ $('userAccount').first().json.whatsapp ?? 'Telefone não informado' }}\n- Data e horário: [Solicitar]\n- Produto: [Nome do Produto via store_info_tool]\n- Preço: [Preço via store_info_tool]\n\nEsses dados são obrigatórios para prosseguir. Por favor, confirme ou faça as alterações necessárias. Um atendente entrará em contato para finalizar o processo.\nNUNCA envie o link após o agendamento.\n\n<dicas_uso_produtos>\nDicas práticas: troca de botijão, manutenção, procedimentos de segurança.\n\n<informacoes_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<dados_cliente>\nJá é cliente? {{ $('userAccount').item.json.id ? 'yes' : 'no' }}\nNome: {{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\nE-mail: {{ $('userAccount').first().json.email ?? '' }}\nTelefone: {{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\nEndereço: {{ $('userAccount').first().json.endereco ?? '' }}\n</prompt_mestre_liquigas>\n",
               "type": "string"
             }
           ]
@@ -968,7 +968,7 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_{{ $workflow.id }}",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_liquid_gas",
         "sessionTTL": 300,
         "contextWindowLength": 15
       },
@@ -985,8 +985,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1387,7 +1386,7 @@
         "descriptionType": "manual",
         "toolDescription": "call this tool to clean chat memory.",
         "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_{{ $workflow.id }}"
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_liquid_gas"
       },
       "id": "0cfe3165-c450-467b-a8e3-8085f1b3477e",
       "name": "Reset Memory",
@@ -1395,7 +1394,7 @@
       "typeVersion": 1,
       "position": [
         5700,
-        1480
+        1460
       ],
       "credentials": {
         "redis": {
@@ -1439,7 +1438,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Use esta ferramenta para cancelar agendamentos de entrega, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, obtido na listagem de agendamentos e o telefone do usuário.",
+        "toolDescription": "=Use esta ferramenta para cancelar agendamentos de entrega, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
         "operation": "delete",
         "calendar": {
           "__rl": true,
@@ -1478,7 +1477,7 @@
         "start": "={{ $fromAI('data_init') }}",
         "end": "={{ $fromAI('data_end') }}",
         "additionalFields": {
-          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto e horário') }}",
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
           "summary": "={{ $fromAI('summary', 'A concise summary of the appointment, highlighting essential information like purpose and key details') }}"
         }
       },
@@ -1508,10 +1507,10 @@
         },
         "eventId": "={{ $fromAI('event_id', 'id do evento') }}",
         "updateFields": {
-          "description": "={{ $fromAI('description', 'dados para entrega') }}",
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
           "end": "={{ $fromAI('data_end') }}",
           "start": "={{ $fromAI('date_start') }}",
-          "summary": "={{ $fromAI('summary') }}"
+          "summary": "={{ $fromAI('summary', 'A concise summary of the appointment, highlighting essential information like purpose and key details') }}"
         }
       },
       "id": "d56b586b-9c11-4a67-aee0-0c707d933aa9",
@@ -1555,26 +1554,6 @@
           "name": "Google Calendar account"
         }
       }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').item.json.system }}",
-          "returnIntermediateSteps": false
-        }
-      },
-      "id": "54852ce0-c950-414a-869e-110d6017c58b",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        5156,
-        1363
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 3000
     },
     {
       "parameters": {
@@ -2091,23 +2070,6 @@
     },
     {
       "parameters": {
-        "public": true,
-        "options": {
-          "responseMode": "lastNode"
-        }
-      },
-      "id": "bef50c2f-3b3a-4ba7-adfe-e2ffeabfd8a7",
-      "name": "Chat",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        3800,
-        980
-      ],
-      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa"
-    },
-    {
-      "parameters": {
         "httpMethod": "POST",
         "path": "bot-evolution",
         "options": {}
@@ -2142,42 +2104,6 @@
       "position": [
         4740,
         2480
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "dad8bf08-c5c2-4667-8c91-e51624fe9bc6",
-              "name": "output",
-              "value": "={{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "a41c7f4a-754c-42b4-95d3-57bf589e7667",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5840,
-        1360
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "3ca3b2b6-08cb-49c9-b0df-fe3ca7b60e8a",
-      "name": "Respond to Webhook",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1.1,
-      "position": [
-        3880,
-        780
       ]
     },
     {
@@ -2322,9 +2248,62 @@
     },
     {
       "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "024694c8-c5fb-480f-8821-1c86c7b2e736",
+      "name": "Merge 2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3900,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
+      },
+      "id": "121ab3d0-81e9-4ac1-b531-ff40bb524379",
+      "name": "Beautify URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5860,
+        1360
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "message",
+              "value": "={{ $json.output.replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d7c7a087-8d61-4566-a50b-7348cd518a95",
+      "name": "Fix Text",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6020,
+        1360
+      ]
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
-        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "responseMode": "responseNode",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd0",
+        "responseMode": "lastNode",
         "options": {}
       },
       "id": "e9c405f2-c8bc-498e-910a-8db351409d13",
@@ -2339,18 +2318,40 @@
     },
     {
       "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').item.json.system }}",
+          "returnIntermediateSteps": false
+        }
       },
-      "id": "024694c8-c5fb-480f-8821-1c86c7b2e736",
-      "name": "Merge 2",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
+      "id": "54852ce0-c950-414a-869e-110d6017c58b",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5156,
+        1363
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "bef50c2f-3b3a-4ba7-adfe-e2ffeabfd8a7",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
       "position": [
         3900,
-        1160
-      ]
+        940
+      ],
+      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa"
     }
   ],
   "pinData": {
@@ -2438,41 +2439,6 @@
           "executionMode": "test"
         }
       }
-    ],
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "connection": "keep-alive",
-            "host": "n8n.wmst.com.br",
-            "x-forwarded-scheme": "https",
-            "x-forwarded-proto": "https",
-            "x-forwarded-for": "10.0.0.2",
-            "x-real-ip": "10.0.0.2",
-            "content-length": "301",
-            "accept": "application/json, text/plain, */*",
-            "content-type": "application/json",
-            "user-agent": "axios/1.7.7",
-            "accept-encoding": "gzip, compress, deflate, br"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "inputs": {
-              "sessionId": "cm2vbwo5g0nb312a3r6d83fue",
-              "remoteJid": "5512982184879@s.whatsapp.net",
-              "pushName": "W.M. Soluções Tecnologicas",
-              "instanceName": "ibox_cli_23",
-              "serverUrl": "https://apiwp.wmst.com.br",
-              "apiKey": "PxzMJa1fEWPgCdgpGjz7kftLwaV857RI"
-            },
-            "query": "oi",
-            "user": "5512982184879@s.whatsapp.net"
-          },
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/f67c8094-022b-4aef-bb16-c7e430158fd9",
-          "executionMode": "test"
-        }
-      }
     ]
   },
   "settings": {
@@ -2499,7 +2465,7 @@
       "name": "Backup"
     }
   ],
-  "triggerCount": 3,
-  "updatedAt": "2024-10-30T03:44:43.885Z",
-  "versionId": "8cd9e053-7349-4214-ae91-85973668160a"
+  "triggerCount": 1,
+  "updatedAt": "2024-10-30T15:22:42.496Z",
+  "versionId": "718707c7-0ec5-470b-b313-55d6f7d5055c"
 }
