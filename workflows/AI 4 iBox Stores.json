@@ -312,23 +312,23 @@
         ]
       ]
     },
-    "Qdant Vector Store": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Groq Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "Vector Store Tool",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
             "index": 0
           }
         ]
@@ -1181,6 +1181,29 @@
     },
     {
       "parameters": {
+        "options": {
+          "baseURL": "https://litellm.wmst.com.br/v1",
+          "temperature": 0
+        }
+      },
+      "id": "8990d1a2-23f8-4f8b-9892-723d600bf646",
+      "name": "Litellm Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5760,
+        1600
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
         "qdrantCollection": {
           "__rl": true,
           "value": "={{ $('vector store').first().json.vector_name }}",
@@ -1202,29 +1225,6 @@
           "name": "william"
         }
       }
-    },
-    {
-      "parameters": {
-        "options": {
-          "baseURL": "https://litellm.wmst.com.br/v1",
-          "temperature": 0
-        }
-      },
-      "id": "8990d1a2-23f8-4f8b-9892-723d600bf646",
-      "name": "Litellm Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        5760,
-        1600
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "Jv19EsZcsXzDgjjj",
-          "name": "Litellm"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -1270,6 +1270,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-21T18:47:15.561Z",
-  "versionId": "8a07d59a-630d-48fe-97b9-ab8226c0b107"
+  "updatedAt": "2024-10-30T13:25:56.914Z",
+  "versionId": "aed35933-b02c-420e-8423-7fa9d99804de"
 }
