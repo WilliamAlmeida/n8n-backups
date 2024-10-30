@@ -162,6 +162,17 @@
         ]
       ]
     },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "AI Agent": {
       "main": [
         [
@@ -524,7 +535,8 @@
           "id": "WWYYqpMcDDFZTW3g",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -688,6 +700,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-29T15:29:05.941Z",
-  "versionId": "070d10eb-26e0-4852-8c72-784419092c0c"
+  "updatedAt": "2024-10-30T03:30:23.007Z",
+  "versionId": "9a716337-d166-420e-9ac9-c2d6aef7a409"
 }
