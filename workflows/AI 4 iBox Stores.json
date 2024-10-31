@@ -96,33 +96,11 @@
         ]
       ]
     },
-    "set vector store": {
-      "main": [
-        [
-          {
-            "node": "vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "delete vector store": {
       "main": [
         [
           {
             "node": "get vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "vector store": {
-      "main": [
-        [
-          {
-            "node": "delete user account",
             "type": "main",
             "index": 0
           }
@@ -341,6 +319,28 @@
             "node": "Merge",
             "type": "main",
             "index": 1
+          }
+        ]
+      ]
+    },
+    "vector store": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set vector store": {
+      "main": [
+        [
+          {
+            "node": "vector store",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -580,7 +580,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "=vector_store",
-        "key": "=vector_store_{{ $('messageInfo').first().json.instance }}",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
         "keyType": "hash",
         "options": {}
       },
@@ -670,47 +670,8 @@
     },
     {
       "parameters": {
-        "operation": "set",
-        "key": "=vector_store_{{ $('messageInfo').first().json.instance }}",
-        "value": "={{ $json }}",
-        "keyType": "hash",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "aec68a3c-e53a-4f20-b214-fc1922a612d1",
-      "name": "set vector store",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4118,
-        1601
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $json.vector_store ?? $json }}",
-        "options": {}
-      },
-      "id": "d3355da0-c7c0-4a79-b57f-3773ed18f582",
-      "name": "vector store",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4136,
-        1383
-      ]
-    },
-    {
-      "parameters": {
         "operation": "delete",
-        "key": "=vector_store_{{ $json.instance }}"
+        "key": "=instance_config_{{ $json.instance }}"
       },
       "id": "c92f739e-3252-4b0c-b85e-2e878dafbcf1",
       "name": "delete vector store",
@@ -1107,8 +1068,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3318,
-        1122
+        3260,
+        1120
       ],
       "disabled": true
     },
@@ -1138,7 +1099,7 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        3160,
+        3100,
         1120
       ],
       "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
@@ -1242,6 +1203,45 @@
         5158,
         1362
       ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.vector_store ?? $json }}",
+        "options": {}
+      },
+      "id": "d3355da0-c7c0-4a79-b57f-3773ed18f582",
+      "name": "vector store",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4136,
+        1383
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "aec68a3c-e53a-4f20-b214-fc1922a612d1",
+      "name": "set vector store",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4118,
+        1601
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1270,6 +1270,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-30T13:25:56.914Z",
-  "versionId": "aed35933-b02c-420e-8423-7fa9d99804de"
+  "updatedAt": "2024-10-31T06:48:36.756Z",
+  "versionId": "940ce02e-04d8-4cca-b71e-a7f0b912b934"
 }
