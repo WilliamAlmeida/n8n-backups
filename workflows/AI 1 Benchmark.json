@@ -240,7 +240,7 @@
             {
               "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
               "name": "limit",
-              "value": 100,
+              "value": 1,
               "type": "number"
             }
           ]
@@ -635,9 +635,15 @@
       "updatedAt": "2024-09-27T17:42:17.034Z",
       "id": "TsfCA8eZuTObjOfy",
       "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-31T06:44:33.847Z",
+      "updatedAt": "2024-10-31T06:44:33.847Z",
+      "id": "6vgbvfx4GT5juXVA",
+      "name": "Component"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-30T14:35:02.753Z",
-  "versionId": "03491782-ec88-495f-a799-3527862cdccd"
+  "updatedAt": "2024-10-31T06:45:27.781Z",
+  "versionId": "73a6cda1-fe0e-437b-983f-6eae93da26a8"
 }
