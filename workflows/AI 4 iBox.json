@@ -251,11 +251,6 @@
         ]
       ]
     },
-    "chatConfig": {
-      "main": [
-        []
-      ]
-    },
     "config prompt": {
       "main": [
         [
@@ -545,8 +540,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        5960,
-        1960
+        5980,
+        1900
       ],
       "credentials": {
         "groqApi": {
@@ -588,8 +583,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        5720,
-        2100
+        5740,
+        2020
       ],
       "credentials": {
         "openAiApi": {
@@ -1078,8 +1073,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        5720,
-        1840
+        5900,
+        1780
       ],
       "disabled": true
     },
@@ -1203,8 +1198,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        5720,
-        1960
+        5740,
+        1900
       ],
       "credentials": {
         "qdrantApi": {
@@ -1579,7 +1574,7 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5680,
+        5660,
         1700
       ],
       "credentials": {
@@ -1588,6 +1583,43 @@
           "name": "vps"
         }
       }
+    },
+    {
+      "parameters": {
+        "name": "post_status_whatsapp",
+        "description": "use essa ferramenta para postar uma mensagem no status do usuário, mas somente após a confirmação dele, lembre-se de pergunta a cor de fundo e fonte se usuário não tiver informado.\n\n# O texto a ser enviado na precisa ter entre entre 100 e 300 caracteres, você pode sugerir um alternativa, se ele desejar e aceitar.\n\n# Recomende no máximo 5 linhas com 44 caracteres por linha, mas aceite mais se o usuário deseja.\n\n# Formatação de Texto no Status\n* + texto + * = deixa o texto em negrito;\n_ + texto + _ = deixa o texto em itálico;\n~+ texto + ~ = deixa o texto sublinhado;",
+        "workflowId": {
+          "__rl": true,
+          "value": "LS8CfvECZu2puiXb",
+          "mode": "list",
+          "cachedResultName": "AI 4 iBox"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "extra",
+              "type": "objectValue",
+              "objectValue": "={\n    \"tool\": \"post_status_whatsapp\",\n    \"evo_params\": {\n        \"url\": \"{{ $('messageInfo').first().json.evo_api }}\",\n        \"api_key\": \"{{ $('messageInfo').first().json.evo_api_key }}\",\n        \"instance\": \"{{ $('messageInfo').first().json.instance }}\"\n    },\n    \"query\":\n    {\n        \"type\": \"text\",\n        \"caption\": \"\",\n        \"allContacts\": false,\n        \"statusJidList\":\n        [\n            \"{{ $('messageInfo').first().json.remoteJid }}\"\n        ]\n    }\n}"
+            },
+            {
+              "name": "extra.evo_params.url",
+              "stringValue": "={{ $('messageInfo').first().json.evo_api }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"content\": {\n      \"type\": \"string\",\n      \"description\": \"texto a ser enviado\"\n    },\n    \"backgroundColor\": {\n      \"type\": \"string\",\n      \"description\": \"cor de fundo a ser usado, sempre enviar como hexadeicmal: #000000\"\n    },\n    \"font\": {\n      \"type\": \"number\",\n      \"description\": \"Escolha entre as fontes mais adequadas ao texto informado, somente se o usuário não especificar uma fonte das opções: 1 = SERIF, 2 = NORICAN_REGULAR, 3 = BRYNDAN_WRITE, 4 = BEBASNEUE_REGULAR ou 5 = OSWALD_HEAVY.\"\n    }\n  },\n  \"required\": [\n    \"content\",\n    \"backgroundColor\",\n    \"font\"\n  ]\n}"
+      },
+      "id": "8fb196bf-7e0e-414f-8ee5-56e9e748da4c",
+      "name": "post status whatsapp",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        6140,
+        1780
+      ],
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -1616,6 +1648,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-10-31T06:17:19.928Z",
-  "versionId": "c3b59707-e546-43b8-9ac7-6966c64faa1a"
+  "updatedAt": "2024-10-31T07:02:21.247Z",
+  "versionId": "29ddd3b9-2ca7-4d87-b0c0-1905fb8f9115"
 }
