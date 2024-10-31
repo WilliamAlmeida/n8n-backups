@@ -659,9 +659,15 @@
       "updatedAt": "2024-09-27T14:34:01.317Z",
       "id": "ZoTSEGR97fzorfDz",
       "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-31T06:44:33.847Z",
+      "updatedAt": "2024-10-31T06:44:33.847Z",
+      "id": "6vgbvfx4GT5juXVA",
+      "name": "Component"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-25T19:06:47.214Z",
-  "versionId": "2bb7851a-e11f-4533-b576-6c9f6b0d7b69"
+  "updatedAt": "2024-10-31T06:45:12.816Z",
+  "versionId": "412a83c8-f3a2-416f-8a2c-f263a1ae6917"
 }
