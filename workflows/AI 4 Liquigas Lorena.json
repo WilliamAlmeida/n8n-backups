@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "reset memo": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "messageInfo": {
       "main": [
         [
@@ -107,34 +96,12 @@
         ]
       ]
     },
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "config prompt": {
       "main": [
         [
           {
             "node": "reset memo",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -151,24 +118,6 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Redis Retrive Page",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Json2Object": {
       "main": [
         [
@@ -180,162 +129,7 @@
         ]
       ]
     },
-    "Notion": {
-      "main": [
-        [
-          {
-            "node": "Notion Get Page",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter Non-Text Content": {
-      "main": [
-        [
-          {
-            "node": "Summarize - Concatenate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Summarize - Concatenate": {
-      "main": [
-        [
-          {
-            "node": "Page - Concatenate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Notion Get Page": {
-      "main": [
-        [
-          {
-            "node": "Filter Non-Text Content",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Page - Concatenate": {
-      "main": [
-        [
-          {
-            "node": "Redis Set in Cache",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Page in Cache?": {
-      "main": [
-        [
-          {
-            "node": "Notion",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Page Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis Retrive Page": {
-      "main": [
-        [
-          {
-            "node": "Page in Cache?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Page Info": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Reset Memory": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calendar List Delivery": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calendar Cancel Delivery": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calendar Register Delivery": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calendar Update Delivery": {
       "ai_tool": [
         [
           {
@@ -534,17 +328,6 @@
         ]
       ]
     },
-    "Basic LLM Chain": {
-      "main": [
-        [
-          {
-            "node": "Response WK",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Message Type": {
       "main": [
         [
@@ -595,12 +378,45 @@
         ]
       ]
     },
-    "Webhook": {
+    "Chat": {
       "main": [
         [
           {
-            "node": "baseInfo",
+            "node": "chatConfig",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Scheduling Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -617,7 +433,7 @@
         ]
       ]
     },
-    "chatConfig": {
+    "Merge 2": {
       "main": [
         [
           {
@@ -628,11 +444,11 @@
         ]
       ]
     },
-    "Chat": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "chatConfig",
+            "node": "baseInfo",
             "type": "main",
             "index": 0
           }
@@ -651,9 +467,8 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "maxTokens": 1024,
-          "temperature": 0.4,
-          "topP": 0.9
+          "temperature": 1,
+          "topP": 1
         }
       },
       "id": "64fcf222-569e-4df4-a321-68828aad37d1",
@@ -661,8 +476,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5120,
-        1520
+        5244,
+        1517
       ],
       "credentials": {
         "openAiApi": {
@@ -696,8 +511,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5016,
-        1363
+        5040,
+        1360
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -728,17 +543,6 @@
         1160
       ],
       "disabled": true
-    },
-    {
-      "parameters": {},
-      "id": "5be86688-aa97-4e3b-9608-50e32c10dfce",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        3780,
-        1740
-      ]
     },
     {
       "parameters": {
@@ -924,7 +728,8 @@
       "position": [
         4040,
         940
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -949,7 +754,7 @@
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=<prompt_mestre_liquigas>\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil.\n\n<funcoes_principais>\nReceber pedidos\nEsclarecer dúvidas sobre produtos\nInformar sobre segurança\nDisponibilizar horários e locais\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem acessível, sem termos técnicos\nEncaminhar casos complexos a um atendente humano\nSempre consultar a base de dados antes de responder dúvidas\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nPerguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e apresentação\nIdentificar necessidade\nApresentar produtos\nEsclarecer dúvidas\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<cliente_direto>\nResponder diretamente a links/produtos específicos. Exemplo:\n\"Interessado no Gás P-13! Posso enviar o link do pedido?\"\n\n<recomendacoes_produtos>\nEm caso de dúvidas, sugerir até 3 opções.\n\n<seguranca>\nInformar que produtos são seguros, cuidados básicos e links adicionais de segurança, se solicitado.\n\n<agendamento_entrega>\nPara agendamento, preciso confirmar algumas informações:\n- Nome do Cliente: {{ $('userAccount').first().json.nome ?? 'Nome não informado' }}\n- Endereço: {{ $('userAccount').first().json.endereco ?? 'Endereço não informado' }} (Se precisar alterar, informe o novo endereço)\n- Telefone: {{ $('userAccount').first().json.whatsapp ?? 'Telefone não informado' }}\n- Data e horário: [Solicitar]\n- Produto: [Nome do Produto via store_info_tool]\n- Preço: [Preço via store_info_tool]\n\nEsses dados são obrigatórios para prosseguir. Por favor, confirme ou faça as alterações necessárias. Um atendente entrará em contato para finalizar o processo.\nNUNCA envie o link após o agendamento.\n\n<dicas_uso_produtos>\nDicas práticas: troca de botijão, manutenção, procedimentos de segurança.\n\n<informacoes_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<dados_cliente>\nJá é cliente? {{ $('userAccount').item.json.id ? 'yes' : 'no' }}\nNome: {{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\nE-mail: {{ $('userAccount').first().json.email ?? '' }}\nTelefone: {{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\nEndereço: {{ $('userAccount').first().json.endereco ?? '' }}\n</prompt_mestre_liquigas>\n",
+              "value": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('userAccount').item.json.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", o e-mail é \"{{ $('userAccount').first().json.email ?? '' }}\", telefone para contato é \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('userAccount').first().json.endereco ?? '' }}\".\n\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil, e acessível.\n\n<funcoes_principais>\nReceber pedidos de gás\nEsclarecer dúvidas sobre produtos\nInformar sobre segurança e cuidados\nDisponibilizar horários e locais de entrega\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nEncaminhar casos complexos a um atendente humano\nConsultar a base de dados antes de responder dúvidas\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nSempre perguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e {{ $('userAccount').item.json.id ? 'apresentação com sugestões de solicitação' : 'apresentação' }}\nIdentificar necessidade com perguntas específicas\nApresentar produtos ou serviços\nEsclarecer dúvidas\nAgendar entrega, se necessário\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<recomendacoes_produtos>\nEm caso de dúvidas, sugerir até 3 opções retornadas pela *store_info_tool*.\n\n<seguranca>\nInformar que produtos são seguros, cuidados básicos e fornecer links adicionais de segurança, se solicitado.\n\n<agendamento_entrega>\nUtilize a *scheduling_tool* para Agendamento de Entregas/Pedidos.\n\n<dicas_uso_produtos>\nDicas práticas sobre troca de botijão, manutenção e procedimentos de segurança.\n</prompt_mestre_liquigas>\n",
               "type": "string"
             }
           ]
@@ -961,8 +766,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5018,
-        1621
+        5040,
+        1620
       ]
     },
     {
@@ -977,8 +782,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5220,
-        1520
+        5384,
+        1557
       ],
       "credentials": {
         "redis": {
@@ -990,12 +795,12 @@
     {
       "parameters": {
         "name": "store_info_tool",
-        "description": "Chame essa ferramenta para consultar qualquer informação que lhe for perguntada, sobre empresa, produtos, contatos.",
+        "description": "Chame essa ferramenta para consultar qualquer informação que lhe for perguntada, sobre empresa, produtos, contatos, horário de funcionamento.",
         "workflowId": {
           "__rl": true,
-          "value": "iWjqb3RWtfplz63k",
+          "value": "TG0NZ5dlJtCo1wcu",
           "mode": "list",
-          "cachedResultName": "AI 4 Liquigas Lorena"
+          "cachedResultName": "TOOL Liquigas Lorena"
         }
       },
       "id": "495def57-f9c0-436c-9d60-2e29994e2adb",
@@ -1003,89 +808,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5278,
-        1661
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
-              "name": "response",
-              "value": "={{ $json.text }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8f661228-393e-4bec-8fd7-c62c15e035b9",
-      "name": "Response WK",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5080,
-        2480
-      ]
-    },
-    {
-      "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
-        "options": {
-          "maxTokens": 512,
-          "temperature": 0.9,
-          "topP": 0.9
-        }
-      },
-      "id": "eb0f7117-f213-47ab-9ad2-cc003bdf64d2",
-      "name": "OpenAI Chat Model1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        4680,
-        2680
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
-              "leftValue": "={{ $json.query }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notExists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "dcb87ff2-e4ac-43f2-8c45-ec1039db0afe",
-      "name": "If",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3940,
-        1740
+        5484,
+        1537
       ]
     },
     {
@@ -1107,279 +831,9 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4438,
-        1721
+        4440,
+        1720
       ]
-    },
-    {
-      "parameters": {
-        "resource": "databasePage",
-        "operation": "get",
-        "pageId": {
-          "__rl": true,
-          "value": "https://www.notion.so/Revenda-Liquig-s-Lorena-1217c386d92280b59418e30646dfbddc",
-          "mode": "url"
-        }
-      },
-      "id": "3c6c9ed0-05df-4d2f-843d-762e2e1b7bf3",
-      "name": "Notion",
-      "type": "n8n-nodes-base.notion",
-      "typeVersion": 2.2,
-      "position": [
-        4560,
-        2200
-      ],
-      "credentials": {
-        "notionApi": {
-          "id": "eyQfrNhyfucklowG",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
-            {
-              "id": "e5b605e5-6d05-4bca-8f19-a859e474620f",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              },
-              "leftValue": "={{ $json.type }}",
-              "rightValue": "image"
-            },
-            {
-              "id": "c7415859-5ffd-4c78-b497-91a3d6303b6f",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              },
-              "leftValue": "={{ $json.type }}",
-              "rightValue": "video"
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "c76e953f-c118-4239-a015-75c954470357",
-      "name": "Filter Non-Text Content",
-      "type": "n8n-nodes-base.filter",
-      "position": [
-        4920,
-        2200
-      ],
-      "typeVersion": 2
-    },
-    {
-      "parameters": {
-        "fieldsToSummarize": {
-          "values": [
-            {
-              "aggregation": "concatenate",
-              "field": "content",
-              "includeEmpty": true,
-              "separateBy": "\n"
-            }
-          ]
-        },
-        "options": {
-          "outputFormat": "separateItems"
-        }
-      },
-      "id": "62cfe8b2-3cfa-49e7-a06c-0039695f631b",
-      "name": "Summarize - Concatenate",
-      "type": "n8n-nodes-base.summarize",
-      "position": [
-        5100,
-        2200
-      ],
-      "typeVersion": 1,
-      "notes": "Summarize - Concatenate Notion's blocks content"
-    },
-    {
-      "parameters": {
-        "resource": "block",
-        "operation": "getAll",
-        "blockId": {
-          "__rl": true,
-          "value": "={{ $json.id }}",
-          "mode": "id"
-        },
-        "returnAll": true
-      },
-      "id": "c7e45cba-0942-4a61-a9c0-d9f1a788907b",
-      "name": "Notion Get Page",
-      "type": "n8n-nodes-base.notion",
-      "typeVersion": 2.2,
-      "position": [
-        4740,
-        2200
-      ],
-      "executeOnce": true,
-      "credentials": {
-        "notionApi": {
-          "id": "eyQfrNhyfucklowG",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "54e5667d-a9d0-443a-9807-d15c93656348",
-              "name": "content",
-              "value": "={{ $json.concatenated_content }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "15d77ba7-dc9d-48d2-8642-4c524e0580da",
-      "name": "Page - Concatenate",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5280,
-        2200
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "f469534b-3fb9-4969-8b10-53388bb19aa9",
-              "leftValue": "={{ $json.data }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "e6355f28-67d2-405a-ae3f-ff444d35f647",
-      "name": "Page in Cache?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        4340,
-        2220
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "data",
-        "key": "=db_notion_{{ $workflow.id }}",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "1c9f5a46-fc6a-4c23-b191-c6636efa2335",
-      "name": "Redis Retrive Page",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4160,
-        2220
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "90936fac-2408-4395-b13d-a6201d630d4b",
-              "name": "content",
-              "value": "={{ $json.data }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "e5877e62-b1d7-4f5f-857e-506174deb67d",
-      "name": "Page Info",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4560,
-        2480
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "=db_notion_{{ $workflow.id }}",
-        "value": "={{ $json.content }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "bad6d6f2-e6de-45f4-97ef-6d34b0d48b2d",
-      "name": "Redis Set in Cache",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        5460,
-        2200
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": "llama-3.2-90b-text-preview",
-        "options": {
-          "maxTokensToSample": 512,
-          "temperature": 0
-        }
-      },
-      "id": "d3bead85-98df-497a-9e8b-5634bcf3f3eb",
-      "name": "Groq Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        4820,
-        2680
-      ],
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
     },
     {
       "parameters": {
@@ -1393,165 +847,13 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5700,
-        1460
+        5684,
+        1537
       ],
       "credentials": {
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Utilize esta ferramenta para buscar agendamentos de entrega do usuário. Sempre solicite a data e hora do agendamento e, se disponível, o e-mail do usuário para facilitar a localização.",
-        "operation": "getAll",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "options": {
-          "timeMin": "={{ $fromAI('data_after', 'Data e hora da entrega agendada informada pelo usuário menos 12 horas') }}",
-          "timeMax": "={{ $fromAI('data_before', 'Data e hora da entrega agendada informada pelo usuário mais 12 horas') }}",
-          "fields": ""
-        }
-      },
-      "id": "39652055-953f-4ec5-8817-7edf09af7432",
-      "name": "Calendar List Delivery",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.2,
-      "position": [
-        5600,
-        1660
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "=Use esta ferramenta para cancelar agendamentos de entrega, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
-        "operation": "delete",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "eventId": "={{ $fromAI('event_id', 'ID único do agendamento que você deseja cancelar') }}",
-        "options": {}
-      },
-      "id": "a4c06884-85d1-49ee-8c8c-a22b2f1d0178",
-      "name": "Calendar Cancel Delivery",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.2,
-      "position": [
-        5500,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Utilize esta ferramenta para agendar entregas, com um prazo de 1 hora para o agendamento. É necessário preencher os campos obrigatórios: nome completo, endereço de entrega, telefone, data e horário preferidos, e tipo de produto.",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "start": "={{ $fromAI('data_init') }}",
-        "end": "={{ $fromAI('data_end') }}",
-        "additionalFields": {
-          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
-          "summary": "={{ $fromAI('summary', 'A concise summary of the appointment, highlighting essential information like purpose and key details') }}"
-        }
-      },
-      "id": "9982ed84-fdea-4160-84ff-72da6b7b741f",
-      "name": "Calendar Register Delivery",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.2,
-      "position": [
-        5400,
-        1660
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "eventId": "={{ $fromAI('event_id', 'id do evento') }}",
-        "updateFields": {
-          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
-          "end": "={{ $fromAI('data_end') }}",
-          "start": "={{ $fromAI('date_start') }}",
-          "summary": "={{ $fromAI('summary', 'A concise summary of the appointment, highlighting essential information like purpose and key details') }}"
-        }
-      },
-      "id": "d56b586b-9c11-4a67-aee0-0c707d933aa9",
-      "name": "Calendar Update Delivery",
-      "type": "n8n-nodes-base.googleCalendarTool",
-      "typeVersion": 1.2,
-      "position": [
-        5700,
-        1640
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@hotmail.com"
-        },
-        "returnAll": true,
-        "options": {}
-      },
-      "id": "2c7e29d6-296a-433b-8d52-b495842e6c61",
-      "name": "Google Calendar",
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.2,
-      "position": [
-        5020,
-        1860
-      ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
         }
       }
     },
@@ -2087,27 +1389,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Execute Workflow Trigger').item.json.query }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "=<context>\n{{ $json.content }}\n</context>\n\n**Responda somente com informações disponíveis no <context>.**\nSe não tiver a informação no momento ou não estiver seguro, **deixe claro que não é possível fornecer detalhes agora**."
-            }
-          ]
-        }
-      },
-      "id": "11947918-9629-4d95-a143-a19ac485f9a4",
-      "name": "Basic LLM Chain",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        4740,
-        2480
-      ]
-    },
-    {
-      "parameters": {
         "rules": {
           "values": [
             {
@@ -2248,21 +1529,6 @@
     },
     {
       "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "024694c8-c5fb-480f-8821-1c86c7b2e736",
-      "name": "Merge 2",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        3900,
-        1160
-      ]
-    },
-    {
-      "parameters": {
         "mode": "runOnceForEachItem",
         "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
       },
@@ -2301,6 +1567,120 @@
     },
     {
       "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "bef50c2f-3b3a-4ba7-adfe-e2ffeabfd8a7",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3900,
+        940
+      ],
+      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a4b1203c-5e37-4893-9798-d4dc7fda9750",
+              "name": "output",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "015d36f6-ff6b-407c-b63e-59b6d639f8c5",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6200,
+        1360
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "scheduling_tool",
+        "description": "Chame essa ferramenta para consultar, cancelar, listar, registrar, alterar alguma agendamento de entrega/pedido.",
+        "workflowId": {
+          "__rl": true,
+          "value": "TG0NZ5dlJtCo1wcu",
+          "mode": "list",
+          "cachedResultName": "TOOL Liquigas Lorena"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            }
+          ]
+        }
+      },
+      "id": "ad5ec1e0-94ce-4538-bfa3-f632a468c400",
+      "name": "Agent Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5584,
+        1557
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "024694c8-c5fb-480f-8821-1c86c7b2e736",
+      "name": "Merge 2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3900,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').item.json.system }}"
+        }
+      },
+      "id": "54852ce0-c950-414a-869e-110d6017c58b",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
         "path": "f67c8094-022b-4aef-bb16-c7e430158fd0",
         "responseMode": "lastNode",
@@ -2315,53 +1695,9 @@
         1140
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').item.json.system }}",
-          "returnIntermediateSteps": false
-        }
-      },
-      "id": "54852ce0-c950-414a-869e-110d6017c58b",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        5156,
-        1363
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 3000
-    },
-    {
-      "parameters": {
-        "public": true,
-        "options": {
-          "responseMode": "lastNode"
-        }
-      },
-      "id": "bef50c2f-3b3a-4ba7-adfe-e2ffeabfd8a7",
-      "name": "Chat",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        3900,
-        940
-      ],
-      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa"
     }
   ],
   "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "query": "preço do gás de cozinha"
-        }
-      }
-    ],
     "Webhook img": [
       {
         "json": {
@@ -2442,7 +1778,9 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [
@@ -2466,6 +1804,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-30T15:22:42.496Z",
-  "versionId": "718707c7-0ec5-470b-b313-55d6f7d5055c"
+  "updatedAt": "2024-10-30T23:48:02.331Z",
+  "versionId": "0289d31a-edd8-4c4f-854d-4ad2b2b7a3b4"
 }
