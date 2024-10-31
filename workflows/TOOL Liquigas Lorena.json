@@ -1,0 +1,981 @@
+{
+  "active": false,
+  "connections": {
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Notion Get Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Non-Text Content": {
+      "main": [
+        [
+          {
+            "node": "Summarize - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Page - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Get Page": {
+      "main": [
+        [
+          {
+            "node": "Filter Non-Text Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Redis Set in Cache",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page in Cache?": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Page Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Retrive Page": {
+      "main": [
+        [
+          {
+            "node": "Page in Cache?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page Info": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar List Delivery": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Cancel Delivery": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Register Delivery": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Update Delivery": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "send to agent?": {
+      "main": [
+        [
+          {
+            "node": "Redis Retrive Page",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt1": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Agents": {
+      "main": [
+        [
+          {
+            "node": "config prompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "send to agent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Store Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Response2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-30T22:14:22.554Z",
+  "id": "TG0NZ5dlJtCo1wcu",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TOOL Liquigas Lorena",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "get",
+        "pageId": {
+          "__rl": true,
+          "value": "https://www.notion.so/Revenda-Liquig-s-Lorena-1217c386d92280b59418e30646dfbddc",
+          "mode": "url"
+        }
+      },
+      "id": "616b2819-2951-497c-ae95-91c138e2a692",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1680,
+        400
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "e5b605e5-6d05-4bca-8f19-a859e474620f",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "image"
+            },
+            {
+              "id": "c7415859-5ffd-4c78-b497-91a3d6303b6f",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "video"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e7d70e8f-a42e-4229-a2a4-4d35c419dbff",
+      "name": "Filter Non-Text Content",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        2040,
+        400
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "content",
+              "includeEmpty": true,
+              "separateBy": "\n"
+            }
+          ]
+        },
+        "options": {
+          "outputFormat": "separateItems"
+        }
+      },
+      "id": "6f6abe2e-6a17-43b7-8b9a-64948c7e093e",
+      "name": "Summarize - Concatenate",
+      "type": "n8n-nodes-base.summarize",
+      "position": [
+        2220,
+        400
+      ],
+      "typeVersion": 1,
+      "notes": "Summarize - Concatenate Notion's blocks content"
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "returnAll": true
+      },
+      "id": "67363f31-5906-4100-95ea-e619371f0734",
+      "name": "Notion Get Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1860,
+        400
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54e5667d-a9d0-443a-9807-d15c93656348",
+              "name": "content",
+              "value": "={{ $json.concatenated_content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "42fcd1d3-84ca-450f-a355-04e65a49495c",
+      "name": "Page - Concatenate",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2400,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f469534b-3fb9-4969-8b10-53388bb19aa9",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "44d955c3-5284-4bd7-84ed-1c4d8f4d3f1e",
+      "name": "Page in Cache?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "=db_notion_{{ $workflow.id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "c96d8f73-0918-4242-9edc-3aa19c01c138",
+      "name": "Redis Retrive Page",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        420
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "90936fac-2408-4395-b13d-a6201d630d4b",
+              "name": "content",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f3ac0d5c-044b-4674-bf01-994d05913abd",
+      "name": "Page Info",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=db_notion_{{ $workflow.id }}",
+        "value": "={{ $json.content }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "11623190-c649-4679-8060-2349192230bf",
+      "name": "Redis Set in Cache",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        400
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "maxTokensToSample": 512,
+          "temperature": 0
+        }
+      },
+      "id": "f31169fe-63d3-4ccf-b36a-81f263892781",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        820
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Utilize esta ferramenta para localizar agendamentos de entrega do usuário, sempre solicite a data e hora do agendamento e, se disponível, o e-mail do usuário para facilitar a localização.",
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "options": {
+          "timeMin": "={{ $fromAI('data_after', 'Data e hora da entrega agendada informada pelo usuário menos 12 horas') }}",
+          "timeMax": "={{ $fromAI('data_before', 'Data e hora da entrega agendada informada pelo usuário mais 12 horas') }}",
+          "fields": "items(id,status,htmlLink,created,summary,description,creator,organizer,start(dateTime),end(dateTime))"
+        }
+      },
+      "id": "f539e27f-781d-4dfe-be39-5c22d5de1662",
+      "name": "Calendar List Delivery",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        2120,
+        1220
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "=Use esta ferramenta para cancelar agendamentos de entrega, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "eventId": "={{ $fromAI('event_id', 'ID único do agendamento que você deseja cancelar') }}",
+        "options": {}
+      },
+      "id": "acb98fa5-6f75-46d8-ad9a-c17128b59173",
+      "name": "Calendar Cancel Delivery",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        2120,
+        1380
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "=williamkillerca@gmail.com",
+          "mode": "id",
+          "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+        },
+        "start": "={{ $fromAI('data_init') }}",
+        "end": "={{ $fromAI('data_end') }}",
+        "additionalFields": {
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
+          "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
+        }
+      },
+      "id": "628eccf8-6252-4805-80b4-8446c850c74f",
+      "name": "Calendar Register Delivery",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        1980,
+        1220
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "eventId": "={{ $fromAI('event_id', 'id do evento') }}",
+        "updateFields": {
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
+          "end": "={{ $fromAI('data_end') }}",
+          "start": "={{ $fromAI('date_start') }}",
+          "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
+        }
+      },
+      "id": "077a7ae4-5906-4c32-95f9-8852e6c1bf63",
+      "name": "Calendar Update Delivery",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        1980,
+        1380
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<context>\n{{ $json.content }}\n</context>\n\n**Responda somente com informações disponíveis no <context>.**\nSe não tiver a informação no momento ou não estiver seguro, **deixe claro que não é possível fornecer detalhes agora**."
+            }
+          ]
+        }
+      },
+      "id": "e58063e6-6af9-493e-bd21-6af0422fb4f1",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1860,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
+              "leftValue": "={{ $json.agent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b9377bdb-52c2-4ab3-adb8-c1899301bdce",
+      "name": "send to agent?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas",
+        "sessionTTL": 300,
+        "contextWindowLength": 15
+      },
+      "id": "60fb9bc4-e9e1-47d2-a9df-cbc47c00ba54",
+      "name": "Chat Memory1",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        1680,
+        1200
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('EWT').first().json.userAccount.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}\", o e-mail é \"{{ $('EWT').first().json.userAccount.email ?? '' }}\", telefone para contato é \"{{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('EWT').first().json.userAccount.endereco ?? '' }}\".\n\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil, e acessível.\n\n<funcoes_principais>\nReceber pedidos de gás\nDisponibilizar horários entrega\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nSempre perguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nIdentificar necessidade com perguntas específicas\nEsclarecer dúvidas\nAgendar entrega\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<agendamento_entrega>\nPara agendamento, siga o seguinte processo, NÃO pule etapas:\n\n1. Identificar qual Produto via store_info_tool o cliente deseja comprar\n2. Exiba os detalhes do produto e confirme com o cliente\n3. Solicite as informações do cliente (nome, endereço, telefone), se necessário\n- Nome do Cliente: {{ $('EWT').first().json.userAccount.nome ?? $('EWT').first().json.messageInfo.pushName }}\n- Endereço: {{ $('EWT').first().json.messageInfo.endereco ?? '' }}\n- Telefone: {{ $('EWT').first().json.userAccount.whatsapp ?? $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\nSe algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n4. Solicite a data e horário desejados para a entrega\n- Verifique os horários disponíveis via store_info_tool\n\n**Confirmação:**\nDepois de coletar todas informações, solicite a confirmação do cliente para prosseguir com o agendamento.\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\nNUNCA envie o link após o agendamento e ao SALVAR ou ATUALIZAR o agendamento, a descrição precisa ser salva no formato do [template].\n\n</prompt_mestre_liquigas>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c2256c1d-3082-41b9-b12d-fec4dfaa9902",
+      "name": "config prompt1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93b3a4ae-a50c-4b62-9872-f980bc19054c",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ec1f501-f5e8-4283-a6ac-d9960cf81633",
+      "name": "Response2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1900,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b4c50e2-2726-4218-a2ec-5e463a8e5c28",
+      "name": "Response1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2180,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.agent }}",
+                    "rightValue": "calendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "calendar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "50a3d730-a90c-47c0-8c97-786741b33517",
+      "name": "Switch Agents",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1040,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_liquid_gas"
+      },
+      "id": "2442a85f-f27a-4add-a489-9ae8708ab7dc",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        980
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "11a5a47b-e01d-4a75-803d-5d4577fdb3c0",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "name": "store_info_tool",
+        "description": "Chame essa ferramenta para consultar horário de funcionamento para evitar agendar pedidos em momento errado.",
+        "workflowId": {
+          "__rl": true,
+          "value": "TG0NZ5dlJtCo1wcu",
+          "mode": "list",
+          "cachedResultName": "TOOL Liquigas Lorena"
+        }
+      },
+      "id": "86ae9407-41da-4deb-a5a7-e070f3a57196",
+      "name": "Store Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1800,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query }}",
+        "options": {
+          "systemMessage": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil, e acessível.\n\n<funcoes_principais>\nReceber pedidos de gás\nEsclarecer dúvidas sobre produtos\nInformar sobre segurança e cuidados\nDisponibilizar horários e locais de entrega\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nEncaminhar casos complexos a um atendente humano\nConsultar a base de dados antes de responder dúvidas\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nSempre perguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e apresentação\nIdentificar necessidade com perguntas específicas\nApresentar produtos ou serviços\nEsclarecer dúvidas\nAgendar entrega, se necessário\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<recomendacoes_produtos>\nEm caso de dúvidas, sugerir até 3 opções retornadas pela *store_info_tool*.\n\n<seguranca>\nInformar que produtos são seguros, cuidados básicos e fornecer links adicionais de segurança, se solicitado.\n\n<agendamento_entrega>\nPara agendamento, siga o seguinte processo, NÃO pule etapas:\n\n- Identificar qual Produto via store_info_tool o cliente deseja comprar\n- Exiba os detalhes do produto e confirme com o cliente\n- Solicite as informações do cliente (nome, endereço, telefone), se necessário\n1. Nome do Cliente\n2. Endereço\n3. Telefone\nSe algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n- Solicite a data e horário desejados para a entrega\n1. Verifique os horários disponíveis via store_info_tool\n\n**Confirmação:**\nDepois de coletar todas informações, solicite a confirmação do cliente para prosseguir com o agendamento.\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\nNUNCA envie o link após o agendamento e ao SALVAR ou ATUALIZAR o agendamento, a descrição precisa ser salva no formato do [template].\n\n<dicas_uso_produtos>\nDicas práticas sobre troca de botijão, manutenção e procedimentos de segurança.\n</prompt_mestre_liquigas>\n"
+        }
+      },
+      "id": "efa03d09-7a52-4cb7-b6dc-093717647b31",
+      "name": "AI Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1600,
+        980
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 1,
+          "topP": 1
+        }
+      },
+      "id": "0220c74f-59f6-4c50-9fef-028cff3fcb15",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        1220
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-30T23:31:05.255Z",
+      "updatedAt": "2024-10-30T23:31:05.255Z",
+      "id": "IDsda42rHm8bi7eR",
+      "name": "Tool"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-30T23:56:01.156Z",
+  "versionId": "348126b4-89d5-40c4-b333-4188588f0abd"
+}
