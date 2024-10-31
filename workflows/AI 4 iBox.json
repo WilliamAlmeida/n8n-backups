@@ -253,13 +253,7 @@
     },
     "chatConfig": {
       "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "config prompt": {
@@ -396,13 +390,7 @@
     },
     "If": {
       "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Question and Answer Chain",
@@ -899,7 +887,8 @@
       "position": [
         3100,
         1160
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -914,7 +903,8 @@
         2942,
         1158
       ],
-      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef"
+      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1626,6 +1616,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-10-29T04:39:02.030Z",
-  "versionId": "f3a55c37-eacd-42a2-a418-1f8e74aab279"
+  "updatedAt": "2024-10-31T06:17:19.928Z",
+  "versionId": "c3b59707-e546-43b8-9ac7-6966c64faa1a"
 }
