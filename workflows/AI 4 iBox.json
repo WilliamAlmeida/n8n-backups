@@ -229,22 +229,11 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "wk response whatsapp",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow Trigger": {
       "main": [
         [
           {
-            "node": "If",
+            "node": "talk to agent?",
             "type": "main",
             "index": 0
           }
@@ -383,18 +372,6 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Question and Answer Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Json2Object": {
       "main": [
         [
@@ -402,17 +379,6 @@
             "node": "has user account?",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -479,6 +445,57 @@
             "node": "AI Agent",
             "type": "ai_tool",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "talk to agent?": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -610,7 +627,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        5900,
+        5820,
         1320
       ]
     },
@@ -825,7 +842,7 @@
     {
       "parameters": {
         "content": "## Tenta retornar os dados do Usuário",
-        "height": 435.2975787523367,
+        "height": 635.1924575090022,
         "width": 598.5677101799579,
         "color": 5
       },
@@ -880,8 +897,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3100,
-        1160
+        3020,
+        1120
       ],
       "disabled": true
     },
@@ -895,8 +912,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        2942,
-        1158
+        2862,
+        1118
       ],
       "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
       "disabled": true
@@ -1046,21 +1063,6 @@
         }
       },
       "disabled": true
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "c7fe334f-5faf-49c5-a722-a5d0a2f31b7a",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        5740,
-        1320
-      ]
     },
     {
       "parameters": {
@@ -1343,40 +1345,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
-              "leftValue": "={{ $json.query }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notExists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "2ae019ad-6ebd-4ebe-b62c-ab819420e419",
-      "name": "If",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3100,
-        1320
-      ]
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -1394,29 +1362,9 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4380,
+        4420,
         1780
       ]
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').first().json.system }}",
-          "returnIntermediateSteps": false
-        }
-      },
-      "id": "af33c65c-bf6b-4151-be1b-b309869354c8",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        5158,
-        1362
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 3000
     },
     {
       "parameters": {
@@ -1620,6 +1568,98 @@
         1780
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
+              "leftValue": "={{ $json.query }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2ae019ad-6ebd-4ebe-b62c-ab819420e419",
+      "name": "talk to agent?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3100,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "c7fe334f-5faf-49c5-a722-a5d0a2f31b7a",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        5660,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').first().json.system }}",
+          "returnIntermediateSteps": false
+        }
+      },
+      "id": "af33c65c-bf6b-4151-be1b-b309869354c8",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5158,
+        1362
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00ee26a7-c163-42e2-a691-82149e03629d",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5500,
+        1360
+      ]
     }
   ],
   "pinData": {},
@@ -1648,6 +1688,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-10-31T07:02:21.247Z",
-  "versionId": "29ddd3b9-2ca7-4d87-b0c0-1905fb8f9115"
+  "updatedAt": "2024-11-01T13:10:00.879Z",
+  "versionId": "fac010ee-307b-4068-ab07-015f7ef799ea"
 }
