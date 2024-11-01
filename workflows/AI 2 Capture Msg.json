@@ -104,12 +104,7 @@
       "main": [
         [
           {
-            "node": "reset msgs",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "retriveAgent",
+            "node": "leave Agent 2",
             "type": "main",
             "index": 0
           }
@@ -501,7 +496,7 @@
       "main": [
         [
           {
-            "node": "set agent",
+            "node": "leave agent? 1",
             "type": "main",
             "index": 0
           }
@@ -512,7 +507,18 @@
       "main": [
         [
           {
-            "node": "agent inactived",
+            "node": "agent inactived?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "leave Agent 2": {
+      "main": [
+        [
+          {
+            "node": "retriveAgent",
             "type": "main",
             "index": 0
           }
@@ -530,7 +536,18 @@
         ]
       ]
     },
-    "agent inactived": {
+    "set agent": {
+      "main": [
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agent inactived?": {
       "main": [
         [
           {
@@ -539,7 +556,43 @@
             "index": 0
           }
         ],
-        []
+        [
+          {
+            "node": "leave agent? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "leave agent? 1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "set agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "leave agent? 2": {
+      "main": [
+        [
+          {
+            "node": "leave Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -563,37 +616,37 @@
             {
               "id": "d8fa0cad-0b2f-4e61-8d05-5d29829d0156",
               "name": "instance",
-              "value": "={{ $('Webhook').first().json.body.instance }}",
+              "value": "={{ $json.body.instance }}",
               "type": "string"
             },
             {
               "id": "e390ea49-44e4-4aa2-8f1f-9044fd4b27f8",
               "name": "remoteJid",
-              "value": "={{ $('Webhook').first().json.body.data.key.remoteJid }}",
+              "value": "={{ $json.body.data.key.remoteJid }}",
               "type": "string"
             },
             {
               "id": "375453f5-c979-48d0-9a77-f2e837c80da5",
               "name": "pushName",
-              "value": "={{ $('Webhook').first().json.body.data.pushName }}",
+              "value": "={{ $json.body.data.pushName }}",
               "type": "string"
             },
             {
               "id": "c1179eef-b150-4d05-89c1-3b85660ec6bd",
               "name": "fromMe",
-              "value": "={{ $('Webhook').first().json.body.data.key.fromMe }}",
+              "value": "={{ $json.body.data.key.fromMe }}",
               "type": "boolean"
             },
             {
               "id": "2ca406cb-0c5a-4e69-a005-ba35e81128da",
               "name": "messageType",
-              "value": "={{ $('Webhook').first().json.body.data.messageType }}",
+              "value": "={{ $json.body.data.messageType }}",
               "type": "string"
             },
             {
               "id": "f9189c75-e206-4c9d-a538-fadff9121f07",
               "name": "unique_id",
-              "value": "={{ $('Webhook').first().json.body.instance }}_{{ $('Webhook').first().json.body.data.key.remoteJid.split('@')[0] }}",
+              "value": "={{ $json.body.instance }}_{{ $json.body.data.key.remoteJid.split('@')[0] }}",
               "type": "string"
             },
             {
@@ -627,8 +680,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -10980,
-        1360
+        -10971,
+        1640
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -811,8 +864,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -11049,
-        1240
+        -11040,
+        1520
       ]
     },
     {
@@ -919,8 +972,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -10820,
-        1360
+        -10811,
+        1640
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -1558,8 +1611,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -10660,
-        1360
+        -10651,
+        1640
       ],
       "credentials": {
         "redis": {
@@ -1891,7 +1944,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={{ $('instanceConfig').first().json.agent_workflow.filter(item => (item.triggerType != 'all' && $('Structure Message').item.json.output.toLowerCase() == item.triggerValue.toLowerCase()))[0] ?? {} }}",
+        "jsonOutput": "={{\n  $('instanceConfig').first().json.agent_workflow.find(item => {\n    const output = $('Structure Message').item?.json?.output?.toLowerCase() || '';\n    const triggerValue = item.triggerValue?.toLowerCase() || '';\n    const stopWord = item.stopWord?.toLowerCase() || '';\n\n    // Verificar se o output não é igual ao stopWord\n    if (output === stopWord) {\n      return false;\n    }\n\n    switch(item.triggerOperator) {\n      case 'contains':\n        return item.triggerType !== 'all' && output.includes(triggerValue);\n      case 'notContains':\n        return item.triggerType !== 'all' && !output.includes(triggerValue);\n      case 'startsWith':\n        return item.triggerType !== 'all' && output.startsWith(triggerValue);\n      case 'endsWith':\n        return item.triggerType !== 'all' && output.endsWith(triggerValue);\n      case 'equals':\n        return item.triggerType !== 'all' && output === triggerValue;\n      case 'notEquals':\n        return item.triggerType !== 'all' && output !== triggerValue;\n      default:\n        return false;\n    }\n  }) ?? \n  $('instanceConfig').first().json.agent_workflow.find(item => \n    item.triggerType === 'all'\n  ) ?? \n  {}\n}}",
         "options": {}
       },
       "id": "c62aea2f-a768-49df-933a-8deb979d46a7",
@@ -1899,16 +1952,16 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -10640,
-        960
+        -10460,
+        1120
       ]
     },
     {
       "parameters": {
         "operation": "set",
         "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}",
-        "value": "={{ $('workflow').item.json.workflow_id }}",
-        "keyType": "string",
+        "value": "={{ $('workflow').item.json }}",
+        "keyType": "hash",
         "expire": true,
         "ttl": 600
       },
@@ -1917,8 +1970,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -10280,
-        940
+        -9900,
+        1100
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1968,8 +2021,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -10460,
-        960
+        -10300,
+        1120
       ]
     },
     {
@@ -1977,7 +2030,7 @@
         "operation": "get",
         "propertyName": "agent",
         "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}",
-        "keyType": "string",
+        "keyType": "hash",
         "options": {}
       },
       "id": "0c503031-9cb3-4ac2-9abd-7552c74e2a6a",
@@ -1985,8 +2038,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -10980,
-        980
+        -10820,
+        1120
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1999,8 +2052,8 @@
     {
       "parameters": {
         "content": "## Ativa o Agente por Keyword\n*Seta o agente para qual será enviado a mensagem com base nas configurações, estilo **Bot Evolution**, porem aqui é usando webhook*",
-        "height": 288.7096228857504,
-        "width": 906.1434819939857
+        "height": 428.1739676208465,
+        "width": 1293.988146918212
       },
       "id": "8b08b3eb-a669-4ae7-91c2-181ae756d287",
       "name": "Sticky Note6",
@@ -2008,8 +2061,51 @@
       "typeVersion": 1,
       "position": [
         -11040,
-        856.6862075924666
+        1020
       ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "28689c0d-31ea-4cd5-8f20-a8730d8c22a1",
+      "name": "leave Agent 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10980,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "bca719b2-cfaa-4d59-8f9f-750c493b96f7",
+      "name": "leave Agent",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10100,
+        1300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
     },
     {
       "parameters": {
@@ -2022,7 +2118,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -16011,
+        -15980,
         1300
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
@@ -2039,11 +2135,11 @@
           "conditions": [
             {
               "id": "67b73af7-aac2-40c6-886d-9bd9bfb44cc7",
-              "leftValue": "={{ $json.agent }}",
+              "leftValue": "={{ $json.agent.workflow_id }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
-                "operation": "empty",
+                "operation": "notExists",
                 "singleValue": true
               }
             }
@@ -2053,12 +2149,78 @@
         "options": {}
       },
       "id": "6258ce82-7763-4cba-b9a1-af66b8f6bb8b",
-      "name": "agent inactived",
+      "name": "agent inactived?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -10820,
-        980
+        -10660,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21bba5db-e7e6-4802-98f3-e091cbb412d6",
+              "leftValue": "={{ $json.agent.stopWord }}",
+              "rightValue": "={{ $('Structure Message').item.json.output.toLowerCase() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "95556b3f-5424-48d4-9c7d-b43445748421",
+      "name": "leave agent? 1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10080,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21bba5db-e7e6-4802-98f3-e091cbb412d6",
+              "leftValue": "={{ $json.agent.stopWord }}",
+              "rightValue": "={{ $('Structure Message').item.json.output.toLowerCase() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "82ee67f0-f05d-4005-92d5-f2114ed69fe4",
+      "name": "leave agent? 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10300,
+        1300
       ]
     }
   ],
@@ -2083,7 +2245,7 @@
           "query": {},
           "body": {
             "event": "messages.upsert",
-            "instance": "william",
+            "instance": "ibox_cli_23",
             "data": {
               "key": {
                 "remoteJid": "5512982184879@s.whatsapp.net",
@@ -2103,7 +2265,7 @@
                   },
                   "deviceListMetadataVersion": 2
                 },
-                "conversation": "store"
+                "conversation": "oi"
               },
               "contextInfo": {
                 "ephemeralSettingTimestamp": 1730348057,
@@ -2159,6 +2321,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-31T22:26:49.109Z",
-  "versionId": "6c16860b-2712-4f88-842b-764bea7c17f5"
+  "updatedAt": "2024-11-01T14:22:38.362Z",
+  "versionId": "feaec3e0-9d3e-4120-8e70-182ab775dde3"
 }
