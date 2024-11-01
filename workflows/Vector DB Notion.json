@@ -1,0 +1,1580 @@
+{
+  "active": false,
+  "connections": {
+    "Filter Non-Text Content": {
+      "main": [
+        [
+          {
+            "node": "Summarize - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion - Retrieve Page Content": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create metadata and load content": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Page - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Notion Get Page",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete Points",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notion Get Database",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete Points1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Empty-Content": {
+      "main": [
+        [
+          {
+            "node": "FAQ - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Get Page": {
+      "main": [
+        [
+          {
+            "node": "Filter Non-Text Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Get Database": {
+      "main": [
+        [
+          {
+            "node": "Filter Empty-Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Create metadata and load content",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Keywords2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI3": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create metadata and load content1": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter1": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Create metadata and load content1",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Keywords2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Keywords2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Keywords3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser3": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Keywords2",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Generate Keywords3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Keywords3",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Keywords3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store3": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Notion - Retrieve Page Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-17T02:36:39.982Z",
+  "id": "n8AQXeZJk8CcXdBd",
+  "meta": {
+    "templateId": "2290",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Vector DB Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "3f3e65dc-2b26-407c-87e5-52ba3b315fed",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "position": [
+        4140,
+        100
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.page_url }}",
+          "mode": "url"
+        },
+        "limit": 2,
+        "simplifyOutput": false
+      },
+      "id": "e4a6f524-e3f5-4d02-949a-8523f2d21965",
+      "name": "Notion - Retrieve Page Content",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        1280,
+        220
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "e5b605e5-6d05-4bca-8f19-a859e474620f",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "image"
+            },
+            {
+              "id": "c7415859-5ffd-4c78-b497-91a3d6303b6f",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "video"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bfebc173-8d4b-4f8f-a625-4622949dd545",
+      "name": "Filter Non-Text Content",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        2240,
+        -120
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "pageId",
+                "value": "={{ $('Loop Over Items').item.json.id }}"
+              },
+              {
+                "name": "createdTime",
+                "value": "={{ $('Loop Over Items').item.json.created_time }}"
+              },
+              {
+                "name": "pageTitle",
+                "value": "={{ $('Loop Over Items').item.json[$('Loop Over Items').item.json.type].title }}"
+              },
+              {
+                "name": "pageType",
+                "value": "={{ $('Loop Over Items').item.json.type.split('_')[1] }}"
+              },
+              {
+                "name": "keywords",
+                "value": "={{ $json.keywords }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "0e64dbb5-20c1-4b90-b818-a1726aaf5112",
+      "name": "Create metadata and load content",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "position": [
+        4220,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "content",
+              "includeEmpty": true,
+              "separateBy": "\n"
+            }
+          ]
+        },
+        "options": {
+          "outputFormat": "separateItems"
+        }
+      },
+      "id": "b04939f9-355a-430b-a069-b11800066313",
+      "name": "Summarize - Concatenate",
+      "type": "n8n-nodes-base.summarize",
+      "position": [
+        2440,
+        -120
+      ],
+      "typeVersion": 1,
+      "notes": "Summarize - Concatenate Notion's blocks content"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d269790f-c39b-4dd1-aaa2-dabff793ecf9",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.5
+      },
+      "id": "12cf521a-ce7a-487d-96d5-e5fe0262dae4",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4480,
+        -100
+      ],
+      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.type }}",
+                    "rightValue": "=child_page",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "page"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "aeb2b436-3a30-43a4-b0e5-d1c9c9fbe70d",
+                    "leftValue": "={{ $json.type }}",
+                    "rightValue": "child_database",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "database"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "435bab7f-5e39-4a8c-a2bb-bfadcc897df1",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1680,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "e5b605e5-6d05-4bca-8f19-a859e474620f",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.property_answer }}",
+              "rightValue": "image"
+            },
+            {
+              "id": "c7415859-5ffd-4c78-b497-91a3d6303b6f",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.property_answer }}",
+              "rightValue": "video"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6f7d1568-c6dc-4341-970a-b622d1b0cbe1",
+      "name": "Filter Empty-Content",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        2240,
+        380
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54e5667d-a9d0-443a-9807-d15c93656348",
+              "name": "content",
+              "value": "={{ $('Filter Empty-Content').item.json.property_question }}\n{{ $('Filter Empty-Content').item.json.property_answer }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b0222ba8-8f4d-4dfa-955d-faee857d9b67",
+      "name": "FAQ - Concatenate",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2640,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "returnAll": true
+      },
+      "id": "8a12001e-dbcc-4203-b638-d214b364e016",
+      "name": "Notion Get Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2060,
+        -120
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "9bbe16ef-d0b1-4732-ba66-8d24086e9f3a",
+      "name": "Notion Get Database",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2060,
+        380
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4735dedc-34eb-43e7-81b5-9fba04146f14",
+              "name": "qdrant_api",
+              "value": "=http://qdrant:6333",
+              "type": "string"
+            },
+            {
+              "id": "bd2fee21-3c39-4a7d-874c-97e46c55e63b",
+              "name": "instance_name",
+              "value": "notion_ibox",
+              "type": "string"
+            },
+            {
+              "id": "cdbb4a0c-da8c-4bad-9b48-0353c0ab5640",
+              "name": "vector_name",
+              "value": "notion_ibox",
+              "type": "string"
+            },
+            {
+              "id": "6a9508b9-258f-4630-aadd-e86048f9c8e4",
+              "name": "page_url",
+              "value": "https://www.notion.so/iBox-Delivery-1217c386d92280e5b2d2f380fec51672",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f43b4eb1-7cb2-45dd-a73b-6deb772976cf",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1100,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54e5667d-a9d0-443a-9807-d15c93656348",
+              "name": "content",
+              "value": "={{ $json.concatenated_content.split('\\n\\n\\n') }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7609f389-489d-4dc3-874d-d0ab224d0655",
+      "name": "Page - Concatenate",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2640,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}/points",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"ids\": [\"05bc7f80-cf37-4eee-bad0-a250eecf7212\"],\n  \"with_payload\": [\"content\",\"metadata\"]\n}\n",
+        "options": {}
+      },
+      "id": "82bcb5f9-5033-4589-8fa8-0fa3b63c0986",
+      "name": "Retrive Points",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1260,
+        -160
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "6ea8ccf5-e32a-46ee-b837-8c0af968273a",
+      "name": "List Collections",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        -440
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "11d80639-68fd-424f-ab57-261ee5244c80",
+      "name": "Get Collection Details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        -300
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}/exists",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "679f8736-83c5-49f8-8c84-938c089fcdd3",
+      "name": "Check Collection Existence",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        -160
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}/points/scroll",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"with_payload\": [\"content\", \"metadata\"],\n    \"filter\": {\n      \"must\": [\n        {\n          \"key\": \"metadata.pageTitle\",\n          \"match\": {\n            \"value\": \"1227c386-d922-80f6-a189-da47933003d0\"\n          }\n        }\n      ]\n    }\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "0aa0c35c-0f0c-49cd-b9eb-a505dacc1925",
+      "name": "Scroll Points",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1260,
+        -440
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}/points/delete",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"filter\": {\n      \"must\": [\n        {\n          \"key\": \"metadata.pageId\",\n          \"match\": {\n            \"value\": \"{{ $json.id }}\"\n          }\n        }\n      ]\n    }\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "7ac2bbdd-2002-479c-8ae9-cb1d3bc9e03f",
+      "name": "Delete Points",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2060,
+        60
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}/points/scroll",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"with_payload\": [\"content\"],\n    \"filter\": {\n      \"should\": [\n        {\n          \"key\": \"metadata.pageId\",\n          \"match\": {\n            \"value\": \"1227c386-d922-80f6-a189-da47933003d0\"\n          }\n        }\n      ]\n    }\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "4ce9a017-8515-4ab1-b6c6-4502b5f8ba20",
+      "name": "Scroll Points All",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1260,
+        -300
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $('baseInfo').first().json.vector_name }}/points/delete",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"filter\": {\n      \"must\": [\n        {\n          \"key\": \"metadata.pageId\",\n          \"match\": {\n            \"value\": \"{{ $json.id }}\"\n          }\n        }\n      ]\n    }\n}",
+        "options": {}
+      },
+      "id": "97b366bb-0ae5-489f-bcf5-f50e42269041",
+      "name": "Delete Points1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2060,
+        560
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 100,
+        "options": {
+          "splitCode": "markdown"
+        }
+      },
+      "id": "80a09794-0bcc-41d8-a1a2-9710792222e7",
+      "name": "Recursive Character Text Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        4200,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function documentClean(text, processingRule) {…}\n\nconst processingRule = {\n    rules: JSON.stringify({\n        pre_processing_rules: [\n            { id: \"remove_extra_spaces\", enabled: true },\n            { id: \"remove_urls_emails\", enabled: true }\n        ]\n    })\n};\n\nreturn { concatenated_content: documentClean($json.concatenated_content, processingRule) };"
+      },
+      "id": "6a6414d4-8abe-4bea-923b-d716b5334d85",
+      "name": "documentClean",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3760,
+        180
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "18d118f1-5967-493c-a31c-479d7b251d47",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3100,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "50c1e074-ded6-4b26-b4c7-61e981df770e",
+      "name": "Embeddings OpenAI3",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "position": [
+        4160,
+        600
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "pageId",
+                "value": "={{ $('Loop Over Items').item.json.id }}"
+              },
+              {
+                "name": "createdTime",
+                "value": "={{ $('Loop Over Items').item.json.created_time }}"
+              },
+              {
+                "name": "pageTitle",
+                "value": "={{ $('Loop Over Items').item.json[$('Loop Over Items').item.json.type].title }}"
+              },
+              {
+                "name": "pageType",
+                "value": "={{ $('Loop Over Items').item.json.type.split('_')[1] }}"
+              },
+              {
+                "name": "keywords",
+                "value": "={{ $json.keywords }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "fe6284f4-7554-47df-973d-0fe6583e9465",
+      "name": "Create metadata and load content1",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "position": [
+        4260,
+        600
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 100,
+        "options": {
+          "splitCode": "markdown"
+        }
+      },
+      "id": "81fe5c5f-44ab-4684-b100-26d32d4b0d9a",
+      "name": "Recursive Character Text Splitter1",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        4240,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Qdrant",
+        "height": 512.0662957622236,
+        "width": 457.9458021385195
+      },
+      "id": "a5540eb3-5939-4192-ae38-5688fd0f4136",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -492.0582304950616
+      ]
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"keywords\": {\n      \"type\": \"array\",\n      \"description\": \"Palavras-chave individuais relevantes, no máximo 5\",\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"keywords\"]\n}"
+      },
+      "id": "a95b290f-af4e-42c6-a4e4-e54346859c91",
+      "name": "Structured Output Parser2",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        3400,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "id": "058b174e-9bd4-459f-b928-2ae0bb27f14f",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4480,
+        400
+      ],
+      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9bacc086-2e2a-4af0-abde-5a129cd33b74",
+              "name": "content",
+              "value": "={{ $('Loop Over Items1').item.json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "acffe725-4898-472d-bb42-a1fa27354467",
+              "name": "keywords",
+              "value": "={{ $json.output?.keywords ? $json.output.keywords.filter(item => item.length > 4).unique().map(item => item.toLowerCase()) : [] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b5eefe46-912a-476e-a781-3b8141089e95",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4020,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "27fff0b8-26d3-44f1-8293-7989daff1857",
+      "name": "Auto-fixing Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        3380,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.content }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes, tags e metadados com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica. Forneça até 5 itens em cada categoria (keywords, tags, metadatas)."
+            }
+          ]
+        }
+      },
+      "id": "78fe49a0-6528-4aca-b5e6-5d072eedb56c",
+      "name": "Generate Keywords2",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        3280,
+        400
+      ],
+      "retryOnFail": true,
+      "notesInFlow": false,
+      "waitBetweenTries": 4000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2667be5b-c2ed-4fec-8393-0325fdd8f147",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3100,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"keywords\": {\n      \"type\": \"array\",\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"keywords\"]\n}"
+      },
+      "id": "cfddc836-099a-463c-83d4-ab864ea09834",
+      "name": "Structured Output Parser3",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        3480,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9bacc086-2e2a-4af0-abde-5a129cd33b74",
+              "name": "content",
+              "value": "={{ $('Loop Over Items2').item.json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "9cea7355-5c5e-4303-a839-9aff7c5af2f4",
+              "name": "keywords",
+              "value": "={{ $json.output?.keywords ? $json.output.keywords.filter(item => item.length > 4).unique().map(item => item.toLowerCase()) : [] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "14531ed4-d3db-4fca-a9f7-52c95e338981",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4020,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "content",
+        "options": {}
+      },
+      "id": "388271d6-46f4-4a38-a116-089144996d81",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {}
+      },
+      "id": "db61086b-ecd4-4953-8202-31d867b3d8b3",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        240
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "1a9c5efa-9d72-4c00-b00e-f0d5b78e9c32",
+      "name": "Auto-fixing Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        3380,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-11b-text-preview",
+        "options": {}
+      },
+      "id": "934e2c51-609f-41e6-a59b-ef281cf983a0",
+      "name": "Groq Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        3380,
+        240
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.content }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica."
+            }
+          ]
+        }
+      },
+      "id": "644ff65c-0539-46cf-9dae-5f48c3f10c28",
+      "name": "Generate Keywords3",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        3280,
+        -100
+      ],
+      "retryOnFail": true,
+      "notesInFlow": false,
+      "waitBetweenTries": 4000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('baseInfo').item.json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "01b8514f-e8f0-473f-8680-604b02cb0c26",
+      "name": "Qdrant Vector Store3",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        4180,
+        400
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('baseInfo').item.json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "14fb9cf2-2164-49ac-8558-88cc90a0270c",
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        4180,
+        -100
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "baa45d1b-9dba-4c5f-98cf-6ccaa6f2722f",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        920,
+        220
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-31T23:25:07.189Z",
+  "versionId": "dc8ce110-f3a1-4e8d-9892-c8a75a5970bd"
+}
