@@ -45,68 +45,6 @@
         ]
       ]
     },
-    "get vector store": {
-      "main": [
-        [
-          {
-            "node": "has vector store?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "has vector store?": {
-      "main": [
-        [
-          {
-            "node": "vector store",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "fetch vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "fetch vector store": {
-      "main": [
-        [
-          {
-            "node": "has vector store? 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "has vector store? 2": {
-      "main": [
-        [
-          {
-            "node": "set vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "delete vector store": {
-      "main": [
-        [
-          {
-            "node": "get vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Status Pedido": {
       "ai_tool": [
         [
@@ -272,12 +210,12 @@
       "main": [
         [
           {
-            "node": "delete vector store",
+            "node": "Merge",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Merge",
+            "node": "delete instance config",
             "type": "main",
             "index": 0
           }
@@ -306,50 +244,6 @@
         ]
       ]
     },
-    "Qdant Vector Store": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Sign Msg",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "vector store": {
-      "main": [
-        [
-          {
-            "node": "delete user account",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "set vector store": {
-      "main": [
-        [
-          {
-            "node": "vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "userAccount": {
       "main": [
         [
@@ -371,6 +265,112 @@
           }
         ]
       ]
+    },
+    "delete instance config": {
+      "main": [
+        [
+          {
+            "node": "get instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance config?": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get instance config": {
+      "main": [
+        [
+          {
+            "node": "load instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance config": {
+      "main": [
+        [
+          {
+            "node": "set instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance config": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance config": {
+      "main": [
+        [
+          {
+            "node": "has instance config?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instanceConfig": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-27T18:14:53.380Z",
@@ -384,7 +384,8 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "temperature": 0.4
+          "temperature": 0.4,
+          "topP": 0.9
         }
       },
       "id": "bc3f1db3-f44e-435b-8672-375697f9cbbd",
@@ -573,148 +574,6 @@
         1482
       ],
       "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "empresas",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "keyValue": "={{ $('messageInfo').first().json.instance }}"
-            }
-          ]
-        }
-      },
-      "id": "a824a837-7943-4416-ab1e-f4d31a96c8e5",
-      "name": "fetch vector store",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        3776,
-        1603
-      ],
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "=vector_store",
-        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
-        "keyType": "hash",
-        "options": {}
-      },
-      "id": "2163daa6-77f0-45e5-96cd-e208e0b031d0",
-      "name": "get vector store",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        3598,
-        1601
-      ],
-      "alwaysOutputData": false,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
-              "leftValue": "={{ $json.vector_store.vector_name }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "633b76d4-47b7-4e24-95fe-336191c0584b",
-      "name": "has vector store?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3776,
-        1383
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
-              "leftValue": "={{ $json.vector_name }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "911060c3-9447-423f-95e8-206795ab31e5",
-      "name": "has vector store? 2",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3958,
-        1481
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=instance_config_{{ $json.instance }}"
-      },
-      "id": "c92f739e-3252-4b0c-b85e-2e878dafbcf1",
-      "name": "delete vector store",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        3596,
-        1383
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
       "disabled": true
     },
     {
@@ -997,22 +856,6 @@
     },
     {
       "parameters": {
-        "content": "## Retorna os dados da Loja com base na Instância",
-        "height": 483.3176121655175,
-        "width": 731.8422362672346,
-        "color": 4
-      },
-      "id": "1c5c9cb8-1ba0-4a45-84ac-f583181800af",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        3538,
-        1302
-      ]
-    },
-    {
-      "parameters": {
         "model": "text-embedding-3-small",
         "options": {}
       },
@@ -1192,9 +1035,218 @@
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3ae02ccf-d1b4-437a-96f1-1b25fe538bfc",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5780,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Retorna as configurações da Instância",
+        "height": 483.3176121655175,
+        "width": 756.5270031117756,
+        "color": 4
+      },
+      "id": "b4becaf2-97aa-484a-a9f0-3481dffdae1d",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}"
+      },
+      "id": "8ad9a9a5-126c-44b0-86a4-b4c32d93aa0b",
+      "name": "delete instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        1400
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_config.instance_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e48804ea-5753-42aa-adc9-654f048bbb06",
+      "name": "has instance config?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3840,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_config",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "3673676f-ad11-433b-95ca-2e711ad25e43",
+      "name": "get instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        1600
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('messageInfo').first().json.instance }}"
+            }
+          ]
+        }
+      },
+      "id": "c14c4098-d452-4ca7-9fdc-48e5a34e98ec",
+      "name": "fetch instance config",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3940,
+        1600
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.instance_config ?? $json }}",
+        "options": {}
+      },
+      "id": "44c8a5ce-f772-42d3-b02f-6fabbf403b25",
+      "name": "instanceConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4120,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "60ae17a9-ae9f-43a6-8aa8-34dad402682c",
+      "name": "set instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4100,
+        1600
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_config",
+              "value": "={{ $json.instance_config }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "558f188c-51e9-4f06-a4fd-e16a92253f6f",
+      "name": "load instance config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3740,
+        1600
+      ]
+    },
+    {
+      "parameters": {
         "qdrantCollection": {
           "__rl": true,
-          "value": "={{ $('vector store').first().json.vector_name }}",
+          "value": "={{ $('instanceConfig').first().json.vector_name }}",
           "mode": "id"
         },
         "options": {}
@@ -1230,71 +1282,24 @@
         5158,
         1362
       ]
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $json.vector_store ?? $json }}",
-        "options": {}
-      },
-      "id": "d3355da0-c7c0-4a79-b57f-3773ed18f582",
-      "name": "vector store",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4136,
-        1383
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "={{ $('messageInfo').first().json.instance }}",
-        "value": "={{ $json }}",
-        "keyType": "hash",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "aec68a3c-e53a-4f20-b214-fc1922a612d1",
-      "name": "set vector store",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4118,
-        1601
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
-              "name": "output",
-              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "3ae02ccf-d1b4-437a-96f1-1b25fe538bfc",
-      "name": "Sign Msg",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5780,
-        1360
-      ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
+          "conversation": "Oi iBox, gostaria de efetuar um pedido"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1320,6 +1325,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-11-01T13:10:36.470Z",
-  "versionId": "dd1ca9e7-478b-48af-b48b-bd224aa4732b"
+  "updatedAt": "2024-11-01T15:39:12.875Z",
+  "versionId": "775c179c-c5ed-4810-9da6-b59791e20211"
 }
