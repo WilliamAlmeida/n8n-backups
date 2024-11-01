@@ -512,19 +512,7 @@
       "main": [
         [
           {
-            "node": "agent actived",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "agent actived": {
-      "main": [
-        [],
-        [
-          {
-            "node": "workflow",
+            "node": "agent inactived",
             "type": "main",
             "index": 0
           }
@@ -540,6 +528,18 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "agent inactived": {
+      "main": [
+        [
+          {
+            "node": "workflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
       ]
     }
   },
@@ -1899,8 +1899,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -10680,
-        920
+        -10640,
+        960
       ]
     },
     {
@@ -1917,8 +1917,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -10340,
-        900
+        -10280,
+        940
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1968,42 +1968,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -10520,
-        920
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "67b73af7-aac2-40c6-886d-9bd9bfb44cc7",
-              "leftValue": "={{ $json.agent }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "6258ce82-7763-4cba-b9a1-af66b8f6bb8b",
-      "name": "agent actived",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -10880,
-        900
+        -10460,
+        960
       ]
     },
     {
@@ -2019,8 +1985,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -11040,
-        900
+        -10980,
+        980
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -2032,17 +1998,17 @@
     },
     {
       "parameters": {
-        "content": "## Ativa o Agente por Keyword",
-        "height": 231.49976828300743,
-        "width": 883.4979145470666
+        "content": "## Ativa o Agente por Keyword\n*Seta o agente para qual será enviado a mensagem com base nas configurações, estilo **Bot Evolution**, porem aqui é usando webhook*",
+        "height": 288.7096228857504,
+        "width": 906.1434819939857
       },
       "id": "8b08b3eb-a669-4ae7-91c2-181ae756d287",
       "name": "Sticky Note6",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -11080,
-        835.8888373962238
+        -11040,
+        856.6862075924666
       ]
     },
     {
@@ -2060,6 +2026,40 @@
         1300
       ],
       "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "67b73af7-aac2-40c6-886d-9bd9bfb44cc7",
+              "leftValue": "={{ $json.agent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6258ce82-7763-4cba-b9a1-af66b8f6bb8b",
+      "name": "agent inactived",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10820,
+        980
+      ]
     }
   ],
   "pinData": {
@@ -2159,6 +2159,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-31T06:54:13.295Z",
-  "versionId": "56f7c9c7-c8fb-4ad2-b0d4-afef0fef5a54"
+  "updatedAt": "2024-10-31T22:26:49.109Z",
+  "versionId": "6c16860b-2712-4f88-842b-764bea7c17f5"
 }
