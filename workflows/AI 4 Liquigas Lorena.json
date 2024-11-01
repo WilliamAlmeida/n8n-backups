@@ -204,16 +204,11 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "Sign Msg",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
-      ]
-    },
-    "chatConfig": {
-      "main": [
-        []
       ]
     },
     "Execute Workflow Trigger": {
@@ -223,6 +218,17 @@
             "node": "messageInfo",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -311,8 +317,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6020,
-        1160
+        6160,
+        1300
       ]
     },
     {
@@ -327,7 +333,7 @@
       "typeVersion": 3.4,
       "position": [
         4140,
-        1160
+        1300
       ]
     },
     {
@@ -343,8 +349,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4738,
-        1521
+        4740,
+        1560
       ],
       "credentials": {
         "redis": {
@@ -374,8 +380,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4580,
-        1520
+        4582,
+        1559
       ]
     },
     {
@@ -391,8 +397,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4378,
-        1541
+        4380,
+        1580
       ],
       "credentials": {
         "redis": {
@@ -430,8 +436,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4580,
-        1320
+        4582,
+        1359
       ]
     },
     {
@@ -444,8 +450,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4380,
-        1320
+        4382,
+        1359
       ],
       "credentials": {
         "redis": {
@@ -458,7 +464,7 @@
     {
       "parameters": {
         "content": "## Tenta retornar os dados do Usuário",
-        "height": 635.2219705306627,
+        "height": 650.6226961809048,
         "width": 598.5677101799579,
         "color": 5
       },
@@ -468,7 +474,7 @@
       "typeVersion": 1,
       "position": [
         4320,
-        1240
+        1263.1010884753632
       ]
     },
     {
@@ -482,8 +488,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4778,
-        1321
+        4780,
+        1360
       ]
     },
     {
@@ -497,8 +503,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4080,
-        960
+        4060,
+        1100
       ],
       "disabled": true
     },
@@ -513,8 +519,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        5880,
-        1160
+        6020,
+        1300
       ]
     },
     {
@@ -601,8 +607,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4440,
-        1720
+        4442,
+        1759
       ]
     },
     {
@@ -639,8 +645,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        3920,
-        960
+        3900,
+        1100
       ],
       "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa",
       "disabled": true
@@ -710,7 +716,30 @@
       "typeVersion": 1,
       "position": [
         3980,
-        1160
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9f58cc15-9912-4767-ad95-09f0984675cb",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5860,
+        1360
       ]
     }
   ],
@@ -750,6 +779,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-31T06:54:09.865Z",
-  "versionId": "f7f5c10b-ae87-4be4-91b2-773ddae525ef"
+  "updatedAt": "2024-11-01T13:11:02.986Z",
+  "versionId": "98864da9-5d3a-4874-94e1-90587b6e6ced"
 }
