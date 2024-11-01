@@ -346,118 +346,11 @@
         ]
       ]
     },
-    "delete instance config": {
-      "main": [
-        [
-          {
-            "node": "get instance config",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "has instance config?": {
-      "main": [
-        [
-          {
-            "node": "instanceConfig",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "fetch instance config",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get instance config": {
-      "main": [
-        [
-          {
-            "node": "load instance config",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "fetch instance config": {
-      "main": [
-        [
-          {
-            "node": "set instance config",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "merge": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "retriveAgent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "agent actived": {
       "main": [
         [
           {
             "node": "Response 1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "delete instance config",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "set instance config": {
-      "main": [
-        [
-          {
-            "node": "instanceConfig",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "instanceConfig": {
-      "main": [
-        [
-          {
-            "node": "workflow",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "workflow": {
-      "main": [
-        [
-          {
-            "node": "wk not found?",
             "type": "main",
             "index": 0
           }
@@ -475,49 +368,11 @@
         ]
       ]
     },
-    "Response  2": {
-      "main": [
-        [
-          {
-            "node": "wk agent first",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "set agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "retriveAgent": {
       "main": [
         [
           {
             "node": "agent actived",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "wk not found?": {
-      "main": [
-        [
-          {
-            "node": "Response  2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "load instance config": {
-      "main": [
-        [
-          {
-            "node": "has instance config?",
             "type": "main",
             "index": 0
           }
@@ -552,6 +407,22 @@
           }
         ]
       ]
+    },
+    "merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "retriveAgent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-26T15:44:44.997Z",
@@ -567,7 +438,7 @@
           "interval": [
             {
               "field": "seconds",
-              "secondsInterval": 5
+              "secondsInterval": 2
             }
           ]
         }
@@ -1225,144 +1096,6 @@
     },
     {
       "parameters": {
-        "operation": "delete",
-        "key": "=instance_config_{{ $('merge').first().json.instance }}"
-      },
-      "id": "e7a00437-e885-4d44-8097-5bb5bab83096",
-      "name": "delete instance config",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -360,
-        2220
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
-              "leftValue": "={{ $json.instance_config.instance_name }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "5b270964-3643-42ae-9f17-0e64475fdea9",
-      "name": "has instance config?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -100,
-        2200
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "=instance_config",
-        "key": "=instance_config_{{ $('merge').first().json.instance }}",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "9b5b0ddc-c032-4bf9-873d-4788da40fa1b",
-      "name": "get instance config",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -360,
-        2420
-      ],
-      "alwaysOutputData": false,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "empresas",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "keyValue": "={{ $('merge').first().json.instance }}"
-            }
-          ]
-        }
-      },
-      "id": "3d8a23a2-9832-45b5-aad1-829ec45ef340",
-      "name": "fetch instance config",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        0,
-        2420
-      ],
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $json.instance_config ?? $json }}",
-        "options": {}
-      },
-      "id": "f470c292-534c-454b-9f59-04ba3bd55dc0",
-      "name": "instanceConfig",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        180,
-        2200
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "327ee41d-1b4a-42c9-b98a-c42e9ded4793",
-      "name": "merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        -600,
-        1920
-      ]
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1373,7 +1106,7 @@
           "conditions": [
             {
               "id": "67b73af7-aac2-40c6-886d-9bd9bfb44cc7",
-              "leftValue": "={{ $json.agent }}",
+              "leftValue": "={{ $json.agent.workflow_id }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1397,70 +1130,6 @@
     },
     {
       "parameters": {
-        "operation": "set",
-        "key": "=instance_config_{{ $json.instance_name }}",
-        "value": "={{ $json.toJsonString() }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "663d25ff-d5cd-4102-b555-d0afa73b28ae",
-      "name": "set instance config",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        180,
-        2420
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $json.agent_workflow.filter(item => item.triggerType == 'all')[0] ?? {} }}",
-        "options": {}
-      },
-      "id": "d03aa479-123f-4446-9489-0e9f4aaa73d7",
-      "name": "workflow",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        360,
-        2200
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "=agent_active_{{ $json.unique_id }}",
-        "value": "={{ $('workflow').item.json.workflow_id }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "3e8eccec-cb9a-4577-8ee2-9175c365a1ae",
-      "name": "set agent",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        920,
-        2200
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
         "mode": "raw",
         "jsonOutput": "={{ $('merge').item.json }}",
         "options": {}
@@ -1476,25 +1145,10 @@
     },
     {
       "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $('merge').item.json }}",
-        "options": {}
-      },
-      "id": "26460e45-b63a-4993-a6a8-e0f8273209d1",
-      "name": "Response  2",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        720,
-        2200
-      ]
-    },
-    {
-      "parameters": {
         "operation": "get",
         "propertyName": "agent",
         "key": "=agent_active_{{ $json.unique_id }}",
-        "keyType": "string",
+        "keyType": "hash",
         "options": {}
       },
       "id": "703e2c52-0720-4791-a4e1-5fced80cea91",
@@ -1517,7 +1171,7 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "={{ $('retriveAgent').first().json.agent }}",
+          "value": "={{ $('retriveAgent').first().json.agent.workflow_id }}",
           "mode": "id"
         },
         "options": {
@@ -1535,93 +1189,6 @@
     },
     {
       "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $('workflow').first().json.workflow_id }}",
-          "mode": "id"
-        },
-        "options": {
-          "waitForSubWorkflow": false
-        }
-      },
-      "id": "04f32c2f-0e92-481c-b1af-54f2df552aec",
-      "name": "wk agent first",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.1,
-      "position": [
-        920,
-        2360
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "def72bab-10f8-491a-8639-89a4c2d27ecc",
-              "leftValue": "={{ $json }}",
-              "rightValue": "",
-              "operator": {
-                "type": "object",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "687a7f66-5966-4f13-b593-5827a2463695",
-              "leftValue": "={{ $json.workflow_id }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "or"
-        },
-        "options": {}
-      },
-      "id": "2ba94f78-f151-4f56-9f4d-2844006f619d",
-      "name": "wk not found?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        540,
-        2200
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
-              "name": "instance_config",
-              "value": "={{ $json.instance_config }}",
-              "type": "object"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "7adb8a1c-e31a-4b8c-89c5-15c5b86f96e3",
-      "name": "load instance config",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -200,
-        2420
-      ]
-    },
-    {
-      "parameters": {
         "operation": "delete",
         "key": "reading_chats"
       },
@@ -1630,8 +1197,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3620,
-        2320
+        -3640,
+        2420
       ],
       "credentials": {
         "redis": {
@@ -1651,8 +1218,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3460,
-        2320
+        -3480,
+        2420
       ],
       "credentials": {
         "redis": {
@@ -1699,8 +1266,8 @@
     {
       "parameters": {
         "content": "## Gestão dos Workflows\n*Envia a mensagem para o Agent configurado para o Cliente, estilo **Bot Evolution***",
-        "height": 784.244925373343,
-        "width": 1484.4196714865986
+        "height": 259.452481242284,
+        "width": 726.2166344716675
       },
       "id": "558bdd87-3e52-4fdd-a078-025a72f78949",
       "name": "Sticky Note",
@@ -1710,11 +1277,30 @@
         -420,
         1820
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "327ee41d-1b4a-42c9-b98a-c42e9ded4793",
+      "name": "merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -600,
+        1920
+      ]
     }
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "none",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": {
     "node:Schedule Trigger": {
@@ -1742,6 +1328,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-31T22:41:55.125Z",
-  "versionId": "2c7f4ed5-5ee7-4fa2-a07f-192f8e6ab46c"
+  "updatedAt": "2024-11-01T14:22:58.090Z",
+  "versionId": "b26c2e7d-42da-4475-9250-6d008fb10b80"
 }
