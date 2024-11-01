@@ -1971,7 +1971,7 @@
       "typeVersion": 1,
       "position": [
         -9900,
-        1100
+        1120
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -2321,6 +2321,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-01T14:22:38.362Z",
-  "versionId": "feaec3e0-9d3e-4120-8e70-182ab775dde3"
+  "updatedAt": "2024-11-01T14:35:03.743Z",
+  "versionId": "bb3a642e-d88f-4782-94ce-54d765ef3965"
 }
