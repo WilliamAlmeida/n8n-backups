@@ -275,6 +275,11 @@
             "node": "delete vector store",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -316,9 +321,9 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "Sign Msg",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
       ]
@@ -341,6 +346,28 @@
             "node": "vector store",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -955,7 +982,7 @@
     {
       "parameters": {
         "content": "## Tenta retornar os dados do Usuário",
-        "height": 435.2975787523367,
+        "height": 450.71644667686496,
         "width": 598.5677101799579,
         "color": 5
       },
@@ -1121,8 +1148,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        5778,
-        1322
+        6078,
+        1302
       ]
     },
     {
@@ -1136,8 +1163,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        5498,
-        1322
+        5940,
+        1300
       ]
     },
     {
@@ -1242,6 +1269,29 @@
           "name": "vps"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3ae02ccf-d1b4-437a-96f1-1b25fe538bfc",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5780,
+        1360
+      ]
     }
   ],
   "pinData": {},
@@ -1270,6 +1320,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-10-31T06:48:36.756Z",
-  "versionId": "940ce02e-04d8-4cca-b71e-a7f0b912b934"
+  "updatedAt": "2024-11-01T13:10:36.470Z",
+  "versionId": "dd1ca9e7-478b-48af-b48b-bd224aa4732b"
 }
