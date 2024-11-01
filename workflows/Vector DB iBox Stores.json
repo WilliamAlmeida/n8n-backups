@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "get vector tb": {
-      "main": [
-        [
-          {
-            "node": "has vector db?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Embeddings OpenAI": {
       "ai_embedding": [
         [
@@ -49,7 +38,7 @@
       "main": [
         [
           {
-            "node": "get vector tb",
+            "node": "instanceConfig",
             "type": "main",
             "index": 0
           }
@@ -119,45 +108,51 @@
         ]
       ]
     },
-    "Delete Collection": {
+    "instanceConfig": {
       "main": [
         [
           {
-            "node": "blocksInfo",
+            "node": "has instance config?",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "has vector db?": {
+    "has instance config?": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Switch Action",
             "type": "main",
             "index": 0
-          },
+          }
+        ]
+      ]
+    },
+    "Switch Action": {
+      "main": [
+        [
           {
-            "node": "Switch 2",
+            "node": "Delete Collection 1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Switch 2",
+            "node": "Delete Collection 2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Delete Collection 2": {
+    "Delete Collection 1": {
       "main": [
         [
           {
-            "node": "delete vector tb",
+            "node": "blocksInfo",
             "type": "main",
             "index": 0
           }
@@ -169,43 +164,6 @@
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch 2": {
-      "main": [
-        [
-          {
-            "node": "insert vector tb",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "update vector tb",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "Delete Collection",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [],
-        [
-          {
-            "node": "Delete Collection 2",
             "type": "main",
             "index": 0
           }
@@ -275,36 +233,7 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "tableId": "empresas",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "keyValue": "={{ $json.instance_name }}"
-            }
-          ]
-        }
-      },
-      "id": "a1b628bc-c253-45a1-8fc8-8a797244e622",
-      "name": "get vector tb",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -100,
-        420
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "# Inseri os dados da Empresa no Vector DB",
+        "content": "# Sincroniza os dados da Instância no Vector DB",
         "height": 433.76260239656284,
         "width": 1372.6530864993929,
         "color": 4
@@ -345,14 +274,20 @@
             },
             {
               "id": "4735dedc-34eb-43e7-81b5-9fba04146f14",
-              "name": "instance_name",
-              "value": "={{ $json.query.instance_name }}",
+              "name": "qdrant_api",
+              "value": "http://qdrant:6333",
               "type": "string"
             },
             {
               "id": "bd2fee21-3c39-4a7d-874c-97e46c55e63b",
-              "name": "qdrant_api",
-              "value": "http://qdrant:6333",
+              "name": "instance_name",
+              "value": "={{ $json.body.instance_name }}",
+              "type": "string"
+            },
+            {
+              "id": "1b307001-002d-4c44-8412-44169d3f69b8",
+              "name": "action",
+              "value": "={{ $json.body.action }}",
               "type": "string"
             }
           ]
@@ -365,33 +300,8 @@
       "typeVersion": 3.4,
       "position": [
         -260,
-        420
+        240
       ]
-    },
-    {
-      "parameters": {
-        "method": "DELETE",
-        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $json.vector_name }}",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "qdrantApi",
-        "options": {}
-      },
-      "id": "7deedeb8-96ad-476f-8ee8-97aa073eab66",
-      "name": "Delete Collection",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        440,
-        260
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -521,6 +431,60 @@
     },
     {
       "parameters": {
+        "method": "DELETE",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $json.vector_name }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {}
+      },
+      "id": "03351c20-9c0d-4776-aa92-01ccc3643bb3",
+      "name": "Delete Collection 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $json.instance_name }}"
+            }
+          ]
+        }
+      },
+      "id": "a1b628bc-c253-45a1-8fc8-8a797244e622",
+      "name": "instanceConfig",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        240
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -545,119 +509,78 @@
         "options": {}
       },
       "id": "5a9972b8-b202-4155-a4f4-b1fc00a69f9a",
-      "name": "has vector db?",
+      "name": "has instance config?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.1,
       "position": [
         60,
-        420
+        240
       ]
     },
     {
       "parameters": {
-        "tableId": "empresas",
-        "fieldsUi": {
-          "fieldValues": [
+        "rules": {
+          "values": [
             {
-              "fieldId": "instance_name",
-              "fieldValue": "={{ $('baseInfo').item.json.instance_name }}"
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "sync",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "sync collection"
             },
             {
-              "fieldId": "vector_name",
-              "fieldValue": "={{ $('baseInfo').item.json.vector_name ?? 'vector-empresa-' + Math.round(Math.random() * 10000) }}"
-            },
-            {
-              "fieldId": "ignoreJids"
-            }
-          ]
-        }
-      },
-      "id": "b13d0abb-c71f-49c7-bec3-9f4fb84fa658",
-      "name": "insert vector tb",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        620,
-        620
-      ],
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "empresas",
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "condition": "eq",
-              "keyValue": "={{ $('baseInfo').item.json.instance_name }}"
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "052f4582-6de5-40c7-9d6b-de931fd4c535",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "reset",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "reset collection"
             }
           ]
         },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "vector_name",
-              "fieldValue": "={{ $('Webhook Sync').first().json.query.vector_name ?? $('get vector tb').first().json.vector_name }}"
-            },
-            {
-              "fieldId": "ignoreJids",
-              "fieldValue": "={{ $('Webhook Sync').first().json.query.ignoreJids ?? $('get vector tb').first().json.ignoreJids }}"
-            }
-          ]
-        }
+        "options": {}
       },
-      "id": "f765f2c4-3e06-47e5-8a45-762ffa88c047",
-      "name": "update vector tb",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
+      "id": "58735e92-b276-4e1f-bfd3-18bab5434e87",
+      "name": "Switch Action",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
       "position": [
-        620,
-        780
-      ],
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "tableId": "empresas",
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "condition": "eq",
-              "keyValue": "={{ $('get vector tb').item.json.instance_name }}"
-            }
-          ]
-        }
-      },
-      "id": "722c8eb7-2c8e-487d-816c-2f7aa9557713",
-      "name": "delete vector tb",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        620,
-        460
-      ],
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
+        240,
+        220
+      ]
     },
     {
       "parameters": {
@@ -667,13 +590,13 @@
         "nodeCredentialType": "qdrantApi",
         "options": {}
       },
-      "id": "109b79ee-6212-4bd1-85a9-773817f901b7",
-      "name": "Delete Collection 2",
+      "id": "7deedeb8-96ad-476f-8ee8-97aa073eab66",
+      "name": "Delete Collection 1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
         440,
-        460
+        80
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -689,7 +612,7 @@
         "mode": "insert",
         "qdrantCollection": {
           "__rl": true,
-          "value": "={{ $('get vector tb').first().json.vector_name }}",
+          "value": "={{ $('instanceConfig').first().json.vector_name }}",
           "mode": "id"
         },
         "options": {}
@@ -707,167 +630,13 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "insert",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "insert"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "052f4582-6de5-40c7-9d6b-de931fd4c535",
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "update",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "update"
-            }
-          ]
-        },
-        "options": {}
       },
-      "id": "5f7b12f1-a7c6-4b99-8e60-655a95a9e5c4",
-      "name": "Switch 2",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        240,
-        700
-      ]
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "sync",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "sync"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "052f4582-6de5-40c7-9d6b-de931fd4c535",
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "reset",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "reset"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "a6ebd99e-76a2-4866-bce8-d4b0f5e43b76",
-                    "leftValue": "={{ $('Webhook Sync').item.json.query.method }}",
-                    "rightValue": "delete",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "delete"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "58735e92-b276-4e1f-bfd3-18bab5434e87",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        240,
-        400
-      ]
+      "disabled": true
     },
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "store/db",
+        "path": "5555f30d-cbca-454e-96c8-010f0f17ddc3",
         "options": {}
       },
       "id": "e37dff4e-f01e-4316-aea5-8cb67ad0524f",
@@ -876,7 +645,7 @@
       "typeVersion": 2,
       "position": [
         -420,
-        420
+        240
       ],
       "webhookId": "5555f30d-cbca-454e-96c8-010f0f17ddc3"
     }
@@ -892,21 +661,21 @@
             "x-forwarded-proto": "https",
             "x-forwarded-for": "10.0.0.2",
             "x-real-ip": "10.0.0.2",
-            "content-length": "0",
+            "content-length": "175",
             "user-agent": "PostmanRuntime/7.42.0",
             "accept": "*/*",
             "cache-control": "no-cache",
-            "postman-token": "742d6023-4194-4a55-b615-556bb8a5d827",
-            "accept-encoding": "gzip, deflate, br"
+            "postman-token": "6519331a-7772-414a-9645-2da6c7388459",
+            "accept-encoding": "gzip, deflate, br",
+            "content-type": "multipart/form-data; boundary=--------------------------865218928624393217188768"
           },
           "params": {},
-          "query": {
-            "instance_name": "ibox_cli_9",
-            "vector_name": "ibox_cli_9",
-            "method": "sync"
+          "query": {},
+          "body": {
+            "action": "sync",
+            "instance_name": "ibox_cli_23"
           },
-          "body": {},
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/store/db",
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/5555f30d-cbca-454e-96c8-010f0f17ddc3",
           "executionMode": "test"
         }
       }
@@ -925,6 +694,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-21T17:52:03.852Z",
-  "versionId": "1e63e322-f8f5-4077-9c28-44032eef2ac6"
+  "updatedAt": "2024-10-31T23:33:56.378Z",
+  "versionId": "068ec0a8-756e-4b03-aadf-0b49bc325308"
 }
