@@ -525,17 +525,6 @@
         ]
       ]
     },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "baseInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "set agent": {
       "main": [
         [
@@ -589,6 +578,17 @@
         [
           {
             "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
             "type": "main",
             "index": 0
           }
@@ -2109,22 +2109,6 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "options": {}
-      },
-      "id": "8d951bba-44fa-45a9-8177-626158b30a42",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -15980,
-        1300
-      ],
-      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -2222,6 +2206,22 @@
         -10300,
         1300
       ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "options": {}
+      },
+      "id": "8d951bba-44fa-45a9-8177-626158b30a42",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -15980,
+        1300
+      ],
+      "webhookId": "f67c8094-022b-4aef-bb16-c7e430158fd9"
     }
   ],
   "pinData": {
@@ -2265,7 +2265,7 @@
                   },
                   "deviceListMetadataVersion": 2
                 },
-                "conversation": "oi"
+                "conversation": "oi, queria pedir um lanche na store"
               },
               "contextInfo": {
                 "ephemeralSettingTimestamp": 1730348057,
@@ -2321,6 +2321,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-01T14:35:03.743Z",
-  "versionId": "bb3a642e-d88f-4782-94ce-54d765ef3965"
+  "updatedAt": "2024-11-01T18:16:21.131Z",
+  "versionId": "4241cd6d-fb96-4427-ab2a-51b009f872a0"
 }
