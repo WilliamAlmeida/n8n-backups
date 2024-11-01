@@ -210,25 +210,7 @@
       "main": [
         [
           {
-            "node": "schedule locked?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "schedule locked?": {
-      "main": [
-        [
-          {
-            "node": "Reading Chat",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "get chats",
+            "node": "schedule unlocked?",
             "type": "main",
             "index": 0
           }
@@ -552,6 +534,24 @@
           }
         ]
       ]
+    },
+    "schedule unlocked?": {
+      "main": [
+        [
+          {
+            "node": "get chats",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reading Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-26T15:44:44.997Z",
@@ -658,7 +658,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -800,
+        -760,
         2100
       ]
     },
@@ -673,8 +673,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2120,
-        2140
+        -2080,
+        1900
       ]
     },
     {
@@ -701,7 +701,7 @@
       "typeVersion": 1,
       "position": [
         -3120,
-        2140
+        2120
       ],
       "credentials": {
         "redis": {
@@ -719,8 +719,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -2060,
-        1840
+        -2100,
+        1660
       ]
     },
     {
@@ -734,8 +734,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1880,
-        1860
+        -1920,
+        1680
       ]
     },
     {
@@ -751,8 +751,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1720,
-        1860
+        -1760,
+        1680
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -792,8 +792,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1560,
-        1860
+        -1600,
+        1680
       ]
     },
     {
@@ -806,8 +806,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1380,
-        1880
+        -1420,
+        1700
       ],
       "credentials": {
         "redis": {
@@ -847,7 +847,7 @@
       "typeVersion": 2.2,
       "position": [
         -2960,
-        2140
+        2120
       ]
     },
     {
@@ -860,7 +860,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -980,
+        -960,
         2100
       ]
     },
@@ -873,8 +873,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -2480,
-        2380
+        -2460,
+        2360
       ]
     },
     {
@@ -886,8 +886,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -3120,
-        1980
+        -3280,
+        2320
       ]
     },
     {
@@ -929,40 +929,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "d8b38257-545d-4f4e-bb2f-5678b8d1f42c",
-              "leftValue": "={{ $json.reading_chats }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "96bed680-6b6b-4e7c-a4d9-09875df5d700",
-      "name": "schedule locked?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -3300,
-        2120
-      ]
-    },
-    {
-      "parameters": {
         "operation": "set",
         "key": "reading_chats",
         "value": "1",
@@ -993,8 +959,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1880,
-        1700
+        -1920,
+        1520
       ],
       "credentials": {
         "redis": {
@@ -1013,7 +979,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2640,
+        -2620,
         2360
       ],
       "credentials": {
@@ -1034,8 +1000,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2240,
-        1840
+        -2280,
+        1660
       ]
     },
     {
@@ -1048,8 +1014,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2800,
-        2380
+        -2780,
+        2360
       ],
       "credentials": {
         "redis": {
@@ -1096,7 +1062,7 @@
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1,
       "position": [
-        -2960,
+        -2940,
         2360
       ],
       "credentials": {
@@ -1119,7 +1085,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1900,
+        -1840,
         2200
       ],
       "credentials": {
@@ -1159,8 +1125,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -980,
-        2260
+        -960,
+        2280
       ],
       "credentials": {
         "redis": {
@@ -1259,22 +1225,6 @@
     },
     {
       "parameters": {
-        "content": "## Retorna as configurações da Instância",
-        "height": 483.3176121655175,
-        "width": 756.5270031117756,
-        "color": 4
-      },
-      "id": "03dd3244-007c-4dde-a8b2-773218b5bdab",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -100,
-        2120
-      ]
-    },
-    {
-      "parameters": {
         "operation": "delete",
         "key": "=instance_config_{{ $('merge').first().json.instance }}"
       },
@@ -1283,7 +1233,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -40,
+        -360,
         2220
       ],
       "alwaysOutputData": true,
@@ -1325,7 +1275,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        220,
+        -100,
         2200
       ]
     },
@@ -1342,7 +1292,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -40,
+        -360,
         2420
       ],
       "alwaysOutputData": false,
@@ -1371,7 +1321,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        320,
+        0,
         2420
       ],
       "credentials": {
@@ -1392,8 +1342,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        500,
-        2180
+        180,
+        2200
       ]
     },
     {
@@ -1407,8 +1357,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -620,
-        1900
+        -600,
+        1920
       ]
     },
     {
@@ -1441,8 +1391,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -260,
-        1900
+        -200,
+        1920
       ]
     },
     {
@@ -1459,7 +1409,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        500,
+        180,
         2420
       ],
       "credentials": {
@@ -1480,8 +1430,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        700,
-        2180
+        360,
+        2200
       ]
     },
     {
@@ -1498,8 +1448,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1260,
-        2160
+        920,
+        2200
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1520,8 +1470,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -80,
-        1880
+        -20,
+        1920
       ]
     },
     {
@@ -1535,8 +1485,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1060,
-        2160
+        720,
+        2200
       ]
     },
     {
@@ -1552,8 +1502,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -420,
-        1900
+        -380,
+        1920
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1579,8 +1529,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        80,
-        1880
+        160,
+        1920
       ]
     },
     {
@@ -1599,8 +1549,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        1260,
-        2320
+        920,
+        2360
       ]
     },
     {
@@ -1643,8 +1593,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        860,
-        2180
+        540,
+        2200
       ]
     },
     {
@@ -1666,7 +1616,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        120,
+        -200,
         2420
       ]
     },
@@ -1680,15 +1630,16 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3300,
-        2580
+        -3620,
+        2320
       ],
       "credentials": {
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1700,15 +1651,65 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3160,
-        2580
+        -3460,
+        2320
       ],
       "credentials": {
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d8b38257-545d-4f4e-bb2f-5678b8d1f42c",
+              "leftValue": "={{ $json.reading_chats }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "96bed680-6b6b-4e7c-a4d9-09875df5d700",
+      "name": "schedule unlocked?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3300,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Gestão dos Workflows\n*Envia a mensagem para o Agent configurado para o Cliente, estilo **Bot Evolution***",
+        "height": 784.244925373343,
+        "width": 1484.4196714865986
+      },
+      "id": "558bdd87-3e52-4fdd-a078-025a72f78949",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        1820
+      ]
     }
   ],
   "pinData": {},
@@ -1741,6 +1742,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-31T06:54:25.087Z",
-  "versionId": "9b30241e-44a4-4789-8cc5-afa313a4bdfd"
+  "updatedAt": "2024-10-31T22:41:55.125Z",
+  "versionId": "2c7f4ed5-5ee7-4fa2-a07f-192f8e6ab46c"
 }
