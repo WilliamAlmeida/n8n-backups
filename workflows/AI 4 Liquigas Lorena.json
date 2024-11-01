@@ -750,6 +750,20 @@
           "output": "Olá, William! Como posso ajudá-lo hoje? Se precisar fazer um pedido de gás ou tiver alguma dúvida, é só me avisar!"
         }
       }
+    ],
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
+          "conversation": "Oi quanto custa o gas de cozinha?"
+        }
+      }
     ]
   },
   "settings": {
@@ -779,6 +793,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-01T13:11:02.986Z",
-  "versionId": "98864da9-5d3a-4874-94e1-90587b6e6ced"
+  "updatedAt": "2024-11-01T16:24:16.073Z",
+  "versionId": "9db3ed8f-cc1b-4d23-aa8c-90700865fc39"
 }
