@@ -78,68 +78,6 @@
         ]
       ]
     },
-    "Get Account User": {
-      "main": [
-        [
-          {
-            "node": "set user account",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "set user account": {
-      "main": [
-        [
-          {
-            "node": "userAccount",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get user account": {
-      "main": [
-        [
-          {
-            "node": "has user account?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "has user account?": {
-      "main": [
-        [
-          {
-            "node": "userAccount",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Account User",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "delete user account": {
-      "main": [
-        [
-          {
-            "node": "get user account",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Embeddings OpenAI": {
       "ai_embedding": [
         [
@@ -239,17 +177,6 @@
           {
             "node": "Vector Store Tool",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "userAccount": {
-      "main": [
-        [
-          {
-            "node": "config prompt",
-            "type": "main",
             "index": 0
           }
         ]
@@ -366,6 +293,90 @@
         [
           {
             "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Account User": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "Json2Object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has user account?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Account User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Json2Object": {
+      "main": [
+        [
+          {
+            "node": "has user account?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
             "type": "main",
             "index": 0
           }
@@ -724,138 +735,6 @@
     },
     {
       "parameters": {
-        "operation": "set",
-        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
-        "value": "={{ $json.user ?? {} }}",
-        "keyType": "hash",
-        "expire": true,
-        "ttl": "={{ $json.user ? 120 : 60 }}"
-      },
-      "id": "2cb74e21-d8eb-4516-b663-de2c26c67613",
-      "name": "set user account",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4736,
-        1583
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
-        "options": {}
-      },
-      "id": "e31d322b-141e-4c7b-9642-8a3a15bb2b5c",
-      "name": "Get Account User",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        4578,
-        1582
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "user_account",
-        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
-        "keyType": "hash",
-        "options": {}
-      },
-      "id": "2c2665eb-54f2-479a-830c-7ab2ee36be46",
-      "name": "get user account",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4378,
-        1602
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
-              "leftValue": "={{ $json.user_account.id }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "cc923949-fc12-45de-b49b-c9471b2ad337",
-      "name": "has user account?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        4578,
-        1382
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
-      },
-      "id": "dd3b2fbc-7fda-4180-bc8f-d10d46a8fc07",
-      "name": "delete user account",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4378,
-        1382
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "content": "## Tenta retornar os dados do Usuário",
-        "height": 450.71644667686496,
-        "width": 598.5677101799579,
-        "color": 5
-      },
-      "id": "2a22d9a7-c54e-4c88-b699-4eaa2db4cd9e",
-      "name": "Sticky Note2",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        4316,
-        1303
-      ]
-    },
-    {
-      "parameters": {
         "model": "text-embedding-3-small",
         "options": {}
       },
@@ -895,21 +774,6 @@
       "position": [
         5018,
         1602
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
-        "options": {}
-      },
-      "id": "8f327b21-5a0c-4659-8351-440d21c210ce",
-      "name": "userAccount",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4778,
-        1382
       ]
     },
     {
@@ -1282,6 +1146,175 @@
         5158,
         1362
       ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}_store",
+        "value": "={{ $json.user.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": "={{ $json.user ? 120 : 60 }}"
+      },
+      "id": "c5d0d1d4-35e6-45c4-9fdb-3c22d7f53d04",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4740,
+        1597
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "sendQuery": true,
+        "options": {}
+      },
+      "id": "7eab7343-ba18-47dc-8f67-2f84eb990b4a",
+      "name": "Get Account User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4582,
+        1596
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}_store",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "651d8e60-b0fa-451e-8f0b-6b2917d34aa4",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4380,
+        1617
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account.id }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "96e57f14-6fa8-48ba-8918-11196b33b85d",
+      "name": "has user account?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4582,
+        1396
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}_store"
+      },
+      "id": "09d01506-6d53-4940-9bb3-c12fdc5e6b28",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4382,
+        1396
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 650.6226961809048,
+        "width": 598.5677101799579,
+        "color": 5
+      },
+      "id": "2682b776-afa9-4045-bd25-4d3aae09d833",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
+        "options": {}
+      },
+      "id": "15585a6c-a24f-4fc1-bf24-5ba7d978bcf2",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4780,
+        1397
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "675594ce-198a-45d4-b185-4caacb169a93",
+              "name": "user_account",
+              "value": "={{ $json.user_account }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "db2c0234-a2e0-48fb-9f76-6bb7b8f46318",
+      "name": "Json2Object",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4442,
+        1796
+      ]
     }
   ],
   "pinData": {
@@ -1325,6 +1358,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-11-01T15:39:12.875Z",
-  "versionId": "775c179c-c5ed-4810-9da6-b59791e20211"
+  "updatedAt": "2024-11-01T16:26:21.368Z",
+  "versionId": "67a43b24-8cb9-4c31-856f-81f80c22e319"
 }
