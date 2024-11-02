@@ -8,6 +8,11 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -219,9 +224,14 @@
     },
     "chatConfig": {
       "main": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
         [
           {
-            "node": "messageInfo",
+            "node": "Sign Msg",
             "type": "main",
             "index": 0
           }
@@ -314,8 +324,7 @@
       "position": [
         6180,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -501,7 +510,8 @@
       "position": [
         4060,
         1100
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -516,8 +526,7 @@
       "position": [
         6040,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -644,7 +653,8 @@
         3900,
         1100
       ],
-      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa"
+      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa",
+      "disabled": true
     },
     {
       "parameters": {
@@ -693,8 +703,7 @@
       "position": [
         3980,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -782,6 +791,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-02T02:22:52.559Z",
-  "versionId": "12e71107-bd60-4881-af8a-6faf91c9513c"
+  "updatedAt": "2024-11-02T04:32:54.366Z",
+  "versionId": "2f7194f7-3759-4c99-903b-2f9c2830a2a4"
 }
