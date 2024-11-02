@@ -108,11 +108,6 @@
             "node": "Basic LLM Chain",
             "type": "ai_languageModel",
             "index": 0
-          },
-          {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
-            "index": 0
           }
         ]
       ]
@@ -161,17 +156,6 @@
         ]
       ]
     },
-    "Basic LLM Chain": {
-      "main": [
-        [
-          {
-            "node": "Response1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "send to agent?": {
       "main": [
         [
@@ -190,33 +174,11 @@
         ]
       ]
     },
-    "Chat Memory1": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "config prompt1": {
       "main": [
         [
           {
             "node": "reset memo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch Agents": {
-      "main": [
-        [
-          {
-            "node": "config prompt1",
             "type": "main",
             "index": 0
           }
@@ -256,12 +218,105 @@
         ]
       ]
     },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "EWT Fixed": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Query",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "EWT Fixed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "config prompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "AI Agent1": {
       "main": [
         [
           {
             "node": "Response2",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar Avaliability": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -548,7 +603,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Utilize esta ferramenta para localizar agendamentos de entrega do usuário, sempre solicite a data e hora do agendamento e, se disponível, o e-mail do usuário para facilitar a localização.",
+        "toolDescription": "Use esta ferramenta para localizar agendamentos de entrega do usuário, sempre solicite a data e hora do agendamento e, se disponível, o código do pedido para facilitar a localização.",
         "operation": "getAll",
         "calendar": {
           "__rl": true,
@@ -557,8 +612,8 @@
           "cachedResultName": "williamkillerca@hotmail.com"
         },
         "options": {
-          "timeMin": "={{ $fromAI('data_after', 'Data e hora da entrega agendada informada pelo usuário menos 12 horas') }}",
-          "timeMax": "={{ $fromAI('data_before', 'Data e hora da entrega agendada informada pelo usuário mais 12 horas') }}",
+          "timeMin": "={{ $fromAI('data_after', 'Data e hora da entrega agendada informada pelo usuário menos 24 horas') }}",
+          "timeMax": "={{ $fromAI('data_before', 'Data e hora da entrega agendada informada pelo usuário mais 24 horas') }}",
           "fields": "items(id,status,htmlLink,created,summary,description,creator,organizer,start(dateTime),end(dateTime))"
         }
       },
@@ -580,7 +635,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "=Use esta ferramenta para cancelar agendamentos de entrega, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
+        "toolDescription": "Use esta ferramenta para cancelar 1 agendamentos de entrega por vez, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
         "operation": "delete",
         "calendar": {
           "__rl": true,
@@ -597,7 +652,7 @@
       "typeVersion": 1.2,
       "position": [
         2120,
-        1380
+        1400
       ],
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -614,10 +669,11 @@
           "mode": "id",
           "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
         },
-        "start": "={{ $fromAI('data_init') }}",
-        "end": "={{ $fromAI('data_end') }}",
+        "start": "={{ $fromAI('data_init', 'data e hora do agendamento') }}",
+        "end": "={{ $fromAI('data_end', 'data e hora do agendamento') }}",
         "additionalFields": {
           "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
+          "id": "={{ $fromAI('phone','phone unmasked') }}",
           "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
         }
       },
@@ -648,8 +704,8 @@
         "eventId": "={{ $fromAI('event_id', 'id do evento') }}",
         "updateFields": {
           "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
-          "end": "={{ $fromAI('data_end') }}",
-          "start": "={{ $fromAI('date_start') }}",
+          "end": "={{ $fromAI('data_end', 'data e hora do agendamento') }}",
+          "start": "={{ $fromAI('data_start', 'data e hora do agendamento') }}",
           "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
         }
       },
@@ -659,7 +715,7 @@
       "typeVersion": 1.2,
       "position": [
         1980,
-        1380
+        1400
       ],
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -667,27 +723,6 @@
           "name": "Google Calendar account"
         }
       }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('EWT').item.json.query }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "=<context>\n{{ $json.content }}\n</context>\n\n**Responda somente com informações disponíveis no <context>.**\nSe não tiver a informação no momento ou não estiver seguro, **deixe claro que não é possível fornecer detalhes agora**."
-            }
-          ]
-        }
-      },
-      "id": "e58063e6-6af9-493e-bd21-6af0422fb4f1",
-      "name": "Basic LLM Chain",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        1860,
-        600
-      ]
     },
     {
       "parameters": {
@@ -725,34 +760,12 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas",
-        "sessionTTL": 300,
-        "contextWindowLength": 15
-      },
-      "id": "60fb9bc4-e9e1-47d2-a9df-cbc47c00ba54",
-      "name": "Chat Memory1",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.3,
-      "position": [
-        1680,
-        1200
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('EWT').first().json.userAccount.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}\", o e-mail é \"{{ $('EWT').first().json.userAccount.email ?? '' }}\", telefone para contato é \"{{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('EWT').first().json.userAccount.endereco ?? '' }}\".\n\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil, e acessível.\n\n<funcoes_principais>\nReceber pedidos de gás\nDisponibilizar horários entrega\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nSempre perguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nIdentificar necessidade com perguntas específicas\nEsclarecer dúvidas\nAgendar entrega\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<agendamento_entrega>\nPara agendamento, siga o seguinte processo, NÃO pule etapas:\n\n1. Identificar qual Produto via store_info_tool o cliente deseja comprar\n2. Exiba os detalhes do produto e confirme com o cliente\n3. Solicite as informações do cliente (nome, endereço, telefone), se necessário\n- Nome do Cliente: {{ $('EWT').first().json.userAccount.nome ?? $('EWT').first().json.messageInfo.pushName }}\n- Endereço: {{ $('EWT').first().json.messageInfo.endereco ?? '' }}\n- Telefone: {{ $('EWT').first().json.userAccount.whatsapp ?? $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\nSe algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n4. Solicite a data e horário desejados para a entrega\n- Verifique os horários disponíveis via store_info_tool\n\n**Confirmação:**\nDepois de coletar todas informações, solicite a confirmação do cliente para prosseguir com o agendamento.\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\nNUNCA envie o link após o agendamento e ao SALVAR ou ATUALIZAR o agendamento, a descrição precisa ser salva no formato do [template].\n\n</prompt_mestre_liquigas>\n",
+              "value": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('EWT').first().json.userAccount.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}\", o e-mail é \"{{ $('EWT').first().json.userAccount.email ?? '' }}\", telefone para contato é \"{{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('EWT').first().json.userAccount.endereco ?? '' }}\".\n\n<personalidade>\nFunção: Assistente virtual especializado em agendamento de pedidos de gás.\n\n<funcoes_principais>\nReceber pedidos de gás\nDisponibilizar horários entrega\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\nSempre formate o Telefone com Mask.\n\n<agendamento_entrega>\nPara agendamento, SIGA as etapas, NÃO pule nenhuma:\n\n1. Identificar qual Produto via store_info_tool o cliente deseja comprar\n2. Exiba os detalhes do produto e confirme com o cliente\n3. Solicite as informações do cliente (nome, endereço, telefone)\n  - Se algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n4. Solicite a data e horário desejados para a entrega\n- Verifique os horários disponíveis via store_info_tool\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\n**Confirmação:**\nDepois de coletar todas informações, exiba-os e solicite a confirmação para prosseguir com o agendamento.\n\nApós o SALVAR ou ATUALIZAR o agendamento, NUNCA envie o link dispónivel.\n\nA descrição do agendamento DEVE ser salva no formato:\n\n- Data e Hora Agendada\n- Nome do Cliente\n- Telefone\n- Endereço\n- Produto\n- E-mail (somente se você tiver)\n\n**Exibição do Agendamento**\nSempre exiba o ID do Evento junto das demais informações.\n\n</prompt_mestre_liquigas>\n",
               "type": "string"
             }
           ]
@@ -787,9 +800,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1900,
+        2120,
         980
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -811,6 +825,80 @@
       "typeVersion": 3.4,
       "position": [
         2180,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas"
+      },
+      "id": "2442a85f-f27a-4add-a489-9ae8708ab7dc",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        980
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "11a5a47b-e01d-4a75-803d-5d4577fdb3c0",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        760
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "store_info_tool",
+        "description": "Chame essa ferramenta para consultar horário de funcionamento para evitar agendar pedidos em momento errado e descobrir se o produto solicitado é exatamente o que vendido.",
+        "workflowId": {
+          "__rl": true,
+          "value": "TG0NZ5dlJtCo1wcu",
+          "mode": "list",
+          "cachedResultName": "TOOL Liquigas Lorena"
+        }
+      },
+      "id": "86ae9407-41da-4deb-a5a7-e070f3a57196",
+      "name": "Store Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1800,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<context>\n{{ $json.content }}\n</context>\n\n**Responda somente com informações disponíveis no <context>.**\nSe não tiver a informação no momento ou não estiver seguro, **deixe claro que não é possível fornecer detalhes agora**."
+            }
+          ]
+        }
+      },
+      "id": "e58063e6-6af9-493e-bd21-6af0422fb4f1",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1860,
         600
       ]
     },
@@ -856,56 +944,120 @@
     },
     {
       "parameters": {
-        "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_liquid_gas"
+        "options": {}
       },
-      "id": "2442a85f-f27a-4add-a489-9ae8708ab7dc",
-      "name": "reset memo",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
+      "id": "bca5436c-ec06-4fcc-af87-ebe07fbdf4a5",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
       "position": [
-        1460,
+        720,
+        1240
+      ],
+      "webhookId": "fa05ac9d-20a9-41e2-9369-ad118208cdf9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1123d8e-c791-4dda-bbd0-e24c5b1d35d2",
+              "name": "query",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b870a66a-26f6-48a2-ab67-a4f56423cb1f",
+      "name": "Query",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"query\": \"Agendamento de entrega de gás de cozinha para William, telefone 12982184879, para amanhã às 08:00.\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"william\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"sim\"\n  },\n  \"userAccount\": {\n    \"id\": 1,\n    \"nome\": \"William\",\n    \"sobrenome\": \"Almeida\",\n    \"nome_completo\": \"William Almeida\",\n    \"whatsapp\": \"12982184879\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"endereco\": \"\"\n  }\n}",
+        "options": {}
+      },
+      "id": "f927bb10-a8db-4eaa-b66b-52cc55f7bd49",
+      "name": "EWT Fixed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "cf82ff0e-5bc5-4015-9410-3f68e680e1d0",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1160,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@gmail.com"
+        },
+        "timeMin": "2024-11-01T23:32:40",
+        "timeMax": "2024-11-01T23:32:42",
+        "options": {}
+      },
+      "id": "b8955147-5e4d-4600-b37a-3db00251842d",
+      "name": "Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        2420,
         980
       ],
-      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas",
+        "sessionTTL": 300,
+        "contextWindowLength": 15
+      },
+      "id": "60fb9bc4-e9e1-47d2-a9df-cbc47c00ba54",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        1680,
+        1200
+      ],
       "credentials": {
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {},
-      "id": "11a5a47b-e01d-4a75-803d-5d4577fdb3c0",
-      "name": "EWT",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        740,
-        760
-      ]
-    },
-    {
-      "parameters": {
-        "name": "store_info_tool",
-        "description": "Chame essa ferramenta para consultar horário de funcionamento para evitar agendar pedidos em momento errado.",
-        "workflowId": {
-          "__rl": true,
-          "value": "TG0NZ5dlJtCo1wcu",
-          "mode": "list",
-          "cachedResultName": "TOOL Liquigas Lorena"
-        }
-      },
-      "id": "86ae9407-41da-4deb-a5a7-e070f3a57196",
-      "name": "Store Info Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        1800,
-        1220
-      ]
+      }
     },
     {
       "parameters": {
@@ -916,7 +1068,7 @@
         }
       },
       "id": "0220c74f-59f6-4c50-9fef-028cff3fcb15",
-      "name": "OpenAI Chat Model1",
+      "name": "OpenAI Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
@@ -933,9 +1085,9 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('EWT').item.json.query }}",
+        "text": "={{ $('Merge').item.json.query }}",
         "options": {
-          "systemMessage": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<personalidade>\nNome: Léo da Liquigás\nFunção: Assistente virtual especializado no atendimento ao cliente Liquigás (pedidos de gás e informações).\nTom: Educado, prestativo, ágil, e acessível.\n\n<funcoes_principais>\nReceber pedidos de gás\nEsclarecer dúvidas sobre produtos\nInformar sobre segurança e cuidados\nDisponibilizar horários e locais de entrega\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nEncaminhar casos complexos a um atendente humano\nConsultar a base de dados antes de responder dúvidas\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo:\n\"Mais informações: https://revendaliquigas.com.br/produtos\"\nSempre perguntar ao cliente se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e apresentação\nIdentificar necessidade com perguntas específicas\nApresentar produtos ou serviços\nEsclarecer dúvidas\nAgendar entrega, se necessário\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<recomendacoes_produtos>\nEm caso de dúvidas, sugerir até 3 opções retornadas pela *store_info_tool*.\n\n<seguranca>\nInformar que produtos são seguros, cuidados básicos e fornecer links adicionais de segurança, se solicitado.\n\n<agendamento_entrega>\nPara agendamento, siga o seguinte processo, NÃO pule etapas:\n\n- Identificar qual Produto via store_info_tool o cliente deseja comprar\n- Exiba os detalhes do produto e confirme com o cliente\n- Solicite as informações do cliente (nome, endereço, telefone), se necessário\n1. Nome do Cliente\n2. Endereço\n3. Telefone\nSe algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n- Solicite a data e horário desejados para a entrega\n1. Verifique os horários disponíveis via store_info_tool\n\n**Confirmação:**\nDepois de coletar todas informações, solicite a confirmação do cliente para prosseguir com o agendamento.\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\nNUNCA envie o link após o agendamento e ao SALVAR ou ATUALIZAR o agendamento, a descrição precisa ser salva no formato do [template].\n\n<dicas_uso_produtos>\nDicas práticas sobre troca de botijão, manutenção e procedimentos de segurança.\n</prompt_mestre_liquigas>\n"
+          "systemMessage": "={{ $json.system }}"
         }
       },
       "id": "efa03d09-7a52-4cb7-b6dc-093717647b31",
@@ -948,9 +1100,65 @@
       ],
       "retryOnFail": true,
       "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "=williamkillerca@gmail.com",
+          "mode": "id",
+          "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+        },
+        "options": {
+          "outputFormat": "bookedSlots"
+        }
+      },
+      "id": "16434fdd-1c69-42f7-98ff-476b921c50d6",
+      "name": "Google Calendar Avaliability",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        2260,
+        1220
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": "Agendamento de entrega de gás de cozinha para William, telefone 12982184879, para amanhã às 08:00.",
+          "agent": "calendar",
+          "messageInfo": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "william",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "W.M. Soluções Tecnologicas",
+            "fromMe": false,
+            "unique_id": "william_5512982184879",
+            "debounce_time": 5,
+            "conversation": "sim"
+          },
+          "userAccount": {
+            "id": 1,
+            "nome": "William",
+            "sobrenome": "Almeida",
+            "nome_completo": "William Almeida",
+            "whatsapp": "12982184879",
+            "email": "williamkillerca@hotmail.com",
+            "endereco": ""
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -976,6 +1184,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-01T18:08:34.953Z",
-  "versionId": "db799d2b-7700-46a9-b227-cd767024e556"
+  "updatedAt": "2024-11-02T03:21:04.033Z",
+  "versionId": "51cae213-d287-4177-a1f8-cad0671cc2c2"
 }
