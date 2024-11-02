@@ -8,11 +8,6 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -200,17 +195,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Sign Msg",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow Trigger": {
       "main": [
         [
@@ -229,6 +213,17 @@
             "node": "Merge",
             "type": "main",
             "index": 1
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -317,9 +312,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6160,
+        6180,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -505,8 +501,7 @@
       "position": [
         4060,
         1100
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -519,9 +514,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        6020,
+        6040,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -648,8 +644,7 @@
         3900,
         1100
       ],
-      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa",
-      "disabled": true
+      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa"
     },
     {
       "parameters": {
@@ -685,28 +680,9 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5584,
-        1557
+        5580,
+        1560
       ]
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "={{ $('config prompt').item.json.system }}"
-        }
-      },
-      "id": "54852ce0-c950-414a-869e-110d6017c58b",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        5280,
-        1360
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 3000
     },
     {
       "parameters": {},
@@ -717,7 +693,8 @@
       "position": [
         3980,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -741,16 +718,28 @@
         5860,
         1360
       ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').item.json.system }}"
+        }
+      },
+      "id": "54852ce0-c950-414a-869e-110d6017c58b",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
     }
   ],
   "pinData": {
-    "AI Agent": [
-      {
-        "json": {
-          "output": "Olá, William! Como posso ajudá-lo hoje? Se precisar fazer um pedido de gás ou tiver alguma dúvida, é só me avisar!"
-        }
-      }
-    ],
     "Execute Workflow Trigger": [
       {
         "json": {
@@ -793,6 +782,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-01T16:24:16.073Z",
-  "versionId": "9db3ed8f-cc1b-4d23-aa8c-90700865fc39"
+  "updatedAt": "2024-11-02T02:22:52.559Z",
+  "versionId": "12e71107-bd60-4881-af8a-6faf91c9513c"
 }
