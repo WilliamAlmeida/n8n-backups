@@ -116,7 +116,7 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -127,7 +127,7 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -138,7 +138,7 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -149,7 +149,7 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -174,22 +174,11 @@
         ]
       ]
     },
-    "config prompt1": {
-      "main": [
-        [
-          {
-            "node": "reset memo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "reset memo": {
       "main": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -211,7 +200,7 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -267,45 +256,12 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "config prompt1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Chat Memory": {
       "ai_memory": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent1": {
-      "main": [
-        [
-          {
-            "node": "Response2",
-            "type": "main",
             "index": 0
           }
         ]
@@ -315,8 +271,52 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Agents": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Response2",
+            "type": "main",
             "index": 0
           }
         ]
@@ -590,7 +590,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1740,
+        1760,
         820
       ],
       "credentials": {
@@ -635,7 +635,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Use esta ferramenta para cancelar 1 agendamentos de entrega por vez, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
+        "toolDescription": "Use esta ferramenta para cancelar 1 agendamentos de entrega por vez em intervalos de chamadas de 5 segundos, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
         "operation": "delete",
         "calendar": {
           "__rl": true,
@@ -663,17 +663,18 @@
     },
     {
       "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use esta ferramenta para realizar o agendamentos de entrega do usuário.",
         "calendar": {
           "__rl": true,
-          "value": "=williamkillerca@gmail.com",
-          "mode": "id",
-          "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@gmail.com"
         },
         "start": "={{ $fromAI('data_init', 'data e hora do agendamento') }}",
         "end": "={{ $fromAI('data_end', 'data e hora do agendamento') }}",
         "additionalFields": {
-          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
-          "id": "={{ $fromAI('phone','phone unmasked') }}",
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, nome do cliente, telefone, e-mail, e horário') }}",
           "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
         }
       },
@@ -763,29 +764,6 @@
         "assignments": {
           "assignments": [
             {
-              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
-              "name": "system",
-              "value": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('EWT').first().json.userAccount.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}\", o e-mail é \"{{ $('EWT').first().json.userAccount.email ?? '' }}\", telefone para contato é \"{{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('EWT').first().json.userAccount.endereco ?? '' }}\".\n\n<personalidade>\nFunção: Assistente virtual especializado em agendamento de pedidos de gás.\n\n<funcoes_principais>\nReceber pedidos de gás\nDisponibilizar horários entrega\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\nSempre formate o Telefone com Mask.\n\n<agendamento_entrega>\nPara agendamento, SIGA as etapas, NÃO pule nenhuma:\n\n1. Identificar qual Produto via store_info_tool o cliente deseja comprar\n2. Exiba os detalhes do produto e confirme com o cliente\n3. Solicite as informações do cliente (nome, endereço, telefone)\n  - Se algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n4. Solicite a data e horário desejados para a entrega\n- Verifique os horários disponíveis via store_info_tool\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\n**Confirmação:**\nDepois de coletar todas informações, exiba-os e solicite a confirmação para prosseguir com o agendamento.\n\nApós o SALVAR ou ATUALIZAR o agendamento, NUNCA envie o link dispónivel.\n\nA descrição do agendamento DEVE ser salva no formato:\n\n- Data e Hora Agendada\n- Nome do Cliente\n- Telefone\n- Endereço\n- Produto\n- E-mail (somente se você tiver)\n\n**Exibição do Agendamento**\nSempre exiba o ID do Evento junto das demais informações.\n\n</prompt_mestre_liquigas>\n",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "c2256c1d-3082-41b9-b12d-fec4dfaa9902",
-      "name": "config prompt1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1300,
-        980
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
               "id": "93b3a4ae-a50c-4b62-9872-f980bc19054c",
               "name": "response",
               "value": "={{ $json.output }}",
@@ -800,10 +778,9 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2120,
+        1940,
         980
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -847,7 +824,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {},
@@ -858,8 +836,7 @@
       "position": [
         740,
         760
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -938,7 +915,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        1040,
+        1140,
         980
       ]
     },
@@ -954,7 +931,8 @@
         720,
         1240
       ],
-      "webhookId": "fa05ac9d-20a9-41e2-9369-ad118208cdf9"
+      "webhookId": "fa05ac9d-20a9-41e2-9369-ad118208cdf9",
+      "disabled": true
     },
     {
       "parameters": {
@@ -977,7 +955,8 @@
       "position": [
         960,
         1160
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -992,7 +971,8 @@
       "position": [
         960,
         1320
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1007,35 +987,8 @@
       "position": [
         1160,
         1240
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "calendar",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@gmail.com"
-        },
-        "timeMin": "2024-11-01T23:32:40",
-        "timeMax": "2024-11-01T23:32:42",
-        "options": {}
-      },
-      "id": "b8955147-5e4d-4600-b37a-3db00251842d",
-      "name": "Google Calendar",
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.2,
-      "position": [
-        2420,
-        980
       ],
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
+      "disabled": true
     },
     {
       "parameters": {
@@ -1084,25 +1037,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Merge').item.json.query }}",
-        "options": {
-          "systemMessage": "={{ $json.system }}"
-        }
-      },
-      "id": "efa03d09-7a52-4cb7-b6dc-093717647b31",
-      "name": "AI Agent1",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1600,
-        980
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 3000
-    },
-    {
-      "parameters": {
         "resource": "calendar",
         "calendar": {
           "__rl": true,
@@ -1110,8 +1044,10 @@
           "mode": "id",
           "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
         },
+        "timeMin": "={{ $fromAI('data_start', 'data e hora do agendamento formato 2024-11-02T11:01:00-03:00') }}",
+        "timeMax": "={{ $fromAI('data_end', 'data e hora do agendamento formato 2024-11-02T11:01:00-03:00') }}",
         "options": {
-          "outputFormat": "bookedSlots"
+          "outputFormat": "availability"
         }
       },
       "id": "16434fdd-1c69-42f7-98ff-476b921c50d6",
@@ -1128,37 +1064,52 @@
           "name": "Google Calendar account"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=<prompt_mestre_liquigas>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('EWT').first().json.userAccount.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}\", o e-mail é \"{{ $('EWT').first().json.userAccount.email ?? '' }}\", telefone para contato é \"{{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('EWT').first().json.userAccount.endereco ?? '' }}\".\n\n<personalidade>\nFunção: Assistente virtual especializado em agendamento de pedidos de gás.\n\n<funcoes_principais>\nReceber pedidos de gás\nDisponibilizar horários entrega\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\nSempre formate o Telefone com Mask.\n\n<agendamento_entrega>\nPara agendamento, SIGA as etapas, NÃO pule nenhuma:\n\n1. Identificar qual Produto via store_info_tool o cliente deseja comprar\n2. Exiba os detalhes do produto e confirme com o cliente\n3. Solicite as informações do cliente (nome, endereço, telefone)\n  - Se algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n4. Solicite a data e horário desejados para a entrega\n- Verifique os horários disponíveis via store_info_tool\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via store_info_tool]. Por favor, selecione um novo horário.\"\n\n**Confirmação:**\nDepois de coletar todas informações, exiba-os e solicite a confirmação para prosseguir com o agendamento.\n\nApós o SALVAR ou ATUALIZAR o agendamento, NUNCA envie o link dispónivel.\n\nFormato de Salvamento de Agendamento:\n\n- Data e Hora Agendada: [Data e Hora]\n- Nome do Cliente: [Nome]\n- Telefone: [Telefone]\n- Endereço: [Endereço]\n- Produto: [Produto]\n- E-mail: [E-mail]\n\nInstruções:\n\nSubstitua cada texto entre colchetes pelos dados específicos do agendamento.\nUtilize este formato para garantir clareza e consistência todas as vezes que você precisar registrar um agendamento.\n\n**Exibição do Agendamento**\nSempre exiba o ID do Evento junto das demais informações.\n\n</prompt_mestre_liquigas>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c2256c1d-3082-41b9-b12d-fec4dfaa9902",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query }}",
+        "options": {
+          "systemMessage": "={{ $json.system }}",
+          "maxIterations": 5
+        }
+      },
+      "id": "2293fedf-b8b9-4d0c-b818-0964c3d4c3e8",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1600,
+        980
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
     }
   ],
-  "pinData": {
-    "EWT": [
-      {
-        "json": {
-          "query": "Agendamento de entrega de gás de cozinha para William, telefone 12982184879, para amanhã às 08:00.",
-          "agent": "calendar",
-          "messageInfo": {
-            "evo_api": "https://apiwp.wmst.com.br",
-            "instance": "william",
-            "remoteJid": "5512982184879@s.whatsapp.net",
-            "pushName": "W.M. Soluções Tecnologicas",
-            "fromMe": false,
-            "unique_id": "william_5512982184879",
-            "debounce_time": 5,
-            "conversation": "sim"
-          },
-          "userAccount": {
-            "id": 1,
-            "nome": "William",
-            "sobrenome": "Almeida",
-            "nome_completo": "William Almeida",
-            "whatsapp": "12982184879",
-            "email": "williamkillerca@hotmail.com",
-            "endereco": ""
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -1184,6 +1135,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-02T03:21:04.033Z",
-  "versionId": "51cae213-d287-4177-a1f8-cad0671cc2c2"
+  "updatedAt": "2024-11-02T04:32:16.845Z",
+  "versionId": "b51d66ba-bef6-4247-b9b1-f59f48882047"
 }
