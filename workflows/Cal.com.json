@@ -135,7 +135,22 @@
             "index": 0
           },
           {
-            "node": "Cal Availability2",
+            "node": "Get all event types",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create an event type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete an event type",
             "type": "main",
             "index": 0
           }
@@ -643,15 +658,21 @@
             },
             {
               "id": "0a72c23b-7e8c-4618-b827-602200390069",
-              "name": "cal-api-version",
+              "name": "cal_api_version_booking",
               "value": "2024-08-13",
               "type": "string"
             },
             {
-              "id": "792e7260-a49e-4f04-bfc7-39764a325a3d",
+              "id": "7e6a29c2-9869-409d-9980-698909fdee57",
+              "name": "cal_api_version_event",
+              "value": "2024-06-14",
+              "type": "string"
+            },
+            {
+              "id": "9e124983-4ae7-4c0c-88b1-d1a68136a45f",
               "name": "utc",
-              "value": 3,
-              "type": "number"
+              "value": "3",
+              "type": "string"
             }
           ]
         },
@@ -734,7 +755,7 @@
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json['cal-api-version'] }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
             }
           ]
         },
@@ -790,7 +811,7 @@
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $json['cal-api-version'] }}"
+              "value": "={{ $json.cal_api_version_booking }}"
             }
           ]
         },
@@ -837,7 +858,7 @@
             },
             {
               "name": "status",
-              "value": "={{ ['upcoming','recurring','past','unconfirmed'].join(',') }}"
+              "value": "={{ ['upcoming','recurring','past','unconfirmed','cancelled'].join(',') }}"
             }
           ]
         },
@@ -846,7 +867,7 @@
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $json['cal-api-version'] }}"
+              "value": "={{ $json.cal_api_version_booking }}"
             }
           ]
         },
@@ -877,6 +898,7 @@
           "name": "Cal.com Token"
         }
       },
+      "disabled": true,
       "notes": "status: {{ ['upcoming','recurring','past','cancelled','unconfirmed'].join(',') }}"
     },
     {
@@ -890,7 +912,7 @@
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json['cal-api-version'] }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
             }
           ]
         },
@@ -942,7 +964,7 @@
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $json[\"cal-api-version\"] }}"
+              "value": "={{ $json.cal_api_version_booking }}"
             }
           ]
         },
@@ -951,7 +973,7 @@
           "parameters": [
             {
               "name": "start",
-              "value": "={{ \"2024-11-05T07:00:00.033Z\".toDateTime().plus($json.utc, 'hours').toUTC() }}"
+              "value": "={{ \"2024-11-04T12:00:00.000Z\".toDateTime().plus($json.utc, 'hours').toUTC() }}"
             },
             {
               "name": "eventTypeId",
@@ -1086,23 +1108,28 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/slots/available",
+        "url": "={{ $json.cal_api }}/v2/event-types",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
             {
-              "name": "eventTypeId",
-              "value": "={{ $json.cal_event_id }}"
+              "name": "username",
+              "value": "={{ $json.username }}"
             },
             {
-              "name": "startTime",
-              "value": "={{ $now.toISO() }}"
-            },
+              "name": "eventSlug",
+              "value": "="
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
             {
-              "name": "endTime",
-              "value": "={{ $now.plus(3, 'days').toISO() }}"
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
             }
           ]
         },
@@ -1118,16 +1145,135 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1780,
-        -720
+        1800,
+        -1280
       ],
       "id": "6d0b272f-7240-41be-8555-cc29dc2ba0d3",
-      "name": "Cal Availability2",
+      "name": "Get all event types",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
           "name": "william"
         },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cal.com/v2/event-types",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer cal_live_65564eb4fa300eef9f8a38f7586704ba"
+            },
+            {
+              "name": "cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"lengthInMinutes\": 60,\n  \"title\": \"Learn the secrets of masterchief!\",\n  \"slug\": \"learn-the-secrets-of-masterchief\",\n  \"description\": \"Discover the culinary wonders of the Argentina by making the best flan ever!\",\n  \"locations\": [\n    {\n      \"type\": \"address\",\n      \"address\": \"123 Example St, City, Country\",\n      \"public\": true\n    }\n  ],\n  \"bookingFields\": [\n    {\n      \"type\": \"phone\",\n      \"slug\": \"some-slug\",\n      \"label\": \"<string>\",\n      \"required\": true,\n      \"placeholder\": \"<string>\"\n    }\n  ],\n  \"disableGuests\": true,\n  \"slotInterval\": 123,\n  \"minimumBookingNotice\": 123,\n  \"beforeEventBuffer\": 123,\n  \"afterEventBuffer\": 123,\n  \"scheduleId\": 123,\n  \"bookingLimitsCount\": {\n    \"day\": 1,\n    \"week\": 2,\n    \"month\": 3,\n    \"year\": 4\n  },\n  \"onlyShowFirstAvailableSlot\": true,\n  \"bookingLimitsDuration\": {\n    \"day\": 60,\n    \"week\": 120,\n    \"month\": 180,\n    \"year\": 240\n  },\n  \"bookingWindow\": {\n    \"type\": \"businessDays\",\n    \"value\": 5,\n    \"rolling\": true\n  },\n  \"offsetStart\": 123,\n  \"bookerLayouts\": {\n    \"defaultLayout\": \"month\",\n    \"enabledLayouts\": [\n      \"month\"\n    ]\n  },\n  \"confirmationPolicy\": {\n    \"type\": \"always\",\n    \"noticeThreshold\": {\n      \"unit\": \"minutes\",\n      \"count\": 30\n    }\n  },\n  \"recurrence\": {\n    \"interval\": 10,\n    \"occurrences\": 10,\n    \"frequency\": \"yearly\"\n  },\n  \"requiresBookerEmailVerification\": true,\n  \"hideCalendarNotes\": true,\n  \"lockTimeZoneToggleOnBookingPage\": true,\n  \"color\": {\n    \"lightThemeHex\": \"#292929\",\n    \"darkThemeHex\": \"#fafafa\"\n  },\n  \"seats\": {\n    \"seatsPerTimeSlot\": 4,\n    \"showAttendeeInfo\": true,\n    \"showAvailabilityCount\": true\n  },\n  \"customName\": \"{Event type title} between {Organiser} and {Scheduler}\",\n  \"destinationCalendar\": {\n    \"integration\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"useDestinationCalendarEmail\": true,\n  \"hideCalendarEventDetails\": true\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        -820
+      ],
+      "id": "692a7e77-c33a-49e5-bfb9-62debb81f6e3",
+      "name": "Create an event type"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.cal_api }}/v2/event-types/{{ $json.cal_event_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        -1120
+      ],
+      "id": "4980acd5-da74-46a4-8068-7240ce314930",
+      "name": "Get an event type",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=https://api.cal.com/v2/event-types/{{ $json.cal_event_id }}2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        -980
+      ],
+      "id": "e80a35ff-40eb-4fa4-9b7c-c792c6c48e26",
+      "name": "Delete an event type",
+      "credentials": {
         "httpHeaderAuth": {
           "id": "Xk4lHr8zzqWTdh4Z",
           "name": "Cal.com Token"
@@ -1152,6 +1298,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-03T03:36:41.821Z",
-  "versionId": "cf74adde-bf05-4a9f-bb0b-a2332b68f13e"
+  "updatedAt": "2024-11-03T03:58:58.225Z",
+  "versionId": "242d0665-3ce1-4cec-b6ab-159ff7b2e520"
 }
