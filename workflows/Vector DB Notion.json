@@ -561,8 +561,8 @@
       "name": "Create metadata and load content",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "position": [
-        4220,
-        100
+        4260,
+        140
       ],
       "typeVersion": 1
     },
@@ -617,7 +617,7 @@
         4480,
         -100
       ],
-      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc"
+      "webhookId": "388d49cc-5a4c-479a-99ff-5c1bfb8a15e9"
     },
     {
       "parameters": {
@@ -1222,8 +1222,8 @@
       "name": "Create metadata and load content1",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "position": [
-        4260,
-        600
+        4300,
+        640
       ],
       "typeVersion": 1
     },
@@ -1255,7 +1255,7 @@
       "typeVersion": 1,
       "position": [
         940,
-        -492.0582304950616
+        -500
       ]
     },
     {
@@ -1284,7 +1284,7 @@
         4480,
         400
       ],
-      "webhookId": "1cafe18b-c037-46ff-9f89-b3a0cdcea0dc"
+      "webhookId": "e89306d4-c4c3-4c7d-aba9-00f1ac28c2ab"
     },
     {
       "parameters": {
@@ -1463,8 +1463,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        3380,
-        240
+        3420,
+        280
       ],
       "credentials": {
         "groqApi": {
@@ -1575,6 +1575,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-31T23:25:07.189Z",
-  "versionId": "dc8ce110-f3a1-4e8d-9892-c8a75a5970bd"
+  "updatedAt": "2024-11-02T17:28:30.039Z",
+  "versionId": "ca1773fd-4256-42b8-89d2-04014a98030e"
 }
