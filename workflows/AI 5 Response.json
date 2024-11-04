@@ -28,7 +28,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -163,6 +163,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -182,6 +189,17 @@
         [
           {
             "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -212,15 +230,16 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2840,
-        540
+        2860,
+        300
       ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "T5OqvislWbgDr9Ek",
           "name": "Evolution Api Key"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -232,7 +251,7 @@
       "typeVersion": 3,
       "position": [
         1820,
-        260
+        300
       ]
     },
     {
@@ -251,21 +270,22 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2180,
-        260
+        2300,
+        580
       ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "T5OqvislWbgDr9Ek",
           "name": "Evolution Api Key"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
         "content": "# Enviar o Resultado para o Whatsapp",
-        "height": 597.6434405787044,
-        "width": 1280.3538824978605,
+        "height": 598,
+        "width": 1400,
         "color": 4
       },
       "id": "70aca7a6-084d-4541-9026-32578ef3f7af",
@@ -273,7 +293,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1734.7667092153047,
+        1740,
         160
       ]
     },
@@ -289,7 +309,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        980,
+        1000,
         160
       ]
     },
@@ -303,7 +323,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1033,
+        1060,
         260
       ],
       "executeOnce": false
@@ -318,7 +338,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1353,
+        1380,
         260
       ],
       "executeOnce": false
@@ -334,7 +354,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1513,
+        1540,
         260
       ]
     },
@@ -357,7 +377,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1193,
+        1220,
         260
       ]
     },
@@ -368,7 +388,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        653,
+        680,
         260
       ]
     },
@@ -383,7 +403,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        813,
+        840,
         260
       ]
     },
@@ -406,8 +426,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2220,
-        520
+        2260,
+        280
       ]
     },
     {
@@ -420,8 +440,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2420,
-        520
+        2440,
+        280
       ]
     },
     {
@@ -433,8 +453,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2620,
-        520
+        2700,
+        280
       ]
     },
     {
@@ -546,8 +566,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        1960,
-        480
+        2020,
+        300
       ]
     },
     {
@@ -616,6 +636,18 @@
         }
       },
       "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        580
+      ],
+      "id": "5ced9cff-cd5f-4e98-baeb-aa8ae3e63669",
+      "name": "Wait",
+      "webhookId": "abd33856-8996-44ab-9383-25ea588239bc"
     }
   ],
   "pinData": {
@@ -628,10 +660,9 @@
           "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
-          "debounce_time": 2.5,
-          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
-          "conversation": "me envie 2 frases separando por \\n\\n",
-          "output": "Claro! Aqui estão as frases:\n\n1. Estou aqui para ajudar com qualquer dúvida que você tenha!\n\n2. Se precisar de informações sobre nossos produtos ou quiser fazer um pedido, é só avisar!"
+          "debounce_time": 5,
+          "conversation": "oi",
+          "output": "*AI 4 iBox Stores*:\nAqui estão as bebidas que você pediu, agora com imagens! 🎉\n\n1. **Refrigerante Coca-Cola Lata 350ml**  \n   - Preço: R$ 3,50  \n   - ![Coca-Cola](https://ibox.delivery/v2/hamburgueria/refrigerante-coca-cola-lata-350ml)\n\n2. **Refrigerante Fanta Lata 350ml**  \n   - Preço: R$ 1,00  \n   - ![Fanta](https://ibox.delivery/v2/hamburgueria/refrigerante-fanta-lata-350ml)\n\n3. **Milkshare de Morango 500ml**  \n   - Preço: R$ 8,00  \n   - ![Milkshare de Morango](https://ibox.delivery/v2/hamburgueria/milkshare-de-morango)\n\n4. **Milkshare de Chocolate**  \n   - Preço: R$ 8,00  \n   - ![Milkshare de Chocolate](https://ibox.delivery/uploads/adm/empresas/23/produtos/786_4769-600x600.webp)\n\nSe precisar de mais alguma coisa ou quiser fazer um pedido, é só avisar! 😊"
         }
       }
     ],
@@ -668,6 +699,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-10-31T06:45:12.816Z",
-  "versionId": "412a83c8-f3a2-416f-8a2c-f263a1ae6917"
+  "updatedAt": "2024-11-04T15:22:49.968Z",
+  "versionId": "a3ac349b-17de-476e-8ed4-14ea5ea35fd1"
 }
