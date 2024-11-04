@@ -148,12 +148,12 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "delete instance config",
             "type": "main",
             "index": 0
           },
           {
-            "node": "delete instance config",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -382,6 +382,17 @@
           }
         ]
       ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-27T18:14:53.380Z",
@@ -404,8 +415,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5118,
-        1502
+        5120,
+        1520
       ],
       "credentials": {
         "openAiApi": {
@@ -425,8 +436,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4958,
-        1242
+        4960,
+        1260
       ]
     },
     {
@@ -441,8 +452,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5218,
-        1502
+        5260,
+        1560
       ],
       "credentials": {
         "redis": {
@@ -478,8 +489,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5258,
-        1882
+        5260,
+        1900
       ]
     },
     {
@@ -508,8 +519,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4998,
-        1922
+        5000,
+        1940
       ],
       "disabled": true
     },
@@ -540,8 +551,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5378,
-        1882
+        5380,
+        1900
       ]
     },
     {
@@ -551,9 +562,10 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        3158,
-        1302
-      ]
+        3140,
+        1320
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -566,8 +578,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3318,
-        1302
+        3320,
+        1320
       ]
     },
     {
@@ -581,10 +593,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        3158,
-        1482
+        3140,
+        1500
       ],
-      "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
+      "webhookId": "725a2d2d-7109-41fa-a732-109f15bf274e",
       "disabled": true
     },
     {
@@ -599,8 +611,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        5620,
-        1600
+        5660,
+        1620
       ],
       "credentials": {
         "groqApi": {
@@ -658,8 +670,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5618,
-        1882
+        5620,
+        1900
       ]
     },
     {
@@ -672,8 +684,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5018,
-        1362
+        5020,
+        1380
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -713,8 +725,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5498,
-        1882
+        5500,
+        1900
       ]
     },
     {
@@ -729,8 +741,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4958,
-        1862
+        4960,
+        1880
       ]
     },
     {
@@ -743,8 +755,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        5498,
-        1682
+        5500,
+        1740
       ],
       "credentials": {
         "openAiApi": {
@@ -772,8 +784,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5018,
-        1602
+        5020,
+        1620
       ]
     },
     {
@@ -787,8 +799,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        5498,
-        1462
+        5500,
+        1480
       ]
     },
     {
@@ -804,8 +816,7 @@
       "position": [
         3260,
         1120
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -818,8 +829,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        5778,
-        1162
+        5780,
+        1180
       ],
       "disabled": true
     },
@@ -836,8 +847,7 @@
         3100,
         1120
       ],
-      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
-      "disabled": true
+      "webhookId": "bca6ac4f-4ecf-47ba-9b16-13b6f5ea46c4"
     },
     {
       "parameters": {
@@ -855,8 +865,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6078,
-        1302
+        6080,
+        1320
       ]
     },
     {
@@ -886,7 +896,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5760,
+        5840,
         1600
       ],
       "credentials": {
@@ -1121,7 +1131,7 @@
       "typeVersion": 1,
       "position": [
         5380,
-        1580
+        1620
       ],
       "credentials": {
         "qdrantApi": {
@@ -1143,8 +1153,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        5158,
-        1362
+        5160,
+        1380
       ]
     },
     {
@@ -1161,7 +1171,7 @@
       "typeVersion": 1,
       "position": [
         4740,
-        1597
+        1600
       ],
       "credentials": {
         "redis": {
@@ -1174,6 +1184,11 @@
       "parameters": {
         "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
         "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
         "options": {}
       },
       "id": "7eab7343-ba18-47dc-8f67-2f84eb990b4a",
@@ -1181,8 +1196,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4582,
-        1596
+        4600,
+        1600
       ]
     },
     {
@@ -1199,7 +1214,7 @@
       "typeVersion": 1,
       "position": [
         4380,
-        1617
+        1620
       ],
       "credentials": {
         "redis": {
@@ -1237,8 +1252,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4582,
-        1396
+        4600,
+        1400
       ]
     },
     {
@@ -1251,8 +1266,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4382,
-        1396
+        4400,
+        1400
       ],
       "credentials": {
         "redis": {
@@ -1290,7 +1305,7 @@
       "typeVersion": 3.4,
       "position": [
         4780,
-        1397
+        1400
       ]
     },
     {
@@ -1312,8 +1327,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4442,
-        1796
+        4460,
+        1800
       ]
     }
   ],
@@ -1358,6 +1373,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-11-01T16:26:21.368Z",
-  "versionId": "67a43b24-8cb9-4c31-856f-81f80c22e319"
+  "updatedAt": "2024-11-04T02:32:47.413Z",
+  "versionId": "45ef3492-bb0b-4f86-b643-134d583aea27"
 }
