@@ -259,8 +259,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5244,
-        1517
+        5260,
+        1520
       ],
       "credentials": {
         "openAiApi": {
@@ -280,8 +280,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4958,
-        1242
+        4960,
+        1260
       ]
     },
     {
@@ -385,8 +385,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4582,
-        1559
+        4600,
+        1560
       ]
     },
     {
@@ -441,8 +441,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4582,
-        1359
+        4600,
+        1360
       ]
     },
     {
@@ -455,8 +455,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4382,
-        1359
+        4400,
+        1360
       ],
       "credentials": {
         "redis": {
@@ -479,7 +479,7 @@
       "typeVersion": 1,
       "position": [
         4320,
-        1263.1010884753632
+        1280
       ]
     },
     {
@@ -563,8 +563,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5384,
-        1557
+        5360,
+        1540
       ],
       "credentials": {
         "redis": {
@@ -589,8 +589,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5484,
-        1537
+        5500,
+        1660
       ]
     },
     {
@@ -612,8 +612,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4442,
-        1759
+        4460,
+        1760
       ]
     },
     {
@@ -628,8 +628,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5684,
-        1537
+        5680,
+        1560
       ],
       "credentials": {
         "redis": {
@@ -653,7 +653,7 @@
         3900,
         1100
       ],
-      "webhookId": "50180edd-90da-4d06-ae5b-6b125e227faa",
+      "webhookId": "bbb795ef-6535-4aba-9888-0e175e56a963",
       "disabled": true
     },
     {
@@ -690,8 +690,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5580,
-        1560
+        5600,
+        1680
       ]
     },
     {
@@ -791,6 +791,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-02T04:32:54.366Z",
-  "versionId": "2f7194f7-3759-4c99-903b-2f9c2830a2a4"
+  "updatedAt": "2024-11-04T12:56:13.515Z",
+  "versionId": "fe131deb-8394-4918-8cc1-b3148addf70a"
 }
