@@ -499,6 +499,11 @@
           }
         ]
       ]
+    },
+    "chatConfig": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-10-11T17:43:10.651Z",
@@ -521,7 +526,7 @@
       "typeVersion": 1,
       "position": [
         5120,
-        1500
+        1540
       ],
       "credentials": {
         "openAiApi": {
@@ -541,8 +546,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4958,
-        1242
+        4960,
+        1260
       ]
     },
     {
@@ -557,8 +562,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        5980,
-        1900
+        6180,
+        1840
       ],
       "credentials": {
         "groqApi": {
@@ -578,8 +583,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5018,
-        1362
+        5020,
+        1380
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -600,8 +605,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        5740,
-        2020
+        5900,
+        1960
       ],
       "credentials": {
         "openAiApi": {
@@ -671,7 +676,7 @@
         2940,
         1520
       ],
-      "webhookId": "425a712d-f598-4e72-a99e-65efb704c401",
+      "webhookId": "902d381b-f998-4d1c-beda-335a68ff3160",
       "disabled": true
     },
     {
@@ -688,8 +693,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4122,
-        1598
+        4140,
+        1600
       ],
       "credentials": {
         "redis": {
@@ -758,8 +763,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4582,
-        1579
+        4600,
+        1580
       ]
     },
     {
@@ -814,8 +819,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4582,
-        1379
+        4600,
+        1380
       ]
     },
     {
@@ -828,8 +833,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4382,
-        1379
+        4400,
+        1380
       ],
       "credentials": {
         "redis": {
@@ -867,8 +872,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3542,
-        1299
+        3560,
+        1300
       ]
     },
     {
@@ -912,10 +917,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        2862,
-        1118
+        2880,
+        1120
       ],
-      "webhookId": "3d85486d-8f87-4abd-8579-bef506d74bef",
+      "webhookId": "a204fec9-7f50-42c5-840d-42fbed1b3c69",
       "disabled": true
     },
     {
@@ -970,8 +975,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3962,
-        1478
+        3980,
+        1480
       ],
       "disabled": true
     },
@@ -1023,8 +1028,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3602,
-        1598
+        3620,
+        1600
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -1075,8 +1080,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        5900,
-        1780
+        6000,
+        1700
       ],
       "disabled": true
     },
@@ -1114,8 +1119,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5240,
-        1500
+        5260,
+        1560
       ],
       "credentials": {
         "redis": {
@@ -1136,8 +1141,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5520,
-        1820
+        5640,
+        1580
       ],
       "credentials": {
         "redis": {
@@ -1153,7 +1158,7 @@
       "type": "@n8n/n8n-nodes-langchain.retrieverContextualCompression",
       "typeVersion": 1,
       "position": [
-        3640,
+        3660,
         2000
       ]
     },
@@ -1200,8 +1205,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        5740,
-        1900
+        5900,
+        1840
       ],
       "credentials": {
         "qdrantApi": {
@@ -1227,8 +1232,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5620,
-        1840
+        5520,
+        1700
       ]
     },
     {
@@ -1243,7 +1248,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        3600,
+        3560,
         2140
       ],
       "credentials": {
@@ -1263,7 +1268,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        3700,
+        3780,
         2420
       ],
       "credentials": {
@@ -1292,7 +1297,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3880,
+        3900,
         1860
       ]
     },
@@ -1333,7 +1338,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        3540,
+        3560,
         2000
       ],
       "credentials": {
@@ -1413,7 +1418,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        5420,
+        5440,
         1860
       ],
       "credentials": {
@@ -1522,8 +1527,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5660,
-        1700
+        5640,
+        1720
       ],
       "credentials": {
         "redis": {
@@ -1564,8 +1569,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6140,
-        1780
+        6280,
+        1700
       ],
       "disabled": true
     },
@@ -1632,8 +1637,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        5158,
-        1362
+        5160,
+        1380
       ],
       "retryOnFail": true,
       "waitBetweenTries": 3000
@@ -1685,9 +1690,15 @@
       "updatedAt": "2024-09-27T17:42:17.034Z",
       "id": "TsfCA8eZuTObjOfy",
       "name": "Backup"
+    },
+    {
+      "createdAt": "2024-11-04T13:01:38.564Z",
+      "updatedAt": "2024-11-04T13:01:38.564Z",
+      "id": "HRrDUnszFQBGzX99",
+      "name": "Finish"
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-11-01T13:10:00.879Z",
-  "versionId": "fac010ee-307b-4068-ab07-015f7ef799ea"
+  "updatedAt": "2024-11-04T13:01:44.004Z",
+  "versionId": "cff709be-2c8d-4b6c-a8da-f6b41ae3dbd2"
 }
