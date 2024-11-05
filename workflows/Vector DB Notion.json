@@ -466,7 +466,7 @@
           "value": "={{ $json.page_url }}",
           "mode": "url"
         },
-        "limit": 2,
+        "limit": 1,
         "simplifyOutput": false
       },
       "id": "e4a6f524-e3f5-4d02-949a-8523f2d21965",
@@ -617,7 +617,7 @@
         4480,
         -100
       ],
-      "webhookId": "388d49cc-5a4c-479a-99ff-5c1bfb8a15e9"
+      "webhookId": "3dda3470-a9cc-4215-8cb1-2620b63f9589"
     },
     {
       "parameters": {
@@ -819,19 +819,19 @@
             {
               "id": "bd2fee21-3c39-4a7d-874c-97e46c55e63b",
               "name": "instance_name",
-              "value": "notion_ibox",
+              "value": "notion_escolaarcoiris",
               "type": "string"
             },
             {
               "id": "cdbb4a0c-da8c-4bad-9b48-0353c0ab5640",
               "name": "vector_name",
-              "value": "notion_ibox",
+              "value": "notion_escolaarcoiris",
               "type": "string"
             },
             {
               "id": "6a9508b9-258f-4630-aadd-e86048f9c8e4",
               "name": "page_url",
-              "value": "https://www.notion.so/iBox-Delivery-1217c386d92280e5b2d2f380fec51672",
+              "value": "https://www.notion.so/Micro-Agent-12e7c386d92280388904de2fe9d3f322",
               "type": "string"
             }
           ]
@@ -1125,6 +1125,7 @@
     },
     {
       "parameters": {
+        "chunkSize": 500,
         "chunkOverlap": 100,
         "options": {
           "splitCode": "markdown"
@@ -1229,6 +1230,7 @@
     },
     {
       "parameters": {
+        "chunkSize": 500,
         "chunkOverlap": 100,
         "options": {
           "splitCode": "markdown"
@@ -1284,7 +1286,7 @@
         4480,
         400
       ],
-      "webhookId": "e89306d4-c4c3-4c7d-aba9-00f1ac28c2ab"
+      "webhookId": "b92793f9-6779-4919-9705-4e93ba5e2106"
     },
     {
       "parameters": {
@@ -1575,6 +1577,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-02T17:28:30.039Z",
-  "versionId": "ca1773fd-4256-42b8-89d2-04014a98030e"
+  "updatedAt": "2024-11-05T02:56:27.486Z",
+  "versionId": "0e686f3b-2c4b-42af-8231-0a9d8a312081"
 }
