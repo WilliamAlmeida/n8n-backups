@@ -1,0 +1,803 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Account User": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "Json2Object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has user account?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Account User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Json2Object": {
+      "main": [
+        [
+          {
+            "node": "has user account?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset Memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Scheduling Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "School Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-05T00:28:23.372Z",
+  "id": "hs50MdXP68n8OrDN",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Escola Arco Iris",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.6,
+          "topP": 1
+        }
+      },
+      "id": "4c29ec2f-e479-41b6-84bb-147dc5967e30",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5260,
+        1520
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 584.136756451777,
+        "width": 854.1019126589118
+      },
+      "id": "1138d555-6577-4529-b4ca-69c2dbe255f3",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_escola"
+      },
+      "id": "f024ea68-48ea-4b94-bd85-18c676d54b48",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        1360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "cd640d04-ac65-4926-87cd-8f142e90da44",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6180,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "d0e11f70-8845-43ab-bdaa-85aa2f37c027",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4140,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.user.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": "={{ $json.user ? 120 : 60 }}"
+      },
+      "id": "a9b4f9e4-f58f-43da-a777-09fd9b248919",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4740,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "with_plan"
+            },
+            {
+              "name": "with_stores"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99fec162-6de6-43bf-a0ed-6af08cf35140",
+      "name": "Get Account User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4600,
+        1560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "a67ad02b-9a4e-4ee1-922d-4ec8d5b430c0",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4380,
+        1580
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account.id }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "60f64a31-fb64-491d-be4d-9a88ed6e2bc6",
+      "name": "has user account?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4600,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "fc08b627-ed2b-4d89-a321-caa9473a3199",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4400,
+        1360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 650.6226961809048,
+        "width": 598.5677101799579,
+        "color": 5
+      },
+      "id": "525c7bb3-00d9-49df-8539-40a389eabd31",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
+        "options": {}
+      },
+      "id": "df27ea0e-5868-481a-aedf-05666519133b",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4780,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"william\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "df6ee3f9-746f-4de1-a0c8-f3fc4e7f904f",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4060,
+        1080
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "ff190310-8cce-4313-8e1c-4e157daee465",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6040,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=<prompt_mestre_escola_arco_iris>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('userAccount').item.json.id ? 'já' : 'ainda não' }} tem vínculo com a escola, seu nome é \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", o e-mail é \"{{ $('userAccount').first().json.email ?? '' }}\", telefone para contato é \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n\n<personalidade>\nNome: Assistente Escola Arco Íris Função: Assistente virtual especializado no atendimento da Escola Arco Íris (agendamentos, informações, dúvidas). Tom: Educado, prestativo, ágil e acolhedor\n\n<funcoes_principais>\nReceber agendamentos para secretaria ou diretoria Esclarecer dúvidas sobre horários, calendário e procedimentos\nInformar sobre eventos e reuniões\nEncaminhar para atendimento humano, se necessário\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres) Linguagem simples e acessível, evitando termos técnicos Encaminhar casos complexos a um atendente humano Consultar a base de dados antes de responder dúvidas Informar o usuário imediatamente se algum dado estiver indisponível ou impreciso\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação. Exemplo: \"Mais informações: https://www.instagram.com/arcoirisbercario\" Sempre perguntar ao usuário se precisa de mais detalhes após o envio\n\n<fluxo_atendimento>\nSaudação e {{ $('userAccount').item.json.id ? 'apresentação com sugestões de agendamento' : 'apresentação' }}\nIdentificar necessidade com perguntas específicas\nOferecer informações ou realizar agendamento Esclarecer dúvidas\nEnviar links, se necessário\nEncaminhar ao atendimento humano, se preciso\n\n<agendamento_visitas>\nUtilize a scheduling_tool para Agendamento de Visitas e Reuniões\n\n<duvidas_perguntas_frequentes>\nUtilize a school_info_tool para coletar informações para responder os usuários.\n**NUNCA** forneça informações que não tenha vindo da school_info_tool.\n\n</prompt_mestre_escola_arco_iris>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3712cd27-449c-4e13-9c2d-649a9e9d2fba",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5040,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_escola",
+        "sessionTTL": 300,
+        "contextWindowLength": 15
+      },
+      "id": "a72e92c6-26eb-47c5-8a41-61aedb663d4a",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5400,
+        1580
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "675594ce-198a-45d4-b185-4caacb169a93",
+              "name": "user_account",
+              "value": "={{ $json.user_account }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69a7f221-d863-4def-8b91-713a4673ceac",
+      "name": "Json2Object",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4460,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "call this tool to clean chat memory.",
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_escola"
+      },
+      "id": "ad22ea94-3ccd-47fe-8279-7f2eded66140",
+      "name": "Reset Memory",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        5680,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "bfff5a1c-2125-4b82-9ab3-893a4ed57f02",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3900,
+        1080
+      ],
+      "webhookId": "c0910f4c-0396-4338-935c-58c4cbefe264",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "scheduling_tool",
+        "description": "Call this tool to consult, cancel, list, register, change any meeting schedule.",
+        "workflowId": {
+          "__rl": true,
+          "value": "eYTEn5UFWN41qxlc",
+          "mode": "list",
+          "cachedResultName": "TOOL Escola"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            }
+          ]
+        }
+      },
+      "id": "abb42cd6-6562-4c87-8a4a-e1e1492cd1a3",
+      "name": "Agent Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5620,
+        1700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5aefdd3b-5214-4823-aa5f-0a81a5a063fe",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1300
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf0fd5c1-dece-4073-920a-091b289ff4ab",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5860,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').item.json.system }}"
+        }
+      },
+      "id": "1b9e170f-8fe5-4d5a-b932-cd4ce4c6f79e",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "name": "school_info_tool2",
+        "description": "Use this tool to retrieve information about the school, available contacts, opening hours, times when children enter and leave the school, registration information, educational options offered, details about the age range served and the specificities of each group, from nursery to preschool, and frequently asked questions from users.",
+        "workflowId": {
+          "__rl": true,
+          "value": "eYTEn5UFWN41qxlc",
+          "mode": "list",
+          "cachedResultName": "TOOL Escola"
+        }
+      },
+      "id": "4e55c5df-dfc6-4c9c-a89a-12b7ca4c34f6",
+      "name": "School Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5500,
+        1660
+      ]
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
+          "conversation": "oi"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-05T04:13:49.398Z",
+  "versionId": "ad11466e-bc3a-4267-a91a-9c981ab6edc5"
+}
