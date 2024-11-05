@@ -393,7 +393,7 @@
       "type": "n8n-nodes-base.filter",
       "position": [
         2040,
-        400
+        380
       ],
       "typeVersion": 2
     },
@@ -590,8 +590,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1760,
-        820
+        1940,
+        760
       ],
       "credentials": {
         "groqApi": {
@@ -931,7 +931,7 @@
         720,
         1240
       ],
-      "webhookId": "fa05ac9d-20a9-41e2-9369-ad118208cdf9",
+      "webhookId": "acad2e23-a8f0-446b-80e6-261def33e1c1",
       "disabled": true
     },
     {
@@ -1135,6 +1135,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-02T04:32:16.845Z",
-  "versionId": "b51d66ba-bef6-4247-b9b1-f59f48882047"
+  "updatedAt": "2024-11-04T23:47:16.089Z",
+  "versionId": "169e57e9-b6ed-4857-9e68-338cd7f1c2fd"
 }
