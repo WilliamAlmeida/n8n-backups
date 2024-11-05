@@ -17,7 +17,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items 2",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -46,22 +46,11 @@
         ]
       ]
     },
-    "Categorizing Message": {
-      "main": [
-        [
-          {
-            "node": "Split Out Messages",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Fix Text": {
       "main": [
         [
           {
-            "node": "Categorizing Message",
+            "node": "Categorizing Message with Split Break Line",
             "type": "main",
             "index": 0
           }
@@ -101,51 +90,11 @@
         ]
       ]
     },
-    "Split Msg by Break Line": {
-      "main": [
-        [
-          {
-            "node": "Split Out Content",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split Out Content": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items 2": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Send Message",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Switch": {
       "main": [
         [
           {
-            "node": "Split Msg by Break Line",
+            "node": "Send Message",
             "type": "main",
             "index": 0
           }
@@ -157,20 +106,8 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        [],
+        []
       ]
     },
     "Extract from File": {
@@ -193,6 +130,22 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Categorizing Message with Split Break Line": {
+      "main": [
+        [
+          {
+            "node": "Split Out Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Categorizing Message without Split": {
+      "main": [
+        []
       ]
     },
     "Wait": {
@@ -222,7 +175,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.content }}\",\n  \"delay\": {{ Math.floor(Math.max(500, Math.min(($json.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 5000))) }}\n,\n  \"linkPreview\": false\n}",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(500, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 5000))) }}\n,\n  \"linkPreview\": false\n}",
         "options": {}
       },
       "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
@@ -230,16 +183,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2860,
-        300
+        2200,
+        160
       ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "T5OqvislWbgDr9Ek",
           "name": "Evolution Api Key"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -250,8 +202,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1820,
-        300
+        1740,
+        180
       ]
     },
     {
@@ -270,22 +222,21 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2300,
-        580
+        2200,
+        300
       ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "T5OqvislWbgDr9Ek",
           "name": "Evolution Api Key"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
         "content": "# Enviar o Resultado para o Whatsapp",
-        "height": 598,
-        "width": 1400,
+        "height": 378,
+        "width": 880,
         "color": 4
       },
       "id": "70aca7a6-084d-4541-9026-32578ef3f7af",
@@ -293,15 +244,15 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1740,
-        160
+        1680,
+        80
       ]
     },
     {
       "parameters": {
         "content": "# Faz o tratamento da Resposta",
-        "height": 282.92195447896734,
-        "width": 693.968751541847,
+        "height": 483,
+        "width": 694,
         "color": 5
       },
       "id": "adbc430b-bf85-465c-80e5-1345b9a8b319",
@@ -309,8 +260,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1000,
-        160
+        940,
+        80
       ]
     },
     {
@@ -323,23 +274,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1060,
-        260
-      ],
-      "executeOnce": false
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
-      },
-      "id": "001ed56a-9060-4778-8180-04f594585278",
-      "name": "Categorizing Message",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1380,
-        260
+        1000,
+        300
       ],
       "executeOnce": false
     },
@@ -354,8 +290,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1540,
-        260
+        1500,
+        300
       ]
     },
     {
@@ -377,8 +313,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1220,
-        260
+        1160,
+        300
       ]
     },
     {
@@ -388,8 +324,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        680,
-        260
+        620,
+        300
       ]
     },
     {
@@ -403,58 +339,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        840,
-        260
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "d815c1e4-ca3f-4778-bf56-9d878e7118ec",
-              "name": "content",
-              "value": "={{ $json.output.content.split('\\\\n\\\\n').map(item => item.replace(/^\\n+/g, '')) }}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "67f5b03c-7ee9-46b3-a87f-80747d8fb47b",
-      "name": "Split Msg by Break Line",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2260,
-        280
-      ]
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "content",
-        "options": {}
-      },
-      "id": "4198197a-ac7d-46fb-9cf4-a39351a33dab",
-      "name": "Split Out Content",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        2440,
-        280
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "1af83e7b-4138-47ac-8c23-080b6f2f245f",
-      "name": "Loop Over Items 2",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        2700,
-        280
+        780,
+        300
       ]
     },
     {
@@ -566,8 +452,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        2020,
-        300
+        1960,
+        180
       ]
     },
     {
@@ -586,8 +472,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2660,
-        -40
+        2160,
+        500
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -607,8 +493,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        2420,
-        -40
+        1920,
+        500
       ],
       "disabled": true
     },
@@ -626,8 +512,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.6,
       "position": [
-        2200,
-        -40
+        1700,
+        500
       ],
       "credentials": {
         "openAiApi": {
@@ -638,16 +524,49 @@
       "disabled": true
     },
     {
-      "parameters": {},
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      // Quebra o texto com base em '\\n\\n'\n      const splitContent = content.split('\\\\n\\\\n');\n      splitContent.forEach(text => {\n        text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n        if (text) {\n          parts.push({ type: 'text', content: text });\n        }\n      });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    // Quebra o texto final com base em '\\n\\n'\n    const splitFinalContent = finalContent.split('\\\\n\\\\n');\n    splitFinalContent.forEach(text => {\n      text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      if (text) {\n        parts.push({ type: 'text', content: text });\n      }\n    });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\n// Loop para corrigir o '!' antes dos links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+      },
+      "id": "572a607f-0dc9-4f7b-9bb6-6204d2c4e3b9",
+      "name": "Categorizing Message with Split Break Line",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        400
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
+      },
+      "id": "001ed56a-9060-4778-8180-04f594585278",
+      "name": "Categorizing Message without Split",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        180
+      ],
+      "executeOnce": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 0.2
+      },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2440,
-        580
+        2380,
+        240
       ],
-      "id": "5ced9cff-cd5f-4e98-baeb-aa8ae3e63669",
+      "id": "c9735dc4-a45a-4a29-aa0f-379af3125555",
       "name": "Wait",
-      "webhookId": "abd33856-8996-44ab-9383-25ea588239bc"
+      "webhookId": "04635c31-dd44-4900-83c5-cc64af2d7c2f"
     }
   ],
   "pinData": {
@@ -662,7 +581,7 @@
           "unique_id": "ibox_cli_23_5512982184879",
           "debounce_time": 5,
           "conversation": "oi",
-          "output": "*AI 4 iBox Stores*:\nAqui estão as bebidas que você pediu, agora com imagens! 🎉\n\n1. **Refrigerante Coca-Cola Lata 350ml**  \n   - Preço: R$ 3,50  \n   - ![Coca-Cola](https://ibox.delivery/v2/hamburgueria/refrigerante-coca-cola-lata-350ml)\n\n2. **Refrigerante Fanta Lata 350ml**  \n   - Preço: R$ 1,00  \n   - ![Fanta](https://ibox.delivery/v2/hamburgueria/refrigerante-fanta-lata-350ml)\n\n3. **Milkshare de Morango 500ml**  \n   - Preço: R$ 8,00  \n   - ![Milkshare de Morango](https://ibox.delivery/v2/hamburgueria/milkshare-de-morango)\n\n4. **Milkshare de Chocolate**  \n   - Preço: R$ 8,00  \n   - ![Milkshare de Chocolate](https://ibox.delivery/uploads/adm/empresas/23/produtos/786_4769-600x600.webp)\n\nSe precisar de mais alguma coisa ou quiser fazer um pedido, é só avisar! 😊"
+          "output": "*AI 4 iBox Stores*:\\nAqui estão as bebidas que você pediu, agora com imagens! 🎉\n\n1. **Refrigerante Coca-Cola Lata 350ml**  \n   - Preço: R$ 3,50  \n   - ![Coca-Cola](https://ibox.delivery/v2/hamburgueria/refrigerante-coca-cola-lata-350ml)\n\n2. **Refrigerante Fanta Lata 350ml**  \n   - Preço: R$ 1,00  \n   - ![Fanta](https://ibox.delivery/v2/hamburgueria/refrigerante-fanta-lata-350ml)\n\n3. **Milkshare de Morango 500ml**  \n   - Preço: R$ 8,00  \n   - ![Milkshare de Morango](https://ibox.delivery/v2/hamburgueria/milkshare-de-morango)\n\n4. **Milkshare de Chocolate**  \n   - Preço: R$ 8,00  \n   - ![Milkshare de Chocolate](https://ibox.delivery/uploads/adm/empresas/23/produtos/786_4769-600x600.webp)\n\nSe precisar de mais alguma coisa ou quiser fazer um pedido, é só avisar! 😊"
         }
       }
     ],
@@ -699,6 +618,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-04T15:22:49.968Z",
-  "versionId": "a3ac349b-17de-476e-8ed4-14ea5ea35fd1"
+  "updatedAt": "2024-11-04T23:44:43.878Z",
+  "versionId": "6700fc68-cc96-4d4a-a255-3a4400278522"
 }
