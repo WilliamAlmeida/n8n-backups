@@ -617,7 +617,7 @@
         4480,
         -100
       ],
-      "webhookId": "3dda3470-a9cc-4215-8cb1-2620b63f9589"
+      "webhookId": "6d297c1a-8c0d-450b-8eea-ffd0160ade8c"
     },
     {
       "parameters": {
@@ -819,13 +819,13 @@
             {
               "id": "bd2fee21-3c39-4a7d-874c-97e46c55e63b",
               "name": "instance_name",
-              "value": "notion_escolaarcoiris",
+              "value": "notion_escolaarcoiris_2",
               "type": "string"
             },
             {
               "id": "cdbb4a0c-da8c-4bad-9b48-0353c0ab5640",
               "name": "vector_name",
-              "value": "notion_escolaarcoiris",
+              "value": "notion_escolaarcoiris_2",
               "type": "string"
             },
             {
@@ -1125,8 +1125,8 @@
     },
     {
       "parameters": {
-        "chunkSize": 500,
-        "chunkOverlap": 100,
+        "chunkSize": 256,
+        "chunkOverlap": 50,
         "options": {
           "splitCode": "markdown"
         }
@@ -1136,8 +1136,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        4200,
-        220
+        4280,
+        260
       ]
     },
     {
@@ -1286,7 +1286,7 @@
         4480,
         400
       ],
-      "webhookId": "b92793f9-6779-4919-9705-4e93ba5e2106"
+      "webhookId": "30a0b2d5-de60-4915-866b-18d1f76fe0cb"
     },
     {
       "parameters": {
@@ -1577,6 +1577,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-05T02:56:27.486Z",
-  "versionId": "0e686f3b-2c4b-42af-8231-0a9d8a312081"
+  "updatedAt": "2024-11-05T03:47:55.520Z",
+  "versionId": "e3d65bad-a00f-49b1-b450-a9860162b19b"
 }
