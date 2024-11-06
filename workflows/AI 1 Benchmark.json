@@ -240,7 +240,7 @@
             {
               "id": "b394a911-c168-4e84-bcb7-7c7e3bcb68ae",
               "name": "limit",
-              "value": 100,
+              "value": 10,
               "type": "number"
             }
           ]
@@ -304,7 +304,7 @@
         -2300,
         840
       ],
-      "webhookId": "04e6825a-8621-4491-885e-dd4c59bbd26b"
+      "webhookId": "b7cdd8dc-fed9-403f-85cc-a6ae21dea003"
     },
     {
       "parameters": {
@@ -324,7 +324,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://webhook.n8n.wmst.com.br/webhook/07dc5c20-167f-4350-9f90-9ffb64106e37",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json.body }}",
@@ -644,6 +644,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-05T23:10:45.116Z",
-  "versionId": "cc83ae7f-a0a1-491d-88f1-eb7cbfb36cc1"
+  "updatedAt": "2024-11-06T13:00:12.981Z",
+  "versionId": "30b52ea2-a7d2-478d-a1ec-3a986d30ebfd"
 }
