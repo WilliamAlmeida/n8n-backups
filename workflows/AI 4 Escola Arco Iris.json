@@ -213,13 +213,7 @@
     },
     "chatConfig": {
       "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "AI Agent": {
@@ -639,7 +633,7 @@
         3900,
         1080
       ],
-      "webhookId": "c0910f4c-0396-4338-935c-58c4cbefe264",
+      "webhookId": "fc91a4cb-9f30-441e-9ccb-85d4c59709db",
       "disabled": true
     },
     {
@@ -755,22 +749,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "evo_api": "https://apiwp.wmst.com.br",
-          "instance": "ibox_cli_23",
-          "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "W.M. Soluções Tecnologicas",
-          "fromMe": false,
-          "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
-          "conversation": "oi"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": false,
@@ -798,6 +777,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-05T04:13:49.398Z",
-  "versionId": "ad11466e-bc3a-4267-a91a-9c981ab6edc5"
+  "updatedAt": "2024-11-05T23:20:53.466Z",
+  "versionId": "f246c25f-1409-4bb8-800f-130fea11735a"
 }
