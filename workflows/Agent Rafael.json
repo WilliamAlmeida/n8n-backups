@@ -83,7 +83,7 @@
       "main": [
         [
           {
-            "node": "Fix Text1",
+            "node": "Fix Text 2",
             "type": "main",
             "index": 0
           }
@@ -135,17 +135,6 @@
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fix Text1": {
-      "main": [
-        [
-          {
-            "node": "Categorizing Message with Split Break Line",
             "type": "main",
             "index": 0
           }
@@ -206,18 +195,7 @@
       "main": [
         [
           {
-            "node": "Fix Text 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fix Text 2": {
-      "main": [
-        [
-          {
-            "node": "Context",
+            "node": "Fix Text 1",
             "type": "main",
             "index": 0
           }
@@ -301,7 +279,7 @@
       "main": [
         [
           {
-            "node": "Fix Text 2",
+            "node": "Fix Text 1",
             "type": "main",
             "index": 0
           }
@@ -312,7 +290,7 @@
       "main": [
         [
           {
-            "node": "Fix Text 2",
+            "node": "Fix Text 1",
             "type": "main",
             "index": 0
           }
@@ -396,11 +374,115 @@
         ]
       ]
     },
-    "Context": {
+    "Primeiro mensagem?": {
+      "main": [
+        [
+          {
+            "node": "Aguarda Sec para Processar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Msgs 1": {
+      "main": [
+        [
+          {
+            "node": "Primeiro mensagem?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Msg": {
+      "main": [
+        [
+          {
+            "node": "Get Msgs 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguarda Sec para Processar": {
+      "main": [
+        [
+          {
+            "node": "Get Msgs 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text 1": {
+      "main": [
+        [
+          {
+            "node": "Clean Msgs 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Msgs 2": {
+      "main": [
+        [
+          {
+            "node": "Join Msgs",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Clean Msgs  2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Join Msgs": {
+      "main": [
+        [
+          {
+            "node": "About Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "About Store": {
       "main": [
         [
           {
             "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text 2": {
+      "main": [
+        [
+          {
+            "node": "Categorizing Message with Split Break Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Msgs 1": {
+      "main": [
+        [
+          {
+            "node": "Save Msg",
             "type": "main",
             "index": 0
           }
@@ -422,25 +504,25 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1040,
-        -120
+        -2520,
+        -100
       ],
       "id": "30973b51-4127-4ded-b2ea-66296d1a81ec",
       "name": "Webhook",
-      "webhookId": "8e809711-6ba1-4de8-bded-049d83dda04d"
+      "webhookId": "2a981502-a6ba-4232-8a15-286a3449e781"
     },
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('Fix Text 2').first().json.output }}",
+        "text": "={{ $('Join Msgs').first().json.output }}",
         "options": {
-          "systemMessage": "=Você é um assistente útil.\n\nQue irá responder e tirar duvidas do usuário e poderá realizar agendamentos caso seja solicitado.\n\n<informacoes_adicionais>\n{{ $('Context').first().json.context }}\n</informacoes_adicionais>"
+          "systemMessage": "=Você é um assistente útil.\n\nQue irá responder e tirar duvidas do usuário e poderá realizar agendamentos caso seja solicitado.\n\n<informacoes_adicionais>\n{{ $('About Store').first().json.context }}\n</informacoes_adicionais>"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        800,
+        560,
         40
       ],
       "id": "97be9f27-4757-48fb-9a72-35c5ad8c20bc",
@@ -456,7 +538,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        800,
+        560,
         280
       ],
       "id": "a46457a5-3191-42e3-b377-6001484ab50c",
@@ -466,8 +548,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -476,7 +557,7 @@
             {
               "id": "5f5addd6-12c4-4bbd-bce7-6448e90cb9d0",
               "name": "evo_api",
-              "value": "={{ $('Webhook').first().json.body.server_url ?? '' }}",
+              "value": "={{ $json.body.server_url ?? '' }}",
               "type": "string"
             },
             {
@@ -520,6 +601,18 @@
               "name": "evo_api_key",
               "value": "={{ $json.body.apikey ?? '' }}",
               "type": "string"
+            },
+            {
+              "id": "e9629ac7-db67-4779-9a84-489bf033bcef",
+              "name": "messageId",
+              "value": "={{ $json.body.data.key.id }}",
+              "type": "string"
+            },
+            {
+              "id": "18868b31-059f-44b3-8282-cc0f475e691d",
+              "name": "body.data",
+              "value": "={{ $json.body.data }}",
+              "type": "object"
             }
           ]
         },
@@ -530,8 +623,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -860,
-        -120
+        -2340,
+        -100
       ],
       "alwaysOutputData": false,
       "executeOnce": false
@@ -552,7 +645,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2380,
+        2140,
         -60
       ],
       "credentials": {
@@ -571,7 +664,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1880,
+        1640,
         40
       ]
     },
@@ -591,7 +684,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2380,
+        2140,
         100
       ],
       "credentials": {
@@ -611,7 +704,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1140,
+        900,
         40
       ],
       "executeOnce": false
@@ -627,7 +720,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1680,
+        1440,
         40
       ]
     },
@@ -740,7 +833,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        2100,
+        1860,
         40
       ]
     },
@@ -754,7 +847,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1500,
+        1260,
         40
       ],
       "executeOnce": false
@@ -766,35 +859,12 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2580,
+        2340,
         60
       ],
       "id": "cf3a2a71-29b5-467e-a27b-fda152eeac61",
       "name": "Wait",
-      "webhookId": "f4f0a4ee-82dd-4ddc-a84f-bf409900e082"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
-              "name": "output",
-              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "081435a2-0e09-4f58-88b1-0a9497bc375c",
-      "name": "Fix Text1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1320,
-        40
-      ]
+      "webhookId": "d1008770-94fd-45b8-87c4-530710c01752"
     },
     {
       "parameters": {
@@ -804,8 +874,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        640,
-        280
+        400,
+        260
       ],
       "id": "56326c75-fdff-41e8-be08-5572b3e6686c",
       "name": "Groq Chat Model",
@@ -952,47 +1022,23 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        -680,
-        -160
+        -2160,
+        -140
       ]
     },
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const data = $('Webhook').first().json.body.data;\nlet response = '';\n\nconst conversation = data.message.conversation;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
+        "jsCode": "const data = $('baseInfo').first().json.body.data;\nlet response = '';\n\nconst conversation = data.message.conversation;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
       },
       "id": "963cd5f8-d40d-4631-9c79-a96ca26c086d",
       "name": "Format Message",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        180,
-        -120
+        -1300,
+        -100
       ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
-              "name": "output",
-              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "a7e16876-ae91-455b-b22c-b454bc794cca",
-      "name": "Fix Text 2",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        460,
-        40
-      ],
-      "executeOnce": true
     },
     {
       "parameters": {
@@ -1008,8 +1054,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.3,
       "position": [
-        -20,
-        40
+        -1500,
+        60
       ],
       "retryOnFail": true,
       "maxTries": 5,
@@ -1040,8 +1086,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.4,
       "position": [
-        -20,
-        200
+        -1500,
+        220
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1066,7 +1112,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"message\": {\"key\": {\"id\": \"{{ $('Webhook').item.json.body.data.key.id }}\"}},\n  \"convertToMp4\": false\n}",
+        "jsonBody": "={\n  \"message\": {\"key\": {\"id\": \"{{ $('baseInfo').first().json.messageId }}\"}},\n  \"convertToMp4\": false\n}",
         "options": {}
       },
       "id": "32871383-292b-4a90-9d21-ef9cb37c3ef6",
@@ -1074,8 +1120,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -680,
-        120
+        -2160,
+        140
       ],
       "alwaysOutputData": false
     },
@@ -1143,8 +1189,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -480,
-        120
+        -1960,
+        140
       ],
       "alwaysOutputData": false
     },
@@ -1162,8 +1208,8 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -220,
-        40
+        -1700,
+        60
       ]
     },
     {
@@ -1180,22 +1226,22 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        -220,
-        200
+        -1700,
+        220
       ]
     },
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const data = $('Webhook').first().json.body.data;\nconst caption = data.message?.imageMessage?.caption;\nconst content = $input.item.json.content;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = caption\n    ? `${content} Legenda: ${caption}`\n    : `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para imagem com legenda';\n}\n\nreturn { output: response };"
+        "jsCode": "const data = $('baseInfo').first().json.body.data;\nconst caption = data.message?.imageMessage?.caption;\nconst content = $input.item.json.content;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = caption\n    ? `${content} Legenda: ${caption}`\n    : `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para imagem com legenda';\n}\n\nreturn { output: response };"
       },
       "id": "a903f16c-931e-4575-ab56-7f9b3ed0af6a",
       "name": "Format Transcription Image",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        180,
-        200
+        -1300,
+        220
       ]
     },
     {
@@ -1208,8 +1254,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        180,
-        40
+        -1300,
+        60
       ]
     },
     {
@@ -1235,7 +1281,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1360,
+        1120,
         440
       ],
       "credentials": {
@@ -1267,7 +1313,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1060,
+        820,
         440
       ],
       "credentials": {
@@ -1299,7 +1345,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1220,
+        980,
         440
       ],
       "credentials": {
@@ -1330,7 +1376,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1060,
+        820,
         620
       ],
       "credentials": {
@@ -1363,7 +1409,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1220,
+        980,
         620
       ],
       "credentials": {
@@ -1397,7 +1443,7 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1360,
+        1120,
         620
       ],
       "credentials": {
@@ -1424,13 +1470,290 @@
       "type": "n8n-nodes-base.googleCalendarTool",
       "typeVersion": 1.1,
       "position": [
-        1500,
+        1260,
         440
       ],
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "mQv2XCcAIiyPKV2D",
           "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@gmail.com"
+        },
+        "timeMin": "2024-11-05T20:08:38",
+        "timeMax": "2024-11-05T20:08:39",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        900,
+        -160
+      ],
+      "id": "db405dad-ee67-4780-9707-6bdeedf71e00",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f80ab0b6-a90e-42b0-b68f-b4fd5d0b8027",
+              "leftValue": "={{ $json.messages.length }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -380,
+        60
+      ],
+      "id": "09e4a4b2-6877-42d5-90ab-14dd2a4298b3",
+      "name": "Primeiro mensagem?"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "messages",
+        "key": "={{ $('baseInfo').item.json.unique_id }}",
+        "keyType": "list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        60
+      ],
+      "id": "600ad62a-e346-40c3-af42-efa201a1815e",
+      "name": "Get Msgs 1",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "messages",
+        "key": "={{ $('baseInfo').item.json.unique_id }}",
+        "keyType": "list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        20,
+        40
+      ],
+      "id": "955ba520-585e-4fb0-afba-37af019205e9",
+      "name": "Get Msgs 2",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('baseInfo').item.json.unique_id }}",
+        "messageData": "={{ $json.output }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -700,
+        60
+      ],
+      "id": "92b98fc6-25dc-40f2-a2f2-f470e98b4a68",
+      "name": "Save Msg",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        40
+      ],
+      "id": "bf286e01-1f4c-4263-b4f7-73e9fed9aabd",
+      "name": "Aguarda Sec para Processar",
+      "webhookId": "5df5ac38-976b-4a62-98df-2a352397efb1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a7e16876-ae91-455b-b22c-b454bc794cca",
+      "name": "Fix Text 1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1020,
+        60
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.messages.join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "24f28d6d-c1a4-4e38-88ca-7c396990f914",
+      "name": "Join Msgs",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        40
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "896cbd14-03cd-4be6-8f2b-671166c42382",
+              "name": "context",
+              "value": "=Nós somos a FARO oferecemos oportunidade única para as pessoas se tornarem engenheiro, há +16 anos transformando vidas por meio da educação.\n\nCom nosso programa de Análise Curricular, facilitamos sua transição para a graduação em Engenharia, permitindo que você avance em sua formação acadêmica e profissional de forma eficiente e eficaz.\n\nPara efetuar a Análise Curricular é preciso dos seguintes documentos: histórico, diploma, rg, cpf, certidão de nascimento ou casamento, comprovante.\n\nSuporte humanizado é das 08:00 ás 10:00 de segunda a sexta, sábado e domingo não atendemos.\n\nNosso instagram é https://www.instagram.com/faculdadefaro_\n\nA inscrição para nosso vestibular deve ser feita acessando https://faroroseira.edu.br/vestibular, lá você encontrará mais informações.\n\nPassos:\nInscrição: Para participar, inscreva-se para o Vestibular Tradicional.\nVestibular: No dia do vestibular, você deverá acessar o link da sua prova que será enviado para o seu e-mail.\nMatrícula: Após finalizar a prova, você poderá antecipar a sua matrícula por WhatsApp e garantir condições especiais.\nResultado: Depois é só conferir o resultado de sua prova na Área do Candidato!\n\nOferecemos 18 cursos para graduação e 111 para pós-graduação\n\nCursos de Graduação\nARQUITETURA E URBANISMO\nDIREITO\nENFERMAGEM\nENGENHARIA AMBIENTAL E SANITÁRIA\nENGENHARIA CIVIL\nENGENHARIA DE ENERGIA\nENGENHARIA ELÉTRICA\nENGENHARIA MECÂNICA\nENGENHARIA QUÍMICA\nESTÉTICA E COSMÉTICA\nFARMÁCIA\nFISIOTERAPIA\nGESTÃO AMBIENTAL\nGESTÃO DE RECURSOS HUMANOS\nMANUTENÇÃO INDUSTRIAL\nMEDICINA VETERINÁRIA\nPSICOLOGIA\nSANEAMENTO AMBIENTAL\n\nCursos de Pós-Graduação (Especializações)\nAdministração de Recursos Humanos\nAdministração Hospitalar\nAdministração Patrimonial em Organizações Públicas\nAdministração Pública\nAlfabetização e Letramento e a Psicopedagogia Institucional\nAprendizado de Máquina\nAuditoria, Compliance e Gestão de Riscos\nCiências da Educação\nCiências de Dados e Big Data Analytics\nCompreensão de Textos e Tradução da Língua Espanhola\nContabilidade, Perícia e Auditoria\nContabilidade Pública\nCultura e Literatura\nDireito Administrativo\nDIREITO CIVIL E PROCESSUAL CIVIL\nDireito Constitucional\nDireito de Família e Sucessões\nDireito do Trabalho e Previdenciário\nDireito Empresarial\nDireito e Processo Penal\nDireito Material e Processual do Trabalho\nDireito Processual Civil\nDireitos Humanos\nDireito Tributário\nDocência do Ensino Técnico e Superior\nEducação Especial com Ênfase em Deficiência Auditiva\nEducação Especial com Ênfase em Deficiência Física\nEducação Especial com Ênfase em Deficiência Intelectual\nEducação Especial com Ênfase em Transtornos Globais do Desenvolvimento\nEducação Especial e Inclusiva\nEducação Especial e Psicomotricidade\nEducação Física na Escola\nEducação Infantil\nEducação, Política e Sociedade\nEngenharia Ambiental e Saneamento Básico\nEngenharia da Qualidade.\nENGENHARIA DA QUALIDADE\nEngenharia de Combate de Incêndio\nEngenharia de Estruturas\nEngenharia de Produção\nEngenharia de Redes de Computadores\nEngenharia de Redes e Sistemas de Telecomunicação\nEngenharia de Segurança do Trabalho\nEngenharia de Software\nEspecialização em Engenharia Civil e Produção\nEspecialização em Engenharia de Pesca\nEspecialização em Engenharia de Produção\nEspecialização em Engenharia de Software\nEspecialização em Engenharia em Florestal\nEspecialização em Engenharia em Segurança do Trabalho\nEspecialização em Engenharia Produção Mecânica\nGestão Comercial\nGestão das Políticas Sociais\nGestão de Contratos\nGestão de Custos e Formação de Preços\nGestão de Obras, Qualidade e Desempenho das Construções\nGestão de Projetos Sociais\nGestão e Auditoria Hospitalar\nGestão e Organização da Escola com ênfase em Direção Escolar\nGestão Escolar\nGestão Escolar: Orientação e Supervisão\nGestão Estratégica de Compras\nGestão, Organização e Supervisão da Escola com ênfase em Coordenação e Direção Escolar\nHarmonização Facial e Corporal\nLibras e Educação para Surdos\nLíngua Portuguesa\nLíngua Portuguesa: redação e oratória\nLiteratura Contemporânea\nLogística Industrial\nMarketing e Gestão de Clientes\nMarketing e Varejo\nMBA em Administração Hospitalar\nMBA em Comunicação Corporativa\nMBA em Gestão Comercial de Produtos e Serviços de Instituições Financeiras\nMBA EM GESTÃO DE PESSOAS\nMBA em Gestão Estratégica em Compras\nMBA em Gestão Financeira\nMBA EM SAÚDE DA FAMILIA\nMBA Gestão de Projetos\nMBA Gestão Financeira e Controladoria\nMBA GESTÃO INDUSTRIAL\nMetodologia do Ensino de Língua Inglesa\nMetodologias Ativas e Prática Docente\nNeuropsicopedagogia\nNUTRICAO E DIETÉTICA\nOdontologia em Saúde Coletiva: Ênfase em Saúde da Família e Comunidade\nOrientação Educacional\nOrientação, Supervisão e Inspeção Escolar\nPedagogia\nPedagogia Empresarial e Educação Corporativa\nPedagogia Social e Gestão de Projetos Sociais\nPerícia Contábil\nPolítica Aplicada ao Direito\nPolítica e Sociedade\nPolíticas e Gestão em Segurança Pública\nPsicomotricidade\nPsicopedagogia\nPsicopedagogia Clinica e Institucional\nPsicopedagogia Institucional\nRecursos Humanos: Rotinas e Cálculos Trabalhistas\nSAUDE DA FAMILIA\nSAÚDE DA FAM´LIA\nSegurança da Informação\nSupervisão e Orientação Educacional\nSupervisão Escolar\nSustentabilidade Empresarial\nTecnologias e Educação a Distância\nTradução, Interpretação e Guia-Interpretação de Língua Brasileira de Sinais - Libras\nTutoria em Educação a Distância\nXXIII. Literatura Brasileira\nXXV. Literatura em Língua Inglesa\n\nPerguntas Frequentes\nAqui estão todas as informações necessárias para você tirar suas dúvidas sobre nosso processo de ensino.\n\nO que é ProUni?\nO Prouni – Programa Universidade para Todos – é um sistema que faz concede bolsas de estudo integrais e parciais de 50% em instituições privadas de educação superior, em cursos de graduação e sequenciais de formação específica a estudantes brasileiros, desde que ainda não tenham diploma de nível superior.\n\nFiz o ENEM há 2 anos, posso tentar o ProUni?\nNão. O Prouni só aceita a nota do Enem do ano anterior ao processo de concessão da bolsa.\n\nQual a menor nota aceita para solicitar o ProUni?\nSua nota tem que ser de no mínimo de 450 pontos e você não pode ter zerado a redação.\n\nPosso solicitar o ProUni antes de concluir o ensino médio?\nNão. É necessário ter cursado as 3 séries do ensino médio.\n\nO ProUni é concedido em caso de segunda graduação?\nNão. O Prouni é exclusivo para quem não possui nível superior completo.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        40
+      ],
+      "id": "c5ee00b6-8171-4a13-a133-ad1010e6b0b0",
+      "name": "About Store"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "081435a2-0e09-4f58-88b1-0a9497bc375c",
+      "name": "Fix Text 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1080,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('baseInfo').item.json.unique_id }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        60
+      ],
+      "id": "0107b5d5-135f-4aa9-b2ef-4ce78e61a47a",
+      "name": "Clean Msgs 1",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('baseInfo').item.json.unique_id }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -160
+      ],
+      "id": "4219b77a-ead8-4d1f-aab0-0c8d6a843b84",
+      "name": "Clean Msgs  2",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
         }
       }
     },
@@ -1451,109 +1774,14 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        620,
-        40
+        520,
+        -180
       ],
-      "id": "c5ee00b6-8171-4a13-a133-ad1010e6b0b0",
-      "name": "Context"
-    },
-    {
-      "parameters": {
-        "resource": "calendar",
-        "calendar": {
-          "__rl": true,
-          "value": "williamkillerca@gmail.com",
-          "mode": "list",
-          "cachedResultName": "williamkillerca@gmail.com"
-        },
-        "timeMin": "2024-11-05T20:08:38",
-        "timeMax": "2024-11-05T20:08:39",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.2,
-      "position": [
-        1100,
-        -160
-      ],
-      "id": "db405dad-ee67-4780-9707-6bdeedf71e00",
-      "name": "Google Calendar",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
-        }
-      }
+      "id": "a1f00fa6-f2fe-492b-8f1b-5a6aafce8577",
+      "name": "About Store1"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "webhook.n8n.wmst.com.br",
-            "x-forwarded-scheme": "https",
-            "x-forwarded-proto": "https",
-            "x-forwarded-for": "10.0.0.2",
-            "x-real-ip": "10.0.0.2",
-            "connection": "close",
-            "content-length": "1125",
-            "content-type": "application/json",
-            "user-agent": "axios/1.7.7",
-            "accept-encoding": "gzip, compress, deflate, br"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "event": "messages.upsert",
-            "instance": "ibox_cli_23",
-            "data": {
-              "key": {
-                "remoteJid": "5512982184879@s.whatsapp.net",
-                "fromMe": false,
-                "id": "3EB0B16C651B6513362D76"
-              },
-              "pushName": "W.M. Soluções Tecnologicas",
-              "status": "DELIVERY_ACK",
-              "message": {
-                "messageContextInfo": {
-                  "deviceListMetadata": {
-                    "senderKeyHash": "p6VXvj8+KRj4iQ==",
-                    "senderTimestamp": "1730819430",
-                    "senderAccountType": "E2EE",
-                    "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "b+ANv/ZB0PNduA==",
-                    "recipientTimestamp": "1730680569"
-                  },
-                  "deviceListMetadataVersion": 2,
-                  "messageSecret": "3Wg8dXI29GM7FtMJgNuLf/Gf4uQYyzGsxi0Yqwn3F5U="
-                },
-                "conversation": "vocês tem instagr?"
-              },
-              "contextInfo": {
-                "ephemeralSettingTimestamp": "1719835382",
-                "disappearingMode": {
-                  "initiator": "CHANGED_IN_CHAT",
-                  "trigger": "CHAT_SETTING"
-                }
-              },
-              "messageType": "conversation",
-              "messageTimestamp": 1730850328,
-              "instanceId": "aa1d2c6f-9a7f-489b-accc-ff1c46a36a23",
-              "source": "web"
-            },
-            "destination": "https://webhook.n8n.wmst.com.br/webhook/07dc5c20-167f-4350-9f90-9ffb64106e37",
-            "date_time": "2024-11-05T20:45:29.228Z",
-            "sender": "5512982471939@s.whatsapp.net",
-            "server_url": "https://apiwp.wmst.com.br",
-            "apikey": "3D48F896-1228-4268-8F5D-4200DA4C3661"
-          },
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/07dc5c20-167f-4350-9f90-9ffb64106e37",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -1579,6 +1807,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-05T23:52:06.548Z",
-  "versionId": "51055901-5f79-4f09-a3d4-f386d92965e5"
+  "updatedAt": "2024-11-06T14:19:43.693Z",
+  "versionId": "6f6cb494-55e1-4b53-955e-6d27634cbcd4"
 }
