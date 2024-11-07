@@ -502,7 +502,13 @@
     },
     "chatConfig": {
       "main": [
-        []
+        [
+          {
+            "node": "talk to agent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -645,7 +651,8 @@
       "position": [
         2940,
         1320
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -676,7 +683,7 @@
         2940,
         1520
       ],
-      "webhookId": "902d381b-f998-4d1c-beda-335a68ff3160",
+      "webhookId": "f018c59e-19b7-4fd7-b999-d948e47e57e8",
       "disabled": true
     },
     {
@@ -904,8 +911,7 @@
       "position": [
         3020,
         1120
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -920,8 +926,7 @@
         2880,
         1120
       ],
-      "webhookId": "a204fec9-7f50-42c5-840d-42fbed1b3c69",
-      "disabled": true
+      "webhookId": "c7c83fca-4ff8-40dd-ac7c-def2bcf4dd91"
     },
     {
       "parameters": {
@@ -1338,8 +1343,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        3560,
-        2000
+        3640,
+        2080
       ],
       "credentials": {
         "openAiApi": {
@@ -1699,6 +1704,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-11-04T13:01:44.004Z",
-  "versionId": "cff709be-2c8d-4b6c-a8da-f6b41ae3dbd2"
+  "updatedAt": "2024-11-07T03:46:39.056Z",
+  "versionId": "edee7f74-028e-4204-bb35-ee04fb18e9b7"
 }
