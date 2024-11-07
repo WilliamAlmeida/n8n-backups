@@ -427,6 +427,17 @@
           }
         ]
       ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-17T02:36:39.982Z",
@@ -1056,7 +1067,8 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1124,8 +1136,7 @@
     },
     {
       "parameters": {
-        "chunkSize": 512,
-        "chunkOverlap": 50,
+        "chunkOverlap": 100,
         "options": {
           "splitCode": "markdown"
         }
@@ -1561,9 +1572,86 @@
         920,
         220
       ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0c870f1b-a9fd-4217-a7e5-f421698c4413",
+              "name": "set",
+              "value": "=Administração de Recursos Humanos\nAdministração Hospitalar\nAdministração Patrimonial em Organizações Públicas\nAdministração Pública\nAlfabetização e Letramento e a Psicopedagogia Institucional\nAprendizado de Máquina\nAuditoria, Compliance e Gestão de Riscos\nCiências da Educação\nCiências de Dados e Big Data Analytics\nCompreensão de Textos e Tradução da Língua Espanhola\nContabilidade, Perícia e Auditoria\nContabilidade Pública\nCultura e Literatura\nDireito Administrativo\nDireito Civil e Processual Civil\nDireito Constitucional\nDireito de Família e Sucessões\nDireito do Trabalho e Previdenciário\nDireito Empresarial\nDireito e Processo Penal\nDireito Material e Processual do Trabalho\nDireito Processual Civil\nDireitos Humanos\nDireito Tributário\nDocência do Ensino Técnico e Superior\nEducação Especial Com Ênfase em Deficiência Auditiva\nEducação Especial Com Ênfase em Deficiência Física\nEducação Especial Com Ênfase em Deficiência Intelectual\nEducação Especial Com Ênfase em Transtornos Globais do Desenvolvimento\nEducação Especial e Inclusiva\nEducação Especial e Psicomotricidade\nEducação Física Na Escola\nEducação Infantil\nEducação, Política e Sociedade\nEngenharia Ambiental e Saneamento Básico\nEngenharia da Qualidade\nEngenharia de Combate de Incêndio\nEngenharia de Estruturas\nEngenharia de Produção\nEngenharia de Redes de Computadores\nEngenharia de Redes e Sistemas de Telecomunicação\nEngenharia de Segurança do Trabalho\nEngenharia de Software\nEspecialização em Engenharia Civil e Produção\nEspecialização em Engenharia de Pesca\nEspecialização em Engenharia de Produção\nEspecialização em Engenharia de Software\nEspecialização em Engenharia em Florestal\nEspecialização em Engenharia em Segurança do Trabalho\nEspecialização em Engenharia Produção Mecânica\nGestão Comercial\nGestão das Políticas Sociais\nGestão de Contratos\nGestão de Custos e Formação de Preços\nGestão de Obras, Qualidade e Desempenho das Construções\nGestão de Projetos Sociais\nGestão e Auditoria Hospitalar\nGestão e Organização da Escola Com Ênfase em Direção Escolar\nGestão Escolar\nGestão Escolar: Orientação e Supervisão\nGestão Estratégica de Compras\nGestão, Organização e Supervisão da Escola Com Ênfase em Coordenação e Direção Escolar\nHarmonização Facial e Corporal\nLibras e Educação Para Surdos\nLíngua Portuguesa\nLíngua Portuguesa: Redação e Oratória\nLiteratura Contemporânea\nLiteratura Brasileira (XXIII. Literatura Brasileira)\nLiteratura em Língua Inglesa (XXV. Literatura em Língua Inglesa)\nLogística Industrial\nMarketing e Gestão de Clientes\nMarketing e Varejo\nMBA em Administração Hospitalar\nMBA em Comunicação Corporativa\nMBA em Gestão Comercial de Produtos e Serviços de Instituições Financeiras\nMBA em Gestão de Pessoas\nMBA em Gestão Estratégica em Compras\nMBA em Gestão Financeira\nMBA em Saúde da Família\nMBA Gestão de Projetos\nMBA Gestão Financeira e Controladoria\nMBA Gestão Industrial\nMetodologia do Ensino de Língua Inglesa\nMetodologias Ativas e Prática Docente\nNeuropsicopedagogia\nNutrição e Dietética\nOdontologia em Saúde Coletiva: Ênfase em Saúde da Família e Comunidade\nOrientação Educacional\nOrientação, Supervisão e Inspeção Escolar\nPedagogia\nPedagogia Empresarial e Educação Corporativa\nPedagogia Social e Gestão de Projetos Sociais\nPerícia Contábil\nPolítica Aplicada Ao Direito\nPolítica e Sociedade\nPolíticas e Gestão em Segurança Pública\nPsicomotricidade\nPsicopedagogia\nPsicopedagogia Clínica e Institucional\nPsicopedagogia Institucional\nRecursos Humanos: Rotinas e Cálculos Trabalhistas\nSaúde da Família\nSegurança da Informação\nSupervisão e Orientação Educacional\nSupervisão Escolar\nSustentabilidade Empresarial\nTecnologias e Educação a Distância\nTradução, Interpretação e Guia-Interpretação de Língua Brasileira de Sinais - Libras\nTutoria em Educação a Distância",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4860,
+        160
+      ],
+      "id": "01f65a9e-e82f-49b1-97bd-d46adc06468c",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "848fbc75-c378-47c7-a626-bf64e2fa6615",
+              "name": "set",
+              "value": "={{ $json.set.split('\\n').join('; ') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5120,
+        140
+      ],
+      "id": "0f3b3712-74ed-4c4e-a272-d16205370d79",
+      "name": "Edit Fields3"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Notion - Retrieve Page Content": [
+      {
+        "json": {
+          "object": "block",
+          "parent_id": "12e7c386d92280388904de2fe9d3f322",
+          "id": "1367c386-d922-8017-b115-d15cb71052f6",
+          "parent": {
+            "type": "page_id",
+            "page_id": "12e7c386-d922-8038-8904-de2fe9d3f322"
+          },
+          "created_time": "2024-11-06T14:12:00.000Z",
+          "last_edited_time": "2024-11-06T18:10:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "121d872b-594c-8122-8b02-0002916a30c8"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "121d872b-594c-8122-8b02-0002916a30c8"
+          },
+          "has_children": true,
+          "archived": false,
+          "in_trash": false,
+          "type": "child_page",
+          "child_page": {
+            "title": "Faculdade Faro - Roseira"
+          }
+        }
+      }
+    ]
+  },
   "settings": {},
   "staticData": null,
   "tags": [
@@ -1575,6 +1663,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-06T14:44:45.542Z",
-  "versionId": "ff9c0ad4-f628-4bbd-8c03-fae91aa86320"
+  "updatedAt": "2024-11-06T18:17:14.977Z",
+  "versionId": "9ae340b3-fd9e-4eee-8175-f576b203b53c"
 }
