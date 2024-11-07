@@ -8,11 +8,6 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -200,17 +195,6 @@
         ]
       ]
     },
-    "Sign Msg": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "chatConfig": {
       "main": [
         [
@@ -309,8 +293,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -516,8 +499,7 @@
       "position": [
         4060,
         1080
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -639,8 +621,7 @@
         3900,
         1080
       ],
-      "webhookId": "0d0733e3-a3ee-4b01-b8ab-fd8e086d7c74",
-      "disabled": true
+      "webhookId": "0b34d5a9-c8ef-4ff5-a24f-fe59b3573129"
     },
     {
       "parameters": {
@@ -689,7 +670,8 @@
       "position": [
         3900,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -698,7 +680,7 @@
             {
               "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
               "name": "output",
-              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "value": "=*{{ $workflow.name }}*:\n\n{{ $json.output }}",
               "type": "string"
             }
           ]
@@ -710,7 +692,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5860,
+        5840,
         1360
       ]
     },
@@ -736,7 +718,7 @@
     {
       "parameters": {
         "name": "faro_info_tool",
-        "description": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users.",
+        "description": "This tool uses augmented information retrieval (AIR) techniques to provide accurate and contextual answers about the college. Get contact information, hours of operation, courses offered (undergraduate and postgraduate), enrollment details, required documents, and explore frequently asked questions quickly and efficiently. Answers are based directly on information contained in our database, ensuring that you always receive up-to-date and relevant information.",
         "workflowId": {
           "__rl": true,
           "value": "I4t2yzZ4SbcmpeOK",
@@ -751,7 +733,8 @@
       "position": [
         5500,
         1660
-      ]
+      ],
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
     }
   ],
   "pinData": {},
@@ -782,6 +765,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-07T04:36:19.926Z",
-  "versionId": "e1302a24-72ac-4dfa-9ff8-854b0301be30"
+  "updatedAt": "2024-11-07T15:02:23.097Z",
+  "versionId": "73d94b22-1df6-4ebd-8453-f05f87b17a10"
 }
