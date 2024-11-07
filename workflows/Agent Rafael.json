@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -509,7 +509,7 @@
       ],
       "id": "30973b51-4127-4ded-b2ea-66296d1a81ec",
       "name": "Webhook",
-      "webhookId": "2a981502-a6ba-4232-8a15-286a3449e781"
+      "webhookId": "d8646918-75cb-400f-99c1-91ce5a7f9911"
     },
     {
       "parameters": {
@@ -864,7 +864,7 @@
       ],
       "id": "cf3a2a71-29b5-467e-a27b-fda152eeac61",
       "name": "Wait",
-      "webhookId": "d1008770-94fd-45b8-87c4-530710c01752"
+      "webhookId": "e4830a3f-e7eb-49fb-9bdf-492417c04524"
     },
     {
       "parameters": {
@@ -1621,7 +1621,7 @@
       ],
       "id": "bf286e01-1f4c-4263-b4f7-73e9fed9aabd",
       "name": "Aguarda Sec para Processar",
-      "webhookId": "5df5ac38-976b-4a62-98df-2a352397efb1"
+      "webhookId": "ea9c1f16-d673-4b68-a742-408d458bde45"
     },
     {
       "parameters": {
@@ -1781,7 +1781,74 @@
       "name": "About Store1"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "connection": "keep-alive",
+            "host": "n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "content-length": "1105",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.7",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "ibox_cli_23",
+            "data": {
+              "key": {
+                "remoteJid": "5512982184879@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0DC0C44BB7C82B431C1"
+              },
+              "pushName": "W.M. Soluções Tecnologicas",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "p6VXvj8+KRj4iQ==",
+                    "senderTimestamp": "1730819430",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "b+ANv/ZB0PNduA==",
+                    "recipientTimestamp": "1730680569"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "BNLraYCEFDfHr6nDIsLJO+pLZzaI3IMM5KoDoXY+iWk="
+                },
+                "conversation": "oi"
+              },
+              "contextInfo": {
+                "ephemeralSettingTimestamp": "1719835382",
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1730943375,
+              "instanceId": "aa1d2c6f-9a7f-489b-accc-ff1c46a36a23",
+              "source": "web"
+            },
+            "destination": "https://n8n.wmst.com.br/webhook-test/07dc5c20-167f-4350-9f90-9ffb64106e37",
+            "date_time": "2024-11-06T22:36:16.191Z",
+            "sender": "5512982471939@s.whatsapp.net",
+            "server_url": "https://apiwp.wmst.com.br",
+            "apikey": "3D48F896-1228-4268-8F5D-4200DA4C3661"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/07dc5c20-167f-4350-9f90-9ffb64106e37",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1795,9 +1862,9 @@
     },
     {
       "createdAt": "2024-11-05T21:12:10.728Z",
-      "updatedAt": "2024-11-05T21:12:41.269Z",
+      "updatedAt": "2024-11-07T01:46:12.483Z",
       "id": "jdkL0lgb2e5gg7hL",
-      "name": "Clientes"
+      "name": "Clients"
     },
     {
       "createdAt": "2024-09-27T14:34:01.317Z",
@@ -1807,6 +1874,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-06T14:19:43.693Z",
-  "versionId": "6f6cb494-55e1-4b53-955e-6d27634cbcd4"
+  "updatedAt": "2024-11-07T01:45:29.966Z",
+  "versionId": "93e48a4f-3428-47d6-8012-c3aaaa4fbe90"
 }
