@@ -189,8 +189,8 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        835,
-        335
+        840,
+        340
       ],
       "typeVersion": 1
     },
@@ -390,8 +390,8 @@
       "name": "Every 12 hours",
       "type": "n8n-nodes-base.cron",
       "position": [
-        835,
-        595
+        840,
+        600
       ],
       "typeVersion": 1
     },
@@ -499,6 +499,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-29T01:50:29.175Z",
-  "versionId": "b3fba517-9313-4a0b-98b7-7b3abcf7e49a"
+  "updatedAt": "2024-11-07T12:29:18.236Z",
+  "versionId": "26541195-9ed2-4afb-a115-02ce01a110c2"
 }
