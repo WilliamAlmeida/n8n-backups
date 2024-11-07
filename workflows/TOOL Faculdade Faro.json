@@ -307,6 +307,11 @@
             "node": "Contextual Compression Retriever",
             "type": "ai_languageModel",
             "index": 0
+          },
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
+            "index": 0
           }
         ]
       ]
@@ -335,13 +340,7 @@
     },
     "OpenAI Chat Model1": {
       "ai_languageModel": [
-        [
-          {
-            "node": "Question and Answer Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "School Info Tool": {
@@ -875,7 +874,7 @@
         720,
         1240
       ],
-      "webhookId": "72313d8b-0ce9-4d86-af1f-423aa8a40dca",
+      "webhookId": "3fcbbd5a-4f5b-4ac6-b6e6-c1dfe3261aa7",
       "disabled": true
     },
     {
@@ -1099,7 +1098,7 @@
       "typeVersion": 1,
       "position": [
         1420,
-        440
+        420
       ]
     },
     {
@@ -1119,7 +1118,7 @@
     },
     {
       "parameters": {
-        "model": "gemma2-9b-it",
+        "model": "llama-3.2-90b-text-preview",
         "options": {
           "temperature": 0
         }
@@ -1129,8 +1128,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1200,
-        440
+        1240,
+        420
       ],
       "credentials": {
         "groqApi": {
@@ -1209,9 +1208,10 @@
     },
     {
       "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
+        "model": "gpt-4o-2024-08-06",
         "options": {
-          "temperature": 0.2
+          "temperature": 0.9,
+          "topP": 1
         }
       },
       "id": "925dba66-930a-40fa-b667-d5b27bc5bacb",
@@ -1219,8 +1219,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1200,
-        280
+        1240,
+        240
       ],
       "credentials": {
         "openAiApi": {
@@ -1379,7 +1379,7 @@
     "EWT": [
       {
         "json": {
-          "query": "cursos de psicologia"
+          "query": "Quais cursos de MBA estão disponíveis na Faculdade FARO?"
         }
       }
     ]
@@ -1409,6 +1409,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-06T18:19:04.515Z",
-  "versionId": "84bba5b4-6633-40ae-a263-dcb340bfb0d5"
+  "updatedAt": "2024-11-07T04:27:03.446Z",
+  "versionId": "b722c291-8582-48cf-9b0e-c9010d749402"
 }
