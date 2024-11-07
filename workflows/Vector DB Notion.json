@@ -628,7 +628,7 @@
         4480,
         -100
       ],
-      "webhookId": "8b29388e-8a82-44d8-8ccc-c2bc14164921"
+      "webhookId": "52bc1cca-3d72-4ee4-9505-4639f57b85b4"
     },
     {
       "parameters": {
@@ -865,7 +865,7 @@
             {
               "id": "54e5667d-a9d0-443a-9807-d15c93656348",
               "name": "content",
-              "value": "={{ $json.concatenated_content.split('\\n\\n\\n') }}",
+              "value": "={{ $json.concatenated_content.split('\\nundefined\\n') }}",
               "type": "array"
             }
           ]
@@ -1057,8 +1057,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2060,
-        60
+        2040,
+        -260
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1067,8 +1067,7 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1121,8 +1120,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2060,
-        560
+        2040,
+        220
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1296,7 +1295,7 @@
         4480,
         400
       ],
-      "webhookId": "405a6bf8-db19-46c4-b869-4452f5c2bb7a"
+      "webhookId": "ee870615-057f-42cc-b6ca-6a1e64822620"
     },
     {
       "parameters": {
@@ -1560,8 +1559,7 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {},
@@ -1591,11 +1589,12 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4860,
-        160
+        4020,
+        -300
       ],
       "id": "01f65a9e-e82f-49b1-97bd-d46adc06468c",
-      "name": "Edit Fields2"
+      "name": "Edit Fields2",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1614,11 +1613,12 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5120,
-        140
+        4180,
+        -300
       ],
       "id": "0f3b3712-74ed-4c4e-a272-d16205370d79",
-      "name": "Edit Fields3"
+      "name": "Edit Fields3",
+      "disabled": true
     }
   ],
   "pinData": {
@@ -1664,6 +1664,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-07T04:16:08.336Z",
-  "versionId": "8f502e2a-dd09-4feb-a8e4-77eb72abab1c"
+  "updatedAt": "2024-11-07T13:20:49.468Z",
+  "versionId": "5122c6af-230b-40a9-92c6-a094cda8ebf8"
 }
