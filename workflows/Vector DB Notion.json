@@ -95,12 +95,12 @@
         ],
         [
           {
-            "node": "Notion Get Database",
+            "node": "Delete Points1",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Delete Points1",
+            "node": "Notion Get Database",
             "type": "main",
             "index": 0
           }
@@ -628,7 +628,7 @@
         4480,
         -100
       ],
-      "webhookId": "52bc1cca-3d72-4ee4-9505-4639f57b85b4"
+      "webhookId": "5142561e-2611-4d8d-8b65-805541d2a126"
     },
     {
       "parameters": {
@@ -1058,7 +1058,7 @@
       "typeVersion": 4.2,
       "position": [
         2040,
-        -260
+        -280
       ],
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -1067,7 +1067,8 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1295,7 +1296,7 @@
         4480,
         400
       ],
-      "webhookId": "ee870615-057f-42cc-b6ca-6a1e64822620"
+      "webhookId": "4554ff43-ad1e-43b5-bec4-28ded39c9672"
     },
     {
       "parameters": {
@@ -1492,7 +1493,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica."
+              "message": "Você é um especialista em identificação de palavras-chave. Sua tarefa é gerar palavras-chave altamente relevantes com base no conteúdo fornecido pelo usuário. Separe todos os termos compostos em palavras-chave individuais para maximizar a cobertura semântica. Retorne sempre em lowercase."
             }
           ]
         }
@@ -1559,7 +1560,8 @@
           "id": "ukGdBAa9ib5xqZKC",
           "name": "william"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {},
@@ -1621,38 +1623,7 @@
       "disabled": true
     }
   ],
-  "pinData": {
-    "Notion - Retrieve Page Content": [
-      {
-        "json": {
-          "object": "block",
-          "parent_id": "12e7c386d92280388904de2fe9d3f322",
-          "id": "1367c386-d922-8017-b115-d15cb71052f6",
-          "parent": {
-            "type": "page_id",
-            "page_id": "12e7c386-d922-8038-8904-de2fe9d3f322"
-          },
-          "created_time": "2024-11-06T14:12:00.000Z",
-          "last_edited_time": "2024-11-06T18:10:00.000Z",
-          "created_by": {
-            "object": "user",
-            "id": "121d872b-594c-8122-8b02-0002916a30c8"
-          },
-          "last_edited_by": {
-            "object": "user",
-            "id": "121d872b-594c-8122-8b02-0002916a30c8"
-          },
-          "has_children": true,
-          "archived": false,
-          "in_trash": false,
-          "type": "child_page",
-          "child_page": {
-            "title": "Faculdade Faro - Roseira"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [
@@ -1664,6 +1635,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-07T13:20:49.468Z",
-  "versionId": "5122c6af-230b-40a9-92c6-a094cda8ebf8"
+  "updatedAt": "2024-11-08T03:30:30.094Z",
+  "versionId": "0371a431-cdf8-4e9c-980e-8f1432505099"
 }
