@@ -217,11 +217,6 @@
         ]
       ]
     },
-    "Sign Msg": {
-      "main": [
-        []
-      ]
-    },
     "chatConfig": {
       "main": [
         [
@@ -549,8 +544,7 @@
       "position": [
         4060,
         1000
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -671,8 +665,7 @@
         3900,
         1000
       ],
-      "webhookId": "82dd4eb8-73d7-4104-814f-8678618514a7",
-      "disabled": true
+      "webhookId": "90700a4e-0c64-401e-aa8c-ba362fa778ba"
     },
     {
       "parameters": {
@@ -721,7 +714,8 @@
       "position": [
         3900,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -856,7 +850,8 @@
     {
       "parameters": {
         "name": "courses_knowledge_base",
-        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre cursos de graduação e pós-graduação. \n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse."
+        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre cursos de graduação e pós-graduação. \n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse.",
+        "topK": 10
       },
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
@@ -916,6 +911,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-07T23:23:08.418Z",
-  "versionId": "f4e54858-bb05-4a99-b509-31602e69c021"
+  "updatedAt": "2024-11-08T15:08:24.588Z",
+  "versionId": "8fb9e9bf-068c-4196-9f10-95cdc83bdcf0"
 }
