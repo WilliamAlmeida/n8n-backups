@@ -875,7 +875,7 @@
         720,
         1240
       ],
-      "webhookId": "1f0b58db-1465-4644-84e2-0332388c480b",
+      "webhookId": "ab570280-5898-4043-9128-0f99693f0dc5",
       "disabled": true
     },
     {
@@ -1092,9 +1092,7 @@
       ]
     },
     {
-      "parameters": {
-        "topK": 3
-      },
+      "parameters": {},
       "id": "daebc941-858e-49d0-8a96-aa6dfc14d791",
       "name": "Vector Store Retriever",
       "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
@@ -1133,7 +1131,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1320,
+        1240,
         400
       ],
       "credentials": {
@@ -1182,8 +1180,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1620,
-        100
+        1600,
+        60
       ]
     },
     {
@@ -1380,15 +1378,7 @@
       }
     }
   ],
-  "pinData": {
-    "EWT": [
-      {
-        "json": {
-          "query": "vocês tem cursos de infermagem?"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -1414,6 +1404,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-07T19:37:34.794Z",
-  "versionId": "f839345d-9b5f-41a6-b612-85e7c6115900"
+  "updatedAt": "2024-11-08T04:05:37.316Z",
+  "versionId": "66f6df8a-50d4-4f05-8929-95459b00c447"
 }
