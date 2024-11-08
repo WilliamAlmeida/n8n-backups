@@ -202,17 +202,6 @@
         ]
       ]
     },
-    "Create metadata and load content1": {
-      "ai_document": [
-        [
-          {
-            "node": "Qdrant Vector Store3",
-            "type": "ai_document",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Recursive Character Text Splitter1": {
       "ai_textSplitter": [
         [
@@ -438,6 +427,17 @@
           }
         ]
       ]
+    },
+    "Create metadata and load content1": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store3",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-17T02:36:39.982Z",
@@ -628,7 +628,7 @@
         4480,
         -100
       ],
-      "webhookId": "5142561e-2611-4d8d-8b65-805541d2a126"
+      "webhookId": "a417489a-d4f4-498c-b763-12e11832011a"
     },
     {
       "parameters": {
@@ -1200,46 +1200,6 @@
     },
     {
       "parameters": {
-        "jsonMode": "expressionData",
-        "jsonData": "={{ $json.content }}",
-        "options": {
-          "metadata": {
-            "metadataValues": [
-              {
-                "name": "pageId",
-                "value": "={{ $('Loop Over Items').item.json.id }}"
-              },
-              {
-                "name": "createdTime",
-                "value": "={{ $('Loop Over Items').item.json.created_time }}"
-              },
-              {
-                "name": "pageTitle",
-                "value": "={{ $('Loop Over Items').item.json[$('Loop Over Items').item.json.type].title }}"
-              },
-              {
-                "name": "pageType",
-                "value": "={{ $('Loop Over Items').item.json.type.split('_')[1] }}"
-              },
-              {
-                "name": "keywords",
-                "value": "={{ $json.keywords }}"
-              }
-            ]
-          }
-        }
-      },
-      "id": "fe6284f4-7554-47df-973d-0fe6583e9465",
-      "name": "Create metadata and load content1",
-      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
-      "position": [
-        4300,
-        640
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
         "chunkSize": 500,
         "chunkOverlap": 100,
         "options": {
@@ -1296,7 +1256,7 @@
         4480,
         400
       ],
-      "webhookId": "4554ff43-ad1e-43b5-bec4-28ded39c9672"
+      "webhookId": "dd627beb-6ebb-4e67-842f-d22c3321c533"
     },
     {
       "parameters": {
@@ -1621,6 +1581,46 @@
       "id": "0f3b3712-74ed-4c4e-a272-d16205370d79",
       "name": "Edit Fields3",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "pageId",
+                "value": "={{ $('Loop Over Items').item.json.id }}"
+              },
+              {
+                "name": "createdTime",
+                "value": "={{ $('Loop Over Items').item.json.created_time }}"
+              },
+              {
+                "name": "pageTitle",
+                "value": "={{ $('Loop Over Items').item.json[$('Loop Over Items').item.json.type].title }}"
+              },
+              {
+                "name": "pageType",
+                "value": "={{ $('Loop Over Items').item.json.type.split('_')[1] }}"
+              },
+              {
+                "name": "keywords",
+                "value": "={{ $json.keywords }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "6ec6bc63-8abe-4090-8369-2ac78fad7b14",
+      "name": "Create metadata and load content1",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "position": [
+        4280,
+        600
+      ],
+      "typeVersion": 1
     }
   ],
   "pinData": {},
@@ -1635,6 +1635,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-08T03:30:30.094Z",
-  "versionId": "0371a431-cdf8-4e9c-980e-8f1432505099"
+  "updatedAt": "2024-11-08T03:59:15.082Z",
+  "versionId": "57eac108-be75-47f5-adaa-861bed5772d2"
 }
