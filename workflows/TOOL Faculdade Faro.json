@@ -307,11 +307,6 @@
             "node": "Contextual Compression Retriever",
             "type": "ai_languageModel",
             "index": 0
-          },
-          {
-            "node": "Question and Answer Chain",
-            "type": "ai_languageModel",
-            "index": 0
           }
         ]
       ]
@@ -388,6 +383,17 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -869,7 +875,7 @@
         720,
         1240
       ],
-      "webhookId": "f6622774-d531-4ffc-a669-3ef98550844a",
+      "webhookId": "1f0b58db-1465-4644-84e2-0332388c480b",
       "disabled": true
     },
     {
@@ -1086,21 +1092,25 @@
       ]
     },
     {
-      "parameters": {},
+      "parameters": {
+        "topK": 3
+      },
       "id": "daebc941-858e-49d0-8a96-aa6dfc14d791",
       "name": "Vector Store Retriever",
       "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
       "typeVersion": 1,
       "position": [
         1420,
-        420
+        400
       ]
     },
     {
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.query }}",
-        "options": {}
+        "options": {
+          "systemPromptTemplate": "Use the following pieces of context to answer the users question. \nIf you don't know the answer, just say that you don't know, don't try to make up an answer.\n----------------\n{context}"
+        }
       },
       "id": "c72b1aea-3ecd-4eb7-b442-4c6ec5c71e1f",
       "name": "Question and Answer Chain",
@@ -1115,7 +1125,7 @@
       "parameters": {
         "model": "llama-3.2-90b-text-preview",
         "options": {
-          "temperature": 0
+          "temperature": 0.3
         }
       },
       "id": "96e2b18c-c844-4476-8008-23c4eb8c480f",
@@ -1123,8 +1133,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1240,
-        420
+        1320,
+        400
       ],
       "credentials": {
         "groqApi": {
@@ -1374,7 +1384,7 @@
     "EWT": [
       {
         "json": {
-          "query": "Quais cursos de MBA estão disponíveis na Faculdade FARO?"
+          "query": "vocês tem cursos de infermagem?"
         }
       }
     ]
@@ -1404,6 +1414,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-07T13:04:21.155Z",
-  "versionId": "4bc127fa-5fb9-444b-a9ff-098e6adc60dc"
+  "updatedAt": "2024-11-07T19:37:34.794Z",
+  "versionId": "f839345d-9b5f-41a6-b612-85e7c6115900"
 }
