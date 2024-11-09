@@ -1,117 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Notion": {
-      "main": [
-        [
-          {
-            "node": "Notion Get Page",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter Non-Text Content": {
-      "main": [
-        [
-          {
-            "node": "Summarize - Concatenate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Summarize - Concatenate": {
-      "main": [
-        [
-          {
-            "node": "Page - Concatenate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Notion Get Page": {
-      "main": [
-        [
-          {
-            "node": "Filter Non-Text Content",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Page - Concatenate": {
-      "main": [
-        [
-          {
-            "node": "Redis Set in Cache",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Page in Cache?": {
-      "main": [
-        [
-          {
-            "node": "Notion",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Page Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis Retrive Page": {
-      "main": [
-        [
-          {
-            "node": "Page in Cache?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Page Info": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "send to agent?": {
       "main": [
         [
@@ -146,17 +35,6 @@
         [
           {
             "node": "send to agent?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Basic LLM Chain": {
-      "main": [
-        [
-          {
-            "node": "Response1",
             "type": "main",
             "index": 0
           }
@@ -307,6 +185,11 @@
             "node": "Contextual Compression Retriever",
             "type": "ai_languageModel",
             "index": 0
+          },
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
+            "index": 0
           }
         ]
       ]
@@ -387,17 +270,6 @@
           }
         ]
       ]
-    },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Question and Answer Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "createdAt": "2024-11-06T14:29:06.266Z",
@@ -407,286 +279,6 @@
   },
   "name": "TOOL Faculdade Faro",
   "nodes": [
-    {
-      "parameters": {
-        "resource": "databasePage",
-        "operation": "get",
-        "pageId": {
-          "__rl": true,
-          "value": "https://www.notion.so/Escola-Arco-Iris-Lorena-1357c386d922805b86eff5a916f0b857",
-          "mode": "url"
-        }
-      },
-      "id": "9b4b7b20-b959-4668-9800-ef1fb0700895",
-      "name": "Notion",
-      "type": "n8n-nodes-base.notion",
-      "typeVersion": 2.2,
-      "position": [
-        2520,
-        320
-      ],
-      "credentials": {
-        "notionApi": {
-          "id": "eyQfrNhyfucklowG",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
-            {
-              "id": "e5b605e5-6d05-4bca-8f19-a859e474620f",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              },
-              "leftValue": "={{ $json.type }}",
-              "rightValue": "image"
-            },
-            {
-              "id": "c7415859-5ffd-4c78-b497-91a3d6303b6f",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              },
-              "leftValue": "={{ $json.type }}",
-              "rightValue": "video"
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "cf546d52-b22a-42b5-8097-4deba54b6f3e",
-      "name": "Filter Non-Text Content",
-      "type": "n8n-nodes-base.filter",
-      "position": [
-        2880,
-        300
-      ],
-      "typeVersion": 2,
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "fieldsToSummarize": {
-          "values": [
-            {
-              "aggregation": "concatenate",
-              "field": "content",
-              "includeEmpty": true,
-              "separateBy": "\n"
-            }
-          ]
-        },
-        "options": {
-          "outputFormat": "separateItems"
-        }
-      },
-      "id": "fa8770dc-9e5a-40bb-95d1-3215e885233d",
-      "name": "Summarize - Concatenate",
-      "type": "n8n-nodes-base.summarize",
-      "position": [
-        3060,
-        320
-      ],
-      "typeVersion": 1,
-      "disabled": true,
-      "notes": "Summarize - Concatenate Notion's blocks content"
-    },
-    {
-      "parameters": {
-        "resource": "block",
-        "operation": "getAll",
-        "blockId": {
-          "__rl": true,
-          "value": "={{ $json.id }}",
-          "mode": "id"
-        },
-        "returnAll": true
-      },
-      "id": "446d6c71-adec-4036-ada3-54e5785d9f14",
-      "name": "Notion Get Page",
-      "type": "n8n-nodes-base.notion",
-      "typeVersion": 2.2,
-      "position": [
-        2700,
-        320
-      ],
-      "executeOnce": true,
-      "credentials": {
-        "notionApi": {
-          "id": "eyQfrNhyfucklowG",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "54e5667d-a9d0-443a-9807-d15c93656348",
-              "name": "content",
-              "value": "={{ $json.concatenated_content }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "4d4045be-c770-473b-b750-c74e3a457ce2",
-      "name": "Page - Concatenate",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3240,
-        320
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "f469534b-3fb9-4969-8b10-53388bb19aa9",
-              "leftValue": "={{ $json.data }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "d94c10bd-bcf6-4b97-8f2f-c9cd13132a56",
-      "name": "Page in Cache?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        2300,
-        340
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "data",
-        "key": "=db_notion_{{ $workflow.id }}",
-        "keyType": "string",
-        "options": {}
-      },
-      "id": "c214319b-ac3f-4f5a-b027-21ad1116912a",
-      "name": "Redis Retrive Page",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        2140,
-        340
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "90936fac-2408-4395-b13d-a6201d630d4b",
-              "name": "content",
-              "value": "={{ $json.data }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "208014b8-d06e-42ae-b5d0-f93c23106463",
-      "name": "Page Info",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2520,
-        520
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "=db_notion_{{ $workflow.id }}",
-        "value": "={{ $json.content }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 600
-      },
-      "id": "0249b8dd-45f0-4944-846f-ebe1851e9e21",
-      "name": "Redis Set in Cache",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        3420,
-        320
-      ],
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "model": "llama-3.2-90b-text-preview",
-        "options": {
-          "maxTokensToSample": 512,
-          "temperature": 0
-        }
-      },
-      "id": "207d4780-7d3d-4c20-9acc-9351912bac6c",
-      "name": "Groq Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        2780,
-        680
-      ],
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
     {
       "parameters": {
         "conditions": {
@@ -746,30 +338,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
-              "name": "response",
-              "value": "={{ $json.text }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8baea8ea-0a6f-4f5b-a29d-6941249264f3",
-      "name": "Response1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3020,
-        520
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
         "operation": "delete",
         "key": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas"
       },
@@ -800,28 +368,6 @@
         740,
         760
       ]
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('EWT').item.json.query }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "=<context>\n{{ $json.content }}\n</context>\n\n**Responda somente com informações disponíveis no <context>.**\nSe não tiver a informação no momento ou não estiver seguro, **deixe claro que não é possível fornecer detalhes agora**."
-            }
-          ]
-        }
-      },
-      "id": "5a969d13-b34c-49bb-a5cd-5fd1b07d3137",
-      "name": "Basic LLM Chain",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        2700,
-        520
-      ],
-      "disabled": true
     },
     {
       "parameters": {
@@ -875,7 +421,7 @@
         720,
         1240
       ],
-      "webhookId": "ab570280-5898-4043-9128-0f99693f0dc5",
+      "webhookId": "fd5f8116-c7fd-4a7c-a3b9-f271910d6fc7",
       "disabled": true
     },
     {
@@ -937,7 +483,7 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas",
+        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_faro",
         "sessionTTL": 300,
         "contextWindowLength": 15
       },
@@ -946,8 +492,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        1680,
-        1200
+        1620,
+        1180
       ],
       "credentials": {
         "redis": {
@@ -969,8 +515,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1520,
-        1220
+        1560,
+        1260
       ],
       "credentials": {
         "openAiApi": {
@@ -1061,14 +607,16 @@
           "mode": "list",
           "cachedResultName": "williamkillerca@gmail.com"
         },
-        "timeMin": "2024-11-04T23:00:17",
-        "timeMax": "2024-11-04T23:00:18",
-        "options": {}
+        "timeMin": "={{ $now.format('y-LL-dd H:m:s') }}",
+        "timeMax": "={{ $now.plus(10, 'seconds').format('y-LL-dd H:m:s') }}",
+        "options": {
+          "outputFormat": "availability"
+        }
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        920,
+        2180,
         980
       ],
       "id": "1a426719-9233-40a6-8272-43a4da0ab803",
@@ -1087,19 +635,21 @@
       "type": "@n8n/n8n-nodes-langchain.retrieverContextualCompression",
       "typeVersion": 1,
       "position": [
-        1420,
-        260
+        1260,
+        760
       ]
     },
     {
-      "parameters": {},
+      "parameters": {
+        "topK": "={{ $json.slots }}"
+      },
       "id": "daebc941-858e-49d0-8a96-aa6dfc14d791",
       "name": "Vector Store Retriever",
       "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
       "typeVersion": 1,
       "position": [
-        1420,
-        400
+        1540,
+        760
       ]
     },
     {
@@ -1107,7 +657,7 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemPromptTemplate": "Use the following pieces of context to answer the users question. \nIf you don't know the answer, just say that you don't know, don't try to make up an answer.\n----------------\n{context}"
+          "systemPromptTemplate": "Use the following pieces of context to answer the users question. If you don't know the answer, just say that you don't know, don't try to make up an answer.\n----------------\n{context}"
         }
       },
       "id": "c72b1aea-3ecd-4eb7-b442-4c6ec5c71e1f",
@@ -1115,15 +665,15 @@
       "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
       "typeVersion": 1.3,
       "position": [
-        1280,
-        60
+        1140,
+        560
       ]
     },
     {
       "parameters": {
         "model": "llama-3.2-90b-text-preview",
         "options": {
-          "temperature": 0.3
+          "temperature": 0
         }
       },
       "id": "96e2b18c-c844-4476-8008-23c4eb8c480f",
@@ -1131,8 +681,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1240,
-        400
+        1140,
+        760
       ],
       "credentials": {
         "groqApi": {
@@ -1151,8 +701,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        1420,
-        680
+        2100,
+        760
       ],
       "credentials": {
         "openAiApi": {
@@ -1180,8 +730,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1600,
-        60
+        1480,
+        560
       ]
     },
     {
@@ -1192,15 +742,17 @@
           "mode": "list",
           "cachedResultName": "notion_faro"
         },
-        "options": {}
+        "options": {
+          "searchFilterJson": "={\n  \"should\": [\n    {\n      \"key\": \"metadata.type\",\n      \"match\": {\n        \"value\": \"{{ $('EWT').item.json.type ?? '' }}\"\n      }\n    }\n  ]\n}"
+        }
       },
       "id": "f8366f85-b51b-4456-9fc3-d3f14c149711",
       "name": "Qdant Vector Store1",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        1420,
-        560
+        1820,
+        760
       ],
       "credentials": {
         "qdrantApi": {
@@ -1211,36 +763,13 @@
     },
     {
       "parameters": {
-        "model": "gpt-4o-2024-08-06",
-        "options": {
-          "temperature": 0.9,
-          "topP": 1
-        }
-      },
-      "id": "925dba66-930a-40fa-b667-d5b27bc5bacb",
-      "name": "OpenAI Chat Model1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        1240,
-        240
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "name": "school_info_tool",
+        "name": "general_knowledge_base_tool",
         "description": "Chame essa ferramenta para consultar horário de funcionamento para evitar agendar reuniões em momento errado.",
         "workflowId": {
           "__rl": true,
-          "value": "eYTEn5UFWN41qxlc",
+          "value": "I4t2yzZ4SbcmpeOK",
           "mode": "list",
-          "cachedResultName": "TOOL Escola"
+          "cachedResultName": "TOOL Faculdade Faro"
         }
       },
       "id": "33b54546-90ef-4ebc-802e-2227ae6a0558",
@@ -1248,14 +777,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1800,
-        1220
+        1760,
+        1260
       ]
     },
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Use esta ferramenta para realizar o agendamentos de entrega do usuário.",
+        "toolDescription": "Use esta ferramenta para realizar o agendamentos do usuário.",
         "calendar": {
           "__rl": true,
           "value": "williamkillerca@gmail.com",
@@ -1287,7 +816,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Use esta ferramenta para localizar agendamentos de entrega do usuário, sempre solicite a data e hora do agendamento e, se disponível, o código do pedido para facilitar a localização.",
+        "toolDescription": "Use esta ferramenta para localizar agendamentos do usuário, sempre solicite a data e hora do agendamento e, se disponível, o código do pedido para facilitar a localização.",
         "operation": "getAll",
         "calendar": {
           "__rl": true,
@@ -1351,7 +880,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Use esta ferramenta para cancelar 1 agendamentos de entrega por vez em intervalos de chamadas de 5 segundos, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
+        "toolDescription": "Use esta ferramenta para cancelar um agendamento por vez em intervalos de chamadas de 5 segundos, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
         "operation": "delete",
         "calendar": {
           "__rl": true,
@@ -1378,7 +907,18 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": "localização da Faculdade FARO",
+          "type": "general",
+          "slots": "3",
+          "prompt": "onde fica a faculdade?"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1404,6 +944,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-08T04:05:37.316Z",
-  "versionId": "66f6df8a-50d4-4f05-8929-95459b00c447"
+  "updatedAt": "2024-11-09T02:32:58.972Z",
+  "versionId": "1105f4dd-f46e-4497-98a3-f992de9a2e46"
 }
