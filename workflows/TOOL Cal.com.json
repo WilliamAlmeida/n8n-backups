@@ -1,0 +1,1430 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reschedule Appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancel Appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Availability": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Existing Appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Existing Appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Cal Availability",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create a booking",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get all bookings",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a booking",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get all event types",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create an event type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete an event type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found slots?": {
+      "main": [
+        [
+          {
+            "node": "Format Slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a booking": {
+      "main": [
+        [
+          {
+            "node": "Reschedule a booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all bookings": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Cancel a booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancel a booking": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cal Availability": {
+      "main": [
+        [
+          {
+            "node": "found slots?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-29T21:36:02.298Z",
+  "id": "czYf0DoNjwOMFK8Q",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TOOL Cal.com",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "226c0de5-dbac-44a5-91f2-d12ede068459",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        480
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to schedule an appointment.",
+        "method": "POST",
+        "url": "https://api.cal.com/v1/bookings",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Content-Type",
+              "valueProvider": "fieldValue",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "eventTypeId",
+              "valueProvider": "fieldValue",
+              "value": "={{ 1195761 }}"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "title",
+              "valueProvider": "fieldValue",
+              "value": "{title}"
+            },
+            {
+              "name": "description",
+              "valueProvider": "fieldValue",
+              "value": "{description}"
+            },
+            {
+              "name": "metadata"
+            },
+            {
+              "name": "responses"
+            },
+            {
+              "name": "timeZone",
+              "valueProvider": "fieldValue",
+              "value": "America/Sao_Paulo"
+            },
+            {
+              "name": "language",
+              "valueProvider": "fieldValue",
+              "value": "en"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "description",
+              "description": "bullet list of session Id, full name, email and summary of appointment",
+              "type": "string"
+            },
+            {
+              "name": "title",
+              "description": "name of the user and a short summary of appointment",
+              "type": "string"
+            },
+            {
+              "name": "responses",
+              "description": "Use template: { \"name\": \"\", \"email\": \"\", \"location\":  { \"value\": \"inPerson\", \"optionValue\": \"\" }, \"guests\": [] }|Ensure output is valid json.",
+              "type": "json"
+            },
+            {
+              "name": "metadata",
+              "description": "Use template: { \"session_id\": \"\", \"booked_by\": \"n8n workflow\" }",
+              "type": "json"
+            }
+          ]
+        }
+      },
+      "id": "19a1e64e-4a5f-421e-a766-807a6d7a5d47",
+      "name": "Schedule Appt",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        660
+      ],
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to reschedule a user's appointment using a booking id.",
+        "method": "PATCH",
+        "url": "https://api.cal.com/v1/bookings/{booking_id}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"startTime\": \"{start}\",\n  \"endTime\": \"{end}\"\n}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "booking_id",
+              "description": "the booking id of the appointment",
+              "type": "string"
+            },
+            {
+              "name": "start",
+              "description": "start datetime of the appointment, for example: \"2024-05-30T12:00:00.000Z\"",
+              "type": "string"
+            },
+            {
+              "name": "end",
+              "description": "end datetime of the appointment, for example: \"2024-05-30T12:30:00.000Z\"",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "89a46777-5352-47a7-bd31-356dae60cf8d",
+      "name": "Reschedule Appt",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        660
+      ],
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to cancel a user's existing appointment using a booking id.",
+        "method": "DELETE",
+        "url": "https://api.cal.com/v1/bookings/{booking_id}/cancel",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "cancellationReason",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "booking_id",
+              "description": "the booking id of the appointment",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "36cab6b3-c87a-46ea-9620-9b7fffaa04b7",
+      "name": "Cancel Appt",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        660
+      ],
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to get the appointment availability.",
+        "url": "https://api.cal.com/v1/availability",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "username",
+              "valueProvider": "fieldValue",
+              "value": "williamalmeida"
+            },
+            {
+              "name": "dateFrom",
+              "valueProvider": "fieldValue",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "name": "dateTo",
+              "valueProvider": "fieldValue",
+              "value": "={{ $now.plus(4, 'days') }}"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "dateRanges"
+      },
+      "id": "025554e7-1b2b-4379-a380-6d7451abfb15",
+      "name": "Get Availability",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        480
+      ],
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "1889dc5b-510c-4e9e-91eb-c3c6def8a207",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        280
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 30
+      },
+      "id": "43f83936-a187-46ea-9916-b9d26e882dd0",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        1540,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to get an existing appointment.",
+        "url": "https://api.cal.com/v1/bookings/{appointment_id}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "appointment_id",
+              "description": "the id of the appointment",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "1eccb4a1-3fb4-4f1b-8708-ef621355d846",
+      "name": "Get Existing Appt",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        480
+      ],
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to search for an existing appointment with the user's email address.",
+        "url": "https://api.cal.com/v1/bookings",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "attendeeEmail"
+            }
+          ]
+        }
+      },
+      "id": "c25e4b00-f6ff-4305-bad8-e672beb2b82d",
+      "name": "Find Existing Appt",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        480
+      ],
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### 🚨 Change EventTypeID Here!\n* EventTypeID must be a number.\n* Your event type dictates the allowed duration of the booking.\n* If Event Type set to 30mins and the agent attempts to book 60mins, this will fail so make sure the agent knows how long to set the booking for!",
+        "height": 168,
+        "width": 415
+      },
+      "id": "9d5a4125-f8fa-4f92-8d01-bd6155acc7da",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
+        }
+      },
+      "id": "aa638579-b587-424d-8195-3fbda86a41a1",
+      "name": "Appointment Scheduling Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1420,
+        280
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        -600
+      ],
+      "id": "d7deacb7-eeda-4827-9830-8edd918b29d5",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "de856eaf-9065-41e0-ace1-6f9501b1a6d4",
+              "name": "cal_api",
+              "value": "https://api.cal.com",
+              "type": "string"
+            },
+            {
+              "id": "49f1f9ae-601d-40cc-b129-fa950b822ede",
+              "name": "username",
+              "value": "williamalmeida",
+              "type": "string"
+            },
+            {
+              "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
+              "name": "cal_event_id",
+              "value": "1195761",
+              "type": "string"
+            },
+            {
+              "id": "0a72c23b-7e8c-4618-b827-602200390069",
+              "name": "cal_api_version_booking",
+              "value": "2024-08-13",
+              "type": "string"
+            },
+            {
+              "id": "7e6a29c2-9869-409d-9980-698909fdee57",
+              "name": "cal_api_version_event",
+              "value": "2024-06-14",
+              "type": "string"
+            },
+            {
+              "id": "9e124983-4ae7-4c0c-88b1-d1a68136a45f",
+              "name": "utc",
+              "value": "3",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        -600
+      ],
+      "id": "e8cf9d72-2b72-48bf-9a71-48c21b8c80bf",
+      "name": "baseInfo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
+              "name": "slots",
+              "value": "={{ \n  $json.data.slots.keys().map(date => {\n    return {\n      date: date,\n      times: $json.data.slots[date].map(slot => {\n        const s = slot.time.toDateTime().minus($('baseInfo').item.json.utc, 'hours');\n        return s.toUTC();\n      })\n    };\n  })\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2100,
+        -680
+      ],
+      "id": "6eeb0d28-e7e6-4f69-ab07-88a4c7a15c5d",
+      "name": "Format Slots"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.data.slots }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        -660
+      ],
+      "id": "c7d6c4a6-96f5-4b27-b36e-7b2f3dcd2dd2",
+      "name": "found slots?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.data.uid }}/reschedule",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ $now.plus(2, 'days').minus(7, 'hours').minus(3, 'hours').toUTC() }}"
+            },
+            {
+              "name": "reschedulingReason",
+              "value": "User requested reschedule 1"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1920,
+        -340
+      ],
+      "id": "7bb71a39-0ac4-4ec9-8661-ac8961ef6f4a",
+      "name": "Reschedule a booking",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.cal_api }}/v2/bookings/4UCPe14cUSFdtB3RSa1Rb5",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_booking }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        -340
+      ],
+      "id": "264b7c45-90f1-4e4e-a312-95833992957f",
+      "name": "Get a booking",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.cal_api }}/v2/bookings",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "eventTypeId",
+              "value": "={{ $json.cal_event_id }}"
+            },
+            {
+              "name": "status",
+              "value": "={{ ['upcoming','recurring','past','unconfirmed','cancelled'].join(',') }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_booking }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        -500
+      ],
+      "id": "a0cb36b6-abff-4138-84ab-da07a0c437bc",
+      "name": "Get all bookings",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      },
+      "disabled": true,
+      "notes": "status: {{ ['upcoming','recurring','past','cancelled','unconfirmed'].join(',') }}"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.uid }}/cancel",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "cancellationReason",
+              "value": "=User requested reschedule {{ $json.id }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        -500
+      ],
+      "id": "d4b02335-a599-4240-a78a-4aefc8ac3992",
+      "name": "Cancel a booking",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cal.com/v2/bookings",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_booking }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ \"2024-11-04T12:00:00.000Z\".toDateTime().plus($json.utc, 'hours').toUTC() }}"
+            },
+            {
+              "name": "eventTypeId",
+              "value": "={{ $json.cal_event_id.toNumber() }}"
+            },
+            {
+              "name": "attendee.name",
+              "value": "Hatake"
+            },
+            {
+              "name": "attendee.email",
+              "value": "williamkillerca@hotmail.com"
+            },
+            {
+              "name": "attendee.timeZone",
+              "value": "America/Sao_Paulo"
+            },
+            {
+              "name": "attendee.language",
+              "value": "pt-BR"
+            },
+            {
+              "name": "bookingFieldsResponses.notes",
+              "value": "teste"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        -180
+      ],
+      "id": "46e0f2b5-14cc-48ac-8e22-4ab23a14b29c",
+      "name": "Create a booking",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2140,
+        -500
+      ],
+      "id": "ea44196a-d2cc-4e10-8aef-dc5edd3e7a9e",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        -500
+      ],
+      "id": "3fc346fb-24af-4b43-afed-fc614e0b377b",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.cal_api }}/v2/slots/available",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "eventTypeId",
+              "value": "={{ $json.cal_event_id }}"
+            },
+            {
+              "name": "startTime",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "name": "endTime",
+              "value": "={{ $now.plus(3, 'days').toISO() }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        -660
+      ],
+      "id": "ce7d7ed0-86b3-4629-b326-bd85ea30409f",
+      "name": "Cal Availability",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.cal_api }}/v2/event-types",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "eventSlug",
+              "value": "="
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1640,
+        -1140
+      ],
+      "id": "6d0b272f-7240-41be-8555-cc29dc2ba0d3",
+      "name": "Get all event types",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cal.com/v2/event-types",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer cal_live_65564eb4fa300eef9f8a38f7586704ba"
+            },
+            {
+              "name": "cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"lengthInMinutes\": 60,\n  \"title\": \"Learn the secrets of masterchief!\",\n  \"slug\": \"learn-the-secrets-of-masterchief\",\n  \"description\": \"Discover the culinary wonders of the Argentina by making the best flan ever!\",\n  \"locations\": [\n    {\n      \"type\": \"address\",\n      \"address\": \"123 Example St, City, Country\",\n      \"public\": true\n    }\n  ],\n  \"bookingFields\": [\n    {\n      \"type\": \"phone\",\n      \"slug\": \"some-slug\",\n      \"label\": \"<string>\",\n      \"required\": true,\n      \"placeholder\": \"<string>\"\n    }\n  ],\n  \"disableGuests\": true,\n  \"slotInterval\": 123,\n  \"minimumBookingNotice\": 123,\n  \"beforeEventBuffer\": 123,\n  \"afterEventBuffer\": 123,\n  \"scheduleId\": 123,\n  \"bookingLimitsCount\": {\n    \"day\": 1,\n    \"week\": 2,\n    \"month\": 3,\n    \"year\": 4\n  },\n  \"onlyShowFirstAvailableSlot\": true,\n  \"bookingLimitsDuration\": {\n    \"day\": 60,\n    \"week\": 120,\n    \"month\": 180,\n    \"year\": 240\n  },\n  \"bookingWindow\": {\n    \"type\": \"businessDays\",\n    \"value\": 5,\n    \"rolling\": true\n  },\n  \"offsetStart\": 123,\n  \"bookerLayouts\": {\n    \"defaultLayout\": \"month\",\n    \"enabledLayouts\": [\n      \"month\"\n    ]\n  },\n  \"confirmationPolicy\": {\n    \"type\": \"always\",\n    \"noticeThreshold\": {\n      \"unit\": \"minutes\",\n      \"count\": 30\n    }\n  },\n  \"recurrence\": {\n    \"interval\": 10,\n    \"occurrences\": 10,\n    \"frequency\": \"yearly\"\n  },\n  \"requiresBookerEmailVerification\": true,\n  \"hideCalendarNotes\": true,\n  \"lockTimeZoneToggleOnBookingPage\": true,\n  \"color\": {\n    \"lightThemeHex\": \"#292929\",\n    \"darkThemeHex\": \"#fafafa\"\n  },\n  \"seats\": {\n    \"seatsPerTimeSlot\": 4,\n    \"showAttendeeInfo\": true,\n    \"showAvailabilityCount\": true\n  },\n  \"customName\": \"{Event type title} between {Organiser} and {Scheduler}\",\n  \"destinationCalendar\": {\n    \"integration\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"useDestinationCalendarEmail\": true,\n  \"hideCalendarEventDetails\": true\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2180,
+        -1140
+      ],
+      "id": "692a7e77-c33a-49e5-bfb9-62debb81f6e3",
+      "name": "Create an event type"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.cal_api }}/v2/event-types/{{ $json.cal_event_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1820,
+        -1140
+      ],
+      "id": "4980acd5-da74-46a4-8068-7240ce314930",
+      "name": "Get an event type",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=https://api.cal.com/v2/event-types/{{ $json.cal_event_id }}2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        -1140
+      ],
+      "id": "e80a35ff-40eb-4fa4-9b7c-c792c6c48e26",
+      "name": "Delete an event type",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "events": [
+          "BOOKING_CANCELLED",
+          "BOOKING_CREATED",
+          "BOOKING_RESCHEDULED"
+        ],
+        "options": {
+          "eventTypeId": 1195762
+        }
+      },
+      "type": "n8n-nodes-base.calTrigger",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        -160
+      ],
+      "id": "5c94b813-8eb6-49e5-b274-510219f24411",
+      "name": "Cal.com Trigger",
+      "webhookId": "c594e22f-829c-4148-b9f2-976783e9926c",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "Cal.com Trigger": [
+      {
+        "json": {
+          "triggerEvent": "BOOKING_CANCELLED",
+          "createdAt": "2024-11-08T23:53:14.577Z",
+          "bookerUrl": "https://cal.com",
+          "title": "Mentoria N8N entre William e William",
+          "length": 60,
+          "type": "mentoriatotal60",
+          "customInputs": {},
+          "eventTypeId": 1195762,
+          "userFieldsResponses": {},
+          "responses": {
+            "name": {
+              "label": "your_name",
+              "value": "William Almeida",
+              "isHidden": false
+            },
+            "email": {
+              "label": "email_address",
+              "value": "williamkillerca@gmail.com",
+              "isHidden": false
+            },
+            "location": {
+              "label": "location",
+              "value": {
+                "optionValue": "",
+                "value": "integrations:daily"
+              },
+              "isHidden": false
+            },
+            "title": {
+              "label": "what_is_this_meeting_about",
+              "isHidden": true
+            },
+            "notes": {
+              "label": "additional_notes",
+              "isHidden": false
+            },
+            "guests": {
+              "label": "additional_guests",
+              "value": [],
+              "isHidden": true
+            },
+            "rescheduleReason": {
+              "label": "reason_for_reschedule",
+              "isHidden": false
+            }
+          },
+          "startTime": "2024-11-11T12:00:00+00:00",
+          "endTime": "2024-11-11T13:00:00+00:00",
+          "organizer": {
+            "id": 978403,
+            "username": "williamalmeida",
+            "email": "williamkillerca@gmail.com",
+            "name": "William Almeida",
+            "timeZone": "America/Sao_Paulo",
+            "timeFormat": "HH:mm",
+            "language": {
+              "locale": "en"
+            },
+            "utcOffset": -180
+          },
+          "attendees": [
+            {
+              "name": "William Almeida",
+              "email": "williamkillerca@gmail.com",
+              "timeZone": "America/Sao_Paulo",
+              "phoneNumber": null,
+              "language": {
+                "locale": "en"
+              },
+              "utcOffset": -180
+            }
+          ],
+          "uid": "cweY9ysPyZDfspgPS5jeCB",
+          "bookingId": 4281392,
+          "location": "integrations:daily",
+          "destinationCalendar": [
+            {
+              "id": 341994,
+              "integration": "google_calendar",
+              "externalId": "williamkillerca@gmail.com",
+              "primaryEmail": "williamkillerca@gmail.com",
+              "userId": 978403,
+              "eventTypeId": null,
+              "credentialId": 547040
+            }
+          ],
+          "cancellationReason": "teste",
+          "seatsPerTimeSlot": null,
+          "seatsShowAttendees": false,
+          "iCalUID": "cweY9ysPyZDfspgPS5jeCB@Cal.com",
+          "iCalSequence": 1,
+          "eventTitle": "Mentoria de 60 min",
+          "eventDescription": "Mentoria individual sobre Programação, Otimização e Automação com N8N, Typebot, Laravel, Chatbots com IA.",
+          "requiresConfirmation": true,
+          "price": null,
+          "currency": "usd",
+          "status": "CANCELLED",
+          "cancelledBy": "williamkillerca@gmail.com"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Cal.com Trigger": {
+      "webhookId": "992ce188-0fce-4a68-866f-f76b682bdcb5"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-30T23:31:05.255Z",
+      "updatedAt": "2024-10-30T23:31:05.255Z",
+      "id": "IDsda42rHm8bi7eR",
+      "name": "Tool"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-08T23:56:33.312Z",
+  "versionId": "5071e514-564e-429d-a744-d08fdfe1afc8"
+}
