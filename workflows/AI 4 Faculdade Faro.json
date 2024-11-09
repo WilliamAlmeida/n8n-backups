@@ -217,40 +217,7 @@
         ]
       ]
     },
-    "chatConfig": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Embeddings OpenAI1": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Qdant Vector Store1",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Qdant Vector Store1": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Vector Store Tool",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Vector Store Tool": {
+    "Courses Info Tool": {
       "ai_tool": [
         [
           {
@@ -261,12 +228,17 @@
         ]
       ]
     },
-    "Groq Chat Model": {
-      "ai_languageModel": [
+    "Sign Msg": {
+      "main": [
+        []
+      ]
+    },
+    "chatConfig": {
+      "main": [
         [
           {
-            "node": "Vector Store Tool",
-            "type": "ai_languageModel",
+            "node": "messageInfo",
+            "type": "main",
             "index": 0
           }
         ]
@@ -389,7 +361,7 @@
       "typeVersion": 1,
       "position": [
         4740,
-        1560
+        1540
       ],
       "credentials": {
         "redis": {
@@ -420,7 +392,7 @@
       "typeVersion": 4.2,
       "position": [
         4600,
-        1560
+        1540
       ]
     },
     {
@@ -437,7 +409,7 @@
       "typeVersion": 1,
       "position": [
         4380,
-        1580
+        1560
       ],
       "credentials": {
         "redis": {
@@ -476,7 +448,7 @@
       "typeVersion": 2.2,
       "position": [
         4600,
-        1360
+        1340
       ]
     },
     {
@@ -490,7 +462,7 @@
       "typeVersion": 1,
       "position": [
         4400,
-        1360
+        1340
       ],
       "credentials": {
         "redis": {
@@ -513,7 +485,7 @@
       "typeVersion": 1,
       "position": [
         4320,
-        1280
+        1260
       ]
     },
     {
@@ -528,7 +500,7 @@
       "typeVersion": 3.4,
       "position": [
         4780,
-        1360
+        1340
       ]
     },
     {
@@ -542,8 +514,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4060,
-        1000
+        4080,
+        1080
       ]
     },
     {
@@ -568,7 +540,7 @@
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=<prompt_faro>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('userAccount').item.json.id ? 'já' : 'ainda não' }} tem vínculo com a FARO, seu nome é \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", o e-mail é \"{{ $('userAccount').first().json.email ?? '' }}\", telefone para contato é \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n\n<personalidade>\nNome: Assistente FARO  \nFunção: Assistente virtual especializado no atendimento de Faculdade (análise curricular, inscrições, dúvidas sobre vestibular e cursos).\nTom: Humanizado, Educado, prestativo, ágil e acolhedor.\nPode usar alguns emojis.\n\n<funcoes_principais>\nReceber e orientar sobre o processo de análise curricular.  \nEsclarecer dúvidas sobre inscrições no vestibular, calendários, procedimentos e prazos.  \nInformar sobre cursos de graduação e pós-graduação, mas sempre identificar sobre qual o usuário deseja.\nEncaminhar para atendimento humano quando necessário.\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres).  \nLinguagem simples e acessível, evitando termos técnicos.  \nEncaminhar casos complexos a um atendente humano.  \nConsultar a base de dados antes de responder dúvidas.  \nInformar o usuário imediatamente se algum dado estiver indisponível ou impreciso.\n\n<formatacao_links>\nLinks devem ser escritos por extenso, em linha separada, sem formatação.  \nExemplo: \"Mais informações: https://www.instagram.com/faculdadefaro_\"  \nSempre perguntar ao usuário se precisa de mais detalhes após o envio.\n\n<fluxo_atendimento>\nSaudação e {{ $('userAccount').item.json.id ? 'apresentação com sugestões de análise curricular ou inscrição no vestibular' : 'apresentação' }}.  \nIdentificar necessidade com perguntas específicas.  \nOferecer informações sobre análise curricular, inscrição ou cursos.  \nEnviar links úteis, se necessário.  \nEncaminhar ao atendimento humano, se preciso.\n\n<duvidas_perguntas_frequentes>\nUtilize a faro_info_tool para coletar informações e responder aos usuários.  \n**NUNCA** forneça informações que não tenham vindo da faro_info_tool.\n\n<calendario_cursos>\nInformar sobre datas importantes do calendário acadêmico e horários de provas ou matrículas.  \n</prompt_faro>",
+              "value": "=<prompt_faro>\n  <additional_info>\n    CurrentDateTime: {{ $now.toISO() }}\n  </additional_info>\n\n  <user_details>\n    User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} linked to FARO, their name is \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n  </user_details>\n\n  <personality>\n    Name: FARO Assistant\n    Role: Virtual assistant specialized in university services (curriculum analysis, applications, entrance exams, and course inquiries).\n    Tone: Friendly, Polite, Helpful, Fast, and Welcoming.\n    Can use some emojis.\n  </personality>\n\n  <main_functions>\n    Receive and guide users through the curriculum analysis process.\n    Clarify doubts about entrance exams, schedules, procedures, and deadlines.\n    Provide information on undergraduate and postgraduate courses, while identifying the user’s specific interest.\n    Forward to a human assistant when necessary.\n  </main_functions>\n\n  <general_guidelines>\n    Clear and concise answers (max 350 characters).\n    Simple and accessible language, avoiding technical jargon.\n    Forward complex cases to a human assistant.\n    Consult the database before answering questions.\n    Inform the user immediately if any data is unavailable or inaccurate.\n  </general_guidelines>\n\n  <link_formatting>\n    Links should be written in full, on a separate line, without formatting.\n    Example: \"More information: https://www.instagram.com/faculdadefaro_\"\n    Always ask the user if they need further details after sending the link.\n  </link_formatting>\n\n  <service_flow>\n    Greeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for curriculum analysis or entrance exam registration' : 'introduction' }}.\n    Identify needs with specific questions.\n    Offer information on curriculum analysis, registration, or courses.\n    Send useful links, if necessary.\n    Forward to human support if needed.\n  </service_flow>\n</prompt_faro>\n",
               "type": "string"
             }
           ]
@@ -625,7 +597,7 @@
       "typeVersion": 3.4,
       "position": [
         4460,
-        1760
+        1740
       ]
     },
     {
@@ -662,10 +634,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        3900,
-        1000
+        3920,
+        1080
       ],
-      "webhookId": "90700a4e-0c64-401e-aa8c-ba362fa778ba"
+      "webhookId": "08e757a3-3677-451f-8e33-ec29d8f61958"
     },
     {
       "parameters": {
@@ -692,6 +664,10 @@
               "name": "userAccount",
               "type": "objectValue",
               "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
             }
           ]
         }
@@ -761,13 +737,29 @@
     },
     {
       "parameters": {
-        "name": "faro_info_tool",
-        "description": "Esta ferramenta usa técnicas de recuperação de informações aumentadas (AIR) para fornecer respostas precisas e contextuais sobre a faculdade. Obtenha informações de contato, horários de funcionamento, detalhes de inscrição, documentos necessários e explore perguntas frequentes de forma rápida e eficiente. As respostas são baseadas diretamente nas informações contidas em nosso banco de dados, garantindo que você sempre receba informações atualizadas e relevantes.",
+        "name": "general_knowledge_base_tool",
+        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre qualquer informação que lhe for perguntada. ",
         "workflowId": {
           "__rl": true,
           "value": "I4t2yzZ4SbcmpeOK",
           "mode": "list",
           "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "general"
+            },
+            {
+              "name": "slots",
+              "stringValue": "3"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
         }
       },
       "id": "43a656a9-5575-407f-b3ee-328925d86680",
@@ -782,13 +774,29 @@
     },
     {
       "parameters": {
-        "name": "courses_info_tool",
-        "description": "Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre cursos de graduação e pós-graduação. Primeiro, identifique o nível do curso (graduação ou pós-graduação) e, se possível, pergunte a área de interesse (como Exatas, Humanas, Saúde). Com essas informações, busque cursos relevantes e ofereça detalhes conforme solicitado.",
+        "name": "courses_knowledge_base_tool",
+        "description": "=Use esta ferramenta para buscar informações sobre os cursos oferecidos pela faculdade.\n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse.",
         "workflowId": {
           "__rl": true,
           "value": "I4t2yzZ4SbcmpeOK",
           "mode": "list",
           "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "cursos"
+            },
+            {
+              "name": "slots",
+              "stringValue": "7"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
         }
       },
       "id": "efe9cef5-d38e-4af1-8824-cb8af1d20ebd",
@@ -799,91 +807,25 @@
         5380,
         1720
       ],
-      "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
-    },
-    {
-      "parameters": {
-        "model": "text-embedding-3-small",
-        "options": {}
-      },
-      "id": "b09ea00c-dd08-4fb6-8f37-7f32a6133318",
-      "name": "Embeddings OpenAI1",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1,
-      "position": [
-        5840,
-        1920
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "qdrantCollection": {
-          "__rl": true,
-          "value": "notion_faro",
-          "mode": "list",
-          "cachedResultName": "notion_faro"
-        },
-        "options": {}
-      },
-      "id": "617fa3ff-3182-428e-89e2-3e3861449e6a",
-      "name": "Qdant Vector Store1",
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
-      "typeVersion": 1,
-      "position": [
-        5840,
-        1780
-      ],
-      "credentials": {
-        "qdrantApi": {
-          "id": "ukGdBAa9ib5xqZKC",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "name": "courses_knowledge_base",
-        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre cursos de graduação e pós-graduação. \n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse.",
-        "topK": 10
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
-      "typeVersion": 1,
-      "position": [
-        5900,
-        1620
-      ],
-      "id": "87106bac-7d05-4f65-9452-34def7c0844c",
-      "name": "Vector Store Tool"
-    },
-    {
-      "parameters": {
-        "model": "llama-3.2-90b-text-preview",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        6120,
-        1780
-      ],
-      "id": "07813372-f722-40c7-a9f0-8cb57cc7c8a2",
-      "name": "Groq Chat Model",
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "onde fica a faculdade?"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": false,
@@ -891,6 +833,12 @@
   },
   "staticData": null,
   "tags": [
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    },
     {
       "createdAt": "2024-09-27T14:34:01.317Z",
       "updatedAt": "2024-09-27T14:34:01.317Z",
@@ -902,15 +850,9 @@
       "updatedAt": "2024-09-27T17:42:17.034Z",
       "id": "TsfCA8eZuTObjOfy",
       "name": "Backup"
-    },
-    {
-      "createdAt": "2024-10-08T13:33:46.636Z",
-      "updatedAt": "2024-10-08T13:33:46.636Z",
-      "id": "aSNW5tPyOIOEr9rS",
-      "name": "Agent"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-08T15:08:24.588Z",
-  "versionId": "8fb9e9bf-068c-4196-9f10-95cdc83bdcf0"
+  "updatedAt": "2024-11-09T02:33:49.588Z",
+  "versionId": "4593ffa8-7ecc-4c94-ad9f-816f43a14096"
 }
