@@ -391,6 +391,11 @@
             "node": "Notion - Retrieve Page Content",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Retrive Points",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -628,7 +633,7 @@
         4480,
         -100
       ],
-      "webhookId": "68bcfd46-8819-4caf-901e-90c76a34e54c"
+      "webhookId": "71123517-2b77-4af9-9d57-b39e13901697"
     },
     {
       "parameters": {
@@ -889,7 +894,7 @@
         "nodeCredentialType": "qdrantApi",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"ids\": [\"05bc7f80-cf37-4eee-bad0-a250eecf7212\"],\n  \"with_payload\": [\"content\",\"metadata\"]\n}\n",
+        "jsonBody": "{\n  \"ids\": [],\n  \"with_payload\": [\"content\",\"metadata\"]\n}\n",
         "options": {}
       },
       "id": "82bcb5f9-5033-4589-8fa8-0fa3b63c0986",
@@ -1256,7 +1261,7 @@
         4480,
         400
       ],
-      "webhookId": "97aff201-bcc7-4689-9903-5d67f1ddae2b"
+      "webhookId": "af792c4c-0f26-4cf5-81b9-18742eb6609a"
     },
     {
       "parameters": {
@@ -1635,6 +1640,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-09T00:33:02.876Z",
-  "versionId": "f2326068-e801-4b4f-94ae-90df3e5bbe98"
+  "updatedAt": "2024-11-09T04:33:43.720Z",
+  "versionId": "df5ee74a-0da6-4029-a659-3c8d559c5725"
 }
