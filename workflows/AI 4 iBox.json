@@ -1695,12 +1695,6 @@
       "updatedAt": "2024-09-27T17:42:17.034Z",
       "id": "TsfCA8eZuTObjOfy",
       "name": "Backup"
-    },
-    {
-      "createdAt": "2024-11-04T13:01:38.564Z",
-      "updatedAt": "2024-11-04T13:01:38.564Z",
-      "id": "HRrDUnszFQBGzX99",
-      "name": "Finish"
     }
   ],
   "triggerCount": 3,
