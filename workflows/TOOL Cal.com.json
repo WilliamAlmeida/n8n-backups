@@ -14,43 +14,15 @@
     },
     "Schedule Appt": {
       "ai_tool": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Reschedule Appt": {
       "ai_tool": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cancel Appt": {
-      "ai_tool": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Existing Appt": {
-      "ai_tool": [
         []
       ]
     },
-    "Find Existing Appt": {
+    "Cancel Appt": {
       "ai_tool": [
         []
       ]
@@ -81,7 +53,14 @@
       "main": [
         [
           {
-            "node": "Format Slots",
+            "node": "Adjust DateTime",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Availability Error",
             "type": "main",
             "index": 0
           }
@@ -93,29 +72,6 @@
         [
           {
             "node": "Switch Action 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Cancel a booking All",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -160,17 +116,6 @@
         [
           {
             "node": "baseInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cancel a booking All": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -260,7 +205,7 @@
         ],
         [
           {
-            "node": "Create a booking",
+            "node": "Schedule a booking",
             "type": "main",
             "index": 0
           }
@@ -271,7 +216,7 @@
       "main": [
         [
           {
-            "node": "Cancel a booking",
+            "node": "booking canceled?",
             "type": "main",
             "index": 0
           }
@@ -308,6 +253,115 @@
         [
           {
             "node": "Response All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancel Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "booking canceled?": {
+      "main": [
+        [
+          {
+            "node": "Response1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cancel a booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule a booking": {
+      "main": [
+        [
+          {
+            "node": "booking success?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "booking success?": {
+      "main": [
+        [
+          {
+            "node": "Response Booking Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Booking Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adjust DateTime": {
+      "main": [
+        [
+          {
+            "node": "Format Slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancel a booking": {
+      "main": [
+        [
+          {
+            "node": "booking canceled?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "booking canceled?1": {
+      "main": [
+        [
+          {
+            "node": "Response2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Cancel Booking Error",
             "type": "main",
             "index": 0
           }
@@ -431,7 +485,7 @@
       "typeVersion": 1,
       "position": [
         1380,
-        660
+        840
       ],
       "credentials": {
         "calApi": {
@@ -476,7 +530,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1860,
+        1880,
         660
       ],
       "credentials": {
@@ -490,7 +544,7 @@
     {
       "parameters": {
         "toolDescription": "Call this tool to cancel a user's existing appointment using a booking id.\n\n# To cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.",
-        "method": "DELETE",
+        "method": "POST",
         "url": "https://api.cal.com/v2/bookings/{booking_id}/cancel",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
@@ -528,8 +582,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2000,
-        660
+        2060,
+        840
       ],
       "credentials": {
         "calApi": {
@@ -540,7 +594,8 @@
           "id": "Xk4lHr8zzqWTdh4Z",
           "name": "Cal.com Token"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -622,7 +677,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1700,
+        1720,
         840
       ],
       "credentials": {
@@ -657,7 +712,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2140,
+        2240,
         840
       ],
       "credentials": {
@@ -692,7 +747,7 @@
         "promptType": "define",
         "text": "={{ $('Chat').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}\n\n## Output\n\nAlways answer in *pt-br*.",
+          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n## Output\n\nAlways answer in *pt-br*.",
           "maxIterations": 5
         }
       },
@@ -711,7 +766,7 @@
       "typeVersion": 1,
       "position": [
         940,
-        -540
+        -440
       ],
       "id": "d7deacb7-eeda-4827-9830-8edd918b29d5",
       "name": "When clicking ‘Test workflow’",
@@ -778,29 +833,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
-              "name": "response",
-              "value": "={{ \n  $json.data.slots.keys().map(date => {\n    return {\n      date: date,\n      times: $json.data.slots[date].map(slot => {\n        const s = slot.time.toDateTime().minus($('baseInfo').item.json.utc, 'hours');\n        return s.format('H:mm');\n      })\n    };\n  })\n}}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2120,
-        -840
-      ],
-      "id": "6eeb0d28-e7e6-4f69-ab07-88a4c7a15c5d",
-      "name": "Format Slots"
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -828,7 +860,7 @@
       "typeVersion": 2.2,
       "position": [
         1920,
-        -820
+        -1200
       ],
       "id": "c7d6c4a6-96f5-4b27-b36e-7b2f3dcd2dd2",
       "name": "found slots?"
@@ -891,7 +923,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/bookings/{{ $('EWT').item.json.query.appointment_id }}",
+        "url": "={{ $json.cal_api }}/v2/bookings/{{ $('EWT').item.json.query.booking_id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -975,7 +1007,7 @@
       "typeVersion": 4.2,
       "position": [
         1740,
-        -660
+        -880
       ],
       "id": "a0cb36b6-abff-4138-84ab-da07a0c437bc",
       "name": "Get all bookings",
@@ -990,109 +1022,6 @@
         }
       },
       "notes": "status: {{ ['upcoming','recurring','past','cancelled','unconfirmed'].join(',') }}"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.cal.com/v2/bookings",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "calApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "start",
-              "value": "={{ \"2024-11-04T12:00:00.000Z\".toDateTime().plus($json.utc, 'hours').toUTC() }}"
-            },
-            {
-              "name": "eventTypeId",
-              "value": "={{ $json.cal_event_id.toNumber() }}"
-            },
-            {
-              "name": "attendee.name",
-              "value": "Hatake"
-            },
-            {
-              "name": "attendee.email",
-              "value": "williamkillerca@hotmail.com"
-            },
-            {
-              "name": "attendee.timeZone",
-              "value": "America/Sao_Paulo"
-            },
-            {
-              "name": "attendee.language",
-              "value": "pt-BR"
-            },
-            {
-              "name": "bookingFieldsResponses.notes",
-              "value": "teste"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1740,
-        -300
-      ],
-      "id": "46e0f2b5-14cc-48ac-8e22-4ab23a14b29c",
-      "name": "Create a booking",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        3160,
-        -280
-      ],
-      "id": "ea44196a-d2cc-4e10-8aef-dc5edd3e7a9e",
-      "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "data",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        2960,
-        -280
-      ],
-      "id": "3fc346fb-24af-4b43-afed-fc614e0b377b",
-      "name": "Split Out"
     },
     {
       "parameters": {
@@ -1129,7 +1058,7 @@
       "typeVersion": 4.2,
       "position": [
         1740,
-        -820
+        -1200
       ],
       "id": "ce7d7ed0-86b3-4629-b326-bd85ea30409f",
       "name": "Cal Availability",
@@ -1183,8 +1112,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1640,
-        -1140
+        620,
+        -1320
       ],
       "id": "6d0b272f-7240-41be-8555-cc29dc2ba0d3",
       "name": "Get all event types",
@@ -1231,8 +1160,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2180,
-        -1140
+        1160,
+        -1320
       ],
       "id": "692a7e77-c33a-49e5-bfb9-62debb81f6e3",
       "name": "Create an event type"
@@ -1263,8 +1192,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1820,
-        -1140
+        800,
+        -1320
       ],
       "id": "4980acd5-da74-46a4-8068-7240ce314930",
       "name": "Get an event type",
@@ -1306,8 +1235,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2000,
-        -1140
+        980,
+        -1320
       ],
       "id": "e80a35ff-40eb-4fa4-9b7c-c792c6c48e26",
       "name": "Delete an event type",
@@ -1338,7 +1267,7 @@
       ],
       "id": "5c94b813-8eb6-49e5-b274-510219f24411",
       "name": "Cal.com Trigger",
-      "webhookId": "95b13875-e032-44c9-8bd8-9d828144c2f9",
+      "webhookId": "246cf99b-bd39-47f6-ac9c-285dcbae2228",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
@@ -1433,7 +1362,7 @@
       "typeVersion": 1,
       "position": [
         940,
-        -720
+        -620
       ],
       "id": "2805ec75-e546-4940-99b9-4e673e56fe6f",
       "name": "EWT"
@@ -1441,7 +1370,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.uid }}/cancel",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.data.uid }}/cancel",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -1458,7 +1387,7 @@
           "parameters": [
             {
               "name": "cancellationReason",
-              "value": "=User requested reschedule {{ $json.id }}"
+              "value": "={{ $('EWT').item.json.query.cancellationReason }}"
             }
           ]
         },
@@ -1474,61 +1403,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3360,
-        -260
-      ],
-      "id": "d4b02335-a599-4240-a78a-4aefc8ac3992",
-      "name": "Cancel a booking All",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.uid }}/cancel",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "cancellationReason",
-              "value": "=User requested reschedule {{ $json.id }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2400,
-        -660
+        2620,
+        -740
       ],
       "id": "f5659648-d2ef-4f96-8067-8939ed90022d",
       "name": "Cancel a booking",
@@ -1599,8 +1475,7 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('Chat').item.json.sessionId }}",
-        "sessionTTL": 60,
-        "contextWindowLength": 10
+        "sessionTTL": 60
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
@@ -1620,7 +1495,7 @@
     {
       "parameters": {
         "name": "get_existing_appt_tool",
-        "description": "Call this tool to get an existing appointment.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
+        "description": "=Call this tool to get an existing booking.\n\n## To detail an existing booking\n* Ask the user for their booking_id of the existing booking\n* Use the user's booking_id to search for the existing booking.\n* If the user's booking_id do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1635,17 +1510,16 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"appointment_id\": \"the id of the appointment\"\n}\n"
+        "jsonSchemaExample": "{\n\t\"booking_id\": \"the id of the booking\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1700,
+        1720,
         660
       ],
       "id": "c8ca4e43-f0fa-42ca-be49-a5786a209d26",
-      "name": "Get Existing Appt Tool",
-      "disabled": true
+      "name": "Get Existing Appt Tool"
     },
     {
       "parameters": {
@@ -1786,7 +1660,7 @@
                   {
                     "id": "80aff94c-0b8b-41bc-8593-5531774ff819",
                     "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "create booking",
+                    "rightValue": "schedule booking",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -1797,7 +1671,7 @@
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "create booking"
+              "outputKey": "schedule booking"
             }
           ]
         },
@@ -1888,7 +1762,7 @@
             {
               "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
               "name": "response",
-              "value": "={{ {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    meetingUrl: $json.data.meetingUrl,\n    location: $json.data.location,\n} }}",
+              "value": "={{ {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} }}",
               "type": "string"
             }
           ]
@@ -1899,15 +1773,15 @@
       "typeVersion": 3.4,
       "position": [
         2400,
-        -380
+        -260
       ],
       "id": "732feb32-3e69-4d83-b45b-3f6937f83e5b",
       "name": "Response A Booking"
     },
     {
       "parameters": {
-        "name": "get_existing_appt_tool",
-        "description": "Call this tool to search for an existing appointment with the user's email address.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
+        "name": "find_existing_appt_tool",
+        "description": "=Call this tool to search for an existing booking with the user's email address.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1927,7 +1801,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2140,
+        2240,
         660
       ],
       "id": "b36c23e2-af15-403a-bc28-fc1310b95c6c",
@@ -1940,8 +1814,8 @@
             {
               "id": "9a4c695a-9201-4b9a-9d46-d92991ead4bc",
               "name": "response",
-              "value": "={{ $json.data.map(item => i = {\n    id: item.id,\n    uid: item.uid,\n    title: item.title,\n    description: item.description,\n    status: item.status,\n    start: item.start.format('yyyy-MM-dd H:mm'),\n    end: item.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: item.duration,\n    eventType: item.eventType,\n    meetingUrl: item.meetingUrl,\n    location: item.location,\n}) }}",
-              "type": "string"
+              "value": "={{ $json.data.map(item => i = {\n    id: item.id,\n    uid: item.uid,\n    title: item.title,\n    description: item.description,\n    status: item.status,\n    start: item.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: item.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: item.duration,\n    eventType: item.eventType,\n    location: item.location,\n}) }}",
+              "type": "array"
             }
           ]
         },
@@ -1951,23 +1825,138 @@
       "typeVersion": 3.4,
       "position": [
         1920,
-        -660
+        -880
       ],
       "id": "99025593-105f-43ff-86e3-b3bd1b21dc52",
       "name": "Response All Bookings"
     },
     {
       "parameters": {
+        "name": "cancel_appt_tool",
+        "description": "=Call this tool to cancel a user's existing booking using a booking id.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to cancel an existing booking.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an booking.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "czYf0DoNjwOMFK8Q"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "cancel booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"cancellationReason\": \"reason for cancellation\",\n    \"booking_id\": \"the booking id of the appointment\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2060,
+        660
+      ],
+      "id": "1c0840e1-9467-442d-80ef-0f1a4ca0cf77",
+      "name": "Cancel Appt Tool"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bed3d75f-289b-401a-a2c1-534dcd8fae94",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "cancelled",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        -820
+      ],
+      "id": "059156b5-bf0b-4eb3-9ebc-1d44c5b64b21",
+      "name": "booking canceled?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "booking was cancelled",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2620,
+        -920
+      ],
+      "id": "733a1176-1f78-4d9c-8c40-e3edc320958f",
+      "name": "Response1"
+    },
+    {
+      "parameters": {
+        "name": "schedule_appt_tool",
+        "description": "=Call this tool to schedule an appointment.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "czYf0DoNjwOMFK8Q"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "schedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"start\": \"data e hora do início da consulta\",\n  \"title\": \"name of the user and a short summary of appointment\",\n  \"description\": \"bullet list of session Id, full name, email and summary of appointment\",\n  \"metadata\": \"Use template: { \\\"session_id\\\": \\\"\\\", \\\"booked_by\\\": \\\"n8n workflow\\\" }\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\"\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1380,
+        660
+      ],
+      "id": "8e3dcf5f-e24d-48a5-9bc4-a5f6e1f61d99",
+      "name": "Schedule Appt Tool"
+    },
+    {
+      "parameters": {
         "method": "POST",
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.uid }}/cancel",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "url": "https://api.cal.com/v2/bookings",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calApi",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
+              "value": "={{ $json.cal_api_version_booking }}"
             }
           ]
         },
@@ -1975,8 +1964,20 @@
         "bodyParameters": {
           "parameters": [
             {
-              "name": "cancellationReason",
-              "value": "=User requested reschedule {{ $json.id }}"
+              "name": "start",
+              "value": "={{ $('EWT').item.json.query.start.toDateTime().toUTC() }}"
+            },
+            {
+              "name": "eventTypeId",
+              "value": "={{ $json.cal_event_id.toNumber() }}"
+            },
+            {
+              "name": "bookingFieldsResponses.notes",
+              "value": "={{ $('EWT').item.json.query.bookingFieldsResponses.notes ?? '' }}"
+            },
+            {
+              "name": "attendee",
+              "value": "={{ {\n  name: $('EWT').item.json.query.attendee.name,\n  email: $('EWT').item.json.query.attendee.email,\n  timeZone: 'America/Sao_Paulo',\n  language: 'pt-BR'\n} }}"
             }
           ]
         },
@@ -1992,11 +1993,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2320,
-        640
+        1740,
+        -120
       ],
-      "id": "035606e9-5907-4a79-8505-f66931dd7192",
-      "name": "Cancel a booking1",
+      "id": "46e0f2b5-14cc-48ac-8e22-4ab23a14b29c",
+      "name": "Schedule a booking",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
@@ -2007,6 +2008,235 @@
           "name": "Cal.com Token"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7d563086-45a2-4f95-b072-5ef76dc61e61",
+              "leftValue": "={{ $json.data.uid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        -120
+      ],
+      "id": "17ca54e2-4160-46f2-8c31-ae361c6b99ae",
+      "name": "booking success?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        -200
+      ],
+      "id": "fad62c7e-fe22-446b-b919-7ade4f1d0196",
+      "name": "Response Booking Success"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "error on booking",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        -20
+      ],
+      "id": "5f973201-41bb-4644-a9fb-10abfc7ca5d8",
+      "name": "Response Booking Error"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eee23fa6-0985-46ab-8477-ddca2d7b304b",
+              "name": "response",
+              "value": "={{ \n  $json.response.reduce((acc, item) => {\n    item.times.forEach(time => {\n      const t = time.toDateTime();\n      const date = t.format('y-M-d');\n      const hour = t.format('H:mm');\n\n      const existingDate = acc.find(group => group.date === date);\n      if (existingDate) {\n        existingDate.times.push(hour);\n      } else {\n        acc.push({ date: date, times: [hour] });\n      }\n    });\n    return acc;\n  }, [])\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2300,
+        -1300
+      ],
+      "id": "90a63cf6-4433-43ab-8a94-0d1d2d3958a8",
+      "name": "Format Slots"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
+              "name": "response",
+              "value": "={{ \n  $json.data.slots.keys().map(date => {\n    return {\n      times: $json.data.slots[date].map(slot => {\n        const s = slot.time.toDateTime().minus($('baseInfo').item.json.utc, 'hours');\n        return s.toUTC();\n      })\n    };\n  })\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        -1300
+      ],
+      "id": "c3cf0dce-3a90-41d2-8c1c-7172c5f87afb",
+      "name": "Adjust DateTime"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "slots not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        -1100
+      ],
+      "id": "3fad5546-b69a-4160-912a-48ffda85316e",
+      "name": "Response Availability Error"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "booking was cancelled",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3060,
+        -820
+      ],
+      "id": "a66e3f55-2307-4ac9-af62-9acb01f9ecf7",
+      "name": "Response2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bed3d75f-289b-401a-a2c1-534dcd8fae94",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "cancelled",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2840,
+        -740
+      ],
+      "id": "549ac262-a1b2-48f8-9468-ae6dc3951005",
+      "name": "booking canceled?1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "error on cancel booking",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3060,
+        -660
+      ],
+      "id": "32161e52-51cb-4fda-8624-60c78a9bb48b",
+      "name": "Response Cancel Booking Error"
     }
   ],
   "pinData": {
@@ -2114,13 +2344,51 @@
         }
       }
     ],
-    "EWT": [
+    "Cancel a booking": [
       {
         "json": {
-          "query": {
-            "attendeeEmail": "williamkillerca@gmail.com"
-          },
-          "action": "list bookings"
+          "status": "success",
+          "data": {
+            "id": 4310579,
+            "uid": "fgLWQGwTVkzzeF68u4ktPL",
+            "title": "Mentoria N8N entre William e William",
+            "description": "Gostaria de falar sobre RAG com n8n, estou com um problema sério, ele as vezes traz certo, mas nem sempre.",
+            "hosts": [
+              {
+                "id": 978403,
+                "name": "William Almeida",
+                "timeZone": "America/Sao_Paulo"
+              }
+            ],
+            "status": "cancelled",
+            "cancellationReason": "teste",
+            "start": "2024-11-11T21:00:00.000Z",
+            "end": "2024-11-11T22:00:00.000Z",
+            "duration": 60,
+            "eventTypeId": 1195762,
+            "eventType": {
+              "id": 1195762,
+              "slug": "mentoriatotal60"
+            },
+            "meetingUrl": "integrations:daily",
+            "location": "integrations:daily",
+            "absentHost": false,
+            "attendees": [
+              {
+                "name": "William Almeida",
+                "timeZone": "America/Sao_Paulo",
+                "language": "pt-BR",
+                "absent": false
+              }
+            ],
+            "guests": [],
+            "bookingFieldsResponses": {
+              "email": "williamkillerca@gmail.com",
+              "name": "William Almeida",
+              "guests": [],
+              "notes": "Gostaria de falar sobre RAG com n8n, estou com um problema sério, ele as vezes traz certo, mas nem sempre."
+            }
+          }
         }
       }
     ]
@@ -2150,6 +2418,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-11T15:41:15.522Z",
-  "versionId": "b590b3a4-1a1d-4bf2-aed7-766586387026"
+  "updatedAt": "2024-11-11T19:47:21.887Z",
+  "versionId": "13e014c0-4216-4700-a2cf-a9ea7e8eccab"
 }
