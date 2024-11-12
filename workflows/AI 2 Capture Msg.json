@@ -1374,7 +1374,7 @@
         "nodeCredentialType": "groqApi",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Descreva todo o conteúdo da imagem, sem Acentos e sem hífens\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/jpeg;base64,{{ $('Convert To Image').item.binary.data.data }}\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"\"\n    }\n  ],\n  \"model\": \"llama-3.2-11b-vision-preview\",\n  \"temperature\": 1,\n  \"max_tokens\": 1024,\n  \"top_p\": 1,\n  \"stream\": false,\n  \"stop\": null\n}\n",
+        "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Descreva todo o conteúdo da imagem, sem Acentos e sem hífens\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/jpeg;base64,{{ $('Convert To Image').item.binary.data.data }}\"\n          }\n        }\n      ]\n    }\n  ],\n  \"model\": \"llama-3.2-90b-vision-preview\",\n  \"temperature\": 1,\n  \"max_tokens\": 1024,\n  \"top_p\": 1,\n  \"stream\": false,\n  \"stop\": null\n}\n",
         "options": {}
       },
       "id": "d35bc0fa-8e36-4398-95ff-bd20cd3b0a80",
@@ -1392,7 +1392,8 @@
           "id": "Qc9IFal2C1clPmRn",
           "name": "william"
         }
-      }
+      },
+      "notes": "llama-3.2-11b-vision-preview\nllava-v1.5-7b-4096-preview\nllama-3.2-90b-vision-preview"
     },
     {
       "parameters": {
@@ -2221,79 +2222,10 @@
         -15980,
         1300
       ],
-      "webhookId": "e7a1bd5a-2914-4071-9fa1-80eab4f082b5"
+      "webhookId": "031dc99b-41fd-417b-9624-368ee42c022a"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "webhook.n8n.wmst.com.br",
-            "x-forwarded-scheme": "https",
-            "x-forwarded-proto": "https",
-            "x-forwarded-for": "10.0.0.2",
-            "x-real-ip": "10.0.0.2",
-            "connection": "close",
-            "content-length": "1082",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "content-type": "application/json",
-            "user-agent": "axios/1.7.4",
-            "accept-encoding": "gzip, compress, deflate, br"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "event": "messages.upsert",
-            "instance": "ibox_cli_23",
-            "data": {
-              "key": {
-                "remoteJid": "5512982184879@s.whatsapp.net",
-                "fromMe": false,
-                "id": "BAF1224167DB9FB12544BD"
-              },
-              "pushName": "William",
-              "message": {
-                "messageContextInfo": {
-                  "deviceListMetadata": {
-                    "senderKeyHash": "XmJzBOLylzgZMw==",
-                    "senderTimestamp": "1726978616",
-                    "senderAccountType": "E2EE",
-                    "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "133dAnqlyPxFrg==",
-                    "recipientTimestamp": 1730348057
-                  },
-                  "deviceListMetadataVersion": 2
-                },
-                "conversation": "oi, queria pedir um lanche na store"
-              },
-              "contextInfo": {
-                "ephemeralSettingTimestamp": 1730348057,
-                "disappearingMode": {
-                  "initiator": "CHANGED_IN_CHAT",
-                  "trigger": "CHAT_SETTING"
-                }
-              },
-              "messageType": "extendedTextMessage",
-              "messageTimestamp": 1730348057,
-              "instanceId": "88d98422-5c77-47d2-8405-c813d554530e",
-              "source": "web",
-              "chatwootMessageId": 762,
-              "chatwootInboxId": 4,
-              "chatwootConversationId": 3
-            },
-            "destination": "https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46",
-            "date_time": "2024-09-25T14:42:39.164Z",
-            "sender": "5512982471939@s.whatsapp.net",
-            "server_url": "https://apiwp.wmst.com.br",
-            "apikey": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36"
-          },
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -2321,6 +2253,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-07T15:43:06.968Z",
-  "versionId": "42751f2e-24d5-4977-a0ca-de70eda43ed4"
+  "updatedAt": "2024-11-12T02:46:52.081Z",
+  "versionId": "47d68dcb-19db-4157-b530-3688ba3a7981"
 }
