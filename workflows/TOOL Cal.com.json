@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Switch Action",
+            "node": "type access",
             "type": "main",
             "index": 0
           }
@@ -67,7 +67,7 @@
       "main": [
         [
           {
-            "node": "Appointment Scheduling Agent",
+            "node": "Events Agent",
             "type": "main",
             "index": 0
           }
@@ -392,6 +392,259 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory 2": {
+      "ai_memory": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Events Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Events Agent": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all event types": {
+      "main": [
+        [
+          {
+            "node": "found events?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found events?": {
+      "main": [
+        [
+          {
+            "node": "Format Events",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Events Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an event type": {
+      "main": [
+        [
+          {
+            "node": "found event?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found event?": {
+      "main": [
+        [
+          {
+            "node": "Switch Action ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Event Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Action ": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response A Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "type access": {
+      "main": [
+        [
+          {
+            "node": "Switch Action1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch Action",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Action1": {
+      "main": [
+        [
+          {
+            "node": "Get all event types",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event type": {
+      "main": [
+        [
+          {
+            "node": "Response Event Deleted?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formated Event": {
+      "main": [
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Update an event type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Event Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-29T21:36:02.298Z",
@@ -410,8 +663,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1120,
-        500
+        1140,
+        700
       ],
       "credentials": {
         "openAiApi": {
@@ -509,8 +762,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1380,
-        840
+        1480,
+        1340
       ],
       "credentials": {
         "calApi": {
@@ -577,8 +830,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1940,
-        840
+        1840,
+        1400
       ],
       "credentials": {
         "calApi": {
@@ -633,8 +886,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2140,
-        840
+        1960,
+        1420
       ],
       "credentials": {
         "calApi": {
@@ -682,8 +935,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1560,
-        840
+        1600,
+        1360
       ],
       "credentials": {
         "calApi": {
@@ -728,8 +981,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1740,
-        840
+        1720,
+        1380
       ],
       "credentials": {
         "calApi": {
@@ -763,8 +1016,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2340,
-        840
+        2080,
+        1440
       ],
       "credentials": {
         "calApi": {
@@ -791,9 +1044,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        1420,
-        280
+        1600,
+        800
       ],
+      "disabled": true,
       "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
     },
     {
@@ -801,8 +1055,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        940,
-        -440
+        -880,
+        -460
       ],
       "id": "d7deacb7-eeda-4827-9830-8edd918b29d5",
       "name": "When clicking ‘Test workflow’",
@@ -861,8 +1115,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1240,
-        -540
+        -580,
+        -560
       ],
       "id": "e8cf9d72-2b72-48bf-9a71-48c21b8c80bf",
       "name": "baseInfo"
@@ -959,7 +1213,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/bookings/{{ $('EWT').item.json.query.booking_id }}",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $('EWT').item.json.query.booking_id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -1001,7 +1255,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/bookings",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -1061,7 +1315,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/slots/available",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -1111,7 +1365,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/event-types",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -1119,11 +1373,15 @@
           "parameters": [
             {
               "name": "username",
-              "value": "={{ $json.username }}"
+              "value": "={{ $('EWT').item.json.query.username }}"
             },
             {
               "name": "eventSlug",
-              "value": "="
+              "value": "={{ $('EWT').item.json.query.eventSlug ?? '' }}"
+            },
+            {
+              "name": "usernames",
+              "value": "={{ $('EWT').item.json.query.usernames ?? '' }}"
             }
           ]
         },
@@ -1148,7 +1406,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        620,
+        -60,
         -1320
       ],
       "id": "6d0b272f-7240-41be-8555-cc29dc2ba0d3",
@@ -1196,15 +1454,16 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1160,
-        -1320
+        -40,
+        -440
       ],
       "id": "692a7e77-c33a-49e5-bfb9-62debb81f6e3",
-      "name": "Create an event type"
+      "name": "Create an event type",
+      "disabled": true
     },
     {
       "parameters": {
-        "url": "={{ $json.cal_api }}/v2/event-types/{{ $json.cal_event_id }}",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types/{{ $('EWT').item.json.query.event_id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -1212,7 +1471,7 @@
           "parameters": [
             {
               "name": "=cal-api-version",
-              "value": "={{ $json.cal_api_version_event }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
             }
           ]
         },
@@ -1228,8 +1487,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        800,
-        -1320
+        -60,
+        -900
       ],
       "id": "4980acd5-da74-46a4-8068-7240ce314930",
       "name": "Get an event type",
@@ -1247,7 +1506,7 @@
     {
       "parameters": {
         "method": "DELETE",
-        "url": "=https://api.cal.com/v2/event-types/{{ $json.cal_event_id }}2",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types/{{ $('EWT').item.json.query.event_id }}2",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -1255,7 +1514,7 @@
           "parameters": [
             {
               "name": "cal-api-version",
-              "value": "={{ $json.cal_api_version_event }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
             }
           ]
         },
@@ -1271,8 +1530,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        980,
-        -1320
+        860,
+        -920
       ],
       "id": "e80a35ff-40eb-4fa4-9b7c-c792c6c48e26",
       "name": "Delete an event type",
@@ -1281,8 +1540,7 @@
           "id": "Xk4lHr8zzqWTdh4Z",
           "name": "Cal.com Token"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1298,12 +1556,12 @@
       "type": "n8n-nodes-base.calTrigger",
       "typeVersion": 2,
       "position": [
-        940,
-        -900
+        480,
+        580
       ],
       "id": "5c94b813-8eb6-49e5-b274-510219f24411",
       "name": "Cal.com Trigger",
-      "webhookId": "6afc1780-4ed9-4593-b7f1-5eac93e473c4",
+      "webhookId": "dd7f33f6-eb9a-4a8b-8465-3b71d99cb853",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
@@ -1359,8 +1617,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1240,
-        280
+        940,
+        580
       ],
       "id": "2d84a3f5-8a27-4297-8fe3-e6c3627e83f4",
       "name": "baseInfo1"
@@ -1372,8 +1630,8 @@
       "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
       "typeVersion": 1.1,
       "position": [
-        1060,
-        280
+        760,
+        580
       ]
     },
     {
@@ -1381,8 +1639,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        940,
-        -620
+        -880,
+        -640
       ],
       "id": "2805ec75-e546-4940-99b9-4e673e56fe6f",
       "name": "EWT"
@@ -1462,8 +1720,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1560,
-        660
+        1600,
+        1180
       ],
       "id": "8e308e00-33d6-47cc-a189-17c72d181b14",
       "name": "Get Availability Tool"
@@ -1485,8 +1743,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1760,
-        280
+        2040,
+        640
       ],
       "id": "424c9bc5-dc9e-4270-be54-1050e8d946a0",
       "name": "Response"
@@ -1500,8 +1758,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        1300,
-        500
+        1460,
+        1020
       ],
       "id": "2f8b69cb-4bf9-4ddf-9b11-1ff0ddbb71b8",
       "name": "Redis Chat Memory",
@@ -1535,8 +1793,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1740,
-        660
+        1720,
+        1200
       ],
       "id": "c8ca4e43-f0fa-42ca-be49-a5786a209d26",
       "name": "Get Existing Appt Tool"
@@ -1821,8 +2079,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2340,
-        660
+        2080,
+        1260
       ],
       "id": "b36c23e2-af15-403a-bc28-fc1310b95c6c",
       "name": "Find Existing Appt Tool"
@@ -1873,8 +2131,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2140,
-        660
+        1960,
+        1240
       ],
       "id": "1c0840e1-9467-442d-80ef-0f1a4ca0cf77",
       "name": "Cancel Appt Tool"
@@ -1959,8 +2217,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1380,
-        660
+        1480,
+        1160
       ],
       "id": "8e3dcf5f-e24d-48a5-9bc4-a5f6e1f61d99",
       "name": "Schedule Appt Tool"
@@ -1968,7 +2226,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.cal.com/v2/bookings",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "calApi",
         "sendHeaders": true,
@@ -2247,8 +2505,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1940,
-        660
+        1840,
+        1220
       ],
       "id": "9e98be2e-691b-4978-ba4b-0866aa2cf51d",
       "name": "Reschedule Appt Tool"
@@ -2375,8 +2633,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1120,
-        680
+        1320,
+        1040
       ],
       "id": "728a02ef-a00d-47d5-87cc-f1f096900571",
       "name": "Groq Chat Model",
@@ -2386,6 +2644,709 @@
           "name": "william"
         }
       }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "list events",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "list events"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "062dd5e0-6ee4-4821-98cb-19d42af6462b",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "find event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "find event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "70cc9317-4c14-4c7d-bc25-18e620bf044b",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "delete event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "delete event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fe441c52-a8ad-416f-9001-113e88048132",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "update event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "update event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "80aff94c-0b8b-41bc-8593-5531774ff819",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "create event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "create event"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -360,
+        -940
+      ],
+      "id": "ff810925-612d-4310-be91-65b2812025d7",
+      "name": "Switch Action1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Chat').item.json.sessionId }}_adm",
+        "sessionTTL": 60
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        1280,
+        600
+      ],
+      "id": "6a9fa248-6a1e-40f7-b29c-3aa195ad6fdf",
+      "name": "Redis Chat Memory 2",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "list_events_tool",
+        "description": "=Call this tool to get an existing event.\n\n## To detail an existing event\n* Ask the user for their username or event_slug of the existing event\n* Use the user's username or event_slug to search for the existing event.\n* If the user's username or event_slug do not match the results or no results are returned, then the existing event is not found.\n* If the existing event is not found, notify the user.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "czYf0DoNjwOMFK8Q"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "list events"
+            },
+            {
+              "name": "access",
+              "stringValue": "adm"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"username\": \"The username of the user to get event types for. If only username provided will get all event types.\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1420,
+        640
+      ],
+      "id": "0bc57f3c-42ae-44d4-ab77-b64862bfda92",
+      "name": "List Events Tool"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Chat').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are an manager events helper of software cal.com.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach date should have a start and end date and time relative to today's date in the future.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n# username is not an email and event_id is numeric.\n\n## Regras\nevent_id deve ser sempre númerico.\n\n## Output\n\nAlways answer in *pt-br*."
+        }
+      },
+      "id": "8026c254-d510-45a7-a974-200721e1f5ed",
+      "name": "Events Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1400,
+        420
+      ],
+      "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        120,
+        -1320
+      ],
+      "id": "7facfa7e-c88b-4a7f-b501-b3ac47ae76ce",
+      "name": "found events?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b8494e9a-efe6-499a-bcd2-2cda90083758",
+              "name": "response",
+              "value": "={{ $json.data.map(item => i = {\n    id: item.id, \n    ownerId: item.ownerId, \n    lengthInMinutes: item.lengthInMinutes, \n    title: item.title, \n    slug: item.slug, \n    user: item.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n  })\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        -1420
+      ],
+      "id": "dc90968c-3278-48f8-b527-0be2e3b6cc66",
+      "name": "Format Events"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "events not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        -1220
+      ],
+      "id": "87955921-c68c-40eb-b57e-b62a705aa440",
+      "name": "Response Events Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.data.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        120,
+        -900
+      ],
+      "id": "1b7c4350-6af3-4a73-8373-620a4ad091a0",
+      "name": "found event?"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "aee40e66-debf-4d99-b02e-4bb1b97e92eb",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "update event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "update event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bb06766f-56b8-4de5-a92b-050ea094b118",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "delete event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "delete event"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        460,
+        -920
+      ],
+      "id": "97fc1a16-67a3-4aae-909f-72719209d860",
+      "name": "Switch Action "
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ {\n    id: $json.data.id, \n    ownerId: $json.data.ownerId, \n    lengthInMinutes: $json.data.lengthInMinutes, \n    title: $json.data.title, \n    slug: $json.data.slug, \n    user: $json.data.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n} }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        680,
+        -800
+      ],
+      "id": "edd2b8ac-73c5-4f9e-9d2c-e54599f22b68",
+      "name": "Response A Event"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "event not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        320,
+        -760
+      ],
+      "id": "7ffe543a-c294-43ed-85f9-6553be6ee79c",
+      "name": "Response Event Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8b446453-364f-49ee-868e-20479e29d72f",
+              "leftValue": "={{ $('EWT').item.json.access }}",
+              "rightValue": "admin",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "c6f2f729-4a9e-4baa-bb00-8b8c51e0914c",
+              "leftValue": "={{ $('EWT').item.json.access }}",
+              "rightValue": "adm",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -360,
+        -560
+      ],
+      "id": "7e2e8b1e-08b4-4736-a1ad-93c1430f12df",
+      "name": "type access"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ $json.status == 'success' ? 'event deleted' : 'event not deleted, an error was found' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1060,
+        -920
+      ],
+      "id": "ea5decae-ff18-475a-a965-5f32d14dd2c5",
+      "name": "Response Event Deleted?"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types/{{ $('EWT').item.json.query.event_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer cal_live_65564eb4fa300eef9f8a38f7586704ba"
+            },
+            {
+              "name": "cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.response }}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1300,
+        -1420
+      ],
+      "id": "9bbd54fa-4de2-4dec-a669-3f2554249cd3",
+      "name": "Update an event type"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query.prompt }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Mantenha a estrutura do json, só altere o que for pedido, o restante não mexa em nada.\n\n<fields_enabled_to_edit>\ntitle; slug; description; disableGuests; slotInterval; minimumBookingNotice; beforeEventBuffer; afterEventBuffer; requiresBookerEmailVerification; hideCalendarNotes; lockTimeZoneToggleOnBookingPage; customName\n</fields_enabled_to_edit>\n\n<about>\n# customName <string>\nCustomizable event name with valid variables:\n{Event type title}, {Organiser}, {Scheduler}, {Location}, {Organiser first name},\n{Scheduler first name}, {Scheduler last name}, {Event duration}, {LOCATION},\n{HOST/ATTENDEE}, {HOST}, {ATTENDEE}, {USER}\n</about>\n\n<current_json>\n{{ $json.data.toJsonString() }}\n</current_json>\n\nRetorne um json dos campos que foram alterados mantendo a estrutura inicial, nada alem disso."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        740,
+        -1420
+      ],
+      "id": "6d6620c2-859e-4af6-9878-591aaf44c598",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -1100
+      ],
+      "id": "f4d80aaa-bc5e-4c7b-b244-691a089cae5f",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -1240
+      ],
+      "id": "9e438477-1b27-4be0-a007-494f557cd068",
+      "name": "Groq Chat Model1",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06fe7630-bf9b-4fd7-9826-2f91b3a0e607",
+              "name": "response",
+              "value": "={{ $json.output.text }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1100,
+        -1600
+      ],
+      "id": "7d232802-6940-412d-8e59-fe6b3ab9b6f0",
+      "name": "Formated Event",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nconst jsonObject = JSON.parse($input.item.json.output.text);\n\n// Array com os campos que você deseja retornar\nconst camposDesejados = ['title', 'description'];\n\n// Função para retornar somente os campos desejados\nconst filtrarCampos = (obj, campos) => {\n  return Object.keys(obj)\n    .filter(key => campos.includes(key))\n    .reduce((result, key) => {\n      result[key] = obj[key];\n      return result;\n    }, {});\n};\n\nconst resultado = filtrarCampos(jsonObject, camposDesejados);\nconsole.log(resultado);\n\nreturn { response: resultado };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        -1420
+      ],
+      "id": "f6c7991b-35f0-4a34-be72-ee71d9c79278",
+      "name": "Code",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"text\": \"output format json\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        -1240
+      ],
+      "id": "cd4769e8-8f3a-4c9f-af3c-be093756109d",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "name": "update_event_tool",
+        "description": "=Chame esta ferramenta para atualizar um evento existente usando um ID de evento.\n\nSe não souber o ID do Evento (número), pergunte ao usuário, só assim, poderá continuar com a atualização.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "czYf0DoNjwOMFK8Q"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "update event"
+            },
+            {
+              "name": "access",
+              "stringValue": "adm"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('Chat').item.json.chatInput }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"id numérico do evento\"\n    },\n    \"prompt\": {\n      \"type\": \"string\",\n      \"description\": \"comandos a serem executados\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"prompt\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1560,
+        640
+      ],
+      "id": "d25823f6-679e-4472-b7c9-ddb59bfee34b",
+      "name": "Update Event Tool"
     }
   ],
   "pinData": {
@@ -2492,6 +3453,18 @@
           "cancelledBy": "williamkillerca@gmail.com"
         }
       }
+    ],
+    "EWT": [
+      {
+        "json": {
+          "query": {
+            "event_id": "1195763",
+            "prompt": "altere a duração de cada evento para 60 min."
+          },
+          "action": "update event",
+          "access": "adm"
+        }
+      }
     ]
   },
   "settings": {
@@ -2519,6 +3492,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-12T02:50:54.874Z",
-  "versionId": "777d833d-492f-4070-baa2-1a74c1018646"
+  "updatedAt": "2024-11-12T15:43:47.200Z",
+  "versionId": "6482aa82-d629-4176-a1ae-74c60bc78984"
 }
