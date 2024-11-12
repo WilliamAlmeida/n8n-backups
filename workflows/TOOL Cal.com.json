@@ -1,32 +1,6 @@
 {
   "active": false,
   "connections": {
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Appt": {
-      "ai_tool": [
-        []
-      ]
-    },
-    "Reschedule Appt": {
-      "ai_tool": [
-        []
-      ]
-    },
-    "Cancel Appt": {
-      "ai_tool": [
-        []
-      ]
-    },
     "When clicking ‘Test workflow’": {
       "main": [
         [
@@ -343,14 +317,54 @@
       "main": [
         [
           {
-            "node": "booking canceled?1",
+            "node": "booking canceled? 2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "booking canceled?1": {
+    "Reschedule Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reschedule a booking": {
+      "main": [
+        [
+          {
+            "node": "booking rescheduled?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "booking rescheduled?": {
+      "main": [
+        [
+          {
+            "node": "Response3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Reschedule Booking Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "booking canceled? 2": {
       "main": [
         [
           {
@@ -363,6 +377,17 @@
           {
             "node": "Response Cancel Booking Error",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -385,8 +410,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1160,
-        480
+        1120,
+        500
       ],
       "credentials": {
         "openAiApi": {
@@ -497,14 +522,36 @@
     },
     {
       "parameters": {
-        "toolDescription": "Call this tool to reschedule a user's appointment using a booking id.",
-        "method": "PATCH",
-        "url": "https://api.cal.com/v1/bookings/{booking_id}",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "calApi",
+        "toolDescription": "=Call this tool to reschedule a user's appointment using a booking id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
+        "method": "POST",
+        "url": "https://api.cal.com/v2/bookings/{booking_id}/reschedule",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "cal-api-version",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo1').item.json.cal_api_version_booking }}"
+            }
+          ]
+        },
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "{\n  \"startTime\": \"{start}\",\n  \"endTime\": \"{end}\"\n}",
+        "parametersBody": {
+          "values": [
+            {
+              "name": "start",
+              "valueProvider": "fieldValue",
+              "value": "{start}"
+            },
+            {
+              "name": "reschedulingReason",
+              "valueProvider": "fieldValue",
+              "value": "{reschedulingReason}"
+            }
+          ]
+        },
         "placeholderDefinitions": {
           "values": [
             {
@@ -518,8 +565,8 @@
               "type": "string"
             },
             {
-              "name": "end",
-              "description": "end datetime of the appointment, for example: \"2024-05-30T12:30:00.000Z\"",
+              "name": "reschedulingReason",
+              "description": "rescheduling reason",
               "type": "string"
             }
           ]
@@ -530,13 +577,17 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1880,
-        660
+        1940,
+        840
       ],
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
           "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
         }
       },
       "disabled": true
@@ -582,7 +633,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2060,
+        2140,
         840
       ],
       "credentials": {
@@ -631,7 +682,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1540,
+        1560,
         840
       ],
       "credentials": {
@@ -677,7 +728,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        1720,
+        1740,
         840
       ],
       "credentials": {
@@ -712,7 +763,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2240,
+        2340,
         840
       ],
       "credentials": {
@@ -729,26 +780,10 @@
     },
     {
       "parameters": {
-        "content": "### 🚨 Change EventTypeID Here!\n* EventTypeID must be a number.\n* Your event type dictates the allowed duration of the booking.\n* If Event Type set to 30mins and the agent attempts to book 60mins, this will fail so make sure the agent knows how long to set the booking for!",
-        "height": 168,
-        "width": 415
-      },
-      "id": "9d5a4125-f8fa-4f92-8d01-bd6155acc7da",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        720,
-        660
-      ]
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $('Chat').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n## Output\n\nAlways answer in *pt-br*.",
-          "maxIterations": 5
+          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n## Output\n\nAlways answer in *pt-br*."
         }
       },
       "id": "aa638579-b587-424d-8195-3fbda86a41a1",
@@ -758,7 +793,8 @@
       "position": [
         1420,
         280
-      ]
+      ],
+      "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
     },
     {
       "parameters": {},
@@ -885,11 +921,11 @@
           "parameters": [
             {
               "name": "start",
-              "value": "={{ $now.plus(2, 'days').minus(7, 'hours').minus(3, 'hours').toUTC() }}"
+              "value": "={{ $('EWT').item.json.query.start }}"
             },
             {
               "name": "reschedulingReason",
-              "value": "User requested reschedule 1"
+              "value": "={{ $('EWT').item.json.query.reschedulingReason ?? '' }}"
             }
           ]
         },
@@ -1262,34 +1298,18 @@
       "type": "n8n-nodes-base.calTrigger",
       "typeVersion": 2,
       "position": [
-        1180,
-        -160
+        940,
+        -900
       ],
       "id": "5c94b813-8eb6-49e5-b274-510219f24411",
       "name": "Cal.com Trigger",
-      "webhookId": "246cf99b-bd39-47f6-ac9c-285dcbae2228",
+      "webhookId": "6afc1780-4ed9-4593-b7f1-5eac93e473c4",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
           "name": "william"
         }
       },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "options": {
-          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
-        }
-      },
-      "id": "4c3aaead-1a94-4d29-b478-a82504d99eb0",
-      "name": "Appointment Scheduling Agent1",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1960,
-        280
-      ],
       "disabled": true
     },
     {
@@ -1404,7 +1424,7 @@
       "typeVersion": 4.2,
       "position": [
         2620,
-        -740
+        -820
       ],
       "id": "f5659648-d2ef-4f96-8067-8939ed90022d",
       "name": "Cancel a booking",
@@ -1437,12 +1457,12 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"startTime\": \"data e hora do início da consulta\",\n\t\"endTime\": \"data e hora de término, se especificado, limitado a no máximo 4 dias após o 'startTime'. Se 'endTime' não for informado, o valor padrão será 24 horas após o 'startTime'.\"\n}\n"
+        "jsonSchemaExample": "{\n\t\"startTime\": \"date and time of the start of the booking\",\n\t\"endTime\": \"end date and time, if specified, limited to a maximum of 4 days after 'startTime'. If 'endTime' is not given, the default value is 24 hours after 'startTime'.\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1540,
+        1560,
         660
       ],
       "id": "8e308e00-33d6-47cc-a189-17c72d181b14",
@@ -1480,8 +1500,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        1340,
-        480
+        1300,
+        500
       ],
       "id": "2f8b69cb-4bf9-4ddf-9b11-1ff0ddbb71b8",
       "name": "Redis Chat Memory",
@@ -1515,7 +1535,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1720,
+        1740,
         660
       ],
       "id": "c8ca4e43-f0fa-42ca-be49-a5786a209d26",
@@ -1801,7 +1821,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2240,
+        2340,
         660
       ],
       "id": "b36c23e2-af15-403a-bc28-fc1310b95c6c",
@@ -1853,7 +1873,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2060,
+        2140,
         660
       ],
       "id": "1c0840e1-9467-442d-80ef-0f1a4ca0cf77",
@@ -1888,7 +1908,7 @@
       "typeVersion": 2.2,
       "position": [
         2400,
-        -820
+        -900
       ],
       "id": "059156b5-bf0b-4eb3-9ebc-1d44c5b64b21",
       "name": "booking canceled?"
@@ -1911,7 +1931,7 @@
       "typeVersion": 3.4,
       "position": [
         2620,
-        -920
+        -1000
       ],
       "id": "733a1176-1f78-4d9c-8c40-e3edc320958f",
       "name": "Response1"
@@ -1934,7 +1954,7 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"start\": \"data e hora do início da consulta\",\n  \"title\": \"name of the user and a short summary of appointment\",\n  \"description\": \"bullet list of session Id, full name, email and summary of appointment\",\n  \"metadata\": \"Use template: { \\\"session_id\\\": \\\"\\\", \\\"booked_by\\\": \\\"n8n workflow\\\" }\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\"\n  }\n}"
+        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"name of the user and a short summary of appointment\",\n  \"description\": \"bullet list of session Id, full name, email and summary of appointment\",\n  \"metadata\": \"Use template: { \\\"session_id\\\": \\\"\\\", \\\"booked_by\\\": \\\"n8n workflow\\\" }\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\"\n  }\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -2176,10 +2196,142 @@
       "typeVersion": 3.4,
       "position": [
         3060,
-        -820
+        -900
       ],
       "id": "a66e3f55-2307-4ac9-af62-9acb01f9ecf7",
       "name": "Response2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "error on cancel booking",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3060,
+        -740
+      ],
+      "id": "32161e52-51cb-4fda-8624-60c78a9bb48b",
+      "name": "Response Cancel Booking Error"
+    },
+    {
+      "parameters": {
+        "name": "reschedule_appt_tool",
+        "description": "=Call this tool to reschedule a user's appointment using a booking id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "czYf0DoNjwOMFK8Q"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "reschedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"booking_id\": \"the id of the booking\",\n\t\"start\": \"date and time of the start of the booking\",\n\t\"reschedulingReason\": \"rescheduling reason\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1940,
+        660
+      ],
+      "id": "9e98be2e-691b-4978-ba4b-0866aa2cf51d",
+      "name": "Reschedule Appt Tool"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "booking was rescheduled",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2840,
+        -600
+      ],
+      "id": "929ac787-05ce-46c9-b217-ceb9f835c81a",
+      "name": "Response3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bed3d75f-289b-401a-a2c1-534dcd8fae94",
+              "leftValue": "={{ $json.data.rescheduledFromUid }}",
+              "rightValue": "cancelled",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2620,
+        -520
+      ],
+      "id": "ecf800c2-3119-435e-8108-124c901cc473",
+      "name": "booking rescheduled?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "error on reschedule booking",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2840,
+        -440
+      ],
+      "id": "2219513d-959e-408c-9348-53eda529b10d",
+      "name": "Response Reschedule Booking Error"
     },
     {
       "parameters": {
@@ -2210,33 +2362,30 @@
       "typeVersion": 2.2,
       "position": [
         2840,
-        -740
+        -820
       ],
       "id": "549ac262-a1b2-48f8-9468-ae6dc3951005",
-      "name": "booking canceled?1"
+      "name": "booking canceled? 2"
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
-              "name": "response",
-              "value": "error on cancel booking",
-              "type": "string"
-            }
-          ]
-        },
+        "model": "llama-3.2-90b-text-preview",
         "options": {}
       },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
       "position": [
-        3060,
-        -660
+        1120,
+        680
       ],
-      "id": "32161e52-51cb-4fda-8624-60c78a9bb48b",
-      "name": "Response Cancel Booking Error"
+      "id": "728a02ef-a00d-47d5-87cc-f1f096900571",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2343,54 +2492,6 @@
           "cancelledBy": "williamkillerca@gmail.com"
         }
       }
-    ],
-    "Cancel a booking": [
-      {
-        "json": {
-          "status": "success",
-          "data": {
-            "id": 4310579,
-            "uid": "fgLWQGwTVkzzeF68u4ktPL",
-            "title": "Mentoria N8N entre William e William",
-            "description": "Gostaria de falar sobre RAG com n8n, estou com um problema sério, ele as vezes traz certo, mas nem sempre.",
-            "hosts": [
-              {
-                "id": 978403,
-                "name": "William Almeida",
-                "timeZone": "America/Sao_Paulo"
-              }
-            ],
-            "status": "cancelled",
-            "cancellationReason": "teste",
-            "start": "2024-11-11T21:00:00.000Z",
-            "end": "2024-11-11T22:00:00.000Z",
-            "duration": 60,
-            "eventTypeId": 1195762,
-            "eventType": {
-              "id": 1195762,
-              "slug": "mentoriatotal60"
-            },
-            "meetingUrl": "integrations:daily",
-            "location": "integrations:daily",
-            "absentHost": false,
-            "attendees": [
-              {
-                "name": "William Almeida",
-                "timeZone": "America/Sao_Paulo",
-                "language": "pt-BR",
-                "absent": false
-              }
-            ],
-            "guests": [],
-            "bookingFieldsResponses": {
-              "email": "williamkillerca@gmail.com",
-              "name": "William Almeida",
-              "guests": [],
-              "notes": "Gostaria de falar sobre RAG com n8n, estou com um problema sério, ele as vezes traz certo, mas nem sempre."
-            }
-          }
-        }
-      }
     ]
   },
   "settings": {
@@ -2418,6 +2519,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-11T19:47:21.887Z",
-  "versionId": "13e014c0-4216-4700-a2cf-a9ea7e8eccab"
+  "updatedAt": "2024-11-12T02:50:54.874Z",
+  "versionId": "777d833d-492f-4070-baa2-1a74c1018646"
 }
