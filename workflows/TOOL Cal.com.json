@@ -805,7 +805,7 @@
         "promptType": "define",
         "text": "={{ $('Chat').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper for clinic named MED Center.\n\n## About MED Center\nOur website is wmst.com.br.\nInformações Adicionais: {{ $json.data.toJsonString() }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is {{ $('baseInfo1').item.json.cellphone }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
+          "systemMessage": "=You are an appointment scheduling helper for clinic named MED Center.\n\n## About MED Center\nOur website is wmst.com.br.\nAdditional Information: {{ $json.data.toJsonString() }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is {{ $('baseInfo1').item.json.cellphone }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
         }
       },
       "id": "aa638579-b587-424d-8195-3fbda86a41a1",
@@ -1150,7 +1150,7 @@
             {
               "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
               "name": "cal_event_id",
-              "value": "1195761",
+              "value": "",
               "type": "string"
             },
             {
@@ -2180,7 +2180,7 @@
         "value": "={{ $json.data.toJsonString() }}",
         "keyType": "string",
         "expire": true,
-        "ttl": 30
+        "ttl": 120
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -2345,6 +2345,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-14T00:49:50.614Z",
-  "versionId": "cf885f3a-405d-4a22-b62e-048095d90f04"
+  "updatedAt": "2024-11-14T14:12:14.301Z",
+  "versionId": "aad621f2-c7c4-4d28-b879-b94aedaa802a"
 }
