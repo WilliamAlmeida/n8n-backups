@@ -476,7 +476,7 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "temperature": 0.7,
+          "temperature": 0.1,
           "topP": 1
         }
       },
@@ -485,7 +485,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        -780,
+        -800,
         -100
       ],
       "credentials": {
@@ -597,8 +597,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        80,
-        -840
+        180,
+        -800
       ],
       "id": "c6fb71ff-9475-46a9-8c86-9393a6372d77",
       "name": "Get all event types",
@@ -779,7 +779,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1260,
+        -1240,
         -340
       ],
       "id": "c489ed02-95c3-42f8-9262-8e5ad80a3484",
@@ -792,7 +792,7 @@
       "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1440,
+        -1420,
         -340
       ]
     },
@@ -824,7 +824,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -120,
+        -180,
         -340
       ],
       "id": "025c66d4-a3b7-4d9b-8f11-592a887648a8",
@@ -853,7 +853,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -440,
+        -460,
         -100
       ],
       "id": "44d22de9-ea6e-4116-9500-f0f61022f792",
@@ -864,7 +864,8 @@
         "promptType": "define",
         "text": "={{ $('Chat').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=Você é um assistente útil que ajudará o usuário a gerenciar a criação, edição e exclusão de eventos (calendários) na plataforma chamada \"cal.com\".\n\nA data e a hora agora são {{ $now.toISO() }}. Todas as datas devem ser fornecidas no formato ISO.\n\nCada data deve ter uma data e hora de início e término em relação à data de hoje no futuro.\n\n## Sobre o usuário\nO ID da sessão do usuário é {{ $('Chat').item.json.sessionId }}, o e-mail é williamkillerca@gmail.com, o celular é +5512982184879 e {{ $('Format Data Temp').item.json.data_temp.hasField('username') ? `username é ${$('Format Data Temp').item.json.data_temp.username}.` : 'username não foi informado' }}.\n\n## Validações de Entrada\n* username não deve ser um e-mail (por exemplo: não pode ser william@gmail.com)\n* event_id deve ser um número, não pode conter letras ou outros caracteres\n\n## Procedimentos\n{{ $('Format Data Temp').item.json.data_temp.hasField('username') ? '' : `# Primeiro, peça o \"username\" para continuar.\n* Após o usuário informar o username, valide-o usando *list_events_tool*.\n* Se o username for válido (sem erro), salve-o imediatamente usando *save_data_temp_tool*.\n* Caso o username seja inválido, solicite um novo.` }}\n\n## Ações a Executar\n- Sempre que o usuário informar o \"username\", valide-o e *salve* usando *save_data_temp_tool*.\n- Se o \"username\" já estiver salvo, continue com as ações solicitadas.\n\n## Data Temp\n{{ $('Format Data Temp').item.json.data_temp.toJsonString() }}\n\n## Saída\nSempre responda em *pt-BR* e de forma humanizada.\n"
+          "systemMessage": "=You are a helpful assistant who will help the user manage the creation, editing, and deletion of events (calendars) on the platform called \"cal.com\".\n\nThe date and time are now {{ $now.toISO() }}. All dates should be provided in ISO format.\n\nEach date should have a start and end date and time relative to today's date in the future.\n\n## About the user\nThe user's session ID is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com, mobile is +5512982184879, and {{ $('Format Data Temp').item.json.data_temp.hasField('username') ? `username is ${$('Format Data Temp').item.json.data_temp.username}.` : 'username was not provided' }}.\n\n## Notes\n* username don't have format email\n* event_id is a number, does not contain letters or other characters\n\n{{ $('Format Data Temp').item.json.data_temp.hasField('username') ? '' : `# First, ask the user for the username to continue\n* After being informed, validate by checking if it is valid using *list_events_tool*\n* If it does not return an error, save the username using *save_data_temp_tool*\n* If it does error, inform the user and request a new one` }}\n\n## Data Temp\n{{ $('Format Data Temp').item.json.data_temp.toJsonString() }}\n\n## Output\n\nAlways respond in *pt-BR* and in a humanized way",
+          "returnIntermediateSteps": true
         }
       },
       "id": "c95a7590-0bc7-49d6-92fa-2cc391dbd63f",
@@ -872,7 +873,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -460,
+        -520,
         -340
       ],
       "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
@@ -1000,7 +1001,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -280,
+        -300,
         -100
       ],
       "id": "07062720-a685-4272-8251-fa79bad45415",
@@ -1010,13 +1011,13 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('Chat').item.json.sessionId }}_adm",
-        "sessionTTL": 60,
+        "sessionTTL": 300,
         "contextWindowLength": 10
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        -660,
+        -680,
         -80
       ],
       "id": "48d47e6b-8236-4ec2-bc53-39213da301ec",
@@ -1026,8 +1027,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1312,7 +1312,7 @@
             {
               "id": "b8494e9a-efe6-499a-bcd2-2cda90083758",
               "name": "response",
-              "value": "={{ $json.data ? $json.data.map(item => i = {\n    id: item.id, \n    ownerId: item.ownerId, \n    lengthInMinutes: item.lengthInMinutes, \n    title: item.title, \n    description: '', \n    slug: item.slug, \n    user: item.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n  }) : 'events not found' }}",
+              "value": "={{ $json.status == 'error' ? 'error to find events' : 'list of events: ' }}{{ JSON.stringify($json.data.map(item => ({\n    id: item.id,\n    ownerId: item.ownerId,\n    lengthInMinutes: item.lengthInMinutes,\n    title: item.title,\n    description: '',\n    slug: item.slug,\n    user: item.users.map(user => ({\n      id: user.id,\n      name: user.name,\n      username: user.username\n    }))\n}))) }}",
               "type": "string"
             }
           ]
@@ -1322,8 +1322,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        280,
-        -840
+        380,
+        -800
       ],
       "id": "60e31183-59e1-4f16-817c-37f37a346236",
       "name": "Response Events"
@@ -1381,7 +1381,7 @@
             {
               "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
               "name": "response",
-              "value": "={{ {\n    id: $json.data.id, \n    ownerId: $json.data.ownerId, \n    lengthInMinutes: $json.data.lengthInMinutes, \n    title: $json.data.title, \n    slug: $json.data.slug, \n    user: $json.data.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n} }}",
+              "value": "={{ $json.status == 'error' ? 'error to find event' : 'details of event: ' }}{{ JSON.stringify({\n    id: $json.data.id, \n    ownerId: $json.data.ownerId, \n    lengthInMinutes: $json.data.lengthInMinutes, \n    title: $json.data.title, \n    slug: $json.data.slug, \n    user: $json.data.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n}) }}",
               "type": "string"
             }
           ]
@@ -1468,7 +1468,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -440,
+        -460,
         40
       ],
       "id": "c530290d-bca6-4ea7-87b9-de256b73041b",
@@ -1746,7 +1746,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -280,
+        -300,
         40
       ],
       "id": "f824e7d3-1bd8-4476-85a9-375e2eb11f0e",
@@ -1765,7 +1765,7 @@
       "typeVersion": 1,
       "position": [
         -120,
-        -100
+        -120
       ],
       "id": "c166e375-ac61-406f-a77f-79e5539f1ead",
       "name": "save_data_temp_tool",
@@ -1786,7 +1786,7 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        -120,
+        -140,
         40
       ],
       "id": "9cbaf69b-5c7d-4b2b-b77d-374cd08bf383",
@@ -1816,28 +1816,19 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     }
   ],
   "pinData": {
-    "Chat": [
+    "EWT": [
       {
         "json": {
-          "sessionId": "test-fd3765db-9980-4841-8ea8-be5a8563836b",
-          "action": "sendMessage",
-          "chatInput": "liste só o nome e id dos meus calendários, meu username é williamalmeida"
-        }
-      }
-    ],
-    "baseInfo1": [
-      {
-        "json": {
-          "cal_api": "https://api.cal.com",
-          "username": "williamalmeida",
-          "cal_event_id": "1195762",
-          "cal_api_version_booking": "2024-08-13",
-          "cal_api_version_event": "2024-06-14",
-          "utc": "3"
+          "query": {
+            "event_id": 1195761
+          },
+          "action": "update event",
+          "prompt": "mude as informações da mentoria de 30 min, para que seja focada em mentoria voltado a ferramenta n8n, estarei tirando duvidas e auxiliando na criação de novos fluxos e automações."
         }
       }
     ]
@@ -1867,6 +1858,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-13T15:45:36.625Z",
-  "versionId": "a91ec662-a61d-4af4-827c-cc193271623b"
+  "updatedAt": "2024-11-14T00:50:20.838Z",
+  "versionId": "7af0de0b-406d-4005-aad3-918bd991ce56"
 }
