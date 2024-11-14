@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Adjust DateTime",
+            "node": "Adjust DateTime 1",
             "type": "main",
             "index": 0
           }
@@ -56,7 +56,7 @@
       "main": [
         [
           {
-            "node": "Appointment Scheduling Agent",
+            "node": "Get Procedures",
             "type": "main",
             "index": 0
           }
@@ -215,7 +215,7 @@
       "main": [
         [
           {
-            "node": "Response All Bookings",
+            "node": "Adjust DateTime 2",
             "type": "main",
             "index": 0
           }
@@ -255,17 +255,6 @@
         ]
       ]
     },
-    "Adjust DateTime": {
-      "main": [
-        [
-          {
-            "node": "Format Slots",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Cancel a booking": {
       "main": [
         [
@@ -299,17 +288,6 @@
         ]
       ]
     },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "booking cancelled?": {
       "main": [
         [
@@ -322,6 +300,134 @@
         [
           {
             "node": "Cancel a booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adjust DateTime 1": {
+      "main": [
+        [
+          {
+            "node": "Format Slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adjust DateTime 2": {
+      "main": [
+        [
+          {
+            "node": "Response All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Format Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "List Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Procedures": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Procedures": {
+      "main": [
+        [
+          {
+            "node": "Set Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Procedures": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Procedures": {
+      "main": [
+        [
+          {
+            "node": "Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Procedures": {
+      "main": [
+        [
+          {
+            "node": "Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procedures": {
+      "main": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
             "type": "main",
             "index": 0
           }
@@ -699,7 +805,7 @@
         "promptType": "define",
         "text": "={{ $('Chat').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n## Output\n\nAlways answer in *pt-br*."
+          "systemMessage": "=You are an appointment scheduling helper for clinic named MED Center.\n\n## About MED Center\nOur website is wmst.com.br.\nInformações Adicionais: {{ $json.data.toJsonString() }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is {{ $('baseInfo1').item.json.cellphone }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
         }
       },
       "id": "aa638579-b587-424d-8195-3fbda86a41a1",
@@ -707,8 +813,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        1400,
-        -160
+        1480,
+        380
       ],
       "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
     },
@@ -731,7 +837,7 @@
             {
               "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
               "name": "cal_event_id",
-              "value": "1195762",
+              "value": "1195761",
               "type": "string"
             },
             {
@@ -912,16 +1018,28 @@
         "queryParameters": {
           "parameters": [
             {
-              "name": "eventTypeId",
+              "name": "eventTypeIds",
               "value": "={{ $json.cal_event_id }}"
             },
             {
               "name": "status",
-              "value": "={{ ['upcoming','recurring','past','unconfirmed','cancelled'].join(',') }}"
+              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['upcoming','recurring','past','unconfirmed','cancelled'].join(',') : ['upcoming','recurring','past','unconfirmed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
             },
             {
               "name": "attendeeEmail",
               "value": "={{ $('EWT').item.json.query.attendeeEmail ?? '' }}"
+            },
+            {
+              "name": "take",
+              "value": "5"
+            },
+            {
+              "name": "sortCreated",
+              "value": "desc"
+            },
+            {
+              "name": "afterStart",
+              "value": "={{ $now.minus(2, 'days').toUTC()}}"
             }
           ]
         },
@@ -973,7 +1091,7 @@
           "parameters": [
             {
               "name": "eventTypeId",
-              "value": "={{ $json.cal_event_id }}"
+              "value": "={{ $('EWT').item.json.query.event_id }}"
             },
             {
               "name": "startTime",
@@ -1032,7 +1150,7 @@
             {
               "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
               "name": "cal_event_id",
-              "value": "1195762",
+              "value": "1195761",
               "type": "string"
             },
             {
@@ -1052,6 +1170,18 @@
               "name": "utc",
               "value": "3",
               "type": "string"
+            },
+            {
+              "id": "ace483d7-feff-4fac-aa50-63eea9662d07",
+              "name": "instance_name",
+              "value": "ibox_cli_23",
+              "type": "string"
+            },
+            {
+              "id": "1f8dcc11-357a-44ea-8ce0-a3c9b52ff6fd",
+              "name": "cellphone",
+              "value": "+5512982184879",
+              "type": "string"
             }
           ]
         },
@@ -1060,8 +1190,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1220,
-        -160
+        40,
+        300
       ],
       "id": "2d84a3f5-8a27-4297-8fe3-e6c3627e83f4",
       "name": "baseInfo1"
@@ -1073,8 +1203,8 @@
       "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
       "typeVersion": 1.1,
       "position": [
-        1040,
-        -160
+        -140,
+        300
       ]
     },
     {
@@ -1143,7 +1273,7 @@
     {
       "parameters": {
         "name": "get_availability_tool",
-        "description": "Call this tool to get the appointment availability.",
+        "description": "Call this tool to get the appointment availability using event id.",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1158,13 +1288,13 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"startTime\": \"date and time of the start of the booking\",\n\t\"endTime\": \"end date and time, if specified, limited to a maximum of 4 days after 'startTime'. If 'endTime' is not given, the default value is 24 hours after 'startTime'.\"\n}\n"
+        "jsonSchemaExample": "{\n  \"startTime\": \"date and time of the start of the booking\",\n  \"endTime\": \"end date and time, if specified, limited to a maximum of 4 days after 'startTime'. If 'endTime' is not given, the default value is 24 hours after 'startTime'.\",\n  \"event_id\": \"event id, event identification number\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1560,
-        100
+        1900,
+        640
       ],
       "id": "8e308e00-33d6-47cc-a189-17c72d181b14",
       "name": "Get Availability Tool"
@@ -1186,8 +1316,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1740,
-        -160
+        1820,
+        380
       ],
       "id": "424c9bc5-dc9e-4270-be54-1050e8d946a0",
       "name": "Response"
@@ -1201,8 +1331,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        1220,
-        100
+        1560,
+        640
       ],
       "id": "2f8b69cb-4bf9-4ddf-9b11-1ff0ddbb71b8",
       "name": "Redis Chat Memory",
@@ -1211,7 +1341,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1231,13 +1362,13 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"booking_id\": \"the id of the booking\"\n}\n"
+        "jsonSchemaExample": "{\n  \"booking_id\": \"the id of the booking\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1740,
-        100
+        2080,
+        640
       ],
       "id": "c8ca4e43-f0fa-42ca-be49-a5786a209d26",
       "name": "Get Existing Appt Tool"
@@ -1502,7 +1633,7 @@
     {
       "parameters": {
         "name": "find_existing_appt_tool",
-        "description": "=Call this tool to search for an existing booking with the user's email address.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
+        "description": "=Call this tool to search for an existing booking with the user's email address.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is given, pass as \"all\"",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1517,13 +1648,13 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"attendeeEmail\": \"the e-mail of the attendee\"\n}\n"
+        "jsonSchemaExample": "{\n  \"attendeeEmail\": \"the e-mail of the attendee\",\n  \"status\": \"\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1740,
-        260
+        2600,
+        640
       ],
       "id": "b36c23e2-af15-403a-bc28-fc1310b95c6c",
       "name": "Find Existing Appt Tool"
@@ -1533,10 +1664,10 @@
         "assignments": {
           "assignments": [
             {
-              "id": "9a4c695a-9201-4b9a-9d46-d92991ead4bc",
+              "id": "4db37e4c-1025-406f-9498-363df3cbd585",
               "name": "response",
-              "value": "={{ $json.data.map(item => i = {\n    id: item.id,\n    uid: item.uid,\n    title: item.title,\n    description: item.description,\n    status: item.status,\n    start: item.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: item.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: item.duration,\n    eventType: item.eventType,\n    location: item.location,\n}) }}",
-              "type": "array"
+              "value": "={{ $json.data.map(item => `- Event ID ${item.id} with UID ${item.uid} is a ${item.title}, with the description \"${item.description || 'no description'}\". The status is ${item.status}, starting on ${item.start} and ending on ${item.end}, duration ${item.duration} min. The event type is ${item.eventType.slug.replace('-', ' ')} and will take place in ${item.location == 'integrations:daily' ? 'Cal Video' : item.location}.`).join('\\n') }}",
+              "type": "string"
             }
           ]
         },
@@ -1545,11 +1676,12 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1920,
+        2080,
         -680
       ],
       "id": "99025593-105f-43ff-86e3-b3bd1b21dc52",
-      "name": "Response All Bookings"
+      "name": "Response All Bookings",
+      "notes": "{{ $json.data.map(item => i = {\n    id: item.id,\n    uid: item.uid,\n    title: item.title,\n    description: item.description,\n    status: item.status,\n    start: item.start,\n    end: item.end,\n    duration: item.duration,\n    eventType: item.eventType,\n    location: item.location == 'integrations:daily' ? 'Cal Vídeo' : item.location,\n}) }}"
     },
     {
       "parameters": {
@@ -1569,13 +1701,13 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"cancellationReason\": \"reason for cancellation\",\n    \"booking_id\": \"the booking id of the appointment\"\n}\n"
+        "jsonSchemaExample": "{\n  \"cancellationReason\": \"reason for cancellation\",\n  \"booking_id\": \"the booking id of the appointment\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1560,
-        260
+        2420,
+        640
       ],
       "id": "1c0840e1-9467-442d-80ef-0f1a4ca0cf77",
       "name": "Cancel Appt Tool"
@@ -1583,7 +1715,7 @@
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "=Call this tool to schedule an appointment.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
+        "description": "=Call this tool to schedule an appointment using event id.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name, cellphone and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1594,17 +1726,20 @@
             {
               "name": "action",
               "stringValue": "schedule booking"
+            },
+            {
+              "name": "phone"
             }
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"name of the user and a short summary of appointment\",\n  \"description\": \"bullet list of session Id, full name, email and summary of appointment\",\n  \"metadata\": \"Use template: { \\\"session_id\\\": \\\"\\\", \\\"booked_by\\\": \\\"n8n workflow\\\" }\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\"\n  }\n}"
+        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"name of the user and a short summary of appointment\",\n  \"description\": \"bullet list of session Id, full name, email and summary of appointment\",\n  \"metadata\": \"Use template: { \\\"session_id\\\": \\\"\\\", \\\"booked_by\\\": \\\"n8n workflow\\\" }\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\",\n    \"cellphone\": \"12982184877\"\n  },\n  \"event_id\": \"event id, event identification number\"\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1380,
-        100
+        1720,
+        640
       ],
       "id": "8e3dcf5f-e24d-48a5-9bc4-a5f6e1f61d99",
       "name": "Schedule Appt Tool"
@@ -1636,8 +1771,8 @@
               "value": "={{ $json.cal_event_id.toNumber() }}"
             },
             {
-              "name": "bookingFieldsResponses.notes",
-              "value": "={{ $('EWT').item.json.query.bookingFieldsResponses.notes ?? '' }}"
+              "name": "bookingFieldsResponses",
+              "value": "={{ {\n  notes: $('EWT').item.json.query.description,\n  cellphone: $('EWT').item.json.query.bookingFieldsResponses.cellphone,\n  title: $('EWT').item.json.query.title,\n} }}"
             },
             {
               "name": "attendee",
@@ -1701,29 +1836,6 @@
         "assignments": {
           "assignments": [
             {
-              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
-              "name": "response",
-              "value": "={{ \n  $json.data.slots.keys().map(date => {\n    return {\n      times: $json.data.slots[date].map(slot => {\n        const s = slot.time.toDateTime().minus($('baseInfo').item.json.utc, 'hours');\n        return s.toUTC();\n      })\n    };\n  })\n}}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2120,
-        -1040
-      ],
-      "id": "c3cf0dce-3a90-41d2-8c1c-7172c5f87afb",
-      "name": "Adjust DateTime"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
               "value": "slots not found",
@@ -1745,7 +1857,7 @@
     {
       "parameters": {
         "name": "reschedule_appt_tool",
-        "description": "=Call this tool to reschedule a user's appointment using a booking id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
+        "description": "=Call this tool to reschedule a user's appointment using a booking id and event id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1760,36 +1872,16 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n\t\"booking_id\": \"the id of the booking\",\n\t\"start\": \"date and time of the start of the booking\",\n\t\"reschedulingReason\": \"rescheduling reason\"\n}\n"
+        "jsonSchemaExample": "{\n  \"booking_id\": \"the id of the booking\",\n  \"start\": \"date and time of the start of the booking\",\n  \"reschedulingReason\": \"rescheduling reason\",\n  \"event_id\": \"event id, event identification number\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1380,
-        260
+        2240,
+        640
       ],
       "id": "9e98be2e-691b-4978-ba4b-0866aa2cf51d",
       "name": "Reschedule Appt Tool"
-    },
-    {
-      "parameters": {
-        "model": "llama-3.2-90b-text-preview",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        1060,
-        100
-      ],
-      "id": "728a02ef-a00d-47d5-87cc-f1f096900571",
-      "name": "Groq Chat Model",
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
     },
     {
       "parameters": {
@@ -1798,7 +1890,7 @@
             {
               "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
               "name": "response",
-              "value": "={{ $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} : 'error on booking' }}",
+              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} : 'error on booking' }}",
               "type": "string"
             }
           ]
@@ -1916,6 +2008,302 @@
       ],
       "id": "733a1176-1f78-4d9c-8c40-e3edc320958f",
       "name": "Response Bokking Cancelled"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.5,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        640
+      ],
+      "id": "4926d947-4833-4308-a427-283525641bea",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        640
+      ],
+      "id": "c7bfc01b-6ece-4f36-b20d-d55fc013c0cf",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
+              "name": "data",
+              "value": "={{ \n  $json.data.map(event => {\n    const newEvent = { ...event };\n\n    newEvent.start = newEvent.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n    newEvent.end = newEvent.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n\n    return newEvent;\n  })\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1900,
+        -680
+      ],
+      "id": "e3a038b8-fa3a-4b0e-b00c-0dfbd99553c5",
+      "name": "Adjust DateTime 2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
+              "name": "response",
+              "value": "={{ \n  $json.data.slots.keys().map(date => {\n    return {\n      times: $json.data.slots[date].map(slot => {\n        const s = slot.time.toDateTime().minus($('baseInfo').item.json.utc, 'hours');\n        return s.toUTC();\n      })\n    };\n  })\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        -1040
+      ],
+      "id": "c3cf0dce-3a90-41d2-8c1c-7172c5f87afb",
+      "name": "Adjust DateTime 1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "allFieldsExcept",
+        "fieldsToExclude": "instances_id,active,id,created_at,empresa,cal_username",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        720,
+        200
+      ],
+      "id": "852aba51-d587-4b40-8092-a1e35aa2666d",
+      "name": "Aggregate",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        360,
+        300
+      ],
+      "id": "ee54788e-dab6-4440-9188-584b7938c807",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $workflow.id }}_data",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ],
+      "id": "1df5a3af-eec4-4f73-87bd-37c41ff41f73",
+      "name": "Get Procedures",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $workflow.id }}_data",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 30
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        200
+      ],
+      "id": "08792bcb-0956-434f-8080-9517d7e2d397",
+      "name": "Set Procedures",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        380
+      ],
+      "id": "a973904e-c839-4c42-8aa4-96bae0868721",
+      "name": "Load Procedures"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Procedures').all().map(item => {\n  return {\n  professional: item.json.subtitle,\n  procedure: item.json.operation,\n  event_id: item.json.cal_event_id,\n  crm: item.json.extras?.crm.toNumber(),\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        200
+      ],
+      "id": "bb430b47-4a64-4095-8a31-843b01454ae0",
+      "name": "Format Procedures"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "calendars",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('baseInfo1').item.json.instance_name }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        540,
+        200
+      ],
+      "id": "a7436564-d6d1-490d-bde0-4848f68da2bb",
+      "name": "List Procedures",
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        380
+      ],
+      "id": "84d92546-5cdf-4be4-83b8-76d7dba205a0",
+      "name": "Procedures"
+    },
+    {
+      "parameters": {
+        "content": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**",
+        "height": 460,
+        "width": 340
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        540,
+        620
+      ],
+      "id": "2a88794e-e89a-48d8-a3bb-afae7e4ddf47",
+      "name": "Sticky Note"
     }
   ],
   "pinData": {
@@ -1923,11 +2311,11 @@
       {
         "json": {
           "query": {
-            "event_id": "1195763",
-            "prompt": "altere a duração de cada evento para 60 min."
+            "startTime": "2024-11-14T09:00:00-03:00",
+            "endTime": "2024-11-14T10:00:00-03:00",
+            "event_id": "1409773"
           },
-          "action": "update event",
-          "access": "adm"
+          "action": "availability"
         }
       }
     ]
@@ -1957,6 +2345,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-12T18:34:39.052Z",
-  "versionId": "6b24d259-b524-48cb-a7dc-2afd73dd488e"
+  "updatedAt": "2024-11-14T00:49:50.614Z",
+  "versionId": "cf885f3a-405d-4a22-b62e-048095d90f04"
 }
