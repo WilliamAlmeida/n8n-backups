@@ -433,6 +433,11 @@
           }
         ]
       ]
+    },
+    "Response Booking Success": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-09-29T21:36:02.298Z",
@@ -805,7 +810,7 @@
         "promptType": "define",
         "text": "={{ $('Chat').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper for clinic named MED Center.\n\n## About MED Center\nOur website is wmst.com.br.\nAdditional Information: {{ $json.data.toJsonString() }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is {{ $('baseInfo1').item.json.cellphone }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
+          "systemMessage": "=You are an appointment scheduling helper for clinic named MED Center.\n\n## About MED Center\nOur website is medcenterlorena.com.br.\nAdditional Information: {{ $json.data.toJsonString().replaceAll('\"', \"'\") }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@hotmail.com and cellphone is {{ $('baseInfo1').item.json.remoteJid }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
         }
       },
       "id": "aa638579-b587-424d-8195-3fbda86a41a1",
@@ -837,7 +842,7 @@
             {
               "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
               "name": "cal_event_id",
-              "value": "1195761",
+              "value": "",
               "type": "string"
             },
             {
@@ -871,7 +876,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1240,
+        960,
         -540
       ],
       "id": "e8cf9d72-2b72-48bf-9a71-48c21b8c80bf",
@@ -905,8 +910,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1920,
-        -940
+        1640,
+        -1000
       ],
       "id": "c7d6c4a6-96f5-4b27-b36e-7b2f3dcd2dd2",
       "name": "found slots?"
@@ -993,7 +998,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1740,
+        1460,
         -520
       ],
       "id": "264b7c45-90f1-4e4e-a312-95833992957f",
@@ -1018,12 +1023,8 @@
         "queryParameters": {
           "parameters": [
             {
-              "name": "eventTypeIds",
-              "value": "={{ $json.cal_event_id }}"
-            },
-            {
               "name": "status",
-              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['upcoming','recurring','past','unconfirmed','cancelled'].join(',') : ['upcoming','recurring','past','unconfirmed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
+              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['upcoming','recurring','past','unconfirmed'].join(',') : ['upcoming','recurring','past','unconfirmed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
             },
             {
               "name": "attendeeEmail",
@@ -1040,6 +1041,10 @@
             {
               "name": "afterStart",
               "value": "={{ $now.minus(2, 'days').toUTC()}}"
+            },
+            {
+              "name": "eventTypeIds",
+              "value": "={{ $('EWT').item.json.query.event_id }}"
             }
           ]
         },
@@ -1064,7 +1069,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1740,
+        1460,
         -680
       ],
       "id": "a0cb36b6-abff-4138-84ab-da07a0c437bc",
@@ -1115,8 +1120,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1740,
-        -940
+        1460,
+        -1000
       ],
       "id": "ce7d7ed0-86b3-4629-b326-bd85ea30409f",
       "name": "Cal Availability",
@@ -1179,8 +1184,8 @@
             },
             {
               "id": "1f8dcc11-357a-44ea-8ce0-a3c9b52ff6fd",
-              "name": "cellphone",
-              "value": "+5512982184879",
+              "name": "remoteJid",
+              "value": "5512982184879",
               "type": "string"
             }
           ]
@@ -1212,7 +1217,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        1060,
+        780,
         -540
       ],
       "id": "2805ec75-e546-4940-99b9-4e673e56fe6f",
@@ -1284,6 +1289,10 @@
             {
               "name": "action",
               "stringValue": "availability"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('Chat').item.json.chatInput }}"
             }
           ]
         },
@@ -1341,8 +1350,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1532,7 +1540,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        1420,
+        1140,
         -600
       ],
       "id": "616be42f-b847-4447-ad89-1c91eb6c91fe",
@@ -1601,7 +1609,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        2120,
+        2140,
         -520
       ],
       "id": "1367fac2-ce9a-4639-ac6d-ccfe914f5cc8",
@@ -1633,7 +1641,7 @@
     {
       "parameters": {
         "name": "find_existing_appt_tool",
-        "description": "=Call this tool to search for an existing booking with the user's email address.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is given, pass as \"all\"",
+        "description": "=Call this tool to search for an existing booking with the user's email address using event id.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is given, pass as \"all\"",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1648,7 +1656,7 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"attendeeEmail\": \"the e-mail of the attendee\",\n  \"status\": \"\"\n}\n"
+        "jsonSchemaExample": "{\n  \"attendeeEmail\": \"the e-mail of the attendee\",\n  \"status\": \"\",\n  \"event_id\": \"event id, event identification number separated by a comma\"\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -1676,7 +1684,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2080,
+        1800,
         -680
       ],
       "id": "99025593-105f-43ff-86e3-b3bd1b21dc52",
@@ -1728,12 +1736,13 @@
               "stringValue": "schedule booking"
             },
             {
-              "name": "phone"
+              "name": "prompt",
+              "stringValue": "={{ $('Chat').item.json.chatInput }}"
             }
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"name of the user and a short summary of appointment\",\n  \"description\": \"bullet list of session Id, full name, email and summary of appointment\",\n  \"metadata\": \"Use template: { \\\"session_id\\\": \\\"\\\", \\\"booked_by\\\": \\\"n8n workflow\\\" }\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\",\n    \"cellphone\": \"12982184877\"\n  },\n  \"event_id\": \"event id, event identification number\"\n}"
+        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\",\n    \"cellphone\": \"12982184877\",\n    \"professional\": \"\",\n    \"procedure\": \"\",\n    \"method_payment\": \"\",\n    \"name_plan\": \"\",\n    \"price\": \"\"\n  },\n  \"event_id\": \"event id, event identification number\"\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -1768,11 +1777,11 @@
             },
             {
               "name": "eventTypeId",
-              "value": "={{ $json.cal_event_id.toNumber() }}"
+              "value": "={{ $('EWT').item.json.query.event_id.toNumber() }}"
             },
             {
               "name": "bookingFieldsResponses",
-              "value": "={{ {\n  notes: $('EWT').item.json.query.description,\n  cellphone: $('EWT').item.json.query.bookingFieldsResponses.cellphone,\n  title: $('EWT').item.json.query.title,\n} }}"
+              "value": "={{ {\n  notes: $('EWT').item.json.query.description,\n  cellphone: `+${$('EWT').item.json.query.bookingFieldsResponses.cellphone}`,\n  title: $('EWT').item.json.query.title,\n  professional: $('EWT').item.json.query.bookingFieldsResponses.professional,\n  procedure: $('EWT').item.json.query.bookingFieldsResponses.procedure,\n  method_payment: $('EWT').item.json.query.bookingFieldsResponses.method_payment,\n  name_plan: $('EWT').item.json.query.bookingFieldsResponses.name_plan,\n  price: $('EWT').item.json.query.bookingFieldsResponses.price\n} }}"
             },
             {
               "name": "attendee",
@@ -1792,7 +1801,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1740,
+        1460,
         -340
       ],
       "id": "46e0f2b5-14cc-48ac-8e22-4ab23a14b29c",
@@ -1825,8 +1834,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2300,
-        -1040
+        2020,
+        -1080
       ],
       "id": "90a63cf6-4433-43ab-8a94-0d1d2d3958a8",
       "name": "Format Slots"
@@ -1848,8 +1857,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2120,
-        -840
+        1840,
+        -920
       ],
       "id": "3fad5546-b69a-4160-912a-48ffda85316e",
       "name": "Response Availability Error"
@@ -1890,7 +1899,7 @@
             {
               "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
               "name": "response",
-              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} : 'error on booking' }}",
+              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n    professional: $json.data.bookingFieldsResponses.professional,\n    procedure: $json.data.bookingFieldsResponses.procedure,\n    method_payment: $json.data.bookingFieldsResponses.method_payment,\n    name_plan: $json.data.bookingFieldsResponses.name_plan,\n    price: $json.data.bookingFieldsResponses.price,\n} : 'error on booking' }}",
               "type": "string"
             }
           ]
@@ -1900,7 +1909,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1920,
+        1640,
         -340
       ],
       "id": "bbdf96bd-cad2-455f-8f59-4342e6af350b",
@@ -2069,7 +2078,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1900,
+        1620,
         -680
       ],
       "id": "e3a038b8-fa3a-4b0e-b00c-0dfbd99553c5",
@@ -2092,8 +2101,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2120,
-        -1040
+        1840,
+        -1080
       ],
       "id": "c3cf0dce-3a90-41d2-8c1c-7172c5f87afb",
       "name": "Adjust DateTime 1"
@@ -2306,20 +2315,7 @@
       "name": "Sticky Note"
     }
   ],
-  "pinData": {
-    "EWT": [
-      {
-        "json": {
-          "query": {
-            "startTime": "2024-11-14T09:00:00-03:00",
-            "endTime": "2024-11-14T10:00:00-03:00",
-            "event_id": "1409773"
-          },
-          "action": "availability"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
@@ -2345,6 +2341,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-14T14:12:14.301Z",
-  "versionId": "aad621f2-c7c4-4d28-b879-b94aedaa802a"
+  "updatedAt": "2024-11-14T20:44:28.665Z",
+  "versionId": "9a6b3233-fe4c-4363-adb6-3e4c07ddaac6"
 }
