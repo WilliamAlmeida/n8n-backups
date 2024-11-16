@@ -1,80 +1,7 @@
 {
   "active": false,
   "connections": {
-    "baseInfo": {
-      "main": [
-        [
-          {
-            "node": "Switch Action",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "found slots?": {
-      "main": [
-        [
-          {
-            "node": "Adjust DateTime 1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Response Availability Error",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get a booking": {
-      "main": [
-        [
-          {
-            "node": "Switch Action 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cal Availability": {
-      "main": [
-        [
-          {
-            "node": "found slots?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "baseInfo1": {
-      "main": [
-        [
-          {
-            "node": "Get Procedures",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Chat": {
-      "main": [
-        [
-          {
-            "node": "baseInfo1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "EWT": {
       "main": [
         [
           {
@@ -129,94 +56,12 @@
         ]
       ]
     },
-    "Switch Action": {
-      "main": [
-        [
-          {
-            "node": "Cal Availability",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get all bookings",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get a booking",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get a booking",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get a booking",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Schedule a booking",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch Action 2": {
-      "main": [
-        [
-          {
-            "node": "booking cancelled?",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Reschedule a booking",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Response A Booking",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Find Existing Appt Tool": {
       "ai_tool": [
         [
           {
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get all bookings": {
-      "main": [
-        [
-          {
-            "node": "Adjust DateTime 2",
-            "type": "main",
             "index": 0
           }
         ]
@@ -244,63 +89,12 @@
         ]
       ]
     },
-    "Schedule a booking": {
-      "main": [
-        [
-          {
-            "node": "Response Booking Success",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cancel a booking": {
-      "main": [
-        [
-          {
-            "node": "Response Cancel Booking",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Reschedule Appt Tool": {
       "ai_tool": [
         [
           {
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Reschedule a booking": {
-      "main": [
-        [
-          {
-            "node": "Response Reschedule Booking",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "booking cancelled?": {
-      "main": [
-        [
-          {
-            "node": "Response Bokking Cancelled",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Cancel a booking",
-            "type": "main",
             "index": 0
           }
         ]
@@ -317,28 +111,6 @@
         ]
       ]
     },
-    "Adjust DateTime 1": {
-      "main": [
-        [
-          {
-            "node": "Format Slots",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Adjust DateTime 2": {
-      "main": [
-        [
-          {
-            "node": "Response All Bookings",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Aggregate": {
       "main": [
         [
@@ -350,29 +122,11 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "List Procedures",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Load Procedures",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Procedures": {
       "main": [
         [
           {
-            "node": "If",
+            "node": "data cached?",
             "type": "main",
             "index": 0
           }
@@ -405,7 +159,7 @@
       "main": [
         [
           {
-            "node": "Procedures",
+            "node": "Normalize Procedures",
             "type": "main",
             "index": 0
           }
@@ -416,14 +170,54 @@
       "main": [
         [
           {
-            "node": "Procedures",
+            "node": "Normalize Procedures",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Procedures": {
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Get Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data cached?": {
+      "main": [
+        [
+          {
+            "node": "List Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Procedures": {
       "main": [
         [
           {
@@ -432,11 +226,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Response Booking Success": {
-      "main": [
-        []
       ]
     }
   },
@@ -536,8 +325,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2060,
-        -160
+        2800,
+        80
       ],
       "credentials": {
         "calApi": {
@@ -560,7 +349,7 @@
             {
               "name": "cal-api-version",
               "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo1').item.json.cal_api_version_booking }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
             }
           ]
         },
@@ -604,8 +393,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2220,
-        0
+        2960,
+        260
       ],
       "credentials": {
         "calApi": {
@@ -632,7 +421,7 @@
             {
               "name": "cal-api-version",
               "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo1').item.json.cal_api_version_booking }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
             }
           ]
         },
@@ -660,8 +449,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2380,
-        -160
+        3120,
+        80
       ],
       "credentials": {
         "calApi": {
@@ -709,8 +498,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2060,
-        0
+        2800,
+        260
       ],
       "credentials": {
         "calApi": {
@@ -736,7 +525,7 @@
             {
               "name": "cal-api-version",
               "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo1').item.json.cal_api_version_booking }}"
+              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
             }
           ]
         },
@@ -755,8 +544,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2220,
-        -160
+        2960,
+        80
       ],
       "credentials": {
         "calApi": {
@@ -790,8 +579,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        2380,
-        0
+        3120,
+        260
       ],
       "credentials": {
         "calApi": {
@@ -808,9 +597,9 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('Chat').item.json.chatInput }}",
+        "text": "={{ $('EWT').first().json.query }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper for clinic named MED Center.\n\n## About MED Center\nOur website is medcenterlorena.com.br.\nAdditional Information: {{ $json.data.toJsonString().replaceAll('\"', \"'\") }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@hotmail.com and cellphone is {{ $('baseInfo1').item.json.remoteJid }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
+          "systemMessage": "=You are an appointment scheduling helper.\n\n## About\nAdditional Information: {{ $json.data.replaceAll('\"', '') }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's email is {{ $('EWT').first().json.userAccount.email }} and cellphone is {{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
         }
       },
       "id": "aa638579-b587-424d-8195-3fbda86a41a1",
@@ -824,456 +613,16 @@
       "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
     },
     {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "de856eaf-9065-41e0-ace1-6f9501b1a6d4",
-              "name": "cal_api",
-              "value": "https://api.cal.com",
-              "type": "string"
-            },
-            {
-              "id": "49f1f9ae-601d-40cc-b129-fa950b822ede",
-              "name": "username",
-              "value": "williamalmeida",
-              "type": "string"
-            },
-            {
-              "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
-              "name": "cal_event_id",
-              "value": "",
-              "type": "string"
-            },
-            {
-              "id": "0a72c23b-7e8c-4618-b827-602200390069",
-              "name": "cal_api_version_booking",
-              "value": "2024-08-13",
-              "type": "string"
-            },
-            {
-              "id": "7e6a29c2-9869-409d-9980-698909fdee57",
-              "name": "cal_api_version_event",
-              "value": "2024-06-14",
-              "type": "string"
-            },
-            {
-              "id": "9e124983-4ae7-4c0c-88b1-d1a68136a45f",
-              "name": "utc",
-              "value": "3",
-              "type": "string"
-            },
-            {
-              "id": "20964151-a5f0-40b4-8730-937b9ffd8a75",
-              "name": "action",
-              "value": "={{ $json.action }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        960,
-        -540
-      ],
-      "id": "e8cf9d72-2b72-48bf-9a71-48c21b8c80bf",
-      "name": "baseInfo"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
-              "leftValue": "={{ $json.data.slots }}",
-              "rightValue": "",
-              "operator": {
-                "type": "object",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        1640,
-        -1000
-      ],
-      "id": "c7d6c4a6-96f5-4b27-b36e-7b2f3dcd2dd2",
-      "name": "found slots?"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.data.uid }}/reschedule",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "start",
-              "value": "={{ $('EWT').item.json.query.start }}"
-            },
-            {
-              "name": "reschedulingReason",
-              "value": "={{ $('EWT').item.json.query.reschedulingReason ?? '' }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2400,
-        -520
-      ],
-      "id": "7bb71a39-0ac4-4ec9-8661-ac8961ef6f4a",
-      "name": "Reschedule a booking",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $('EWT').item.json.query.booking_id }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1460,
-        -520
-      ],
-      "id": "264b7c45-90f1-4e4e-a312-95833992957f",
-      "name": "Get a booking",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "status",
-              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['upcoming','recurring','past','unconfirmed'].join(',') : ['upcoming','recurring','past','unconfirmed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
-            },
-            {
-              "name": "attendeeEmail",
-              "value": "={{ $('EWT').item.json.query.attendeeEmail ?? '' }}"
-            },
-            {
-              "name": "take",
-              "value": "5"
-            },
-            {
-              "name": "sortCreated",
-              "value": "desc"
-            },
-            {
-              "name": "afterStart",
-              "value": "={{ $now.minus(2, 'days').toUTC()}}"
-            },
-            {
-              "name": "eventTypeIds",
-              "value": "={{ $('EWT').item.json.query.event_id }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1460,
-        -680
-      ],
-      "id": "a0cb36b6-abff-4138-84ab-da07a0c437bc",
-      "name": "Get all bookings",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      },
-      "notes": "status: {{ ['upcoming','recurring','past','cancelled','unconfirmed'].join(',') }}"
-    },
-    {
-      "parameters": {
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "eventTypeId",
-              "value": "={{ $('EWT').item.json.query.event_id }}"
-            },
-            {
-              "name": "startTime",
-              "value": "={{ $('EWT').item.json.query.startTime }}"
-            },
-            {
-              "name": "endTime",
-              "value": "={{ $('EWT').item.json.query.endTime }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1460,
-        -1000
-      ],
-      "id": "ce7d7ed0-86b3-4629-b326-bd85ea30409f",
-      "name": "Cal Availability",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "de856eaf-9065-41e0-ace1-6f9501b1a6d4",
-              "name": "cal_api",
-              "value": "https://api.cal.com",
-              "type": "string"
-            },
-            {
-              "id": "49f1f9ae-601d-40cc-b129-fa950b822ede",
-              "name": "username",
-              "value": "williamalmeida",
-              "type": "string"
-            },
-            {
-              "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
-              "name": "cal_event_id",
-              "value": "",
-              "type": "string"
-            },
-            {
-              "id": "0a72c23b-7e8c-4618-b827-602200390069",
-              "name": "cal_api_version_booking",
-              "value": "2024-08-13",
-              "type": "string"
-            },
-            {
-              "id": "7e6a29c2-9869-409d-9980-698909fdee57",
-              "name": "cal_api_version_event",
-              "value": "2024-06-14",
-              "type": "string"
-            },
-            {
-              "id": "9e124983-4ae7-4c0c-88b1-d1a68136a45f",
-              "name": "utc",
-              "value": "3",
-              "type": "string"
-            },
-            {
-              "id": "ace483d7-feff-4fac-aa50-63eea9662d07",
-              "name": "instance_name",
-              "value": "ibox_cli_23",
-              "type": "string"
-            },
-            {
-              "id": "1f8dcc11-357a-44ea-8ce0-a3c9b52ff6fd",
-              "name": "remoteJid",
-              "value": "5512982184879",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        40,
-        300
-      ],
-      "id": "2d84a3f5-8a27-4297-8fe3-e6c3627e83f4",
-      "name": "baseInfo1"
-    },
-    {
       "parameters": {},
       "id": "1889dc5b-510c-4e9e-91eb-c3c6def8a207",
       "name": "Chat",
       "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -140,
-        300
-      ]
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        780,
-        -540
+        600,
+        -60
       ],
-      "id": "2805ec75-e546-4940-99b9-4e673e56fe6f",
-      "name": "EWT"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings/{{ $json.data.uid }}/cancel",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "cancellationReason",
-              "value": "={{ $('EWT').item.json.query.cancellationReason }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2620,
-        -680
-      ],
-      "id": "f5659648-d2ef-4f96-8067-8939ed90022d",
-      "name": "Cancel a booking",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
+      "disabled": true
     },
     {
       "parameters": {
@@ -1282,17 +631,13 @@
         "workflowId": {
           "__rl": true,
           "mode": "id",
-          "value": "czYf0DoNjwOMFK8Q"
+          "value": "5LfFRdaepFJdM4yE"
         },
         "fields": {
           "values": [
             {
               "name": "action",
               "stringValue": "availability"
-            },
-            {
-              "name": "prompt",
-              "stringValue": "={{ $('Chat').item.json.chatInput }}"
             }
           ]
         },
@@ -1314,7 +659,7 @@
           "assignments": [
             {
               "id": "1c0e1856-c7f0-4e9b-b4ac-1d704417b91c",
-              "name": "output",
+              "name": "response",
               "value": "={{ $json.output }}",
               "type": "string"
             }
@@ -1334,7 +679,7 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Chat').item.json.sessionId }}",
+        "sessionKey": "={{ $('EWT').item.json.messageInfo.unique_id}}_calendary",
         "sessionTTL": 60
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
@@ -1358,8 +703,8 @@
         "description": "=Call this tool to get an existing booking.\n\n## To detail an existing booking\n* Ask the user for their booking_id of the existing booking\n* Use the user's booking_id to search for the existing booking.\n* If the user's booking_id do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
         "workflowId": {
           "__rl": true,
-          "mode": "id",
-          "value": "czYf0DoNjwOMFK8Q"
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
         },
         "fields": {
           "values": [
@@ -1383,269 +728,12 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "availability",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "availability"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "140c8bbd-d80b-49be-8c68-6062ddc72bf0",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "list bookings",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "list bookings"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "aee40e66-debf-4d99-b02e-4bb1b97e92eb",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "cancel booking",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "cancel booking"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "062dd5e0-6ee4-4821-98cb-19d42af6462b",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "find booking",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "find booking"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "8bee3e99-040a-40e1-90f2-6971d2c6ad82",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "reschedule booking",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "reschedule booking"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "80aff94c-0b8b-41bc-8593-5531774ff819",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "schedule booking",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "schedule booking"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        1140,
-        -600
-      ],
-      "id": "616be42f-b847-4447-ad89-1c91eb6c91fe",
-      "name": "Switch Action"
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "aee40e66-debf-4d99-b02e-4bb1b97e92eb",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "cancel booking",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "cancel booking"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "bb06766f-56b8-4de5-a92b-050ea094b118",
-                    "leftValue": "={{ $('baseInfo').item.json.action }}",
-                    "rightValue": "reschedule booking",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "reschedule booking"
-            }
-          ]
-        },
-        "options": {
-          "fallbackOutput": "extra"
-        }
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        2140,
-        -520
-      ],
-      "id": "1367fac2-ce9a-4639-ac6d-ccfe914f5cc8",
-      "name": "Switch Action 2"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
-              "name": "response",
-              "value": "={{ {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2400,
-        -360
-      ],
-      "id": "732feb32-3e69-4d83-b45b-3f6937f83e5b",
-      "name": "Response A Booking"
-    },
-    {
-      "parameters": {
         "name": "find_existing_appt_tool",
         "description": "=Call this tool to search for an existing booking with the user's email address using event id.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is given, pass as \"all\"",
         "workflowId": {
           "__rl": true,
-          "mode": "id",
-          "value": "czYf0DoNjwOMFK8Q"
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
         },
         "fields": {
           "values": [
@@ -1669,36 +757,12 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "4db37e4c-1025-406f-9498-363df3cbd585",
-              "name": "response",
-              "value": "={{ $json.data.map(item => `- Event ID ${item.id} with UID ${item.uid} is a ${item.title}, with the description \"${item.description || 'no description'}\". The status is ${item.status}, starting on ${item.start} and ending on ${item.end}, duration ${item.duration} min. The event type is ${item.eventType.slug.replace('-', ' ')} and will take place in ${item.location == 'integrations:daily' ? 'Cal Video' : item.location}.`).join('\\n') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1800,
-        -680
-      ],
-      "id": "99025593-105f-43ff-86e3-b3bd1b21dc52",
-      "name": "Response All Bookings",
-      "notes": "{{ $json.data.map(item => i = {\n    id: item.id,\n    uid: item.uid,\n    title: item.title,\n    description: item.description,\n    status: item.status,\n    start: item.start,\n    end: item.end,\n    duration: item.duration,\n    eventType: item.eventType,\n    location: item.location == 'integrations:daily' ? 'Cal Vídeo' : item.location,\n}) }}"
-    },
-    {
-      "parameters": {
         "name": "cancel_appt_tool",
         "description": "=Call this tool to cancel a user's existing booking using a booking id.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to cancel an existing booking.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an booking.",
         "workflowId": {
           "__rl": true,
-          "mode": "id",
-          "value": "czYf0DoNjwOMFK8Q"
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
         },
         "fields": {
           "values": [
@@ -1726,18 +790,14 @@
         "description": "=Call this tool to schedule an appointment using event id.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name, cellphone and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
         "workflowId": {
           "__rl": true,
-          "mode": "id",
-          "value": "czYf0DoNjwOMFK8Q"
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
         },
         "fields": {
           "values": [
             {
               "name": "action",
               "stringValue": "schedule booking"
-            },
-            {
-              "name": "prompt",
-              "stringValue": "={{ $('Chat').item.json.chatInput }}"
             }
           ]
         },
@@ -1755,122 +815,12 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/bookings",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "calApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.cal_api_version_booking }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "start",
-              "value": "={{ $('EWT').item.json.query.start.toDateTime().toUTC() }}"
-            },
-            {
-              "name": "eventTypeId",
-              "value": "={{ $('EWT').item.json.query.event_id.toNumber() }}"
-            },
-            {
-              "name": "bookingFieldsResponses",
-              "value": "={{ {\n  notes: $('EWT').item.json.query.description,\n  cellphone: `+${$('EWT').item.json.query.bookingFieldsResponses.cellphone}`,\n  title: $('EWT').item.json.query.title,\n  professional: $('EWT').item.json.query.bookingFieldsResponses.professional,\n  procedure: $('EWT').item.json.query.bookingFieldsResponses.procedure,\n  method_payment: $('EWT').item.json.query.bookingFieldsResponses.method_payment,\n  name_plan: $('EWT').item.json.query.bookingFieldsResponses.name_plan,\n  price: $('EWT').item.json.query.bookingFieldsResponses.price\n} }}"
-            },
-            {
-              "name": "attendee",
-              "value": "={{ {\n  name: $('EWT').item.json.query.attendee.name,\n  email: $('EWT').item.json.query.attendee.email,\n  timeZone: 'America/Sao_Paulo',\n  language: 'pt-BR'\n} }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1460,
-        -340
-      ],
-      "id": "46e0f2b5-14cc-48ac-8e22-4ab23a14b29c",
-      "name": "Schedule a booking",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "eee23fa6-0985-46ab-8477-ddca2d7b304b",
-              "name": "response",
-              "value": "={{ \n  $json.response.reduce((acc, item) => {\n    item.times.forEach(time => {\n      const t = time.toDateTime();\n      const date = t.format('y-M-d');\n      const hour = t.format('H:mm');\n\n      const existingDate = acc.find(group => group.date === date);\n      if (existingDate) {\n        existingDate.times.push(hour);\n      } else {\n        acc.push({ date: date, times: [hour] });\n      }\n    });\n    return acc;\n  }, [])\n}}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2020,
-        -1080
-      ],
-      "id": "90a63cf6-4433-43ab-8a94-0d1d2d3958a8",
-      "name": "Format Slots"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
-              "name": "response",
-              "value": "slots not found",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1840,
-        -920
-      ],
-      "id": "3fad5546-b69a-4160-912a-48ffda85316e",
-      "name": "Response Availability Error"
-    },
-    {
-      "parameters": {
         "name": "reschedule_appt_tool",
         "description": "=Call this tool to reschedule a user's appointment using a booking id and event id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
         "workflowId": {
           "__rl": true,
-          "mode": "id",
-          "value": "czYf0DoNjwOMFK8Q"
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
         },
         "fields": {
           "values": [
@@ -1891,132 +841,6 @@
       ],
       "id": "9e98be2e-691b-4978-ba4b-0866aa2cf51d",
       "name": "Reschedule Appt Tool"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
-              "name": "response",
-              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n    professional: $json.data.bookingFieldsResponses.professional,\n    procedure: $json.data.bookingFieldsResponses.procedure,\n    method_payment: $json.data.bookingFieldsResponses.method_payment,\n    name_plan: $json.data.bookingFieldsResponses.name_plan,\n    price: $json.data.bookingFieldsResponses.price,\n} : 'error on booking' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1640,
-        -340
-      ],
-      "id": "bbdf96bd-cad2-455f-8f59-4342e6af350b",
-      "name": "Response Booking Success"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
-              "name": "response",
-              "value": "={{ $json.data.rescheduledFromUid ? 'booking was rescheduled' : '' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2580,
-        -520
-      ],
-      "id": "929ac787-05ce-46c9-b217-ceb9f835c81a",
-      "name": "Response Reschedule Booking"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
-              "name": "response",
-              "value": "={{ $json.data.status ? 'booking was cancelled' : 'error on cancel booking' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2800,
-        -680
-      ],
-      "id": "a66e3f55-2307-4ac9-af62-9acb01f9ecf7",
-      "name": "Response Cancel Booking"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "bed3d75f-289b-401a-a2c1-534dcd8fae94",
-              "leftValue": "={{ $json.data.status }}",
-              "rightValue": "cancelled",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        2400,
-        -760
-      ],
-      "id": "059156b5-bf0b-4eb3-9ebc-1d44c5b64b21",
-      "name": "booking cancelled?"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
-              "name": "response",
-              "value": "booking was cancelled",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2620,
-        -860
-      ],
-      "id": "733a1176-1f78-4d9c-8c40-e3edc320958f",
-      "name": "Response Bokking Cancelled"
     },
     {
       "parameters": {
@@ -2063,52 +887,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
-              "name": "data",
-              "value": "={{ \n  $json.data.map(event => {\n    const newEvent = { ...event };\n\n    newEvent.start = newEvent.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n    newEvent.end = newEvent.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n\n    return newEvent;\n  })\n}}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1620,
-        -680
-      ],
-      "id": "e3a038b8-fa3a-4b0e-b00c-0dfbd99553c5",
-      "name": "Adjust DateTime 2"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
-              "name": "response",
-              "value": "={{ \n  $json.data.slots.keys().map(date => {\n    return {\n      times: $json.data.slots[date].map(slot => {\n        const s = slot.time.toDateTime().minus($('baseInfo').item.json.utc, 'hours');\n        return s.toUTC();\n      })\n    };\n  })\n}}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1840,
-        -1080
-      ],
-      "id": "c3cf0dce-3a90-41d2-8c1c-7172c5f87afb",
-      "name": "Adjust DateTime 1"
-    },
-    {
-      "parameters": {
         "aggregate": "aggregateAllItemData",
         "destinationFieldName": "=data",
         "include": "allFieldsExcept",
@@ -2118,12 +896,186 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        720,
-        200
+        1460,
+        0
       ],
       "id": "852aba51-d587-4b40-8092-a1e35aa2666d",
       "name": "Aggregate",
       "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').first().json.messageInfo.instance }}_calendary",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        940,
+        120
+      ],
+      "id": "1df5a3af-eec4-4f73-87bd-37c41ff41f73",
+      "name": "Get Procedures",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').first().json.messageInfo.instance }}_calendary",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        0
+      ],
+      "id": "08792bcb-0956-434f-8080-9517d7e2d397",
+      "name": "Set Procedures",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        200
+      ],
+      "id": "a973904e-c839-4c42-8aa4-96bae0868721",
+      "name": "Load Procedures"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Procedures').all().map(item => {\n  return {\n  professional: item.json.subtitle,\n  procedure: item.json.operation,\n  event_id: item.json.cal_event_id,\n  crm: item.json.extras?.crm.toNumber(),\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1640,
+        0
+      ],
+      "id": "bb430b47-4a64-4095-8a31-843b01454ae0",
+      "name": "Format Procedures"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "calendars",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        0
+      ],
+      "id": "a7436564-d6d1-490d-bde0-4848f68da2bb",
+      "name": "List Procedures",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 400,
+        "width": 340
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        320
+      ],
+      "id": "2a88794e-e89a-48d8-a3bb-afae7e4ddf47",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8b82786e-fd77-43a9-af1a-be1403cfc12d",
+              "name": "cal",
+              "value": "={\n  \"api\": \"https://api.cal.com\",\n  \"api_version_booking\": \"2024-08-13\",\n  \"api_version_event\": \"2024-06-14\",\n  \"utc\": 3\n}",
+              "type": "object"
+            },
+            {
+              "id": "899a52c8-56c7-444f-9317-9553c2bdbc1e",
+              "name": "cal.username",
+              "value": "williamalmeida",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        120
+      ],
+      "id": "2d84a3f5-8a27-4297-8fe3-e6c3627e83f4",
+      "name": "baseInfo"
     },
     {
       "parameters": {
@@ -2153,169 +1105,77 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        360,
-        300
+        1100,
+        120
       ],
       "id": "ee54788e-dab6-4440-9188-584b7938c807",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "data",
-        "key": "={{ $workflow.id }}_data",
-        "keyType": "string",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        200,
-        300
-      ],
-      "id": "1df5a3af-eec4-4f73-87bd-37c41ff41f73",
-      "name": "Get Procedures",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "={{ $workflow.id }}_data",
-        "value": "={{ $json.data.toJsonString() }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 120
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        1060,
-        200
-      ],
-      "id": "08792bcb-0956-434f-8080-9517d7e2d397",
-      "name": "Set Procedures",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "27078474-0533-4004-8718-c55a54a5e46c",
-              "name": "data",
-              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        540,
-        380
-      ],
-      "id": "a973904e-c839-4c42-8aa4-96bae0868721",
-      "name": "Load Procedures"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
-              "name": "data",
-              "value": "={{ $('List Procedures').all().map(item => {\n  return {\n  professional: item.json.subtitle,\n  procedure: item.json.operation,\n  event_id: item.json.cal_event_id,\n  crm: item.json.extras?.crm.toNumber(),\n  }\n}) }}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        900,
-        200
-      ],
-      "id": "bb430b47-4a64-4095-8a31-843b01454ae0",
-      "name": "Format Procedures"
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "tableId": "calendars",
-        "returnAll": true,
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "condition": "eq",
-              "keyValue": "={{ $('baseInfo1').item.json.instance_name }}"
-            },
-            {
-              "keyName": "active",
-              "condition": "eq",
-              "keyValue": "true"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        540,
-        200
-      ],
-      "id": "a7436564-d6d1-490d-bde0-4848f68da2bb",
-      "name": "List Procedures",
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
+      "name": "data cached?"
     },
     {
       "parameters": {},
-      "type": "n8n-nodes-base.noOp",
+      "id": "d053efbd-3b93-48ce-8273-c07cc5a4684c",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        1060,
-        380
-      ],
-      "id": "84d92546-5cdf-4be4-83b8-76d7dba205a0",
-      "name": "Procedures"
+        600,
+        120
+      ]
     },
     {
       "parameters": {
-        "content": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 60mins long.\nAlways show appointment UID.\n\n## About the user\nThe user's session id is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com and cellphone is +5512982184879.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**",
-        "height": 460,
-        "width": 340
+        "assignments": {
+          "assignments": [
+            {
+              "id": "83f51543-5ede-4cbc-9453-e111b664483b",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        540,
-        620
+        1460,
+        200
       ],
-      "id": "2a88794e-e89a-48d8-a3bb-afae7e4ddf47",
-      "name": "Sticky Note"
+      "id": "b406afc4-c0b3-4ef6-9dd5-ceeeec77255b",
+      "name": "Normalize Procedures"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": "Verificar disponibilidade de horários com a Dra. Rita de Cássia Marton Carneiro para uma consulta pediátrica o quanto antes.",
+          "agent": "calendar",
+          "messageInfo": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "ibox_cli_23",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "W.M. Soluções Tecnologicas",
+            "fromMe": false,
+            "unique_id": "william_5512982184879",
+            "debounce_time": 5,
+            "conversation": "meu filho esta resfriado, o quanto antes melhor"
+          },
+          "userAccount": {
+            "id": 1,
+            "nome": "William",
+            "sobrenome": "Almeida",
+            "nome_completo": "William Almeida",
+            "whatsapp": "12982184879",
+            "email": "williamkillerca@hotmail.com",
+            "endereco": "Rua Doutor Laércio Lincon Figueira, D19, Portal Das Palmeiras, Lorena - Sp"
+          },
+          "prompt": "meu filho esta resfriado, o quanto antes melhor"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
@@ -2338,9 +1198,15 @@
       "updatedAt": "2024-10-30T23:31:05.255Z",
       "id": "IDsda42rHm8bi7eR",
       "name": "Tool"
+    },
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-14T20:44:28.665Z",
-  "versionId": "9a6b3233-fe4c-4363-adb6-3e4c07ddaac6"
+  "updatedAt": "2024-11-16T01:51:11.883Z",
+  "versionId": "9d67c11c-9f91-4bca-9f68-c40cf0251961"
 }
