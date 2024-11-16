@@ -1,0 +1,861 @@
+{
+  "active": false,
+  "connections": {
+    "Format schema": {
+      "main": [
+        [
+          {
+            "node": "Save Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get database details": {
+      "main": [
+        [
+          {
+            "node": "Format schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search inside database record": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Get Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Schema": {
+      "main": [
+        [
+          {
+            "node": "Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Schema": {
+      "main": [
+        [
+          {
+            "node": "Found Schema?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Found Schema?": {
+      "main": [
+        [
+          {
+            "node": "Load Schema",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get database details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Schema": {
+      "main": [
+        [
+          {
+            "node": "Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schema": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search notion database": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-17T02:05:25.634Z",
+  "id": "Krc5x0hGZst91P1d",
+  "meta": {
+    "templateId": "2413",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Notion knowledge base AI assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.7,
+          "timeout": 25000
+        }
+      },
+      "id": "d1d4291e-fa37-43d0-81e0-f0a594371426",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        1500,
+        560
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use this tool to search the \"\" Notion app database.\n\nIt is structured with question and answer format. \nYou can filter query result by:\n- By keyword\n- filter by tag.\n\nKeyword and Tag have an OR relationship not AND.\n\n",
+        "method": "POST",
+        "url": "=https://api.notion.com/v1/databases/{{ $json.notionID }}/query",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"filter\": {\n    \"or\": [\n      {\n        \"property\": \"question\",\n        \"rich_text\": {\n          \"contains\": \"{keyword}\"\n        }\n      },\n      {\n        \"property\": \"tags\",\n        \"multi_select\": {\n          \"contains\": \"{tag}\"\n        }\n      }\n    ]\n  },\n  \"sorts\": [\n    {\n      \"property\": \"updated_at\",\n      \"direction\": \"ascending\"\n    }\n  ]\n}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "keyword",
+              "description": "Searches question of the record. Use one keyword at a time."
+            },
+            {
+              "name": "tag",
+              "description": "=Options: {{ $json.tagsOptions }}"
+            }
+          ]
+        }
+      },
+      "id": "68e6805b-9c19-4c9e-a300-8983f2b7c28a",
+      "name": "Search notion database",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "position": [
+        1800,
+        560
+      ],
+      "typeVersion": 1.1,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "database",
+        "databaseId": {
+          "__rl": true,
+          "value": "1227c386-d922-8041-a649-f9f993b7dd16",
+          "mode": "list",
+          "cachedResultName": "Company Knowledge Base",
+          "cachedResultUrl": "https://www.notion.so/1227c386d9228041a649f9f993b7dd16"
+        },
+        "simple": false
+      },
+      "id": "c3164d38-a9fb-4ee3-b6bd-fccb4aa5a1a4",
+      "name": "Get database details",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        920,
+        600
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('baseInfo').item.json.sessionId }}",
+        "contextWindowLength": 4
+      },
+      "id": "98300243-efcc-4427-88da-c1af8a91ddae",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        1620,
+        560
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use this tool to retrieve Notion page content using the page ID. \n\nIt is structured with question and answer format. \nYou can filter query result by:\n- By keyword\n- filter by tag.\n\nKeyword and Tag have an OR relationship not AND.\n\n",
+        "url": "https://api.notion.com/v1/blocks/{page_id}/children",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "page_id",
+              "description": "Notion page id from 'Search notion database' tool results"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "results",
+        "fieldsToInclude": "selected",
+        "fields": "id, type, paragraph.text, heading_1.text, heading_2.text, heading_3.text, bulleted_list_item.text, numbered_list_item.text, to_do.text, children"
+      },
+      "id": "a8473f48-1343-4eb2-8e48-ec89377a2a00",
+      "name": "Search inside database record",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "position": [
+        1980,
+        560
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1.1,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      },
+      "notes": " "
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8e88876c-2714-494d-bd5e-5e80c99f83e3",
+              "name": "notionID",
+              "type": "string",
+              "value": "={{ $('Get database details').item.json.id }}"
+            },
+            {
+              "id": "a88a15f6-317c-4d2e-9d64-26f5ccaf7a97",
+              "name": "databaseName",
+              "type": "string",
+              "value": "={{ $json.title[0].text.content }}"
+            },
+            {
+              "id": "7c3bf758-8ed3-469a-8695-6777f4af4fb9",
+              "name": "tagsOptions",
+              "type": "string",
+              "value": "={{ $json.properties.tags.multi_select.options.map(item => item.name).join(',') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "115c328e-84b0-43d2-8df7-8b3f74cbb2fb",
+      "name": "Format schema",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1080,
+        600
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c474ad0d-939c-4496-911f-d79f57b40236",
+              "name": "sessionId",
+              "value": "={{ $json.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "d7012e79-9837-402b-942b-a03017e4a3fa",
+              "name": "action",
+              "value": "={{ $json.action }}",
+              "type": "string"
+            },
+            {
+              "id": "5b0d8220-d8cd-4c73-8193-c5ae1c16b2c9",
+              "name": "chatInput",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c524d1e2-41ca-4f06-a598-c2e76d15f85a",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        620,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.schema }}",
+        "options": {}
+      },
+      "id": "1303d850-ca77-4d96-8051-ce28004b3ea7",
+      "name": "Load Schema",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1240,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "schema",
+        "key": "schema_notion_rag",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "2a38290c-24fb-4a44-bbb9-58da87d9619c",
+      "name": "Get Schema",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        780,
+        380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "573017ca-eb6d-411b-8959-0df7bc4c92da",
+              "leftValue": "={{ $json.schema.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "108b4865-0210-440a-adca-f767fc66f2e7",
+      "name": "Found Schema?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        940,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "schema_notion_rag",
+        "value": "={{ $json.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "2f4ed616-dadf-4d80-ba9c-83823d05df26",
+      "name": "Save Schema",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        600
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "=Happy {{ $today.weekdayLong }}!\nKnowledge source assistant at your service. How can I help you?",
+        "options": {
+          "subtitle": "",
+          "title": "Notion Knowledge Base"
+        }
+      },
+      "id": "f1274a12-128c-4549-a19b-6bfc3beccd89",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        460,
+        380
+      ],
+      "webhookId": "b76d02c0-b406-4d21-b6bf-8ad2c623def3",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "1227c386-d922-8041-a649-f9f993b7dd16",
+          "mode": "list",
+          "cachedResultName": "Company Knowledge Base",
+          "cachedResultUrl": "https://www.notion.so/1227c386d9228041a649f9f993b7dd16"
+        },
+        "limit": 5,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "question|title",
+              "condition": "contains",
+              "titleValue": "How do I schedule"
+            },
+            {
+              "key": "tags|multi_select",
+              "condition": "contains",
+              "multiSelectValue": "=Support"
+            }
+          ]
+        },
+        "options": {
+          "sort": {
+            "sortValue": [
+              {
+                "timestamp": true,
+                "key": "last_edited_time",
+                "direction": "ascending"
+              }
+            ]
+          }
+        }
+      },
+      "id": "3304dffe-fdc2-420c-8fa8-d7fbf34487bf",
+      "name": "Notion1",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2240,
+        720
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "c0230831-f9c7-4cc4-8d30-417f9a3a0ae5",
+      "name": "Schema",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.notion.com/v1/databases/1227c386-d922-8041-a649-f9f993b7dd16/query",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"filter\": {\n    \"or\": [\n      {\n        \"property\": \"question\",\n        \"rich_text\": {\n          \"contains\": \"HR\"\n        }\n      },\n      {\n        \"property\": \"tags\",\n        \"multi_select\": {\n          \"contains\": \"HR\"\n        }\n      }\n    ]\n  },\n  \"sorts\": [\n    {\n      \"property\": \"updated_at\",\n      \"direction\": \"ascending\"\n    }\n  ],\n  \"page_size\": 3\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "84d8c7dd-5d7e-4767-a98f-b81ac9f59a88",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2080,
+        900
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results",
+        "options": {}
+      },
+      "id": "5a9fd8c0-9b9f-4ce1-ba66-71041edccf47",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "81cf1e77-14a1-46c0-8b8f-3955e9306738",
+              "name": "question",
+              "value": "={{ $json.properties.question.title[0].text.content }}",
+              "type": "string"
+            },
+            {
+              "id": "21196bce-ae9a-4b9e-9859-1f060fa8f2bd",
+              "name": "answer",
+              "value": "={{ $json.properties.answer.rich_text[0].text.content }}",
+              "type": "string"
+            },
+            {
+              "id": "9c3f3d55-b1c3-4d88-822f-02b60ccef765",
+              "name": "departaments",
+              "value": "={{ $json.properties.department.select.name }}",
+              "type": "string"
+            },
+            {
+              "id": "25dcbc31-421e-47df-90c8-bc6c11f54cf0",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90835386-500d-4517-81b2-ed264cccaea1",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2400,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "94545f98-403a-43cb-ac66-0b98e3c26e61",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f9ae6c07-8c9e-4fee-9f92-af37147fb830",
+              "name": "response",
+              "value": "={{ $json.data.toJsonString() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "65f37e53-d1b0-4f2a-a78c-ae4b392db2b0",
+      "name": "Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2720,
+        900
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ce5dcd29-b77d-4e52-8fd7-1b28e0dbf596",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "=Use this tool to search the \"\" Notion app database.\n\nIt is structured with question and answer format. \nYou can filter query result by:\n- By keyword\n- filter by tag.\n\nKeyword and Tag have an OR relationship not AND.\n\n<options>{{ $('Schema').item.json.tagsOptions }}</options>",
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "1227c386-d922-8041-a649-f9f993b7dd16",
+          "mode": "list",
+          "cachedResultName": "Company Knowledge Base",
+          "cachedResultUrl": "https://www.notion.so/1227c386d9228041a649f9f993b7dd16"
+        },
+        "limit": 5,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "question|title",
+              "condition": "contains",
+              "titleValue": "={{ $fromAI('keyword', 'Searches question of the record. Use one keyword at a time.') }}"
+            },
+            {
+              "key": "tags|multi_select",
+              "condition": "contains",
+              "multiSelectValue": "={{ $fromAI('tags', 'Options: {options} in english') }}"
+            }
+          ]
+        },
+        "options": {
+          "sort": {
+            "sortValue": [
+              {
+                "timestamp": true,
+                "key": "last_edited_time",
+                "direction": "ascending"
+              }
+            ]
+          }
+        }
+      },
+      "id": "be081dad-d90c-4845-b77f-5e0ab15273f5",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notionTool",
+      "typeVersion": 2.2,
+      "position": [
+        2060,
+        260
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "search_notion_database_tool",
+        "description": "=Use this tool to search the \"\" Notion app database.\n\nIt is structured with question and answer format. \nYou can filter query result by:\n- By keyword\n- filter by tag.\n\nKeyword and Tag have an OR relationship not AND.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Krc5x0hGZst91P1d",
+          "mode": "list",
+          "cachedResultName": "Notion knowledge base AI assistant"
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"filter\": {\n    \"or\": [\n      {\n        \"property\": \"question\",\n        \"rich_text\": {\n          \"contains\": \"{keyword}\"\n        }\n      },\n      {\n        \"property\": \"tags\",\n        \"multi_select\": {\n          \"contains\": \"{tag}\"\n        }\n      }\n    ]\n  },\n  \"sorts\": [\n    {\n      \"property\": \"updated_at\",\n      \"direction\": \"ascending\"\n    }\n  ]\n}"
+      },
+      "id": "20519c82-d522-4c6d-8e16-b659b7f64352",
+      "name": "Search notion database1",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1700,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('baseInfo').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=# Role:\nYou are a helpful agent. Query the Notion database \"{{ $json.databaseName }}\" to find relevant records or summarize insights based on multiple records.\n\n# Behavior:\n\nBe clear, very concise, efficient, and accurate in your responses. Don't be delusional.\n\nIf the request is ambiguous, ask for clarification. Don't embellish, use only facts from the Notion records. Don't offer general advice.\n\n# Tool Usage\n\nAlways change inputs to English, as that is how the database is.\n\n# Error Handling:\n\nIf no matching records are found, try alternative search criteria. Example 1: Laptop, then Computer, then Equipment. Example 2: Meetings, then Meeting.\n\nClearly explain any issues with queries (e.g. missing fields or unsupported filters).\n\n# Output:\n\nReturn concise and easy-to-use results or summaries.\n\nFor large sets, show the top results by default and offer more if needed. Output URLs in Markdown format.\n\nWhen a record has the answer to the user's question, always display the URL to that page. Don't send links twice.\n\nAlways answer in pt-br."
+        }
+      },
+      "id": "9f48e548-f032-477c-960d-9c99d61443df",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        1580,
+        360
+      ],
+      "typeVersion": 1.6
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-10T14:19:09.642Z",
+      "updatedAt": "2024-09-10T14:19:09.642Z",
+      "id": "8vcWcOO2TKJlH0Gt",
+      "name": "Public"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2024-11-01T18:27:40.192Z",
+  "versionId": "850f5019-a65c-43ed-8ff4-db9c9876c66b"
+}
