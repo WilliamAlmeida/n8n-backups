@@ -1,0 +1,907 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Account User": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "Json2Object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has user account?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Account User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Json2Object": {
+      "main": [
+        [
+          {
+            "node": "has user account?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset Memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Scheduling Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faro Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Courses Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procedures Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-15T18:19:39.691Z",
+  "id": "ds3jAJzOq9bxFmE1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Clinica MED Center",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.6,
+          "topP": 1
+        }
+      },
+      "id": "edd3641c-d660-45e7-8a49-7754a9910ceb",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5220,
+        1540
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 504,
+        "width": 794
+      },
+      "id": "f7ebd1b8-6f22-43fe-8d7b-c51a8b49622e",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+      },
+      "id": "ba02d72f-06fa-4f9f-a345-e14e2c1a66be",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        1360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "7140f0a0-f4d8-42a7-806b-3a78754f3030",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6180,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "42efc5bc-85fc-47b2-9e77-b82583b7bb2b",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4140,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.user.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": "={{ $json.user ? 120 : 60 }}"
+      },
+      "id": "4d31fa4a-aaad-4b90-a029-c3202e27e448",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4740,
+        1540
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "with_plan"
+            },
+            {
+              "name": "with_stores"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b6086b37-9e23-4956-8b5d-59f1f4cdf2eb",
+      "name": "Get Account User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4600,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "c38cce3e-1edb-4e17-92d7-af14679d5bd7",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4380,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account.id }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3ccca82f-6473-4681-9ff1-ceb45dc0a4b4",
+      "name": "has user account?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4600,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "7d833f79-a8df-4c90-aa3e-e5c2f3cb6217",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4400,
+        1340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 650.6226961809048,
+        "width": 598.5677101799579,
+        "color": 5
+      },
+      "id": "5c0dbf7e-f98a-4f34-a7f3-2449f63c7e25",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
+        "options": {}
+      },
+      "id": "78719e6e-04fd-4f99-937f-e5bde1c4cd1d",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4780,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4080,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "6d4f63cd-58da-492b-ab55-aa84e4b6377b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6040,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=<prompt_faro>\n  <additional_info>\n    CurrentDateTime: {{ $now.toISO() }}\n  </additional_info>\n\n  <user_details>\n    User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n  </user_details>\n\n  <personality>\n    Name: MED Center Assistant\n    Role: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\n    Tone: Friendly, Polite, Helpful, Fast, and Welcoming.\n    Can use some emojis.\n  </personality>\n\n  <main_functions>\n    Guide users through the appointment scheduling process.\n    Clarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\n    Provide information on medical specialties and doctor availability.\n    Forward to a human assistant when necessary.\n  </main_functions>\n\n  <general_guidelines>\n    Clear and concise answers (max 350 characters).\n    Simple and accessible language, avoiding technical jargon.\n    Forward complex cases to a human assistant.\n    Consult the database before answering questions.\n    Inform the user immediately if any data is unavailable or inaccurate.\n  </general_guidelines>\n\n  <link_formatting>\n    Links should be written in full, on a separate line, without formatting.\n    Example: \"More information: https://www.medcenter.com\"\n    Always ask the user if they need further details after sending the link.\n  </link_formatting>\n\n  <service_flow>\n    Greeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\n    Identify needs with specific questions.\n    Offer information on appointment scheduling, medical specialties, or insurance plans.\n    Send useful links, if necessary.\n    Forward to human support if needed.\n    Check if the clinic has a specific doctor or specialist whenever asked.\n  </service_flow>\n</prompt_faro>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1d362518-2af9-4880-9e64-29363b6a801e",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5040,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
+        "sessionTTL": 300
+      },
+      "id": "0dece69a-7574-4cc0-9cd4-64a01585661c",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5640,
+        1460
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "675594ce-198a-45d4-b185-4caacb169a93",
+              "name": "user_account",
+              "value": "={{ $json.user_account }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8bb289bf-43a1-4c77-a639-1b5208f7ecf0",
+      "name": "Json2Object",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4460,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "call this tool to clean chat memory.",
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+      },
+      "id": "76246e11-4cdd-4141-965d-fde672b23f70",
+      "name": "Reset Memory",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        5640,
+        1620
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "372e405f-57ff-422d-bfb9-bb2797c49a28",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3920,
+        1080
+      ],
+      "webhookId": "f10c69e5-107e-4acc-b017-be0313aaee00"
+    },
+    {
+      "parameters": {
+        "name": "scheduling_tool",
+        "description": "Call this tool for the following scheduling actions: check availability, schedule, cancel, consult and check schedule made, reschedule schedules.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
+      "name": "Agent Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5620,
+        1820
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a2182a31-5d55-4811-a476-23a5eca970ed",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1300
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=**{{ $workflow.name }}**:\n\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58f6d211-0ccc-40df-80f9-089086cd570a",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5840,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').item.json.system }}"
+        }
+      },
+      "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "name": "general_knowledge_base_tool",
+        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre qualquer informação que lhe for perguntada. ",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "general"
+            },
+            {
+              "name": "slots",
+              "stringValue": "3"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "9ce6b047-59f4-41f3-8b06-6a4706f7cfb0",
+      "name": "Faro Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5480,
+        1780
+      ],
+      "disabled": true,
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
+    },
+    {
+      "parameters": {
+        "name": "courses_knowledge_base_tool",
+        "description": "=Use esta ferramenta para buscar informações sobre os cursos oferecidos pela faculdade.\n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse.",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "cursos"
+            },
+            {
+              "name": "slots",
+              "stringValue": "7"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "ed57d7ee-1cb1-41ab-af9a-becd7244dd5c",
+      "name": "Courses Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5360,
+        1840
+      ],
+      "disabled": true,
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
+    },
+    {
+      "parameters": {
+        "name": "procedures_tool",
+        "description": "Use this tool to get information about the specialists (doctors) and procedures provided by the clinic, as well as check if the clinic has one.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "procedures"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "61c9f808-fda6-4214-84b2-58558f21640c",
+      "name": "Procedures Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5240,
+        1820
+      ]
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "oi, dra. rita martom tem disponibilidade na segunda de manhã?"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-16T02:45:23.301Z",
+  "versionId": "41daccce-ffef-407e-b0c3-6038d75dbdf8"
+}
