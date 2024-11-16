@@ -1,0 +1,853 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Account User": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "Json2Object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has user account?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Account User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Json2Object": {
+      "main": [
+        [
+          {
+            "node": "has user account?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset Memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Scheduling Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faro Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Courses Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-06T14:20:00.315Z",
+  "id": "sM851q7DBuLWVcgj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Faculdade Faro",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.6,
+          "topP": 1
+        }
+      },
+      "id": "0e424a9d-7b51-429a-acd9-3114acaa0cdd",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5220,
+        1520
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 584.136756451777,
+        "width": 854.1019126589118
+      },
+      "id": "137d9cef-0c8e-47b1-b542-abb86476a04c",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_faro"
+      },
+      "id": "fec13768-c12a-4bbb-b37b-056652e447ea",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        1360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "d48c51f4-4ad3-4a0c-ab71-3b48f91dd05e",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6180,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "f7c9e492-901e-41c4-bd36-d52d46a98061",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4140,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.user.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": "={{ $json.user ? 120 : 60 }}"
+      },
+      "id": "e8287955-e4c8-4cec-9e29-a3599146db46",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4740,
+        1540
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "with_plan"
+            },
+            {
+              "name": "with_stores"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0bfe6462-6bec-4c8b-9c51-0302df27a0c8",
+      "name": "Get Account User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4600,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "09e21d55-6134-4914-8777-e3510537350d",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4380,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account.id }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "51764a84-8dcd-48f3-ae2c-91403b4b4059",
+      "name": "has user account?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4600,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "45292fd5-ac24-4f49-9400-5414700612f7",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4400,
+        1340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 650.6226961809048,
+        "width": 598.5677101799579,
+        "color": 5
+      },
+      "id": "6b640f70-43e5-4d48-bdb7-2c8f1d4ebe1a",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json.user ?? {} }}",
+        "options": {}
+      },
+      "id": "fd2c2a53-5d3d-4f39-ba5e-c71b0b0323bc",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4780,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"william\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "48e0522b-8914-4a8a-9284-33a80e1f30b2",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4080,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "41e02c7b-ef6b-4618-b0cb-26445d3b2663",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6040,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=<prompt_faro>\n  <additional_info>\n    CurrentDateTime: {{ $now.toISO() }}\n  </additional_info>\n\n  <user_details>\n    User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} linked to FARO, their name is \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n  </user_details>\n\n  <personality>\n    Name: FARO Assistant\n    Role: Virtual assistant specialized in university services (curriculum analysis, applications, entrance exams, and course inquiries).\n    Tone: Friendly, Polite, Helpful, Fast, and Welcoming.\n    Can use some emojis.\n  </personality>\n\n  <main_functions>\n    Receive and guide users through the curriculum analysis process.\n    Clarify doubts about entrance exams, schedules, procedures, and deadlines.\n    Provide information on undergraduate and postgraduate courses, while identifying the user’s specific interest.\n    Forward to a human assistant when necessary.\n  </main_functions>\n\n  <general_guidelines>\n    Clear and concise answers (max 350 characters).\n    Simple and accessible language, avoiding technical jargon.\n    Forward complex cases to a human assistant.\n    Consult the database before answering questions.\n    Inform the user immediately if any data is unavailable or inaccurate.\n  </general_guidelines>\n\n  <link_formatting>\n    Links should be written in full, on a separate line, without formatting.\n    Example: \"More information: https://www.instagram.com/faculdadefaro_\"\n    Always ask the user if they need further details after sending the link.\n  </link_formatting>\n\n  <service_flow>\n    Greeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for curriculum analysis or entrance exam registration' : 'introduction' }}.\n    Identify needs with specific questions.\n    Offer information on curriculum analysis, registration, or courses.\n    Send useful links, if necessary.\n    Forward to human support if needed.\n  </service_flow>\n</prompt_faro>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c99559c-6385-43cb-a4c7-619bf5146428",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5040,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_faro",
+        "sessionTTL": 300
+      },
+      "id": "ddea082c-2127-481f-aa7b-d869805f5104",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5360,
+        1540
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "675594ce-198a-45d4-b185-4caacb169a93",
+              "name": "user_account",
+              "value": "={{ $json.user_account }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8e7f8e5a-b508-42e1-aad5-0c2af872b9f9",
+      "name": "Json2Object",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4460,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "call this tool to clean chat memory.",
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_faro"
+      },
+      "id": "239810a0-29f2-4df7-a073-24d11fa71b26",
+      "name": "Reset Memory",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        5680,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "8a617ff8-4a5b-4dfd-8559-ab1d30cea749",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3920,
+        1080
+      ],
+      "webhookId": "34a1044a-6026-4031-bd08-b52963f229af"
+    },
+    {
+      "parameters": {
+        "name": "scheduling_tool",
+        "description": "Call this tool to consult, cancel, list, register, change any meeting schedule.",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "15bda5c5-ce42-470b-8cc4-e10c58b6d608",
+      "name": "Agent Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5620,
+        1700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e6497f5d-44e4-42d0-8e9e-3815e5be3728",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1300
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4dfba7b9-e70d-4a0d-aaf7-fe1d71c0a142",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5840,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "={{ $('config prompt').item.json.system }}"
+        }
+      },
+      "id": "762dac5f-5108-461b-b971-fc1f685d85b0",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "name": "general_knowledge_base_tool",
+        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre qualquer informação que lhe for perguntada. ",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "general"
+            },
+            {
+              "name": "slots",
+              "stringValue": "3"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "43a656a9-5575-407f-b3ee-328925d86680",
+      "name": "Faro Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5500,
+        1660
+      ],
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
+    },
+    {
+      "parameters": {
+        "name": "courses_knowledge_base_tool",
+        "description": "=Use esta ferramenta para buscar informações sobre os cursos oferecidos pela faculdade.\n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse.",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "cursos"
+            },
+            {
+              "name": "slots",
+              "stringValue": "7"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "efe9cef5-d38e-4af1-8824-cb8af1d20ebd",
+      "name": "Courses Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5380,
+        1720
+      ],
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "onde fica a faculdade?"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    },
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-15T17:56:29.157Z",
+  "versionId": "e7bf8e43-aa47-4f42-8842-b14ff99329ec"
+}
