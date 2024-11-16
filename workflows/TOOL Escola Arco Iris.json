@@ -1,0 +1,1408 @@
+{
+  "active": false,
+  "connections": {
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Notion Get Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Non-Text Content": {
+      "main": [
+        [
+          {
+            "node": "Summarize - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Page - Concatenate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Get Page": {
+      "main": [
+        [
+          {
+            "node": "Filter Non-Text Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page - Concatenate": {
+      "main": [
+        [
+          {
+            "node": "Redis Set in Cache",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page in Cache?": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Page Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Retrive Page": {
+      "main": [
+        [
+          {
+            "node": "Page in Cache?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page Info": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "send to agent?": {
+      "main": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "send to agent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "EWT Fixed": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Query",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "EWT Fixed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar Avaliability": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "config prompt": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Agents": {
+      "main": [
+        [
+          {
+            "node": "config prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Response2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contextual Compression Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Contextual Compression Retriever",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Question and Answer Chain": {
+      "main": [
+        [
+          {
+            "node": "Response WK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Contextual Compression Retriever",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Retriever",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "School Info Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Register": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar List": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Update": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Cancel": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-05T00:37:58.534Z",
+  "id": "eYTEn5UFWN41qxlc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TOOL Escola Arco Iris",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "get",
+        "pageId": {
+          "__rl": true,
+          "value": "https://www.notion.so/Escola-Arco-Iris-Lorena-1357c386d922805b86eff5a916f0b857",
+          "mode": "url"
+        }
+      },
+      "id": "86f7552d-460f-49dc-9276-797516af525a",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2520,
+        320
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "e5b605e5-6d05-4bca-8f19-a859e474620f",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "image"
+            },
+            {
+              "id": "c7415859-5ffd-4c78-b497-91a3d6303b6f",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "video"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d87c4702-dcee-4790-8b4c-49d074fa78bd",
+      "name": "Filter Non-Text Content",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        2880,
+        300
+      ],
+      "typeVersion": 2,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "content",
+              "includeEmpty": true,
+              "separateBy": "\n"
+            }
+          ]
+        },
+        "options": {
+          "outputFormat": "separateItems"
+        }
+      },
+      "id": "d04cbdb6-f591-4394-a31a-882e5dd44259",
+      "name": "Summarize - Concatenate",
+      "type": "n8n-nodes-base.summarize",
+      "position": [
+        3060,
+        320
+      ],
+      "typeVersion": 1,
+      "disabled": true,
+      "notes": "Summarize - Concatenate Notion's blocks content"
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "returnAll": true
+      },
+      "id": "0de04f9d-4746-4a7a-a9c2-8d4be603057e",
+      "name": "Notion Get Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2700,
+        320
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "notionApi": {
+          "id": "eyQfrNhyfucklowG",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54e5667d-a9d0-443a-9807-d15c93656348",
+              "name": "content",
+              "value": "={{ $json.concatenated_content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "467dfd2a-a019-4d05-868d-3157fc724d39",
+      "name": "Page - Concatenate",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3240,
+        320
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f469534b-3fb9-4969-8b10-53388bb19aa9",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "45cfc25d-854d-4ea2-aa5a-17e5ffe7df70",
+      "name": "Page in Cache?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2300,
+        340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "=db_notion_{{ $workflow.id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "53dadd4e-bd1c-4831-b853-b709f98e5c1b",
+      "name": "Redis Retrive Page",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "90936fac-2408-4395-b13d-a6201d630d4b",
+              "name": "content",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0312b8ee-06ee-4e7a-8f39-746dac0e92c4",
+      "name": "Page Info",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=db_notion_{{ $workflow.id }}",
+        "value": "={{ $json.content }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "a7ebb798-9787-4777-b201-ca1429738cde",
+      "name": "Redis Set in Cache",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3420,
+        320
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "maxTokensToSample": 512,
+          "temperature": 0
+        }
+      },
+      "id": "bf584cdb-e8ad-4e44-b07c-d9fb44642242",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        2780,
+        680
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
+              "leftValue": "={{ $json.agent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "32c9d3db-5eb5-4173-b9fd-2be99763a212",
+      "name": "send to agent?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93b3a4ae-a50c-4b62-9872-f980bc19054c",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "089629c4-878b-4a38-a911-cab186caadf0",
+      "name": "Response2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1940,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96d1de00-9a10-458a-8239-837216efd9c0",
+      "name": "Response1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3020,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas"
+      },
+      "id": "14ffd82a-3502-4f8a-add1-5c6fc96527fc",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        980
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "0e773b80-d3bd-4e2c-8ac8-e0c2bea8bd0c",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=<context>\n{{ $json.content }}\n</context>\n\n**Responda somente com informações disponíveis no <context>.**\nSe não tiver a informação no momento ou não estiver seguro, **deixe claro que não é possível fornecer detalhes agora**."
+            }
+          ]
+        }
+      },
+      "id": "bf4f7a5f-e4b6-4d1a-933a-b6826dd913a9",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        2700,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.agent }}",
+                    "rightValue": "calendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "calendar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0898dae-4fb5-4b52-a48d-fdd0033118bb",
+      "name": "Switch Agents",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1140,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b1545e4f-bacb-4749-b49b-88f4898bae1b",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        1240
+      ],
+      "webhookId": "f9754957-4fde-4630-9bdb-02501c6911c3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1123d8e-c791-4dda-bbd0-e24c5b1d35d2",
+              "name": "query",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4f87e3de-f5d1-444e-b520-096badd0892d",
+      "name": "Query",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        1160
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"query\": \"Agendamento de entrega de gás de cozinha para William, telefone 12982184879, para amanhã às 08:00.\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"william\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"sim\"\n  },\n  \"userAccount\": {\n    \"id\": 1,\n    \"nome\": \"William\",\n    \"sobrenome\": \"Almeida\",\n    \"nome_completo\": \"William Almeida\",\n    \"whatsapp\": \"12982184879\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"endereco\": \"\"\n  }\n}",
+        "options": {}
+      },
+      "id": "7dffbd54-86cf-4f96-970e-9ff483b47e5c",
+      "name": "EWT Fixed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        1320
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "19cfcb02-02cc-4945-a461-065c0db0de6b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1160,
+        1240
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_liquid_gas",
+        "sessionTTL": 300,
+        "contextWindowLength": 15
+      },
+      "id": "0c9316bd-1d8d-43b5-9254-d2f55aa126d0",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        1680,
+        1200
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 1,
+          "topP": 1
+        }
+      },
+      "id": "f9053034-0200-405f-b749-96973368da92",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        1220
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "=williamkillerca@gmail.com",
+          "mode": "id",
+          "__regex": "(^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*)"
+        },
+        "timeMin": "={{ $fromAI('data_start', 'data e hora do agendamento formato 2024-11-02T11:01:00-03:00') }}",
+        "timeMax": "={{ $fromAI('data_end', 'data e hora do agendamento formato 2024-11-02T11:01:00-03:00') }}",
+        "options": {
+          "outputFormat": "availability"
+        }
+      },
+      "id": "f7362799-b59a-4fac-8936-1a3c58a44cc9",
+      "name": "Google Calendar Avaliability",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        2260,
+        1220
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
+              "name": "system",
+              "value": "=<prompt_mestre_agendamento>\n<info_adicionais>\nData e Hora Atual: {{ $now.toISO() }}\n\n<sobre_o_usuario>\nUsuário {{ $('EWT').first().json.userAccount.id ? 'já' : 'ainda não' }} é cliente, seu nome é \"{{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}\", o e-mail é \"{{ $('EWT').first().json.userAccount.email ?? '' }}\", telefone para contato é \"{{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}\" e seu endereço atual é \"{{ $('EWT').first().json.userAccount.endereco ?? '' }}\".\n\n<personalidade>\nFunção: Assistente virtual especializado em agendamento de reuniões com a escola.\n\n<funcoes_principais>\n- Agendar reuniões com a escola\n- Confirmar informações de contato\n- Verificar disponibilidade de horários\n\n<regras_gerais>\nRespostas claras e objetivas (máx. 350 caracteres)\nLinguagem simples e acessível, evitando termos técnicos\nInformar o cliente imediatamente se algum dado estiver indisponível ou impreciso\nSempre formate o Telefone com Mask.\n\n<agendamento_reuniao>\nPara agendamento, SIGA as etapas, NÃO pule nenhuma:\n\n1. Identificar o motivo do agendamento (reunião).\n3. Solicite as informações do cliente (nome, telefone, e-mail)\n  - Se algum desses dados estiver faltando ou precisar de alteração, por favor, informe-os.\n4. Informe ao usuário os horários disponíveis para agendamento.\n5. Solicite a data e horário desejados para o agendamento.\n\n**Verificação de Horários:**\nAntes de finalizar o agendamento, verifique se o horário solicitado está dentro dos horários permitidos. Se o horário não estiver disponível, informarei:\n\"O horário solicitado não está disponível. Os horários permitidos são: [Horários permitidos via school_info_tool]. Por favor, selecione um novo horário.\"\n\n**Confirmação:**\nDepois de coletar todas informações, exiba-os e solicite a confirmação para prosseguir com o agendamento.\n\nApós o SALVAR ou ATUALIZAR o agendamento, NUNCA envie o link dispónivel.\n\nFormato de Salvamento de Agendamento:\n\n- Data e Hora Agendada: [Data e Hora]\n- Nome do Usuário: [Nome]\n- Telefone: [Telefone]\n- Assunto: [Assunto]\n- E-mail: [E-mail]\n\nInstruções:\n\nSubstitua cada texto entre colchetes pelos dados específicos do agendamento.\nUtilize este formato para garantir clareza e consistência todas as vezes que você precisar registrar um agendamento.\n\n**Exibição do Agendamento**\nSempre exiba o ID do Evento junto das demais informações.\n\n</prompt_mestre_agendamento>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b5ddc4e0-144b-4f38-af48-2606ca03a89c",
+      "name": "config prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.query }}",
+        "options": {
+          "systemMessage": "={{ $json.system }}",
+          "maxIterations": 5
+        }
+      },
+      "id": "24cb5320-a4cf-4792-a666-61d1ec02e780",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1600,
+        980
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@gmail.com"
+        },
+        "timeMin": "2024-11-04T23:00:17",
+        "timeMax": "2024-11-04T23:00:18",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        920,
+        980
+      ],
+      "id": "cf8fb2d5-ef11-468e-b638-bc894188084b",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "d879da19-a49e-4a49-98da-c9c616f38d1e",
+      "name": "Contextual Compression Retriever",
+      "type": "@n8n/n8n-nodes-langchain.retrieverContextualCompression",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "topK": 3
+      },
+      "id": "d1fe320c-2af3-40a2-9d57-e50823a4b1e9",
+      "name": "Vector Store Retriever",
+      "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {}
+      },
+      "id": "2914c62e-391f-4ff9-85a8-0d9b8930ea99",
+      "name": "Question and Answer Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "typeVersion": 1.3,
+      "position": [
+        1280,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gemma2-9b-it",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "340ce8cc-a128-4986-bcfb-512e3bf3df45",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        440
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "6d6c5f04-0ee7-47ea-a0ae-9994f993079f",
+      "name": "Embeddings OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        680
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.response.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ebe8d99-7093-4b2c-a4b0-186a69435402",
+      "name": "Response WK",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1620,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "notion_escolaarcoiris_2",
+          "mode": "list",
+          "cachedResultName": "notion_escolaarcoiris_2"
+        },
+        "options": {}
+      },
+      "id": "18dbe6ce-029e-4429-b699-d87e6a4f9dc2",
+      "name": "Qdant Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        560
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "id": "76e8adc4-a0ff-4eba-958b-a4d7a8528fa6",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        280
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "school_info_tool",
+        "description": "Chame essa ferramenta para consultar horário de funcionamento para evitar agendar reuniões em momento errado.",
+        "workflowId": {
+          "__rl": true,
+          "value": "eYTEn5UFWN41qxlc",
+          "mode": "list",
+          "cachedResultName": "TOOL Escola"
+        }
+      },
+      "id": "96f1ee6c-cf30-4667-8592-c163c5ee11f9",
+      "name": "School Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1800,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use esta ferramenta para realizar o agendamentos de entrega do usuário.",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@gmail.com"
+        },
+        "start": "={{ $fromAI('data_init', 'data e hora do agendamento') }}",
+        "end": "={{ $fromAI('data_end', 'data e hora do agendamento') }}",
+        "additionalFields": {
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, nome do cliente, telefone, e-mail, e horário') }}",
+          "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
+        }
+      },
+      "id": "bb7d25fc-a683-4ae7-9c67-bbfed3a368b7",
+      "name": "Calendar Register",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        1980,
+        1220
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use esta ferramenta para localizar agendamentos de entrega do usuário, sempre solicite a data e hora do agendamento e, se disponível, o código do pedido para facilitar a localização.",
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "options": {
+          "timeMin": "={{ $fromAI('data_after', 'Data e hora da entrega agendada informada pelo usuário menos 24 horas') }}",
+          "timeMax": "={{ $fromAI('data_before', 'Data e hora da entrega agendada informada pelo usuário mais 24 horas') }}",
+          "fields": "items(id,status,htmlLink,created,summary,description,creator,organizer,start(dateTime),end(dateTime))"
+        }
+      },
+      "id": "05eefa85-d2bc-4349-b4ab-bfe0780d8a08",
+      "name": "Calendar List",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        2120,
+        1220
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "eventId": "={{ $fromAI('event_id', 'id do evento') }}",
+        "updateFields": {
+          "description": "={{ $fromAI('description', 'Descrição breve do agendamento, incluindo informações importantes como tipo de produto, endereço, telefone, nome do cliente e horário') }}",
+          "end": "={{ $fromAI('data_end', 'data e hora do agendamento') }}",
+          "start": "={{ $fromAI('data_start', 'data e hora do agendamento') }}",
+          "summary": "={{ $fromAI('summary', 'Um resumo conciso da nomeação, destacando informações essenciais como propósito e detalhes importantes') }}"
+        }
+      },
+      "id": "70d80640-6aa3-4fda-8fd2-cf2cf68fc757",
+      "name": "Calendar Update",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        1980,
+        1400
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use esta ferramenta para cancelar 1 agendamentos de entrega por vez em intervalos de chamadas de 5 segundos, desde que estejam dentro do prazo de 20 minutos após a data e horário inicial. Para cancelar, é necessário o ID do Evento, para isso liste primeiro os agendamentos do usuário.",
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "williamkillerca@gmail.com",
+          "mode": "list",
+          "cachedResultName": "williamkillerca@hotmail.com"
+        },
+        "eventId": "={{ $fromAI('event_id', 'ID único do agendamento que você deseja cancelar') }}",
+        "options": {}
+      },
+      "id": "4047186a-0411-4d07-aaa8-bd44c3eeafa7",
+      "name": "Calendar Cancel",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.2,
+      "position": [
+        2120,
+        1400
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "mQv2XCcAIiyPKV2D",
+          "name": "Google Calendar account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-30T23:31:05.255Z",
+      "updatedAt": "2024-10-30T23:31:05.255Z",
+      "id": "IDsda42rHm8bi7eR",
+      "name": "Tool"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-11T14:58:39.677Z",
+  "versionId": "b10191d7-dbd5-4472-8649-ab3df319ce0b"
+}
