@@ -23,17 +23,6 @@
         ]
       ]
     },
-    "Redis Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Existing Appt Tool": {
       "ai_tool": [
         [
@@ -115,7 +104,7 @@
       "main": [
         [
           {
-            "node": "data cached?",
+            "node": "Data Cached?",
             "type": "main",
             "index": 0
           }
@@ -177,24 +166,6 @@
         ]
       ]
     },
-    "data cached?": {
-      "main": [
-        [
-          {
-            "node": "List Procedures",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Load Procedures",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Normalize Procedures": {
       "main": [
         [
@@ -249,6 +220,35 @@
         [
           {
             "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Cached?": {
+      "main": [
+        [
+          {
+            "node": "List Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Procedures",
             "type": "main",
             "index": 0
           }
@@ -353,7 +353,7 @@
       "typeVersion": 1,
       "position": [
         2000,
-        20
+        0
       ],
       "credentials": {
         "calApi": {
@@ -477,7 +477,7 @@
       "typeVersion": 1,
       "position": [
         2320,
-        20
+        0
       ],
       "credentials": {
         "calApi": {
@@ -572,7 +572,7 @@
       "typeVersion": 1,
       "position": [
         2160,
-        20
+        0
       ],
       "credentials": {
         "calApi": {
@@ -626,7 +626,7 @@
         "promptType": "define",
         "text": "={{ $('EWT').first().json.query }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper.\n\n## About\nAdditional Information: {{ $json.data.replaceAll('\"', '') }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's email is {{ $('EWT').first().json.userAccount.email }} and cellphone is {{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**"
+          "systemMessage": "=You are an appointment scheduling helper.\n\n## About\nAdditional Information: {{ $json.data.replaceAll('\"', '') }}\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About the user\nThe user's email is {{ $('EWT').first().json.userAccount.email }} and cellphone is {{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }}.\n\n## Template Event, hidden info if not provied\n📅 **{title}**\n\nStatus: **Scheduled or Cancelled** ✅\nScheduled for **{start}** until **{end}**\nLocal: **{location}**\nID: **{ID}** / UID: **{UID}**\n\n## Language\nRespond all in pt-BR, display date in d/M/Y and in a humanized way."
         }
       },
       "id": "aa638579-b587-424d-8195-3fbda86a41a1",
@@ -634,8 +634,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        1480,
-        380
+        1140,
+        400
       ],
       "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
     },
@@ -662,8 +662,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1900,
-        640
+        1500,
+        700
       ],
       "id": "8e308e00-33d6-47cc-a189-17c72d181b14",
       "name": "Get Availability Tool"
@@ -685,32 +685,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1820,
-        380
+        1460,
+        400
       ],
       "id": "424c9bc5-dc9e-4270-be54-1050e8d946a0",
       "name": "Response"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('EWT').item.json.messageInfo.unique_id}}_calendary",
-        "sessionTTL": 300
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.3,
-      "position": [
-        1560,
-        640
-      ],
-      "id": "2f8b69cb-4bf9-4ddf-9b11-1ff0ddbb71b8",
-      "name": "Redis Chat Memory",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
     },
     {
       "parameters": {
@@ -735,8 +714,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2080,
-        640
+        1620,
+        680
       ],
       "id": "c8ca4e43-f0fa-42ca-be49-a5786a209d26",
       "name": "Get Existing Appt Tool"
@@ -764,8 +743,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2600,
-        640
+        1980,
+        620
       ],
       "id": "b36c23e2-af15-403a-bc28-fc1310b95c6c",
       "name": "Find Existing Appt Tool"
@@ -793,7 +772,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2420,
+        1860,
         640
       ],
       "id": "1c0840e1-9467-442d-80ef-0f1a4ca0cf77",
@@ -822,8 +801,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1720,
-        640
+        1380,
+        720
       ],
       "id": "8e3dcf5f-e24d-48a5-9bc4-a5f6e1f61d99",
       "name": "Schedule Appt Tool"
@@ -851,8 +830,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2240,
-        640
+        1740,
+        660
       ],
       "id": "9e98be2e-691b-4978-ba4b-0866aa2cf51d",
       "name": "Reschedule Appt Tool"
@@ -868,7 +847,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1400,
+        1120,
         640
       ],
       "id": "4926d947-4833-4308-a427-283525641bea",
@@ -888,8 +867,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1240,
-        640
+        1000,
+        660
       ],
       "id": "c7bfc01b-6ece-4f36-b20d-d55fc013c0cf",
       "name": "Groq Chat Model",
@@ -911,7 +890,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1460,
+        1440,
         0
       ],
       "id": "852aba51-d587-4b40-8092-a1e35aa2666d",
@@ -922,14 +901,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "data",
-        "key": "={{ $('EWT').first().json.messageInfo.instance }}_calendary",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id }}_procedures",
         "keyType": "string",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        940,
+        960,
         120
       ],
       "id": "1df5a3af-eec4-4f73-87bd-37c41ff41f73",
@@ -944,7 +923,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('EWT').first().json.messageInfo.instance }}_calendary",
+        "key": "={{ $('EWT').first().json.messageInfo.instance }}_{{ $workflow.id }}_procedures",
         "value": "={{ $json.data.toJsonString() }}",
         "keyType": "string",
         "expire": true,
@@ -983,7 +962,7 @@
       "typeVersion": 3.4,
       "position": [
         1280,
-        200
+        180
       ],
       "id": "a973904e-c839-4c42-8aa4-96bae0868721",
       "name": "Load Procedures"
@@ -1005,7 +984,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1640,
+        1620,
         0
       ],
       "id": "bb430b47-4a64-4095-8a31-843b01454ae0",
@@ -1035,7 +1014,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1280,
+        1260,
         0
       ],
       "id": "a7436564-d6d1-490d-bde0-4848f68da2bb",
@@ -1071,11 +1050,154 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        780,
+        760,
         120
       ],
       "id": "2d84a3f5-8a27-4297-8fe3-e6c3627e83f4",
       "name": "baseInfo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "83f51543-5ede-4cbc-9453-e111b664483b",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1460,
+        180
+      ],
+      "id": "b406afc4-c0b3-4ef6-9dd5-ceeeec77255b",
+      "name": "Normalize Procedures"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1123d8e-c791-4dda-bbd0-e24c5b1d35d2",
+              "name": "query",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f36b3763-834a-46e7-9967-e7bef4f2ce15",
+      "name": "Query",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        360,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"query\": \"verificar agendamento para williamkillerca@hotmail.com, não sei a data\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n  },\n  \"userAccount\": {\n    \"id\": 1,\n    \"nome\": \"William\",\n    \"sobrenome\": \"Almeida\",\n    \"nome_completo\": \"William Almeida\",\n    \"whatsapp\": \"12982184879\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"endereco\": \"Rua Doutor Laércio Lincon Figueira, D19, Portal Das Palmeiras, Lorena - Sp\"\n  },\n  \"prompt\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n}",
+        "options": {}
+      },
+      "id": "8c4a5325-b988-4798-9931-64d3c7599240",
+      "name": "EWT Fixed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        360,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a9a9bb78-ce19-4bda-b077-b9603b41a019",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        120
+      ],
+      "webhookId": "cc46b11f-b8b0-4860-b3af-37c5cc5cd14f"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "2280fcb4-b6b6-4879-b71c-662a2b25fa54",
+      "name": "EWT",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        580,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('EWT').item.json.messageInfo.unique_id}}_{{ $workflow.id }}",
+        "sessionTTL": 300
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        1240,
+        620
+      ],
+      "id": "2f8b69cb-4bf9-4ddf-9b11-1ff0ddbb71b8",
+      "name": "Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Function Cal",
+        "height": 240,
+        "width": 760,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        600
+      ],
+      "id": "7a3ece60-d85c-4c91-bb0d-dba26b38e5de",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Procedures\nList with Professionals, Event ID (Cal.com)\nand Especilizations",
+        "height": 380,
+        "width": 1020,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        920,
+        -20
+      ],
+      "id": "81d04053-00d3-4915-bbf0-71ae5b314d06",
+      "name": "Sticky Note1"
     },
     {
       "parameters": {
@@ -1105,101 +1227,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1100,
+        1120,
         120
       ],
       "id": "ee54788e-dab6-4440-9188-584b7938c807",
-      "name": "data cached?"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "83f51543-5ede-4cbc-9453-e111b664483b",
-              "name": "data",
-              "value": "={{ $json.data }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1460,
-        200
-      ],
-      "id": "b406afc4-c0b3-4ef6-9dd5-ceeeec77255b",
-      "name": "Normalize Procedures"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a1123d8e-c791-4dda-bbd0-e24c5b1d35d2",
-              "name": "query",
-              "value": "={{ $json.chatInput }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "f36b3763-834a-46e7-9967-e7bef4f2ce15",
-      "name": "Query",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        380,
-        20
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "{\n  \"query\": \"verificar agendamento para williamkillerca@hotmail.com, não sei a data\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n  },\n  \"userAccount\": {\n    \"id\": 1,\n    \"nome\": \"William\",\n    \"sobrenome\": \"Almeida\",\n    \"nome_completo\": \"William Almeida\",\n    \"whatsapp\": \"12982184879\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"endereco\": \"Rua Doutor Laércio Lincon Figueira, D19, Portal Das Palmeiras, Lorena - Sp\"\n  },\n  \"prompt\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n}",
-        "options": {}
-      },
-      "id": "8c4a5325-b988-4798-9931-64d3c7599240",
-      "name": "EWT Fixed",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        380,
-        200
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "a9a9bb78-ce19-4bda-b077-b9603b41a019",
-      "name": "Chat",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        180,
-        120
-      ],
-      "webhookId": "fde5ae79-2e7f-4c52-97a8-c78d4942547c"
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "id": "2280fcb4-b6b6-4879-b71c-662a2b25fa54",
-      "name": "EWT",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        600,
-        120
-      ]
+      "name": "Data Cached?"
     }
   ],
   "pinData": {},
@@ -1234,6 +1266,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-16T04:13:37.250Z",
-  "versionId": "5c10b28b-6a12-401c-9cc4-265a1f559c2f"
+  "updatedAt": "2024-11-16T14:39:09.443Z",
+  "versionId": "5a60ff8f-3bf7-46cf-a5f9-60323d380220"
 }
