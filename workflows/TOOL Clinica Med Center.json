@@ -1,0 +1,1324 @@
+{
+  "active": false,
+  "connections": {
+    "send to agent?": {
+      "main": [
+        [
+          {
+            "node": "Switch Tool",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "send to agent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "EWT Fixed": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Query",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "EWT Fixed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Agents": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contextual Compression Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Contextual Compression Retriever",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Question and Answer Chain": {
+      "main": [
+        [
+          {
+            "node": "Response WK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Contextual Compression Retriever",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Retriever",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Format Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Procedures": {
+      "main": [
+        [
+          {
+            "node": "data cached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Procedures": {
+      "main": [
+        [
+          {
+            "node": "Response3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Procedures": {
+      "main": [
+        [
+          {
+            "node": "Response3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Procedures": {
+      "main": [
+        [
+          {
+            "node": "Set Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Procedures": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data cached?": {
+      "main": [
+        [
+          {
+            "node": "List Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Tool": {
+      "main": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Procedures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointment Scheduling Agent": {
+      "main": [
+        [
+          {
+            "node": "Response2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Availability Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Existing Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Existing Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancel Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reschedule Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procedures Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "send to agent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-15T18:33:48.659Z",
+  "id": "JZY3GPC55leuxyHn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TOOL Clinica Med Center",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
+              "leftValue": "={{ $json.agent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "309a8f36-ceba-4d09-a0ff-97bba24c00d3",
+      "name": "send to agent?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica"
+      },
+      "id": "8d9813e1-5af7-459b-966a-8489f332debb",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        980
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "031ea9fc-c53f-4a6f-88be-a070538aa4d6",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        760
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.agent }}",
+                    "rightValue": "calendar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "calendar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ca609f71-ebaf-427b-b5d4-c2adfd9472ab",
+      "name": "Switch Agents",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1120,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "760374de-6e34-46ca-9918-905a36c32c1d",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        480
+      ],
+      "webhookId": "1b1c54aa-f931-45df-9dd8-e91521deb25a"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1123d8e-c791-4dda-bbd0-e24c5b1d35d2",
+              "name": "query",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ec9d580-43c2-4945-aaad-7f1f28b18556",
+      "name": "Query",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"query\": \"verificar agendamento para williamkillerca@hotmail.com, não sei a data\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n  },\n  \"userAccount\": {\n    \"id\": 1,\n    \"nome\": \"William\",\n    \"sobrenome\": \"Almeida\",\n    \"nome_completo\": \"William Almeida\",\n    \"whatsapp\": \"12982184879\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"endereco\": \"Rua Doutor Laércio Lincon Figueira, D19, Portal Das Palmeiras, Lorena - Sp\"\n  },\n  \"prompt\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n}",
+        "options": {}
+      },
+      "id": "be94c5e9-9db6-4c9d-8d3a-dec6a39dd78a",
+      "name": "EWT Fixed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "23b0e203-6fae-425e-8945-9bf9e5eb437c",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        480
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "80fcf8d3-0a4e-47b6-ac93-e701d21f1db6",
+      "name": "Contextual Compression Retriever",
+      "type": "@n8n/n8n-nodes-langchain.retrieverContextualCompression",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "topK": "={{ $json.slots }}"
+      },
+      "id": "cfcd75ea-4251-4628-88d9-396589171d7c",
+      "name": "Vector Store Retriever",
+      "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemPromptTemplate": "Use the following pieces of context to answer the users question. If you don't know the answer, just say that you don't know, don't try to make up an answer.\n----------------\n{context}"
+        }
+      },
+      "id": "93ba3023-aa4c-4b47-bb1f-7d21841045c0",
+      "name": "Question and Answer Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "typeVersion": 1.3,
+      "position": [
+        1460,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "55e590d8-f110-455f-9290-9597ba46e430",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        440
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "e099ff70-e0ca-42ef-9c3d-4cfb790973a5",
+      "name": "Embeddings OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        440
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.response.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4f2d1555-c5dd-47d4-ac12-392d83dafbfa",
+      "name": "Response WK",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1800,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "notion_faro",
+          "mode": "list",
+          "cachedResultName": "notion_faro"
+        },
+        "options": {
+          "searchFilterJson": "={\n  \"should\": [\n    {\n      \"key\": \"metadata.type\",\n      \"match\": {\n        \"value\": \"{{ $('EWT').item.json.type ?? '' }}\"\n      }\n    }\n  ]\n}"
+        }
+      },
+      "id": "2899748b-af1e-4b24-ae12-1409240e7eb8",
+      "name": "Qdant Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        440
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "allFieldsExcept",
+        "fieldsToExclude": "instances_id,active,id,created_at,empresa,cal_username",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        620
+      ],
+      "id": "efea46ed-0c5f-431e-b4f4-45954303df22",
+      "name": "Aggregate",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_procedures",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        740
+      ],
+      "id": "87dcc586-bccd-4b23-a808-6f01162d1d2f",
+      "name": "Get Procedures",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').first().json.messageInfo.instance }}_procedures",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        620
+      ],
+      "id": "7f9c8a7b-ae2f-4d63-b6a4-694d19087707",
+      "name": "Set Procedures",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1800,
+        820
+      ],
+      "id": "bcc01bd3-7804-4e7c-99d2-b7f28bf225c4",
+      "name": "Load Procedures"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Procedures').all().map(item => {\n  return {\n  professional: item.json.subtitle,\n  procedure: item.json.operation,\n  event_id: item.json.cal_event_id,\n  crm: item.json.extras?.crm.toNumber(),\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2160,
+        620
+      ],
+      "id": "bec003e2-cc18-47ec-ab23-5b596fd0c1a7",
+      "name": "Format Procedures"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "calendars",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        620
+      ],
+      "id": "06a09ac2-87ba-4933-9049-7b593ff8f4de",
+      "name": "List Procedures",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1620,
+        740
+      ],
+      "id": "9728c09b-20a4-478b-b02c-035febda0142",
+      "name": "data cached?"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "rag",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "RAG"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5ece5fd9-4267-4bf2-a1b7-23b5d1c2362f",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "procedures",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Procedures"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6ce5f04b-155b-4f55-9972-ed22f2b8cc00",
+      "name": "Switch Tool",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1120,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93b3a4ae-a50c-4b62-9872-f980bc19054c",
+              "name": "output",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "84c653aa-55b7-408c-a70a-e65247e2ef30",
+      "name": "Response2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2100,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "25b096a1-f682-42a6-9bb2-b82e07ab178d",
+      "name": "Response3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "=You are an appointment scheduling helper.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\n\n## About user\nUser {{ $('EWT').first().json.userAccount.id ? 'is' : 'is not' }} is registered, name is {{ ($('EWT').first().json.userAccount.nome) ? $('EWT').first().json.userAccount.nome : $('EWT').first().json.messageInfo.pushName }}, email is {{ $('EWT').first().json.userAccount.email ?? '' }}, mobile phone is {{ $('EWT').first().json.messageInfo.remoteJid.split('@')[0] }} and address is {{ $('EWT').first().json.userAccount.endereco ?? '' }}.\n\n## Output\n\nAlways respond in *pt-BR*, display date in d/M/Y and in a humanized way.\n\n# Format Event\n📅 **Appointment Confirmed**\n\n**Status:** Confirmed ✅\n**Start:**\n**End:**\n**Duration:**\n**Location:**\n**ID:**\n**UID:**",
+          "maxIterations": 5
+        }
+      },
+      "id": "4babc4bb-6c11-40f7-afb6-bfc121f313cd",
+      "name": "Appointment Scheduling Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1780,
+        980
+      ],
+      "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
+    },
+    {
+      "parameters": {
+        "name": "get_availability_tool",
+        "description": "Call this tool to get the appointment availability using event id.",
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "list",
+          "cachedResultName": "COMP Cal.com"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "availability"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"startTime\": \"date and time of the start of the booking\",\n  \"endTime\": \"end date and time, if specified, limited to a maximum of 4 days after 'startTime'. If 'endTime' is not given, the default value is 24 hours after 'startTime'.\",\n  \"event_id\": \"event id, event identification number\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2200,
+        1240
+      ],
+      "id": "edc94a5f-7ab6-43d4-ba0e-9a341f9d256e",
+      "name": "Get Availability Tool"
+    },
+    {
+      "parameters": {
+        "name": "get_existing_appt_tool",
+        "description": "=Call this tool to get an existing booking.\n\n## To detail an existing booking\n* Ask the user for their booking_id of the existing booking\n* Use the user's booking_id to search for the existing booking.\n* If the user's booking_id do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "find booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"booking_id\": \"the id of the booking\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2380,
+        1240
+      ],
+      "id": "7f237841-e763-4397-9870-b1c4777cde63",
+      "name": "Get Existing Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "find_existing_appt_tool",
+        "description": "=Call this tool to search for an existing reservation with the user's email address using event id.\n\n## To find an existing appointment\n* Ask the user for their email address\n* Use the user's email to search for the existing reservation.\n* If the user's email do not match the results or no results are returned, the existing reservation was not found.\n* If the existing reservation is not found, notify the user and suggest a new reservation be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is provided, pass as \"all\"\n\n# If no \"event id\" is provided, pass as empty.",
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "list bookings"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"attendeeEmail\": \"the e-mail of the attendee\",\n  \"status\": \"\",\n  \"event_id\": \"event id, event identification number separated by a comma\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2900,
+        1240
+      ],
+      "id": "4dd86eb4-e62e-4eb1-aa78-07e5772bba38",
+      "name": "Find Existing Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "cancel_appt_tool",
+        "description": "=Call this tool to cancel a user's existing booking using a booking uid.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking UID.\n* Display this booking UID to the user.\n* Use this booking UID to cancel an existing booking.\n* If an existing booking UID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an booking.",
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "cancel booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"cancellationReason\": \"reason for cancellation\",\n  \"booking_uid\": \"the booking UID of the appointment\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2720,
+        1240
+      ],
+      "id": "ac72bff6-f5b8-4597-bd79-d21574a4695c",
+      "name": "Cancel Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "schedule_appt_tool",
+        "description": "=Call this tool to schedule an appointment using event id.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name, cellphone and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "schedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\",\n    \"cellphone\": \"12982184877\",\n    \"professional\": \"\",\n    \"procedure\": \"\",\n    \"method_payment\": \"\",\n    \"name_plan\": \"\",\n    \"price\": \"\"\n  },\n  \"event_id\": \"event id, event identification number\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2020,
+        1240
+      ],
+      "id": "c56148c9-e174-4896-8c12-f6eff039ed39",
+      "name": "Schedule Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "reschedule_appt_tool",
+        "description": "=Call this tool to reschedule a user's appointment using a booking id and event id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "reschedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"booking_id\": \"the id of the booking\",\n  \"start\": \"date and time of the start of the booking\",\n  \"reschedulingReason\": \"rescheduling reason\",\n  \"event_id\": \"event id, event identification number\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2540,
+        1240
+      ],
+      "id": "0fb315e4-d637-4167-b8b0-cf776e9a551e",
+      "name": "Reschedule Appt Tool"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica",
+        "sessionTTL": 60
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        1700,
+        1240
+      ],
+      "id": "690c918f-448f-416a-b23a-d8b056fddc1c",
+      "name": "Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.5,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        1240
+      ],
+      "id": "5e0c3074-7231-4059-b25e-2578852771c4",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "procedures_tool",
+        "description": "Use this tool to obtain the EVENT ID and information about the specialists (doctors) and procedures provided by the clinic.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "JZY3GPC55leuxyHn"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "procedures"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('EWT').first().json.messageInfo }}"
+            }
+          ]
+        }
+      },
+      "id": "98ed3f19-6468-4615-8e4e-1fdd5db62c09",
+      "name": "Procedures Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1860,
+        1240
+      ]
+    }
+  ],
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": "verificar agendamento para williamkillerca@hotmail.com, não sei a data",
+          "agent": "calendar",
+          "messageInfo": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "ibox_cli_23",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "W.M. Soluções Tecnologicas",
+            "fromMe": false,
+            "unique_id": "william_5512982184879",
+            "debounce_time": 5,
+            "conversation": "oi, poderia verificar meu agendamento para quando foi marcado?"
+          },
+          "userAccount": {
+            "id": 1,
+            "nome": "William",
+            "sobrenome": "Almeida",
+            "nome_completo": "William Almeida",
+            "whatsapp": "12982184879",
+            "email": "williamkillerca@hotmail.com",
+            "endereco": "Rua Doutor Laércio Lincon Figueira, D19, Portal Das Palmeiras, Lorena - Sp"
+          },
+          "prompt": "oi, poderia verificar meu agendamento para quando foi marcado?"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-30T23:31:05.255Z",
+      "updatedAt": "2024-10-30T23:31:05.255Z",
+      "id": "IDsda42rHm8bi7eR",
+      "name": "Tool"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-16T03:26:10.455Z",
+  "versionId": "b23c59f7-06d1-4fba-86a2-c80fa83e2cf2"
+}
