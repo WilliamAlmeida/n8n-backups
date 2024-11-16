@@ -8,6 +8,11 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -249,6 +254,17 @@
           }
         ]
       ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -272,7 +288,7 @@
       "typeVersion": 1,
       "position": [
         5220,
-        1540
+        1500
       ],
       "credentials": {
         "openAiApi": {
@@ -315,7 +331,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -521,7 +538,8 @@
       "position": [
         4080,
         1080
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -572,8 +590,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5640,
-        1460
+        5200,
+        1640
       ],
       "credentials": {
         "redis": {
@@ -618,7 +636,7 @@
       "typeVersion": 1,
       "position": [
         5640,
-        1620
+        1460
       ],
       "credentials": {
         "redis": {
@@ -642,7 +660,8 @@
         3920,
         1080
       ],
-      "webhookId": "f10c69e5-107e-4acc-b017-be0313aaee00"
+      "webhookId": "76ae56f1-29c3-4654-b153-de4b8aa4bf9a",
+      "disabled": true
     },
     {
       "parameters": {
@@ -683,8 +702,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5620,
-        1820
+        5420,
+        1600
       ]
     },
     {
@@ -696,8 +715,7 @@
       "position": [
         3900,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -706,7 +724,7 @@
             {
               "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
               "name": "output",
-              "value": "=**{{ $workflow.name }}**:\n\n{{ $json.output }}",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
               "type": "string"
             }
           ]
@@ -773,8 +791,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5480,
-        1780
+        5660,
+        1600
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -811,8 +829,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5360,
-        1840
+        5540,
+        1620
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -837,15 +855,6 @@
               "name": "messageInfo",
               "type": "objectValue",
               "objectValue": "={{ $('messageInfo').first().json }}"
-            },
-            {
-              "name": "userAccount",
-              "type": "objectValue",
-              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
-            },
-            {
-              "name": "prompt",
-              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
             }
           ]
         }
@@ -855,8 +864,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5240,
-        1820
+        5360,
+        1660
       ]
     }
   ],
@@ -902,6 +911,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-16T02:45:23.301Z",
-  "versionId": "41daccce-ffef-407e-b0c3-6038d75dbdf8"
+  "updatedAt": "2024-11-16T14:50:30.888Z",
+  "versionId": "0b8b7a35-cd7c-49fd-b7e2-c198095397f6"
 }
