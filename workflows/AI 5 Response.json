@@ -156,6 +156,28 @@
           }
         ]
       ]
+    },
+    "Check Connection": {
+      "main": [
+        [
+          {
+            "node": "Restart Connection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restart Connection": {
+      "main": [
+        [
+          {
+            "node": "Connection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-08T13:37:37.409Z",
@@ -586,7 +608,55 @@
           "id": "T5OqvislWbgDr9Ek",
           "name": "Evolution Api Key"
         }
-      }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/instance/restart/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "dae65398-eaf6-4978-a1cb-04e0633259e6",
+      "name": "Restart Connection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1160,
+        -100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('messageInfo').first().json.evo_api }}/instance/connect/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "e4553741-385d-4b1a-9e03-db621d1f113f",
+      "name": "Connection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        -100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      },
+      "disabled": true
     }
   ],
   "pinData": {
@@ -638,6 +708,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-16T15:01:18.279Z",
-  "versionId": "5afe9c61-cc98-40e1-bc21-630845481af1"
+  "updatedAt": "2024-11-16T15:11:02.987Z",
+  "versionId": "13ea4dfa-e77a-4e8e-9e5c-48ea360171a9"
 }
