@@ -86,11 +86,6 @@
             "node": "Beautify URL",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Check Connection",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -196,7 +191,14 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(500, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 5000))) }}\n,\n  \"linkPreview\": false\n}",
-        "options": {}
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
       },
       "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
       "name": "Send Message",
@@ -235,7 +237,14 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replace(/^\\n+/g, '') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
-        "options": {}
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
       },
       "id": "1751549e-af47-4df1-9efa-5e979d6c05e9",
       "name": "Send Media",
@@ -586,7 +595,7 @@
       ],
       "id": "c9735dc4-a45a-4a29-aa0f-379af3125555",
       "name": "Wait",
-      "webhookId": "09834860-b91b-4a26-9c64-363c549630a0"
+      "webhookId": "09afff66-8226-46c0-8bd9-8621fd3e651d"
     },
     {
       "parameters": {
@@ -708,6 +717,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-16T15:11:02.987Z",
-  "versionId": "13ea4dfa-e77a-4e8e-9e5c-48ea360171a9"
+  "updatedAt": "2024-11-17T20:17:24.530Z",
+  "versionId": "06a2e8d1-0ff0-4fc0-aff6-ee3e4f08cc82"
 }
