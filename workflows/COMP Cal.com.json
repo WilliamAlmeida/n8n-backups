@@ -41,17 +41,6 @@
         ]
       ]
     },
-    "Cal Availability": {
-      "main": [
-        [
-          {
-            "node": "found slots?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "EWT": {
       "main": [
         [
@@ -67,7 +56,7 @@
       "main": [
         [
           {
-            "node": "Cal Availability",
+            "node": "Cal Availability1",
             "type": "main",
             "index": 0
           }
@@ -252,6 +241,17 @@
         [
           {
             "node": "Get all bookings by Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cal Availability1": {
+      "main": [
+        [
+          {
+            "node": "found slots?",
             "type": "main",
             "index": 0
           }
@@ -446,56 +446,6 @@
       ],
       "id": "8c02ea1e-f4b4-4595-91dd-894382b69b49",
       "name": "Get a booking",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "eventTypeId",
-              "value": "={{ $('EWT').item.json.query.event_id }}"
-            },
-            {
-              "name": "startTime",
-              "value": "={{ $('EWT').item.json.query.startTime }}"
-            },
-            {
-              "name": "endTime",
-              "value": "={{ $('EWT').item.json.query.endTime }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1460,
-        -1080
-      ],
-      "id": "9c791f62-6fd5-4b99-990e-8d1d9e4ce2e2",
-      "name": "Cal Availability",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
@@ -1330,6 +1280,56 @@
       ],
       "id": "6b2ad292-c11c-43fa-815d-053638d62696",
       "name": "all events?"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "eventTypeId",
+              "value": "={{ $('EWT').item.json.query.event_id }}"
+            },
+            {
+              "name": "startTime",
+              "value": "={{ $('EWT').item.json.query.startTime.toDateTime().toISO() }}"
+            },
+            {
+              "name": "endTime",
+              "value": "={{ $('EWT').item.json.query.endTime.toDateTime().toISO() }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        -1080
+      ],
+      "id": "ef2c4657-fd2d-4a40-b0e8-6e8d3d4b2e09",
+      "name": "Cal Availability1",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1337,11 +1337,11 @@
       {
         "json": {
           "query": {
-            "attendeeEmail": "williamkillerca@hotmail.com",
-            "status": "upcoming",
-            "event_id": ""
+            "startTime": "2024-11-18T06:50:00Z",
+            "endTime": "2024-11-18T18:50:00Z",
+            "event_id": "1413467"
           },
-          "action": "list bookings"
+          "action": "availability"
         }
       }
     ]
@@ -1377,6 +1377,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-18T02:08:34.806Z",
-  "versionId": "774edaa7-25d4-4dfc-9889-6883fb4227b2"
+  "updatedAt": "2024-11-18T15:55:49.789Z",
+  "versionId": "c41066b5-69fc-4eab-b0bd-e439a834fa60"
 }
