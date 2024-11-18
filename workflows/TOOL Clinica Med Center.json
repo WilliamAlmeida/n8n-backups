@@ -372,6 +372,11 @@
           }
         ]
       ]
+    },
+    "EWT 2": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-11-15T18:33:48.659Z",
@@ -812,7 +817,7 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAlways show appointment UID.\nDuration consult is 60 min.\n\n## About user\nThe user's email is {{ $json.userAccount.email }}, cellphone is {{ $json.messageInfo.remoteJid.split('@')[0] }}, name is {{ ($json.userAccount.nome) ? $json.userAccount.nome : $json.messageInfo.pushName }} and address is {{ $json.userAccount.endereco ?? '' }}.\n\n## Template Event, hidden info if not provied\n📅 **{title}**\n\nStatus: **Scheduled or Cancelled** ✅\nScheduled for **{start}** until **{end}**\nLocal: **{location}**\nID: **{ID}** / UID: **{UID}**\n\n## Language\nRespond all in pt-BR, display date in d/M/Y and in a humanized way.",
+          "systemMessage": "=You are an appointment scheduling helper.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\n*Always display ID and UID from booking*.\nDuration consult is 60 min.\nDisplay date in d/M/Y.\n\n## About user\nThe user's email is {{ $json.userAccount.email }}, cellphone is {{ $json.messageInfo.remoteJid.split('@')[0] }}, name is {{ ($json.userAccount.nome) ? $json.userAccount.nome : $json.messageInfo.pushName }} and address is {{ $json.userAccount.endereco ?? '' }}.\n\nWhen user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative",
           "maxIterations": 5
         }
       },
@@ -920,7 +925,7 @@
     {
       "parameters": {
         "name": "cancel_appt_tool",
-        "description": "=Call this tool to cancel a user's existing booking using a booking uid.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking UID.\n* Display this booking UID to the user.\n* Use this booking UID to cancel an existing booking.\n* If an existing booking UID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an booking.",
+        "description": "=Call this tool to cancel a user's existing booking using a booking uid.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking UID.\n* Display this booking UID to the user.\n* Use this booking UID to cancel an existing booking.\n* If an existing booking UID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via phone.\n* Confirm with user before cancelling an booking.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -1011,7 +1016,7 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica",
+        "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica_calendar",
         "sessionTTL": 300
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
@@ -1027,14 +1032,13 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "temperature": 0.2,
+          "temperature": 0,
           "topP": 1
         }
       },
@@ -1134,7 +1138,7 @@
         320,
         1000
       ],
-      "webhookId": "5ecf7029-8384-49fb-a1e1-ee505c3f1321",
+      "webhookId": "4a9ef044-cb4f-43db-8aae-f2bee8c610c8",
       "disabled": true
     },
     {
@@ -1264,7 +1268,7 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica"
+        "key": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica_calendar"
       },
       "id": "8d9813e1-5af7-459b-966a-8489f332debb",
       "name": "Reset Memo",
@@ -1280,8 +1284,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1373,6 +1376,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-16T14:38:38.309Z",
-  "versionId": "ee6dcf73-9d33-46ec-a480-2eb136e1e98d"
+  "updatedAt": "2024-11-18T02:47:11.679Z",
+  "versionId": "29498ff5-788a-4538-8a6d-36db61442280"
 }
