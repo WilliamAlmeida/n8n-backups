@@ -186,6 +186,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -337,7 +344,7 @@
       "main": [
         [
           {
-            "node": "Reset Memo",
+            "node": "Normalize",
             "type": "main",
             "index": 0
           }
@@ -376,6 +383,51 @@
     "EWT 2": {
       "main": [
         []
+      ]
+    },
+    "Normalize": {
+      "main": [
+        [
+          {
+            "node": "Reset Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Update User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update User": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete User Account",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -752,6 +804,31 @@
               },
               "renameOutput": true,
               "outputKey": "Procedures"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "42639684-02d9-4a30-96b2-cf1cb1df7b74",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "supabase",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "supabase"
             }
           ]
         },
@@ -817,7 +894,7 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\n*Always display ID and UID from booking*.\nDuration consult is 60 min.\nDisplay date in d/M/Y.\n\n## About user\nThe user's email is {{ $json.userAccount.email }}, cellphone is {{ $json.messageInfo.remoteJid.split('@')[0] }}, name is {{ ($json.userAccount.nome) ? $json.userAccount.nome : $json.messageInfo.pushName }} and address is {{ $json.userAccount.endereco ?? '' }}.\n\nWhen user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative",
+          "systemMessage": "=You are an appointment scheduling helper.\n\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\n*Always display ID and UID from booking*.\nDuration consult is 60 min.\nDisplay date in d/M/Y.\n\n## About user\nThe user's email is {{ $json.userAccount.email }}, cellphone is {{ $('EWT').item.json.messageInfo.remoteJid.split('@')[0] }}, name is {{ ($json.userAccount.nome) ? $json.userAccount.nome : $json.messageInfo.pushName }} and address is \"{{ $json.userAccount.endereco ?? '' }}\".\n\nWhen user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative",
           "maxIterations": 5
         }
       },
@@ -1076,7 +1153,7 @@
             {
               "name": "messageInfo",
               "type": "objectValue",
-              "objectValue": "={{ $json.messageInfo }}"
+              "objectValue": "={{ $('EWT').item.json.messageInfo }}"
             }
           ]
         }
@@ -1284,7 +1361,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1348,9 +1426,194 @@
       ],
       "id": "ac24d5a0-5c05-447f-a0d5-f7a5c76119fc",
       "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f95a5e34-212c-46e0-b0ab-efd178bef951",
+              "name": "userAccount.email",
+              "value": "={{ $json.query.user.email }}",
+              "type": "string"
+            },
+            {
+              "id": "2aa4cf12-f2f3-4e48-a7c1-f19c1125035f",
+              "name": "userAccount.nome",
+              "value": "={{ $json.query.pacient.name }}",
+              "type": "string"
+            },
+            {
+              "id": "53985a03-c355-4121-b058-0b87b0f8437d",
+              "name": "query",
+              "value": "={{ $json.query.query }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "messageInfo,agent,userAccount.nome_completo,userAccount.sobrenome",
+        "options": {
+          "dotNotation": true
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        1140
+      ],
+      "id": "91fb783d-aef6-4a47-b4a9-931c93b6c7c8",
+      "name": "Normalize"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "update user",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "user account"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1320,
+        60
+      ],
+      "id": "82c3ff87-4990-48bb-96fd-e6987c840ac6",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "clinic_users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $json.messageInfo.remoteJid.split('@')[0] }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "={{ $json.query.key }}",
+              "fieldValue": "={{ $json.query.value }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        60
+      ],
+      "id": "f009a914-e442-4fad-a7b4-2d5c0e1dcee6",
+      "name": "Update User",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8cb2031b-a2ee-4f48-8968-d3362cbb4ba6",
+              "name": "response",
+              "value": "={{ $json.error ?? 'done' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        60
+      ],
+      "id": "e2fa2399-2e58-46a1-9c1e-6ab6921ee362",
+      "name": "Response"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $json.remoteJid }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        -100
+      ],
+      "id": "12b31f46-a7da-4278-885c-6a214024bb61",
+      "name": "Delete User Account",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": {
+            "key": "name",
+            "value": "Miguel"
+          },
+          "tool": "supabase",
+          "action": "update user",
+          "messageInfo": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "ibox_cli_23",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "W.M. Soluções Tecnologicas",
+            "fromMe": false,
+            "unique_id": "william_5512982184879",
+            "debounce_time": 5,
+            "conversation": "mude meu nome para Miguel"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1376,6 +1639,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-18T02:47:11.679Z",
-  "versionId": "29498ff5-788a-4538-8a6d-36db61442280"
+  "updatedAt": "2024-11-18T05:03:22.366Z",
+  "versionId": "63e36c34-c97b-49b7-89c6-1264136a11d0"
 }
