@@ -1964,7 +1964,7 @@
         "value": "={{ $('workflow').item.json }}",
         "keyType": "hash",
         "expire": true,
-        "ttl": 600
+        "ttl": 3600
       },
       "id": "1c65315c-e83a-4f5e-8cdf-38e4efb6bcc1",
       "name": "set agent",
@@ -2222,7 +2222,7 @@
         -15980,
         1300
       ],
-      "webhookId": "46afc7db-f193-4e8f-b241-e055e72d6b9b"
+      "webhookId": "26f1485f-02c1-4134-84cc-923317995aa9"
     }
   ],
   "pinData": {},
@@ -2253,6 +2253,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-16T14:55:01.634Z",
-  "versionId": "dbd7feab-3b91-4930-acbf-6f745b095269"
+  "updatedAt": "2024-11-17T20:33:45.179Z",
+  "versionId": "9e18b15b-4c42-4db9-b2be-e7510729ac00"
 }
