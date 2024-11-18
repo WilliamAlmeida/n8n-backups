@@ -8,11 +8,6 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -178,17 +173,6 @@
         ]
       ]
     },
-    "Agent Scheduling Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow Trigger": {
       "main": [
         [
@@ -255,15 +239,20 @@
         ]
       ]
     },
-    "Sign Msg": {
-      "main": [
+    "Scheduling Tool": {
+      "ai_tool": [
         [
           {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        []
       ]
     }
   },
@@ -278,7 +267,7 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "temperature": 0.6,
+          "temperature": 0.7,
           "topP": 1
         }
       },
@@ -331,8 +320,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -366,14 +354,14 @@
       "typeVersion": 3.4,
       "position": [
         4140,
-        1300
+        1280
       ]
     },
     {
       "parameters": {
         "operation": "set",
         "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
-        "value": "={{ $json.user.toJsonString() ?? {} }}",
+        "value": "={{ $json.user?.toJsonString() ?? {} }}",
         "expire": true,
         "ttl": "={{ $json.user ? 120 : 60 }}"
       },
@@ -394,19 +382,15 @@
     },
     {
       "parameters": {
-        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "with_plan"
-            },
-            {
-              "name": "with_stores"
+        "url": "=https://ibox.delivery/api/whatsapp/user?number={{ $('messageInfo').item.json.remoteJid.split('@')[0] }}2",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
             }
-          ]
-        },
-        "options": {}
+          }
+        }
       },
       "id": "b6086b37-9e23-4956-8b5d-59f1f4cdf2eb",
       "name": "Get Account User",
@@ -538,8 +522,7 @@
       "position": [
         4080,
         1080
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -563,7 +546,7 @@
             {
               "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
               "name": "system",
-              "value": "=<prompt_faro>\n  <additional_info>\n    CurrentDateTime: {{ $now.toISO() }}\n  </additional_info>\n\n  <user_details>\n    User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n  </user_details>\n\n  <personality>\n    Name: MED Center Assistant\n    Role: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\n    Tone: Friendly, Polite, Helpful, Fast, and Welcoming.\n    Can use some emojis.\n  </personality>\n\n  <main_functions>\n    Guide users through the appointment scheduling process.\n    Clarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\n    Provide information on medical specialties and doctor availability.\n    Forward to a human assistant when necessary.\n  </main_functions>\n\n  <general_guidelines>\n    Clear and concise answers (max 350 characters).\n    Simple and accessible language, avoiding technical jargon.\n    Forward complex cases to a human assistant.\n    Consult the database before answering questions.\n    Inform the user immediately if any data is unavailable or inaccurate.\n  </general_guidelines>\n\n  <link_formatting>\n    Links should be written in full, on a separate line, without formatting.\n    Example: \"More information: https://www.medcenter.com\"\n    Always ask the user if they need further details after sending the link.\n  </link_formatting>\n\n  <service_flow>\n    Greeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\n    Identify needs with specific questions.\n    Offer information on appointment scheduling, medical specialties, or insurance plans.\n    Send useful links, if necessary.\n    Forward to human support if needed.\n    Check if the clinic has a specific doctor or specialist whenever asked.\n  </service_flow>\n</prompt_faro>\n",
+              "value": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.nome ?? $('messageInfo').first().json.pushName }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.whatsapp ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.endereco ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\n</service_flow>\n</prompt>\n",
               "type": "string"
             }
           ]
@@ -660,51 +643,7 @@
         3920,
         1080
       ],
-      "webhookId": "76ae56f1-29c3-4654-b153-de4b8aa4bf9a",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "name": "scheduling_tool",
-        "description": "Call this tool for the following scheduling actions: check availability, schedule, cancel, consult and check schedule made, reschedule schedules.",
-        "workflowId": {
-          "__rl": true,
-          "value": "JZY3GPC55leuxyHn",
-          "mode": "list",
-          "cachedResultName": "TOOL Clinica Med Center"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "agent",
-              "stringValue": "calendar"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            },
-            {
-              "name": "userAccount",
-              "type": "objectValue",
-              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
-            },
-            {
-              "name": "prompt",
-              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
-            }
-          ]
-        },
-        "jsonSchemaExample": ""
-      },
-      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
-      "name": "Agent Scheduling Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5420,
-        1600
-      ]
+      "webhookId": "ef83883f-a9e7-40df-9e1d-be56f6a3f6f8"
     },
     {
       "parameters": {},
@@ -714,31 +653,9 @@
       "typeVersion": 1,
       "position": [
         3900,
-        1300
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
-              "name": "output",
-              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "58f6d211-0ccc-40df-80f9-089086cd570a",
-      "name": "Sign Msg",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5840,
-        1360
-      ]
+        1280
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -864,27 +781,80 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5360,
-        1660
+        5320,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "name": "scheduling_tool",
+        "description": "Call this tool for the following scheduling actions: check availability, schedule, cancel, consult and check schedule made, reschedule schedules.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json.removeField('plano').removeField('pode_trabalhar_como').removeField('lojas').removeField('imagem_url') }}"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"user\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"fullname\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"fullname\",\n        \"email\"\n      ]\n    }\n  },\n  \"required\": [\n    \"user\"\n  ]\n}"
+      },
+      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
+      "name": "Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5420,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\n\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58f6d211-0ccc-40df-80f9-089086cd570a",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5840,
+        1360
       ]
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "evo_api": "https://apiwp.wmst.com.br",
-          "instance": "ibox_cli_23",
-          "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "W.M. Soluções Tecnologicas",
-          "fromMe": false,
-          "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
-          "conversation": "oi, dra. rita martom tem disponibilidade na segunda de manhã?"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
@@ -911,6 +881,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-16T14:50:30.888Z",
-  "versionId": "0b8b7a35-cd7c-49fd-b7e2-c198095397f6"
+  "updatedAt": "2024-11-18T03:01:20.511Z",
+  "versionId": "a2c1d941-20df-445b-8628-085f57138bc4"
 }
