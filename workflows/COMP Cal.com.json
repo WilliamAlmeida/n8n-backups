@@ -834,7 +834,7 @@
             {
               "id": "4db37e4c-1025-406f-9498-363df3cbd585",
               "name": "response",
-              "value": "={{ $json.data.map(item => `- Booking ID ${item.id} with UID ${item.uid} is a ${item.title}, with the description \"${item.description || 'no description'}\". The status is ${item.status}, starting on ${item.start} and ending on ${item.end}, duration ${item.duration} min. The event type is ${item.eventType.slug.replace('-', ' ')} and will take place in ${item.location == 'integrations:daily' ? 'Cal Video' : item.location}.`).join('\\n') }}",
+              "value": "={{ $json.data.map(item => `- ${item.title}, with the description \"${item.description || 'no description'}\". The status is ${item.status}, starting on ${item.start} and ending on ${item.end}, duration ${item.duration} min. The event type is ${item.eventType.slug.replace('-', ' ')} and will take place in ${item.location == 'integrations:daily' ? 'Cal Video' : item.location}. Booking details: ID - ${item.id}, UID - ${item.uid}`).join('\\n') }}",
               "type": "string"
             }
           ]
@@ -1094,7 +1094,7 @@
             {
               "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
               "name": "data",
-              "value": "={{ \n  $json.data.map(event => {\n    const newEvent = { ...event };\n\n    newEvent.start = newEvent.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n    newEvent.end = newEvent.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n\n    return newEvent;\n  })\n}}",
+              "value": "={{ \n  $json.data.map(event => {\n    const newEvent = { ...event };\n\n    newEvent.start = newEvent.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n    newEvent.end = newEvent.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('y-M-d H:mm');\n    newEvent.status = newEvent.status == 'accepted' ? 'scheduled' : newEvent.status;\n\n    return newEvent;\n  })\n}}",
               "type": "array"
             }
           ]
@@ -1332,7 +1332,20 @@
       "name": "all events?"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": {
+            "attendeeEmail": "williamkillerca@hotmail.com",
+            "status": "upcoming",
+            "event_id": ""
+          },
+          "action": "list bookings"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
@@ -1364,6 +1377,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-16T14:36:46.916Z",
-  "versionId": "5affd093-03d7-4f6b-8475-f43fcfa808b6"
+  "updatedAt": "2024-11-18T02:08:34.806Z",
+  "versionId": "774edaa7-25d4-4dfc-9889-6883fb4227b2"
 }
