@@ -34,7 +34,7 @@
       "main": [
         [
           {
-            "node": "Switch Action 2",
+            "node": "found booking?",
             "type": "main",
             "index": 0
           }
@@ -56,7 +56,7 @@
       "main": [
         [
           {
-            "node": "Cal Availability1",
+            "node": "Cal Availability",
             "type": "main",
             "index": 0
           }
@@ -127,7 +127,7 @@
       "main": [
         [
           {
-            "node": "Response Booking Success",
+            "node": "scheduled?",
             "type": "main",
             "index": 0
           }
@@ -247,7 +247,43 @@
         ]
       ]
     },
-    "Cal Availability1": {
+    "scheduled?": {
+      "main": [
+        [
+          {
+            "node": "Response Schedule Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Schedule Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found booking?": {
+      "main": [
+        [
+          {
+            "node": "Switch Action 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Get Booking Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cal Availability": {
       "main": [
         [
           {
@@ -379,7 +415,7 @@
           "parameters": [
             {
               "name": "start",
-              "value": "={{ $('EWT').item.json.query.start }}"
+              "value": "={{ $('EWT').item.json.query.start.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toUTC() }}"
             },
             {
               "name": "reschedulingReason",
@@ -794,7 +830,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1960,
+        1980,
         -740
       ],
       "id": "38cf5837-60a6-4e35-bce5-e4686a4810c0",
@@ -821,7 +857,7 @@
           "parameters": [
             {
               "name": "start",
-              "value": "={{ $('EWT').item.json.query.start.toDateTime().toUTC() }}"
+              "value": "={{ $('EWT').item.json.query.start.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toUTC() }}"
             },
             {
               "name": "eventTypeId",
@@ -850,7 +886,7 @@
       "typeVersion": 4.2,
       "position": [
         1460,
-        -340
+        -160
       ],
       "id": "546f87f8-1caa-43e3-95cc-35e7b8078407",
       "name": "Schedule a booking",
@@ -895,7 +931,7 @@
             {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
-              "value": "slots not found",
+              "value": "={{ $('EWT').item.json.query.event_id ? 'slots not found' : 'event id not sent' }}",
               "type": "string"
             }
           ]
@@ -910,29 +946,6 @@
       ],
       "id": "0e4793bb-8203-438d-8517-f703c0e8f941",
       "name": "Response Availability Error"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
-              "name": "response",
-              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n    professional: $json.data.bookingFieldsResponses.professional,\n    procedure: $json.data.bookingFieldsResponses.procedure,\n    method_payment: $json.data.bookingFieldsResponses.method_payment,\n    name_plan: $json.data.bookingFieldsResponses.name_plan,\n    price: $json.data.bookingFieldsResponses.price,\n} : 'error on booking' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1640,
-        -340
-      ],
-      "id": "98e7bcee-c764-4c2e-8e0a-f78d6d990099",
-      "name": "Response Booking Success"
     },
     {
       "parameters": {
@@ -1283,6 +1296,143 @@
     },
     {
       "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('uid') }}",
+              "rightValue": "error",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1640,
+        -160
+      ],
+      "id": "5e6e3661-2c63-44e5-a2cf-5436e4552a59",
+      "name": "scheduled?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().minus($('baseInfo').item.json.utc, 'hours').format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n    professional: $json.data.bookingFieldsResponses.professional,\n    procedure: $json.data.bookingFieldsResponses.procedure,\n    method_payment: $json.data.bookingFieldsResponses.method_payment,\n    name_plan: $json.data.bookingFieldsResponses.name_plan,\n    price: $json.data.bookingFieldsResponses.price,\n} : 'error on booking' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1860,
+        -240
+      ],
+      "id": "98e7bcee-c764-4c2e-8e0a-f78d6d990099",
+      "name": "Response Schedule Success"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "={{ $json.error.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1860,
+        -60
+      ],
+      "id": "9e662f40-07a8-4dcd-9595-ca7dc69b5c1d",
+      "name": "Response Schedule Error"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "={{ $json.error.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1860,
+        -440
+      ],
+      "id": "1f4f05a6-44fc-46bd-ab58-c080ea934fb9",
+      "name": "Response Get Booking Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('uid') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1640,
+        -520
+      ],
+      "id": "75885bd5-b9d6-4ee1-adb0-b8a6bec88779",
+      "name": "found booking?"
+    },
+    {
+      "parameters": {
         "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
@@ -1295,11 +1445,11 @@
             },
             {
               "name": "startTime",
-              "value": "={{ $('EWT').item.json.query.startTime.toDateTime().toISO() }}"
+              "value": "={{ $('EWT').item.json.query.startTime.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toISO() }}"
             },
             {
               "name": "endTime",
-              "value": "={{ $('EWT').item.json.query.endTime.toDateTime().toISO() }}"
+              "value": "={{ $('EWT').item.json.query.endTime.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toISO() }}"
             }
           ]
         },
@@ -1319,7 +1469,7 @@
         -1080
       ],
       "id": "ef2c4657-fd2d-4a40-b0e8-6e8d3d4b2e09",
-      "name": "Cal Availability1",
+      "name": "Cal Availability",
       "credentials": {
         "calApi": {
           "id": "xICGic9UQ3lxjrpb",
@@ -1337,11 +1487,12 @@
       {
         "json": {
           "query": {
-            "startTime": "2024-11-18T06:50:00Z",
-            "endTime": "2024-11-18T18:50:00Z",
-            "event_id": "1413467"
+            "booking_uid": "jx7YBUs2H49XcYXVtVH7uk",
+            "start": "2024-11-19T11:00:00Z",
+            "reschedulingReason": "não vou poder ir às 09hrs",
+            "event_id": "1409773"
           },
-          "action": "availability"
+          "action": "reschedule booking"
         }
       }
     ]
@@ -1377,6 +1528,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-18T15:55:49.789Z",
-  "versionId": "c41066b5-69fc-4eab-b0bd-e439a834fa60"
+  "updatedAt": "2024-11-19T03:13:03.981Z",
+  "versionId": "e12e3fdb-4057-4061-acaf-1e8a13e24437"
 }
