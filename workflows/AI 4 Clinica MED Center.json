@@ -682,7 +682,7 @@
         3540,
         1080
       ],
-      "webhookId": "e62d931b-74c8-4123-8da9-e290625c64db"
+      "webhookId": "db3a69b3-d7c6-4605-8392-7b0708461f2b"
     },
     {
       "parameters": {},
@@ -794,7 +794,7 @@
     {
       "parameters": {
         "name": "procedures_tool",
-        "description": "Use this tool to get information about the specialists (doctors) and procedures provided by the clinic, as well as check if the clinic has one.",
+        "description": "Call this tool to obtain and verify information about the specialists (doctors) and procedures provided by the clinic.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -827,7 +827,7 @@
     {
       "parameters": {
         "name": "scheduling_tool",
-        "description": "Call this tool for the following scheduling actions: check availability, schedule, cancel, consult and check schedule made, reschedule schedules.\n\nNeed user's email, name.",
+        "description": "Call this tool for the following scheduling actions: check availability, schedule, cancel, consult and check schedule made, reschedule schedules.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -851,10 +851,7 @@
               "objectValue": "={{ $('userAccount').first().json }}"
             }
           ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"user\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"email\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"email\"\n      ]\n    },\n    \"pacient\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"name\"\n      ]\n    },\n    \"query\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"user\",\n    \"pacient\",\n    \"query\"\n  ]\n}"
+        }
       },
       "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
       "name": "Scheduling Tool",
@@ -862,7 +859,7 @@
       "typeVersion": 1.2,
       "position": [
         5420,
-        1600
+        1640
       ]
     },
     {
@@ -1047,7 +1044,7 @@
     {
       "parameters": {
         "name": "update_user_data_tool",
-        "description": "Use this tool to update only name, email, address, date birth (y-m-d) fields in database.\n\nNEVER RESET THIS VALUES.",
+        "description": "Call this tool to update only name, email, address, date birth (y-m-d) fields in database.\n\nTHE VALUES NEVER CAN BE RESET.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -1180,6 +1177,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-18T15:04:46.452Z",
-  "versionId": "4e93923a-8339-40ea-ae01-28a97306d29c"
+  "updatedAt": "2024-11-19T03:56:32.959Z",
+  "versionId": "b6d0c1df-b63b-4c4b-b8e1-4a46cbcebba5"
 }
