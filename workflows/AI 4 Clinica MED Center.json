@@ -49,7 +49,7 @@
       "main": [
         [
           {
-            "node": "config prompt",
+            "node": "reset memo",
             "type": "main",
             "index": 0
           }
@@ -61,17 +61,6 @@
         [
           {
             "node": "wk response whatsapp",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "config prompt": {
-      "main": [
-        [
-          {
-            "node": "reset memo",
             "type": "main",
             "index": 0
           }
@@ -144,45 +133,12 @@
         ]
       ]
     },
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent": {
       "main": [
         [
           {
             "node": "Sign Msg",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Faro Info Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Courses Info Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -200,17 +156,6 @@
       ]
     },
     "Procedures Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Scheduling Tool": {
       "ai_tool": [
         [
           {
@@ -290,17 +235,6 @@
         ]
       ]
     },
-    "Update User Data Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Merge 2": {
       "main": [
         [
@@ -318,6 +252,39 @@
           {
             "node": "reset tool",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save User Data Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Scheduling": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exams Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -344,8 +311,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5220,
-        1500
+        5000,
+        1560
       ],
       "credentials": {
         "openAiApi": {
@@ -409,7 +376,8 @@
       "position": [
         6180,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -574,30 +542,8 @@
       "position": [
         6040,
         1300
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "08eccb40-00d8-4101-a52e-f6cbaf728cd1",
-              "name": "system",
-              "value": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\n</service_flow>\n</prompt>\n",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "1d362518-2af9-4880-9e64-29363b6a801e",
-      "name": "config prompt",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5040,
-        1600
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -610,8 +556,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5200,
-        1640
+        5120,
+        1580
       ],
       "credentials": {
         "redis": {
@@ -682,7 +628,7 @@
         3540,
         1080
       ],
-      "webhookId": "db3a69b3-d7c6-4605-8392-7b0708461f2b"
+      "webhookId": "8c465acf-19d1-4681-b8c4-28c7a5793e97"
     },
     {
       "parameters": {},
@@ -701,7 +647,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "={{ $('config prompt').item.json.system }}"
+          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -713,7 +659,8 @@
         1360
       ],
       "retryOnFail": true,
-      "waitBetweenTries": 3000
+      "waitBetweenTries": 3000,
+      "notes": "<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
     },
     {
       "parameters": {
@@ -794,7 +741,7 @@
     {
       "parameters": {
         "name": "procedures_tool",
-        "description": "Call this tool to obtain and verify information about the specialists (doctors) and procedures provided by the clinic.",
+        "description": "Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -820,45 +767,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5320,
-        1620
-      ]
-    },
-    {
-      "parameters": {
-        "name": "scheduling_tool",
-        "description": "Call this tool for the following scheduling actions: check availability, schedule, cancel, consult and check schedule made, reschedule schedules.",
-        "workflowId": {
-          "__rl": true,
-          "value": "JZY3GPC55leuxyHn",
-          "mode": "list",
-          "cachedResultName": "TOOL Clinica Med Center"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "agent",
-              "stringValue": "calendar"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            },
-            {
-              "name": "userAccount",
-              "type": "objectValue",
-              "objectValue": "={{ $('userAccount').first().json }}"
-            }
-          ]
-        }
-      },
-      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
-      "name": "Scheduling Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5420,
+        5220,
         1640
       ]
     },
@@ -1042,46 +951,6 @@
       "disabled": true
     },
     {
-      "parameters": {
-        "name": "update_user_data_tool",
-        "description": "Call this tool to update only name, email, address, date birth (y-m-d) fields in database.\n\nTHE VALUES NEVER CAN BE RESET.",
-        "workflowId": {
-          "__rl": true,
-          "value": "JZY3GPC55leuxyHn",
-          "mode": "list",
-          "cachedResultName": "TOOL Clinica Med Center"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "supabase"
-            },
-            {
-              "name": "action",
-              "stringValue": "update user"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"key\": {\n      \"type\": \"string\"\n    },\n    \"value\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"key\",\n    \"value\"\n  ]\n}"
-      },
-      "id": "51186f15-8c40-498c-aefd-6ea9a48b3123",
-      "name": "Update User Data Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5520,
-        1620
-      ]
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
@@ -1133,6 +1002,119 @@
           "name": "vps"
         }
       }
+    },
+    {
+      "parameters": {
+        "name": "save_user_data_tool",
+        "description": "Use this tool to store fields such as name, email, address, and date of birth (YYYY-MM-DD) in the database. \n\nThe stored values are permanent and cannot be changed.\n\nNever answer that data was saved.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "supabase"
+            },
+            {
+              "name": "action",
+              "stringValue": "update user"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"key\": {\n      \"type\": \"string\"\n    },\n    \"value\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"key\",\n    \"value\"\n  ]\n}"
+      },
+      "id": "51186f15-8c40-498c-aefd-6ea9a48b3123",
+      "name": "Save User Data Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5460,
+        1640
+      ]
+    },
+    {
+      "parameters": {
+        "name": "agentScheduling",
+        "description": "=Call this workflow to handle all requests related to managing appointments, events, or meetings.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "responsePropertyName": "output",
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json }}"
+            }
+          ]
+        }
+      },
+      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
+      "name": "Agent Scheduling",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5640,
+        1640
+      ]
+    },
+    {
+      "parameters": {
+        "name": "exams_tool",
+        "description": "Call this tool to obtain and verify information about exams, type of exams provided by the clinic.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exams"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "id": "603864c4-5563-4d6f-bfa2-411ac572fb32",
+      "name": "Exams Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5340,
+        1620
+      ]
     }
   ],
   "pinData": {
@@ -1177,6 +1159,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-19T03:56:32.959Z",
-  "versionId": "b6d0c1df-b63b-4c4b-b8e1-4a46cbcebba5"
+  "updatedAt": "2024-11-19T15:33:27.255Z",
+  "versionId": "b64e8855-35cb-467b-85ac-c7695c4715e3"
 }
