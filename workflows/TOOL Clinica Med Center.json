@@ -424,6 +424,17 @@
           }
         ]
       ]
+    },
+    "EWT 2": {
+      "main": [
+        [
+          {
+            "node": "Request to Tool?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:33:48.659Z",
@@ -450,13 +461,15 @@
           "assignments": [
             {
               "id": "a1123d8e-c791-4dda-bbd0-e24c5b1d35d2",
-              "name": "query",
+              "name": "query.query",
               "value": "={{ $json.chatInput }}",
               "type": "string"
             }
           ]
         },
-        "options": {}
+        "options": {
+          "dotNotation": true
+        }
       },
       "id": "9ec9d580-43c2-4945-aaad-7f1f28b18556",
       "name": "Query",
@@ -471,7 +484,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "{\n  \"query\": \"\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"oi, poderia verificar meu agendamento para quando foi marcado?\"\n  },\n  \"userAccount\": {\n    \"id\": 1,\n    \"nome\": \"William\",\n    \"sobrenome\": \"Almeida\",\n    \"nome_completo\": \"William Almeida\",\n    \"whatsapp\": \"12982184879\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"endereco\": \"Rua Doutor Laércio Lincon Figueira, D19, Portal Das Palmeiras, Lorena - Sp\"\n  },\n  \"prompt\": \"\"\n}",
+        "jsonOutput": "{\n  \"query\": {\n    \"user\": {\n      \"email\": \"williamkillerca@hotmail.com\"\n    },\n    \"pacient\": {\n      \"name\": \"William Almeida\"\n    },\n    \"query\": \"Agendar consulta com Dra. Rita Martom às 17:00 hoje.\"\n  },\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"as 17hrs\"\n  },\n  \"userAccount\": {\n    \"id\": 10,\n    \"remoteJid\": 5512982184879,\n    \"name\": null,\n    \"email\": null,\n    \"date_birth\": null,\n    \"address\": null,\n    \"created_at\": \"2024-11-18T04:17:02.326408+00:00\"\n  }\n}",
         "options": {}
       },
       "id": "be94c5e9-9db6-4c9d-8d3a-dec6a39dd78a",
@@ -844,7 +857,7 @@
           "assignments": [
             {
               "id": "93b3a4ae-a50c-4b62-9872-f980bc19054c",
-              "name": "response",
+              "name": "output",
               "value": "={{ $json.output }}",
               "type": "string"
             }
@@ -889,8 +902,8 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper.\n\nThe date and time now is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format('dd LLL yyyy T') }}'. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\n*Always display ID and UID from booking*.\nDuration consult is 60 min.\nDisplay date in d/M/Y.\n\n## About user\nThe user's email is '{{ $json.userAccount.email }}', cellphone is '{{ $('EWT').item.json.messageInfo.remoteJid.split('@')[0] }}', name is '{{ $json.userAccount.name ? $json.userAccount.name : $('EWT').item.json.messageInfo.pushName }}' and address is '{{ $json.userAccount.endereco ?? '' }}'.\n\nWhen user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative",
-          "maxIterations": 5
+          "systemMessage": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect the following if not provied:\n     - Email address: {{ $json.userAccount.email ? $json.userAccount.email : '' }}\n     - Full name: {{ $json.userAccount.name ? $json.userAccount.name : $json.messageInfo.pushName }}\n     - Cellphone number: {{ $json.messageInfo.remoteJid.split('@')[0] }}\n     - Proposed date and preferred start time.\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the booking UID or email address to locate the booking.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n   - Ask for the booking UID and reason for cancellation.\n   - Use \"cancel_appt_tool\" to cancel the appointment.\n   - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional.\n  - Use \"procedures_tool\" to retrive event_id.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.\n\n## User Info:\n- **Address:** `{{ $json.userAccount.endereco ?? '' }}`",
+          "maxIterations": 7
         }
       },
       "id": "4babc4bb-6c11-40f7-afb6-bfc121f313cd",
@@ -906,7 +919,7 @@
     {
       "parameters": {
         "name": "get_availability_tool",
-        "description": "Call this tool to get the appointment availability using event id.",
+        "description": "Call this tool to get availability for appointments using event ID.\n\n## Inputs Required:\n- Event ID (number, required).\n- Start date and time in ISO format (string, required).\n- End date and time in ISO format (string, required).\n\n## Workflow:\n1. Use the event ID to check available slots.\n2. Return all available time slots for the specified event.",
         "workflowId": {
           "__rl": true,
           "value": "5LfFRdaepFJdM4yE",
@@ -922,7 +935,8 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"startTime\": \"date and time of the start of the booking\",\n  \"endTime\": \"end date and time, if specified, limited to a maximum of 3 days after 'startTime'. If 'endTime' is not given, the default value is 24 hours after 'startTime'.\",\n  \"event_id\": \"event id, event identification number\"\n}\n"
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID of the professional for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\",\n      \"description\": \"Start date and time of the appointment in ISO 8601 format (e.g., '2024-11-18T08:00:00Z')\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\",\n      \"description\": \"End date and time of the appointment in ISO 8601 format. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -936,7 +950,7 @@
     {
       "parameters": {
         "name": "get_existing_appt_tool",
-        "description": "=Call this tool to get an existing booking.\n\n## To detail an existing booking\n* Ask the user for their booking_uid of the existing booking\n* Use the user's booking_uid to search for the existing booking.\n* If the user's booking_uid do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
+        "description": "=Call this tool to retrieve details of an existing booking using a booking UID.\n\n## Inputs Required:\n- Booking UID (string, required).\n\n## Workflow:\n1. Provide the booking UID to locate the existing booking.\n2. Return the booking details or notify if not found.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -952,7 +966,8 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"booking_uid\": \"the uid of the booking\"\n}\n"
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"booking_uid\": {\n      \"type\": \"string\",\n      \"description\": \"Booking UID of the booking\"\n    }\n  },\n  \"required\": [\"booking_uid\"]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -961,12 +976,13 @@
         1420
       ],
       "id": "7f237841-e763-4397-9870-b1c4777cde63",
-      "name": "Get Existing Appt Tool"
+      "name": "Get Existing Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
         "name": "find_existing_appt_tool",
-        "description": "=Call this tool to search for an existing reservation with the user's email address using event id.\n\n## To find an existing appointment\n* Ask the user for their email address if not provided.\n* Use the user's email to search for the existing reservation.\n* If the user's email do not match the results or no results are returned, the existing reservation was not found.\n* If the existing reservation is not found, notify the user and suggest a new reservation be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is provided, pass as \"all\"\n\n# If no \"event id\" is provided, pass as empty.",
+        "description": "=Call this tool to find existing reservations using the user's email address.\n\n## Inputs Required:\n- User email (string, required).\n- Event ID (string, optional).\n- Status (string, optional, default: \"all\").\n\n## Workflow:\n1. Search for bookings matching the provided email.\n2. Return matching reservations or notify if not found.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -983,7 +999,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"attendeeEmail\": {\n      \"type\": \"string\",\n      \"description\": \"the e-mail of the attendee\"\n    },\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event id, event identification number separated by a comma\"\n    }\n  },\n  \"required\": [\n    \"attendeeEmail\",\n    \"status\",\n    \"event_id\"\n  ]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"attendeeEmail\": {\n      \"type\": \"string\",\n      \"description\": \"Email address of the user\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID to filter bookings\"\n    },\n    \"status\": {\n      \"type\": \"string\",\n      \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n      \"default\": \"all\"\n    }\n  },\n  \"required\": [\"email\"]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -997,7 +1013,7 @@
     {
       "parameters": {
         "name": "cancel_appt_tool",
-        "description": "=Call this tool to cancel a user's existing booking using a booking uid.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking UID.\n* Display this booking UID to the user.\n* Use this booking UID to cancel an existing booking.\n* If an existing booking UID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via phone.\n* Confirm with user before cancelling an booking.",
+        "description": "=Call this tool to cancel an appointment using a booking UID.\n\n## Inputs Required:\n- Booking UID (string, required).\n- Reason for cancellation (string, required).\n\n## Workflow:\n1. Verify the booking UID before proceeding.\n2. Confirm with the user before cancelling.\n3. Cancel the appointment and notify the user.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -1013,7 +1029,8 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"cancellationReason\": \"reason for cancellation\",\n  \"booking_uid\": \"the booking UID of the appointment\"\n}\n"
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"booking_uid\": {\n      \"type\": \"string\",\n      \"description\": \"Booking UID of the booking\"\n    },\n    \"cancellationReason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\"booking_uid\", \"cancellationReason\"]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -1027,7 +1044,7 @@
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "=Call this tool to schedule an appointment using event id.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name, cellphone and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
+        "description": "Call this tool to schedule a booking.\n\n## Inputs Required:\n- User email (string, required).\n- Full name (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Cellphone (string, required).\n\n## Workflow:\n1. Verify availability of the proposed date and time using the \"availability\" tool.\n2. Ensure all inputs are valid before proceeding.\n3. If scheduling fails, log the issue and notify the user.\n4. Confirm the booking and notify the user of the booking UID.\n",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -1043,7 +1060,8 @@
           ]
         },
         "specifyInputSchema": true,
-        "jsonSchemaExample": "{\n  \"start\": \"date and time of the start of the booking\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"attendee\": {\n    \"name\": \"\",\n    \"email\": \"\"\n  },\n  \"bookingFieldsResponses\": {\n    \"notes\": \"\",\n    \"cellphone\": \"12982184877\",\n    \"professional\": \"\",\n    \"procedure\": \"\",\n    \"method_payment\": \"\",\n    \"name_plan\": \"\",\n    \"price\": \"\"\n  },\n  \"event_id\": \"event id, event identification number\"\n}"
+        "schemaType": "manual",
+        "inputSchema": "{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"description\":\"Date and time of the start of the booking in ISO format\"},\"title\":{\"type\":\"string\",\"description\":\"Title of the appointment\"},\"description\":{\"type\":\"string\",\"description\":\"Description of the appointment\"},\"attendee\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"required\":[\"name\",\"email\"]},\"event_id\":{\"type\":\"string\",\"description\":\"Event ID related to the booking\"},\"bookingFieldsResponses\":{\"type\":\"object\",\"properties\":{\"notes\":{\"type\":\"string\"},\"cellphone\":{\"type\":\"string\",\"description\":\"12982184877\"},\"professional\":{\"type\":\"string\"},\"procedure\":{\"type\":\"string\"},\"method_payment\":{\"type\":\"string\"},\"name_plan\":{\"type\":\"string\"},\"price\":{\"type\":\"string\"}},\"required\":[\"cellphone\",\"professional\",\"procedure\"]}},\"required\":[\"start\",\"title\",\"attendee\",\"event_id\",\"bookingFieldsResponses\"]}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -1057,7 +1075,7 @@
     {
       "parameters": {
         "name": "reschedule_appt_tool",
-        "description": "=Call this tool to reschedule a user's appointment using a booking uid and event id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking UID.\n* Display this booking UID to the user.\n* Use this booking UID to reschedule an existing appointment.\n* If an existing booking UID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
+        "description": "=Call this tool to reschedule an appointment using a booking UID.\n\n## Required inputs:\n- Booking UID (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Reason for rescheduling (string, required).\n\n## Workflow:\n1. Verify the booking UID before proceeding.\n2. Confirm with the user before rescheduling.\n3. Reschedule the appointment and notify the user.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -1074,7 +1092,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"booking_uid\": {\n      \"type\": \"string\",\n      \"description\": \"the uid of the booking\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"date and time of the start of the booking\"\n    },\n    \"reschedulingReason\": {\n      \"type\": \"string\",\n      \"description\": \"rescheduling reason\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event id, event identification number\"\n    }\n  },\n  \"required\": [\n    \"booking_id\",\n    \"start\",\n    \"reschedulingReason\",\n    \"event_id\"\n  ]\n}"
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"booking_uid\": {\n      \"type\": \"string\",\n      \"description\": \"the uid of the booking\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"date and time of the start of the booking\"\n    },\n    \"reschedulingReason\": {\n      \"type\": \"string\",\n      \"description\": \"rescheduling reason\"\n    }\n  },\n  \"required\": [\n    \"booking_id\",\n    \"start\",\n    \"reschedulingReason\"\n  ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -1089,7 +1107,7 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "=memo_{{ $('EWT').first().json.messageInfo.unique_id }}_clinica_calendar",
-        "sessionTTL": 60
+        "sessionTTL": 300
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
@@ -1148,7 +1166,7 @@
             {
               "name": "messageInfo",
               "type": "objectValue",
-              "objectValue": "={{ $('EWT').item.json.messageInfo }}"
+              "objectValue": "={{ $json.messageInfo }}"
             }
           ]
         }
@@ -1165,7 +1183,9 @@
     {
       "parameters": {
         "model": "llama-3.2-90b-text-preview",
-        "options": {}
+        "options": {
+          "temperature": 0.7
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
@@ -1210,7 +1230,7 @@
         320,
         1000
       ],
-      "webhookId": "81636525-50c8-47a6-b100-177f51a3a699",
+      "webhookId": "bd116744-ddef-4a1a-b974-ea94b4dd4cab",
       "disabled": true
     },
     {
@@ -1356,7 +1376,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1442,15 +1463,16 @@
               "name": "query",
               "value": "={{ $json.query.query }}",
               "type": "string"
+            },
+            {
+              "id": "b7ec07ee-1c3d-4b54-9be3-6c57b4ca0753",
+              "name": "messageInfo",
+              "value": "={{ $json.messageInfo }}",
+              "type": "object"
             }
           ]
         },
-        "includeOtherFields": true,
-        "include": "except",
-        "excludeFields": "messageInfo,agent",
-        "options": {
-          "dotNotation": true
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1611,7 +1633,7 @@
             "pacient": {
               "name": ""
             },
-            "query": "Dra Rita de Cássia Marton Carneiro quais horarios tem disponivel hoje?"
+            "query": "Agendar consulta com Dra. Rita Martom às 17:00 hoje."
           },
           "agent": "calendar",
           "messageInfo": {
@@ -1622,7 +1644,7 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "oi, dra. rita esta atendendo hoje?"
+            "conversation": "as 17hrs"
           },
           "userAccount": {
             "id": 10,
@@ -1662,6 +1684,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-18T15:55:34.566Z",
-  "versionId": "11ba8f45-1765-42c4-859b-1bf0d49c1027"
+  "updatedAt": "2024-11-19T03:48:46.000Z",
+  "versionId": "bbb4fdb5-d1dd-4bc3-b00b-8d87ff9837d3"
 }
