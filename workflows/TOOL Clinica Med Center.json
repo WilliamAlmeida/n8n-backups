@@ -193,6 +193,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Get Exams",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -435,6 +442,90 @@
           }
         ]
       ]
+    },
+    "Get Exams": {
+      "main": [
+        [
+          {
+            "node": "Data Cached? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Exams": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 2": {
+      "main": [
+        [
+          {
+            "node": "Format Exams",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Exams": {
+      "main": [
+        [
+          {
+            "node": "Set Exams",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Exams": {
+      "main": [
+        [
+          {
+            "node": "Response4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Exams": {
+      "main": [
+        [
+          {
+            "node": "Response4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Cached? 2": {
+      "main": [
+        [
+          {
+            "node": "List Exams",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Exams",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:33:48.659Z",
@@ -504,8 +595,8 @@
       "type": "@n8n/n8n-nodes-langchain.retrieverContextualCompression",
       "typeVersion": 1,
       "position": [
-        1680,
-        60
+        260,
+        360
       ],
       "disabled": true
     },
@@ -518,8 +609,8 @@
       "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
       "typeVersion": 1,
       "position": [
-        1960,
-        60
+        540,
+        360
       ],
       "disabled": true
     },
@@ -536,8 +627,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
       "typeVersion": 1.3,
       "position": [
-        1560,
-        -140
+        140,
+        160
       ],
       "disabled": true
     },
@@ -553,8 +644,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        1560,
-        60
+        140,
+        360
       ],
       "credentials": {
         "groqApi": {
@@ -574,8 +665,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        2520,
-        60
+        1100,
+        360
       ],
       "credentials": {
         "openAiApi": {
@@ -602,8 +693,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1,
       "position": [
-        2240,
-        60
+        820,
+        360
       ],
       "credentials": {
         "qdrantApi": {
@@ -837,6 +928,31 @@
               },
               "renameOutput": true,
               "outputKey": "supabase"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "82cfd93c-100b-4167-a74a-97be2345ff5e",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "exams",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exams"
             }
           ]
         },
@@ -902,7 +1018,7 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect the following if not provied:\n     - Email address: {{ $json.userAccount.email ? $json.userAccount.email : '' }}\n     - Full name: {{ $json.userAccount.name ? $json.userAccount.name : $json.messageInfo.pushName }}\n     - Cellphone number: {{ $json.messageInfo.remoteJid.split('@')[0] }}\n     - Proposed date and preferred start time.\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the booking UID or email address to locate the booking.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n   - Ask for the booking UID and reason for cancellation.\n   - Use \"cancel_appt_tool\" to cancel the appointment.\n   - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional.\n  - Use \"procedures_tool\" to retrive event_id.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.\n\n## User Info:\n- **Address:** `{{ $json.userAccount.endereco ?? '' }}`",
+          "systemMessage": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\n\n<previously mapped data>\nEmail Address: `{{ $json.userAccount.email ? $json.userAccount.email : '' }}`\nCellphone number: `{{ $json.messageInfo.remoteJid.split('@')[0] }}`\nFull name: `{{ $json.userAccount.name ? $json.userAccount.name : $json.messageInfo.pushName }}`\nAddress: `{{ $json.userAccount.endereco ?? '' }}`\n</previously mapped data>\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the booking UID or email address to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional.\n  - Use \"procedures_tool\" to retrive event_id.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
           "maxIterations": 7
         }
       },
@@ -994,6 +1110,10 @@
             {
               "name": "action",
               "stringValue": "list bookings"
+            },
+            {
+              "name": "remoteJid",
+              "stringValue": "={{ $json.messageInfo.remoteJid.split('@')[0] }}"
             }
           ]
         },
@@ -1230,7 +1350,7 @@
         320,
         1000
       ],
-      "webhookId": "bd116744-ddef-4a1a-b974-ea94b4dd4cab",
+      "webhookId": "e3a9e248-c1f1-4322-862d-05277e30a3b5",
       "disabled": true
     },
     {
@@ -1398,8 +1518,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1880,
-        -140
+        460,
+        160
       ],
       "disabled": true
     },
@@ -1422,8 +1542,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1380,
-        -140
+        -40,
+        160
       ]
     },
     {
@@ -1447,27 +1567,21 @@
         "assignments": {
           "assignments": [
             {
-              "id": "f95a5e34-212c-46e0-b0ab-efd178bef951",
-              "name": "userAccount.email",
-              "value": "={{ $json.query.user.email ?? '' }}",
-              "type": "string"
-            },
-            {
-              "id": "2aa4cf12-f2f3-4e48-a7c1-f19c1125035f",
-              "name": "userAccount.name",
-              "value": "={{ $json.query.pacient.name ?? '' }}",
-              "type": "string"
-            },
-            {
               "id": "53985a03-c355-4121-b058-0b87b0f8437d",
               "name": "query",
-              "value": "={{ $json.query.query }}",
+              "value": "={{ $json.query }}",
               "type": "string"
             },
             {
               "id": "b7ec07ee-1c3d-4b54-9be3-6c57b4ca0753",
               "name": "messageInfo",
               "value": "={{ $json.messageInfo }}",
+              "type": "object"
+            },
+            {
+              "id": "d488e141-67d9-47a1-a6f1-8387677abdeb",
+              "name": "userAccount",
+              "value": "={{ $json.userAccount }}",
               "type": "object"
             }
           ]
@@ -1620,22 +1734,235 @@
       ],
       "id": "ccd0b762-cdbf-42b9-ae12-5243ec9f1516",
       "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f491aeb9-3b07-4240-900f-8489ede2399f",
+      "name": "Response4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2220,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Exams\nList with Exams and ID",
+        "height": 360,
+        "width": 1020,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        -220
+      ],
+      "id": "02b7e352-0e8a-4596-a4bf-5b6c7d54d55f",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_procedures",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        -100
+      ],
+      "id": "722d167f-d3d2-473b-a7cd-c2ac6d71c93f",
+      "name": "Get Exams",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_exams",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        -180
+      ],
+      "id": "76f9243b-df22-4499-8c5e-577d67316c4e",
+      "name": "List Exams",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "allFieldsExcept",
+        "fieldsToExclude": "instances_id,active,id,created_at,empresa,cal_username",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        -180
+      ],
+      "id": "2f93080b-dcc4-4081-8320-9446fade33d1",
+      "name": "Aggregate 2",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Exams').all().map(item => {\n  return {\n  professional: item.json.subtitle,\n  procedure: item.json.operation,\n  event_id: item.json.cal_event_id,\n  crm: item.json.extras?.crm.toNumber(),\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1960,
+        -180
+      ],
+      "id": "f6ea11b9-880b-4ea7-a828-6a878a65453e",
+      "name": "Format Exams"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_procedures",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        -180
+      ],
+      "id": "ad8fa5b0-499c-497c-baaa-c2f98aee0e11",
+      "name": "Set Exams",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        -20
+      ],
+      "id": "d3d2528d-6712-4543-bbd9-e3de955f233e",
+      "name": "Load Exams"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        -100
+      ],
+      "id": "6c0c60c0-7144-4c4a-a8ef-2095b5dec2ff",
+      "name": "Data Cached? 2"
     }
   ],
   "pinData": {
     "EWT": [
       {
         "json": {
-          "query": {
-            "user": {
-              "email": ""
-            },
-            "pacient": {
-              "name": ""
-            },
-            "query": "Agendar consulta com Dra. Rita Martom às 17:00 hoje."
-          },
-          "agent": "calendar",
+          "query": "clinica faz exame de sangue?",
+          "tool": "exams",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -1644,13 +1971,13 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "as 17hrs"
+            "conversation": "nao"
           },
           "userAccount": {
             "id": 10,
             "remoteJid": 5512982184879,
-            "name": null,
-            "email": null,
+            "name": "William",
+            "email": "williamkillerca@hotmail.com",
             "date_birth": null,
             "address": null,
             "created_at": "2024-11-18T04:17:02.326408+00:00"
@@ -1684,6 +2011,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-19T03:48:46.000Z",
-  "versionId": "bbb4fdb5-d1dd-4bc3-b00b-8d87ff9837d3"
+  "updatedAt": "2024-11-19T15:43:35.493Z",
+  "versionId": "da93fdf5-d148-4256-901a-beadf0717181"
 }
