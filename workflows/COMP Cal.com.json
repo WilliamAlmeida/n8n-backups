@@ -435,7 +435,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2400,
+        2580,
         -520
       ],
       "id": "4433fcec-adcc-479b-80a0-d4524ceb807d",
@@ -540,7 +540,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2620,
+        2800,
         -680
       ],
       "id": "3fefea08-1e82-4704-ad0c-47d3875f4af3",
@@ -784,7 +784,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        2140,
+        2320,
         -520
       ],
       "id": "6931d269-3ccc-473a-8842-9e6b0083f7b3",
@@ -807,7 +807,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2400,
+        2580,
         -360
       ],
       "id": "32ec4b66-94fa-4c7b-90ef-0eb2b4aa7b85",
@@ -830,8 +830,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1980,
-        -740
+        2020,
+        -760
       ],
       "id": "38cf5837-60a6-4e35-bce5-e4686a4810c0",
       "name": "Response All Bookings",
@@ -964,7 +964,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2580,
+        2760,
         -520
       ],
       "id": "dd8ba6f3-1095-457f-87d8-142ed5d278fe",
@@ -987,7 +987,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2800,
+        2980,
         -680
       ],
       "id": "938355d5-fb67-483c-968a-5770276ed8b6",
@@ -1021,7 +1021,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2400,
+        2580,
         -760
       ],
       "id": "5f5b8486-25ff-4b36-a54f-ef9824b4139d",
@@ -1044,7 +1044,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2620,
+        2800,
         -860
       ],
       "id": "dd841459-e2ee-4232-814a-e8ca304291ef",
@@ -1067,8 +1067,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1800,
-        -740
+        1840,
+        -760
       ],
       "id": "6db0bfe3-0ca4-4387-9e12-81195115ec3d",
       "name": "Adjust DateTime 2"
@@ -1487,12 +1487,12 @@
       {
         "json": {
           "query": {
-            "booking_uid": "jx7YBUs2H49XcYXVtVH7uk",
-            "start": "2024-11-19T11:00:00Z",
-            "reschedulingReason": "não vou poder ir às 09hrs",
+            "attendeeEmail": "williamkillerca@hotmail.com",
+            "status": "all",
             "event_id": "1409773"
           },
-          "action": "reschedule booking"
+          "action": "list bookings",
+          "remoteJid": "5512982184879"
         }
       }
     ]
@@ -1528,6 +1528,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-19T03:13:03.981Z",
-  "versionId": "e12e3fdb-4057-4061-acaf-1e8a13e24437"
+  "updatedAt": "2024-11-19T14:07:00.619Z",
+  "versionId": "0cae759a-93b1-4f5a-bf3a-dc6d2f1e84ff"
 }
