@@ -8,6 +8,11 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -289,6 +294,61 @@
           }
         ]
       ]
+    },
+    "Get Exam Details Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Methods Payment Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Health Plan Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -324,7 +384,7 @@
     {
       "parameters": {
         "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
-        "height": 504,
+        "height": 644,
         "width": 794
       },
       "id": "f7ebd1b8-6f22-43fe-8d7b-c51a8b49622e",
@@ -376,8 +436,7 @@
       "position": [
         6180,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -511,7 +570,7 @@
       "typeVersion": 3.4,
       "position": [
         4760,
-        1320
+        1340
       ]
     },
     {
@@ -542,8 +601,7 @@
       "position": [
         6040,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -628,7 +686,7 @@
         3540,
         1080
       ],
-      "webhookId": "8c465acf-19d1-4681-b8c4-28c7a5793e97"
+      "webhookId": "22bf5700-eef3-4cfa-8bc9-bb2461e7fac9"
     },
     {
       "parameters": {},
@@ -647,7 +705,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
+          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -694,8 +752,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6020,
-        1680
+        6000,
+        1720
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -732,8 +790,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5900,
-        1700
+        5840,
+        1720
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -741,7 +799,7 @@
     {
       "parameters": {
         "name": "procedures_tool",
-        "description": "Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic.",
+        "description": "=Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic and retrive event id to use on schedule with doctors or exams.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -971,8 +1029,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5320,
-        1000
+        5840,
+        1520
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -992,8 +1050,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5480,
-        1000
+        6000,
+        1520
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1039,7 +1097,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5460,
+        5480,
         1640
       ]
     },
@@ -1084,8 +1142,8 @@
     },
     {
       "parameters": {
-        "name": "exams_tool",
-        "description": "Call this tool to obtain and verify information about exams, type of exams provided by the clinic.",
+        "name": "list_exams_tool",
+        "description": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\nNever display exam ID to user.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -1113,8 +1171,105 @@
       "typeVersion": 1.2,
       "position": [
         5340,
-        1620
+        1640
       ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Call this tool to get all (price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
+        "operation": "get",
+        "tableId": "clinic_exams",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $fromAI('exam_id', 'id unique of exam', 'number') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        5000,
+        1760
+      ],
+      "id": "989923a6-d9a0-4c0c-8907-f58d683dab73",
+      "name": "get exam details 2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "get_exam_details_tool",
+        "description": "Call this tool to get all (price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exam details"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"exam_id\": {\n\t\t\"type\": \"number\",\n\t\t\"description\": \"exam's id\"\n\t\t}\n\t}\n}"
+      },
+      "id": "07a7323c-23cf-438f-8704-f9d1bf7b626f",
+      "name": "Get Exam Details Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5220,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "name": "payment_method_tool",
+        "description": "Call this tool to get information about payment methods.",
+        "jsCode": "return \"We accept payment methods such as credit card, debit card, pix, cash.\""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [
+        5380,
+        1760
+      ],
+      "id": "a19614e0-4781-4864-9b64-eefa7c243709",
+      "name": "Methods Payment Tool"
+    },
+    {
+      "parameters": {
+        "name": "health_plan_tool",
+        "description": "Call this tool to get information about available health plans and insurance options.",
+        "jsCode": "return \"We accept the following plans/agreements: Santa Casa Saúde, Saúde Total Plus, Vida Bem Premium, Amparo Básico, Viver Bem Familiar, Sorriso Saúde, Elite Care Saúde, Bem-Estar Regional, Saúde Flex and we do not accept: Cuidar Mais, Vital Vida 50.\""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [
+        5540,
+        1760
+      ],
+      "id": "026fa776-fe10-44a4-942c-819a5751d6b4",
+      "name": "Health Plan Tool"
     }
   ],
   "pinData": {
@@ -1159,6 +1314,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-19T15:33:27.255Z",
-  "versionId": "b64e8855-35cb-467b-85ac-c7695c4715e3"
+  "updatedAt": "2024-11-20T02:38:04.209Z",
+  "versionId": "23148600-8015-4318-84c2-7968f661e2a6"
 }
