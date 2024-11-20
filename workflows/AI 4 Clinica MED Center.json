@@ -8,11 +8,6 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -155,17 +150,6 @@
           {
             "node": "messageInfo",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Procedures Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -319,13 +303,7 @@
     },
     "Sign Msg": {
       "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
+        []
       ]
     },
     "Methods Payment Tool": {
@@ -340,6 +318,28 @@
       ]
     },
     "Health Plan Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Specialists Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Calendar Event Tool": {
       "ai_tool": [
         [
           {
@@ -415,8 +415,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -436,7 +435,8 @@
       "position": [
         6180,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -601,7 +601,8 @@
       "position": [
         6040,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -614,8 +615,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5120,
-        1580
+        5000,
+        1700
       ],
       "credentials": {
         "redis": {
@@ -686,7 +687,7 @@
         3540,
         1080
       ],
-      "webhookId": "22bf5700-eef3-4cfa-8bc9-bb2461e7fac9"
+      "webhookId": "be5dcfd1-fd8b-4354-aa21-190ab876021e"
     },
     {
       "parameters": {},
@@ -795,39 +796,6 @@
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
-    },
-    {
-      "parameters": {
-        "name": "procedures_tool",
-        "description": "=Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic and retrive event id to use on schedule with doctors or exams.",
-        "workflowId": {
-          "__rl": true,
-          "value": "JZY3GPC55leuxyHn",
-          "mode": "list",
-          "cachedResultName": "TOOL Clinica Med Center"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "procedures"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            }
-          ]
-        }
-      },
-      "id": "61c9f808-fda6-4214-84b2-58558f21640c",
-      "name": "Procedures Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5220,
-        1640
-      ]
     },
     {
       "parameters": {
@@ -1176,37 +1144,6 @@
     },
     {
       "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Call this tool to get all (price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
-        "operation": "get",
-        "tableId": "clinic_exams",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "id",
-              "keyValue": "={{ $fromAI('exam_id', 'id unique of exam', 'number') }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabaseTool",
-      "typeVersion": 1,
-      "position": [
-        5000,
-        1760
-      ],
-      "id": "989923a6-d9a0-4c0c-8907-f58d683dab73",
-      "name": "get exam details 2",
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
         "name": "get_exam_details_tool",
         "description": "Call this tool to get all (price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
         "workflowId": {
@@ -1237,7 +1174,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5220,
+        5340,
         1760
       ]
     },
@@ -1250,8 +1187,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCode",
       "typeVersion": 1.1,
       "position": [
-        5380,
-        1760
+        5640,
+        1940
       ],
       "id": "a19614e0-4781-4864-9b64-eefa7c243709",
       "name": "Methods Payment Tool"
@@ -1265,11 +1202,113 @@
       "type": "@n8n/n8n-nodes-langchain.toolCode",
       "typeVersion": 1.1,
       "position": [
-        5540,
-        1760
+        5640,
+        1780
       ],
       "id": "026fa776-fe10-44a4-942c-819a5751d6b4",
       "name": "Health Plan Tool"
+    },
+    {
+      "parameters": {
+        "name": "procedures_tool",
+        "description": "=Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic and retrive event id to use on schedule with doctors or exams.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "procedures"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        }
+      },
+      "id": "bc083b90-b7b5-438e-84a6-58ce876759fe",
+      "name": "Procedures Tool1",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5880,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "name": "specialists_tool",
+        "description": "Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "specialists"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        }
+      },
+      "id": "61c9f808-fda6-4214-84b2-58558f21640c",
+      "name": "Specialists Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5200,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "name": "calendar_event_id_tool",
+        "description": "Call this tool to obtain and verify event id that wil be used to schedule a consult with doctors or exams.\n\n## Required inputs:\n- Calendar ID (number, required).\n\n## Workflow:\n1. Use the calendar ID to retrieve the event ID.\n2. Return all calendar's information.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JZY3GPC55leuxyHn",
+          "mode": "list",
+          "cachedResultName": "TOOL Clinica Med Center"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "calendar details"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"calendar_id\": {\n\t\t\"type\": \"number\",\n\t\t\"description\": \"calendar's id\"\n\t\t}\n\t}\n}"
+      },
+      "id": "5585c0de-0814-4c2c-9cb0-c7aac0f6fbcd",
+      "name": "Get Calendar Event Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5180,
+        1760
+      ]
     }
   ],
   "pinData": {
@@ -1314,6 +1353,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-20T02:38:04.209Z",
-  "versionId": "23148600-8015-4318-84c2-7968f661e2a6"
+  "updatedAt": "2024-11-20T15:27:34.917Z",
+  "versionId": "8768c3ca-11a3-41a6-8be1-3ed1a42abc91"
 }
