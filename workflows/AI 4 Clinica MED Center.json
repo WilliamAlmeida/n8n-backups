@@ -1145,7 +1145,7 @@
     {
       "parameters": {
         "name": "get_exam_details_tool",
-        "description": "Call this tool to get all (price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
+        "description": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
         "workflowId": {
           "__rl": true,
           "value": "JZY3GPC55leuxyHn",
@@ -1353,6 +1353,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-20T15:27:34.917Z",
-  "versionId": "8768c3ca-11a3-41a6-8be1-3ed1a42abc91"
+  "updatedAt": "2024-11-20T15:29:52.489Z",
+  "versionId": "822c0112-549c-4113-aa32-33311687d382"
 }
