@@ -1,0 +1,1345 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "Json2Object",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Json2Object": {
+      "main": [
+        [
+          {
+            "node": "user cached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset Memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user registred?": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user cached?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "delete user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user": {
+      "main": [
+        [
+          {
+            "node": "user registred?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert user": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "delete user": {
+      "main": [
+        [
+          {
+            "node": "get user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge 2": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset agent": {
+      "main": [
+        [
+          {
+            "node": "reset tool",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save User Data Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Scheduling": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exams Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Specialists Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Health Plan Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exam Details Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Methods Payment Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-15T18:19:39.691Z",
+  "id": "ds3jAJzOq9bxFmE1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Clinica",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.7,
+          "topP": 1
+        }
+      },
+      "id": "edd3641c-d660-45e7-8a49-7754a9910ceb",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5020,
+        1540
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 424,
+        "width": 794
+      },
+      "id": "f7ebd1b8-6f22-43fe-8d7b-c51a8b49622e",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+      },
+      "id": "ba02d72f-06fa-4f9f-a345-e14e2c1a66be",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        1360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "7140f0a0-f4d8-42a7-806b-3a78754f3030",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6180,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "42efc5bc-85fc-47b2-9e77-b82583b7bb2b",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3760,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": 120
+      },
+      "id": "4d31fa4a-aaad-4b90-a029-c3202e27e448",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4760,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "user_account",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "c38cce3e-1edb-4e17-92d7-af14679d5bd7",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4120,
+        1340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "7d833f79-a8df-4c90-aa3e-e5c2f3cb6217",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3940,
+        1340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 651,
+        "width": 999,
+        "color": 5
+      },
+      "id": "5c0dbf7e-f98a-4f34-a7f3-2449f63c7e25",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.user_account ?? $json ?? {} }}",
+        "options": {}
+      },
+      "id": "78719e6e-04fd-4f99-937f-e5bde1c4cd1d",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4760,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3520,
+        1080
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "6d4f63cd-58da-492b-ab55-aa84e4b6377b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6040,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
+        "sessionTTL": 600,
+        "contextWindowLength": 7
+      },
+      "id": "0dece69a-7574-4cc0-9cd4-64a01585661c",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5160,
+        1540
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "675594ce-198a-45d4-b185-4caacb169a93",
+              "name": "user_account",
+              "value": "={{ $json.user_account }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8bb289bf-43a1-4c77-a639-1b5208f7ecf0",
+      "name": "Json2Object",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4300,
+        1340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "call this tool to clean chat memory.",
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+      },
+      "id": "76246e11-4cdd-4141-965d-fde672b23f70",
+      "name": "Reset Memory",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        5640,
+        1520
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "372e405f-57ff-422d-bfb9-bb2797c49a28",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3360,
+        1080
+      ],
+      "webhookId": "ed6548e1-ad98-4c93-a4d0-c44430c2fe77",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "a2182a31-5d55-4811-a476-23a5eca970ed",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
+        }
+      },
+      "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "notes": "<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
+    },
+    {
+      "parameters": {
+        "name": "general_knowledge_base_tool",
+        "description": "=Esta ferramenta usa Recuperação de Informações Aumentadas (AIR) para fornecer respostas precisas sobre qualquer informação que lhe for perguntada. ",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "general"
+            },
+            {
+              "name": "slots",
+              "stringValue": "3"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "9ce6b047-59f4-41f3-8b06-6a4706f7cfb0",
+      "name": "Faro Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5600,
+        2020
+      ],
+      "disabled": true,
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
+    },
+    {
+      "parameters": {
+        "name": "courses_knowledge_base_tool",
+        "description": "=Use esta ferramenta para buscar informações sobre os cursos oferecidos pela faculdade.\n\n- Primeiro, identifique o nível do curso.\n- Segundo, pergunte a área de interesse como Exatas, Humanas, Saúde ou Sociais Aplicadas.\n\nSomente busque cursos relevantes e ofereça detalhes conforme solicitado, se o usuário informou o nível do curso e a área de interesse.",
+        "workflowId": {
+          "__rl": true,
+          "value": "I4t2yzZ4SbcmpeOK",
+          "mode": "list",
+          "cachedResultName": "TOOL Faculdade Faro"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "type",
+              "stringValue": "cursos"
+            },
+            {
+              "name": "slots",
+              "stringValue": "7"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('messageInfo').first().json.conversation }}"
+            }
+          ]
+        }
+      },
+      "id": "ed57d7ee-1cb1-41ab-af9a-becd7244dd5c",
+      "name": "Courses Info Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5460,
+        2020
+      ],
+      "disabled": true,
+      "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58f6d211-0ccc-40df-80f9-089086cd570a",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5840,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4300,
+        1600
+      ],
+      "id": "c5e04892-a993-4e93-b5ab-e3fb051b9284",
+      "name": "user registred?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.user_account }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "3ccca82f-6473-4681-9ff1-ceb45dc0a4b4",
+      "name": "user cached?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4480,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "clinic_users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "keyValue": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4120,
+        1600
+      ],
+      "id": "ca8f8272-b653-49cb-9c5b-fd793bcace76",
+      "name": "get user",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "clinic_users",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "remoteJid",
+              "fieldValue": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4540,
+        1740
+      ],
+      "id": "b051fa17-9be9-44bd-8014-d5245ba74e58",
+      "name": "insert user",
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "clinic_users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "remoteJid",
+              "condition": "eq",
+              "keyValue": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3940,
+        1600
+      ],
+      "id": "1a21c109-ad6d-486b-b4d6-e5ab87fab3dd",
+      "name": "delete user",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4540,
+        1560
+      ],
+      "id": "3701f096-1a8d-4361-9628-0f07199a9ee4",
+      "name": "Merge 2"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_william_5512982184879_clinica"
+      },
+      "id": "54fdb571-4c52-40ac-aa0c-c66070580bdf",
+      "name": "reset agent",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5840,
+        1520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_william_5512982184879_clinica_calendar"
+      },
+      "id": "106431b9-cfcf-4ccc-a658-94c73009f90c",
+      "name": "reset tool",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        6000,
+        1520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "save_user_data_tool",
+        "description": "Use this tool to store fields such as name, email, address, and date of birth (YYYY-MM-DD) in the database. \n\nThe stored values are permanent and cannot be changed.\n\nNever answer that data was saved.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "JZY3GPC55leuxyHn",
+          "cachedResultName": "TOOL Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "supabase"
+            },
+            {
+              "name": "action",
+              "stringValue": "update user"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"key\": {\n      \"type\": \"string\"\n    },\n    \"value\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"key\",\n    \"value\"\n  ]\n}"
+      },
+      "id": "51186f15-8c40-498c-aefd-6ea9a48b3123",
+      "name": "Save User Data Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5140,
+        1820
+      ]
+    },
+    {
+      "parameters": {
+        "name": "agentScheduling",
+        "description": "Call this workflow to handle all requests related to managing appointments, events, or meetings.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "JZY3GPC55leuxyHn",
+          "cachedResultName": "TOOL Clinica"
+        },
+        "responsePropertyName": "output",
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json }}"
+            }
+          ]
+        }
+      },
+      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
+      "name": "Agent Scheduling",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5280,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "name": "list_exams_tool",
+        "description": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\nNever display exam ID to user.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exams"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "hidden_fields",
+              "type": "arrayValue",
+              "arrayValue": "={{ ['calendar_id'] }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "id": "603864c4-5563-4d6f-bfa2-411ac572fb32",
+      "name": "Exams Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5000,
+        2000
+      ]
+    },
+    {
+      "parameters": {
+        "name": "specialists_tool",
+        "description": "Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "specialists"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "hidden_fields",
+              "type": "arrayValue",
+              "arrayValue": "={{ ['calendar_id'] }}"
+            }
+          ]
+        }
+      },
+      "id": "61c9f808-fda6-4214-84b2-58558f21640c",
+      "name": "Specialists Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5000,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "name": "calendar_event_id_tool",
+        "description": "Call this tool to obtain and verify event id that wil be used to schedule a consult with doctors or exams.\n\n## Required inputs:\n- Calendar ID (number, required).\n\n## Workflow:\n1. Use the calendar ID to retrieve the event ID.\n2. Return all calendar's information.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "calendar details"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"calendar_id\": {\n\t\t\"type\": \"number\",\n\t\t\"description\": \"calendar's id\"\n\t\t}\n\t}\n}"
+      },
+      "id": "5585c0de-0814-4c2c-9cb0-c7aac0f6fbcd",
+      "name": "Get Calendar Event Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5300,
+        2020
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "health_plan_tool",
+        "description": "Call this tool to get information about available health plans and insurance options.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "health plans"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "id": "41abc50a-1d2f-43fd-acb5-ad56a17a9ed1",
+      "name": "Health Plan Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5400,
+        1820
+      ]
+    },
+    {
+      "parameters": {
+        "name": "get_exam_details_tool",
+        "description": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exam details"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"exam_id\": {\n\t\t\"type\": \"number\",\n\t\t\"description\": \"exam's id\"\n\t\t}\n\t}\n}"
+      },
+      "id": "07a7323c-23cf-438f-8704-f9d1bf7b626f",
+      "name": "Exam Details Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5140,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Tools",
+        "height": 424,
+        "width": 794,
+        "color": 4
+      },
+      "id": "4fdb88c2-a4cc-4060-92d5-4a1f08f847ad",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "name": "payment_method_tool",
+        "description": "Call this tool to get information about payment methods.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "payments"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "id": "59c1766b-b546-4141-86fd-de0bfe1925ff",
+      "name": "Methods Payment Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5520,
+        1840
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-21T03:15:52.812Z",
+  "versionId": "84959441-257a-4a07-a976-c686c92b3643"
+}
