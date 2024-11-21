@@ -326,6 +326,7 @@
     },
     "allow numbers": {
       "main": [
+        [],
         [
           {
             "node": "delete chat",
@@ -1449,7 +1450,9 @@
       "position": [
         -13900,
         1220
-      ]
+      ],
+      "notesInFlow": true,
+      "notes": "invertido temporariamente"
     },
     {
       "parameters": {
@@ -2225,7 +2228,74 @@
       "webhookId": "26f1485f-02c1-4134-84cc-923317995aa9"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "connection": "close",
+            "content-length": "1124",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.7",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "ibox_cli_23",
+            "data": {
+              "key": {
+                "remoteJid": "5512982184879@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0A6D71023CE3112F0B4"
+              },
+              "pushName": "W.M. Soluções Tecnologicas",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "K0eyrR961dYl2Q==",
+                    "senderTimestamp": "1731328861",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "b+ANv/ZB0PNduA==",
+                    "recipientTimestamp": "1730680569"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "kCVoaxqXvXtqp0Wb8sA1xk+Xszx+TeDe86rf2bIyLYc="
+                },
+                "conversation": "oi, cli, tudo bem?"
+              },
+              "contextInfo": {
+                "ephemeralSettingTimestamp": "1719835382",
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1732196840,
+              "instanceId": "aa1d2c6f-9a7f-489b-accc-ff1c46a36a23",
+              "source": "web"
+            },
+            "destination": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
+            "date_time": "2024-11-21T10:47:20.786Z",
+            "sender": "5512982471939@s.whatsapp.net",
+            "server_url": "https://apiwp.wmst.com.br",
+            "apikey": "3D48F896-1228-4268-8F5D-4200DA4C3661"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -2253,6 +2323,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-17T20:33:45.179Z",
-  "versionId": "9e18b15b-4c42-4db9-b2be-e7510729ac00"
+  "updatedAt": "2024-11-21T13:55:18.698Z",
+  "versionId": "e66da63d-4912-4060-98b5-0ea385bc6933"
 }
