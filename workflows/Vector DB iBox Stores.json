@@ -1,0 +1,699 @@
+{
+  "active": false,
+  "connections": {
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "blocksInfo": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get Store Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Info": {
+      "main": [
+        [
+          {
+            "node": "has output?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has output?": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instanceConfig": {
+      "main": [
+        [
+          {
+            "node": "has instance config?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance config?": {
+      "main": [
+        [
+          {
+            "node": "Switch Action",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Action": {
+      "main": [
+        [
+          {
+            "node": "Delete Collection 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Collection 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Collection 1": {
+      "main": [
+        [
+          {
+            "node": "blocksInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Sync": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-22T04:18:43.812Z",
+  "id": "CH8B8jHan7BGlK5w",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Vector DB iBox Stores",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "1cf503c9-4a04-4ca3-a412-a28408547ef9",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        240
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "block",
+                "value": "={{ $('Loop Over Items').item.json.block }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "8c0bca97-acae-4886-a042-4f53eaef0bc9",
+      "name": "Default Data Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Sincroniza os dados da Instância no Vector DB",
+        "height": 433.76260239656284,
+        "width": 1372.6530864993929,
+        "color": 4
+      },
+      "id": "bec8e467-2483-4c50-8db5-7adde1c3d33e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        620,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "separator": "|---*---|",
+        "chunkSize": 400,
+        "chunkOverlap": 100
+      },
+      "id": "5e0cf4d7-53b1-4af8-9cda-bed33f23702c",
+      "name": "Character Text Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c20cd8e3-2a73-4758-bfbf-88d49edd563d",
+              "name": "ibox_api",
+              "value": "https://ibox.delivery/api/whatsapp",
+              "type": "string"
+            },
+            {
+              "id": "4735dedc-34eb-43e7-81b5-9fba04146f14",
+              "name": "qdrant_api",
+              "value": "http://qdrant:6333",
+              "type": "string"
+            },
+            {
+              "id": "bd2fee21-3c39-4a7d-874c-97e46c55e63b",
+              "name": "instance_name",
+              "value": "={{ $json.body.instance_name }}",
+              "type": "string"
+            },
+            {
+              "id": "1b307001-002d-4c44-8412-44169d3f69b8",
+              "name": "action",
+              "value": "={{ $json.body.action }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "538db4a5-e98c-4bfa-9faf-4bb703615f9b",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -260,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c20cd8e3-2a73-4758-bfbf-88d49edd563d",
+              "name": "blocks",
+              "value": "={{ ['basic_info,status,hours,payment_methods', 'products', 'delivery_fees'] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "09bb4fe9-ac61-4309-8fc8-3d12f780acc1",
+      "name": "blocksInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        652,
+        79
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "402f67e2-00b7-4436-b2f9-a41a8c13e611",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        972,
+        79
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "blocks",
+        "options": {
+          "destinationFieldName": "block"
+        }
+      },
+      "id": "609ebfc9-0af6-4bfb-8bb0-f9fe9c6266d7",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        812,
+        79
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').first().json.ibox_api }}/store",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "instance_name",
+              "value": "={{ $('baseInfo').first().json.instance_name }}"
+            },
+            {
+              "name": "format",
+              "value": "markdown"
+            },
+            {
+              "name": "block",
+              "value": "={{ $json.block }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "text",
+              "outputPropertyName": "output"
+            }
+          }
+        }
+      },
+      "id": "a8ebf661-a1b4-4650-8e2c-99e722018551",
+      "name": "Get Store Info",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1169,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21baa15a-f57d-49f4-8715-5fcd08e367af",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8ecfaa85-e6ce-47f0-b13d-8b150bb4c504",
+      "name": "has output?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1329,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $json.vector_name }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {}
+      },
+      "id": "03351c20-9c0d-4776-aa92-01ccc3643bb3",
+      "name": "Delete Collection 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $json.instance_name }}"
+            }
+          ]
+        }
+      },
+      "id": "a1b628bc-c253-45a1-8fc8-8a797244e622",
+      "name": "instanceConfig",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        240
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "3fabbdb0-5754-4ae4-ba59-f0f6714ce73a",
+              "leftValue": "={{ $json.instance_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5a9972b8-b202-4155-a4f4-b1fc00a69f9a",
+      "name": "has instance config?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        60,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "sync",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "sync collection"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "052f4582-6de5-40c7-9d6b-de931fd4c535",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "reset",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "reset collection"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58735e92-b276-4e1f-bfd3-18bab5434e87",
+      "name": "Switch Action",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        240,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "={{ $('baseInfo').first().json.qdrant_api }}/collections/{{ $json.vector_name }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "qdrantApi",
+        "options": {}
+      },
+      "id": "7deedeb8-96ad-476f-8ee8-97aa073eab66",
+      "name": "Delete Collection 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        80
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "={{ $('instanceConfig').first().json.vector_name }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "0e2a16c7-fdf0-4b6c-a75e-16925805c906",
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        60
+      ],
+      "credentials": {
+        "qdrantApi": {
+          "id": "ukGdBAa9ib5xqZKC",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5555f30d-cbca-454e-96c8-010f0f17ddc3",
+        "options": {}
+      },
+      "id": "e37dff4e-f01e-4316-aea5-8cb67ad0524f",
+      "name": "Webhook Sync",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        240
+      ],
+      "webhookId": "5555f30d-cbca-454e-96c8-010f0f17ddc3"
+    }
+  ],
+  "pinData": {
+    "Webhook Sync": [
+      {
+        "json": {
+          "headers": {
+            "connection": "keep-alive",
+            "host": "n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "content-length": "175",
+            "user-agent": "PostmanRuntime/7.42.0",
+            "accept": "*/*",
+            "cache-control": "no-cache",
+            "postman-token": "6519331a-7772-414a-9645-2da6c7388459",
+            "accept-encoding": "gzip, deflate, br",
+            "content-type": "multipart/form-data; boundary=--------------------------865218928624393217188768"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "action": "sync",
+            "instance_name": "ibox_cli_23"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook-test/5555f30d-cbca-454e-96c8-010f0f17ddc3",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-31T23:33:56.378Z",
+  "versionId": "068ec0a8-756e-4b03-aadf-0b49bc325308"
+}
