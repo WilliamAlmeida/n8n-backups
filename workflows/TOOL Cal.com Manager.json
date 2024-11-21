@@ -1,0 +1,1863 @@
+{
+  "active": false,
+  "connections": {
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Switch Action 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo1": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "baseInfo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Events Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Events Agent": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all event types": {
+      "main": [
+        [
+          {
+            "node": "Response Events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an event type": {
+      "main": [
+        [
+          {
+            "node": "found event?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found event?": {
+      "main": [
+        [
+          {
+            "node": "Switch Action 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Event Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event type": {
+      "main": [
+        [
+          {
+            "node": "Response Event Deleted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Event Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update an event type": {
+      "main": [
+        [
+          {
+            "node": "Response Event Updated",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model 2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser 2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modify Structure": {
+      "main": [
+        [
+          {
+            "node": "Code 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an event type": {
+      "main": [
+        [
+          {
+            "node": "Response Event Created",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Action 2": {
+      "main": [
+        [
+          {
+            "node": "Response Event Found",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Modify Structure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Action 1": {
+      "main": [
+        [
+          {
+            "node": "Get all event types",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Structure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Format Data Temp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Data Temp": {
+      "main": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Event Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model 2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Modify Structure",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model 1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create Structure",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser 1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Create Structure",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model  1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser 1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser 1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser 1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser 2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser 2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser 2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Modify Structure",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Structure": {
+      "main": [
+        [
+          {
+            "node": "Code 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code 1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code 2": {
+      "main": [
+        [
+          {
+            "node": "Update an event type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create an event type",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Error Generate Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Event Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "save_data_temp_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset_data_temp_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Events Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-12T18:24:17.279Z",
+  "id": "1nu2jNMNFfap2LSn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TOOL Cal.com Manager",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0.1,
+          "topP": 1
+        }
+      },
+      "id": "1a559fa0-44bc-4b66-84aa-51977fa662ea",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -100
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "de856eaf-9065-41e0-ace1-6f9501b1a6d4",
+              "name": "cal_api",
+              "value": "https://api.cal.com",
+              "type": "string"
+            },
+            {
+              "id": "49f1f9ae-601d-40cc-b129-fa950b822ede",
+              "name": "username",
+              "value": "williamalmeida",
+              "type": "string"
+            },
+            {
+              "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
+              "name": "cal_event_id",
+              "value": "1195762",
+              "type": "string"
+            },
+            {
+              "id": "0a72c23b-7e8c-4618-b827-602200390069",
+              "name": "cal_api_version_booking",
+              "value": "2024-08-13",
+              "type": "string"
+            },
+            {
+              "id": "7e6a29c2-9869-409d-9980-698909fdee57",
+              "name": "cal_api_version_event",
+              "value": "2024-06-14",
+              "type": "string"
+            },
+            {
+              "id": "9e124983-4ae7-4c0c-88b1-d1a68136a45f",
+              "name": "utc",
+              "value": "3",
+              "type": "string"
+            },
+            {
+              "id": "20964151-a5f0-40b4-8730-937b9ffd8a75",
+              "name": "action",
+              "value": "={{ $json.action }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -300,
+        -580
+      ],
+      "id": "6392865b-8664-49ea-a0b4-5c5edf7f9b40",
+      "name": "baseInfo"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{ $('EWT').item.json.query.username }}"
+            },
+            {
+              "name": "eventSlug",
+              "value": "={{ $('EWT').item.json.query.eventSlug ?? '' }}"
+            },
+            {
+              "name": "usernames",
+              "value": "={{ $('EWT').item.json.query.usernames ?? '' }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        180,
+        -800
+      ],
+      "id": "c6fb71ff-9475-46a9-8c86-9393a6372d77",
+      "name": "Get all event types",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer cal_live_65564eb4fa300eef9f8a38f7586704ba"
+            },
+            {
+              "name": "cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.output }}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        -60
+      ],
+      "id": "c73b2b02-bdf2-4bba-8274-5f80a60a54c5",
+      "name": "Create an event type"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types/{{ $('EWT').item.json.query.event_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        180,
+        -580
+      ],
+      "id": "02b16fba-e743-4026-ada6-a365c84d07ee",
+      "name": "Get an event type",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types/{{ $('EWT').item.json.query.event_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        820,
+        -720
+      ],
+      "id": "814b738c-dd9e-4ff6-ab82-399dc713b425",
+      "name": "Delete an event type",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "de856eaf-9065-41e0-ace1-6f9501b1a6d4",
+              "name": "cal_api",
+              "value": "https://api.cal.com",
+              "type": "string"
+            },
+            {
+              "id": "49f1f9ae-601d-40cc-b129-fa950b822ede",
+              "name": "username",
+              "value": "williamalmeida",
+              "type": "string"
+            },
+            {
+              "id": "99df0bed-0ef3-4a38-ae55-0db00096415c",
+              "name": "cal_event_id",
+              "value": "1195762",
+              "type": "string"
+            },
+            {
+              "id": "0a72c23b-7e8c-4618-b827-602200390069",
+              "name": "cal_api_version_booking",
+              "value": "2024-08-13",
+              "type": "string"
+            },
+            {
+              "id": "7e6a29c2-9869-409d-9980-698909fdee57",
+              "name": "cal_api_version_event",
+              "value": "2024-06-14",
+              "type": "string"
+            },
+            {
+              "id": "9e124983-4ae7-4c0c-88b1-d1a68136a45f",
+              "name": "utc",
+              "value": "3",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1240,
+        -340
+      ],
+      "id": "c489ed02-95c3-42f8-9262-8e5ad80a3484",
+      "name": "baseInfo1"
+    },
+    {
+      "parameters": {},
+      "id": "35da752b-c5fd-4840-8b70-ea4a72dac375",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1420,
+        -340
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -580
+      ],
+      "id": "f1af2915-e0c9-4796-a535-a5c041461b31",
+      "name": "EWT"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1c0e1856-c7f0-4e9b-b4ac-1d704417b91c",
+              "name": "output",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -180,
+        -340
+      ],
+      "id": "025c66d4-a3b7-4d9b-8f11-592a887648a8",
+      "name": "Response"
+    },
+    {
+      "parameters": {
+        "name": "list_events_tool",
+        "description": "=Call this tool to get an existing event.\n\n## To detail an existing event\n* Ask the user for their username or event_slug of the existing event\n* Use the user's username or event_slug to search for the existing event.\n* If the user's username or event_slug do not match the results or no results are returned, then the existing event is not found.\n* If the existing event is not found, notify the user.\n\n# Always display ID Event",
+        "workflowId": {
+          "__rl": true,
+          "value": "1nu2jNMNFfap2LSn",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "list events"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"username\": \"The username of the user to get event types for. If only username provided will get all event types.\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -460,
+        -100
+      ],
+      "id": "44d22de9-ea6e-4116-9500-f0f61022f792",
+      "name": "List Events Tool"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Chat').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a helpful assistant who will help the user manage the creation, editing, and deletion of events (calendars) on the platform called \"cal.com\".\n\nThe date and time are now {{ $now.toISO() }}. All dates should be provided in ISO format.\n\nEach date should have a start and end date and time relative to today's date in the future.\n\n## About the user\nThe user's session ID is {{ $('Chat').item.json.sessionId }}, email is williamkillerca@gmail.com, mobile is +5512982184879, and {{ $('Format Data Temp').item.json.data_temp.hasField('username') ? `username is ${$('Format Data Temp').item.json.data_temp.username}.` : 'username was not provided' }}.\n\n## Notes\n* username don't have format email\n* event_id is a number, does not contain letters or other characters\n\n{{ $('Format Data Temp').item.json.data_temp.hasField('username') ? '' : `# First, ask the user for the username to continue\n* After being informed, validate by checking if it is valid using *list_events_tool*\n* If it does not return an error, save the username using *save_data_temp_tool*\n* If it does error, inform the user and request a new one` }}\n\n## Data Temp\n{{ $('Format Data Temp').item.json.data_temp.toJsonString() }}\n\n## Output\n\nAlways respond in *pt-BR* and in a humanized way",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "c95a7590-0bc7-49d6-92fa-2cc391dbd63f",
+      "name": "Events Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -520,
+        -340
+      ],
+      "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.data.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        360,
+        -580
+      ],
+      "id": "9f3497dd-de58-49d9-9348-3179f31c398a",
+      "name": "found event?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "event not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        580,
+        -420
+      ],
+      "id": "68d6e642-85b9-4378-86ef-7630ca3f5d84",
+      "name": "Response Event Error"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/event-types/{{ $('EWT').item.json.query.event_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer cal_live_65564eb4fa300eef9f8a38f7586704ba"
+            },
+            {
+              "name": "cal-api-version",
+              "value": "={{ $('baseInfo').item.json.cal_api_version_event }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.output }}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        -540
+      ],
+      "id": "44d4239b-a425-444d-97d9-2db70ba6dad5",
+      "name": "Update an event type"
+    },
+    {
+      "parameters": {
+        "name": "update_event_tool",
+        "description": "Call this tool to update an existing event using an event ID.",
+        "workflowId": {
+          "__rl": true,
+          "value": "1nu2jNMNFfap2LSn",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "update event"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('Chat').item.json.chatInput }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event identification number\"\n    }\n  },\n  \"required\": [\n    \"event_id\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -300,
+        -100
+      ],
+      "id": "07062720-a685-4272-8251-fa79bad45415",
+      "name": "Update Event Tool"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Chat').item.json.sessionId }}_adm",
+        "sessionTTL": 300,
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        -680,
+        -80
+      ],
+      "id": "48d47e6b-8236-4ec2-bc53-39213da301ec",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        920,
+        -240
+      ],
+      "id": "c8838cbd-e76b-41b7-af5e-a6d22b272cfc",
+      "name": "OpenAI Chat Model 2",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('EWT').item.json.prompt }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Mantenha a estrutura do json, só altere o que for pedido, o restante não mexa em nada.\n\n<fields_enabled_to_edit>\ntitle; slug; description; disableGuests; slotInterval; minimumBookingNotice; beforeEventBuffer; afterEventBuffer; requiresBookerEmailVerification; hideCalendarNotes; lockTimeZoneToggleOnBookingPage; customName\n</fields_enabled_to_edit>\n\n<about>\n# customName <string>\nCustomizable event name with valid variables:\n{Event type title}, {Organiser}, {Scheduler}, {Location}, {Organiser first name},\n{Scheduler first name}, {Scheduler last name}, {Event duration}, {LOCATION},\n{HOST/ATTENDEE}, {HOST}, {ATTENDEE}, {USER}\n</about>\n\n<current_json>\n{{ $json.data.toJsonString() }}\n</current_json>\n\nRetorne um json dos campos que foram alterados mantendo a estrutura inicial, nada alem disso."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        820,
+        -540
+      ],
+      "id": "01f21c57-77ea-4316-b0d6-9276ef66919d",
+      "name": "Modify Structure"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cd3998a0-f769-426e-bcc4-38e452728133",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "find event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "find event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bb06766f-56b8-4de5-a92b-050ea094b118",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "delete event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "delete event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "aee40e66-debf-4d99-b02e-4bb1b97e92eb",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "update event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "update event"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        580,
+        -580
+      ],
+      "id": "8e52c411-8e6b-4913-ae98-cd5e0d000ee3",
+      "name": "Switch Action 2"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "list events",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "list events"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "062dd5e0-6ee4-4821-98cb-19d42af6462b",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "find event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "find event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "70cc9317-4c14-4c7d-bc25-18e620bf044b",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "delete event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "delete event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fe441c52-a8ad-416f-9001-113e88048132",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "update event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "update event"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "80aff94c-0b8b-41bc-8593-5531774ff819",
+                    "leftValue": "={{ $('baseInfo').item.json.action }}",
+                    "rightValue": "create event",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "create event"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -120,
+        -620
+      ],
+      "id": "d8ca4517-a879-42db-8681-2aa24235e583",
+      "name": "Switch Action 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b8494e9a-efe6-499a-bcd2-2cda90083758",
+              "name": "response",
+              "value": "={{ $json.status == 'error' ? 'error to find events' : 'list of events: ' }}{{ JSON.stringify($json.data.map(item => ({\n    id: item.id,\n    ownerId: item.ownerId,\n    lengthInMinutes: item.lengthInMinutes,\n    title: item.title,\n    description: '',\n    slug: item.slug,\n    user: item.users.map(user => ({\n      id: user.id,\n      name: user.name,\n      username: user.username\n    }))\n}))) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        -800
+      ],
+      "id": "60e31183-59e1-4f16-817c-37f37a346236",
+      "name": "Response Events"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ $json.status == 'success' ? 'event updated' : 'event not updated, an error was found' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1580,
+        -540
+      ],
+      "id": "bb20d1da-0622-47bf-a522-ffaefc941512",
+      "name": "Response Event Updated"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ $json.status == 'success' ? 'event deleted' : 'event not deleted, an error was found' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1020,
+        -720
+      ],
+      "id": "575d55fa-82a5-49fe-ae6a-2fa6bcbacbeb",
+      "name": "Response Event Deleted"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ $json.status == 'error' ? 'error to find event' : 'details of event: ' }}{{ JSON.stringify({\n    id: $json.data.id, \n    ownerId: $json.data.ownerId, \n    lengthInMinutes: $json.data.lengthInMinutes, \n    title: $json.data.title, \n    slug: $json.data.slug, \n    user: $json.data.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n}) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        820,
+        -880
+      ],
+      "id": "59e34cfb-a73b-4a7a-983c-dbbcffcfe616",
+      "name": "Response Event Found"
+    },
+    {
+      "parameters": {
+        "operation": "keys",
+        "keyPattern": "={{ $('Chat').item.json.sessionId }}_adm_dt_*"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        -340
+      ],
+      "id": "fdfb5b40-636e-4d06-8d19-c2e97531c3dc",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1f3e4bc4-684f-4481-b439-11a3d90e639e",
+              "name": "data_temp",
+              "value": "={{ Object.keys($json).reduce((acc, key) => {\n  acc[key.split('dt_')[1]] = $json[key];\n  return acc;\n}, {}) }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -700,
+        -340
+      ],
+      "id": "a09cb07c-4295-4167-8732-3dfcd316c1c6",
+      "name": "Format Data Temp"
+    },
+    {
+      "parameters": {
+        "name": "create_event_tool",
+        "description": "Call this tool to create an event.",
+        "workflowId": {
+          "__rl": true,
+          "value": "1nu2jNMNFfap2LSn",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "create event"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('Chat').item.json.chatInput }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"lengthInMinutes\": {\n      \"type\": \"number\"\n    },\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"slug\": {\n      \"type\": \"string\"\n    },\n    \"description\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"lengthInMinutes\",\n    \"title\",\n    \"slug\",\n    \"description\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -460,
+        40
+      ],
+      "id": "c530290d-bca6-4ea7-87b9-de256b73041b",
+      "name": "Create Event Tool"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -380
+      ],
+      "id": "28f9d820-c2da-4df8-afc2-514144b23f4a",
+      "name": "Groq Chat Model 2",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama-3.2-90b-text-preview",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        140,
+        120
+      ],
+      "id": "21041e48-94c2-4d00-8626-f490cb257de9",
+      "name": "Groq Chat Model 1",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        260,
+        120
+      ],
+      "id": "72f9fd44-0698-49e6-b52a-ce8154e406c5",
+      "name": "Auto-fixing Output Parser 1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        260,
+        260
+      ],
+      "id": "94a9f62a-5c54-495c-8037-e23dc7540b00",
+      "name": "OpenAI Chat Model  1",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"text\": \"output format json\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        280
+      ],
+      "id": "ec133775-5a08-4174-baee-f0613323e910",
+      "name": "Structured Output Parser 1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"text\": \"output format json\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1080,
+        -220
+      ],
+      "id": "7b822cb5-3536-440a-b9fc-04ff793eb841",
+      "name": "Structured Output Parser 2"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        920,
+        -380
+      ],
+      "id": "29812fc1-f454-476c-b46b-00cc1a03faf7",
+      "name": "Auto-fixing Output Parser 2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<data_sent_to_use>\n{{ $('EWT').item.json.query.toJsonString() }}\n</data_sent_to_use>\n\n<instruct_to_complement>\n{{ $('EWT').item.json.prompt }}\n</instruct_to_complement>\n\n<instructions>\n1. Sempre dê prioridade aos valores contidos em <data_sent_to_use>.\n2. Caso algum campo de <data_sent_to_use> esteja vazio, utilize os valores ou informações complementares de <instruct_to_complement> para preencher.\n3. Se o campo \"slug\" de <data_sent_to_use> tiver um valor, use este como prioritário, mesmo que o mesmo valor ou outro seja sugerido em <instruct_to_complement>. Se o campo \"slug\" estiver vazio, então utilize o valor de <instruct_to_complement> como complemento.\n4. Se <instruct_to_complement> solicitar a adição de novas informações que não estão em <data_sent_to_use>, adicione-as ao resultado final, respeitando a lógica de prioridade mencionada acima.\n</instructions>\n",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Use a estrutura do json como instrução, só crie o que for pedido, o restante não inclua.\n\n<fields_enabled_to_create>\ntitle; slug; description; customName\n</fields_enabled_to_create>\n\n<rules>\n* Se não for informado o *slug* crie um usando o *title*\n* Se não informado a *description*, crie uma usando o *title*\n* Precisa ter um *lengthInMinutes*\n</rules>\n\n<about>\n# customName <string>\nCustomizable event name with valid variables:\n{Event type title}, {Organiser}, {Scheduler}, {Location}, {Organiser first name},\n{Scheduler first name}, {Scheduler last name}, {Event duration}, {LOCATION},\n{HOST/ATTENDEE}, {HOST}, {ATTENDEE}, {USER}\n</about>\n\n<structure_json>\n{\"lengthInMinutes\":60,\"title\":\"Learn the secrets of masterchief!\",\"slug\":\"learn-the-secrets-of-masterchief\",\"description\":\"Discover the culinary wonders of the Argentina by making the best flan ever!\",\"locations\":[{\"type\":\"address\",\"address\":\"123 Example St, City, Country\",\"public\":true}],\"bookingFields\":[{\"type\":\"phone\",\"slug\":\"some-slug\",\"label\":\"<string>\",\"required\":true,\"placeholder\":\"<string>\"}],\"disableGuests\":true,\"slotInterval\":123,\"minimumBookingNotice\":123,\"beforeEventBuffer\":123,\"afterEventBuffer\":123,\"scheduleId\":123,\"bookingLimitsCount\":{\"day\":1,\"week\":2,\"month\":3,\"year\":4},\"onlyShowFirstAvailableSlot\":true,\"bookingLimitsDuration\":{\"day\":60,\"week\":120,\"month\":180,\"year\":240},\"bookingWindow\":{\"type\":\"businessDays\",\"value\":5,\"rolling\":true},\"offsetStart\":123,\"bookerLayouts\":{\"defaultLayout\":\"month\",\"enabledLayouts\":[\"month\"]},\"confirmationPolicy\":{\"type\":\"always\",\"noticeThreshold\":{\"unit\":\"minutes\",\"count\":30}},\"recurrence\":{\"interval\":10,\"occurrences\":10,\"frequency\":\"yearly\"},\"requiresBookerEmailVerification\":true,\"hideCalendarNotes\":true,\"lockTimeZoneToggleOnBookingPage\":true,\"color\":{\"lightThemeHex\":\"#292929\",\"darkThemeHex\":\"#fafafa\"},\"seats\":{\"seatsPerTimeSlot\":4,\"showAttendeeInfo\":true,\"showAvailabilityCount\":true},\"customName\":\"{Event type title} between {Organiser} and {Scheduler}\",\"destinationCalendar\":{\"integration\":\"<string>\",\"externalId\":\"<string>\"},\"useDestinationCalendarEmail\":true,\"hideCalendarEventDetails\":true}\n</structure_json>\n\nRetorne um json com campos que foram usados mantendo a estrutura inicial, nada alem disso."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        160,
+        -40
+      ],
+      "id": "34b03ad9-fee8-4397-b8a6-edf8bacdf3d9",
+      "name": "Create Structure"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const output = JSON.parse($input.item.json.output.text ?? \"{}\");\n\n// Array com os campos que você deseja retornar\nconst index1 = [\"lengthInMinutes\",\"title\",\"slug\",\"description\"]; // \"locations\",\"bookingFields\",\"disableGuests\",\"slotInterval\",\"minimumBookingNotice\",\"beforeEventBuffer\",\"afterEventBuffer\",\"scheduleId\",\"bookingLimitsCount\",\"onlyShowFirstAvailableSlot\",\"bookingLimitsDuration\",\"bookingWindow\",\"offsetStart\",\"bookerLayouts\",\"confirmationPolicy\",\"recurrence\",\"requiresBookerEmailVerification\",\"hideCalendarNotes\",\"lockTimeZoneToggleOnBookingPage\",\"color\",\"seats\",\"customName\",\"destinationCalendar\",\"useDestinationCalendarEmail\",\"hideCalendarEventDetails\"\n\nconst index2 = [\"locations.type\",\"locations.address\",\"locations.public\",\"bookingFields.type\",\"bookingFields.slug\",\"bookingFields.label\",\"bookingFields.required\",\"bookingFields.placeholder\",\"bookingLimitsCount.day\",\"bookingLimitsCount.week\",\"bookingLimitsCount.month\",\"bookingLimitsCount.year\",\"bookingLimitsDuration.day\",\"bookingLimitsDuration.week\",\"bookingLimitsDuration.month\",\"bookingLimitsDuration.year\",\"bookingWindow.type\",\"bookingWindow.value\",\"bookingWindow.rolling\",\"bookerLayouts.defaultLayout\",\"bookerLayouts.enabledLayouts\",\"confirmationPolicy.type\",\"confirmationPolicy.noticeThreshold.unit\",\"confirmationPolicy.noticeThreshold.count\",\"recurrence.interval\",\"recurrence.occurrences\",\"recurrence.frequency\",\"color.lightThemeHex\",\"color.darkThemeHex\",\"seats.seatsPerTimeSlot\",\"seats.showAttendeeInfo\",\"seats.showAvailabilityCount\",\"destinationCalendar.integration\",\"destinationCalendar.externalId\"];\n\nconst index3 = [\"confirmationPolicy.noticeThreshold.unit\",\"confirmationPolicy.noticeThreshold.count\"];\n\n// Função para retornar somente os campos desejados\nconst filterFields = (obj, fields) => {\n  return Object.keys(obj)\n    .filter(key => fields.includes(key))\n    .reduce((result, key) => {\n      result[key] = obj[key];\n      return result;\n    }, {});\n};\n\nreturn { output: filterFields(output, index1) };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        -40
+      ],
+      "id": "33e189ce-07b8-425b-af91-fc13c771f25d",
+      "name": "Code 1"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const output = JSON.parse($input.item.json.output.text);\n\n// Array com os campos que você deseja retornar\nconst index1 = [\"lengthInMinutes\",\"title\",\"slug\",\"description\",\"locations\",\"bookingFields\",\"disableGuests\",\"slotInterval\",\"minimumBookingNotice\",\"beforeEventBuffer\",\"afterEventBuffer\",\"scheduleId\",\"bookingLimitsCount\",\"onlyShowFirstAvailableSlot\",\"bookingLimitsDuration\",\"bookingWindow\",\"offsetStart\",\"bookerLayouts\",\"confirmationPolicy\",\"recurrence\",\"requiresBookerEmailVerification\",\"hideCalendarNotes\",\"lockTimeZoneToggleOnBookingPage\",\"color\",\"seats\",\"customName\",\"destinationCalendar\",\"useDestinationCalendarEmail\",\"hideCalendarEventDetails\"];\n\nconst index2 = [\"locations.type\",\"locations.address\",\"locations.public\",\"bookingFields.type\",\"bookingFields.slug\",\"bookingFields.label\",\"bookingFields.required\",\"bookingFields.placeholder\",\"bookingLimitsCount.day\",\"bookingLimitsCount.week\",\"bookingLimitsCount.month\",\"bookingLimitsCount.year\",\"bookingLimitsDuration.day\",\"bookingLimitsDuration.week\",\"bookingLimitsDuration.month\",\"bookingLimitsDuration.year\",\"bookingWindow.type\",\"bookingWindow.value\",\"bookingWindow.rolling\",\"bookerLayouts.defaultLayout\",\"bookerLayouts.enabledLayouts\",\"confirmationPolicy.type\",\"confirmationPolicy.noticeThreshold.unit\",\"confirmationPolicy.noticeThreshold.count\",\"recurrence.interval\",\"recurrence.occurrences\",\"recurrence.frequency\",\"color.lightThemeHex\",\"color.darkThemeHex\",\"seats.seatsPerTimeSlot\",\"seats.showAttendeeInfo\",\"seats.showAvailabilityCount\",\"destinationCalendar.integration\",\"destinationCalendar.externalId\"];\n\nconst index3 = [\"confirmationPolicy.noticeThreshold.unit\",\"confirmationPolicy.noticeThreshold.count\"];\n\n// Função para retornar somente os campos desejados\nconst filterFields = (obj, fields) => {\n  return Object.keys(obj)\n    .filter(key => fields.includes(key))\n    .reduce((result, key) => {\n      result[key] = obj[key];\n      return result;\n    }, {});\n};\n\nreturn { output: filterFields(output, index1) };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        -540
+      ],
+      "id": "44196753-0048-4c0d-9e91-60d6c1625e0f",
+      "name": "Code 2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "={{ $json.status == 'success' ? {\n    id: $json.data.id, \n    ownerId: $json.data.ownerId, \n    lengthInMinutes: $json.data.lengthInMinutes, \n    title: $json.data.title, \n    slug: $json.data.slug, \n    user: $json.data.users.map(user => u = {\n      id: user.id, \n      name: user.name, \n      username: user.username, \n    })\n} : 'event not created, an error was found\\n' + $json.error.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        -60
+      ],
+      "id": "3cbe7e07-dab8-4cf7-8276-2d850e0b4e14",
+      "name": "Response Event Created"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "533aecde-5047-4661-956c-1d65cdafd20a",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        -40
+      ],
+      "id": "62350dee-c7f4-44fe-8471-e87ee153c31b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
+              "name": "response",
+              "value": "error was found on generate json to create event",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        920,
+        120
+      ],
+      "id": "f67f3eaf-1b03-4a6e-97f7-ff30cc33c335",
+      "name": "Response Error Generate Json"
+    },
+    {
+      "parameters": {
+        "name": "delete_event_tool",
+        "description": "Call this tool to delete an existing event using an event ID.",
+        "workflowId": {
+          "__rl": true,
+          "value": "1nu2jNMNFfap2LSn",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "delete event"
+            },
+            {
+              "name": "prompt",
+              "stringValue": "={{ $('Chat').item.json.chatInput }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event identification number\"\n    }\n  },\n  \"required\": [\n    \"event_id\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -300,
+        40
+      ],
+      "id": "f824e7d3-1bd8-4476-85a9-375e2eb11f0e",
+      "name": "Delete Event Tool"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Chat').item.json.sessionId }}_adm_dt_{{ $fromAI('key', 'identification of value', 'string') }}",
+        "value": "={{ $fromAI('value') }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 300
+      },
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -120
+      ],
+      "id": "c166e375-ac61-406f-a77f-79e5539f1ead",
+      "name": "save_data_temp_tool",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "=Use this tool to reset the *username* or *event_id* if requested by the user.\n\n# Output\n\nDeleted successfully!",
+        "operation": "delete",
+        "key": "={{ $('Chat').item.json.sessionId }}_adm_dt_{{ $fromAI('key', 'identification of value', 'string') }}"
+      },
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        40
+      ],
+      "id": "9cbaf69b-5c7d-4b2b-b77d-374cd08bf383",
+      "name": "reset_data_temp_tool",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Chat').item.json.sessionId }}_adm_dt_username"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1060,
+        -340
+      ],
+      "id": "3724b934-1ae7-4440-8bd6-441b881280cd",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": {
+            "event_id": 1195761
+          },
+          "action": "update event",
+          "prompt": "mude as informações da mentoria de 30 min, para que seja focada em mentoria voltado a ferramenta n8n, estarei tirando duvidas e auxiliando na criação de novos fluxos e automações."
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Cal.com Trigger": {
+      "webhookId": "992ce188-0fce-4a68-866f-f76b682bdcb5"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-10-30T23:31:05.255Z",
+      "updatedAt": "2024-10-30T23:31:05.255Z",
+      "id": "IDsda42rHm8bi7eR",
+      "name": "Tool"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-16T03:42:32.344Z",
+  "versionId": "f9b5c86b-da1b-4496-b9e8-fda22f0da6f2"
+}
