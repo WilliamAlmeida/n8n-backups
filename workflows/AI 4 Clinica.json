@@ -1313,7 +1313,22 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "não tenho o uid"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
@@ -1340,6 +1355,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-21T03:15:52.812Z",
-  "versionId": "84959441-257a-4a07-a976-c686c92b3643"
+  "updatedAt": "2024-11-21T14:37:24.411Z",
+  "versionId": "2c3eecb0-ec64-4cfc-aabf-70d81fd5eabe"
 }
