@@ -1,0 +1,725 @@
+{
+  "active": false,
+  "connections": {
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Media": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Beautify URL": {
+      "main": [
+        [
+          {
+            "node": "Fix Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text": {
+      "main": [
+        [
+          {
+            "node": "Categorizing Message with Split Break Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Messages": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "Beautify URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Send Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Categorizing Message with Split Break Line": {
+      "main": [
+        [
+          {
+            "node": "Split Out Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Connection": {
+      "main": [
+        [
+          {
+            "node": "Restart Connection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restart Connection": {
+      "main": [
+        [
+          {
+            "node": "Connection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-08T13:37:37.409Z",
+  "id": "K7oBqF1vnvw165RG",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 5 Response",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendText/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(500, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 5000))) }}\n,\n  \"linkPreview\": false\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
+      "name": "Send Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "af2937b0-e4b6-46a5-88eb-6724eb1166eb",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1740,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendMedia/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"mediatype\": \"{{ $json.output.type }}\",\n  \"mimetype\": \"image/png\",\n  \"caption\": \"{{ $json.output.caption.replace(/^\\n+/g, '') ?? '' }}\",\n  \"media\": \"{{ $json.output.url }}\",\n  \"fileName\": \"{{ $json.output.url.split('/').last().replace($json.output.url.split('.').last(), 'png') }}\",\n  \"delay\": 2000\n} ",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "1751549e-af47-4df1-9efa-5e979d6c05e9",
+      "name": "Send Media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Enviar o Resultado para o Whatsapp",
+        "height": 378,
+        "width": 880,
+        "color": 4
+      },
+      "id": "70aca7a6-084d-4541-9026-32578ef3f7af",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Faz o tratamento da Resposta",
+        "height": 483,
+        "width": 694,
+        "color": 5
+      },
+      "id": "adbc430b-bf85-465c-80e5-1345b9a8b319",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Função 1: Remove caption de links que não são imagens ou vídeos\nfunction removeCaptionFromLinks(text) {\n  // Expressão regular para identificar links que não são imagens ou vídeos\n  const regexLinks = /\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+)\\)/gi;\n  \n  return text.replace(regexLinks, (match, caption, url) => {\n    // Se o link não for de imagem ou vídeo, remove o caption e mantém só a URL\n    if (!url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif|mp4|mov|avi|wmv)$/i)) {\n      return url;\n    }\n    return match; // Mantém o link inalterado se for uma imagem ou vídeo\n  });\n}\n\nconst message = $input.item.json.output;\n\n// Primeira função: remove captions de links não-imagens/vídeos\ncleanedMessage = removeCaptionFromLinks(message);\n\nreturn { output: cleanedMessage };"
+      },
+      "id": "b0db1d48-39fb-41c5-bd8b-ebf99da26556",
+      "name": "Beautify URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        300
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "da392523-eadb-45cc-9b20-d1184e7da58b",
+      "name": "Split Out Messages",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9289f1cd-5982-4ea8-93e4-f0ee21a5a7cd",
+      "name": "Fix Text",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4fae83cc-f5e2-40e3-ab3e-709ed574a0c2",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "b7286bb7-42be-462f-974e-a78c32f60c6c",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "bd6c6ac4-8ebd-4d14-9935-1fd270106c48",
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "8a8907db-2f29-4fc3-a50d-264a2c5d015e",
+                    "leftValue": "={{ $json.output.type }}",
+                    "rightValue": "=video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "f15e38f0-16e6-4b30-b368-28f0b3c7fe6a",
+                    "leftValue": "{{ $json.output.type }}",
+                    "rightValue": "Audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d49638d1-e12f-44d7-9e4f-72315934dd56",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1960,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://apiwp.wmst.com.br/message/sendWhatsAppAudio/ibox_cli_23",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"number\": \"5512982184879@s.whatsapp.net\",\n    \"audio\": \"{{ $json.data }}\"\n}",
+        "options": {}
+      },
+      "id": "d7bf4f88-dc74-4124-8d2d-1cdefb72c6d6",
+      "name": "Send Audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2160,
+        500
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "id": "44e56cf8-4b67-4220-8e5a-4ee0db032409",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        500
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "input": "hello",
+        "options": {
+          "response_format": "mp3",
+          "binaryPropertyOutput": "data"
+        }
+      },
+      "id": "cb76508e-f3db-439a-ae70-63db329a7569",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        1700,
+        500
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      // Quebra o texto com base em '\\n\\n'\n      const splitContent = content.split('\\\\n\\\\n');\n      splitContent.forEach(text => {\n        text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n        if (text) {\n          parts.push({ type: 'text', content: text });\n        }\n      });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    // Quebra o texto final com base em '\\n\\n'\n    const splitFinalContent = finalContent.split('\\\\n\\\\n');\n    splitFinalContent.forEach(text => {\n      text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      if (text) {\n        parts.push({ type: 'text', content: text });\n      }\n    });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\n// Loop para corrigir o '!' antes dos links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+      },
+      "id": "572a607f-0dc9-4f7b-9bb6-6204d2c4e3b9",
+      "name": "Categorizing Message with Split Break Line",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        400
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
+      },
+      "id": "001ed56a-9060-4778-8180-04f594585278",
+      "name": "Categorizing Message without Split",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        180
+      ],
+      "executeOnce": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 0.2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2380,
+        240
+      ],
+      "id": "c9735dc4-a45a-4a29-aa0f-379af3125555",
+      "name": "Wait",
+      "webhookId": "09afff66-8226-46c0-8bd9-8621fd3e651d"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('messageInfo').first().json.evo_api }}/instance/connectionState/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "b25829b9-4ccf-4d27-b0f0-d90d82b397ff",
+      "name": "Check Connection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        -100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/instance/restart/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "dae65398-eaf6-4978-a1cb-04e0633259e6",
+      "name": "Restart Connection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1160,
+        -100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('messageInfo').first().json.evo_api }}/instance/connect/{{ $('messageInfo').first().json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "e4553741-385d-4b1a-9e03-db621d1f113f",
+      "name": "Connection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        -100
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "Extract from File": [
+      {
+        "json": {
+          "data": "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dGHHKn3BZ1F0qQMKmQZ7hwtBDSerQwQKHCiEIyQkGzSfNw8QBGcuAoR0Iz0DROM9A1VDTKRGlyIJkImgWGAu6pigFUtj7OX5mE5gCIZJAGGYM6JbkwgUcbzcUxYcL3JgpvGSgaJSFwWDMo80DTIHLxJFF3iyQCCL//PkxMFlHDnIC9rIAIymzvP87KwqYqxXddlTFFVTWXPsl8mE8YIBMQMt6/CVIABAQKvVVi8TUkMTAHAIBaJXU/SwEu6FpGl3lrXXqLVAIJBZUyQzTVDjBEAQy6naWGXU2NE5azdUxXlhqNo8lyW2VVLYltUfXlgJ3qd2oeu2YlD0lZzDCcqKMIZVC1ysFX0WeTBiDOoGrO040fZzK0vUwYTfZChJTpkFLWp2ApisFou1br+zsNT60UVVNXJYEisnVI510mvN1LUphNjLuqWtiTGXVPuy/1O7L8wExKLqYpEqTEFNRTMuMTAwqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqgM9NfnKwmp0ADOBHxk1pnDRnRYGWBiMaHFsRkAg2iYnWrA099HCXSmEXJBoILCR0UQixgUSlBUmDBQCDkRQIJGAAhUMIhIWFjowdFhQEkWrxi7yTbkrqSJAoAECRCOJRoWDAUGW/IhgYaNkhNi+M9TANwK3TBWBycYGKZBsaU6GYAPo4NMdARcCdIfBfZmYDxj4QVIsqX2Q5I7oJERx4JdovamUoutNOhKMOCAjARIhYVClggyYkKSCQRomJ1rUbd1JBTXamet3Ls3GIu8rLlyqrKKqpJlJ2qoLT//PkxNtrlDj01NawnFiM3aC05rrAWjMjZYx5XKwzMWeOg19mivkwUEyIKLyT6U6WigaZiNReEvchxReReRnRMSTFmgJQESF2CJ4MqK0KtQs4AjCCDQ1EGPOM8LcGXsdV0sKqsslQ1RJYNUiz0+UVi9oXABUAxoXgMRHHBdYIIWbLWJcJnIolwgsEZIQjLyF/0608ERi4oJEIDkqBUogEiAkOpYq5H1E5LVZC52XqeViSJQTIIUpEq0wFWJdF2SywMOI1FhoooVWVEkBBkKPCdazGrwdXhl9oBgyJxSBmuruqTEFNRTMuMTAwqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+        }
+      }
+    ],
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "oi, gostaria de falar com a clinica",
+          "output": "*AI 4 Clinica MED Center*:\\nOlá, William! 😊 Se você gostaria de falar com a clínica, posso encaminhá-lo para um atendente humano. Por favor, me avise se você deseja seguir com isso ou se precisa de informações específicas sobre agendamentos ou serviços."
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-31T06:44:33.847Z",
+      "updatedAt": "2024-10-31T06:44:33.847Z",
+      "id": "6vgbvfx4GT5juXVA",
+      "name": "Component"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-21T03:12:35.432Z",
+  "versionId": "58f33537-b879-4b5d-8e63-b1e27ebceb0c"
+}
