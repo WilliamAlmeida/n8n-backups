@@ -1,0 +1,2440 @@
+{
+  "active": false,
+  "connections": {
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "Request to Tool?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Tool": {
+      "main": [
+        [
+          {
+            "node": "Get Health Plans",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Specialists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Payments",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Exams",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Details Exam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Details Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request to Tool?": {
+      "main": [
+        [
+          {
+            "node": "Switch Tool",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Get Exams": {
+      "main": [
+        [
+          {
+            "node": "Cached? 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Exams": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Details Exam": {
+      "main": [
+        [
+          {
+            "node": "Cached? 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Details Exam": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exam not found?": {
+      "main": [
+        [
+          {
+            "node": "Response Error 5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Calendar Exam 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Specialists": {
+      "main": [
+        [
+          {
+            "node": "Cached? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Details Calendar": {
+      "main": [
+        [
+          {
+            "node": "Cached? 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Details Calendar": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar not found?": {
+      "main": [
+        [
+          {
+            "node": "Response Error 6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exams not found?": {
+      "main": [
+        [
+          {
+            "node": "Response Error 4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Calendar Exam 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Payments": {
+      "main": [
+        [
+          {
+            "node": "Cached? 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Payments": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Health Plans": {
+      "main": [
+        [
+          {
+            "node": "Cached? 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 3": {
+      "main": [
+        [
+          {
+            "node": "List Payments",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 2": {
+      "main": [
+        [
+          {
+            "node": "List Specialists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 1": {
+      "main": [
+        [
+          {
+            "node": "List Health Plans",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 4": {
+      "main": [
+        [
+          {
+            "node": "List Exams",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hidden Fields 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 5": {
+      "main": [
+        [
+          {
+            "node": "Details Exam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 6": {
+      "main": [
+        [
+          {
+            "node": "Details Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 1": {
+      "main": [
+        [
+          {
+            "node": "Response 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 1": {
+      "main": [
+        [
+          {
+            "node": "Format 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 1": {
+      "main": [
+        [
+          {
+            "node": "Set Cache 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Health Plans": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Specialists": {
+      "main": [
+        [
+          {
+            "node": "Aggregate 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 2": {
+      "main": [
+        [
+          {
+            "node": "Format 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 3": {
+      "main": [
+        [
+          {
+            "node": "Format 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 4": {
+      "main": [
+        [
+          {
+            "node": "Exams not found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 5": {
+      "main": [
+        [
+          {
+            "node": "Exam not found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate 6": {
+      "main": [
+        [
+          {
+            "node": "Calendar not found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 3": {
+      "main": [
+        [
+          {
+            "node": "Set Save 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 2": {
+      "main": [
+        [
+          {
+            "node": "Set Cache 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Cache 2": {
+      "main": [
+        [
+          {
+            "node": "Response 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Cache 1": {
+      "main": [
+        [
+          {
+            "node": "Response 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 2": {
+      "main": [
+        [
+          {
+            "node": "Response 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 3": {
+      "main": [
+        [
+          {
+            "node": "Response 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 3": {
+      "main": [
+        [
+          {
+            "node": "Response 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hidden Fields 4": {
+      "main": [
+        [
+          {
+            "node": "Response 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Calendar Exam 1": {
+      "main": [
+        [
+          {
+            "node": "Format 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 4": {
+      "main": [
+        [
+          {
+            "node": "Set Save 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 4": {
+      "main": [
+        [
+          {
+            "node": "Hidden Fields 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 5": {
+      "main": [
+        [
+          {
+            "node": "Response 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 5": {
+      "main": [
+        [
+          {
+            "node": "Set Save 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Calendar Exam 2": {
+      "main": [
+        [
+          {
+            "node": "Format 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 6": {
+      "main": [
+        [
+          {
+            "node": "Set Save 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 6": {
+      "main": [
+        [
+          {
+            "node": "Response 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-20T23:14:48.268Z",
+  "id": "pliyk2HChCR880pK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Comp Clinica",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a44788a7-6ba1-47e8-bcd8-eb59042ddd9e",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "health plans",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "health plans"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5ece5fd9-4267-4bf2-a1b7-23b5d1c2362f",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "specialists",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Procedures"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "42639684-02d9-4a30-96b2-cf1cb1df7b74",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "payments",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "payments"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "82cfd93c-100b-4167-a74a-97be2345ff5e",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "exams",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exams"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "842d1b7b-1008-4d19-b983-c6cab57bb716",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "exam details",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exam details"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9b5f5609-379c-4f48-acb1-f823cf989818",
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "calendar details",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "calendar details"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0c2b1d20-14eb-4d9a-85ce-ec668caf8aa9",
+      "name": "Switch Tool",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2420,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
+              "leftValue": "={{ $json.agent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e074ef62-0377-4e8f-b986-6ddda5acea8c",
+      "name": "Request to Tool?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2220,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Specialists\nList with Professionals, Procedures\nand ID",
+        "height": 360,
+        "width": 1020,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        -260
+      ],
+      "id": "7b380290-a82f-47cb-bf69-89ea3a330379",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Exams\nList with Exams and ID",
+        "height": 360,
+        "width": 1420,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        580
+      ],
+      "id": "64f0a4b7-b254-44ec-949a-64c2263a1693",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exams",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        760
+      ],
+      "id": "85532383-6808-4369-a5bc-cb9581bf3cef",
+      "name": "Get Exams",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_exams",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        640
+      ],
+      "id": "8d0fe24d-864f-4698-bf2d-e3aae35b64fe",
+      "name": "List Exams",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Details Exam\nInformations about a Exam",
+        "height": 360,
+        "width": 1420,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        1000
+      ],
+      "id": "f0db02ac-8c08-4c14-bb0f-dbcc092fb716",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exam_detail_{{ $('EWT').item.json.query.exam_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1180
+      ],
+      "id": "a70b4df2-8129-4f13-8a2b-ccb3616a59e1",
+      "name": "Get Details Exam",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_exams",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            },
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.query.exam_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        1080
+      ],
+      "id": "38a4b406-cf3c-41c6-a51b-20d40b4ef3d7",
+      "name": "Details Exam",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3840,
+        1080
+      ],
+      "id": "55fcda0e-6563-4bca-b682-e8ec4df80a71",
+      "name": "Exam not found?"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_specialists",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        -140
+      ],
+      "id": "b7d28bd1-f587-4a8d-8484-fc4bb80869a3",
+      "name": "Get Specialists",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Details Calendar\nInformations about Calendar",
+        "height": 360,
+        "width": 1280,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        1420
+      ],
+      "id": "d034d4ec-f57f-4559-bafa-ce5205196221",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_calendar_detail_{{ $('EWT').item.json.query.calendar_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1600
+      ],
+      "id": "6e096d0a-c952-46ad-9107-be175bbab8dd",
+      "name": "Get Details Calendar",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_calendars",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            },
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.query.calendar_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        1500
+      ],
+      "id": "ce07fcae-a824-4711-be0d-3436df78a3ef",
+      "name": "Details Calendar",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3840,
+        1500
+      ],
+      "id": "3538da89-6578-4bac-94ae-26046ec14c85",
+      "name": "Calendar not found?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3840,
+        640
+      ],
+      "id": "dceda59c-5e83-43f8-b2a0-ee7d9ce4f437",
+      "name": "Exams not found?"
+    },
+    {
+      "parameters": {
+        "content": "## Payments\nList Payment Methods",
+        "height": 360,
+        "width": 1020,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        160
+      ],
+      "id": "73b4973d-9414-40b2-8d98-a921ff2f304e",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_payments",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        280
+      ],
+      "id": "29e7c939-ea21-4a18-9405-7587bc51b947",
+      "name": "Get Payments",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_payment_methods",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        200
+      ],
+      "id": "afdf806d-3bf8-4fd2-ba95-a6b59b3bf4b4",
+      "name": "List Payments",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Health Plans",
+        "height": 360,
+        "width": 1020
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        -680
+      ],
+      "id": "b213268b-f39b-4683-bae8-cdc68e2ed568",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_health_plans",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        -560
+      ],
+      "id": "5cc6895e-6cc3-46d9-ac56-c93ee69afed2",
+      "name": "Get Health Plans",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        280
+      ],
+      "id": "f64b1658-afd5-4b32-b0c7-3a684d46e7a3",
+      "name": "Cached? 3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        -140
+      ],
+      "id": "943af4e8-05cc-4113-8a1c-d6abe356a025",
+      "name": "Cached? 2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        -560
+      ],
+      "id": "ce8ef4ea-a353-4d4d-9a66-a1fae25c45d2",
+      "name": "Cached? 1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        760
+      ],
+      "id": "e808e226-347c-4324-82de-0046c7ab20a0",
+      "name": "Cached? 4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        1180
+      ],
+      "id": "aaeb8295-d253-4339-8f22-e5fd6241953f",
+      "name": "Cached? 5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        1600
+      ],
+      "id": "3e792c3a-aa6e-46ed-9d82-7d99c8ec566a",
+      "name": "Cached? 6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3580,
+        -480
+      ],
+      "id": "c9738ebe-c686-4032-a641-ddd312edf7c8",
+      "name": "Load Data 1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "specifiedFields",
+        "fieldsToInclude": "title,status",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3720,
+        -640
+      ],
+      "id": "01117a7c-9506-4ea2-b85e-c866057b1b6f",
+      "name": "Aggregate 1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Health Plans').all().map(item => {\n  return {\n  plan: item.json.title,\n  accept: item.json.status == 'a' ? 'yes' : 'no'\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3860,
+        -640
+      ],
+      "id": "b569658b-d45f-4362-9a4a-7eec0f7a69de",
+      "name": "Format 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
+              "name": "response",
+              "value": "={{\n    [\n        $json.data.filter(item => item.accept == 'yes').length > 0 \n            ? `We accept health insurance plans: ${$json.data.filter(item => item.accept == 'yes').map(item => `${item.plan}`).join(', ')}.`\n            : '',\n        $json.data.filter(item => item.accept == 'no').length > 0 \n            ? `We do not accept health insurance plans: ${$json.data.filter(item => item.accept == 'no').map(item => `${item.plan}`).join(', ')}.`\n            : ''\n    ].filter(section => section !== '').join('\\n\\n') \n}}",
+              "type": "string"
+            },
+            {
+              "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
+              "name": "response2",
+              "value": "={{ $json.data.map(item => i = {item}).toJsonString() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8f5d71e9-f277-47e6-a5ef-09165b9f9e18",
+      "name": "Response 1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4120,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_health_plan",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        -640
+      ],
+      "id": "e36b1043-ed24-4958-9cc6-ceb821571cd2",
+      "name": "List Health Plans",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "clinic_specialists",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "condition": "eq",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "active",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        -220
+      ],
+      "id": "1b8b9b46-26cf-4a45-86a9-f6d410637fcb",
+      "name": "List Specialists",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "allFieldsExcept",
+        "fieldsToExclude": "instance_name,active,created_at,empresa,cal_username",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3720,
+        -220
+      ],
+      "id": "3d3ffbb7-d054-41e6-bff7-3081f0decf00",
+      "name": "Aggregate 2",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "specifiedFields",
+        "fieldsToInclude": "title,status",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3720,
+        200
+      ],
+      "id": "c0140209-f673-4911-9881-89c50d8274d0",
+      "name": "Aggregate 3",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "=data",
+        "include": "specifiedFields",
+        "fieldsToInclude": "id,exam,calendar_id",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        640
+      ],
+      "id": "a619a644-4863-4593-b6bc-a41cd103073c",
+      "name": "Aggregate 4",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "include": "allFieldsExcept",
+        "fieldsToExclude": "instance_name,approved_by_anvisa,active",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        1080
+      ],
+      "id": "6b1dd99b-9115-4a91-a4aa-6e8a109d7870",
+      "name": "Aggregate 5"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "include": "allFieldsExcept",
+        "fieldsToExclude": "instance_name,active,type,created_at,id",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        1500
+      ],
+      "id": "426b9e0b-3687-4aa4-88f6-835c70216a1e",
+      "name": "Aggregate 6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Payments').all().map(item => {\n  return {\n  payment: item.json.title,\n  accept: item.json.status == 'a' ? 'yes' : 'no'\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3860,
+        200
+      ],
+      "id": "f781db03-f0ab-43f3-9e8f-3444dd3a8413",
+      "name": "Format 3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Specialists').all().map(item => {\n  return {\n  professional: item.json.professional,\n  procedure: item.json.procedure,\n  price: item.json.price,\n  crm: item.json.crm,\n  calendar_id: item.json.calendar_id,\n  id: item.json.professional\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3860,
+        -220
+      ],
+      "id": "2d566f14-cfe4-4a95-89cb-92b2858b506a",
+      "name": "Format 2"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_specialists",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        -220
+      ],
+      "id": "e2c3e1cb-2a03-4472-97f2-6419f79ee4dc",
+      "name": "Set Cache 2",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_health_plans",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        -640
+      ],
+      "id": "9ead2e9a-b223-4308-9494-6fd209c934af",
+      "name": "Set Cache 1",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
+              "name": "response2",
+              "value": "={{ $json.data.map(item => `- ${item.professional}, ${item.procedure}, crm ${item.crm}, event_id ${item.event_id}, price ${item.price}`).join('\\n') }}",
+              "type": "string"
+            },
+            {
+              "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bc3f74e2-ea6e-43b4-ac0a-d7d63a6e592e",
+      "name": "Response 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4120,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3580,
+        -60
+      ],
+      "id": "d96fd12d-6275-496c-bbf3-0c0caa4d83ca",
+      "name": "Load Data 2"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_payments",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        200
+      ],
+      "id": "485313f7-023d-4bbc-8f7f-59493091e69b",
+      "name": "Set Save 3",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
+              "name": "response",
+              "value": "={{\n    [\n        $json.data.filter(item => item.accept == 'yes').length > 0 \n            ? `We accept payments: ${$json.data.filter(item => item.accept == 'yes').map(item => `${item.payment}`).join(', ')}.`\n            : '',\n        $json.data.filter(item => item.accept == 'no').length > 0 \n            ? `We do not accept payments: ${$json.data.filter(item => item.accept == 'no').map(item => `${item.payment}`).join(', ')}.`\n            : ''\n    ].filter(section => section !== '').join('\\n\\n') \n}}",
+              "type": "string"
+            },
+            {
+              "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
+              "name": "response2",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b0bb925b-b036-442b-8137-fd2eb07d61d7",
+      "name": "Response 3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4140,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3580,
+        360
+      ],
+      "id": "1331f3f5-d606-436b-b638-ac9ea6bd5e72",
+      "name": "Load Data 3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=exam not found with id {{ $('EWT').first().json.query.exam_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0ed169b8-70a1-4506-93e4-e6afc9d86d75",
+      "name": "Response Error 4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4020,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8558fafa-1224-4937-9e96-0908757d6f8f",
+      "name": "Response 4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4500,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    $('EWT').item.json.hasField('hidden_fields') && $('EWT').item.json.hidden_fields.length \n        ? $json.data.parseJson().map(item => {\n            $('EWT').item.json.hidden_fields.forEach(field => {\n                delete item[field];\n            });\n            return item;\n          })\n        : $json.data \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        780
+      ],
+      "id": "44f25ffb-efc5-450d-b52c-41d98a73c893",
+      "name": "Hidden Fields 4"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "clinic_calendars",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "type",
+              "keyValue": "c"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4220,
+        620
+      ],
+      "id": "77dbc5c8-e24b-40c4-9b72-f577ab326ffd",
+      "name": "Get Calendar Exam 1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('List Exams').all().map(item => {\n  return {\n  exam: item.json.exam,\n  calendar_id: item.json.calendar_id ? item.json.calendar_id : $json.id,\n  id: item.json.id\n  }\n}) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        620
+      ],
+      "id": "7bb88368-9c1b-49ae-90c3-dbecc75ccf79",
+      "name": "Format 4"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exams",
+        "value": "={{ $json.data }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4500,
+        620
+      ],
+      "id": "92a81d93-0c57-4b4a-accf-e36b8450e8b5",
+      "name": "Set Save 4",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=exam not found with id {{ $('EWT').first().json.query.exam_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f636c62d-33c8-4832-97eb-0644986641da",
+      "name": "Response Error 5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4020,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exam_detail_{{ $('EWT').item.json.query.exam_id }}",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4500,
+        1040
+      ],
+      "id": "329d319d-cec4-441b-afc9-088307e92040",
+      "name": "Set Save 5",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $('Aggregate 5').first().json.data.first() }}",
+              "type": "object"
+            },
+            {
+              "id": "20f5ab55-5fd2-4abf-8b9d-e93a72e562cd",
+              "name": "data.calendar_id",
+              "value": "={{ $json.id ?? null }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        1040
+      ],
+      "id": "c3a3a38b-155a-44f1-8577-5e3f185d7a10",
+      "name": "Format 5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8fc6965-1dae-40b0-ac60-1862f12d904a",
+      "name": "Response 5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4500,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "clinic_calendars",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
+            },
+            {
+              "keyName": "type",
+              "keyValue": "c"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4220,
+        1040
+      ],
+      "id": "12d8e7cd-9783-42e1-b1b9-a5e314d099b0",
+      "name": "Get Calendar Exam 2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=calendar with event id not found using id {{ $('EWT').first().json.query.calendar_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8a53acd-23b0-4b19-93c3-2266ba2ec347",
+      "name": "Response Error 6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4000,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $json.data.first() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        1460
+      ],
+      "id": "d249b356-c30e-4785-8304-73cd8b3a2e21",
+      "name": "Format 6"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_calendar_detail_{{ $('EWT').item.json.query.calendar_id }}",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4360,
+        1460
+      ],
+      "id": "a140e2c9-019f-4fae-9d31-d2586a048922",
+      "name": "Set Save 6",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0dd07706-64ad-45eb-8e5a-830010b874a5",
+      "name": "Response 6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        1620
+      ]
+    }
+  ],
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": "",
+          "tool": "payments",
+          "messageInfo": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "ibox_cli_23",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "W.M. Soluções Tecnologicas",
+            "fromMe": false,
+            "unique_id": "william_5512982184879",
+            "debounce_time": 5,
+            "conversation": "quais planos vocês tem?"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-30T23:31:05.255Z",
+      "updatedAt": "2024-10-30T23:31:05.255Z",
+      "id": "IDsda42rHm8bi7eR",
+      "name": "Tool"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-21T03:06:56.799Z",
+  "versionId": "35864f19-b70c-4e49-96ca-ad9142e5bc56"
+}
