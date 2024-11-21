@@ -1,0 +1,2258 @@
+{
+  "active": true,
+  "connections": {
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "from me?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset msgs": {
+      "main": [
+        [
+          {
+            "node": "msg to queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          {
+            "node": "Fix Text 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Transcription Image": {
+      "main": [
+        [
+          {
+            "node": "Fix Text 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Transcription Audio": {
+      "main": [
+        [
+          {
+            "node": "Fix Text 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Base64": {
+      "main": [
+        [
+          {
+            "node": "Media Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert To Audio": {
+      "main": [
+        [
+          {
+            "node": "Groq Analyze Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert To Image": {
+      "main": [
+        [
+          {
+            "node": "Groq Analyze Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text 2": {
+      "main": [
+        [
+          {
+            "node": "Structure Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structure Message": {
+      "main": [
+        [
+          {
+            "node": "leave Agent 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has chat?": {
+      "main": [
+        [
+          {
+            "node": "merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "init chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete chat": {
+      "main": [
+        [
+          {
+            "node": "get chat 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatInfo": {
+      "main": [
+        [
+          {
+            "node": "Message Type",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get debounce status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "init chat": {
+      "main": [
+        [
+          {
+            "node": "get chat 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg to queue": {
+      "main": [
+        [
+          {
+            "node": "update debounce time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get chat 1": {
+      "main": [
+        [
+          {
+            "node": "has chat?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get chat 2": {
+      "main": [
+        [
+          {
+            "node": "merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "from me?": {
+      "main": [
+        [
+          {
+            "node": "set block AI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get block AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get block AI": {
+      "main": [
+        [
+          {
+            "node": "AI blocked?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI blocked?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "delete instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Type": {
+      "main": [
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Analyze Audio": {
+      "main": [
+        [
+          {
+            "node": "Format Transcription Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Analyze Image": {
+      "main": [
+        [
+          {
+            "node": "Groq Normalize Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Normalize Image": {
+      "main": [
+        [
+          {
+            "node": "Format Transcription Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ignore numbers": {
+      "main": [
+        [
+          {
+            "node": "allow numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "allow numbers": {
+      "main": [
+        [
+          {
+            "node": "delete chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Media Type": {
+      "main": [
+        [
+          {
+            "node": "Convert To Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Convert To Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "debounce enabled?": {
+      "main": [
+        [
+          {
+            "node": "set debounce enabled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set debounce enabled": {
+      "main": [
+        [
+          {
+            "node": "wk debounce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get debounce status": {
+      "main": [
+        [
+          {
+            "node": "debounce enabled?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete instance config": {
+      "main": [
+        [
+          {
+            "node": "get instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance config?": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get instance config": {
+      "main": [
+        [
+          {
+            "node": "load instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance config": {
+      "main": [
+        [
+          {
+            "node": "set instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "merge": {
+      "main": [
+        [
+          {
+            "node": "chatInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instanceConfig": {
+      "main": [
+        [
+          {
+            "node": "ignore numbers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance config": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance config": {
+      "main": [
+        [
+          {
+            "node": "has instance config?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "workflow": {
+      "main": [
+        [
+          {
+            "node": "wk not found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk not found?": {
+      "main": [
+        [
+          {
+            "node": "leave agent? 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "retriveAgent": {
+      "main": [
+        [
+          {
+            "node": "agent inactived?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "leave Agent 2": {
+      "main": [
+        [
+          {
+            "node": "retriveAgent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set agent": {
+      "main": [
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agent inactived?": {
+      "main": [
+        [
+          {
+            "node": "workflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "leave agent? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "leave agent? 1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "set agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "leave agent? 2": {
+      "main": [
+        [
+          {
+            "node": "leave Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "reset msgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-26T18:07:32.826Z",
+  "id": "F2nw1xU7dOvgvtCa",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 2 Capture Msg",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5f5addd6-12c4-4bbd-bce7-6448e90cb9d0",
+              "name": "evo_api",
+              "value": "={{ $('Webhook').first().json.body.server_url ?? 'http://evo.wsl.local' }}",
+              "type": "string"
+            },
+            {
+              "id": "d8fa0cad-0b2f-4e61-8d05-5d29829d0156",
+              "name": "instance",
+              "value": "={{ $json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "e390ea49-44e4-4aa2-8f1f-9044fd4b27f8",
+              "name": "remoteJid",
+              "value": "={{ $json.body.data.key.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "375453f5-c979-48d0-9a77-f2e837c80da5",
+              "name": "pushName",
+              "value": "={{ $json.body.data.pushName }}",
+              "type": "string"
+            },
+            {
+              "id": "c1179eef-b150-4d05-89c1-3b85660ec6bd",
+              "name": "fromMe",
+              "value": "={{ $json.body.data.key.fromMe }}",
+              "type": "boolean"
+            },
+            {
+              "id": "2ca406cb-0c5a-4e69-a005-ba35e81128da",
+              "name": "messageType",
+              "value": "={{ $json.body.data.messageType }}",
+              "type": "string"
+            },
+            {
+              "id": "f9189c75-e206-4c9d-a538-fadff9121f07",
+              "name": "unique_id",
+              "value": "={{ $json.body.instance }}_{{ $json.body.data.key.remoteJid.split('@')[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "c6cd82b0-7666-4391-911e-87e0f132ba7b",
+              "name": "evo_api_key",
+              "value": "={{ $json.body.apikey ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5be12719-5c0c-40ad-951f-bf18429eab61",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -15840,
+        1300
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=msgs_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "f88a7cbb-1ca4-4cad-b683-9140ea369414",
+      "name": "reset msgs",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10980,
+        1640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Captura Mensagem\n### Nota: Se for áudios/imagens transcreve para formato de texto\n*Obs.: No final monta estrutura JSON que será usada no restante do fluxo*",
+        "height": 699.3376778124559,
+        "width": 1629.5604480320626,
+        "color": 5
+      },
+      "id": "e993541b-af34-4cd1-9985-c9034f240886",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -12740,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const data = $('Webhook').first().json.body.data;\nlet response = '';\n\nconst conversation = data.message.conversation;\nconst quotedMessage = data.contextInfo?.quotedMessage?.extendedTextMessage?.text;\nconst editedMessage = data.message.editedMessage?.message?.protocolMessage?.editedMessage?.extendedTextMessage?.text;\n\nif (quotedMessage) {\n  response = `Menção: ${quotedMessage}, Mensagem: ${conversation}`;\n} else if (editedMessage) {\n  response = `${editedMessage}*`;\n} else {\n  response = conversation;\n}\n\nreturn { output: response };"
+      },
+      "id": "92f6f123-f915-4ff0-a1fc-a9095a1bd734",
+      "name": "Format Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11640,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const data = $('Webhook').first().json.body.data;\n\n// data.messageTimestamp\n\nlet milis = $now.toMillis();\n\nreturn {\n  id: data.key.id,\n  origin: data.messageType,\n  output: $json.output,\n  timestamp: data.messageTimestamp,\n  datetime: DateTime.fromSeconds(data.messageTimestamp).toFormat('yyyy-MM-dd H:m:s'),\n  timestamp_local: milis,\n  datetime_local: DateTime.fromSeconds(milis).toFormat('yyyy-MM-dd H:m:s')\n};"
+      },
+      "id": "c5a1fd3d-3c3e-43a2-94d3-478a4c9ed45f",
+      "name": "Structure Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11240,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const data = $('Webhook').first().json.body.data;\nconst caption = data.message?.imageMessage?.caption;\nconst content = $input.item.json.content;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = caption\n    ? `${content} Legenda: ${caption}`\n    : `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para imagem com legenda';\n}\n\nreturn { output: response };"
+      },
+      "id": "66225144-4ab5-44be-a49f-2aa38b98ee2d",
+      "name": "Format Transcription Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11640,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const content = $input.item.json.text;\nlet response = '';\n\n// Verifica se o conteúdo existe\nif (content) {\n  response = `Transcrição: ${content}`;\n} else {\n  response = 'Erro: json.content ausente para aúdio';\n}\n\nreturn { output: response };"
+      },
+      "id": "c9869f31-eccf-4a79-b800-605d5343a5c1",
+      "name": "Format Transcription Audio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11640,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').first().json.evo_api }}/chat/getBase64FromMediaMessage/{{ $('baseInfo').first().json.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('baseInfo').first().json.evo_api_key }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": {\"key\": {\"id\": \"{{ $('Webhook').item.json.body.data.key.id }}\"}},\n  \"convertToMp4\": false\n}",
+        "options": {}
+      },
+      "id": "b96dcc99-4a66-4eda-a037-2e7982f20b31",
+      "name": "Get Base64",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12660,
+        1460
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "fileName": "transcricao.ogg",
+          "mimeType": "audio/ogg"
+        }
+      },
+      "id": "492fb272-05f5-4dc4-9f21-89be4b30d387",
+      "name": "Convert To Audio",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -12300,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "fileName": "imagem.jpeg",
+          "mimeType": "image/jpeg"
+        }
+      },
+      "id": "d065c51a-6b86-494a-9a45-a63c3b9d7c91",
+      "name": "Convert To Image",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -12300,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "={{ $json.output.replaceAll('\\n', '\\\\n').replaceAll('**', '*') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "47d2e70c-6684-4fc9-84a6-7d24947b3538",
+      "name": "Fix Text 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -11400,
+        1360
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "content": "## Adiciona Mensagem na Fila\n*Adiciona mensagem no final da fila para ser processada após o Debounce Time expirar*",
+        "height": 290.7734320620505,
+        "width": 555.5307700228434,
+        "color": 3
+      },
+      "id": "f3243e4a-b107-420a-b904-4da64deef1e0",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -11040,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0a106bfb-7d1a-4eaa-9d4e-2d933ed51839",
+              "leftValue": "={{ $('get chat 1').first().json.chat }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bcb75d80-4431-4749-a97b-7240d5db26d8",
+      "name": "has chat?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -13300,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}"
+      },
+      "id": "b9ef358d-2690-469d-a34d-62ad6c23f0e8",
+      "name": "delete chat",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -13620,
+        1200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.chat.parseJson().removeField('fromMe').removeField('debounce_time') }}",
+        "options": {}
+      },
+      "id": "546a37e7-93a5-4008-9928-c14f7618d8f5",
+      "name": "chatInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -12920,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
+        "value": "={{ $('baseInfo').first().json.removeField('messageType').toJsonString() }}"
+      },
+      "id": "a29aaeb9-2595-48ae-9039-6232ab650268",
+      "name": "init chat",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -13300,
+        1400
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=msgs_{{ $('chatInfo').first().json.unique_id }}",
+        "messageData": "={{ $('Structure Message').first().json.toJsonString() }}",
+        "tail": true
+      },
+      "id": "3ac7e205-3f6e-4441-b3e6-dad611e431ac",
+      "name": "msg to queue",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10820,
+        1640
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "chat",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "dd47ad43-bcda-4009-9916-141893f00d2b",
+      "name": "get chat 1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -13460,
+        1200
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "chat",
+        "key": "=chat_{{ $('baseInfo').first().json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "9333bb12-dea4-4323-94ae-2fb380d7c1cb",
+      "name": "get chat 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -13160,
+        1400
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "431dcbe2-fb2e-4864-803d-d968ddcb255f",
+              "leftValue": "={{ $json.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1d0e8bf-327b-4320-b07b-2d0ac7a28556",
+      "name": "from me?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -15660,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=block_{{ $json.unique_id }}",
+        "value": "1",
+        "expire": true,
+        "ttl": 30
+      },
+      "id": "da58cd7f-e0ae-4562-b120-fb057df665e7",
+      "name": "set block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -15440,
+        1220
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "block",
+        "key": "=block_{{ $json.unique_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "4f84fa38-ba24-4232-a121-a04704299c61",
+      "name": "get block AI",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -15440,
+        1380
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "af15b823-b848-4adf-be57-5ce022c321a8",
+              "leftValue": "={{ $json.block }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2eaeb409-20d6-4548-a3e3-260fb72e7d86",
+      "name": "AI blocked?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -15260,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Bloqueio da AI\n*Se enviado pelo dono do whatsapp, ele bloqueia por N segundos*",
+        "height": 407.0742534707905,
+        "width": 586.0266008245178,
+        "color": 3
+      },
+      "id": "9ab5a7ef-c3f5-47b0-8988-e490ddf2b246",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -15680,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Chat/Sessão\n*Verifica se tem sessão, se não tiver cria com os dados do usuário*",
+        "height": 440.5243062483743,
+        "width": 856.5452909686502
+      },
+      "id": "4c7b18a9-afc6-4534-b336-388e924d2889",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -13640,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "conversation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "86e7e773-8586-458f-a1fb-2890f2030230",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "extendedTextMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "msg"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "7f108034-a1be-4e90-b42e-e4f8a719e311",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "editedMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "msg edited"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "256e7cf8-be54-4c41-ba80-2d9eb0a07563",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "da03e413-3422-419c-af1a-71ff87c307e2",
+                    "leftValue": "={{ $('baseInfo').first().json.messageType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ec9a68c-1fcf-41b0-9bbd-0f61ae5e30d0",
+      "name": "Message Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -12640,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/audio/transcriptions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "groqApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "model",
+              "value": "whisper-large-v3"
+            },
+            {
+              "name": "temperature",
+              "value": "0.5"
+            },
+            {
+              "name": "response_format",
+              "value": "json"
+            },
+            {
+              "name": "language",
+              "value": "pt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "580d55fb-485f-48da-9fd6-b2c78e0ccf5e",
+      "name": "Groq Analyze Audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11980,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "groqApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Descreva todo o conteúdo da imagem, sem Acentos e sem hífens\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/jpeg;base64,{{ $('Convert To Image').item.binary.data.data }}\"\n          }\n        }\n      ]\n    }\n  ],\n  \"model\": \"llama-3.2-90b-vision-preview\",\n  \"temperature\": 1,\n  \"max_tokens\": 1024,\n  \"top_p\": 1,\n  \"stream\": false,\n  \"stop\": null\n}\n",
+        "options": {}
+      },
+      "id": "d35bc0fa-8e36-4398-95ff-bd20cd3b0a80",
+      "name": "Groq Analyze Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12080,
+        1520
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      },
+      "notes": "llama-3.2-11b-vision-preview\nllava-v1.5-7b-4096-preview\nllama-3.2-90b-vision-preview"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8ab20a1-b06d-4840-b71f-4c53eb2b005c",
+              "name": "content",
+              "value": "={{ $json.choices[0].message.content ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f4ace6ae-7918-48bf-bd03-d9d8732fa9b0",
+      "name": "Groq Normalize Image",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -11860,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "479ad9fd-bb31-42db-a957-658e9e1d556f",
+              "leftValue": "={{ $json.ignored_id.split(',').indexOf($('baseInfo').item.json.remoteJid.split('@')[0]) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2f694535-ddc8-4fe8-81a5-e5974f7e0e12",
+      "name": "allow numbers",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -13900,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd480120-b53b-4c64-9cbf-d5bfd813e50c",
+              "name": "ignored_id",
+              "value": "={{ $('instanceConfig').first().json.ignoreJids ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dc43e76f-659b-4b5c-807b-708e427fe1e7",
+      "name": "ignore numbers",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -14140,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mediaType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bba31f6b-7dc3-4dac-a090-c38d70065d40",
+                    "leftValue": "={{ $json.mediaType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "do nothing"
+        }
+      },
+      "id": "1221c114-2a9f-4ae6-bbbb-f3a6e4974701",
+      "name": "Media Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -12520,
+        1460
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "68ddab78-6782-443f-9682-326e7712f0d8",
+              "leftValue": "={{ $json.active }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "403b4806-9f55-4c31-87be-f12286aee75a",
+      "name": "debounce enabled?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -12580,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "workflow_debounce",
+        "value": "1",
+        "keyType": "string"
+      },
+      "id": "805f293f-74f9-4c88-8b00-db632e9a489e",
+      "name": "set debounce enabled",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -12380,
+        1760
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=debounce_{{ $('chatInfo').first().json.unique_id }}",
+        "value": "={{ $now.plus( $('instanceConfig').first().json.debounce_time , 'seconds').toMillis() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 3600
+      },
+      "id": "248fca17-36cb-42d4-8901-3ab4cc1d991b",
+      "name": "update debounce time",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10660,
+        1640
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "activate",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "KCzwyXp5E0KjdlRc"
+        },
+        "requestOptions": {}
+      },
+      "id": "4e48dff7-731f-41e2-ad6e-4c29092de62f",
+      "name": "wk debounce",
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -12220,
+        1760
+      ],
+      "credentials": {
+        "n8nApi": {
+          "id": "kuCc4NOcDaUS3bF4",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "active",
+        "key": "workflow_debounce",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "b63e1210-3222-4b0f-aa1e-55ac85e5d7fc",
+      "name": "get debounce status",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -12740,
+        1760
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "binaryPropertyName": "=data",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "id": "296a6c14-e2d8-4c97-aaa4-d42c5bfd9c7a",
+      "name": "Analyze Audio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        -11400,
+        1060
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "text": "Descreva todo o conteúdo da imagem, sem Acentos e sem hífens",
+        "inputType": "base64",
+        "options": {}
+      },
+      "id": "093556d3-6afd-4e64-ad92-85b0ac1f5008",
+      "name": "Analyze Image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        -11240,
+        1060
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Gerencia o Bloqueio de Números Ignorados\n*Se enviado pelo por um whatsapp na lista, ele não repassa a mensagem*",
+        "height": 262.3204306824423,
+        "width": 535.8424799077808,
+        "color": 3
+      },
+      "id": "07c432c3-c8cb-41d5-8b79-2efe3a0f9d9d",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -14240,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Retorna as configurações da Instância",
+        "height": 483.3176121655175,
+        "width": 756.5270031117756,
+        "color": 4
+      },
+      "id": "76faa207-7b17-4a63-83ed-09c4c249672d",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -15040,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_config_{{ $('baseInfo').first().json.instance }}"
+      },
+      "id": "35aa8641-6ca9-4476-b6ce-1763e83e2b95",
+      "name": "delete instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -14980,
+        1220
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_config.instance_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e9b4292e-5615-4706-9a80-8ddff09760ab",
+      "name": "has instance config?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -14720,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_config",
+        "key": "=instance_config_{{ $('baseInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "fd814a56-e32a-47ee-9f0a-87f95a1dc967",
+      "name": "get instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -14980,
+        1420
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "empresas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "instance_name",
+              "keyValue": "={{ $('baseInfo').first().json.instance }}"
+            }
+          ]
+        }
+      },
+      "id": "acdce76c-7a97-4a88-9f74-0e968374509a",
+      "name": "fetch instance config",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -14620,
+        1420
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "0167735d-9aed-46ea-a6db-26e4e9ced690",
+      "name": "merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -13080,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.instance_config ?? $json }}",
+        "options": {}
+      },
+      "id": "ef72e7ea-8ee7-4dc1-8f68-961f8174e19a",
+      "name": "instanceConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -14440,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_config_{{ $('baseInfo').first().json.instance }}",
+        "value": "={{ $json.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "12881c2f-235b-4da7-a45b-d005a14febb4",
+      "name": "set instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -14460,
+        1420
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_config",
+              "value": "={{ $json.instance_config }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "112d8d5a-2f37-487a-9139-02ae802215d2",
+      "name": "load instance config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -14820,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{\n  $('instanceConfig').first().json.agent_workflow.find(item => {\n    const output = $('Structure Message').item?.json?.output?.toLowerCase() || '';\n    const triggerValue = item.triggerValue?.toLowerCase() || '';\n    const stopWord = item.stopWord?.toLowerCase() || '';\n\n    // Verificar se o output não é igual ao stopWord\n    if (output === stopWord) {\n      return false;\n    }\n\n    switch(item.triggerOperator) {\n      case 'contains':\n        return item.triggerType !== 'all' && output.includes(triggerValue);\n      case 'notContains':\n        return item.triggerType !== 'all' && !output.includes(triggerValue);\n      case 'startsWith':\n        return item.triggerType !== 'all' && output.startsWith(triggerValue);\n      case 'endsWith':\n        return item.triggerType !== 'all' && output.endsWith(triggerValue);\n      case 'equals':\n        return item.triggerType !== 'all' && output === triggerValue;\n      case 'notEquals':\n        return item.triggerType !== 'all' && output !== triggerValue;\n      default:\n        return false;\n    }\n  }) ?? \n  $('instanceConfig').first().json.agent_workflow.find(item => \n    item.triggerType === 'all'\n  ) ?? \n  {}\n}}",
+        "options": {}
+      },
+      "id": "c62aea2f-a768-49df-933a-8deb979d46a7",
+      "name": "workflow",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -10460,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}",
+        "value": "={{ $('workflow').item.json }}",
+        "keyType": "hash",
+        "expire": true,
+        "ttl": 3600
+      },
+      "id": "1c65315c-e83a-4f5e-8cdf-38e4efb6bcc1",
+      "name": "set agent",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -9900,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "def72bab-10f8-491a-8639-89a4c2d27ecc",
+              "leftValue": "={{ $json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "687a7f66-5966-4f13-b593-5827a2463695",
+              "leftValue": "={{ $json.workflow_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "730b2f29-7ce8-4a03-9450-b630ae125e7b",
+      "name": "wk not found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10300,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "agent",
+        "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}",
+        "keyType": "hash",
+        "options": {}
+      },
+      "id": "0c503031-9cb3-4ac2-9abd-7552c74e2a6a",
+      "name": "retriveAgent",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10820,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Ativa o Agente por Keyword\n*Seta o agente para qual será enviado a mensagem com base nas configurações, estilo **Bot Evolution**, porem aqui é usando webhook*",
+        "height": 428.1739676208465,
+        "width": 1293.988146918212
+      },
+      "id": "8b08b3eb-a669-4ae7-91c2-181ae756d287",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -11040,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "28689c0d-31ea-4cd5-8f20-a8730d8c22a1",
+      "name": "leave Agent 2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10980,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=agent_active_{{ $('chatInfo').first().json.unique_id }}"
+      },
+      "id": "bca719b2-cfaa-4d59-8f9f-750c493b96f7",
+      "name": "leave Agent",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -10100,
+        1300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "67b73af7-aac2-40c6-886d-9bd9bfb44cc7",
+              "leftValue": "={{ $json.agent.workflow_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6258ce82-7763-4cba-b9a1-af66b8f6bb8b",
+      "name": "agent inactived?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10660,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21bba5db-e7e6-4802-98f3-e091cbb412d6",
+              "leftValue": "={{ $json.agent.stopWord }}",
+              "rightValue": "={{ $('Structure Message').item.json.output.toLowerCase() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "95556b3f-5424-48d4-9c7d-b43445748421",
+      "name": "leave agent? 1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10080,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21bba5db-e7e6-4802-98f3-e091cbb412d6",
+              "leftValue": "={{ $json.agent.stopWord }}",
+              "rightValue": "={{ $('Structure Message').item.json.output.toLowerCase() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "82ee67f0-f05d-4005-92d5-f2114ed69fe4",
+      "name": "leave agent? 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -10300,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
+        "options": {}
+      },
+      "id": "8d951bba-44fa-45a9-8177-626158b30a42",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -15980,
+        1300
+      ],
+      "webhookId": "26f1485f-02c1-4134-84cc-923317995aa9"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-31T06:44:33.847Z",
+      "updatedAt": "2024-10-31T06:44:33.847Z",
+      "id": "6vgbvfx4GT5juXVA",
+      "name": "Component"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-17T20:33:45.179Z",
+  "versionId": "9e18b15b-4c42-4db9-b2be-e7510729ac00"
+}
