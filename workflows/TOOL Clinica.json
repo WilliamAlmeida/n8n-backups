@@ -112,11 +112,6 @@
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
             "index": 0
-          },
-          {
-            "node": "OpenAI1",
-            "type": "ai_tool",
-            "index": 0
           }
         ]
       ]
@@ -126,11 +121,6 @@
         [
           {
             "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -144,11 +134,6 @@
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
             "index": 0
-          },
-          {
-            "node": "OpenAI1",
-            "type": "ai_tool",
-            "index": 0
           }
         ]
       ]
@@ -160,11 +145,6 @@
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
             "index": 0
-          },
-          {
-            "node": "OpenAI1",
-            "type": "ai_tool",
-            "index": 0
           }
         ]
       ]
@@ -174,11 +154,6 @@
         [
           {
             "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -259,6 +234,11 @@
             "node": "Check Chat Memory",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -337,11 +317,6 @@
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
             "index": 0
-          },
-          {
-            "node": "OpenAI1",
-            "type": "ai_tool",
-            "index": 0
           }
         ]
       ]
@@ -353,11 +328,6 @@
             "node": "Appointment Scheduling Agent",
             "type": "ai_tool",
             "index": 0
-          },
-          {
-            "node": "OpenAI1",
-            "type": "ai_tool",
-            "index": 0
           }
         ]
       ]
@@ -367,11 +337,6 @@
         [
           {
             "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -410,12 +375,7 @@
             "index": 0
           },
           {
-            "node": "Save Msg Memo",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "Get Chat Memory",
+            "node": "Insert Data Bookings",
             "type": "ai_memory",
             "index": 0
           }
@@ -424,13 +384,7 @@
     },
     "chat empty?": {
       "main": [
-        [
-          {
-            "node": "Get Chat Memory",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Insert Data User",
@@ -451,22 +405,44 @@
         ]
       ]
     },
-    "Get Chat Memory": {
+    "Appointment Scheduling Agent": {
       "main": [
         [
           {
-            "node": "Group Msgs",
+            "node": "Response2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Group Msgs": {
+    "Config to Find All Bookings": {
       "main": [
         [
           {
-            "node": "OpenAI1",
+            "node": "wk bring bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk bring bookings": {
+      "main": [
+        [
+          {
+            "node": "found bookings?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found bookings?": {
+      "main": [
+        [
+          {
+            "node": "Insert Data Bookings",
             "type": "main",
             "index": 0
           }
@@ -477,23 +453,7 @@
       "main": [
         [
           {
-            "node": "Get Chat Memory",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI1": {
-      "main": [
-        [
-          {
-            "node": "Response2",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Save Msg Memo",
+            "node": "Config to Find All Bookings",
             "type": "main",
             "index": 0
           }
@@ -517,8 +477,7 @@
       "position": [
         740,
         760
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -543,7 +502,8 @@
       "position": [
         520,
         920
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -558,7 +518,8 @@
       "position": [
         520,
         1080
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {},
@@ -748,7 +709,7 @@
             {
               "id": "93b3a4ae-a50c-4b62-9872-f980bc19054c",
               "name": "output",
-              "value": "={{ $json.choices[0].message.content }}",
+              "value": "={{ $json.output }}",
               "type": "string"
             }
           ]
@@ -760,8 +721,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1860,
-        1580
+        1980,
+        1320
       ]
     },
     {
@@ -789,8 +750,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2020,
-        1920
+        2351,
+        1580
       ],
       "id": "edc94a5f-7ab6-43d4-ba0e-9a341f9d256e",
       "name": "Get Availability Tool"
@@ -820,8 +781,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2520,
-        1920
+        2851,
+        1580
       ],
       "id": "7f237841-e763-4397-9870-b1c4777cde63",
       "name": "Get Existing Appt Tool",
@@ -856,8 +817,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2380,
-        1940
+        2711,
+        1600
       ],
       "id": "4dd86eb4-e62e-4eb1-aa78-07e5772bba38",
       "name": "Find Existing Appt Tool"
@@ -887,8 +848,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2260,
-        1920
+        2591,
+        1580
       ],
       "id": "ac72bff6-f5b8-4597-bd79-d21574a4695c",
       "name": "Cancel Appt Tool"
@@ -918,8 +879,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1900,
-        1940
+        2231,
+        1600
       ],
       "id": "c56148c9-e174-4896-8c12-f6eff039ed39",
       "name": "Schedule Appt Tool"
@@ -949,8 +910,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2140,
-        1940
+        2471,
+        1600
       ],
       "id": "0fb315e4-d637-4167-b8b0-cf776e9a551e",
       "name": "Reschedule Appt Tool"
@@ -964,8 +925,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        2780,
-        1720
+        1720,
+        1480
       ],
       "id": "690c918f-448f-416a-b23a-d8b056fddc1c",
       "name": "Chat Memory",
@@ -974,8 +935,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -988,8 +948,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        2660,
-        1720
+        1600,
+        1480
       ],
       "id": "5e0c3074-7231-4059-b25e-2578852771c4",
       "name": "OpenAI Chat Model",
@@ -998,8 +958,7 @@
           "id": "dRR3EqW0FEAbSHgt",
           "name": "william"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1011,8 +970,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1529.0671035408689,
-        1860
+        1860,
+        1520
       ],
       "id": "f49b0c91-1cbb-45bf-85eb-c1c5e6d56ffc",
       "name": "Sticky Note"
@@ -1029,7 +988,8 @@
         320,
         1000
       ],
-      "webhookId": "650c5a0e-0f76-49b7-8046-7cb7850e412d"
+      "webhookId": "650c5a0e-0f76-49b7-8046-7cb7850e412d",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1044,7 +1004,8 @@
       "position": [
         740,
         1000
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1130,8 +1091,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        580,
-        1400
+        1480,
+        1140
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1139,7 +1100,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1217,8 +1179,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        420,
-        1400
+        1300,
+        1140
       ],
       "id": "91fb783d-aef6-4a47-b4a9-931c93b6c7c8",
       "name": "Normalize"
@@ -1391,8 +1353,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1560,
-        1920
+        1891,
+        1580
       ]
     },
     {
@@ -1424,8 +1386,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1780,
-        1920
+        2111,
+        1580
       ]
     },
     {
@@ -1460,8 +1422,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1660,
-        1940
+        1991,
+        1600
       ]
     },
     {
@@ -1476,8 +1438,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        1900,
-        1160
+        2180,
+        1000
       ],
       "credentials": {
         "redis": {
@@ -1502,8 +1464,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        1320,
-        1380
+        2160,
+        1120
       ],
       "id": "d649f909-bfdb-466f-9e66-3703945ec87b",
       "name": "Insert Data User",
@@ -1536,8 +1498,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1100,
-        1380
+        1980,
+        1140
       ],
       "id": "e7740283-2969-40e0-ac1e-6f6f9b617d39",
       "name": "chat empty?"
@@ -1556,11 +1518,115 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        2380,
-        1580
+        1660,
+        1320
       ],
-      "disabled": true,
       "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
+    },
+    {
+      "parameters": {
+        "options": {
+          "groupMessages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        1660,
+        1140
+      ],
+      "id": "faeb7545-966a-41d4-afa9-5b3dbf86a540",
+      "name": "Check Chat Memory"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "19e9b408-9bdb-4535-b265-1f714a0dde0d",
+              "name": "action",
+              "value": "list bookings",
+              "type": "string"
+            },
+            {
+              "id": "d6788f61-2c2f-42c1-a263-62d052127dc0",
+              "name": "remoteJid",
+              "value": "={{ $('Normalize').item.json.userAccount.remoteJid.split('@')[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b5c318d-4909-4140-8465-7bb6bf8f2116",
+              "name": "query",
+              "value": "={\n  \"email\": \"\",\n  \"event_id\": \"\",\n  \"status\": \"all\"\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9d4dc54-fa2b-4eeb-aa75-897ab5e7dae8",
+      "name": "Config to Find All Bookings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2480,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "list",
+          "cachedResultName": "COMP Cal.com"
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "89b9abcc-c4dc-49ac-a7f7-a2b15833e014",
+      "name": "wk bring bookings",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        2640,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b5f9ec25-e6d0-4d25-a737-ae4bfd037280",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "60e3eb71-f16d-4cbb-a842-12b5f8dd4ada",
+      "name": "found bookings?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2800,
+        1120
+      ]
     },
     {
       "parameters": {
@@ -1568,12 +1634,8 @@
         "messages": {
           "messageValues": [
             {
-              "type": "user",
-              "message": "={{ $('Normalize').first().json.query }}"
-            },
-            {
               "type": "ai",
-              "message": "={{ $json.choices[0].message.content }}"
+              "message": "={{ $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}"
             }
           ]
         }
@@ -1581,159 +1643,14 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        1860,
-        1440
+        2960,
+        1100
       ],
-      "id": "fdc83a1c-f07a-4081-ae4c-3de5e759853f",
-      "name": "Save Msg Memo",
-      "notes": "Email Address: `{{ $('Normalize').item.json.userAccount.email ? $('Normalize').item.json.userAccount.email : '' }}`\nCellphone number: `{{ $('Normalize').item.json.messageInfo.remoteJid.split('@')[0] }}`\nFull name: `{{ $('Normalize').item.json.userAccount.name ? $('Normalize').item.json.userAccount.name : $('Normalize').item.json.messageInfo.pushName }}`\nAddress: `{{ $('Normalize').item.json.userAccount.endereco ?? '' }}`"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "c135d01d-6ddf-4277-86b3-ffa59ce359d7",
-              "name": "historic",
-              "value": "={{ $json.messages.map((item, index) => `${Object.keys(item).map(key => `${key.toUpperCase()}: ${item[key]}`).join('\\n')}`).join('\\n\\n') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "e96141f3-04ca-4e28-9db2-cddf021b0ea1",
-      "name": "Group Msgs",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1380,
-        1580
-      ]
-    },
-    {
-      "parameters": {
-        "options": {
-          "groupMessages": true
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryManager",
-      "typeVersion": 1.1,
-      "position": [
-        740,
-        1400
-      ],
-      "id": "faeb7545-966a-41d4-afa9-5b3dbf86a540",
-      "name": "Check Chat Memory"
-    },
-    {
-      "parameters": {
-        "options": {
-          "groupMessages": true
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryManager",
-      "typeVersion": 1.1,
-      "position": [
-        1040,
-        1580
-      ],
-      "id": "fd493466-cb15-4ad7-a99b-a19378f01dfb",
-      "name": "Get Chat Memory"
-    },
-    {
-      "parameters": {
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini-2024-07-18",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI-2024-07-18"
-        },
-        "messages": {
-          "values": [
-            {
-              "content": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
-              "role": "system"
-            },
-            {
-              "content": "=## Historic\n{{ $json.historic }}",
-              "role": "assistant"
-            },
-            {
-              "content": "={{ $('Normalize').first().json.query }}"
-            }
-          ]
-        },
-        "simplify": false,
-        "options": {}
-      },
-      "id": "17f3694d-b58b-4354-aaa9-50ed6c415df6",
-      "name": "OpenAI",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.7,
-      "position": [
-        1040,
-        1780
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini-2024-07-18",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI-2024-07-18"
-        },
-        "messages": {
-          "values": [
-            {
-              "content": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
-              "role": "system"
-            },
-            {
-              "content": "=## Historic\n{{ $json.historic }}",
-              "role": "assistant"
-            },
-            {
-              "content": "={{ $('Normalize').first().json.query }}"
-            }
-          ]
-        },
-        "simplify": false,
-        "options": {}
-      },
-      "id": "95aac0a8-53a1-428e-aedc-4c4a414042fd",
-      "name": "OpenAI1",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.6,
-      "position": [
-        1540,
-        1580
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
+      "id": "8959d707-9af1-4d9a-b2c4-c71acdeb60ab",
+      "name": "Insert Data Bookings"
     }
   ],
-  "pinData": {
-    "Appointment Scheduling Agent": [
-      {
-        "json": {
-          "output": "Hello! How can I assist you today?"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -1759,6 +1676,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-21T23:50:25.999Z",
-  "versionId": "3c0e1834-d2c1-4f9d-91ed-56973eb377cd"
+  "updatedAt": "2024-11-22T11:46:57.993Z",
+  "versionId": "9453f811-58e5-461d-8620-25c74c3c34a8"
 }
