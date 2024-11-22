@@ -317,11 +317,6 @@
         ]
       ]
     },
-    "Sign Msg": {
-      "main": [
-        []
-      ]
-    },
     "chatConfig": {
       "main": [
         [
@@ -369,11 +364,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Insert Data User": {
-      "main": [
-        []
       ]
     },
     "chat empty?": {
@@ -1486,6 +1476,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-21T22:19:52.469Z",
-  "versionId": "29cebac9-ac28-4bfc-8041-8bca541b6726"
+  "updatedAt": "2024-11-22T00:00:23.279Z",
+  "versionId": "1440ab56-b78a-43bc-9682-4e87e6c5edb2"
 }
