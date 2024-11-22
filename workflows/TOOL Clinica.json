@@ -114,7 +114,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -130,7 +130,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -146,7 +146,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -162,7 +162,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -178,7 +178,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -339,7 +339,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -355,7 +355,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -371,7 +371,7 @@
             "index": 0
           },
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "ai_tool",
             "index": 0
           }
@@ -466,7 +466,7 @@
       "main": [
         [
           {
-            "node": "OpenAI",
+            "node": "OpenAI1",
             "type": "main",
             "index": 0
           }
@@ -484,16 +484,16 @@
         ]
       ]
     },
-    "OpenAI": {
+    "OpenAI1": {
       "main": [
         [
           {
-            "node": "Save Msg Memo",
+            "node": "Response2",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Response2",
+            "node": "Save Msg Memo",
             "type": "main",
             "index": 0
           }
@@ -1607,7 +1607,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1360,
+        1380,
         1580
       ]
     },
@@ -1672,7 +1672,49 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.7,
       "position": [
-        1520,
+        1040,
+        1780
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI-2024-07-18"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
+              "role": "system"
+            },
+            {
+              "content": "=## Historic\n{{ $json.historic }}",
+              "role": "assistant"
+            },
+            {
+              "content": "={{ $('Normalize').first().json.query }}"
+            }
+          ]
+        },
+        "simplify": false,
+        "options": {}
+      },
+      "id": "95aac0a8-53a1-428e-aedc-4c4a414042fd",
+      "name": "OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        1540,
         1580
       ],
       "credentials": {
@@ -1688,15 +1730,6 @@
       {
         "json": {
           "output": "Hello! How can I assist you today?"
-        }
-      }
-    ],
-    "Chat": [
-      {
-        "json": {
-          "sessionId": "e4c44098706847538e35c9d4a347c674",
-          "action": "sendMessage",
-          "chatInput": "oi"
         }
       }
     ]
@@ -1726,6 +1759,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-21T23:37:02.787Z",
-  "versionId": "36dc922f-b17a-4c3d-af60-afb49c12226f"
+  "updatedAt": "2024-11-21T23:50:25.999Z",
+  "versionId": "3c0e1834-d2c1-4f9d-91ed-56973eb377cd"
 }
