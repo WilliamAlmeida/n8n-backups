@@ -8,6 +8,11 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -122,17 +127,6 @@
           {
             "node": "AI Agent",
             "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Sign Msg",
-            "type": "main",
             "index": 0
           }
         ]
@@ -319,13 +313,7 @@
     },
     "chatConfig": {
       "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Location and Address Tool": {
@@ -351,6 +339,11 @@
             "node": "Insert Data User",
             "type": "ai_memory",
             "index": 0
+          },
+          {
+            "node": "Insert Data Bookings",
+            "type": "ai_memory",
+            "index": 0
           }
         ]
       ]
@@ -374,6 +367,72 @@
             "node": "Insert Data User",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "Config to Find All Bookings": {
+      "main": [
+        [
+          {
+            "node": "wk bring bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk bring bookings": {
+      "main": [
+        [
+          {
+            "node": "found bookings?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data User": {
+      "main": [
+        [
+          {
+            "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found bookings?": {
+      "main": [
+        [
+          {
+            "node": "Insert Data Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -682,28 +741,7 @@
       "position": [
         3520,
         1280
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('messageInfo').first().json.conversation }}",
-        "options": {
-          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\nOur Address: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060\n</additional_info>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\nWhen the system needs time to retrieve information, avoid vague delays; provide the user with actionable next steps or continue processing without requiring additional prompts.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n\n<error_handling>\n- Avoid unnecessary delays or indefinite responses. If more data is required, inform the user explicitly about the specific information needed to proceed.\n- If unable to complete the action (e.g., UID or email missing), offer clear instructions on what the user needs to provide.\n</error_handling>\n</prompt>\n"
-        }
-      },
-      "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        5280,
-        1360
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 3000,
-      "notes": "<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
+      ]
     },
     {
       "parameters": {
@@ -1339,7 +1377,8 @@
         1840
       ],
       "id": "6b9a4c50-d80a-4d22-9513-6c07e1e10adb",
-      "name": "Location and Address Tool"
+      "name": "Location and Address Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1353,8 +1392,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5280,
-        1100
+        5640,
+        980
       ],
       "credentials": {
         "redis": {
@@ -1372,8 +1411,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        4900,
-        920
+        4960,
+        1100
       ],
       "id": "58f49f4c-be64-493e-9135-af67cda099f4",
       "name": "Get Chat Memory"
@@ -1394,8 +1433,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        5480,
-        920
+        5460,
+        1100
       ],
       "id": "ecf1f01d-2048-4da2-9009-7fb9b0234fab",
       "name": "Insert Data User"
@@ -1427,29 +1466,145 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        5260,
-        920
+        5280,
+        1100
       ],
       "id": "6794285c-66d7-4c14-bb15-a0b4e5d9d0d8",
       "name": "chat empty?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "19e9b408-9bdb-4535-b265-1f714a0dde0d",
+              "name": "action",
+              "value": "list bookings",
+              "type": "string"
+            },
+            {
+              "id": "d6788f61-2c2f-42c1-a263-62d052127dc0",
+              "name": "remoteJid",
+              "value": "={{ $('userAccount').item.json.remoteJid.toString().split('@')[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b5c318d-4909-4140-8465-7bb6bf8f2116",
+              "name": "query",
+              "value": "={\n  \"email\": \"\",\n  \"event_id\": \"\",\n  \"status\": \"all\"\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0ab1a04-c81a-44ca-84a5-5cae09cd9d80",
+      "name": "Config to Find All Bookings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5780,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "5LfFRdaepFJdM4yE",
+          "mode": "list",
+          "cachedResultName": "COMP Cal.com"
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "417aefb5-fc99-4f3e-afda-f8d48ac3aec4",
+      "name": "wk bring bookings",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        5940,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b5f9ec25-e6d0-4d25-a737-ae4bfd037280",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "16bf8807-fd35-4766-b66e-49aa4f066bc9",
+      "name": "found bookings?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        6100,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "={{ $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        6260,
+        1080
+      ],
+      "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
+      "name": "Insert Data Bookings"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\nOur Address: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060\n</additional_info>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\nWhen the system needs time to retrieve information, avoid vague delays; provide the user with actionable next steps or continue processing without requiring additional prompts.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n\n<error_handling>\n- Avoid unnecessary delays or indefinite responses. If more data is required, inform the user explicitly about the specific information needed to proceed.\n- If unable to complete the action (e.g., UID or email missing), offer clear instructions on what the user needs to provide.\n</error_handling>\n</prompt>\n"
+        }
+      },
+      "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "notes": "<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "evo_api": "https://apiwp.wmst.com.br",
-          "instance": "ibox_cli_23",
-          "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "W.M. Soluções Tecnologicas",
-          "fromMe": false,
-          "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
-          "conversation": "não tenho o uid"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
@@ -1476,6 +1631,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-22T00:00:23.279Z",
-  "versionId": "1440ab56-b78a-43bc-9682-4e87e6c5edb2"
+  "updatedAt": "2024-11-22T11:51:17.233Z",
+  "versionId": "16059aec-b2ef-4e68-9260-5f5f46f5ec10"
 }
