@@ -293,6 +293,17 @@
           }
         ]
       ]
+    },
+    "Cal Availability1": {
+      "main": [
+        [
+          {
+            "node": "found slots?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T17:28:39.109Z",
@@ -356,7 +367,7 @@
       "typeVersion": 3.4,
       "position": [
         960,
-        -540
+        -580
       ],
       "id": "0f89d8cc-a0ef-42eb-ae6a-f0762f272bab",
       "name": "baseInfo"
@@ -373,11 +384,11 @@
           "conditions": [
             {
               "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
-              "leftValue": "={{ $json.data.slots }}",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('slots') }}",
               "rightValue": "",
               "operator": {
-                "type": "object",
-                "operation": "exists",
+                "type": "boolean",
+                "operation": "true",
                 "singleValue": true
               }
             }
@@ -499,7 +510,7 @@
       "typeVersion": 1,
       "position": [
         780,
-        -540
+        -580
       ],
       "id": "e1ae25bf-04b6-49be-abc5-6ccd00dcd537",
       "name": "EWT"
@@ -931,7 +942,7 @@
             {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
-              "value": "={{ $('EWT').item.json.query.event_id ? 'slots not found' : 'event id not sent' }}",
+              "value": "={{ `error: ${$('EWT').item.json.query.event_id ? 'event id not sent, ' : ''}` + $json.error.details.errors.first().constraints?.toJsonString() }}",
               "type": "string"
             }
           ]
@@ -1480,19 +1491,190 @@
           "name": "Cal.com Token"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "eventTypeId",
+              "value": "={{ $('EWT').item.json.query.event_id }}"
+            },
+            {
+              "name": "startTime",
+              "value": "={{ $('EWT').item.json.query.startTime.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toISO() }}"
+            },
+            {
+              "name": "endTime",
+              "value": "={{ $('EWT').item.json.query.endTime.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toISO() }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        200
+      ],
+      "id": "21ec4814-dea9-44ec-8deb-b04ae6043dd5",
+      "name": "Cal Availability1",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
+              "leftValue": "={{ $json.data.slots }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1660,
+        200
+      ],
+      "id": "3545c0b1-248a-4a33-97d9-5e77c988fdff",
+      "name": "found slots?1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.cal_api }}/v2/slots/available",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "eventTypeId",
+              "value": "={{ $('EWT').item.json.query.event_id }}"
+            },
+            {
+              "name": "startTime",
+              "value": "={{ $('EWT').item.json.query.startTime.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toISO() }}"
+            },
+            {
+              "name": "endTime",
+              "value": "={{ $('EWT').item.json.query.endTime.toDateTime().plus($('baseInfo').item.json.utc, 'hours').toISO() }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        380
+      ],
+      "id": "33385f25-b3a4-4386-8dc4-c07885d7a5a9",
+      "name": "Cal Availability2",
+      "credentials": {
+        "calApi": {
+          "id": "xICGic9UQ3lxjrpb",
+          "name": "william"
+        },
+        "httpHeaderAuth": {
+          "id": "Xk4lHr8zzqWTdh4Z",
+          "name": "Cal.com Token"
+        }
+      }
     }
   ],
   "pinData": {
+    "Cal Availability1": [
+      {
+        "json": {
+          "data": {
+            "slots": {}
+          },
+          "status": "success"
+        }
+      }
+    ],
+    "Cal Availability2": [
+      {
+        "json": {
+          "data": {
+            "slots": {
+              "2024-11-22": [
+                {
+                  "time": "2024-11-22T18:00:00.000Z"
+                },
+                {
+                  "time": "2024-11-22T19:00:00.000Z"
+                },
+                {
+                  "time": "2024-11-22T20:00:00.000Z"
+                },
+                {
+                  "time": "2024-11-22T21:00:00.000Z"
+                },
+                {
+                  "time": "2024-11-22T22:00:00.000Z"
+                }
+              ]
+            }
+          },
+          "status": "success"
+        }
+      }
+    ],
     "EWT": [
       {
         "json": {
           "query": {
-            "attendeeEmail": "williamkillerca@hotmail.com",
-            "status": "all",
-            "event_id": "1409773"
+            "event_id": "calendar_id",
+            "startTime": "2024-11-22T16:00:00Z",
+            "endTime": "2024-11-22T17:00:00Z"
           },
-          "action": "list bookings",
-          "remoteJid": "5512982184879"
+          "action": "availability"
         }
       }
     ]
@@ -1528,6 +1710,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-19T14:07:00.619Z",
-  "versionId": "0cae759a-93b1-4f5a-bf3a-dc6d2f1e84ff"
+  "updatedAt": "2024-11-22T14:23:41.175Z",
+  "versionId": "d9c2db74-04e8-4168-9c86-52365419a526"
 }
