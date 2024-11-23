@@ -502,7 +502,8 @@
       "position": [
         520,
         920
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -517,7 +518,8 @@
       "position": [
         520,
         1080
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {},
@@ -918,7 +920,8 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "=memo_{{ $json.messageInfo.unique_id }}_clinica_calendar",
-        "sessionTTL": 300
+        "sessionTTL": 300,
+        "contextWindowLength": 7
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
@@ -986,7 +989,8 @@
         320,
         1000
       ],
-      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a"
+      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1001,7 +1005,8 @@
       "position": [
         740,
         1000
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1096,7 +1101,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1547,8 +1553,7 @@
       "position": [
         2480,
         1120
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1569,8 +1574,7 @@
       "position": [
         2640,
         1120
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1604,8 +1608,7 @@
       "position": [
         2800,
         1120
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1626,8 +1629,7 @@
         1100
       ],
       "id": "8959d707-9af1-4d9a-b2c4-c71acdeb60ab",
-      "name": "Insert Data Bookings",
-      "disabled": true
+      "name": "Insert Data Bookings"
     },
     {
       "parameters": {
@@ -1675,6 +1677,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-23T03:07:31.566Z",
-  "versionId": "5496d6ad-002a-447d-9cd7-cb318d8b9da4"
+  "updatedAt": "2024-11-23T03:18:47.088Z",
+  "versionId": "8e17206b-88f5-4626-9263-f1efabb29e8b"
 }
