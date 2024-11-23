@@ -190,7 +190,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(500, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 5000))) }}\n,\n  \"linkPreview\": false\n}",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
         "options": {
           "response": {
             "response": {
@@ -720,6 +720,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-21T03:12:35.432Z",
-  "versionId": "58f33537-b879-4b5d-8e63-b1e27ebceb0c"
+  "updatedAt": "2024-11-23T15:05:50.703Z",
+  "versionId": "2ec56873-96ce-4e73-bc27-360231933764"
 }
