@@ -66,8 +66,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "Get Exams": {
@@ -1893,13 +1892,13 @@
           "assignments": [
             {
               "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
-              "name": "response2",
-              "value": "={{ $json.data.map(item => `- ${item.professional}, ${item.procedure}, crm ${item.crm}, event_id ${item.event_id}, price ${item.price}`).join('\\n') }}",
+              "name": "response",
+              "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, calendar ID ${item.calendar_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}\n",
               "type": "string"
             },
             {
               "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
-              "name": "response",
+              "name": "response2",
               "value": "={{ $json.data }}",
               "type": "string"
             }
@@ -2394,8 +2393,8 @@
     "EWT": [
       {
         "json": {
-          "query": "",
-          "tool": "payments",
+          "query": "Dra. Samira",
+          "tool": "specialists",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2404,7 +2403,7 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "quais planos vocês tem?"
+            "conversation": "as 17hrs"
           }
         }
       }
@@ -2435,6 +2434,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-21T03:06:56.799Z",
-  "versionId": "35864f19-b70c-4e49-96ca-ad9142e5bc56"
+  "updatedAt": "2024-11-23T03:08:04.347Z",
+  "versionId": "c513fca2-d540-4523-b572-ebda6a9d8465"
 }
