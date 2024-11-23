@@ -311,11 +311,6 @@
         ]
       ]
     },
-    "chatConfig": {
-      "main": [
-        []
-      ]
-    },
     "Location and Address Tool": {
       "ai_tool": [
         [
@@ -629,7 +624,8 @@
       "position": [
         3520,
         1080
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -730,7 +726,8 @@
         3360,
         1080
       ],
-      "webhookId": "ed6548e1-ad98-4c93-a4d0-c44430c2fe77"
+      "webhookId": "ed6548e1-ad98-4c93-a4d0-c44430c2fe77",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -1028,7 +1025,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1049,7 +1047,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1631,6 +1630,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-22T11:51:17.233Z",
-  "versionId": "16059aec-b2ef-4e68-9260-5f5f46f5ec10"
+  "updatedAt": "2024-11-23T03:18:12.981Z",
+  "versionId": "690e37ba-8d7b-4633-9497-ae622a2279af"
 }
