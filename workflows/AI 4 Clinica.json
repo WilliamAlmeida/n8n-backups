@@ -823,7 +823,7 @@
             {
               "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
               "name": "output",
-              "value": "=*{{ $workflow.name }}*:\n\n{{ $json.output }}",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
               "type": "string"
             }
           ]
@@ -1630,6 +1630,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-23T03:18:12.981Z",
-  "versionId": "690e37ba-8d7b-4633-9497-ae622a2279af"
+  "updatedAt": "2024-11-23T15:02:39.633Z",
+  "versionId": "c94a2f95-155d-4ead-b3a5-47d6bd1b9ccc"
 }
