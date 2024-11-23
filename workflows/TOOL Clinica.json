@@ -405,17 +405,6 @@
         ]
       ]
     },
-    "Appointment Scheduling Agent": {
-      "main": [
-        [
-          {
-            "node": "Response2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Config to Find All Bookings": {
       "main": [
         [
@@ -454,6 +443,17 @@
         [
           {
             "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointment Scheduling Agent": {
+      "main": [
+        [
+          {
+            "node": "Response2",
             "type": "main",
             "index": 0
           }
@@ -748,7 +748,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2351,
+        2360,
         1580
       ],
       "id": "edc94a5f-7ab6-43d4-ba0e-9a341f9d256e",
@@ -779,7 +779,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2851,
+        2860,
         1580
       ],
       "id": "7f237841-e763-4397-9870-b1c4777cde63",
@@ -815,7 +815,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2711,
+        2720,
         1600
       ],
       "id": "4dd86eb4-e62e-4eb1-aa78-07e5772bba38",
@@ -846,7 +846,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2591,
+        2600,
         1580
       ],
       "id": "ac72bff6-f5b8-4597-bd79-d21574a4695c",
@@ -855,7 +855,7 @@
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "Call this tool to schedule a booking.\n\n## Inputs Required:\n- User email (string, required).\n- Full name (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Cellphone (string, required).\n\n## Workflow:\n1. Verify availability of the proposed date and time using the \"availability\" tool.\n2. Ensure all inputs are valid before proceeding.\n3. If scheduling fails, log the issue and notify the user.\n4. Confirm the booking and notify the user of the booking UID.\n",
+        "description": "Call this tool to schedule a booking.\n\n## Inputs Required:\n- User email (string, required).\n- Full name (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Cellphone (string, required).\n\n## Workflow:\n1. Ensure all inputs are valid before proceeding.\n2. If scheduling fails, log the issue and notify the user.\n3. Confirm the booking and notify the user of the booking UID.\n",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -877,7 +877,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2231,
+        2240,
         1600
       ],
       "id": "c56148c9-e174-4896-8c12-f6eff039ed39",
@@ -908,7 +908,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2471,
+        2480,
         1600
       ],
       "id": "0fb315e4-d637-4167-b8b0-cf776e9a551e",
@@ -986,7 +986,7 @@
         320,
         1000
       ],
-      "webhookId": "650c5a0e-0f76-49b7-8046-7cb7850e412d"
+      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a"
     },
     {
       "parameters": {
@@ -1096,8 +1096,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1349,7 +1348,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1891,
+        1900,
         1580
       ]
     },
@@ -1382,7 +1381,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2111,
+        2120,
         1580
       ]
     },
@@ -1418,8 +1417,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1991,
-        1600
+        2040,
+        1640
       ]
     },
     {
@@ -1502,25 +1501,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.query }}",
-        "options": {
-          "systemMessage": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
-          "maxIterations": 7
-        }
-      },
-      "id": "4babc4bb-6c11-40f7-afb6-bfc121f313cd",
-      "name": "Appointment Scheduling Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1660,
-        1320
-      ],
-      "notes": "You are an appointment scheduling helper for consultant named William.\n\n## About William\nWilliam is a São Paulo-based consultant specialising in Laravel, n8n and AI. His website is wmst.com.br.\n\n## About the appointments\nAlways start your conversation by politely asking if the user wants to book a new appointment or enquire about an existing one.\nThe date and time now is {{ $now.toISO() }}. All dates should be given in the ISO format.\nEach appointment should have a start and end date and time relative to today's date in the future.\nAll appointments are strictly 30mins long.\n\n## To book an appointment\n* Before booking an appointment, ask if the user has an existing appointment.\n* Ensure you have the user's email address, full name and proposed date, preferred start time before booking an appointment.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available appointment slot.\n* If the appointment booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the appointment booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# To reschedule or cancel an existing appointment\n* First find the existing appointment so that you may obtain the existing appointment's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule or cancel an existing appointment.\n* If an existing appointment ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an appointment, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an appointment.\n\n## About the user\nThe user's session id is {{ $json.sessionId }}"
-    },
-    {
-      "parameters": {
         "options": {
           "groupMessages": true
         }
@@ -1567,7 +1547,8 @@
       "position": [
         2480,
         1120
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1588,7 +1569,8 @@
       "position": [
         2640,
         1120
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1622,7 +1604,8 @@
       "position": [
         2800,
         1120
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1643,7 +1626,27 @@
         1100
       ],
       "id": "8959d707-9af1-4d9a-b2c4-c71acdeb60ab",
-      "name": "Insert Data Bookings"
+      "name": "Insert Data Bookings",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "=You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.toLocal() }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
+          "maxIterations": 7
+        }
+      },
+      "id": "4babc4bb-6c11-40f7-afb6-bfc121f313cd",
+      "name": "Appointment Scheduling Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1660,
+        1320
+      ],
+      "notes": "You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable."
     }
   ],
   "pinData": {},
@@ -1672,6 +1675,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-22T14:06:50.177Z",
-  "versionId": "bc6ed9c8-2b1e-4d37-89c9-2c41d9f62c33"
+  "updatedAt": "2024-11-23T03:07:31.566Z",
+  "versionId": "5496d6ad-002a-447d-9cd7-cb318d8b9da4"
 }
