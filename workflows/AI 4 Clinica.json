@@ -8,11 +8,6 @@
             "node": "delete user account",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -234,17 +229,6 @@
         ]
       ]
     },
-    "Agent Scheduling": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Exams Tool": {
       "ai_tool": [
         [
@@ -301,17 +285,6 @@
       ]
     },
     "Methods Payment Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Location and Address Tool": {
       "ai_tool": [
         [
           {
@@ -410,6 +383,28 @@
         ]
       ]
     },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scheduling Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "AI Agent": {
       "main": [
         [
@@ -417,17 +412,6 @@
             "node": "Sign Msg",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Sign Msg": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -444,7 +428,7 @@
       "parameters": {
         "model": "gpt-4o-mini-2024-07-18",
         "options": {
-          "temperature": 0.7,
+          "temperature": 0,
           "topP": 1
         }
       },
@@ -496,7 +480,8 @@
       "position": [
         6180,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -624,8 +609,7 @@
       "position": [
         3520,
         1080
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -640,14 +624,15 @@
       "position": [
         6040,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
-        "sessionTTL": 600,
-        "contextWindowLength": 7
+        "sessionTTL": 300,
+        "contextWindowLength": 20
       },
       "id": "0dece69a-7574-4cc0-9cd4-64a01585661c",
       "name": "Chat Memory",
@@ -726,8 +711,7 @@
         3360,
         1080
       ],
-      "webhookId": "ed6548e1-ad98-4c93-a4d0-c44430c2fe77",
-      "disabled": true
+      "webhookId": "ed6548e1-ad98-4c93-a4d0-c44430c2fe77"
     },
     {
       "parameters": {},
@@ -738,7 +722,8 @@
       "position": [
         3520,
         1280
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -772,8 +757,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5600,
-        2020
+        6260,
+        2260
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -810,8 +795,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5460,
-        2020
+        6120,
+        2260
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -823,7 +808,7 @@
             {
               "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
               "name": "output",
-              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "value": "=*{{ $workflow.name }}*:\n\n{{ $json.output }}",
               "type": "string"
             }
           ]
@@ -1025,8 +1010,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1047,8 +1031,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1086,53 +1069,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5140,
-        1820
-      ]
-    },
-    {
-      "parameters": {
-        "name": "agentScheduling",
-        "description": "Call this workflow to handle all requests related to managing appointments, events, or meetings.",
-        "workflowId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "JZY3GPC55leuxyHn",
-          "cachedResultName": "TOOL Clinica"
-        },
-        "responsePropertyName": "output",
-        "fields": {
-          "values": [
-            {
-              "name": "agent",
-              "stringValue": "calendar"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            },
-            {
-              "name": "userAccount",
-              "type": "objectValue",
-              "objectValue": "={{ $('userAccount').first().json }}"
-            }
-          ]
-        }
-      },
-      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
-      "name": "Agent Scheduling",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5280,
-        1840
+        5720,
+        1960
       ]
     },
     {
       "parameters": {
         "name": "list_exams_tool",
-        "description": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\nNever display exam ID to user.",
+        "description": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
         "workflowId": {
           "__rl": true,
           "value": "pliyk2HChCR880pK",
@@ -1164,14 +1108,15 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5000,
-        2000
-      ]
+        5120,
+        1940
+      ],
+      "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
     },
     {
       "parameters": {
-        "name": "specialists_tool",
-        "description": "Call this tool to obtain and verify information about specialists, type of services, doctors registered and procedures provided by the clinic.",
+        "name": "list_specialists_tool",
+        "description": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
         "workflowId": {
           "__rl": true,
           "value": "pliyk2HChCR880pK",
@@ -1195,7 +1140,10 @@
               "arrayValue": "={{ ['calendar_id'] }}"
             }
           ]
-        }
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"crm\": {\n        \"type\": \"number\",\n        \"description\": \"crm of medical (optional)\"\n    },\n    \"name\": {\n        \"type\": \"string\",\n        \"description\": \"name of medical (optional)\"\n    },\n\t\"specialist\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"specialist of medical (optional)\"\n\t\t}\n\t}\n}"
       },
       "id": "61c9f808-fda6-4214-84b2-58558f21640c",
       "name": "Specialists Tool",
@@ -1203,7 +1151,7 @@
       "typeVersion": 1.2,
       "position": [
         5000,
-        1840
+        1980
       ]
     },
     {
@@ -1238,14 +1186,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5300,
-        2020
+        5960,
+        2260
       ],
       "disabled": true
     },
     {
       "parameters": {
-        "name": "health_plan_tool",
+        "name": "list_health_plans_tool",
         "description": "Call this tool to get information about available health plans and insurance options.",
         "workflowId": {
           "__rl": true,
@@ -1273,14 +1221,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5400,
-        1820
+        5360,
+        1940
       ]
     },
     {
       "parameters": {
-        "name": "get_exam_details_tool",
-        "description": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam.",
+        "name": "details_any_exam_tool",
+        "description": "Com esta ferramenta, posso obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
         "workflowId": {
           "__rl": true,
           "value": "pliyk2HChCR880pK",
@@ -1309,15 +1257,16 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5140,
-        2060
-      ]
+        5240,
+        1960
+      ],
+      "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
     },
     {
       "parameters": {
         "content": "## Tools",
-        "height": 424,
-        "width": 794,
+        "height": 119.87859484777519,
+        "width": 866.1236533957843,
         "color": 4
       },
       "id": "4fdb88c2-a4cc-4060-92d5-4a1f08f847ad",
@@ -1331,7 +1280,7 @@
     },
     {
       "parameters": {
-        "name": "payment_method_tool",
+        "name": "list_payment_methods_tool",
         "description": "Call this tool to get information about payment methods.",
         "workflowId": {
           "__rl": true,
@@ -1359,8 +1308,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5520,
-        1840
+        5480,
+        1960
       ]
     },
     {
@@ -1372,8 +1321,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCode",
       "typeVersion": 1.1,
       "position": [
-        5660,
-        1840
+        6400,
+        2260
       ],
       "id": "6b9a4c50-d80a-4d22-9513-6c07e1e10adb",
       "name": "Location and Address Tool",
@@ -1424,7 +1373,8 @@
           "messageValues": [
             {
               "type": "ai",
-              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\""
+              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"",
+              "hideFromUI": true
             }
           ]
         }
@@ -1568,7 +1518,8 @@
           "messageValues": [
             {
               "type": "ai",
-              "message": "={{ $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}"
+              "message": "={{ $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}",
+              "hideFromUI": true
             }
           ]
         }
@@ -1584,10 +1535,50 @@
     },
     {
       "parameters": {
+        "name": "scheduling_tool",
+        "description": "Call this workflow to handle all requests related to managing appointments, events, or meetings.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "JZY3GPC55leuxyHn",
+          "cachedResultName": "TOOL Clinica"
+        },
+        "responsePropertyName": "output",
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json }}"
+            }
+          ]
+        }
+      },
+      "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
+      "name": "Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5600,
+        1940
+      ]
+    },
+    {
+      "parameters": {
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\nOur Address: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060\n</additional_info>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\nWhen the system needs time to retrieve information, avoid vague delays; provide the user with actionable next steps or continue processing without requiring additional prompts.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n\n<error_handling>\n- Avoid unnecessary delays or indefinite responses. If more data is required, inform the user explicitly about the specific information needed to proceed.\n- If unable to complete the action (e.g., UID or email missing), offer clear instructions on what the user needs to provide.\n</error_handling>\n</prompt>\n"
+          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: {{ $now.toISO() }}\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente e acolhedor. Esforça-se para criar uma interação humana e empática\nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details.",
+          "returnIntermediateSteps": true
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1630,6 +1621,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-23T15:02:39.633Z",
-  "versionId": "c94a2f95-155d-4ead-b3a5-47d6bd1b9ccc"
+  "updatedAt": "2024-11-23T21:18:26.898Z",
+  "versionId": "176fa742-ffdd-40d0-b8a6-4a9a9c537550"
 }
