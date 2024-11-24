@@ -1423,7 +1423,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2040,
+        2000,
         1640
       ]
     },
@@ -1677,6 +1677,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-23T03:18:47.088Z",
-  "versionId": "8e17206b-88f5-4626-9263-f1efabb29e8b"
+  "updatedAt": "2024-11-23T20:17:50.994Z",
+  "versionId": "dddbefd5-3197-4942-98a4-407bb0bc4123"
 }
