@@ -477,7 +477,7 @@
       "main": [
         [
           {
-            "node": "Response 2",
+            "node": "Filter by CRM",
             "type": "main",
             "index": 0
           }
@@ -499,7 +499,7 @@
       "main": [
         [
           {
-            "node": "Response 2",
+            "node": "Filter by CRM",
             "type": "main",
             "index": 0
           }
@@ -621,6 +621,17 @@
         [
           {
             "node": "Response 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by CRM": {
+      "main": [
+        [
+          {
+            "node": "Response 2",
             "type": "main",
             "index": 0
           }
@@ -849,7 +860,7 @@
       "parameters": {
         "content": "## Specialists\nList with Professionals, Procedures\nand ID",
         "height": 360,
-        "width": 1020,
+        "width": 1035.169890751311,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1822,7 +1833,7 @@
             {
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
-              "value": "={{ $('List Specialists').all().map(item => {\n  return {\n  professional: item.json.professional,\n  procedure: item.json.procedure,\n  price: item.json.price,\n  crm: item.json.crm,\n  calendar_id: item.json.calendar_id,\n  id: item.json.professional\n  }\n}) }}",
+              "value": "={{ $('List Specialists').all().map(item => {\n  return {\n  professional: item.json.professional,\n  procedure: item.json.procedure,\n  price: item.json.price,\n  crm: item.json.crm,\n  calendar_id: item.json.calendar_id,\n  id: item.json.id\n  }\n}) }}",
               "type": "array"
             }
           ]
@@ -1911,7 +1922,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4120,
+        4140,
         -60
       ]
     },
@@ -2387,13 +2398,40 @@
         4360,
         1620
       ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.crm ? item.crm == query.crm : true,\n            item => query.name ? item.professional.toLowerCase().includes(query.name.toLowerCase()) : true,\n            item => query.specialist ? item.procedure.toLowerCase().includes(query.specialist.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4000,
+        -60
+      ],
+      "id": "036c6851-b591-4d8d-b563-062e2cd7d99a",
+      "name": "Filter by CRM"
     }
   ],
   "pinData": {
     "EWT": [
       {
         "json": {
-          "query": "Dra. Samira",
+          "query": {
+            "crm": 0,
+            "name": "Cristiano",
+            "specialist": ""
+          },
           "tool": "specialists",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
@@ -2403,8 +2441,11 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "as 17hrs"
-          }
+            "conversation": "Dr Cristiano"
+          },
+          "hidden_fields": [
+            "calendar_id"
+          ]
         }
       }
     ]
@@ -2434,6 +2475,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-23T03:08:04.347Z",
-  "versionId": "c513fca2-d540-4523-b572-ebda6a9d8465"
+  "updatedAt": "2024-11-23T21:11:35.928Z",
+  "versionId": "060b4c71-6ed2-4619-b96b-38eeee0d4e3e"
 }
