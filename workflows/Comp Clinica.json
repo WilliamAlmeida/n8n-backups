@@ -298,7 +298,7 @@
         ],
         [
           {
-            "node": "Hidden Fields 4",
+            "node": "Load Data 4",
             "type": "main",
             "index": 0
           }
@@ -345,7 +345,7 @@
       "main": [
         [
           {
-            "node": "Response 1",
+            "node": "Filter by 1",
             "type": "main",
             "index": 0
           }
@@ -477,7 +477,7 @@
       "main": [
         [
           {
-            "node": "Filter by CRM",
+            "node": "Filter by 2",
             "type": "main",
             "index": 0
           }
@@ -488,7 +488,7 @@
       "main": [
         [
           {
-            "node": "Response 1",
+            "node": "Filter by 1",
             "type": "main",
             "index": 0
           }
@@ -499,7 +499,7 @@
       "main": [
         [
           {
-            "node": "Filter by CRM",
+            "node": "Filter by 2",
             "type": "main",
             "index": 0
           }
@@ -510,7 +510,7 @@
       "main": [
         [
           {
-            "node": "Response 3",
+            "node": "Filter by 3",
             "type": "main",
             "index": 0
           }
@@ -521,7 +521,7 @@
       "main": [
         [
           {
-            "node": "Response 3",
+            "node": "Filter by 3",
             "type": "main",
             "index": 0
           }
@@ -532,7 +532,7 @@
       "main": [
         [
           {
-            "node": "Response 4",
+            "node": "Filter by 4",
             "type": "main",
             "index": 0
           }
@@ -627,11 +627,55 @@
         ]
       ]
     },
-    "Filter by CRM": {
+    "Load Data 4": {
+      "main": [
+        [
+          {
+            "node": "Hidden Fields 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 1": {
+      "main": [
+        [
+          {
+            "node": "Response 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 2": {
       "main": [
         [
           {
             "node": "Response 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 3": {
+      "main": [
+        [
+          {
+            "node": "Response 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 4": {
+      "main": [
+        [
+          {
+            "node": "Response 4",
             "type": "main",
             "index": 0
           }
@@ -654,7 +698,7 @@
       "typeVersion": 1,
       "position": [
         2040,
-        500
+        480
       ]
     },
     {
@@ -819,7 +863,7 @@
       "typeVersion": 3.2,
       "position": [
         2420,
-        420
+        440
       ]
     },
     {
@@ -853,7 +897,7 @@
       "typeVersion": 2.2,
       "position": [
         2220,
-        500
+        480
       ]
     },
     {
@@ -936,7 +980,7 @@
       "typeVersion": 1,
       "position": [
         3560,
-        640
+        620
       ],
       "id": "8d0fe24d-864f-4698-bf2d-e3aae35b64fe",
       "name": "List Exams",
@@ -1227,7 +1271,7 @@
       "typeVersion": 2.2,
       "position": [
         3840,
-        640
+        620
       ],
       "id": "dceda59c-5e83-43f8-b2a0-ee7d9ce4f437",
       "name": "Exams not found?"
@@ -1312,7 +1356,7 @@
       "parameters": {
         "content": "## Health Plans",
         "height": 360,
-        "width": 1020
+        "width": 1034.361622986691
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -1639,7 +1683,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4120,
+        4140,
         -480
       ]
     },
@@ -1765,7 +1809,7 @@
       "typeVersion": 1,
       "position": [
         3700,
-        640
+        620
       ],
       "id": "a619a644-4863-4593-b6bc-a41cd103073c",
       "name": "Aggregate 4",
@@ -2078,8 +2122,8 @@
             {
               "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
               "name": "data",
-              "value": "={{ \n    $('EWT').item.json.hasField('hidden_fields') && $('EWT').item.json.hidden_fields.length \n        ? $json.data.parseJson().map(item => {\n            $('EWT').item.json.hidden_fields.forEach(field => {\n                delete item[field];\n            });\n            return item;\n          })\n        : $json.data \n}}",
-              "type": "string"
+              "value": "={{ \n    $('EWT').item.json.hasField('hidden_fields') && $('EWT').item.json.hidden_fields.length \n        ? $json.data.map(item => {\n            $('EWT').item.json.hidden_fields.forEach(field => {\n                delete item[field];\n            });\n            return item;\n          })\n        : $json.data \n}}",
+              "type": "array"
             }
           ]
         },
@@ -2088,7 +2132,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4360,
+        4220,
         780
       ],
       "id": "44f25ffb-efc5-450d-b52c-41d98a73c893",
@@ -2135,7 +2179,7 @@
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
               "value": "={{ $('List Exams').all().map(item => {\n  return {\n  exam: item.json.exam,\n  calendar_id: item.json.calendar_id ? item.json.calendar_id : $json.id,\n  id: item.json.id\n  }\n}) }}",
-              "type": "string"
+              "type": "array"
             }
           ]
         },
@@ -2154,7 +2198,7 @@
       "parameters": {
         "operation": "set",
         "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exams",
-        "value": "={{ $json.data }}",
+        "value": "={{ $json.data.toJsonString() }}",
         "keyType": "string",
         "expire": true,
         "ttl": 120
@@ -2404,6 +2448,52 @@
         "assignments": {
           "assignments": [
             {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3560,
+        780
+      ],
+      "id": "7c743b0e-702f-4f5e-af7c-efa54e8c6e34",
+      "name": "Load Data 4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.plan.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4000,
+        -480
+      ],
+      "id": "25b0a4ec-b104-498d-8544-c73c745ebd4e",
+      "name": "Filter by 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
               "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
               "name": "data",
               "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.crm ? item.crm == query.crm : true,\n            item => query.name ? item.professional.toLowerCase().includes(query.name.toLowerCase()) : true,\n            item => query.specialist ? item.procedure.toLowerCase().includes(query.specialist.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
@@ -2420,7 +2510,53 @@
         -60
       ],
       "id": "036c6851-b591-4d8d-b563-062e2cd7d99a",
-      "name": "Filter by CRM"
+      "name": "Filter by 2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.payment.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4000,
+        360
+      ],
+      "id": "3c73434f-ba42-4b09-ac4e-958dcc57844c",
+      "name": "Filter by 3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.exam.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        780
+      ],
+      "id": "e5729267-7f67-4482-8efc-f76583406d3b",
+      "name": "Filter by 4"
     }
   ],
   "pinData": {
@@ -2428,11 +2564,9 @@
       {
         "json": {
           "query": {
-            "crm": 0,
-            "name": "Cristiano",
-            "specialist": ""
+            "name": "Santa"
           },
-          "tool": "specialists",
+          "tool": "health plans",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2441,11 +2575,8 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "Dr Cristiano"
-          },
-          "hidden_fields": [
-            "calendar_id"
-          ]
+            "conversation": "esta correto"
+          }
         }
       }
     ]
@@ -2475,6 +2606,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-23T21:11:35.928Z",
-  "versionId": "060b4c71-6ed2-4619-b96b-38eeee0d4e3e"
+  "updatedAt": "2024-11-25T02:07:44.262Z",
+  "versionId": "76e2c2f2-ba6c-4cd8-86ff-3634a79f4031"
 }
