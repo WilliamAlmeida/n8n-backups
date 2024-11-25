@@ -480,8 +480,7 @@
       "position": [
         6180,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -495,7 +494,7 @@
       "typeVersion": 3.4,
       "position": [
         3760,
-        1280
+        1340
       ]
     },
     {
@@ -568,7 +567,7 @@
     {
       "parameters": {
         "content": "## Tenta retornar os dados do Usuário",
-        "height": 651,
+        "height": 649.4799105287789,
         "width": 999,
         "color": 5
       },
@@ -608,7 +607,7 @@
       "typeVersion": 3.4,
       "position": [
         3520,
-        1080
+        1140
       ]
     },
     {
@@ -624,8 +623,7 @@
       "position": [
         6040,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -709,9 +707,9 @@
       "typeVersion": 1.1,
       "position": [
         3360,
-        1080
+        1140
       ],
-      "webhookId": "ed6548e1-ad98-4c93-a4d0-c44430c2fe77"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -721,7 +719,7 @@
       "typeVersion": 1,
       "position": [
         3520,
-        1280
+        1340
       ],
       "disabled": true
     },
@@ -757,8 +755,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6260,
-        2260
+        6180,
+        1780
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -795,8 +793,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6120,
-        2260
+        6040,
+        1780
       ],
       "disabled": true,
       "notes": "Use this tool to obtain information about the college, available contacts, hours of operation, courses, enrollment information, educational options offered, required documents, as well as frequently asked questions by users."
@@ -938,7 +936,7 @@
       "typeVersion": 1,
       "position": [
         4540,
-        1740
+        1720
       ],
       "id": "b051fa17-9be9-44bd-8014-d5245ba74e58",
       "name": "insert user",
@@ -1002,7 +1000,7 @@
       "typeVersion": 1,
       "position": [
         5840,
-        1520
+        1560
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1023,7 +1021,7 @@
       "typeVersion": 1,
       "position": [
         6000,
-        1520
+        1560
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1070,7 +1068,7 @@
       "typeVersion": 1.2,
       "position": [
         5720,
-        1960
+        1800
       ]
     },
     {
@@ -1101,7 +1099,9 @@
             }
           ]
         },
-        "jsonSchemaExample": ""
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n    \"name\": {\n        \"type\": \"string\",\n        \"description\": \"name of exam (optional)\"\n        }\n    }\n}"
       },
       "id": "603864c4-5563-4d6f-bfa2-411ac572fb32",
       "name": "Exams Tool",
@@ -1109,7 +1109,7 @@
       "typeVersion": 1.2,
       "position": [
         5120,
-        1940
+        1780
       ],
       "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
     },
@@ -1151,7 +1151,7 @@
       "typeVersion": 1.2,
       "position": [
         5000,
-        1980
+        1820
       ]
     },
     {
@@ -1186,8 +1186,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5960,
-        2260
+        5880,
+        1780
       ],
       "disabled": true
     },
@@ -1214,7 +1214,9 @@
             }
           ]
         },
-        "jsonSchemaExample": ""
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n    \"name\": {\n        \"type\": \"string\",\n        \"description\": \"name of health plan (optional)\"\n        }\n    }\n}"
       },
       "id": "41abc50a-1d2f-43fd-acb5-ad56a17a9ed1",
       "name": "Health Plan Tool",
@@ -1222,13 +1224,13 @@
       "typeVersion": 1.2,
       "position": [
         5360,
-        1940
+        1780
       ]
     },
     {
       "parameters": {
         "name": "details_any_exam_tool",
-        "description": "Com esta ferramenta, posso obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
+        "description": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
         "workflowId": {
           "__rl": true,
           "value": "pliyk2HChCR880pK",
@@ -1258,15 +1260,15 @@
       "typeVersion": 1.2,
       "position": [
         5240,
-        1960
+        1800
       ],
       "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
     },
     {
       "parameters": {
         "content": "## Tools",
-        "height": 119.87859484777519,
-        "width": 866.1236533957843,
+        "height": 183.50432036410257,
+        "width": 866,
         "color": 4
       },
       "id": "4fdb88c2-a4cc-4060-92d5-4a1f08f847ad",
@@ -1301,7 +1303,9 @@
             }
           ]
         },
-        "jsonSchemaExample": ""
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n    \"name\": {\n        \"type\": \"string\",\n        \"description\": \"name of method payment (optional)\"\n        }\n    }\n}"
       },
       "id": "59c1766b-b546-4141-86fd-de0bfe1925ff",
       "name": "Methods Payment Tool",
@@ -1309,7 +1313,7 @@
       "typeVersion": 1.2,
       "position": [
         5480,
-        1960
+        1800
       ]
     },
     {
@@ -1321,8 +1325,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCode",
       "typeVersion": 1.1,
       "position": [
-        6400,
-        2260
+        6320,
+        1780
       ],
       "id": "6b9a4c50-d80a-4d22-9513-6c07e1e10adb",
       "name": "Location and Address Tool",
@@ -1569,7 +1573,7 @@
       "typeVersion": 1.2,
       "position": [
         5600,
-        1940
+        1780
       ]
     },
     {
@@ -1577,7 +1581,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: {{ $now.toISO() }}\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente e acolhedor. Esforça-se para criar uma interação humana e empática\nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details.",
+          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: {{ $now.toISO() }}\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente e acolhedor. Esforça-se para criar uma interação humana e empática\nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details.",
           "returnIntermediateSteps": true
         }
       },
@@ -1621,6 +1625,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-23T21:18:26.898Z",
-  "versionId": "176fa742-ffdd-40d0-b8a6-4a9a9c537550"
+  "updatedAt": "2024-11-25T02:59:14.590Z",
+  "versionId": "e755757e-d5cb-4810-a673-261ecc375288"
 }
