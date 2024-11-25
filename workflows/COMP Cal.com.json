@@ -1762,7 +1762,21 @@
       "name": "Response Not Availability1"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "action": "list bookings",
+          "remoteJid": "5512982184879",
+          "query": {
+            "email": "",
+            "event_id": "",
+            "status": "all"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
@@ -1794,6 +1808,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-24T15:40:21.905Z",
-  "versionId": "93820db9-c2a3-408f-8436-610d82a66170"
+  "updatedAt": "2024-11-25T03:53:24.239Z",
+  "versionId": "9cfe1e35-b14a-48c3-8e2b-643920d01a14"
 }
