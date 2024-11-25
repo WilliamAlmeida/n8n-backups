@@ -923,7 +923,7 @@
             },
             {
               "name": "bookingFieldsResponses",
-              "value": "={{ {\n  notes: $('EWT').item.json.query.description,\n  cellphone: `+${$('EWT').item.json.query.bookingFieldsResponses.cellphone}`,\n  title: $('EWT').item.json.query.title,\n  professional: $('EWT').item.json.query.bookingFieldsResponses.professional,\n  procedure: $('EWT').item.json.query.bookingFieldsResponses.procedure,\n  method_payment: $('EWT').item.json.query.bookingFieldsResponses.method_payment,\n  name_plan: $('EWT').item.json.query.bookingFieldsResponses.name_plan,\n  price: $('EWT').item.json.query.bookingFieldsResponses.price\n} }}"
+              "value": "={{ {\n  notes: $('EWT').item?.json?.query?.description || '',\n  cellphone: `+${$('EWT').item?.json?.query?.bookingFieldsResponses?.cellphone?.startsWith('55') \n    ? $('EWT').item.json.query.bookingFieldsResponses.cellphone \n    : '55' + $('EWT').item?.json?.query?.bookingFieldsResponses?.cellphone || ''}`,\n  title: $('EWT').item?.json?.query?.title || '',\n  professional: $('EWT').item?.json?.query?.bookingFieldsResponses?.professional || '',\n  procedure: $('EWT').item?.json?.query?.bookingFieldsResponses?.procedure || '',\n  method_payment: $('EWT').item?.json?.query?.bookingFieldsResponses?.method_payment || '',\n  name_plan: $('EWT').item?.json?.query?.bookingFieldsResponses?.name_plan || '',\n  price: $('EWT').item?.json?.query?.bookingFieldsResponses?.price || ''\n} }}"
             },
             {
               "name": "attendee",
@@ -1794,6 +1794,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-23T02:59:04.944Z",
-  "versionId": "c0eac874-8b8b-4c34-af52-4577fae5d60b"
+  "updatedAt": "2024-11-24T15:40:21.905Z",
+  "versionId": "93820db9-c2a3-408f-8436-610d82a66170"
 }
