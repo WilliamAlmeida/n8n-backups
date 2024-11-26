@@ -1766,13 +1766,26 @@
     "EWT": [
       {
         "json": {
-          "action": "list bookings",
-          "remoteJid": "5512982184879",
           "query": {
-            "email": "",
-            "event_id": "",
-            "status": "all"
-          }
+            "start": "2024-11-26T09:00:00-03:00",
+            "title": "Exame Hemograma Completo",
+            "description": "Exame Hemograma Completo",
+            "attendee": {
+              "name": "William Almeida",
+              "email": "williamkillerca@hotmail.com"
+            },
+            "event_id": "1435237",
+            "bookingFieldsResponses": {
+              "notes": "",
+              "cellphone": "5512982184879",
+              "professional": "Hemograma Completo",
+              "procedure": "Exame Hemograma Completo",
+              "method_payment": "",
+              "name_plan": "",
+              "price": ""
+            }
+          },
+          "action": "schedule booking"
         }
       }
     ]
@@ -1808,6 +1821,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-25T03:53:24.239Z",
-  "versionId": "9cfe1e35-b14a-48c3-8e2b-643920d01a14"
+  "updatedAt": "2024-11-25T18:09:44.744Z",
+  "versionId": "ab8ba741-f411-4d9a-aaab-24c9c165f2dc"
 }
