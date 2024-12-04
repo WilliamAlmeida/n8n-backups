@@ -5,53 +5,7 @@
       "main": [
         [
           {
-            "node": "Request to Tool?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch Tool": {
-      "main": [
-        [
-          {
-            "node": "Get Health Plans",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Specialists",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Payments",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Exams",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Details Exam",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Details Calendar",
+            "node": "baseInfo",
             "type": "main",
             "index": 0
           }
@@ -274,6 +228,11 @@
         [
           {
             "node": "List Health Plans",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Request Health Plans",
             "type": "main",
             "index": 0
           }
@@ -681,6 +640,68 @@
           }
         ]
       ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Request to Tool?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Tool": {
+      "main": [
+        [
+          {
+            "node": "Get Health Plans",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Specialists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Payments",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Exams",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Details Exam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Details Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Health Plans": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-11-20T23:14:48.268Z",
@@ -697,173 +718,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        2040,
+        1860,
         480
-      ]
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.tool }}",
-                    "rightValue": "health plans",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "health plans"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "5ece5fd9-4267-4bf2-a1b7-23b5d1c2362f",
-                    "leftValue": "={{ $json.tool }}",
-                    "rightValue": "specialists",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Procedures"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "42639684-02d9-4a30-96b2-cf1cb1df7b74",
-                    "leftValue": "={{ $json.tool }}",
-                    "rightValue": "payments",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "payments"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "82cfd93c-100b-4167-a74a-97be2345ff5e",
-                    "leftValue": "={{ $json.tool }}",
-                    "rightValue": "exams",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "exams"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "842d1b7b-1008-4d19-b983-c6cab57bb716",
-                    "leftValue": "={{ $json.tool }}",
-                    "rightValue": "exam details",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "exam details"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "9b5f5609-379c-4f48-acb1-f823cf989818",
-                    "leftValue": "={{ $json.tool }}",
-                    "rightValue": "calendar details",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "calendar details"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "0c2b1d20-14eb-4d9a-85ce-ec668caf8aa9",
-      "name": "Switch Tool",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        2420,
-        440
       ]
     },
     {
@@ -1622,7 +1478,7 @@
         "aggregate": "aggregateAllItemData",
         "destinationFieldName": "=data",
         "include": "specifiedFields",
-        "fieldsToInclude": "title,status",
+        "fieldsToInclude": "title,accept",
         "options": {}
       },
       "type": "n8n-nodes-base.aggregate",
@@ -1642,7 +1498,7 @@
             {
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
-              "value": "={{ $('List Health Plans').all().map(item => {\n  return {\n  plan: item.json.title,\n  accept: item.json.status == 'a' ? 'yes' : 'no'\n  }\n}) }}",
+              "value": "={{ $('Request Health Plans').all().map(item => {\n  return {\n  plan: item.json.title,\n  accept: item.json.accept ? 'yes' : 'no'\n  }\n}) }}",
               "type": "array"
             }
           ]
@@ -2557,6 +2413,241 @@
       ],
       "id": "e5729267-7f67-4482-8efc-f76583406d3b",
       "name": "Filter by 4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://clinic.ibox.delivery/api",
+              "type": "string"
+            },
+            {
+              "id": "cba0f455-7850-4814-b43c-835c1ff047d4",
+              "name": "token",
+              "value": "Bearer 5|gqnf1tRiZmTwvVNa6msGbsCr47pNbG63FduFrnb1deef2bf9",
+              "type": "string"
+            },
+            {
+              "id": "f4fb084d-ab88-43d1-b2a9-5e1b88ac5508",
+              "name": "tenant_id",
+              "value": "74d4c652-0feb-46a7-bc09-c4e434d7fbd2",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fc44cecd-cd13-4f7e-82f3-5e0d86801ddf",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2040,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/{{ $('baseInfo').item.json.tenant_id }}/health-plans",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $json.token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "dbf53399-d3bc-4da5-ba6e-58f0021224b7",
+      "name": "Request Health Plans",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        -820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "health plans",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "health plans"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5ece5fd9-4267-4bf2-a1b7-23b5d1c2362f",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "specialists",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Procedures"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "42639684-02d9-4a30-96b2-cf1cb1df7b74",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "payments",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "payments"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "82cfd93c-100b-4167-a74a-97be2345ff5e",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "exams",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exams"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "842d1b7b-1008-4d19-b983-c6cab57bb716",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "exam details",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exam details"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9b5f5609-379c-4f48-acb1-f823cf989818",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "calendar details",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "calendar details"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0c2b1d20-14eb-4d9a-85ce-ec668caf8aa9",
+      "name": "Switch Tool",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2420,
+        440
+      ]
     }
   ],
   "pinData": {
@@ -2606,6 +2697,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-02T14:16:28.116Z",
-  "versionId": "3ad5176a-0e25-4cb7-b967-60ebd9a5e045"
+  "updatedAt": "2024-12-04T03:53:40.690Z",
+  "versionId": "bc9fd39b-0386-4b2a-a883-2695c9860060"
 }
