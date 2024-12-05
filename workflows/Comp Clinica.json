@@ -697,11 +697,6 @@
           }
         ]
       ]
-    },
-    "Request Health Plans": {
-      "main": [
-        []
-      ]
     }
   },
   "createdAt": "2024-11-20T23:14:48.268Z",
@@ -2427,13 +2422,7 @@
             {
               "id": "cba0f455-7850-4814-b43c-835c1ff047d4",
               "name": "token",
-              "value": "Bearer 5|gqnf1tRiZmTwvVNa6msGbsCr47pNbG63FduFrnb1deef2bf9",
-              "type": "string"
-            },
-            {
-              "id": "f4fb084d-ab88-43d1-b2a9-5e1b88ac5508",
-              "name": "tenant_id",
-              "value": "74d4c652-0feb-46a7-bc09-c4e434d7fbd2",
+              "value": "Bearer 6|Cm1i7XlxafaSh9cCrTbyRghrCoKEHRdQJbbDI8aN2fab299e",
               "type": "string"
             }
           ]
@@ -2451,7 +2440,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/{{ $('baseInfo').item.json.tenant_id }}/health-plans",
+        "url": "={{ $('baseInfo').item.json.url_api }}/health-plans",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -2697,6 +2686,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-04T03:53:40.690Z",
-  "versionId": "bc9fd39b-0386-4b2a-a883-2695c9860060"
+  "updatedAt": "2024-12-04T15:41:43.077Z",
+  "versionId": "56a50bbd-6713-4561-8301-915eab12e66f"
 }
