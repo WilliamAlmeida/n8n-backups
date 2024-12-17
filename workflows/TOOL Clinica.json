@@ -182,22 +182,6 @@
         ]
       ]
     },
-    "Chat": {
-      "main": [
-        [
-          {
-            "node": "Query",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "EWT Fixed",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Request to Tool?": {
       "main": [
         [
@@ -443,6 +427,22 @@
         [
           {
             "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "Query",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "EWT Fixed",
             "type": "main",
             "index": 0
           }
@@ -820,13 +820,12 @@
         1600
       ],
       "id": "4dd86eb4-e62e-4eb1-aa78-07e5772bba38",
-      "name": "Find Existing Appt Tool",
-      "disabled": true
+      "name": "Find Existing Appt Tool"
     },
     {
       "parameters": {
         "name": "cancel_appt_tool",
-        "description": "=Call this tool to cancel an appointment using a booking UID.\n\n## Inputs Required:\n- Booking UID (string, required).\n- Reason for cancellation (string, required).\n\n## Workflow:\n1. Verify the booking UID before proceeding.\n2. Confirm with the user before cancelling.\n3. Cancel the appointment and notify the user.",
+        "description": "=Call this tool to cancel an appointment using a booking ID.\n\n## Inputs Required:\n- Booking ID (string, required).\n- Reason for cancellation (string, required).\n\n## Workflow:\n1. Verify the booking ID before proceeding.\n2. Confirm with the user before cancelling.\n3. Cancel the appointment and notify the user.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -843,7 +842,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"booking_uid\": {\n      \"type\": \"string\",\n      \"description\": \"Booking UID of the booking\"\n    },\n    \"cancellationReason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\"booking_uid\", \"cancellationReason\"]\n}\n"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"Booking ID of the booking\"\n    },\n    \"cancellation_reason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\"booking_id\", \"cancellation_reason\"]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -852,13 +851,12 @@
         1580
       ],
       "id": "ac72bff6-f5b8-4597-bd79-d21574a4695c",
-      "name": "Cancel Appt Tool",
-      "disabled": true
+      "name": "Cancel Appt Tool"
     },
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "Call this tool to schedule a booking.\n\n## Inputs Required:\n- User email (string, required).\n- Full name (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Cellphone (string, required).\n\n## Workflow:\n1. Ensure all inputs are valid before proceeding.\n2. If scheduling fails, log the issue and notify the user.\n3. Confirm the booking and notify the user of the booking UID.\n",
+        "description": "Call this tool to schedule a booking.\n\n## Inputs Required:\n- User email (string, required).\n- Full name (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Cellphone (string, required).\n\n## Workflow:\n1. Ensure all inputs are valid before proceeding.\n2. If scheduling fails, log the issue and notify the user.\n3. Confirm the booking and notify the user of the booking ID.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -875,7 +873,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"description\":\"Date and time of the start of the booking in ISO format\"},\"title\":{\"type\":\"string\",\"description\":\"Title of the appointment\"},\"description\":{\"type\":\"string\",\"description\":\"Description of the appointment\"},\"attendee\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"required\":[\"name\",\"email\"]},\"event_id\":{\"type\":\"string\",\"description\":\"Event ID related to the booking\"},\"bookingFieldsResponses\":{\"type\":\"object\",\"properties\":{\"notes\":{\"type\":\"string\"},\"cellphone\":{\"type\":\"string\",\"description\":\"12982184877\"},\"professional\":{\"type\":\"string\"},\"procedure\":{\"type\":\"string\"},\"method_payment\":{\"type\":\"string\",\"description\":\"optional\"},\"name_plan\":{\"type\":\"string\",\"description\":\"optional\"},\"price\":{\"type\":\"string\",\"description\":\"optional\"}},\"required\":[\"cellphone\",\"professional\",\"procedure\"]}},\"required\":[\"start\",\"title\",\"attendee\",\"event_id\",\"bookingFieldsResponses\"]}"
+        "inputSchema": "{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"description\":\"Date and time of the start of the booking in ISO format\"},\"attendee\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"cellphone\":{\"type\":\"string\",\"description\":\"12982184877\"}},\"required\":[\"name\",\"email\",\"cellphone\"]},\"event_id\":{\"type\":\"string\",\"description\":\"Event ID\"},\"bookingFieldsResponses\":{\"type\":\"object\",\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"optional\"},\"description\":{\"type\":\"string\",\"description\":\"optional\"},\"method_payment\":{\"type\":\"string\",\"description\":\"optional\"},\"name_plan\":{\"type\":\"string\",\"description\":\"optional\"}}}},\"required\":[\"start\",\"attendee\",\"event_id\",\"bookingFieldsResponses\"]}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -884,8 +882,7 @@
         1600
       ],
       "id": "c56148c9-e174-4896-8c12-f6eff039ed39",
-      "name": "Schedule Appt Tool",
-      "disabled": true
+      "name": "Schedule Appt Tool"
     },
     {
       "parameters": {
@@ -979,20 +976,6 @@
       ],
       "id": "f49b0c91-1cbb-45bf-85eb-c1c5e6d56ffc",
       "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "760374de-6e34-46ca-9918-905a36c32c1d",
-      "name": "Chat",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        320,
-        1000
-      ],
-      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a"
     },
     {
       "parameters": {
@@ -1102,7 +1085,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1634,6 +1618,20 @@
     },
     {
       "parameters": {
+        "options": {}
+      },
+      "id": "760374de-6e34-46ca-9918-905a36c32c1d",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        1000
+      ],
+      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a"
+    },
+    {
+      "parameters": {
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
@@ -1706,6 +1704,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-17T14:18:48.150Z",
-  "versionId": "2c1c7a6d-b7f5-426f-905a-1e943cb55ab0"
+  "updatedAt": "2024-12-17T21:36:49.203Z",
+  "versionId": "e001326f-cdfa-4354-bc33-89f12b315002"
 }
