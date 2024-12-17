@@ -1767,25 +1767,11 @@
       {
         "json": {
           "query": {
-            "start": "2024-11-26T09:00:00-03:00",
-            "title": "Exame Hemograma Completo",
-            "description": "Exame Hemograma Completo",
-            "attendee": {
-              "name": "William Almeida",
-              "email": "williamkillerca@hotmail.com"
-            },
-            "event_id": "1435237",
-            "bookingFieldsResponses": {
-              "notes": "",
-              "cellphone": "5512982184879",
-              "professional": "Hemograma Completo",
-              "procedure": "Exame Hemograma Completo",
-              "method_payment": "",
-              "name_plan": "",
-              "price": ""
-            }
+            "event_id": "1",
+            "startTime": "2024-12-17T00:00:00Z",
+            "endTime": "2024-12-18T00:00:00Z"
           },
-          "action": "schedule booking"
+          "action": "availability"
         }
       }
     ]
@@ -1821,6 +1807,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-25T18:09:44.744Z",
-  "versionId": "ab8ba741-f411-4d9a-aaab-24c9c165f2dc"
+  "updatedAt": "2024-12-17T14:17:00.853Z",
+  "versionId": "63d61c4b-625b-436f-bb2e-abd3065eae78"
 }
