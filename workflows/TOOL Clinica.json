@@ -477,7 +477,8 @@
       "position": [
         740,
         760
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -502,8 +503,7 @@
       "position": [
         520,
         920
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -518,8 +518,7 @@
       "position": [
         520,
         1080
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {},
@@ -731,9 +730,9 @@
         "description": "Call this tool to get availability for appointments using event ID.\n\n## Inputs Required:\n- Event ID (number, required).\n- Start date and time in ISO format (string, required).\n- End date and time in ISO format (string, required).\n\n## Workflow:\n1. Use the event ID to check available slots.\n2. Return all available time slots for the specified event.",
         "workflowId": {
           "__rl": true,
-          "value": "5LfFRdaepFJdM4yE",
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -762,9 +761,9 @@
         "description": "=Call this tool to retrieve details of an existing booking using a booking UID.\n\n## Inputs Required:\n- Booking UID (string, required).\n\n## Workflow:\n1. Provide the booking UID to locate the existing booking.\n2. Return the booking details or notify if not found.",
         "workflowId": {
           "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "value": "5LfFRdaepFJdM4yE",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -794,9 +793,9 @@
         "description": "=Call this tool to find existing reservations using the user's email address.\n\n## Inputs Required:\n- User email (string, required).\n- Event ID (string, optional).\n- Status (string, optional, default: \"all\").\n\n## Workflow:\n1. Search for bookings matching the provided email.\n2. Return matching reservations or notify if not found.",
         "workflowId": {
           "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "value": "5LfFRdaepFJdM4yE",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -821,7 +820,8 @@
         1600
       ],
       "id": "4dd86eb4-e62e-4eb1-aa78-07e5772bba38",
-      "name": "Find Existing Appt Tool"
+      "name": "Find Existing Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -829,9 +829,9 @@
         "description": "=Call this tool to cancel an appointment using a booking UID.\n\n## Inputs Required:\n- Booking UID (string, required).\n- Reason for cancellation (string, required).\n\n## Workflow:\n1. Verify the booking UID before proceeding.\n2. Confirm with the user before cancelling.\n3. Cancel the appointment and notify the user.",
         "workflowId": {
           "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "value": "5LfFRdaepFJdM4yE",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -852,7 +852,8 @@
         1580
       ],
       "id": "ac72bff6-f5b8-4597-bd79-d21574a4695c",
-      "name": "Cancel Appt Tool"
+      "name": "Cancel Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -860,9 +861,9 @@
         "description": "Call this tool to schedule a booking.\n\n## Inputs Required:\n- User email (string, required).\n- Full name (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Cellphone (string, required).\n\n## Workflow:\n1. Ensure all inputs are valid before proceeding.\n2. If scheduling fails, log the issue and notify the user.\n3. Confirm the booking and notify the user of the booking UID.\n",
         "workflowId": {
           "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "value": "5LfFRdaepFJdM4yE",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -883,7 +884,8 @@
         1600
       ],
       "id": "c56148c9-e174-4896-8c12-f6eff039ed39",
-      "name": "Schedule Appt Tool"
+      "name": "Schedule Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -891,9 +893,9 @@
         "description": "=Call this tool to reschedule an appointment using a booking UID.\n\n## Required inputs:\n- Booking UID (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Reason for rescheduling (string, required).\n\n## Workflow:\n1. Verify the booking UID before proceeding.\n2. Confirm with the user before rescheduling.\n3. Reschedule the appointment and notify the user.",
         "workflowId": {
           "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "value": "5LfFRdaepFJdM4yE",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -914,7 +916,8 @@
         1600
       ],
       "id": "0fb315e4-d637-4167-b8b0-cf776e9a551e",
-      "name": "Reschedule Appt Tool"
+      "name": "Reschedule Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -989,8 +992,7 @@
         320,
         1000
       ],
-      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a",
-      "disabled": true
+      "webhookId": "9b335b26-b235-4e2a-85f2-e94e7742d93a"
     },
     {
       "parameters": {
@@ -1005,8 +1007,7 @@
       "position": [
         740,
         1000
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1101,8 +1102,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1327,7 +1327,7 @@
     {
       "parameters": {
         "name": "list_exams_tool",
-        "description": "Call this tool to obtain CALENDAR ID of exam and him use on calendar_event_id_tool to retrive event ID to use on booking.\n\n## Workflow:\n1. Use the tool to retrieve the calendar ID.\n2. Return calendar ids as list.",
+        "description": "Call this tool to obtain EVENT ID of exam to use on booking.\n\n## Workflow:\n1. Use the tool to retrieve the event ID.\n2. Return event ids as list.",
         "workflowId": {
           "__rl": true,
           "value": "pliyk2HChCR880pK",
@@ -1361,7 +1361,7 @@
     {
       "parameters": {
         "name": "specialists_tool",
-        "description": "Call this tool to obtain CALENDAR ID of specialist (doctor) and him use on calendar_event_id_tool to retrive event ID to use on booking.\n\n## Workflow:\n1. Use the tool to retrieve the calendar ID.\n2. Return calendar ids as list.",
+        "description": "Call this tool to obtain EVENT ID of specialist (doctor) to use on booking.\n\n## Workflow:\n1. Use the tool to retrieve the event ID.\n2. Return event ids as list.",
         "workflowId": {
           "__rl": true,
           "value": "pliyk2HChCR880pK",
@@ -1387,8 +1387,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2120,
-        1580
+        2000,
+        1620
       ]
     },
     {
@@ -1397,9 +1397,9 @@
         "description": "Call this tool to obtain and verify event id that wil be used to schedule a consult with doctors or exams.\n\n## Required inputs:\n- Calendar ID (number, required).\n\n## Workflow:\n1. Use the calendar ID to retrieve the event ID.\n2. Return all calendar's information to manage a booking.",
         "workflowId": {
           "__rl": true,
-          "value": "pliyk2HChCR880pK",
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "cachedResultName": "Comp Clinica"
+          "cachedResultName": "COMP AIClinic"
         },
         "fields": {
           "values": [
@@ -1423,9 +1423,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2000,
-        1640
-      ]
+        2120,
+        1560
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1636,7 +1637,7 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=You are a helpful assistant who schedules medical appointments and tests at a clinic.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
+          "systemMessage": "=You are a helpful assistant who schedules medical appointments and tests at a clinic.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking ID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking ID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation ID and reason for cancellation.\n  - If the user doesn't know the ID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
           "maxIterations": 7
         }
       },
@@ -1705,6 +1706,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-25T18:24:07.460Z",
-  "versionId": "e464208d-1380-4103-bd4b-e11eead264e7"
+  "updatedAt": "2024-12-17T14:18:48.150Z",
+  "versionId": "2c1c7a6d-b7f5-426f-905a-1e943cb55ab0"
 }
