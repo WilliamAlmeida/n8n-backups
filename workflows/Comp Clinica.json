@@ -45,87 +45,11 @@
         ]
       ]
     },
-    "Exam not found?": {
-      "main": [
-        [
-          {
-            "node": "Response Error 5",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Calendar Exam 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Specialists": {
       "main": [
         [
           {
             "node": "Cached? 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Details Calendar": {
-      "main": [
-        [
-          {
-            "node": "Cached? 6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Details Calendar": {
-      "main": [
-        [
-          {
-            "node": "Aggregate 6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calendar not found?": {
-      "main": [
-        [
-          {
-            "node": "Response Error 6",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Format 6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Exams not found?": {
-      "main": [
-        [
-          {
-            "node": "Response Error 4",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Calendar Exam 1",
             "type": "main",
             "index": 0
           }
@@ -244,24 +168,6 @@
         ]
       ]
     },
-    "Cached? 6": {
-      "main": [
-        [
-          {
-            "node": "Details Calendar",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Response 6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Load Data 1": {
       "main": [
         [
@@ -273,77 +179,11 @@
         ]
       ]
     },
-    "Aggregate 1": {
-      "main": [
-        [
-          {
-            "node": "Format 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Format 1": {
       "main": [
         [
           {
             "node": "Set Cache 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate 2": {
-      "main": [
-        [
-          {
-            "node": "Format 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate 3": {
-      "main": [
-        [
-          {
-            "node": "Format 3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate 4": {
-      "main": [
-        [
-          {
-            "node": "Exams not found?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate 5": {
-      "main": [
-        [
-          {
-            "node": "Exam not found?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate 6": {
-      "main": [
-        [
-          {
-            "node": "Calendar not found?",
             "type": "main",
             "index": 0
           }
@@ -438,17 +278,6 @@
         ]
       ]
     },
-    "Get Calendar Exam 1": {
-      "main": [
-        [
-          {
-            "node": "Format 4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Format 4": {
       "main": [
         [
@@ -487,39 +316,6 @@
         [
           {
             "node": "Set Save 5",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Calendar Exam 2": {
-      "main": [
-        [
-          {
-            "node": "Format 5",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Format 6": {
-      "main": [
-        [
-          {
-            "node": "Set Save 6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set Save 6": {
-      "main": [
-        [
-          {
-            "node": "Response 6",
             "type": "main",
             "index": 0
           }
@@ -592,6 +388,50 @@
         ]
       ]
     },
+    "List Health Plans": {
+      "main": [
+        [
+          {
+            "node": "Not found? ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Payments": {
+      "main": [
+        [
+          {
+            "node": "Not found? 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Exams": {
+      "main": [
+        [
+          {
+            "node": "Not found? 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Details Exam": {
+      "main": [
+        [
+          {
+            "node": "Not found? 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Switch Tool": {
       "main": [
         [
@@ -629,64 +469,104 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Get Details Calendar",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "List Health Plans": {
-      "main": [
-        [
-          {
-            "node": "Aggregate 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "List Specialists": {
       "main": [
         [
           {
-            "node": "Aggregate 2",
+            "node": "Not found? 2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "List Payments": {
+    "Not found? 2": {
       "main": [
         [
           {
-            "node": "Aggregate 3",
+            "node": "Response Error  2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "List Exams": {
+    "Not found? 3": {
       "main": [
         [
           {
-            "node": "Aggregate 4",
+            "node": "Response Error  3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Details Exam": {
+    "Not found? 4": {
       "main": [
         [
           {
-            "node": "Aggregate 5",
+            "node": "Response Error 4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? 5": {
+      "main": [
+        [
+          {
+            "node": "Response Error 5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? ": {
+      "main": [
+        [
+          {
+            "node": "Response Error  ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 1",
             "type": "main",
             "index": 0
           }
@@ -750,7 +630,7 @@
       "parameters": {
         "content": "## Specialists\nList with Professionals, Procedures\nand ID",
         "height": 360,
-        "width": 1035.169890751311,
+        "width": 1266.4586534267564,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -805,7 +685,7 @@
       "parameters": {
         "content": "## Details Exam\nInformations about a Exam",
         "height": 360,
-        "width": 1420,
+        "width": 1140.9918728790954,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -829,7 +709,7 @@
       "typeVersion": 1,
       "position": [
         3280,
-        1180
+        1140
       ],
       "id": "a70b4df2-8129-4f13-8a2b-ccb3616a59e1",
       "name": "Get Details Exam",
@@ -839,39 +719,6 @@
           "name": "vps"
         }
       }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
-              "leftValue": "={{ $json.data.length }}",
-              "rightValue": 0,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3840,
-        1080
-      ],
-      "id": "55fcda0e-6563-4bca-b682-e8ec4df80a71",
-      "name": "Exam not found?"
     },
     {
       "parameters": {
@@ -898,156 +745,9 @@
     },
     {
       "parameters": {
-        "content": "## Details Calendar\nInformations about Calendar",
-        "height": 360,
-        "width": 1280,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        3240,
-        1420
-      ],
-      "id": "d034d4ec-f57f-4559-bafa-ce5205196221",
-      "name": "Sticky Note5"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "data",
-        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_calendar_detail_{{ $('EWT').item.json.query.calendar_id }}",
-        "keyType": "string",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        3280,
-        1600
-      ],
-      "id": "6e096d0a-c952-46ad-9107-be175bbab8dd",
-      "name": "Get Details Calendar",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "tableId": "clinic_calendars",
-        "returnAll": true,
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "condition": "eq",
-              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
-            },
-            {
-              "keyName": "active",
-              "condition": "eq",
-              "keyValue": "true"
-            },
-            {
-              "keyName": "id",
-              "condition": "eq",
-              "keyValue": "={{ $('EWT').item.json.query.calendar_id }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        3560,
-        1500
-      ],
-      "id": "ce07fcae-a824-4711-be0d-3436df78a3ef",
-      "name": "Details Calendar",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
-              "leftValue": "={{ $json.data.length }}",
-              "rightValue": 0,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3840,
-        1500
-      ],
-      "id": "3538da89-6578-4bac-94ae-26046ec14c85",
-      "name": "Calendar not found?"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
-              "leftValue": "={{ $json.data.length }}",
-              "rightValue": 0,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3840,
-        620
-      ],
-      "id": "dceda59c-5e83-43f8-b2a0-ee7d9ce4f437",
-      "name": "Exams not found?"
-    },
-    {
-      "parameters": {
         "content": "## Payments\nList Payment Methods",
         "height": 360,
-        "width": 1020,
+        "width": 1272.416101573684,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1086,7 +786,7 @@
       "parameters": {
         "content": "## Health Plans",
         "height": 381.01112150694547,
-        "width": 1034.361622986691
+        "width": 1266.7623508673068
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -1285,44 +985,10 @@
       "typeVersion": 2.2,
       "position": [
         3420,
-        1180
+        1140
       ],
       "id": "aaeb8295-d253-4339-8f22-e5fd6241953f",
       "name": "Cached? 5"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "08781159-d933-43ce-8f8d-c043d0501403",
-              "leftValue": "={{ $json.data }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        3420,
-        1600
-      ],
-      "id": "3e792c3a-aa6e-46ed-9d82-7d99c8ec566a",
-      "name": "Cached? 6"
     },
     {
       "parameters": {
@@ -1342,28 +1008,10 @@
       "typeVersion": 3.4,
       "position": [
         3580,
-        -500
+        -480
       ],
       "id": "c9738ebe-c686-4032-a641-ddd312edf7c8",
       "name": "Load Data 1"
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "destinationFieldName": "=data",
-        "include": "specifiedFields",
-        "fieldsToInclude": "title,accept",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3720,
-        -660
-      ],
-      "id": "01117a7c-9506-4ea2-b85e-c866057b1b6f",
-      "name": "Aggregate 1",
-      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -1382,8 +1030,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3860,
-        -660
+        3900,
+        -580
       ],
       "id": "b569658b-d45f-4362-9a4a-7eec0f7a69de",
       "name": "Format 1",
@@ -1414,95 +1062,9 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4140,
-        -500
+        4360,
+        -480
       ]
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "destinationFieldName": "=data",
-        "include": "allFieldsExcept",
-        "fieldsToExclude": "instance_name,active,created_at,empresa,cal_username",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3720,
-        -220
-      ],
-      "id": "3d3ffbb7-d054-41e6-bff7-3081f0decf00",
-      "name": "Aggregate 2",
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "destinationFieldName": "=data",
-        "include": "specifiedFields",
-        "fieldsToInclude": "title,accept",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3720,
-        200
-      ],
-      "id": "c0140209-f673-4911-9881-89c50d8274d0",
-      "name": "Aggregate 3",
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "destinationFieldName": "=data",
-        "include": "specifiedFields",
-        "fieldsToInclude": "id,title,calendar_id",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3700,
-        620
-      ],
-      "id": "a619a644-4863-4593-b6bc-a41cd103073c",
-      "name": "Aggregate 4",
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "include": "allFieldsExcept",
-        "fieldsToExclude": "tenant_id,created_at,updated_at,deleted_at",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3700,
-        1080
-      ],
-      "id": "6b1dd99b-9115-4a91-a4aa-6e8a109d7870",
-      "name": "Aggregate 5"
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "include": "allFieldsExcept",
-        "fieldsToExclude": "instance_name,active,type,created_at,id",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3700,
-        1500
-      ],
-      "id": "426b9e0b-3687-4aa4-88f6-835c70216a1e",
-      "name": "Aggregate 6"
     },
     {
       "parameters": {
@@ -1511,7 +1073,7 @@
             {
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
-              "value": "={{ $('List Payments').all().map(item => {\n  return {\n  payment: item.json.title,\n  accept: item.json.accept ? 'yes' : 'no'\n  }\n}) }}",
+              "value": "={{ $json.data.map(item => {\n  return {\n  payment: item.title,\n  accept: item.accept ? 'yes' : 'no'\n  }\n}) }}",
               "type": "array"
             }
           ]
@@ -1521,8 +1083,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3860,
-        200
+        3920,
+        260
       ],
       "id": "f781db03-f0ab-43f3-9e8f-3444dd3a8413",
       "name": "Format 3"
@@ -1534,7 +1096,7 @@
             {
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
-              "value": "={{ $('List Specialists').all().map(item => {\n  return {\n  professional: item.json.professional,\n  procedure: item.json.procedure,\n  price: item.json.price,\n  crm: item.json.crm,\n  calendar_id: item.json.calendar_id,\n  id: item.json.id\n  }\n}) }}",
+              "value": "={{ $json.data.map(item => {\n  return {\n  professional: item.title,\n  procedure: item.procedure,\n  price: item.price,\n  crm: item.crm,\n  event_id: item.event_id,\n  id: item.id\n  }\n}) }}",
               "type": "array"
             }
           ]
@@ -1544,8 +1106,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3860,
-        -220
+        3920,
+        -160
       ],
       "id": "2d566f14-cfe4-4a95-89cb-92b2858b506a",
       "name": "Format 2"
@@ -1562,8 +1124,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4000,
-        -220
+        4080,
+        -160
       ],
       "id": "e2c3e1cb-2a03-4472-97f2-6419f79ee4dc",
       "name": "Set Cache 2",
@@ -1586,8 +1148,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4000,
-        -660
+        4060,
+        -580
       ],
       "id": "9ead2e9a-b223-4308-9494-6fd209c934af",
       "name": "Set Cache 1",
@@ -1605,7 +1167,7 @@
             {
               "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
               "name": "response",
-              "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, calendar ID ${item.calendar_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}\n",
+              "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, event ID ${item.event_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}\n",
               "type": "string"
             },
             {
@@ -1623,7 +1185,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4140,
+        4360,
         -60
       ]
     },
@@ -1662,8 +1224,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4000,
-        200
+        4080,
+        260
       ],
       "id": "485313f7-023d-4bbc-8f7f-59493091e69b",
       "name": "Set Save 3",
@@ -1699,7 +1261,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4140,
+        4360,
         360
       ]
     },
@@ -1745,7 +1307,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4020,
+        4220,
         600
       ]
     },
@@ -1797,45 +1359,12 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "tableId": "clinic_calendars",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
-            },
-            {
-              "keyName": "type",
-              "keyValue": "c"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        4220,
-        620
-      ],
-      "id": "77dbc5c8-e24b-40c4-9b72-f577ab326ffd",
-      "name": "Get Calendar Exam 1",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
-              "value": "={{ $('List Exams').all().map(item => {\n  return {\n  exam: item.json.title,\n  calendar_id: item.json.calendar_id ? item.json.calendar_id : $json.id,\n  id: item.json.id\n  }\n}) }}",
+              "value": "={{ $json.data.map(item => i = {\n  id: item.id,\n  title: item.title,\n  event_id: item.event_id,\n}) }}",
               "type": "array"
             }
           ]
@@ -1845,8 +1374,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4360,
-        620
+        3920,
+        680
       ],
       "id": "7bb88368-9c1b-49ae-90c3-dbecc75ccf79",
       "name": "Format 4"
@@ -1863,8 +1392,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4500,
-        620
+        4080,
+        680
       ],
       "id": "92a81d93-0c57-4b4a-accf-e36b8450e8b5",
       "name": "Set Save 4",
@@ -1894,7 +1423,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4020,
+        4220,
         1020
       ]
     },
@@ -1910,8 +1439,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4500,
-        1040
+        4080,
+        1100
       ],
       "id": "329d319d-cec4-441b-afc9-088307e92040",
       "name": "Set Save 5",
@@ -1929,14 +1458,8 @@
             {
               "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
               "name": "data",
-              "value": "={{ $('Aggregate 5').first().json.data.first() }}",
+              "value": "={{ $json.data.removeField('created_at') }}",
               "type": "object"
-            },
-            {
-              "id": "20f5ab55-5fd2-4abf-8b9d-e93a72e562cd",
-              "name": "data.calendar_id",
-              "value": "={{ $json.id ?? null }}",
-              "type": "string"
             }
           ]
         },
@@ -1945,8 +1468,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4360,
-        1040
+        3920,
+        1100
       ],
       "id": "c3a3a38b-155a-44f1-8577-5e3f185d7a10",
       "name": "Format 5"
@@ -1970,134 +1493,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4500,
+        4220,
         1200
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "clinic_calendars",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "instance_name",
-              "keyValue": "={{ $('EWT').item.json.messageInfo.instance }}"
-            },
-            {
-              "keyName": "type",
-              "keyValue": "c"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        4220,
-        1040
-      ],
-      "id": "12d8e7cd-9783-42e1-b1b9-a5e314d099b0",
-      "name": "Get Calendar Exam 2",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
-              "name": "response",
-              "value": "=calendar with event id not found using id {{ $('EWT').first().json.query.calendar_id }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "e8a53acd-23b0-4b19-93c3-2266ba2ec347",
-      "name": "Response Error 6",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4000,
-        1440
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
-              "name": "data",
-              "value": "={{ $json.data.first() }}",
-              "type": "object"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4220,
-        1460
-      ],
-      "id": "d249b356-c30e-4785-8304-73cd8b3a2e21",
-      "name": "Format 6"
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_calendar_detail_{{ $('EWT').item.json.query.calendar_id }}",
-        "value": "={{ $json.data.toJsonString() }}",
-        "keyType": "string",
-        "expire": true,
-        "ttl": 120
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        4360,
-        1460
-      ],
-      "id": "a140e2c9-019f-4fae-9d31-d2586a048922",
-      "name": "Set Save 6",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
-              "name": "response",
-              "value": "={{ $json.data }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "0dd07706-64ad-45eb-8e5a-830010b874a5",
-      "name": "Response 6",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4360,
-        1620
       ]
     },
     {
@@ -2140,8 +1537,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4000,
-        -500
+        4220,
+        -480
       ],
       "id": "25b0a4ec-b104-498d-8544-c73c745ebd4e",
       "name": "Filter by 1"
@@ -2163,7 +1560,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4000,
+        4220,
         -60
       ],
       "id": "036c6851-b591-4d8d-b563-062e2cd7d99a",
@@ -2186,7 +1583,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4000,
+        4220,
         360
       ],
       "id": "3c73434f-ba42-4b09-ac4e-958dcc57844c",
@@ -2222,13 +1619,13 @@
             {
               "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
               "name": "url_api",
-              "value": "https://clinic.ibox.delivery/api",
+              "value": "https://clinic.ibox.delivery/api/v1",
               "type": "string"
             },
             {
               "id": "cba0f455-7850-4814-b43c-835c1ff047d4",
               "name": "token",
-              "value": "Bearer 7|ECFTjIREybf0fFYQSWTBKm9dVg6oajvAeoL3lks45eb2f3c9",
+              "value": "Bearer 2|FdlITx46WBqWbyhGLnmSz1SnquX1VAy6nvtA2LPwf88cd97b",
               "type": "string"
             }
           ]
@@ -2242,6 +1639,176 @@
       "position": [
         2040,
         480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/health-plans",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "dbf53399-d3bc-4da5-ba6e-58f0021224b7",
+      "name": "List Health Plans",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        -660
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "b09384c0-10c5-44a2-81bd-ff7e1bbb9fe9",
+      "name": "List Specialists",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/payment-methods",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "1f894dc4-c1fe-4344-adfe-7019c505d40e",
+      "name": "List Payments",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/exams",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "4b5e732f-c33f-4044-89d4-1915be48b4fa",
+      "name": "List Exams",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3560,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/exams/{{ $('EWT').item.json.query.exam_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "3557e468-8059-42e0-b8e6-ef3575bf13d2",
+      "name": "Details Exam",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        1040
       ]
     },
     {
@@ -2411,172 +1978,241 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/health-plans",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "assignments": {
+          "assignments": [
             {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=payment methods not found",
+              "type": "string"
             }
           ]
         },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "dbf53399-d3bc-4da5-ba6e-58f0021224b7",
-      "name": "List Health Plans",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "id": "51b84bd6-a89b-49b9-bab2-80d8e05c443e",
+      "name": "Response Error  3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        3580,
-        -660
+        4220,
+        180
       ]
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "assignments": {
+          "assignments": [
             {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=payment methods not found",
+              "type": "string"
             }
           ]
         },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "b09384c0-10c5-44a2-81bd-ff7e1bbb9fe9",
-      "name": "List Specialists",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "id": "341cdca4-b94b-40c3-afb8-266e2990bf3e",
+      "name": "Response Error  2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        3580,
+        4220,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
         -220
-      ]
+      ],
+      "id": "ce038637-a8b9-422f-8c69-29b06739bee1",
+      "name": "Not found? 2"
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/payment-methods",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
             }
-          ]
+          ],
+          "combinator": "and"
         },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "1f894dc4-c1fe-4344-adfe-7019c505d40e",
-      "name": "List Payments",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
       "position": [
-        3580,
+        3720,
         200
-      ]
+      ],
+      "id": "6a2607f2-f038-45c0-bfac-d5f0db75f448",
+      "name": "Not found? 3"
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/exams",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
             }
-          ]
+          ],
+          "combinator": "and"
         },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "4b5e732f-c33f-4044-89d4-1915be48b4fa",
-      "name": "List Exams",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
       "position": [
-        3560,
+        3700,
         620
-      ]
+      ],
+      "id": "dceda59c-5e83-43f8-b2a0-ee7d9ce4f437",
+      "name": "Not found? 4"
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/exams/{{ $('EWT').item.json.query.exam_id }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "name": "Accept",
-              "value": "application/json"
-            },
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        1040
+      ],
+      "id": "55fcda0e-6563-4bca-b682-e8ec4df80a71",
+      "name": "Not found? 5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        -660
+      ],
+      "id": "1166da8f-2a52-4a02-a77e-ac9f18394a33",
+      "name": "Not found? "
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=health plans not found",
+              "type": "string"
             }
           ]
         },
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "3557e468-8059-42e0-b8e6-ef3575bf13d2",
-      "name": "Details Exam",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "id": "f0ed5d31-e3e6-4a5a-a7b1-5b675dba4a62",
+      "name": "Response Error  ",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        3560,
-        1080
+        4220,
+        -680
       ]
     }
   ],
@@ -2587,7 +2223,7 @@
           "query": {
             "exam_id": "1"
           },
-          "tool": "exam details",
+          "tool": "specialists",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2627,6 +2263,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-05T18:16:59.581Z",
-  "versionId": "02d63a1e-b28e-4d90-9f80-5d4cda64bd99"
+  "updatedAt": "2024-12-17T13:23:12.919Z",
+  "versionId": "daeedc8b-d3a5-45b3-8dc5-16e1cf5cae92"
 }
