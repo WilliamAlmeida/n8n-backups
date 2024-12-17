@@ -407,7 +407,7 @@
           "conditions": [
             {
               "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
-              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('slots') }}",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('slots') && $json.data.slots.isNotEmpty() }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -432,28 +432,19 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/bookings/{{ $json.data.uid }}/reschedule",
+        "url": "={{ $('baseInfo').item.json.url_api }}/appointments/{{ $json.data.uid }}/reschedule",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.url_api_version_booking }}"
-            }
-          ]
-        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
             {
-              "name": "start",
+              "name": "start_time",
               "value": "={{ $('EWT').item.json.query.start.toDateTime().toUTC() }}"
             },
             {
-              "name": "reschedulingReason",
-              "value": "={{ $('EWT').item.json.query.reschedulingReason ?? '' }}"
+              "name": "rescheduling_reason",
+              "value": "={{ $('EWT').item.json.query.rescheduling_reason ?? '' }}"
             }
           ]
         },
@@ -480,25 +471,16 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
         }
       }
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/bookings/{{ $('EWT').item.json.query.booking_uid }}",
+        "url": "={{ $('baseInfo').item.json.url_api }}/appointments/{{ $('EWT').item.json.query.booking_id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.url_api_version_booking }}"
-            }
-          ]
-        },
         "options": {
           "response": {
             "response": {
@@ -522,8 +504,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "Na7PIpzf1NlFAYwe",
+          "name": "AI Clinic Token"
         }
       }
     },
@@ -541,24 +523,15 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/bookings/{{ $json.data.uid }}/cancel",
+        "url": "={{ $('baseInfo').item.json.url_api }}/appointments/{{ $json.data.id }}/cancel",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.url_api_version_booking }}"
-            }
-          ]
-        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
             {
-              "name": "cancellationReason",
-              "value": "={{ $('EWT').item.json.query.cancellationReason }}"
+              "name": "cancellation_reason",
+              "value": "={{ $('EWT').item.json.query.cancellation_reason }}"
             }
           ]
         },
@@ -585,8 +558,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "Na7PIpzf1NlFAYwe",
+          "name": "AI Clinic Token"
         }
       }
     },
@@ -831,7 +804,7 @@
             {
               "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
               "name": "response",
-              "value": "={{ {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n} }}",
+              "value": "={{ {\n    id: $json.data.id,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    event_id: $json.data.event_id\n} }}",
               "type": "string"
             }
           ]
@@ -854,7 +827,7 @@
             {
               "id": "4db37e4c-1025-406f-9498-363df3cbd585",
               "name": "response",
-              "value": "={{ $json.data.map(item => `- ${item.title}, with the description \"${item.description || 'no description'}\". The status is ${item.status}, starting on ${item.start} and ending on ${item.end}, duration ${item.duration} min. The event type is ${item.eventType.slug.replace('-', ' ')} and will take place in ${item.location == 'integrations:daily' ? 'Cal Video' : item.location}. Booking details: ID - ${item.id}, UID - ${item.uid}`).join('\\n') }}",
+              "value": "={{ $json.data.map(item => `- ${item.title}, with the description \"${item.description || 'no description'}\". The status is ${item.status}, starting on ${item.start_time} and ending on ${item.end_time}, duration ${item.duration} min. Booking details: ID - ${item.id}`).join('\\n') }}",
               "type": "string"
             }
           ]
@@ -874,27 +847,18 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/bookings",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "calApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $('baseInfo').item.json.url_api_version_booking }}"
-            }
-          ]
-        },
+        "url": "={{ $('baseInfo').item.json.url_api }}/appointments",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
             {
-              "name": "start",
+              "name": "start_time",
               "value": "={{ $('EWT').item.json.query.start.toDateTime().toUTC() }}"
             },
             {
-              "name": "eventTypeId",
+              "name": "event_id",
               "value": "={{ $('EWT').item.json.query.event_id.toNumber() }}"
             },
             {
@@ -930,8 +894,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "Na7PIpzf1NlFAYwe",
+          "name": "AI Clinic Token"
         }
       }
     },
@@ -965,7 +929,7 @@
             {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
-              "value": "={{ `error: ${$('EWT').item.json.query.event_id ? 'event id not sent, ' : ''}` + $json.error.details.errors.first().constraints?.toJsonString() }}",
+              "value": "={{ $json.status == 'error' ? $json.message : 'slots not found' }}",
               "type": "string"
             }
           ]
@@ -1091,7 +1055,7 @@
             {
               "id": "7f17ee24-d262-46f1-8149-a7dea7de96df",
               "name": "data",
-              "value": "={{ \n  $json.data.map(event => {\n    const newEvent = { ...event };\n\n    newEvent.start = newEvent.start.toDateTime().toLocal().format('y-M-d H:mm');\n    newEvent.end = newEvent.end.toDateTime().toLocal().format('y-M-d H:mm');\n    newEvent.status = newEvent.status == 'accepted' ? 'scheduled' : newEvent.status;\n\n    return newEvent;\n  })\n}}",
+              "value": "={{ \n  $json.data.map(event => {\n    const newEvent = { ...event };\n\n    newEvent.start_time = newEvent.start_time.toDateTime().toLocal().format('y-M-d H:mm');\n    newEvent.end_time = newEvent.end_time.toDateTime().toLocal().format('y-M-d H:mm');\n    newEvent.status = newEvent.status == 'confirmed' ? 'scheduled' : newEvent.status;\n\n    return newEvent;\n  })\n}}",
               "type": "array"
             }
           ]
@@ -1156,7 +1120,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/bookings",
+        "url": "={{ $('baseInfo').item.json.url_api }}/appointments",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -1164,10 +1128,10 @@
           "parameters": [
             {
               "name": "status",
-              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['upcoming','recurring','past','unconfirmed'].join(',') : ['upcoming','recurring','past','unconfirmed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
+              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['pending','confirmed','completed'].join(',') : ['pending','confirmed','completed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
             },
             {
-              "name": "attendeeEmail",
+              "name": "pacient_email",
               "value": "={{ $('EWT').item.json.query.attendeeEmail ?? '' }}"
             },
             {
@@ -1179,21 +1143,12 @@
               "value": "desc"
             },
             {
-              "name": "afterStart",
+              "name": "start_time",
               "value": "={{ $now.minus(2, 'days').toUTC()}}"
             },
             {
-              "name": "eventTypeIds",
+              "name": "event_id",
               "value": "={{ $('EWT').item.json.query.event_id }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.url_api_version_booking }}"
             }
           ]
         },
@@ -1220,15 +1175,15 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
         }
       },
       "notes": "status: {{ ['upcoming','recurring','past','cancelled','unconfirmed'].join(',') }}"
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/bookings",
+        "url": "={{ $('baseInfo').item.json.url_api }}/appointments",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -1236,10 +1191,10 @@
           "parameters": [
             {
               "name": "status",
-              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['upcoming','recurring','past','unconfirmed'].join(',') : ['upcoming','recurring','past','unconfirmed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
+              "value": "={{ $('EWT').item.json.query.status == 'all' || !$('EWT').item.json.query.status.length ? ['pending','confirmed','completed'].join(',') : ['pending','confirmed','completed','cancelled'].filter(item => item == $('EWT').item.json.query.status).join(',') }}"
             },
             {
-              "name": "attendeeEmail",
+              "name": "pacient_email",
               "value": "={{ $('EWT').item.json.query.attendeeEmail ?? '' }}"
             },
             {
@@ -1251,17 +1206,8 @@
               "value": "desc"
             },
             {
-              "name": "afterStart",
+              "name": "start_time",
               "value": "={{ $now.minus(2, 'days').toUTC()}}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "=cal-api-version",
-              "value": "={{ $json.url_api_version_booking }}"
             }
           ]
         },
@@ -1288,8 +1234,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
         }
       },
       "notes": "status: {{ ['upcoming','recurring','past','cancelled','unconfirmed'].join(',') }}"
@@ -1340,7 +1286,7 @@
           "conditions": [
             {
               "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
-              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('uid') }}",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('id') }}",
               "rightValue": "error",
               "operator": {
                 "type": "boolean",
@@ -1369,13 +1315,13 @@
             {
               "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
               "name": "response2",
-              "value": "={{ $json.status == 'success' && $json.data.uid ? {\n    id: $json.data.id,\n    uid: $json.data.uid,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    eventType: $json.data.eventType,\n    location: $json.data.location,\n    professional: $json.data.bookingFieldsResponses.professional,\n    procedure: $json.data.bookingFieldsResponses.procedure,\n    method_payment: $json.data.bookingFieldsResponses.method_payment,\n    name_plan: $json.data.bookingFieldsResponses.name_plan,\n    price: $json.data.bookingFieldsResponses.price,\n} : 'error on booking' }}",
+              "value": "={{ $json.status == 'success' && $json.data.id ? {\n    id: $json.data.id,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    event_id: $json.data.event_id,\n} : 'error on booking' }}",
               "type": "string"
             },
             {
               "id": "da8ee72e-8e29-49ad-b4aa-a41a61542fcd",
               "name": "response",
-              "value": "={{ \n    $json.status == 'success' && $json.data.uid \n    ? `- ${$json.data.title}, with the description \"${$json.data.description || 'no description'}\". The status is ${$json.data.status}, starting on ${$json.data.start.toDateTime().toLocal().format('yyyy-MM-dd H:mm')} and ending on ${$json.data.end.toDateTime().toLocal().format('yyyy-MM-dd H:mm')}, duration ${$json.data.duration} min. The event type is ${$json.data.eventType.slug.replace('-', ' ')} and will take place in ${$json.data.location == 'integrations:daily' ? 'Cal Video' : $json.data.location}. Booking details: ID - ${$json.data.id}, UID - ${$json.data.uid}.`\n    : 'error on booking'\n}}",
+              "value": "={{ \n    $json.status == 'success' && $json.data.id \n    ? `- ${$json.data.title}, with the description \"${$json.data.description || 'no description'}\". The status is ${$json.data.status}, starting on ${$json.data.start_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm')} and ending on ${$json.data.end_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm')}, duration ${$json.data.duration} min. Booking details: ID - ${$json.data.id}.`\n    : 'error on booking'\n}}",
               "type": "string"
             }
           ]
@@ -1398,7 +1344,7 @@
             {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
-              "value": "=errors found: {{ $json.error.details.hasField('errors') ? $json.error.details.errors\n  .map(item => item.constraints ? Object.values(item.constraints).join(';') : '')\n  .filter(constraint => constraint !== '')\n  .join('; ') : $json.error.message\n}}",
+              "value": "=errors found: {{ $json.message }}",
               "type": "string"
             }
           ]
@@ -1421,7 +1367,7 @@
             {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
-              "value": "={{ $json.error.message }}",
+              "value": "={{ $json.message }}",
               "type": "string"
             }
           ]
@@ -1449,7 +1395,7 @@
           "conditions": [
             {
               "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
-              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('uid') }}",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('id') }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -1473,23 +1419,27 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/slots/available",
+        "url": "={{ $('baseInfo').item.json.url_api }}/slots/available",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
             {
-              "name": "eventTypeId",
+              "name": "event_id",
               "value": "={{ $('EWT').item.json.query.event_id }}"
             },
             {
-              "name": "startTime",
+              "name": "start_time",
               "value": "={{ $('EWT').item.json.query.startTime.toDateTime().toUTC() }}"
             },
             {
-              "name": "endTime",
+              "name": "end_time",
               "value": "={{ $('EWT').item.json.query.endTime.toDateTime().plus(1, 'hours').toUTC() }}"
+            },
+            {
+              "name": "response_format",
+              "value": "time"
             }
           ]
         },
@@ -1516,8 +1466,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "Na7PIpzf1NlFAYwe",
+          "name": "AI Clinic Token"
         }
       }
     },
@@ -1533,7 +1483,7 @@
           "conditions": [
             {
               "id": "aedcecc4-ef35-477a-b5c1-2e601eb718b9",
-              "leftValue": "={{ $json.data.hasField('slots') && !$json.data.slots.isEmpty() }}",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('slots') && $json.data.slots.isNotEmpty() }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -1580,22 +1530,22 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/slots/available",
+        "url": "={{ $('baseInfo').item.json.url_api }}/slots/available",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
             {
-              "name": "eventTypeId",
+              "name": "event_id",
               "value": "={{ $('EWT').item.json.query.event_id }}"
             },
             {
-              "name": "startTime",
+              "name": "start_time",
               "value": "={{ $('EWT').item.json.query.start.toDateTime().toUTC() }}"
             },
             {
-              "name": "endTime",
+              "name": "end_time",
               "value": "={{ $('EWT').item.json.query.start.toDateTime().plus(1, 'hours').toUTC() }}"
             }
           ]
@@ -1623,8 +1573,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "Na7PIpzf1NlFAYwe",
+          "name": "AI Clinic Token"
         }
       },
       "notes": "[\n  {\n    \"data\": {\n      \"slots\": {\n        \"2024-11-22\": [\n          {\n            \"time\": \"2024-11-22T18:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T19:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T20:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T21:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T22:00:00.000Z\"\n          }\n        ]\n      }\n    },\n    \"status\": \"success\"\n  }\n]"
@@ -1743,11 +1693,12 @@
       {
         "json": {
           "query": {
-            "event_id": "1",
-            "startTime": "2024-12-17T00:00:00Z",
-            "endTime": "2024-12-18T00:00:00Z"
+            "attendeeEmail": "williamkillerca@hotmail.com",
+            "event_id": "7",
+            "status": "all"
           },
-          "action": "availability"
+          "action": "list bookings",
+          "remoteJid": "5512982184879"
         }
       }
     ]
@@ -1783,6 +1734,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-17T14:27:54.138Z",
-  "versionId": "ea07fed1-134f-42bc-aca5-f6dc70a7f792"
+  "updatedAt": "2024-12-17T21:55:30.492Z",
+  "versionId": "7cb54067-4a80-4315-9202-cafb5a4ec689"
 }
