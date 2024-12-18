@@ -468,8 +468,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "List Specialists": {
@@ -2260,9 +2259,15 @@
       "updatedAt": "2024-10-30T23:31:05.255Z",
       "id": "IDsda42rHm8bi7eR",
       "name": "Tool"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-17T13:23:12.919Z",
-  "versionId": "daeedc8b-d3a5-45b3-8dc5-16e1cf5cae92"
+  "updatedAt": "2024-12-18T14:03:18.637Z",
+  "versionId": "67b6d88f-9940-46dc-93b9-8a12ab95884c"
 }
