@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "delete user account",
+            "node": "baseInfo",
             "type": "main",
             "index": 0
           }
@@ -39,22 +39,6 @@
         [
           {
             "node": "get user account",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "userAccount": {
-      "main": [
-        [
-          {
-            "node": "Get Chat Memory",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -127,24 +111,6 @@
         ]
       ]
     },
-    "user registred?": {
-      "main": [
-        [
-          {
-            "node": "Merge 2",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "insert user",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "user cached?": {
       "main": [
         [
@@ -156,51 +122,7 @@
         ],
         [
           {
-            "node": "delete user",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get user": {
-      "main": [
-        [
-          {
-            "node": "user registred?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "insert user": {
-      "main": [
-        [
-          {
-            "node": "Merge 2",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "delete user": {
-      "main": [
-        [
-          {
-            "node": "get user",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge 2": {
-      "main": [
-        [
-          {
-            "node": "set user account",
+            "node": "fetch user",
             "type": "main",
             "index": 0
           }
@@ -415,6 +337,108 @@
           }
         ]
       ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch user": {
+      "main": [
+        [
+          {
+            "node": "user found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get first user": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user found?": {
+      "main": [
+        [
+          {
+            "node": "get first user",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert user": {
+      "main": [
+        [
+          {
+            "node": "user registred?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user registred?": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge 2": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "Get Chat Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -493,15 +517,15 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3760,
-        1280
+        3580,
+        1340
       ]
     },
     {
       "parameters": {
         "operation": "set",
         "key": "=user_account_{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}",
-        "value": "={{ $json.toJsonString() ?? {} }}",
+        "value": "={{ $json.data.toJsonString() ?? {} }}",
         "expire": true,
         "ttl": 120
       },
@@ -511,7 +535,7 @@
       "typeVersion": 1,
       "position": [
         4760,
-        1560
+        1580
       ],
       "credentials": {
         "redis": {
@@ -523,7 +547,7 @@
     {
       "parameters": {
         "operation": "get",
-        "propertyName": "user_account",
+        "propertyName": "data",
         "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
         "keyType": "string",
         "options": {}
@@ -533,7 +557,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4120,
+        4100,
         1340
       ],
       "credentials": {
@@ -583,7 +607,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={{ $json.user_account ?? $json ?? {} }}",
+        "jsonOutput": "={{ $json.data ?? $json ?? {} }}",
         "options": {}
       },
       "id": "78719e6e-04fd-4f99-937f-e5bde1c4cd1d",
@@ -592,7 +616,7 @@
       "typeVersion": 3.4,
       "position": [
         4760,
-        1360
+        1320
       ]
     },
     {
@@ -606,7 +630,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3520,
+        3360,
         1140
       ]
     },
@@ -654,7 +678,7 @@
             {
               "id": "675594ce-198a-45d4-b185-4caacb169a93",
               "name": "user_account",
-              "value": "={{ $json.user_account }}",
+              "value": "={{ $json.data }}",
               "type": "object"
             }
           ]
@@ -706,7 +730,7 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        3360,
+        3200,
         1140
       ],
       "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
@@ -718,7 +742,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        3520,
+        3360,
         1340
       ],
       "disabled": true
@@ -828,47 +852,13 @@
           "options": {
             "caseSensitive": true,
             "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
-              "leftValue": "={{ $json.hasField('id') }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        4300,
-        1600
-      ],
-      "id": "c5e04892-a993-4e93-b5ab-e3fb051b9284",
-      "name": "user registred?"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
             "typeValidation": "loose",
             "version": 2
           },
           "conditions": [
             {
               "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
-              "leftValue": "={{ $json.user_account }}",
+              "leftValue": "={{ $json.data }}",
               "rightValue": 0,
               "operator": {
                 "type": "string",
@@ -890,104 +880,6 @@
         4480,
         1340
       ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "clinic_users",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "remoteJid",
-              "keyValue": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        4120,
-        1600
-      ],
-      "id": "ca8f8272-b653-49cb-9c5b-fd793bcace76",
-      "name": "get user",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "tableId": "clinic_users",
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "remoteJid",
-              "fieldValue": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        4540,
-        1720
-      ],
-      "id": "b051fa17-9be9-44bd-8014-d5245ba74e58",
-      "name": "insert user",
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "tableId": "clinic_users",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "remoteJid",
-              "condition": "eq",
-              "keyValue": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        3940,
-        1600
-      ],
-      "id": "1a21c109-ad6d-486b-b4d6-e5ab87fab3dd",
-      "name": "delete user",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        4540,
-        1560
-      ],
-      "id": "3701f096-1a8d-4361-9628-0f07199a9ee4",
-      "name": "Merge 2"
     },
     {
       "parameters": {
@@ -1377,7 +1269,7 @@
           "messageValues": [
             {
               "type": "ai",
-              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"",
+              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.fullname ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.full_address ?? '' }}\"",
               "hideFromUI": true
             }
           ]
@@ -1438,7 +1330,7 @@
             {
               "id": "d6788f61-2c2f-42c1-a263-62d052127dc0",
               "name": "remoteJid",
-              "value": "={{ $('userAccount').item.json.remoteJid.toString().split('@')[0] }}",
+              "value": "={{ $('userAccount').item.json.phone.toString().split('@')[0] }}",
               "type": "string"
             },
             {
@@ -1464,9 +1356,9 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "5LfFRdaepFJdM4yE",
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "options": {
           "waitForSubWorkflow": true
@@ -1596,9 +1488,247 @@
       "retryOnFail": true,
       "waitBetweenTries": 3000,
       "notes": "<prompt>\n<additional_info>\nCurrentDateTime: {{ $now.toISO() }}\n</additional_info>\n\n<user_details>\nUser {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.remoteJid ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.address ?? '' }}\"\n</user_details>\n\n<personality>\nName: Stephany\nRole: Virtual assistant specialized in medical services for clinics (appointment scheduling, medical specialties, insurance coverage, and doctor availability).\nTone: Friendly, Polite, Helpful, Fast, and Welcoming.\nCan use some emojis.\nLanguage: pt-br\n</personality>\n\n<main_functions>\nGuide users through the appointment scheduling process.\nClarify doubts about doctors, schedules, medical procedures, and accepted insurance plans.\nProvide information on medical specialties and doctor availability.\nForward to a human assistant when necessary.\n</main_functions>\n\n<general_guidelines>\nClear and concise answers (max 350 characters).\nSimple and accessible language, avoiding technical jargon.\nForward complex cases to a human assistant.\nConsult the database before answering questions.\nInform the user immediately if any data is unavailable or inaccurate.\nAlways present booking information following the template below.\n</general_guidelines>\n\n<output_booking_template>\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nID: **{id}** / UID: **{uid}**\n</output_booking_template>\n\n<service_flow>\nGreeting and {{ $('userAccount').item.json.id ? 'introduce with suggestions for appointment scheduling or medical services' : 'introduction' }}.\nIdentify needs with specific questions.\nOffer information on appointment scheduling, medical specialties, exams or insurance plans.\nSend useful links, if necessary.\nForward to human support if needed.\nCheck if the clinic has a specific doctor or specialist whenever asked.\nEnsure booking details are always presented in the standard format.\nIf the user requests cancellation of an appointment, suggest **re-scheduling** first by offering new dates and times.\nIf the user refuses to re-schedule, proceed with the cancellation.\n</service_flow>\n\n<tool_calls>\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n</tool_calls>\n</prompt>\n"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://clinic.ibox.delivery/api/v1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "be317669-395b-410e-ac3a-ae5470740f5c",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3740,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3dc387d1-961d-459e-ac7b-a2662290570e",
+              "name": "data",
+              "value": "={{ $json.data.first() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8ad15b18-b398-469f-9681-3dbeee76ccfc",
+      "name": "get first user",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4300,
+        1560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacient",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').item.json.remoteJid.split('@')[0].slice(2) }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "e28da1fa-9183-47b3-8f99-e977139294b2",
+      "name": "fetch user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3940,
+        1600
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0].slice(2) }}"
+            },
+            {
+              "name": "origin",
+              "value": "whatsapp"
+            },
+            {
+              "name": "phone_is_whatsapp",
+              "value": "={{ true }}"
+            },
+            {
+              "name": "phone_verified_at",
+              "value": "={{ $now.toUTC() }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "64c2d75c-5248-424e-baaa-7fbfd2a1f53d",
+      "name": "insert user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4300,
+        1740
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4100,
+        1600
+      ],
+      "id": "c5e04892-a993-4e93-b5ab-e3fb051b9284",
+      "name": "user found?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4480,
+        1740
+      ],
+      "id": "2c6a6fe7-3134-4ba6-8ce8-d46534bc1081",
+      "name": "user registred?"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4540,
+        1580
+      ],
+      "id": "3701f096-1a8d-4361-9628-0f07199a9ee4",
+      "name": "Merge 2"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "chatConfig": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "william_5512982184879",
+          "debounce_time": 5,
+          "conversation": "oi"
+        }
+      }
+    ],
+    "Chat": [
+      {
+        "json": {
+          "sessionId": "test-fd3765db-9980-4841-8ea8-be5a8563836b",
+          "action": "sendMessage",
+          "chatInput": "oi"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
@@ -1622,9 +1752,15 @@
       "updatedAt": "2024-10-08T13:33:46.636Z",
       "id": "aSNW5tPyOIOEr9rS",
       "name": "Agent"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-05T18:33:04.450Z",
-  "versionId": "a412befd-6f54-4e17-8e72-cb441ca2cc71"
+  "updatedAt": "2024-12-18T15:10:38.514Z",
+  "versionId": "63b9a8f3-6451-4677-8838-a6fe65393b03"
 }
