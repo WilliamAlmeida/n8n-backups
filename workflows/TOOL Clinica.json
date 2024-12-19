@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "EWT": {
-      "main": [
-        [
-          {
-            "node": "Request to Tool?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Query": {
       "main": [
         [
@@ -171,17 +160,6 @@
         ]
       ]
     },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Request to Tool?": {
       "main": [
         [
@@ -215,12 +193,12 @@
       "main": [
         [
           {
-            "node": "Check Chat Memory",
+            "node": "Appointment Scheduling Agent",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Appointment Scheduling Agent",
+            "node": "Check Chat Memory",
             "type": "main",
             "index": 0
           }
@@ -232,40 +210,6 @@
         [
           {
             "node": "Reset Memo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "Update User",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update User": {
-      "main": [
-        [
-          {
-            "node": "Response",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Delete User Account",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Response",
             "type": "main",
             "index": 0
           }
@@ -306,17 +250,6 @@
       ]
     },
     "Exams Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "Appointment Scheduling Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Calendar Event Tool": {
       "ai_tool": [
         [
           {
@@ -404,29 +337,7 @@
       "main": [
         [
           {
-            "node": "found bookings?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "found bookings?": {
-      "main": [
-        [
-          {
             "node": "Insert Data Bookings",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Insert Data User": {
-      "main": [
-        [
-          {
-            "node": "Config to Find All Bookings",
             "type": "main",
             "index": 0
           }
@@ -444,6 +355,84 @@
           {
             "node": "EWT Fixed",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "update user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "Request to Tool?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update user": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete User Account",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data User": {
+      "main": [
+        [
+          {
+            "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -468,18 +457,6 @@
   },
   "name": "TOOL Clinica",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "031ea9fc-c53f-4a6f-88be-a070538aa4d6",
-      "name": "EWT",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        740,
-        760
-      ],
-      "disabled": true
-    },
     {
       "parameters": {
         "assignments": {
@@ -508,7 +485,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "{\n  \"query\": \"\",\n  \"agent\": \"calendar\",\n  \"messageInfo\": {\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"as 17hrs\"\n  },\n  \"userAccount\": {\n    \"id\": 10,\n    \"remoteJid\": 5512982184879,\n    \"name\": \"William\",\n    \"email\": \"williamkillerca@hotmail.com\",\n    \"date_birth\": null,\n    \"address\": null,\n    \"created_at\": \"2024-11-18T04:17:02.326408+00:00\"\n  }\n}",
+        "jsonOutput": "{\n    \"query\": \"\",\n    \"agent\": \"calendar\",\n    \"messageInfo\":\n    {\n        \"evo_api\": \"https://apiwp.wmst.com.br\",\n        \"instance\": \"ibox_cli_23\",\n        \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n        \"pushName\": \"W.M. Soluções Tecnologicas\",\n        \"fromMe\": false,\n        \"unique_id\": \"william_5512982184879\",\n        \"debounce_time\": 5,\n        \"conversation\": \"tem para amanhã?\"\n    },\n    \"userAccount\":\n    {\n        \"id\": 3,\n        \"full_name\": \"William\",\n        \"birthday\": \"1994-05-05\",\n        \"cpf\": null,\n        \"rg\": null,\n        \"full_address\": null,\n        \"phone\": \"12982184879\",\n        \"phone_verified_at\": \"2024-12-18T15:20:56.000000Z\",\n        \"phone_is_whatsapp\": 1,\n        \"email\": \"williamkillerca@hotmail.com\",\n        \"email_verified_at\": null,\n        \"origin\": \"whatsapp\",\n        \"extra_fields\": null,\n        \"created_at\": \"2024-12-18T15:20:56.000000Z\"\n    }\n}",
         "options": {}
       },
       "id": "be94c5e9-9db6-4c9d-8d3a-dec6a39dd78a",
@@ -720,7 +697,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1980,
+        2200,
         1320
       ]
     },
@@ -744,7 +721,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID of the professional for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\",\n      \"description\": \"Start date and time of the appointment in ISO 8601 format (e.g., '2024-11-18T08:00:00Z')\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\",\n      \"description\": \"End date and time of the appointment in ISO 8601 format. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID of the professional for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -780,7 +757,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2860,
+        3160,
         1580
       ],
       "id": "7f237841-e763-4397-9870-b1c4777cde63",
@@ -811,7 +788,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"attendeeEmail\": {\n      \"type\": \"string\",\n      \"description\": \"Email address of the user\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID to filter bookings\"\n    },\n    \"status\": {\n      \"type\": \"string\",\n      \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n      \"default\": \"all\"\n    }\n  },\n  \"required\": [\"email\"]\n}\n"
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"attendeeEmail\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Email address of the user\"\n        },\n        \"event_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Event ID to filter bookings\"\n        },\n        \"status\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n            \"default\": \"all\"\n        }\n    },\n    \"required\":\n    [\n        \"email\"\n    ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -842,7 +819,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"Booking ID of the booking\"\n    },\n    \"cancellation_reason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\"booking_id\", \"cancellation_reason\"]\n}\n"
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"booking_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Booking ID of the booking\"\n        },\n        \"cancellation_reason\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Reason for cancellation\"\n        }\n    },\n    \"required\":\n    [\n        \"booking_id\",\n        \"cancellation_reason\"\n    ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -868,12 +845,17 @@
             {
               "name": "action",
               "stringValue": "schedule booking"
+            },
+            {
+              "name": "query.pacient_id",
+              "type": "numberValue",
+              "numberValue": "={{ $json.userAccount.id }}"
             }
           ]
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"description\":\"Date and time of the start of the booking in ISO format\"},\"attendee\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"cellphone\":{\"type\":\"string\",\"description\":\"12982184877\"}},\"required\":[\"name\",\"email\",\"cellphone\"]},\"event_id\":{\"type\":\"string\",\"description\":\"Event ID\"},\"bookingFieldsResponses\":{\"type\":\"object\",\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"optional\"},\"description\":{\"type\":\"string\",\"description\":\"optional\"},\"method_payment\":{\"type\":\"string\",\"description\":\"optional\"},\"name_plan\":{\"type\":\"string\",\"description\":\"optional\"}}}},\"required\":[\"start\",\"attendee\",\"event_id\",\"bookingFieldsResponses\"]}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID\"\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -887,7 +869,7 @@
     {
       "parameters": {
         "name": "reschedule_appt_tool",
-        "description": "=Call this tool to reschedule an appointment using a booking UID.\n\n## Required inputs:\n- Booking UID (string, required).\n- Proposed start date and time in ISO format (string, required).\n- Reason for rescheduling (string, required).\n\n## Workflow:\n1. Verify the booking UID before proceeding.\n2. Confirm with the user before rescheduling.\n3. Reschedule the appointment and notify the user.",
+        "description": "=Call this tool to reschedule an appointment using a booking ID.\n\n## Required inputs:\n- Booking ID (string, required).\n- Proposed start date and time (string, required).\n- Reason for rescheduling (string, required).\n\n## Workflow:\n1. Verify the booking ID before proceeding.\n2. Confirm with the user before rescheduling.\n3. Reschedule the appointment and notify the user.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -904,7 +886,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n\"type\": \"object\",\n  \"properties\": {\n    \"booking_uid\": {\n      \"type\": \"string\",\n      \"description\": \"the uid of the booking\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"date and time of the start of the booking\"\n    },\n    \"reschedulingReason\": {\n      \"type\": \"string\",\n      \"description\": \"rescheduling reason\"\n    }\n  },\n  \"required\": [\n    \"booking_id\",\n    \"start\",\n    \"reschedulingReason\"\n  ]\n}"
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"booking_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"the id of the booking\"\n        },\n        \"start\":\n        {\n            \"type\": \"string\",\n            \"description\": \"date and time of the start of the booking\"\n        },\n        \"reschedulingReason\":\n        {\n            \"type\": \"string\",\n            \"description\": \"rescheduling reason\"\n        }\n    },\n    \"required\":\n    [\n        \"booking_id\",\n        \"start\",\n        \"reschedulingReason\"\n    ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -913,8 +895,7 @@
         1600
       ],
       "id": "0fb315e4-d637-4167-b8b0-cf776e9a551e",
-      "name": "Reschedule Appt Tool",
-      "disabled": true
+      "name": "Reschedule Appt Tool"
     },
     {
       "parameters": {
@@ -935,29 +916,6 @@
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
-        "options": {
-          "temperature": 0,
-          "topP": 1
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        1600,
-        1480
-      ],
-      "id": "5e0c3074-7231-4059-b25e-2578852771c4",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
         }
       }
     },
@@ -1172,131 +1130,9 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.action }}",
-                    "rightValue": "update user",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "user account"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        1440,
-        760
-      ],
-      "id": "82c3ff87-4990-48bb-96fd-e6987c840ac6",
-      "name": "Switch"
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "clinic_users",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "remoteJid",
-              "condition": "eq",
-              "keyValue": "={{ $json.messageInfo.remoteJid.split('@')[0] }}"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "={{ $json.query.key }}",
-              "fieldValue": "={{ $json.query.value }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        1640,
-        760
-      ],
-      "id": "f009a914-e442-4fad-a7b4-2d5c0e1dcee6",
-      "name": "Update User",
-      "alwaysOutputData": false,
-      "credentials": {
-        "supabaseApi": {
-          "id": "WWYYqpMcDDFZTW3g",
-          "name": "william"
-        }
-      },
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "8cb2031b-a2ee-4f48-8968-d3362cbb4ba6",
-              "name": "response",
-              "value": "={{ $json.error ?? 'done' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1880,
-        860
-      ],
-      "id": "e2fa2399-2e58-46a1-9c1e-6ab6921ee362",
-      "name": "Response"
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=user_account_{{ $json.remoteJid }}"
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        1880,
-        700
-      ],
-      "id": "12b31f46-a7da-4278-885c-6a214024bb61",
-      "name": "Delete User Account",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      }
-    },
-    {
-      "parameters": {
         "content": "## Update User Data in Supabase\nName, email, date birth or address and\nreset cache to bring the new data.",
         "height": 360,
-        "width": 660,
+        "width": 684.2702280390939,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1331,7 +1167,9 @@
             }
           ]
         },
-        "jsonSchemaExample": ""
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n    \"name\": {\n        \"type\": \"string\",\n        \"description\": \"name of exam (optional)\"\n        }\n    }\n}"
       },
       "id": "387571a8-baf3-4ee7-8aee-7d6954aeddd2",
       "name": "Exams Tool",
@@ -1364,7 +1202,10 @@
               "objectValue": "={{ $('Normalize').first().json.messageInfo }}"
             }
           ]
-        }
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"crm\": {\n        \"type\": \"number\",\n        \"description\": \"crm of medical (optional)\"\n    },\n    \"name\": {\n        \"type\": \"string\",\n        \"description\": \"name of medical (optional)\"\n    },\n\t\"specialist\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"specialist of medical (optional)\"\n\t\t}\n\t}\n}"
       },
       "id": "95da37b0-79ca-416a-881d-315f23ff01ba",
       "name": "Specialists Tool",
@@ -1407,8 +1248,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2120,
-        1560
+        3020,
+        1580
       ],
       "disabled": true
     },
@@ -1442,7 +1283,7 @@
           "messageValues": [
             {
               "type": "ai",
-              "message": "=User {{ $('Normalize').item.json.userAccount.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('Normalize').item.json.userAccount.name ?? '' }}\", email is \"{{ $('Normalize').item.json.userAccount.email ?? '' }}\", contact phone number is \"{{ $('Normalize').item.json.userAccount.remoteJid ?? $('Normalize').item.json.userAccount.remoteJid.split('@')[0] }}\", and current address is \"{{ $('Normalize').item.json.userAccount.address ?? '' }}\""
+              "message": "=User {{ $('Normalize').item.json.userAccount.id ? 'is' : 'is not yet' }} registered, their name is '{{ $('Normalize').item.json.userAccount.full_name ?? '' }}', email is '{{ $('Normalize').item.json.userAccount.email ?? '' }}', contact phone number is '{{ $('Normalize').item.json.userAccount.phone ?? $('Normalize').item.json.userAccount.remoteJid.split('@')[0] }}', and current address is '{{ $('Normalize').item.json.userAccount.full_address ?? '' }}'"
             }
           ]
         }
@@ -1518,7 +1359,7 @@
             {
               "id": "d6788f61-2c2f-42c1-a263-62d052127dc0",
               "name": "remoteJid",
-              "value": "={{ $('Normalize').item.json.userAccount.remoteJid.split('@')[0] }}",
+              "value": "={{ $('Normalize').item.json.userAccount.phone.toString().split('@')[0] }}",
               "type": "string"
             },
             {
@@ -1544,9 +1385,9 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "5LfFRdaepFJdM4yE",
+          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "cachedResultName": "COMP Cal.com"
+          "cachedResultName": "COMP AIClinic"
         },
         "options": {
           "waitForSubWorkflow": true
@@ -1558,40 +1399,6 @@
       "typeVersion": 1.1,
       "position": [
         2640,
-        1120
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "b5f9ec25-e6d0-4d25-a737-ae4bfd037280",
-              "leftValue": "",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "60e3eb71-f16d-4cbb-a842-12b5f8dd4ada",
-      "name": "found bookings?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        2800,
         1120
       ]
     },
@@ -1610,8 +1417,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        2960,
-        1100
+        2800,
+        1120
       ],
       "id": "8959d707-9af1-4d9a-b2c4-c71acdeb60ab",
       "name": "Insert Data Bookings"
@@ -1632,10 +1439,190 @@
     },
     {
       "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "update user",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "user account"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        760
+      ],
+      "id": "82c3ff87-4990-48bb-96fd-e6987c840ac6",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9ed0f70f-a5ba-400c-9826-7d918845d89b",
+              "name": "url_api",
+              "value": "https://clinic.ibox.delivery/api/v1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9598567f-9f70-420e-b844-06b82eef34ae",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1620,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('EWT').item.json.messageInfo.remoteJid.split('@')[0] }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        680
+      ],
+      "id": "12b31f46-a7da-4278-885c-6a214024bb61",
+      "name": "Delete User Account",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "031ea9fc-c53f-4a6f-88be-a070538aa4d6",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8cb2031b-a2ee-4f48-8968-d3362cbb4ba6",
+              "name": "response",
+              "value": "={{ $json.message ?? 'done' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1940,
+        840
+      ],
+      "id": "e2fa2399-2e58-46a1-9c1e-6ab6921ee362",
+      "name": "Response"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.url_api }}/pacient/{{ $('EWT').item.json.user_id }}/update",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "={{ $('EWT').item.json.query.key }}",
+              "value": "={{ $('EWT').item.json.query.value }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "2c7482fc-c95b-4b87-9196-d922cfaeb78d",
+      "name": "update user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        760
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "temperature": 0,
+          "topP": 1
+        }
+      },
+      "id": "89b0aa63-2b3a-4119-adc5-6c1861baf9cf",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        1480
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=You are a helpful assistant who schedules medical appointments and tests at a clinic.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking ID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking ID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation ID and reason for cancellation.\n  - If the user doesn't know the ID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.",
+          "systemMessage": "=You are a helpful assistant who schedules medical appointments and tests at a clinic.\n\n## Context:\nThe current date and time is `{{ $now.setLocale('en').weekdayLong }}, {{ $now.format('dd MMM yyyy HH:mm') }}`.\nAll dates should be in format `YYYY-MM-DDTHH:mm:ss`.\nDuration of consultations is 60 minutes.\nAlways display booking ID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Use `schedule_appt_tool` to book the appointment.\n   - Confirm the booking and provide the ID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking ID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use `get_existing_appt_tool` or `find_existing_appt_tool` to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking ID.\n   - Use `reschedule_appt_tool` with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation ID and reason for cancellation.\n  - If the user doesn`t know the ID, use `find_existing_appt_tool` with his email and find the booking he is referring to.\n  - Use `cancel_appt_tool` to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use `list_specialists_tool` to retrive event_id from professional.\n  - Use `list_exams_tool` to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable.\n",
           "maxIterations": 7
         }
       },
@@ -1647,14 +1634,14 @@
         1660,
         1320
       ],
-      "notes": "You are an appointment scheduling helper.\n\n## Context:\nThe current date and time is '{{ $now.setLocale('en').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'.\nAll dates should be in ISO format.\nDuration of consultations is 60 minutes.\nAlways display booking ID and UID.\nDates should be displayed in d/M/Y format.\nUse a full-day range for availability checks.\nUse calendar ID to retrieve event id (data of calendar).\n\n## Workflow Guidelines:\n1. **New Booking**:\n   - Ask if the user has an existing booking before proceeding.\n   - Collect Missing Information:\n      Explicitly inform the user about the information already available and only request what is missing: Email address, Full name, Cellphone number, Proposed date and preferred start time.\n\n   - Verify availability using the \"availability\" tool.\n   - If available, use \"schedule_appt_tool\" to book the appointment.\n   - Confirm the booking and provide the ID and UID to the user.\n\n2. **Existing Bookings**:\n   - Ask for the email address or booking UID to locate the booking if not provided.\n   - If the email address is identified or mapped, use it to locate the booking automatically without asking for confirmation.\n   - Use \"get_existing_appt_tool\" or \"find_existing_appt_tool\" to retrieve details.\n\n3. **Rescheduling**:\n   - Ask for the booking UID.\n   - Use \"reschedule_appt_tool\" with the new date and time.\n   - Confirm with the user before rescheduling.\n\n4. **Cancellation**:\n  - Ask for the reservation UID and reason for cancellation.\n  - If the user doesn't know the UID, use \"find_existing_appt_tool\" with his email and find the booking he is referring to.\n  - Use \"cancel_appt_tool\" to cancel the booking.\n  - Confirm with the user before proceeding.\n\n5. **Check Availability**\n  - Ask for professional or exam.\n  - Use \"list_specialists_tool\" to retrive event_id from professional.\n  - Use \"list_exams_tool\" to retrive event_id from exam.\n\n5. **Errors and Feedback**:\n   - Notify the user if inputs are missing or invalid.\n   - Suggest corrections or alternatives where applicable."
+      "retryOnFail": false
     }
   ],
   "pinData": {
     "EWT": [
       {
         "json": {
-          "query": "Agendar exame Hemograma Completo para William Almeida no dia 26 de novembro às 09:00.",
+          "query": "Verificar horários disponíveis da Dra. Rita de Cássia Marton Carneiro para consultas amanhã.",
           "agent": "calendar",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
@@ -1664,16 +1651,23 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "as 09hrs"
+            "conversation": "tem para amanhã?"
           },
           "userAccount": {
-            "id": 10,
-            "remoteJid": 5512982184879,
-            "name": "William Almeida",
+            "id": 3,
+            "full_name": "William",
+            "birthday": "1994-05-05",
+            "cpf": null,
+            "rg": null,
+            "full_address": null,
+            "phone": "12982184879",
+            "phone_verified_at": "2024-12-18T15:20:56.000000Z",
+            "phone_is_whatsapp": 1,
             "email": "williamkillerca@hotmail.com",
-            "date_birth": null,
-            "address": "",
-            "created_at": "2024-11-18T04:17:02.326408+00:00"
+            "email_verified_at": null,
+            "origin": "whatsapp",
+            "extra_fields": null,
+            "created_at": "2024-12-18T15:20:56.000000Z"
           }
         }
       }
@@ -1710,6 +1704,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-18T14:03:15.780Z",
-  "versionId": "4aee3072-9141-4ef4-a457-a2d248cc4e22"
+  "updatedAt": "2024-12-18T21:14:51.426Z",
+  "versionId": "d745487c-c6de-4964-837e-17ef7105d254"
 }
