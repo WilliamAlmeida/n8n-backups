@@ -678,7 +678,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1166,7 +1167,7 @@
             {
               "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
               "name": "response",
-              "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, event ID ${item.event_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}\n",
+              "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, event ID ${item.event_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}",
               "type": "string"
             },
             {
@@ -1316,8 +1317,14 @@
           "assignments": [
             {
               "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
-              "name": "response",
+              "name": "response2",
               "value": "={{ $json.data }}",
+              "type": "string"
+            },
+            {
+              "id": "df2665f5-f799-449c-bce5-3758bc793f6c",
+              "name": "response",
+              "value": "={{ \n    $json.data.map(item => `- ${item.title}, event ID ${item.event_id} and exam ID ${item.id}`).join('\\n') \n}}",
               "type": "string"
             }
           ]
@@ -1595,7 +1602,7 @@
             {
               "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
               "name": "data",
-              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.exam.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.title.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
               "type": "array"
             }
           ]
@@ -1620,12 +1627,6 @@
               "name": "url_api",
               "value": "https://clinic.ibox.delivery/api/v1",
               "type": "string"
-            },
-            {
-              "id": "cba0f455-7850-4814-b43c-835c1ff047d4",
-              "name": "token",
-              "value": "Bearer 2|FdlITx46WBqWbyhGLnmSz1SnquX1VAy6nvtA2LPwf88cd97b",
-              "type": "string"
             }
           ]
         },
@@ -1643,19 +1644,8 @@
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/health-plans",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {
           "response": {
             "response": {
@@ -1672,24 +1662,19 @@
       "position": [
         3580,
         -660
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {
           "response": {
             "response": {
@@ -1706,24 +1691,19 @@
       "position": [
         3580,
         -220
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/payment-methods",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {
           "response": {
             "response": {
@@ -1740,24 +1720,19 @@
       "position": [
         3580,
         200
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/exams",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {
           "response": {
             "response": {
@@ -1774,24 +1749,19 @@
       "position": [
         3560,
         620
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/exams/{{ $('EWT').item.json.query.exam_id }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "={{ $('baseInfo').item.json.token }}"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "options": {
           "response": {
             "response": {
@@ -1808,7 +1778,13 @@
       "position": [
         3580,
         1040
-      ]
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
     },
     {
       "parameters": {
@@ -2219,10 +2195,8 @@
     "EWT": [
       {
         "json": {
-          "query": {
-            "exam_id": "1"
-          },
-          "tool": "specialists",
+          "query": "Hemograma Completo",
+          "tool": "exams",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2231,7 +2205,7 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "esta correto"
+            "conversation": "williamkillerca@hotmail.com"
           }
         }
       }
@@ -2268,6 +2242,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-18T14:03:18.637Z",
-  "versionId": "67b6d88f-9940-46dc-93b9-8a12ab95884c"
+  "updatedAt": "2024-12-18T20:32:26.253Z",
+  "versionId": "586462c0-36ef-451c-9358-2d484a24ed05"
 }
