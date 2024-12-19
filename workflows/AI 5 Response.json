@@ -686,17 +686,16 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
-          "conversation": "oi, gostaria de falar com a clinica",
-          "output": "*AI 4 Clinica MED Center*:\\nOlá, William! 😊 Se você gostaria de falar com a clínica, posso encaminhá-lo para um atendente humano. Por favor, me avise se você deseja seguir com isso ou se precisa de informações específicas sobre agendamentos ou serviços."
+          "conversation": "oi cli",
+          "output": "*AI 4 Clinica*:\\nOlá, William! Como posso te ajudar hoje?"
         }
       }
     ]
   },
   "settings": {
     "executionOrder": "v1",
-    "saveDataSuccessExecution": "none",
-    "saveManualExecutions": true,
-    "callerPolicy": "workflowsFromSameOwner"
+    "callerPolicy": "workflowsFromSameOwner",
+    "saveManualExecutions": false
   },
   "staticData": null,
   "tags": [
@@ -720,6 +719,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-11-23T15:05:50.703Z",
-  "versionId": "2ec56873-96ce-4e73-bc27-360231933764"
+  "updatedAt": "2024-12-18T22:01:52.281Z",
+  "versionId": "2a33044b-855c-4f5c-9869-9c639e803c94"
 }
