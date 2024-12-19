@@ -504,7 +504,7 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Na7PIpzf1NlFAYwe",
+          "id": "nmUmytqX7rLnklTQ",
           "name": "AI Clinic Token"
         }
       }
@@ -558,7 +558,7 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Na7PIpzf1NlFAYwe",
+          "id": "nmUmytqX7rLnklTQ",
           "name": "AI Clinic Token"
         }
       }
@@ -868,6 +868,10 @@
             {
               "name": "attendee",
               "value": "={{ {\n  name: $('EWT').item.json.query.attendee.name,\n  email: $('EWT').item.json.query.attendee.email,\n  timeZone: 'America/Sao_Paulo',\n  language: 'pt-BR'\n} }}"
+            },
+            {
+              "name": "pacient_id",
+              "value": "={{ $('EWT').item.json.query.pacient_id }}"
             }
           ]
         },
@@ -894,7 +898,7 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Na7PIpzf1NlFAYwe",
+          "id": "nmUmytqX7rLnklTQ",
           "name": "AI Clinic Token"
         }
       }
@@ -1466,7 +1470,7 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Na7PIpzf1NlFAYwe",
+          "id": "nmUmytqX7rLnklTQ",
           "name": "AI Clinic Token"
         }
       }
@@ -1573,7 +1577,7 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Na7PIpzf1NlFAYwe",
+          "id": "nmUmytqX7rLnklTQ",
           "name": "AI Clinic Token"
         }
       },
@@ -1615,22 +1619,22 @@
     },
     {
       "parameters": {
-        "url": "={{ $('baseInfo').item.json.url_api }}/v2/slots/available",
+        "url": "={{ $('baseInfo').item.json.url_api }}/slots/available",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
             {
-              "name": "eventTypeId",
+              "name": "event_id",
               "value": "={{ $('EWT').item.json.query.event_id }}"
             },
             {
-              "name": "startTime",
+              "name": "start_time",
               "value": "={{ $('EWT').item.json.query.start.toDateTime().plus(3, 'hours').toISO() }}"
             },
             {
-              "name": "endTime",
+              "name": "end_time",
               "value": "={{ $('EWT').item.json.query.start.toDateTime().plus(4, 'hours').toISO() }}"
             }
           ]
@@ -1658,8 +1662,8 @@
           "name": "william"
         },
         "httpHeaderAuth": {
-          "id": "Xk4lHr8zzqWTdh4Z",
-          "name": "Cal.com Token"
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
         }
       },
       "notes": "[\n  {\n    \"data\": {\n      \"slots\": {\n        \"2024-11-22\": [\n          {\n            \"time\": \"2024-11-22T18:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T19:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T20:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T21:00:00.000Z\"\n          },\n          {\n            \"time\": \"2024-11-22T22:00:00.000Z\"\n          }\n        ]\n      }\n    },\n    \"status\": \"success\"\n  }\n]"
@@ -1693,12 +1697,19 @@
       {
         "json": {
           "query": {
-            "attendeeEmail": "williamkillerca@hotmail.com",
-            "event_id": "7",
-            "status": "all"
+            "start": "2024-12-18T15:00:00",
+            "attendee": {
+              "name": "William",
+              "email": "williamkillerca@hotmail.com",
+              "cellphone": "12982184879"
+            },
+            "event_id": "6",
+            "bookingFieldsResponses": {
+              "title": "Hemograma Completo"
+            },
+            "pacient_id": 3
           },
-          "action": "list bookings",
-          "remoteJid": "5512982184879"
+          "action": "schedule booking"
         }
       }
     ]
@@ -1740,6 +1751,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-18T13:56:27.537Z",
-  "versionId": "9ebf6492-6d16-4f1a-a6bd-79700f2733b2"
+  "updatedAt": "2024-12-18T16:27:15.931Z",
+  "versionId": "555882e7-7477-41fe-b64c-9797a2b0c34b"
 }
