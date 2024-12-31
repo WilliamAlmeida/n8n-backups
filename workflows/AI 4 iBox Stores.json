@@ -151,11 +151,6 @@
             "node": "delete instance config",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -178,17 +173,6 @@
             "node": "Vector Store Tool",
             "type": "ai_languageModel",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Sign Msg": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -385,7 +369,13 @@
     },
     "chatConfig": {
       "main": [
-        []
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -558,7 +548,8 @@
       "position": [
         3140,
         1320
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -809,8 +800,7 @@
       "position": [
         3260,
         1060
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -841,8 +831,7 @@
         3100,
         1060
       ],
-      "webhookId": "192732fc-3f06-4e27-be6c-4ff4cc8d7a46",
-      "disabled": true
+      "webhookId": "192732fc-3f06-4e27-be6c-4ff4cc8d7a46"
     },
     {
       "parameters": {
@@ -877,29 +866,6 @@
       "position": [
         5960,
         1320
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
-              "name": "output",
-              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "3ae02ccf-d1b4-437a-96f1-1b25fe538bfc",
-      "name": "Sign Msg",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        5800,
-        1380
       ]
     },
     {
@@ -1302,6 +1268,29 @@
         4460,
         1800
       ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3ae02ccf-d1b4-437a-96f1-1b25fe538bfc",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5800,
+        1380
+      ]
     }
   ],
   "pinData": {
@@ -1345,6 +1334,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-11-06T13:23:55.927Z",
-  "versionId": "5fd2d8b5-a7b7-4ce0-bf82-2a4005ace402"
+  "updatedAt": "2024-12-30T22:20:28.265Z",
+  "versionId": "7e00c08d-7388-40b1-a62c-999e883984cc"
 }
