@@ -268,13 +268,7 @@
     },
     "Insert Data User": {
       "main": [
-        [
-          {
-            "node": "Config to Find All Bookings",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "chatConfig": {
@@ -1567,7 +1561,7 @@
       "name": "Clinic"
     }
   ],
-  "triggerCount": 1,
-  "updatedAt": "2024-12-19T01:37:12.875Z",
-  "versionId": "a82ac8ca-0097-4c98-a4fc-b9065a06cf18"
+  "triggerCount": 2,
+  "updatedAt": "2024-12-30T22:22:51.852Z",
+  "versionId": "2de83500-c051-4bdb-940c-d458a3339ccf"
 }
