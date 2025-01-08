@@ -1271,7 +1271,7 @@
             {
               "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
               "name": "url_api",
-              "value": "https://clinic.ibox.delivery/api/v1",
+              "value": "https://agendaclinic.com/api/v1",
               "type": "string"
             }
           ]
@@ -1562,6 +1562,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2024-12-30T22:22:51.852Z",
-  "versionId": "2de83500-c051-4bdb-940c-d458a3339ccf"
+  "updatedAt": "2025-01-08T22:45:27.165Z",
+  "versionId": "51917118-7686-4b28-a776-00e6a881a2ab"
 }
