@@ -8,11 +8,6 @@
             "node": "baseInfo",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -268,7 +263,13 @@
     },
     "Insert Data User": {
       "main": [
-        []
+        [
+          {
+            "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "chatConfig": {
@@ -424,13 +425,7 @@
     },
     "Sign Msg": {
       "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
+        []
       ]
     }
   },
@@ -625,8 +620,7 @@
       "position": [
         3360,
         1140
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -688,8 +682,7 @@
         3200,
         1140
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
-      "disabled": true
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -700,7 +693,8 @@
       "position": [
         3360,
         1340
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1186,9 +1180,9 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "QTrKQkY4jxrACTpy",
           "mode": "list",
-          "cachedResultName": "COMP AIClinic"
+          "value": "QTrKQkY4jxrACTpy",
+          "cachedResultName": "COMP Schedule"
         },
         "options": {
           "waitForSubWorkflow": true
@@ -1498,7 +1492,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: '{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format(\"dd MMM yyyy HH:mm\") }}'\nNosso endereço: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva. \nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details.",
+          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: '{{ $now.setLocale('pt-BR') }}'\nNosso endereço: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva. \nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details.",
           "returnIntermediateSteps": true
         }
       },
@@ -1562,6 +1556,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-08T22:45:27.165Z",
-  "versionId": "51917118-7686-4b28-a776-00e6a881a2ab"
+  "updatedAt": "2025-01-09T14:06:05.476Z",
+  "versionId": "d4335571-368e-4d92-8e29-d877e0ad46f8"
 }
