@@ -697,7 +697,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2200,
+        1980,
         1320
       ]
     },
@@ -726,7 +726,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2360,
+        2320,
         1580
       ],
       "id": "edc94a5f-7ab6-43d4-ba0e-9a341f9d256e",
@@ -793,8 +793,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2720,
-        1600
+        2760,
+        1580
       ],
       "id": "4dd86eb4-e62e-4eb1-aa78-07e5772bba38",
       "name": "Find Existing Appt Tool"
@@ -824,7 +824,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2600,
+        2620,
         1580
       ],
       "id": "ac72bff6-f5b8-4597-bd79-d21574a4695c",
@@ -860,8 +860,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2240,
-        1600
+        2160,
+        1580
       ],
       "id": "c56148c9-e174-4896-8c12-f6eff039ed39",
       "name": "Schedule Appt Tool"
@@ -892,7 +892,7 @@
       "typeVersion": 1.2,
       "position": [
         2480,
-        1600
+        1580
       ],
       "id": "0fb315e4-d637-4167-b8b0-cf776e9a551e",
       "name": "Reschedule Appt Tool"
@@ -923,7 +923,7 @@
       "parameters": {
         "content": "## Function Cal",
         "height": 240,
-        "width": 1110.932896459131,
+        "width": 1031,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1212,8 +1212,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2000,
-        1620
+        2020,
+        1580
       ]
     },
     {
@@ -1704,6 +1704,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-08T22:45:53.035Z",
-  "versionId": "329a4138-e5ed-4ce1-b599-bc8768831539"
+  "updatedAt": "2025-01-09T13:22:23.813Z",
+  "versionId": "be1481c9-7b31-4857-b68b-aaf7a5728444"
 }
