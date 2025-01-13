@@ -8,6 +8,11 @@
             "node": "baseInfo",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -425,7 +430,13 @@
     },
     "Sign Msg": {
       "main": [
-        []
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
       ]
     }
   },
@@ -620,7 +631,8 @@
       "position": [
         3360,
         1140
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -682,7 +694,8 @@
         3200,
         1140
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -693,8 +706,7 @@
       "position": [
         3360,
         1340
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1455,7 +1467,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4480,
+        4540,
         1740
       ],
       "id": "2c6a6fe7-3134-4ba6-8ce8-d46534bc1081",
@@ -1556,6 +1568,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-09T14:06:05.476Z",
-  "versionId": "d4335571-368e-4d92-8e29-d877e0ad46f8"
+  "updatedAt": "2025-01-13T12:33:13.054Z",
+  "versionId": "17a93def-410d-4cde-b956-d744fc74e8b2"
 }
