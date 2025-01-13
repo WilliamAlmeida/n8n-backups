@@ -488,7 +488,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://apiwp.wmst.com.br/message/sendWhatsAppAudio/ibox_cli_23",
+        "url": "={{ $('messageInfo').first().json.evo_api }}/message/sendWhatsAppAudio/{{ $('messageInfo').first().json.instance }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -509,8 +509,7 @@
           "id": "T5OqvislWbgDr9Ek",
           "name": "Evolution Api Key"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -522,10 +521,9 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        1920,
+        1940,
         500
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -687,7 +685,7 @@
           "unique_id": "ibox_cli_23_5512982184879",
           "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
           "conversation": "oi cli",
-          "output": "*AI 4 Clinica*:\\nOlá, William! Como posso te ajudar hoje?"
+          "output": "*AI 4 Clinica*:\\nOlá! Como posso te ajudar hoje?"
         }
       }
     ]
@@ -719,6 +717,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-18T22:01:52.281Z",
-  "versionId": "2a33044b-855c-4f5c-9869-9c639e803c94"
+  "updatedAt": "2025-01-13T13:25:49.027Z",
+  "versionId": "96c9b2a6-a149-4235-8e95-c5a48e72ec35"
 }
