@@ -718,7 +718,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -2195,8 +2196,10 @@
     "EWT": [
       {
         "json": {
-          "query": "Hemograma Completo",
-          "tool": "exams",
+          "query": {
+            "exam_id": 8
+          },
+          "tool": "exam details",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2205,7 +2208,7 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "williamkillerca@hotmail.com"
+            "conversation": " poderia me informar tudo sobre o exame hemograma"
           }
         }
       }
@@ -2242,6 +2245,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-10T00:58:31.557Z",
-  "versionId": "886c7531-a917-4ac8-b144-82dba86b80fa"
+  "updatedAt": "2025-01-13T21:47:57.268Z",
+  "versionId": "4bb6a015-3bd8-4edc-b7d0-4627082103ad"
 }
