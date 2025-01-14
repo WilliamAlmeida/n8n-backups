@@ -598,8 +598,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1243,7 +1242,7 @@
     },
     {
       "parameters": {
-        "model": "llama-3.2-90b-text-preview",
+        "model": "llama-3.2-90b-vision-preview",
         "options": {
           "temperature": 0
         }
@@ -1253,8 +1252,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        3560,
-        2140
+        3520,
+        2200
       ],
       "credentials": {
         "groqApi": {
@@ -1343,8 +1342,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        3640,
-        2080
+        3460,
+        2020
       ],
       "credentials": {
         "openAiApi": {
@@ -1402,7 +1401,7 @@
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
+          "name": "william"
         }
       }
     },
@@ -1429,7 +1428,7 @@
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
+          "name": "william"
         }
       }
     },
@@ -1455,7 +1454,7 @@
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
+          "name": "william"
         }
       }
     },
@@ -1482,7 +1481,7 @@
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
+          "name": "william"
         }
       }
     },
@@ -1512,7 +1511,7 @@
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "mQv2XCcAIiyPKV2D",
-          "name": "Google Calendar account"
+          "name": "william"
         }
       }
     },
@@ -1698,6 +1697,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2024-11-07T03:46:39.056Z",
-  "versionId": "edee7f74-028e-4204-bb35-ee04fb18e9b7"
+  "updatedAt": "2025-01-14T00:06:59.652Z",
+  "versionId": "7a7b9537-8e43-47ba-b70e-5fef16e59196"
 }
