@@ -631,8 +631,7 @@
       "position": [
         3360,
         1140
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -694,8 +693,7 @@
         3200,
         1140
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
-      "disabled": true
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -706,7 +704,8 @@
       "position": [
         3360,
         1340
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1207,7 +1206,8 @@
       "position": [
         5940,
         1100
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1229,7 +1229,8 @@
         1100
       ],
       "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
-      "name": "Insert Data Bookings"
+      "name": "Insert Data Bookings",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1504,8 +1505,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: '{{ $now.setLocale('pt-BR') }}'\nNosso endereço: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva. \nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details.",
-          "returnIntermediateSteps": true
+          "systemMessage": "=Você é um assistente útil de uma clínica médica.\n\n## Context:\nData e Hora atual: '{{ $now.setLocale('pt-BR') }}'\nNosso endereço: Av. Godoy Neto, 389 - Olaria, Lorena - SP, 12607-060.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva. \nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\n\n# Tool Calls\n- When the user mentions their name, the system will call the **save_user_data_tool** to update their details in the database.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**\n\n## Workflow Guidelines:\n1. **Exam's Details**:\n   - Ask for exam's name to locale if not provided.\n   - Use \"exam_details_tool\" to retrieve details."
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1568,6 +1568,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-13T12:33:13.054Z",
-  "versionId": "17a93def-410d-4cde-b956-d744fc74e8b2"
+  "updatedAt": "2025-01-13T21:50:10.304Z",
+  "versionId": "92e923be-73a5-41cd-baef-bbecf451ec02"
 }
