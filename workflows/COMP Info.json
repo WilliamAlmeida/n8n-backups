@@ -2197,19 +2197,22 @@
       {
         "json": {
           "query": {
-            "exam_id": 8
+            "specialist": "pediatria"
           },
-          "tool": "exam details",
+          "tool": "specialists",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
             "remoteJid": "5512982184879@s.whatsapp.net",
             "pushName": "W.M. Soluções Tecnologicas",
             "fromMe": false,
-            "unique_id": "william_5512982184879",
-            "debounce_time": 5,
-            "conversation": " poderia me informar tudo sobre o exame hemograma"
-          }
+            "unique_id": "ibox_cli_23_5512982184879",
+            "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+            "conversation": "quais pediatras atendem na clinica"
+          },
+          "hidden_fields": [
+            "event_id"
+          ]
         }
       }
     ]
@@ -2245,6 +2248,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-13T21:47:57.268Z",
-  "versionId": "4bb6a015-3bd8-4edc-b7d0-4627082103ad"
+  "updatedAt": "2025-01-14T21:36:26.603Z",
+  "versionId": "1e5e3c88-535d-45c7-a889-c431364122e0"
 }
