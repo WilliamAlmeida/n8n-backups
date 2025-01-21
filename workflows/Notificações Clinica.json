@@ -1,0 +1,411 @@
+{
+  "active": true,
+  "connections": {
+    "AI Clinic Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch Appointment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Appointment": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "notificationInfo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fix Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "notificationInfo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix Text": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-19T14:37:32.328Z",
+  "id": "HMtY9cN8ON5iwmGL",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Notificações Clinica",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "2b4de0e3-f7c9-4ac9-a932-381c9f0a3fda",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        3740,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "87ba2dd2-0786-4070-935a-eb325495000a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2500,
+        700
+      ],
+      "id": "b787f21c-d3ce-482a-a980-806beb747772",
+      "name": "AI Clinic Trigger",
+      "webhookId": "87ba2dd2-0786-4070-935a-eb325495000a"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.event_type }}",
+                    "rightValue": "appointment.created",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "created"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fa8e85ef-8bd8-4280-8546-7ef246d829a3",
+                    "leftValue": "={{ $json.body.event_type }}",
+                    "rightValue": "appointment.updated",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "updated"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "14a44bbb-0bf1-4540-b66a-4f03c9bb076e",
+                    "leftValue": "={{ $json.body.event_type }}",
+                    "rightValue": "deleted",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "deleted"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2700,
+        700
+      ],
+      "id": "b304c550-da09-45cf-bc3a-71c40963c14f",
+      "name": "Switch Appointment"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# Comportamentos\n- Responda tudo em pt-BR\n\n# Regras\n- O template deve ser informado após a mensagem de aviso\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n# Dados do Paciente\nNome: {{ $('AI Clinic Trigger').item.json.body.data.pacient.full_name }}\n\n# Dados do Agendamento\n- Título: {{ $json.body.data.title }}\n- Descrição: {{ $json.body.data.description }}\n- Período: {{ $json.body.data.start_time.toDateTime().toLocal().format('dd/MM/yyyy') }} das {{ $json.body.data.start_time.toDateTime().toLocal().format('hh:mm') }} - {{ $json.body.data.end_time.toDateTime().toLocal().format('hh:mm') }}\n- Status Atual: {{ $json.body.data.status }} (traduza para pt-br)\n- Código: {{ $json.body.data.id }}\n- Local: Na Clínica\n\n# Objetivo\nVocê deve gerar uma mensagem de notificação de status informado ao usuário o que houve com o agendamento dele."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        3000,
+        700
+      ],
+      "id": "8ca60df2-94a2-4bfb-9479-4d5b623b6956",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"evo_api\": \"https://apiwp.wmst.com.br\",\n  \"instance\": \"ibox_cli_23\",\n  \"remoteJid\": \"55{{ $('Switch Appointment').item.json.body.data.pacient.phone }}@s.whatsapp.net\",\n  \"pushName\": \"{{ $('Switch Appointment').item.json.body.data.pacient.full_name }}\",\n  \"fromMe\": false,\n  \"unique_id\": \"ibox_cli_23_55{{ $('Switch Appointment').item.json.body.data.pacient.phone }}\",\n  \"debounce_time\": 5\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        620
+      ],
+      "id": "96e716ed-c191-442d-afef-b740d68d5b56",
+      "name": "notificationInfo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d6e859-8379-4a34-8daf-b34c6a450a09",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.text.replaceAll('\\n', '\\\\n').replaceAll('**', '*').replace(/(?<!\\\\)\"/g, '\\\\\"') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "46c452f2-403d-44e4-86a5-b09f375e34f4",
+      "name": "Fix Text",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3560,
+        700
+      ],
+      "id": "58474fc9-93c5-4057-a358-f7a283b00664",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "content": "## Notificação de Mudança de Status do Agendamento\nAvisa o cliente pelo Whatsapp sobre o Status do Agendamento, quando sofrer modificação.\n\n**Status:** `Pending`, `Confirmed`, `Cancelled`, `Completed`",
+        "height": 520,
+        "width": 960
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        480
+      ],
+      "id": "cb6825cc-ff04-4bd6-97d7-4b05e6a2e7e6",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        3080,
+        880
+      ],
+      "id": "81a8bbb6-0fb6-44a3-8eb7-ee1443b12bd7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "AI Clinic Trigger": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "connection": "close",
+            "content-length": "740",
+            "user-agent": "GuzzleHttp/7",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event_type": "appointment.updated",
+            "data": {
+              "id": 1,
+              "title": "Exame - Exame de Colesterol Total",
+              "description": "",
+              "start_time": "2024-12-23T20:00:00.000000Z",
+              "end_time": "2024-12-23T20:15:00.000000Z",
+              "duration": 15,
+              "status": "confirmed",
+              "event_id": 16,
+              "pacient_id": 1,
+              "created_at": "2024-12-21T04:06:20.000000Z",
+              "pacient": {
+                "id": 1,
+                "full_name": "William Almeida",
+                "birthday": "1994-05-05",
+                "cpf": "",
+                "rg": "",
+                "full_address": "Rua Dr Laércio Lincoln Figueira, D19, Portal das Palmeiras",
+                "phone": "12982184879",
+                "phone_verified_at": "2024-12-21T04:06:19.000000Z",
+                "phone_is_whatsapp": 1,
+                "email": "williamkillerca@hotmail.com",
+                "email_verified_at": "2024-12-21T04:06:19.000000Z",
+                "origin": "whatsapp",
+                "extra_fields": null,
+                "created_at": "2024-12-21T04:06:19.000000Z"
+              }
+            }
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/87ba2dd2-0786-4070-935a-eb325495000a",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-31T06:44:33.847Z",
+      "updatedAt": "2024-10-31T06:44:33.847Z",
+      "id": "6vgbvfx4GT5juXVA",
+      "name": "Component"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-21T15:29:43.488Z",
+  "versionId": "24f2c6c4-dab7-4de1-b0de-1eacb3425577"
+}
