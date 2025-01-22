@@ -678,8 +678,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -718,8 +717,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1047,12 +1045,6 @@
               "name": "response",
               "value": "={{\n    [\n        $json.data.filter(item => item.accept == 'yes').length > 0 \n            ? `We accept health insurance plans: ${$json.data.filter(item => item.accept == 'yes').map(item => `${item.plan}`).join(', ')}.`\n            : '',\n        $json.data.filter(item => item.accept == 'no').length > 0 \n            ? `We do not accept health insurance plans: ${$json.data.filter(item => item.accept == 'no').map(item => `${item.plan}`).join(', ')}.`\n            : ''\n    ].filter(section => section !== '').join('\\n\\n') \n}}",
               "type": "string"
-            },
-            {
-              "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
-              "name": "response2",
-              "value": "={{ $json.data.map(item => i = {item}).toJsonString() }}",
-              "type": "string"
             }
           ]
         },
@@ -1065,7 +1057,8 @@
       "position": [
         4360,
         -480
-      ]
+      ],
+      "notes": "{{ $json.data.map(item => i = {item}).toJsonString() }}"
     },
     {
       "parameters": {
@@ -1170,12 +1163,6 @@
               "name": "response",
               "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, event ID ${item.event_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}",
               "type": "string"
-            },
-            {
-              "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
-              "name": "response2",
-              "value": "={{ $json.data }}",
-              "type": "string"
             }
           ]
         },
@@ -1246,12 +1233,6 @@
               "name": "response",
               "value": "={{\n    [\n        $json.data.filter(item => item.accept == 'yes').length > 0 \n            ? `We accept payments: ${$json.data.filter(item => item.accept == 'yes').map(item => `${item.payment}`).join(', ')}.`\n            : '',\n        $json.data.filter(item => item.accept == 'no').length > 0 \n            ? `We do not accept payments: ${$json.data.filter(item => item.accept == 'no').map(item => `${item.payment}`).join(', ')}.`\n            : ''\n    ].filter(section => section !== '').join('\\n\\n') \n}}",
               "type": "string"
-            },
-            {
-              "id": "d627fd60-f2b4-4840-9e24-38dace9a13e6",
-              "name": "response2",
-              "value": "={{ $json.data }}",
-              "type": "string"
             }
           ]
         },
@@ -1316,12 +1297,6 @@
       "parameters": {
         "assignments": {
           "assignments": [
-            {
-              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
-              "name": "response2",
-              "value": "={{ $json.data }}",
-              "type": "string"
-            },
             {
               "id": "df2665f5-f799-449c-bce5-3758bc793f6c",
               "name": "response",
@@ -2197,9 +2172,9 @@
       {
         "json": {
           "query": {
-            "specialist": "pediatria"
+            "exam": "sangue"
           },
-          "tool": "specialists",
+          "tool": "exams",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2248,6 +2223,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-14T21:36:26.603Z",
-  "versionId": "1e5e3c88-535d-45c7-a889-c431364122e0"
+  "updatedAt": "2025-01-21T19:20:43.344Z",
+  "versionId": "04084b9f-386d-4042-a1f8-819a55e30359"
 }
