@@ -332,7 +332,7 @@
             "x-forwarded-for": "10.0.0.2",
             "x-real-ip": "10.0.0.2",
             "connection": "close",
-            "content-length": "740",
+            "content-length": "685",
             "user-agent": "GuzzleHttp/7",
             "content-type": "application/json"
           },
@@ -341,31 +341,31 @@
           "body": {
             "event_type": "appointment.updated",
             "data": {
-              "id": 1,
-              "title": "Exame - Exame de Colesterol Total",
+              "id": "01jj50qcdrpjcs7kxyhqcars5y",
+              "title": "Exame - Teste de Glicemia",
               "description": "",
-              "start_time": "2024-12-23T20:00:00.000000Z",
-              "end_time": "2024-12-23T20:15:00.000000Z",
+              "start_time": "2025-01-21T18:40:00.000000Z",
+              "end_time": "2025-01-21T18:55:00.000000Z",
               "duration": 15,
               "status": "confirmed",
-              "event_id": 16,
+              "event_id": 9,
               "pacient_id": 1,
-              "created_at": "2024-12-21T04:06:20.000000Z",
+              "created_at": "2025-01-21T15:06:49.000000Z",
               "pacient": {
                 "id": 1,
-                "full_name": "William Almeida",
+                "full_name": "William",
                 "birthday": "1994-05-05",
                 "cpf": "",
                 "rg": "",
-                "full_address": "Rua Dr Laércio Lincoln Figueira, D19, Portal das Palmeiras",
+                "full_address": "",
                 "phone": "12982184879",
-                "phone_verified_at": "2024-12-21T04:06:19.000000Z",
+                "phone_verified_at": "2025-01-21T18:06:49.000000Z",
                 "phone_is_whatsapp": 1,
-                "email": "williamkillerca@hotmail.com",
-                "email_verified_at": "2024-12-21T04:06:19.000000Z",
+                "email": "williamkillerca@gmail.com",
+                "email_verified_at": "2025-01-21T18:06:49.000000Z",
                 "origin": "whatsapp",
                 "extra_fields": null,
-                "created_at": "2024-12-21T04:06:19.000000Z"
+                "created_at": "2025-01-21T18:06:49.000000Z"
               }
             }
           },
@@ -406,6 +406,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-21T15:29:43.488Z",
-  "versionId": "24f2c6c4-dab7-4de1-b0de-1eacb3425577"
+  "updatedAt": "2025-01-21T19:29:04.346Z",
+  "versionId": "ff861043-6415-412f-afca-e979dc943b83"
 }
