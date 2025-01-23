@@ -1212,6 +1212,10 @@
             {
               "name": "start_time",
               "value": "={{ $now.minus(2, 'days').toUTC()}}"
+            },
+            {
+              "name": "pacient_phone",
+              "value": "={{ $('EWT').item.json.remoteJid ?? '' }}"
             }
           ]
         },
@@ -1699,12 +1703,13 @@
     "EWT": [
       {
         "json": {
+          "action": "list bookings",
+          "remoteJid": "21981424221",
           "query": {
-            "booking_id": "01jh5m2wgtjqhg4sd5ytbxctzc",
-            "start": "2025-01-15T09:00:00",
-            "reschedulingReason": "Reagendamento solicitado pelo paciente."
-          },
-          "action": "reschedule booking"
+            "email": "",
+            "event_id": "",
+            "status": "all"
+          }
         }
       }
     ]
@@ -1746,6 +1751,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-09T13:51:08.594Z",
-  "versionId": "c916e5b6-db73-4310-8bd5-807e3df11a8f"
+  "updatedAt": "2025-01-23T14:29:05.548Z",
+  "versionId": "7e7922dc-6b5a-4fdf-a8e5-17136f3ba769"
 }
