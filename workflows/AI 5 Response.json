@@ -677,15 +677,16 @@
     "Execute Workflow Trigger": [
       {
         "json": {
-          "evo_api": "https://apiwp.wmst.com.br",
-          "instance": "ibox_cli_23",
-          "remoteJid": "5512982184879@s.whatsapp.net",
-          "pushName": "W.M. Soluções Tecnologicas",
+          "evo_api": "https://apicloud.pljeng.com.br",
+          "instance": "665e14737d3dd1915a4e348d",
+          "remoteJid": "5512982184879",
+          "pushName": "Gabriel Braga 1",
           "fromMe": false,
-          "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
-          "conversation": "oi cli",
-          "output": "*AI 4 Clinica*:\\nOlá! Como posso te ajudar hoje?"
+          "unique_id": "665e14737d3dd1915a4e348d_5521981424221",
+          "evo_api_key": "apikey",
+          "client_token": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245",
+          "conversation": "teste do agente de IA",
+          "output": "*AI 4 Clinica*:\\nParece que você está testando o sistema. Se precisar de ajuda com algo específico, é só me avisar! Estou aqui para ajudar."
         }
       }
     ]
@@ -717,6 +718,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-13T13:25:49.027Z",
-  "versionId": "96c9b2a6-a149-4235-8e95-c5a48e72ec35"
+  "updatedAt": "2025-01-23T14:18:14.172Z",
+  "versionId": "44253dba-414a-495b-8e82-361cf922693f"
 }
