@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Send Message",
+            "node": "from me?",
             "type": "main",
             "index": 0
           }
@@ -592,11 +592,6 @@
             "node": "baseInfo",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -660,12 +655,6 @@
               "name": "evo_api_key",
               "value": "={{ $json.body.apikey ?? '' }}",
               "type": "string"
-            },
-            {
-              "id": "a9b6f39e-42cf-4b1f-998e-4f9a577b3679",
-              "name": "output.content",
-              "value": "={{ $json.body.data.message.conversation }}",
-              "type": "string"
             }
           ]
         },
@@ -676,8 +665,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -16040,
-        1180
+        -15840,
+        1300
       ],
       "alwaysOutputData": false,
       "executeOnce": false
@@ -2226,7 +2215,6 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "f67c8094-022b-4aef-bb16-c7e430158fd9",
-        "responseMode": "responseNode",
         "options": {}
       },
       "id": "8d951bba-44fa-45a9-8177-626158b30a42",
@@ -2234,60 +2222,80 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -16240,
-        1280
+        -16000,
+        1300
       ],
       "webhookId": "26f1485f-02c1-4134-84cc-923317995aa9"
-    },
-    {
-      "parameters": {
-        "respondWith": "allIncomingItems",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1.1,
-      "position": [
-        -16040,
-        1380
-      ],
-      "id": "6172179e-58ff-4b6e-9ff1-08862e7f52c6",
-      "name": "Respond to Webhook"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $json.evo_api }}/message/sendText/{{ $json.instance }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $json.remoteJid }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "id": "805ec25a-6ec5-4d25-9f7c-68e5cd7bc335",
-      "name": "Send Message",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -15860,
-        1180
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "T5OqvislWbgDr9Ek",
-          "name": "Evolution Api Key"
-        }
-      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "connection": "close",
+            "content-length": "1108",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.7",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "ibox_cli_23",
+            "data": {
+              "key": {
+                "remoteJid": "5512982184879@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB01F50BEABACBB381880"
+              },
+              "pushName": "W.M. Soluções Tecnologicas",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "ozNgKuD3rOK9VA==",
+                    "senderTimestamp": "1736531331",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "FHyupisLT5YD8w==",
+                    "recipientTimestamp": "1736772008"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "4wLVQz43jlXmfCwBYRjEUhfSsBnBs5zHXM/tEaTLJqI="
+                },
+                "conversation": "oi"
+              },
+              "contextInfo": {
+                "ephemeralSettingTimestamp": "1719835382",
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1737639520,
+              "instanceId": "aa1d2c6f-9a7f-489b-accc-ff1c46a36a23",
+              "source": "web"
+            },
+            "destination": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
+            "date_time": "2025-01-23T10:38:40.318Z",
+            "sender": "5512982471939@s.whatsapp.net",
+            "server_url": "https://apiwp.wmst.com.br",
+            "apikey": "3D48F896-1228-4268-8F5D-4200DA4C3661"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -2315,6 +2323,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-22T23:05:26.071Z",
-  "versionId": "973a4318-8946-40ad-9a3b-f00c9dadb71d"
+  "updatedAt": "2025-01-23T13:50:48.083Z",
+  "versionId": "a7dd003f-db99-4a15-89ed-7007fb289ad0"
 }
