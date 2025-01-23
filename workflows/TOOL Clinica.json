@@ -1641,7 +1641,11 @@
     "EWT": [
       {
         "json": {
-          "query": "Verificar horários disponíveis da Dra. Rita de Cássia Marton Carneiro para consultas amanhã.",
+          "query": {
+            "query": "cancelar exame Teste de Glicemia",
+            "reasion_to_reschedule": "",
+            "reasion_to_cancellation": "O usuário optou por cancelar o exame."
+          },
           "agent": "calendar",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
@@ -1651,23 +1655,24 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "tem para amanhã?"
+            "conversation": "prefiro o cancelamento",
+            "client_token": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245"
           },
           "userAccount": {
-            "id": 3,
+            "id": 1,
             "full_name": "William",
             "birthday": "1994-05-05",
-            "cpf": null,
-            "rg": null,
-            "full_address": null,
+            "cpf": "",
+            "rg": "",
+            "full_address": "",
             "phone": "12982184879",
-            "phone_verified_at": "2024-12-18T15:20:56.000000Z",
+            "phone_verified_at": "2025-01-21T18:06:49.000000Z",
             "phone_is_whatsapp": 1,
-            "email": "williamkillerca@hotmail.com",
-            "email_verified_at": null,
+            "email": "williamkillerca@gmail.com",
+            "email_verified_at": "2025-01-21T18:06:49.000000Z",
             "origin": "whatsapp",
             "extra_fields": null,
-            "created_at": "2024-12-18T15:20:56.000000Z"
+            "created_at": "2025-01-21T18:06:49.000000Z"
           }
         }
       }
@@ -1704,6 +1709,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-09T13:22:23.813Z",
-  "versionId": "be1481c9-7b31-4857-b68b-aaf7a5728444"
+  "updatedAt": "2025-01-23T15:36:04.913Z",
+  "versionId": "31f72a5c-0651-4df2-860f-82fd465d183b"
 }
