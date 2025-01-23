@@ -1603,6 +1603,12 @@
               "name": "url_api",
               "value": "https://agendaclinic.com/api/v1",
               "type": "string"
+            },
+            {
+              "id": "41a31c67-8ee1-4f3d-b1b6-3b78e499f17c",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.messageInfo.client_token }}",
+              "type": "string"
             }
           ]
         },
@@ -1620,8 +1626,15 @@
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/health-plans",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
         "options": {
           "response": {
             "response": {
@@ -1638,19 +1651,20 @@
       "position": [
         3580,
         -660
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "nmUmytqX7rLnklTQ",
-          "name": "AI Clinic Token"
-        }
-      }
+      ]
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
         "options": {
           "response": {
             "response": {
@@ -1667,19 +1681,20 @@
       "position": [
         3580,
         -220
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "nmUmytqX7rLnklTQ",
-          "name": "AI Clinic Token"
-        }
-      }
+      ]
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/payment-methods",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
         "options": {
           "response": {
             "response": {
@@ -1696,19 +1711,20 @@
       "position": [
         3580,
         200
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "nmUmytqX7rLnklTQ",
-          "name": "AI Clinic Token"
-        }
-      }
+      ]
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/exams",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
         "options": {
           "response": {
             "response": {
@@ -1725,19 +1741,22 @@
       "position": [
         3560,
         620
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "nmUmytqX7rLnklTQ",
-          "name": "AI Clinic Token"
-        }
-      }
+      ]
     },
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/exams/{{ $('EWT').item.json.query.exam_id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
         "options": {
           "response": {
             "response": {
@@ -2172,22 +2191,20 @@
       {
         "json": {
           "query": {
-            "exam": "sangue"
+            "name": ""
           },
-          "tool": "exams",
+          "tool": "payments",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
             "remoteJid": "5512982184879@s.whatsapp.net",
             "pushName": "W.M. Soluções Tecnologicas",
             "fromMe": false,
-            "unique_id": "ibox_cli_23_5512982184879",
-            "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
-            "conversation": "quais pediatras atendem na clinica"
-          },
-          "hidden_fields": [
-            "event_id"
-          ]
+            "unique_id": "william_5512982184879",
+            "debounce_time": 5,
+            "conversation": "oi, quais métodos de pagamento vocês aceitam?",
+            "client_token": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245"
+          }
         }
       }
     ]
@@ -2223,6 +2240,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-21T19:20:43.344Z",
-  "versionId": "04084b9f-386d-4042-a1f8-819a55e30359"
+  "updatedAt": "2025-01-23T15:00:20.152Z",
+  "versionId": "08904e2b-7d70-475e-bad3-6835330be6c9"
 }
