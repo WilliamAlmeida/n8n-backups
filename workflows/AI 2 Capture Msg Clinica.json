@@ -1,14 +1,9 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "baseInfo": {
       "main": [
         [
-          {
-            "node": "Send Message",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "from me?",
             "type": "main",
@@ -139,7 +134,7 @@
         [],
         [
           {
-            "node": "Message Type",
+            "node": "ignore numbers",
             "type": "main",
             "index": 0
           }
@@ -232,7 +227,13 @@
     "allow numbers": {
       "main": [
         [],
-        []
+        [
+          {
+            "node": "Message Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Media Type": {
@@ -327,18 +328,8 @@
             "node": "baseInfo",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
           }
         ]
-      ]
-    },
-    "Send Message": {
-      "main": [
-        []
       ]
     },
     "fetch instance config": {
@@ -454,7 +445,36 @@
       "main": [
         [
           {
+            "node": "limit characters hited?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "limit characters hited?": {
+      "main": [
+        [
+          {
+            "node": "Type Response 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "wk agent actived",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Type Response 1": {
+      "main": [
+        [
+          {
+            "node": "Send Message 1",
             "type": "main",
             "index": 0
           }
@@ -532,6 +552,12 @@
               "name": "client_token",
               "value": "={{ $json.body.clientToken }}",
               "type": "string"
+            },
+            {
+              "id": "ce38430a-0450-4945-b257-90d3965a2fce",
+              "name": "",
+              "value": "",
+              "type": "string"
             }
           ]
         },
@@ -542,7 +568,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -15880,
+        -16440,
         1300
       ],
       "alwaysOutputData": false,
@@ -738,7 +764,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -15660,
+        -16260,
         1300
       ]
     },
@@ -755,7 +781,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -15440,
+        -16040,
         1220
       ],
       "alwaysOutputData": true,
@@ -779,7 +805,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -15440,
+        -16040,
         1380
       ],
       "credentials": {
@@ -818,7 +844,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -15260,
+        -15860,
         1280
       ]
     },
@@ -834,7 +860,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -15680,
+        -16280,
         1120
       ]
     },
@@ -1111,11 +1137,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -13900,
-        800
+        -15300,
+        1300
       ],
       "notesInFlow": true,
-      "disabled": true,
       "notes": "invertido temporariamente"
     },
     {
@@ -1125,7 +1150,7 @@
             {
               "id": "dd480120-b53b-4c64-9cbf-d5bfd813e50c",
               "name": "ignored_id",
-              "value": "={{ $('instanceConfig').first().json.ignoreJids ?? '' }}",
+              "value": "=5521981424221,5512982184879",
               "type": "string"
             }
           ]
@@ -1137,10 +1162,9 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -14140,
-        800
-      ],
-      "disabled": true
+        -15540,
+        1300
+      ]
     },
     {
       "parameters": {
@@ -1274,16 +1298,15 @@
       "parameters": {
         "content": "## Gerencia o Bloqueio de Números Ignorados\n*Se enviado pelo por um whatsapp na lista, ele não repassa a mensagem*",
         "height": 262.3204306824423,
-        "width": 535.8424799077808,
-        "color": 3
+        "width": 535.8424799077808
       },
       "id": "ce802cb6-e30c-4b01-b886-229aad4cbcad",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -14240,
-        700
+        -15640,
+        1200
       ]
     },
     {
@@ -1448,7 +1471,6 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "85b1053a-9b80-48c1-91b6-6650abd744b6",
-        "responseMode": "responseNode",
         "options": {}
       },
       "id": "c0c41ae0-3a00-4de2-9767-eb09f9769be2",
@@ -1456,58 +1478,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -16080,
+        -16620,
         1300
       ],
       "webhookId": "85b1053a-9b80-48c1-91b6-6650abd744b6"
-    },
-    {
-      "parameters": {
-        "respondWith": "allIncomingItems",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1.1,
-      "position": [
-        -16080,
-        1500
-      ],
-      "id": "5e385b93-4923-4a51-961a-c0ed2ddbce6a",
-      "name": "Respond to Webhook"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $json.evo_api }}/message/sendText/{{ $json.instance }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $json.remoteJid }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
-      },
-      "id": "e48c0886-b2c4-4e7d-91c3-adcf1d68f85f",
-      "name": "Send Message",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -15880,
-        1500
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "T5OqvislWbgDr9Ek",
-          "name": "Evolution Api Key"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -1728,8 +1702,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        -11540,
-        1420
+        -11340,
+        1520
       ]
     },
     {
@@ -1743,7 +1717,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -11720,
+        -11700,
         1420
       ]
     },
@@ -1758,9 +1732,98 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -11900,
-        1320
+        -11880,
+        1340
       ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "adc4b240-1340-4273-8ec4-9ed520a5700b",
+              "leftValue": "={{ $json.conversation.length }}",
+              "rightValue": 1000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -11540,
+        1420
+      ],
+      "id": "10cda6b7-b187-4783-b8f3-46fd95e95891",
+      "name": "limit characters hited?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a3f06787-56d4-417f-b5e3-a02eac06c46b",
+              "name": "msgs",
+              "value": "=[\n  \"Opa! Percebi que a mensagem está um pouco longa. Pode resumir para que eu consiga ajudar de forma mais rápida?\",\n  \"Sua mensagem é bem detalhada! Você pode resumir um pouco para facilitar meu entendimento?\",\n  \"Obrigado por compartilhar tantos detalhes! Que tal resumir um pouco para que eu possa te ajudar melhor?\",\n  \"Que legal que você compartilhou tanta informação! Se puder resumir, consigo te ajudar de forma mais prática.\",\n  \"Para garantir que eu te ajude da melhor forma, pode resumir um pouquinho sua mensagem?\",\n  \"Adorei os detalhes! Mas, para facilitar, que tal enviar um resumo da sua dúvida?\",\n  \"Para eu entender rapidinho e te ajudar melhor, pode resumir sua mensagem?\",\n  \"A mensagem está bem completa! Se puder resumir, consigo ser mais ágil na resposta.\",\n  \"Obrigado pela mensagem! Que tal me enviar um resumo para facilitar a análise?\",\n  \"Uau, muita informação boa! Pode resumir um pouco para facilitar minha resposta?\"\n]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -11360,
+        1280
+      ],
+      "id": "f2136f99-1454-46f7-82da-bceb1b157688",
+      "name": "Type Response 1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.evo_api }}/message/sendText/{{ $('baseInfo').item.json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('baseInfo').item.json.remoteJid }}\",\n  \"text\": \"{{ $json.msgs[Math.floor(Math.random() * $json.msgs.length)] }}\",\n  \"delay\": 250\n,\n  \"linkPreview\": false\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "8061da4e-5edc-42a5-83b7-a21f5c28c3da",
+      "name": "Send Message 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11200,
+        1280
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "T5OqvislWbgDr9Ek",
+          "name": "Evolution Api Key"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1774,7 +1837,7 @@
             "x-forwarded-for": "10.0.0.2",
             "x-real-ip": "10.0.0.2",
             "connection": "close",
-            "content-length": "339",
+            "content-length": "417",
             "accept": "application/json, text/plain, */*",
             "content-type": "application/json",
             "authorization": "Bearer 1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245",
@@ -1788,19 +1851,21 @@
             "instance": "665e14737d3dd1915a4e348d",
             "apikey": "apikey",
             "data": {
+              "messageTimestamp": 1737657818944,
               "pushName": "Gabriel Braga 1",
               "key": {
                 "fromMe": false,
-                "remoteJid": "5521981424221"
+                "remoteJid": "5521981424221",
+                "id": "67928853d02db427ac646414"
               },
               "messageType": "conversation",
               "message": {
-                "conversation": "teste do agente de IA"
+                "conversation": "desejo agendar para daqui a 3 dias"
               }
             },
             "clientToken": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245"
           },
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/85b1053a-9b80-48c1-91b6-6650abd744b6",
           "executionMode": "production"
         }
       }
@@ -1833,6 +1898,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-23T14:21:04.650Z",
-  "versionId": "7b81d15c-f61e-44ee-80c5-6bb400026272"
+  "updatedAt": "2025-01-23T18:51:02.434Z",
+  "versionId": "5078875a-b9ff-4e82-b46e-330556d764fe"
 }
