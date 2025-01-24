@@ -531,7 +531,7 @@
           "parameters": [
             {
               "name": "cancellation_reason",
-              "value": "={{ $('EWT').item.json.query.cancellation_reason }}"
+              "value": "={{ $('EWT').item.json.query.cancellation_reason ?? '' }}"
             }
           ]
         },
@@ -1703,13 +1703,11 @@
     "EWT": [
       {
         "json": {
-          "action": "list bookings",
-          "remoteJid": "21981424221",
           "query": {
-            "email": "",
-            "event_id": "",
-            "status": "all"
-          }
+            "booking_id": "01jj50qcdrpjcs7kxyhqcars5y",
+            "cancellation_reason": "cancelar exame"
+          },
+          "action": "cancel booking"
         }
       }
     ]
@@ -1751,6 +1749,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-23T14:29:05.548Z",
-  "versionId": "7e7922dc-6b5a-4fdf-a8e5-17136f3ba769"
+  "updatedAt": "2025-01-23T16:13:17.669Z",
+  "versionId": "a214617f-360e-44b6-bc80-ed9d2bc2b6e5"
 }
