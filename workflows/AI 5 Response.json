@@ -191,14 +191,7 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "json"
-            }
-          }
-        }
+        "options": {}
       },
       "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
       "name": "Send Message",
@@ -265,7 +258,7 @@
       "parameters": {
         "content": "# Enviar o Resultado para o Whatsapp",
         "height": 378,
-        "width": 880,
+        "width": 940,
         "color": 4
       },
       "id": "70aca7a6-084d-4541-9026-32578ef3f7af",
@@ -588,7 +581,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2380,
+        2440,
         240
       ],
       "id": "c9735dc4-a45a-4a29-aa0f-379af3125555",
@@ -679,14 +672,14 @@
         "json": {
           "evo_api": "https://apicloud.pljeng.com.br",
           "instance": "665e14737d3dd1915a4e348d",
-          "remoteJid": "5512982184879",
+          "remoteJid": "5521981424221",
           "pushName": "Gabriel Braga 1",
           "fromMe": false,
           "unique_id": "665e14737d3dd1915a4e348d_5521981424221",
           "evo_api_key": "apikey",
           "client_token": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245",
           "conversation": "teste do agente de IA",
-          "output": "*AI 4 Clinica*:\\nParece que você está testando o sistema. Se precisar de ajuda com algo específico, é só me avisar! Estou aqui para ajudar."
+          "output": "*AI 4 Clinica*:\nEstou aqui! Se precisar de alguma informação ou ajuda, é só me avisar. Como posso assisti-lo?"
         }
       }
     ]
@@ -718,6 +711,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-23T14:18:14.172Z",
-  "versionId": "44253dba-414a-495b-8e82-361cf922693f"
+  "updatedAt": "2025-01-23T17:29:33.965Z",
+  "versionId": "f804c434-323d-44c4-9eff-0c57d4d3c211"
 }
