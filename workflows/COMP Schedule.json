@@ -531,7 +531,7 @@
           "parameters": [
             {
               "name": "cancellation_reason",
-              "value": "={{ $('EWT').item.json.query.cancellation_reason ?? '' }}"
+              "value": "={{ $('EWT').item.json.cancellation_reason ?? '' }}"
             }
           ]
         },
@@ -1704,10 +1704,11 @@
       {
         "json": {
           "query": {
-            "booking_id": "01jj50qcdrpjcs7kxyhqcars5y",
-            "cancellation_reason": "cancelar exame"
+            "booking_id": "01jjabxr9mr480bgwy2r5ebrr9",
+            "cancellation_reason": "cancelar exame Hemograma Completo"
           },
-          "action": "cancel booking"
+          "action": "cancel booking",
+          "cancellation_reason": "estarei viajando"
         }
       }
     ]
@@ -1749,6 +1750,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-23T16:13:17.669Z",
-  "versionId": "a214617f-360e-44b6-bc80-ed9d2bc2b6e5"
+  "updatedAt": "2025-01-24T20:41:03.395Z",
+  "versionId": "a403636d-3028-4c58-8b12-7be9bb69aa26"
 }
