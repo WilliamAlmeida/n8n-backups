@@ -1317,7 +1317,7 @@
     {
       "parameters": {
         "name": "scheduling_tool",
-        "description": "Call this workflow to handle all requests related to managing appointments, events, or meetings.",
+        "description": "=Call this tool to handle all requests related to appointment management.\n\nAppointments, Rescheduling, Cancellation, Checking Appointment Availability, Checking User Appointments.\n\nCancellation and Rescheduling also includes the reason provided by the user.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -1342,7 +1342,10 @@
               "objectValue": "={{ $('userAccount').first().json }}"
             }
           ]
-        }
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"query\": {\n\t\t\"type\": \"string\"\n\t\t},\n\t\"reason\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"reason for cancellation or rescheduling\"\n\t\t}\n\t}\n}"
       },
       "id": "7b833efb-0bfd-4b0f-840d-290669af7bb4",
       "name": "Scheduling Tool",
@@ -1880,6 +1883,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-24T15:03:34.988Z",
-  "versionId": "1f92e2cd-3d93-4dc0-9074-548ea17136a8"
+  "updatedAt": "2025-01-25T02:58:25.772Z",
+  "versionId": "56b332ec-23f2-4330-ae08-dd7a88182dfe"
 }
