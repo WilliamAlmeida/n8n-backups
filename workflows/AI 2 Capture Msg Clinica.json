@@ -47,13 +47,7 @@
     },
     "Get Base64": {
       "main": [
-        [
-          {
-            "node": "Media Type",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Convert To Audio": {
@@ -166,18 +160,12 @@
         ],
         [
           {
-            "node": "Get Base64",
+            "node": "set config",
             "type": "main",
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Get Base64",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Groq Analyze Audio": {
@@ -480,6 +468,17 @@
           }
         ]
       ]
+    },
+    "set config": {
+      "main": [
+        [
+          {
+            "node": "Media Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-01-23T12:50:45.990Z",
@@ -552,12 +551,6 @@
               "name": "client_token",
               "value": "={{ $json.body.clientToken }}",
               "type": "string"
-            },
-            {
-              "id": "ce38430a-0450-4945-b257-90d3965a2fce",
-              "name": "",
-              "value": "",
-              "type": "string"
             }
           ]
         },
@@ -577,8 +570,8 @@
     {
       "parameters": {
         "content": "## Captura Mensagem\n### Nota: Se for áudios/imagens transcreve para formato de texto\n*Obs.: No final monta estrutura JSON que será usada no restante do fluxo*",
-        "height": 699.3376778124559,
-        "width": 1629.5604480320626,
+        "height": 739,
+        "width": 1630,
         "color": 5
       },
       "id": "dd766ca6-53f8-44e2-b9a9-915f1b3cf196",
@@ -669,10 +662,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14960,
-        1560
+        -14980,
+        1720
       ],
-      "alwaysOutputData": false
+      "alwaysOutputData": false,
+      "disabled": true
     },
     {
       "parameters": {
@@ -1150,7 +1144,7 @@
             {
               "id": "dd480120-b53b-4c64-9cbf-d5bfd813e50c",
               "name": "ignored_id",
-              "value": "=5521981424221,5512982184879",
+              "value": "=5521981424221,5512982184879,5521983838394",
               "type": "string"
             }
           ]
@@ -1533,7 +1527,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -12640,
+        -12860,
         1460
       ],
       "id": "5e0b7c25-7e98-4dba-8e95-ef026c77e6dc",
@@ -1550,7 +1544,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -12800,
+        -13020,
         1460
       ],
       "id": "6a383d12-29c0-458f-ab5a-b9ba1126c709",
@@ -1573,7 +1567,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -12240,
+        -12460,
         1440
       ],
       "id": "94d98b19-6bb0-4418-be60-21f2366d3aa6",
@@ -1595,7 +1589,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -12960,
+        -13180,
         1460
       ],
       "id": "191d08f3-eaec-4e45-b35c-3178be1f851b",
@@ -1614,7 +1608,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -12420,
+        -12640,
         1440
       ],
       "id": "1d3e7c92-8733-48af-90a1-244a11475d70",
@@ -1640,7 +1634,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -12060,
+        -12280,
         1440
       ],
       "executeOnce": true
@@ -1653,7 +1647,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -13120,
+        -13340,
         1460
       ],
       "id": "e143642b-8f01-4445-8e56-7aaaa21efa64",
@@ -1673,7 +1667,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -12060,
+        -12280,
         1240
       ],
       "id": "40ab01c2-1ab1-4340-9598-55aa05bc4356",
@@ -1702,7 +1696,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        -11340,
+        -11560,
         1520
       ]
     },
@@ -1717,7 +1711,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -11700,
+        -11920,
         1420
       ]
     },
@@ -1732,7 +1726,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -11880,
+        -12100,
         1340
       ]
     },
@@ -1763,7 +1757,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -11540,
+        -11760,
         1420
       ],
       "id": "10cda6b7-b187-4783-b8f3-46fd95e95891",
@@ -1786,7 +1780,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -11360,
+        -11580,
         1280
       ],
       "id": "f2136f99-1454-46f7-82da-bceb1b157688",
@@ -1815,7 +1809,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -11200,
+        -11420,
         1280
       ],
       "credentials": {
@@ -1824,6 +1818,35 @@
           "name": "Evolution Api Key"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9aeafed6-db54-46d9-aba7-8d7912006879",
+              "name": "mediaType",
+              "value": "={{ $('Webhook').item.json.body.data.messageType }}",
+              "type": "string"
+            },
+            {
+              "id": "877321d0-247c-4df5-b7b2-619db36af0db",
+              "name": "base64",
+              "value": "={{ $('Webhook').item.json.body.data.message.base64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -14980,
+        1560
+      ],
+      "id": "db98b1ae-ff71-427b-b0af-39397cde09b1",
+      "name": "set config"
     }
   ],
   "pinData": {
@@ -1837,7 +1860,7 @@
             "x-forwarded-for": "10.0.0.2",
             "x-real-ip": "10.0.0.2",
             "connection": "close",
-            "content-length": "417",
+            "content-length": "2091",
             "accept": "application/json, text/plain, */*",
             "content-type": "application/json",
             "authorization": "Bearer 1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245",
@@ -1850,17 +1873,22 @@
             "server_url": "https://apicloud.pljeng.com.br",
             "instance": "665e14737d3dd1915a4e348d",
             "apikey": "apikey",
+            "sessionId": "6793e5b1715597c8e39a44bd",
             "data": {
-              "messageTimestamp": 1737657818944,
+              "messageTimestamp": 1737746337438,
               "pushName": "Gabriel Braga 1",
               "key": {
                 "fromMe": false,
                 "remoteJid": "5521981424221",
-                "id": "67928853d02db427ac646414"
+                "id": "6793e7a1b13ee2821deb9969"
               },
-              "messageType": "conversation",
+              "messageType": "audioMessage",
               "message": {
-                "conversation": "desejo agendar para daqui a 3 dias"
+                "base64": "T2dnUwACAAAAAAAAAABUQmG2AAAAAG3YZmgBE09wdXNIZWFkAQEAD4C7AAAAAABPZ2dTAAAAAAAAAAAAAFRCYbYBAAAAPYi5IQEYT3B1c1RhZ3MIAAAAUmVjb3JkZXIAAAAAT2dnUwAEAA4BAAAAAABUQmG2AgAAAH9ROdZIDQ8NDA0QDw0iEw4REhEPEREQDhEQCw8NEA8SDxAMDxANDw8NDxAQDQ8ODwsKDQsMDg0NDQ8RDQ0ODgkIDw4KCQkKDAsKDAsNSACeueG4/0HN91gVFEgAdFRWms0GYZeDFRIbgEgAb7DTHcrKMOLq4QhIAFf6nUYpcPz18sBIAFWDd+Z06N654HtASABBs8Ysj2WwC10o5zmGwEgAV/p8EfqjbBOCfO4hgEgAUiwEvnGvz9n+t3BIgC/G+NKcfUJ94ecBJ4eHEFVu/KrdNtJ3BYG4afKjoyGASAv7pVIPicUvmZgltdoOcginMkgKeqT5PxqbH5a0zxHYSApYJRMKDJVZ3EblOEyIT1xICZS8PFgLrk5s5pe356UtO+BICZUmZLtVoA6+iB7Iawvwm0gJlR/rJieQM2HIK6q4k0gJlPg15/gEt6qP64Tdt+msSAmVfbMZ4gYghw619Lb3S8BICZVyNrM6FGKIFvuJTGDWSAmVfaPLcQxHvhZqOjRICZUE4IhjV8IRhEjKfRFBQ0gJlJoa1QkQMb8+fw5umshICZWUo2X/DEXRVUgJlJpI9pZg5hMsKSdBUEgJlZuqyZX0cSRTHeZICZVyOaaxPcca1DSjOcmwSAmVedKR9+841EE4BMb9SAmVnnxKcQAGs7K1bATabTsqSAmVdiW6CAC2lfQNjrWASAmVH+OK43evmwNdypA7oEgJlXYQuQGdQOwKHEgJlZpDp/tZqsBQYp8uwEgJlZfhp7qi9gLtZoToXYBICVH6jfBHNLkfyzLwSAivIfh951wLSZn+XtNMSAiuc4Np17mt4p1z6/8NSAivH+mE+d657MUSQEgIryP8SLfp+H8W8Cq6yEgIr3nWLKaMeAG/Fnl1CEBICK+XREEwzytiUWUSpsKQSAivIf2le3wlY8BsIEgIrpoOJRaP9hmW6emRoEgIryH3aza+rzgO3vawSAiu+gUKgvyQufsbiNFgSAiH09CZi8Ocl7tIBwmA46SKuIkoSAfJDqjwxJhJM5py4EgHyXX8YBTsGk4wSAe+afqxxMqATWVwSAivHEhePdaTqGzSDBhICK8x0Ip52XPKB57GSAiu5BremX70nxKFwEgAPzHLiggfhkKtiMpIAECyvhatbwI8k1eokQRICK9tc8pSoEyT43q42KPLakgIrx2IROBZctUQ84ZICK6Eic3anNVwhBEtSAfcogS9BV+GOAF6uoBICK8f5AN3TdwlvtbPUEgAPzQ5ED0aEEgAPzSS+YMwSAivqevKwH8r3thld+FASAicwYka2HHS2q6EeeBIB8l5xdkaiCKYSAfJecjMX28wSAe23U2vfsqkSAbjecVlBU1dxEgAD+hv0MegbZOMMUgAPfq4OZvPx5BASAeF8cwa8xuv0EgG43nR26EKmzzMgEgG43nSfHLjKkNASAfJedcXNWEc/Ez+QA==",
+                "audioMessage": {
+                  "mimetype": "audio/wave",
+                  "filaLength": 1210
+                }
               }
             },
             "clientToken": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245"
@@ -1898,6 +1926,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-23T18:51:02.434Z",
-  "versionId": "5078875a-b9ff-4e82-b46e-330556d764fe"
+  "updatedAt": "2025-01-25T00:04:26.643Z",
+  "versionId": "3bf33405-87cc-4e52-b3fb-66a4b209878e"
 }
