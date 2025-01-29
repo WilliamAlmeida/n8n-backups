@@ -151,6 +151,11 @@
             "node": "delete instance config",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -377,6 +382,17 @@
           }
         ]
       ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-27T18:14:53.380Z",
@@ -548,8 +564,7 @@
       "position": [
         3140,
         1320
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -585,7 +600,7 @@
     },
     {
       "parameters": {
-        "model": "llama-3.2-11b-text-preview",
+        "model": "llama-3.3-70b-versatile",
         "options": {
           "temperature": 0
         }
@@ -800,7 +815,8 @@
       "position": [
         3260,
         1060
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -831,7 +847,8 @@
         3100,
         1060
       ],
-      "webhookId": "192732fc-3f06-4e27-be6c-4ff4cc8d7a46"
+      "webhookId": "192732fc-3f06-4e27-be6c-4ff4cc8d7a46",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1303,8 +1320,8 @@
           "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "59FA7791-1AE9-4A66-A58F-B4AE75F225B1",
-          "conversation": "Oi iBox, gostaria de efetuar um pedido"
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "oi store"
         }
       }
     ]
@@ -1334,6 +1351,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2024-12-30T22:20:28.265Z",
-  "versionId": "7e00c08d-7388-40b1-a62c-999e883984cc"
+  "updatedAt": "2025-01-28T21:55:09.997Z",
+  "versionId": "4448f5d4-4dcb-4a5f-b79f-84d6b9e22e42"
 }
