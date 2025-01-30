@@ -2191,9 +2191,9 @@
       {
         "json": {
           "query": {
-            "name": ""
+            "exam_id": 5
           },
-          "tool": "payments",
+          "tool": "exam details",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2202,8 +2202,8 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "oi, quais métodos de pagamento vocês aceitam?",
-            "client_token": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245"
+            "conversation": "teste de glicemia",
+            "client_token": "1|Ts3ki1n6wPygVdaic9jzplxTbY7tJdcdvDX4LKSo9b27ea38"
           }
         }
       }
@@ -2240,6 +2240,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-23T15:00:20.152Z",
-  "versionId": "08904e2b-7d70-475e-bad3-6835330be6c9"
+  "updatedAt": "2025-01-29T20:49:28.903Z",
+  "versionId": "c2bcbc9a-5185-41ce-b059-1c3f2275fc69"
 }
