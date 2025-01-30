@@ -113,13 +113,7 @@
     },
     "Execute Workflow Trigger": {
       "main": [
-        [
-          {
-            "node": "messageInfo",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Redis Chat Memory": {
@@ -562,7 +556,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        3140,
+        3060,
         1320
       ]
     },
@@ -1351,6 +1345,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2025-01-28T21:55:09.997Z",
-  "versionId": "4448f5d4-4dcb-4a5f-b79f-84d6b9e22e42"
+  "updatedAt": "2025-01-29T20:02:49.199Z",
+  "versionId": "769b40bc-6a43-4e6c-9607-7400cbdc7e9d"
 }
