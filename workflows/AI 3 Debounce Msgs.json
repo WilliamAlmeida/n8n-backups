@@ -1299,9 +1299,7 @@
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "callerPolicy": "workflowsFromSameOwner",
-    "saveDataSuccessExecution": "none",
-    "saveManualExecutions": false
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": {
     "node:Schedule Trigger": {
@@ -1329,6 +1327,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-28T22:02:30.075Z",
-  "versionId": "e489a24d-5810-49ab-aae9-dc7fa9a23263"
+  "updatedAt": "2025-01-29T20:19:36.224Z",
+  "versionId": "69b607ee-c455-4908-a9e5-39d4b373045a"
 }
