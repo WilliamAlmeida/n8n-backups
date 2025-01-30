@@ -8,11 +8,6 @@
             "node": "baseInfo",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -436,13 +431,7 @@
     },
     "Sign Msg": {
       "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
+        []
       ]
     },
     "delete instance config": {
@@ -702,7 +691,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245\"\n  }",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"1|Ts3ki1n6wPygVdaic9jzplxTbY7tJdcdvDX4LKSo9b27ea38\"\n  }",
         "options": {}
       },
       "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
@@ -712,8 +701,7 @@
       "position": [
         2560,
         1220
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -775,8 +763,7 @@
         2400,
         1220
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
-      "disabled": true
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -787,7 +774,8 @@
       "position": [
         2560,
         1420
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -866,8 +854,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -888,8 +875,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1312,7 +1298,8 @@
         1100
       ],
       "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
-      "name": "Insert Data Bookings"
+      "name": "Insert Data Bookings",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1883,6 +1870,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-25T02:58:25.772Z",
-  "versionId": "56b332ec-23f2-4330-ae08-dd7a88182dfe"
+  "updatedAt": "2025-01-29T20:51:37.299Z",
+  "versionId": "d17e80fa-6dfc-451a-83d5-99af2ae4175e"
 }
