@@ -1783,8 +1783,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -2239,9 +2238,10 @@
             "x-forwarded-for": "10.0.0.2",
             "x-real-ip": "10.0.0.2",
             "connection": "close",
-            "content-length": "1108",
+            "content-length": "1090",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
             "content-type": "application/json",
-            "user-agent": "axios/1.7.7",
+            "user-agent": "axios/1.7.4",
             "accept-encoding": "gzip, compress, deflate, br"
           },
           "params": {},
@@ -2253,42 +2253,43 @@
               "key": {
                 "remoteJid": "5512982184879@s.whatsapp.net",
                 "fromMe": false,
-                "id": "3EB01F50BEABACBB381880"
+                "id": "CBDF93C7B218AF1045F924"
               },
-              "pushName": "W.M. Soluções Tecnologicas",
-              "status": "DELIVERY_ACK",
+              "pushName": "William",
               "message": {
                 "messageContextInfo": {
                   "deviceListMetadata": {
-                    "senderKeyHash": "ozNgKuD3rOK9VA==",
-                    "senderTimestamp": "1736531331",
+                    "senderKeyHash": "XmJzBOLylzgZMw==",
+                    "senderTimestamp": "1726978616",
                     "senderAccountType": "E2EE",
                     "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "FHyupisLT5YD8w==",
-                    "recipientTimestamp": "1736772008"
+                    "recipientKeyHash": "133dAnqlyPxFrg==",
+                    "recipientTimestamp": 1738181178
                   },
-                  "deviceListMetadataVersion": 2,
-                  "messageSecret": "4wLVQz43jlXmfCwBYRjEUhfSsBnBs5zHXM/tEaTLJqI="
+                  "deviceListMetadataVersion": 2
                 },
-                "conversation": "oi"
+                "conversation": "1 - Qual o endereço?"
               },
               "contextInfo": {
-                "ephemeralSettingTimestamp": "1719835382",
+                "ephemeralSettingTimestamp": 1738181178,
                 "disappearingMode": {
                   "initiator": "CHANGED_IN_CHAT",
                   "trigger": "CHAT_SETTING"
                 }
               },
-              "messageType": "conversation",
-              "messageTimestamp": 1737639520,
-              "instanceId": "aa1d2c6f-9a7f-489b-accc-ff1c46a36a23",
-              "source": "web"
+              "messageType": "extendedTextMessage",
+              "messageTimestamp": 1738181178,
+              "instanceId": "88d98422-5c77-47d2-8405-c813d554530e",
+              "source": "web",
+              "chatwootMessageId": 762,
+              "chatwootInboxId": 4,
+              "chatwootConversationId": 3
             },
-            "destination": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
-            "date_time": "2025-01-23T10:38:40.318Z",
+            "destination": "https://n8n.wmst.com.br/webhook-test/052fca95-88ff-4599-8473-89421ca6fc46",
+            "date_time": "2024-09-25T14:42:39.164Z",
             "sender": "5512982471939@s.whatsapp.net",
             "server_url": "https://apiwp.wmst.com.br",
-            "apikey": "3D48F896-1228-4268-8F5D-4200DA4C3661"
+            "apikey": "A87404A4-1FBF-42C2-B2EF-F3AE0A4D8D36"
           },
           "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/f67c8094-022b-4aef-bb16-c7e430158fd9",
           "executionMode": "production"
@@ -2323,6 +2324,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-23T13:50:48.083Z",
-  "versionId": "a7dd003f-db99-4a15-89ed-7007fb289ad0"
+  "updatedAt": "2025-01-29T20:12:30.514Z",
+  "versionId": "85e07e0c-70a1-4bb4-99bc-448c5badf411"
 }
