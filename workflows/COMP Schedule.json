@@ -1703,12 +1703,13 @@
     "EWT": [
       {
         "json": {
+          "action": "list bookings",
+          "remoteJid": "12982184879",
           "query": {
-            "booking_id": "01jjabxr9mr480bgwy2r5ebrr9",
-            "cancellation_reason": "cancelar exame Hemograma Completo"
-          },
-          "action": "cancel booking",
-          "cancellation_reason": "estarei viajando"
+            "email": "",
+            "event_id": "",
+            "status": "all"
+          }
         }
       }
     ]
@@ -1750,6 +1751,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-24T20:41:03.395Z",
-  "versionId": "a403636d-3028-4c58-8b12-7be9bb69aa26"
+  "updatedAt": "2025-02-11T21:47:08.825Z",
+  "versionId": "53d45f43-8a18-4e84-b7ce-4ca3c4beeea9"
 }
