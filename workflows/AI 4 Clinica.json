@@ -691,7 +691,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"1|Ts3ki1n6wPygVdaic9jzplxTbY7tJdcdvDX4LKSo9b27ea38\"\n  }",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"2|SFvi4hdO0CxrgjAlw4o89nI17vs6GaaeL8guhmptd6692116\"\n  }",
         "options": {}
       },
       "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
@@ -854,7 +854,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -875,7 +876,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1298,8 +1300,7 @@
         1100
       ],
       "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
-      "name": "Insert Data Bookings",
-      "disabled": true
+      "name": "Insert Data Bookings"
     },
     {
       "parameters": {
@@ -1870,6 +1871,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-29T20:51:37.299Z",
-  "versionId": "d17e80fa-6dfc-451a-83d5-99af2ae4175e"
+  "updatedAt": "2025-02-11T22:58:23.014Z",
+  "versionId": "5ccd5ef0-3967-47a7-a8d1-a173b2fe5bdf"
 }
