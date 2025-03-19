@@ -8,6 +8,11 @@
             "node": "baseInfo",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -229,7 +234,13 @@
     },
     "chat empty?": {
       "main": [
-        [],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Insert Data User",
@@ -398,11 +409,6 @@
             "node": "reset agent",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -431,7 +437,13 @@
     },
     "Sign Msg": {
       "main": [
-        []
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
       ]
     },
     "delete instance config": {
@@ -519,6 +531,17 @@
         [
           {
             "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data Bookings": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -691,7 +714,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"2|SFvi4hdO0CxrgjAlw4o89nI17vs6GaaeL8guhmptd6692116\"\n  }",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
         "options": {}
       },
       "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
@@ -701,7 +724,8 @@
       "position": [
         2560,
         1220
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -763,7 +787,8 @@
         2400,
         1220
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -774,8 +799,7 @@
       "position": [
         2560,
         1420
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1287,7 +1311,7 @@
           "messageValues": [
             {
               "type": "ai",
-              "message": "={{ $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}",
+              "message": "={{ $json.response && $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}",
               "hideFromUI": true
             }
           ]
@@ -1832,7 +1856,7 @@
           "fromMe": false,
           "unique_id": "665e14737d3dd1915a4e348d_5521981424221",
           "evo_api_key": "apikey",
-          "client_token": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245",
+          "client_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
           "": "",
           "conversation": "agendar raio x de torax para daqui a 3 dias"
         }
@@ -1871,6 +1895,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-02-11T22:58:23.014Z",
-  "versionId": "5ccd5ef0-3967-47a7-a8d1-a173b2fe5bdf"
+  "updatedAt": "2025-03-19T14:23:26.938Z",
+  "versionId": "c37b193e-1a96-428e-8e30-2959bd0d9c27"
 }
