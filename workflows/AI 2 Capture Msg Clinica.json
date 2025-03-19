@@ -549,7 +549,7 @@
             {
               "id": "57e939cc-5163-4f45-8f2b-6e0827c2dd7a",
               "name": "client_token",
-              "value": "={{ $json.body.clientToken }}",
+              "value": "={{ $json.body.clientToken ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
               "type": "string"
             }
           ]
@@ -1144,7 +1144,7 @@
             {
               "id": "dd480120-b53b-4c64-9cbf-d5bfd813e50c",
               "name": "ignored_id",
-              "value": "=5521981424221,5512982184879,5521983838394",
+              "value": "=5521981424221,5512982184879,5521983838394,5512981605754,5512981608334",
               "type": "string"
             }
           ]
@@ -1849,56 +1849,7 @@
       "name": "set config"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "webhook.n8n.wmst.com.br",
-            "x-forwarded-scheme": "https",
-            "x-forwarded-proto": "https",
-            "x-forwarded-for": "10.0.0.2",
-            "x-real-ip": "10.0.0.2",
-            "connection": "close",
-            "content-length": "2091",
-            "accept": "application/json, text/plain, */*",
-            "content-type": "application/json",
-            "authorization": "Bearer 1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245",
-            "user-agent": "axios/1.5.1",
-            "accept-encoding": "gzip, compress, deflate, br"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "server_url": "https://apicloud.pljeng.com.br",
-            "instance": "665e14737d3dd1915a4e348d",
-            "apikey": "apikey",
-            "sessionId": "6793e5b1715597c8e39a44bd",
-            "data": {
-              "messageTimestamp": 1737746337438,
-              "pushName": "Gabriel Braga 1",
-              "key": {
-                "fromMe": false,
-                "remoteJid": "5521981424221",
-                "id": "6793e7a1b13ee2821deb9969"
-              },
-              "messageType": "audioMessage",
-              "message": {
-                "base64": "T2dnUwACAAAAAAAAAABUQmG2AAAAAG3YZmgBE09wdXNIZWFkAQEAD4C7AAAAAABPZ2dTAAAAAAAAAAAAAFRCYbYBAAAAPYi5IQEYT3B1c1RhZ3MIAAAAUmVjb3JkZXIAAAAAT2dnUwAEAA4BAAAAAABUQmG2AgAAAH9ROdZIDQ8NDA0QDw0iEw4REhEPEREQDhEQCw8NEA8SDxAMDxANDw8NDxAQDQ8ODwsKDQsMDg0NDQ8RDQ0ODgkIDw4KCQkKDAsKDAsNSACeueG4/0HN91gVFEgAdFRWms0GYZeDFRIbgEgAb7DTHcrKMOLq4QhIAFf6nUYpcPz18sBIAFWDd+Z06N654HtASABBs8Ysj2WwC10o5zmGwEgAV/p8EfqjbBOCfO4hgEgAUiwEvnGvz9n+t3BIgC/G+NKcfUJ94ecBJ4eHEFVu/KrdNtJ3BYG4afKjoyGASAv7pVIPicUvmZgltdoOcginMkgKeqT5PxqbH5a0zxHYSApYJRMKDJVZ3EblOEyIT1xICZS8PFgLrk5s5pe356UtO+BICZUmZLtVoA6+iB7Iawvwm0gJlR/rJieQM2HIK6q4k0gJlPg15/gEt6qP64Tdt+msSAmVfbMZ4gYghw619Lb3S8BICZVyNrM6FGKIFvuJTGDWSAmVfaPLcQxHvhZqOjRICZUE4IhjV8IRhEjKfRFBQ0gJlJoa1QkQMb8+fw5umshICZWUo2X/DEXRVUgJlJpI9pZg5hMsKSdBUEgJlZuqyZX0cSRTHeZICZVyOaaxPcca1DSjOcmwSAmVedKR9+841EE4BMb9SAmVnnxKcQAGs7K1bATabTsqSAmVdiW6CAC2lfQNjrWASAmVH+OK43evmwNdypA7oEgJlXYQuQGdQOwKHEgJlZpDp/tZqsBQYp8uwEgJlZfhp7qi9gLtZoToXYBICVH6jfBHNLkfyzLwSAivIfh951wLSZn+XtNMSAiuc4Np17mt4p1z6/8NSAivH+mE+d657MUSQEgIryP8SLfp+H8W8Cq6yEgIr3nWLKaMeAG/Fnl1CEBICK+XREEwzytiUWUSpsKQSAivIf2le3wlY8BsIEgIrpoOJRaP9hmW6emRoEgIryH3aza+rzgO3vawSAiu+gUKgvyQufsbiNFgSAiH09CZi8Ocl7tIBwmA46SKuIkoSAfJDqjwxJhJM5py4EgHyXX8YBTsGk4wSAe+afqxxMqATWVwSAivHEhePdaTqGzSDBhICK8x0Ip52XPKB57GSAiu5BremX70nxKFwEgAPzHLiggfhkKtiMpIAECyvhatbwI8k1eokQRICK9tc8pSoEyT43q42KPLakgIrx2IROBZctUQ84ZICK6Eic3anNVwhBEtSAfcogS9BV+GOAF6uoBICK8f5AN3TdwlvtbPUEgAPzQ5ED0aEEgAPzSS+YMwSAivqevKwH8r3thld+FASAicwYka2HHS2q6EeeBIB8l5xdkaiCKYSAfJecjMX28wSAe23U2vfsqkSAbjecVlBU1dxEgAD+hv0MegbZOMMUgAPfq4OZvPx5BASAeF8cwa8xuv0EgG43nR26EKmzzMgEgG43nSfHLjKkNASAfJedcXNWEc/Ez+QA==",
-                "audioMessage": {
-                  "mimetype": "audio/wave",
-                  "filaLength": 1210
-                }
-              }
-            },
-            "clientToken": "1|yH9J6DmHDat48wWzzBiPV5uMRUwQph51ex4HcXgH96418245"
-          },
-          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/85b1053a-9b80-48c1-91b6-6650abd744b6",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -1926,6 +1877,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-25T00:04:26.643Z",
-  "versionId": "3bf33405-87cc-4e52-b3fb-66a4b209878e"
+  "updatedAt": "2025-03-19T14:59:13.216Z",
+  "versionId": "e5ee6b31-191b-4bd3-9639-14fb5ee187f9"
 }
