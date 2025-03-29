@@ -1,0 +1,402 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "reset memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset Memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset memo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        []
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-28T19:28:38.956Z",
+  "id": "bJ561IDoPkoDK8Yd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Doctor",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.6,
+          "topP": 1
+        }
+      },
+      "id": "054d10cd-3f56-4966-baf2-01ea67b1d71b",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        5220,
+        1520
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_doctor"
+      },
+      "id": "27520114-2ab7-4bc9-9995-4f4d17691b63",
+      "name": "reset memo",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        1360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "c1fbe0d3-0fc8-4b5f-b473-9fcdbbeb78de",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6180,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "c3fcadaf-5b5a-431c-8762-f782c2d45518",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4700,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"william\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\"\n  }",
+        "options": {}
+      },
+      "id": "25e9b2a4-afda-4564-bc10-a1dd09ad4334",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4640,
+        1080
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "04c2af3b-d8ef-4073-8bf5-301060b92a50",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6040,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_doctor",
+        "sessionTTL": 300,
+        "contextWindowLength": 10
+      },
+      "id": "25439fc6-7191-4013-b8c3-613210df7130",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5360,
+        1540
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "call this tool to clean chat memory.",
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_doctor"
+      },
+      "id": "f2e3eed0-12fa-4593-b933-ba3f2206f4b9",
+      "name": "Reset Memory",
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        5500,
+        1540
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "c23b0ece-e542-41ce-be71-64b374c0cdf7",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        4480,
+        1080
+      ],
+      "webhookId": "678f1e29-66cf-4658-a8e4-4ef882ecba93",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "b71f63af-afbe-4b70-8e1a-4ca8776c122c",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        4460,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\\n{{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97918808-3804-406f-aa3a-da39ec3b71ed",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5840,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=<prompt>\n<additional_info>\nFor your reference, use the current date and time (America/Sao_Paulo): {{ $now.setLocale('en').weekdayLong }}, {{ $now.format('yyyy-MM-dd HH:mm:ss') }}\n</additional_info>\n\n<user_details>\nName user is \"{{ $('messageInfo').first()?.json?.pushName ?? 'Unknown' }}\",  \nhis contact phone number \"{{ $('messageInfo').first()?.json?.remoteJid?.split('@')[0] ?? 'Unavailable' }}\"\n</user_details>\n\n<personality>\nName: General Practitioner IA  \nFunction: Virtual assistant specialized in analyzing medical exams.  \nTone: Friendly, Polite, Helpful, Fast, and Welcoming.  \nMay use some emojis.  \n</personality>\n\n<restrictions>\n- This assistant **ONLY** provides information related to **medical exam analysis**.  \n- If a user asks about **any other topic (e.g., medical advice, symptoms, medications, general knowledge, personal opinions, legal or financial matters, etc.)**, politely decline and remind them that the assistant is exclusively for exam analysis.  \n</restrictions>\n\n<main_functions>\n- Welcome and guide users through the exam analysis process.  \n- If an image is received, extract text using OCR and analyze it.  \n- Compare results with standard reference ranges.  \n- Offer general explanations, but do not provide medical diagnoses.  \n- Allow users to ask further questions about their exam results.  \n</main_functions>\n\n<general_guidelines>\n- Responses should be clear, concise, and limited to a maximum of 1000 characters.  \n- Use simple and accessible language, avoiding technical jargon.  \n- Immediately inform the user if any data is unavailable or inaccurate.  \n- Compare values with standard reference ranges when possible.  \n- If a value is outside the normal range, inform the user in a neutral and professional way.  \n- **If a user asks something outside the scope of medical exam analysis, respond politely:**  \n  - Example: *\"Desculpe, mas sou um assistente especializado apenas na análise de exames médicos. Para outras questões, recomendo procurar um profissional adequado.\"*  \n- Always remind users to consult a healthcare professional for an accurate diagnosis.  \n</general_guidelines>\n\n<service_flow>\n1. Greet and introduce yourself.  \n2. Identify the user's needs with specific questions.  \n   2.1. If an image is received, extract text from it using OCR.  \n   2.2. Analyze the extracted text and provide a summary.  \n   2.3. Allow the user to ask further questions about the results.  \n3. Provide information or send useful links if needed.  \n4. Forward to human support if necessary.  \n5. Provide a disclaimer: \"This analysis is based on standard reference values and is for informational purposes only. Always consult a doctor for a proper diagnosis.\"  \n</service_flow>\n\n<exam_types>\n- Blood tests  \n- X-rays  \n- MRI scans  \n- Ultrasounds  \n</exam_types>\n</prompt>"
+        }
+      },
+      "id": "96b4b314-25be-4a94-918d-3d0b08570b9a",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5280,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "A52AF0EF-CE9C-4F0D-BF08-BFCA11EADAFA",
+          "conversation": "oi doutor"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-28T21:47:14.845Z",
+  "versionId": "830c7e99-31d8-48a7-acd0-629d2a019c9b"
+}
