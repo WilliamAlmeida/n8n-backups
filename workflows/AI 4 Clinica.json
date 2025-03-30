@@ -134,56 +134,12 @@
         ]
       ]
     },
-    "Exams Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow Trigger": {
       "main": [
         [
           {
             "node": "messageInfo",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Specialists Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Health Plan Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Exam Details Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -547,6 +503,70 @@
           }
         ]
       ]
+    },
+    "Specialists Tool3": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Specialists Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exams Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Exams Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exam Details Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Health Plan Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Exam Details Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Health Plan Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -612,7 +632,8 @@
       "position": [
         6180,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -724,8 +745,7 @@
       "position": [
         2560,
         1220
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -787,8 +807,7 @@
         2400,
         1220
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
-      "disabled": true
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -799,7 +818,8 @@
       "position": [
         2560,
         1420
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -878,8 +898,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -900,8 +919,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -946,162 +964,6 @@
         5720,
         1800
       ]
-    },
-    {
-      "parameters": {
-        "name": "list_exams_tool",
-        "description": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
-        "workflowId": {
-          "__rl": true,
-          "value": "pliyk2HChCR880pK",
-          "mode": "list",
-          "cachedResultName": "Comp Clinica"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "exams"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            },
-            {
-              "name": "hidden_fields",
-              "type": "arrayValue",
-              "arrayValue": "={{ ['event_id'] }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of exam (optional)\"\n    }\n  }\n}"
-      },
-      "id": "603864c4-5563-4d6f-bfa2-411ac572fb32",
-      "name": "Exams Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5120,
-        1780
-      ],
-      "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
-    },
-    {
-      "parameters": {
-        "name": "list_specialists_tool",
-        "description": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
-        "workflowId": {
-          "__rl": true,
-          "value": "pliyk2HChCR880pK",
-          "mode": "list",
-          "cachedResultName": "Comp Clinica"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "specialists"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            },
-            {
-              "name": "hidden_fields",
-              "type": "arrayValue",
-              "arrayValue": "={{ ['event_id'] }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"crm\": {\n      \"type\": \"number\",\n      \"description\": \"crm of medical (optional)\"\n    },\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of medical (optional)\"\n    },\n    \"specialist\": {\n      \"type\": \"string\",\n      \"description\": \"specialist of medical (optional)\"\n    }\n  }\n}"
-      },
-      "id": "61c9f808-fda6-4214-84b2-58558f21640c",
-      "name": "Specialists Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5000,
-        1820
-      ]
-    },
-    {
-      "parameters": {
-        "name": "list_health_plans_tool",
-        "description": "Call this tool to get information about available health plans and insurance options.",
-        "workflowId": {
-          "__rl": true,
-          "value": "pliyk2HChCR880pK",
-          "mode": "list",
-          "cachedResultName": "Comp Clinica"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "health plans"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of health plan (optional)\"\n    }\n  }\n}"
-      },
-      "id": "41abc50a-1d2f-43fd-acb5-ad56a17a9ed1",
-      "name": "Health Plan Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5360,
-        1780
-      ]
-    },
-    {
-      "parameters": {
-        "name": "details_any_exam_tool",
-        "description": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
-        "workflowId": {
-          "__rl": true,
-          "value": "pliyk2HChCR880pK",
-          "mode": "list",
-          "cachedResultName": "Comp Clinica"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "exam details"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"exam_id\": {\n      \"type\": \"number\",\n      \"description\": \"exam's id\"\n    }\n  }\n}"
-      },
-      "id": "07a7323c-23cf-438f-8704-f9d1bf7b626f",
-      "name": "Exam Details Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5240,
-        1800
-      ],
-      "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
     },
     {
       "parameters": {
@@ -1843,6 +1705,391 @@
       ],
       "id": "9ab5e30e-414c-4cf9-95eb-0424955c33a8",
       "name": "instance not found"
+    },
+    {
+      "parameters": {
+        "name": "list_specialists_tool",
+        "description": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "specialists"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "hidden_fields",
+              "type": "arrayValue",
+              "arrayValue": "={{ ['event_id'] }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"crm\": {\n      \"type\": \"number\",\n      \"description\": \"crm of medical (optional)\"\n    },\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of medical (optional)\"\n    },\n    \"specialist\": {\n      \"type\": \"string\",\n      \"description\": \"specialist of medical (optional)\"\n    }\n  }\n}"
+      },
+      "id": "61c9f808-fda6-4214-84b2-58558f21640c",
+      "name": "Specialists Tool3",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5000,
+        1820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
+        "url": "https://agendaclinic.com/api/v1/specialists",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "crm",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "title",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "procedure",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "crm",
+              "description": "crm of medical",
+              "type": "number"
+            },
+            {
+              "name": "title",
+              "description": "name of medical",
+              "type": "string"
+            },
+            {
+              "name": "procedure",
+              "description": "specialist of medical. e.g. pediatra",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4980,
+        2020
+      ],
+      "id": "c5a6cbc6-8626-410a-84fe-008c425d0d69",
+      "name": "Specialists Tool"
+    },
+    {
+      "parameters": {
+        "name": "list_exams_tool",
+        "description": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exams"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "hidden_fields",
+              "type": "arrayValue",
+              "arrayValue": "={{ ['event_id'] }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of exam (optional)\"\n    }\n  }\n}"
+      },
+      "id": "603864c4-5563-4d6f-bfa2-411ac572fb32",
+      "name": "Exams Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5120,
+        1780
+      ],
+      "disabled": true,
+      "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
+    },
+    {
+      "parameters": {
+        "toolDescription": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
+        "url": "https://agendaclinic.com/api/v1/exams",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of exam",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5100,
+        1980
+      ],
+      "id": "4d80baa6-f1f3-4a8f-8786-07c4f94e9167",
+      "name": "Exams Tool"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
+        "url": "https://agendaclinic.com/api/v1/exams/{exam_id}",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "exam_id",
+              "description": "exam's id",
+              "type": "number"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5220,
+        2020
+      ],
+      "id": "1b00c118-82fc-4859-84d6-86c8b4ded0eb",
+      "name": "Exam Details Tool"
+    },
+    {
+      "parameters": {
+        "name": "list_health_plans_tool",
+        "description": "Call this tool to get information about available health plans and insurance options.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "health plans"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of health plan (optional)\"\n    }\n  }\n}"
+      },
+      "id": "41abc50a-1d2f-43fd-acb5-ad56a17a9ed1",
+      "name": "Health Plan Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5360,
+        1780
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to get information about available health plans and insurance options.",
+        "url": "https://agendaclinic.com/api/v1/health-plans",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of health plan",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5340,
+        1980
+      ],
+      "id": "349ab654-b918-49b3-9866-dc1ae4bfa118",
+      "name": "Health Plan Tool"
+    },
+    {
+      "parameters": {
+        "name": "details_any_exam_tool",
+        "description": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exam details"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"exam_id\": {\n      \"type\": \"number\",\n      \"description\": \"exam's id\"\n    }\n  }\n}"
+      },
+      "id": "07a7323c-23cf-438f-8704-f9d1bf7b626f",
+      "name": "Exam Details Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5240,
+        1800
+      ],
+      "disabled": true,
+      "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
     }
   ],
   "pinData": {
@@ -1895,6 +2142,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-03-19T14:23:26.938Z",
-  "versionId": "c37b193e-1a96-428e-8e30-2959bd0d9c27"
+  "updatedAt": "2025-03-30T03:33:13.207Z",
+  "versionId": "5ba25f99-4d01-427e-97d0-781bfe1b614a"
 }
