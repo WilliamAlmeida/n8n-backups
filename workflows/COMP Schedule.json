@@ -1515,7 +1515,7 @@
             {
               "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
               "name": "response",
-              "value": "=error found: Requested appointment time is no longer available.",
+              "value": "=error found: {{ $json.message ?? 'Requested appointment time is no longer available.' }}",
               "type": "string"
             }
           ]
@@ -1699,10 +1699,22 @@
       {
         "json": {
           "query": {
-            "booking_id": "01jqjt0jwayk70j776etxyzzfk",
-            "cancellation_reason": "Viagem"
+            "event_id": "dr-fernando-event-id",
+            "start": "2025-04-02T10:00:00",
+            "attendee": {
+              "name": "William",
+              "email": "williamkillerca@hotmail.com",
+              "cellphone": "12982184879"
+            },
+            "bookingFieldsResponses": {
+              "title": "Consulta com Dr. Fernando",
+              "description": "",
+              "method_payment": "",
+              "name_plan": ""
+            },
+            "pacient_id": 1
           },
-          "action": "cancel booking"
+          "action": "schedule booking"
         }
       }
     ]
@@ -1744,6 +1756,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-03-30T06:15:01.126Z",
-  "versionId": "d4a6b3ae-a64b-48fb-be5a-c3420be27921"
+  "updatedAt": "2025-03-30T13:21:06.724Z",
+  "versionId": "18b15a6b-2caf-4e34-99ec-f7c973ce70ba"
 }
