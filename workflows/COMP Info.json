@@ -708,7 +708,7 @@
       "typeVersion": 1,
       "position": [
         3280,
-        1140
+        1180
       ],
       "id": "a70b4df2-8129-4f13-8a2b-ccb3616a59e1",
       "name": "Get Details Exam",
@@ -984,7 +984,7 @@
       "typeVersion": 2.2,
       "position": [
         3420,
-        1140
+        1180
       ],
       "id": "aaeb8295-d253-4339-8f22-e5fd6241953f",
       "name": "Cached? 5"
@@ -1656,6 +1656,7 @@
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
+        "sendQuery": true,
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -2192,9 +2193,9 @@
       {
         "json": {
           "query": {
-            "specialist": "pediatra"
+            "exam_id": 8
           },
-          "tool": "specialists",
+          "tool": "exam details",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2203,12 +2204,9 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "poderia ser para hoje",
+            "conversation": "quanto esta o exame hemograma completo?",
             "client_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96"
-          },
-          "hidden_fields": [
-            "event_id"
-          ]
+          }
         }
       }
     ]
@@ -2244,6 +2242,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-03-19T13:09:15.264Z",
-  "versionId": "5646a06e-19e8-4cc5-a548-2f09b6e875eb"
+  "updatedAt": "2025-03-30T03:25:37.987Z",
+  "versionId": "c60e40a0-91ca-4cd1-b3dd-cbebd3f35a04"
 }
