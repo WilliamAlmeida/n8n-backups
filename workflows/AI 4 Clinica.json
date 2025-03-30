@@ -145,17 +145,6 @@
         ]
       ]
     },
-    "Methods Payment Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Chat Memory 1": {
       "ai_memory": [
         [
@@ -252,13 +241,7 @@
     },
     "Scheduling Tool": {
       "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "baseInfo": {
@@ -567,6 +550,77 @@
           }
         ]
       ]
+    },
+    "Methods Payment Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Methods Payment Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Availability Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancel Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Existing Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reschedule Appt Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -578,7 +632,6 @@
   "nodes": [
     {
       "parameters": {
-        "model": "gpt-4o-mini-2024-07-18",
         "options": {
           "temperature": 0,
           "topP": 1
@@ -589,7 +642,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5040,
+        5020,
         1500
       ],
       "credentials": {
@@ -610,7 +663,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4960,
+        4940,
         1260
       ]
     },
@@ -630,10 +683,9 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6180,
+        6220,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -745,7 +797,8 @@
       "position": [
         2560,
         1220
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -759,7 +812,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5160,
+        5140,
         1520
       ],
       "credentials": {
@@ -781,8 +834,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5640,
-        1520
+        5620,
+        1420
       ],
       "credentials": {
         "redis": {
@@ -807,7 +860,8 @@
         2400,
         1220
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -818,8 +872,7 @@
       "position": [
         2560,
         1420
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -840,7 +893,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5840,
+        5880,
         1340
       ]
     },
@@ -889,8 +942,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4960,
-        900
+        5020,
+        920
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -898,7 +951,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -910,8 +964,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5120,
-        900
+        5180,
+        920
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -919,7 +973,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -961,15 +1016,15 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5720,
+        5520,
         1800
       ]
     },
     {
       "parameters": {
         "content": "## Tools",
-        "height": 183.50432036410257,
-        "width": 866,
+        "height": 364,
+        "width": 1226,
         "color": 4
       },
       "id": "4fdb88c2-a4cc-4060-92d5-4a1f08f847ad",
@@ -977,44 +1032,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4960,
+        4940,
         1760
-      ]
-    },
-    {
-      "parameters": {
-        "name": "list_payment_methods_tool",
-        "description": "Call this tool to get information about payment methods.",
-        "workflowId": {
-          "__rl": true,
-          "value": "pliyk2HChCR880pK",
-          "mode": "list",
-          "cachedResultName": "Comp Clinica"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "tool",
-              "stringValue": "payments"
-            },
-            {
-              "name": "messageInfo",
-              "type": "objectValue",
-              "objectValue": "={{ $('messageInfo').first().json }}"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of method payment (optional)\"\n    }\n  }\n}"
-      },
-      "id": "59c1766b-b546-4141-86fd-de0bfe1925ff",
-      "name": "Methods Payment Tool",
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5480,
-        1800
       ]
     },
     {
@@ -1029,8 +1048,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5640,
-        980
+        5660,
+        900
       ],
       "credentials": {
         "redis": {
@@ -1048,8 +1067,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        4960,
-        1100
+        5020,
+        1080
       ],
       "id": "58f49f4c-be64-493e-9135-af67cda099f4",
       "name": "Get Chat Memory"
@@ -1071,7 +1090,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        5460,
+        5520,
         1100
       ],
       "id": "ecf1f01d-2048-4da2-9009-7fb9b0234fab",
@@ -1104,8 +1123,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        5280,
-        1100
+        5340,
+        1040
       ],
       "id": "6794285c-66d7-4c14-bb15-a0b4e5d9d0d8",
       "name": "chat empty?"
@@ -1141,7 +1160,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5780,
+        5840,
         1100
       ]
     },
@@ -1162,7 +1181,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        5940,
+        6000,
         1100
       ]
     },
@@ -1182,7 +1201,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        6100,
+        6160,
         1100
       ],
       "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
@@ -1191,7 +1210,7 @@
     {
       "parameters": {
         "name": "scheduling_tool",
-        "description": "=Call this tool to handle all requests related to appointment management.\n\nAppointments, Rescheduling, Cancellation, Checking Appointment Availability, Checking User Appointments.\n\nCancellation and Rescheduling also includes the reason provided by the user.",
+        "description": "=Call this tool to handle all requests related to appointment management.\n\nAppointments, Rescheduling, Cancellation, Check Appointment Availability, Check User Appointments.\n\nCancellation and Rescheduling also includes the reason provided by the user, otherwise leave it empty.",
         "workflowId": {
           "__rl": true,
           "mode": "list",
@@ -1226,9 +1245,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5600,
-        1780
-      ]
+        6060,
+        2180
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1243,7 +1263,7 @@
             {
               "id": "dcb3ef37-7992-4f5c-8e60-31d9184dce47",
               "name": "bearer_token",
-              "value": "=Bearer {{ $json.client_token }}",
+              "value": "=Bearer {{ $json.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
               "type": "string"
             }
           ]
@@ -1475,7 +1495,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        6040,
+        6080,
         1300
       ]
     },
@@ -1484,7 +1504,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um assistente virtual da {{ $('instanceConfig').item.json.nome }}, responsável pelo gerenciamento eficiente e amigável dos agendamentos de consultas e exames.\n\n## Context:\nPara sua referência use como referencia para a data e hora atual (America/Sao_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('yyyy-MM-dd HH:mm:ss') }}\n\nNosso endereço: {{ $('instanceConfig').item.json.end_logradouro }}, {{ $('instanceConfig').item.json.end_numero }} - {{ $('instanceConfig').item.json.end_bairro }}, {{ $('instanceConfig').item.json.end_cidade }} - {{ $('instanceConfig').item.json.end_estado }}, {{ $('instanceConfig').item.json.end_cep }}.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva.\n\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\nNunca busque informações de uma lista considerando seus índices e sim sua posição que sempre começa por 1 e não por 0.\nSempre verifique se as datas solicitadas para agendamento/reagendamento são dias uteis.\n\n# Tool Calls\n- Somente acione a `scheduling_tool` se de fato a data solicitada para agendamento/reagendamento for um dia util.\n- Quando o usuário menciona seu nome, o sistema chamará a ferramenta **save_user_data_tool** para atualizar seus detalhes no banco de dados.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**\n\n## Workflow Guidelines:\n1. **Detalhes do exame**:\n- Peça o nome do exame para locale se não for fornecido.\n- Use \"exam_details_tool\" para recuperar detalhes."
+          "systemMessage": "=Você é um assistente virtual da {{ $('instanceConfig').item.json.nome }}, responsável pelo gerenciamento eficiente e amigável dos agendamentos de consultas e exames.\n\n## Context:\nPara sua referência use como referencia para a data e hora atual (America/Sao_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('yyyy-MM-dd HH:mm:ss') }}\n\nNosso endereço: {{ $('instanceConfig').item.json.end_logradouro }}, {{ $('instanceConfig').item.json.end_numero }} - {{ $('instanceConfig').item.json.end_bairro }}, {{ $('instanceConfig').item.json.end_cidade }} - {{ $('instanceConfig').item.json.end_estado }}, {{ $('instanceConfig').item.json.end_cep }}.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva.\n\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\nNunca busque informações de uma lista considerando seus índices e sim sua posição que sempre começa por 1 e não por 0.\nSempre verifique se as datas solicitadas para agendamento/reagendamento são dias uteis.\n\n# Tool Calls\n- Somente acione a `scheduling_tool` se de fato a data solicitada para agendamento/reagendamento for um dia util.\n- Quando o usuário menciona seu nome, o sistema chamará a ferramenta **save_user_data_tool** para atualizar seus detalhes no banco de dados.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1492,11 +1512,12 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        5280,
+        5260,
         1340
       ],
       "retryOnFail": true,
-      "waitBetweenTries": 3000
+      "waitBetweenTries": 3000,
+      "notes": "## Workflow Guidelines:\n1. **Detalhes do exame**:\n- Peça o nome do exame para localizar se não for fornecido.\n- Use \"exam_details_tool\" para recuperar detalhes."
     },
     {
       "parameters": {
@@ -1744,13 +1765,13 @@
       "typeVersion": 1.2,
       "position": [
         5000,
-        1820
+        2180
       ],
       "disabled": true
     },
     {
       "parameters": {
-        "toolDescription": "Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
+        "toolDescription": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
         "url": "https://agendaclinic.com/api/v1/specialists",
         "sendQuery": true,
         "parametersQuery": {
@@ -1814,11 +1835,12 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4980,
-        2020
+        5000,
+        1800
       ],
       "id": "c5a6cbc6-8626-410a-84fe-008c425d0d69",
-      "name": "Specialists Tool"
+      "name": "Specialists Tool",
+      "notesInFlow": false
     },
     {
       "parameters": {
@@ -1857,8 +1879,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5120,
-        1780
+        5160,
+        2180
       ],
       "disabled": true,
       "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
@@ -1911,11 +1933,12 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5100,
-        1980
+        5160,
+        1800
       ],
       "id": "4d80baa6-f1f3-4a8f-8786-07c4f94e9167",
-      "name": "Exams Tool"
+      "name": "Exams Tool",
+      "notesInFlow": false
     },
     {
       "parameters": {
@@ -1956,11 +1979,12 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5220,
-        2020
+        5320,
+        1800
       ],
       "id": "1b00c118-82fc-4859-84d6-86c8b4ded0eb",
-      "name": "Exam Details Tool"
+      "name": "Exam Details Tool",
+      "notesInFlow": false
     },
     {
       "parameters": {
@@ -1994,14 +2018,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5360,
-        1780
+        5640,
+        2180
       ],
       "disabled": true
     },
     {
       "parameters": {
-        "toolDescription": "Call this tool to get information about available health plans and insurance options.",
+        "toolDescription": "Use esta ferramenta para obter informações sobre planos de saúde e opções de seguro disponíveis.",
         "url": "https://agendaclinic.com/api/v1/health-plans",
         "sendQuery": true,
         "parametersQuery": {
@@ -2047,8 +2071,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5340,
-        1980
+        5160,
+        1960
       ],
       "id": "349ab654-b918-49b3-9866-dc1ae4bfa118",
       "name": "Health Plan Tool"
@@ -2085,27 +2109,280 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5240,
-        1800
+        5320,
+        2180
       ],
       "disabled": true,
       "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
+    },
+    {
+      "parameters": {
+        "name": "list_payment_methods_tool",
+        "description": "Call this tool to get information about payment methods.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "payments"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of method payment (optional)\"\n    }\n  }\n}"
+      },
+      "id": "59c1766b-b546-4141-86fd-de0bfe1925ff",
+      "name": "Methods Payment Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5480,
+        2180
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter métodos de pagamento aceitos e não aceitos.",
+        "url": "https://agendaclinic.com/api/v1/payment-methods",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of method payment",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5000,
+        1960
+      ],
+      "id": "d0dbbe0e-eb45-49fb-bcdc-3dca67abb1b0",
+      "name": "Methods Payment Tool"
+    },
+    {
+      "parameters": {
+        "name": "get_availability_tool",
+        "description": "=Use esta ferramenta para obter disponibilidade para horários para agendamento usando o ID do evento do exame ou médico. O ID pode ser obtido a partir da lista de exames ou médicos.\n\nSe não informado o intervalo de tempo, use 24hrs como intervalo.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "availability"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5720,
+        1800
+      ],
+      "id": "93efa8ef-e8a5-4a9f-a2eb-1d87755d4f12",
+      "name": "Get Availability Tool"
+    },
+    {
+      "parameters": {
+        "name": "schedule_appt_tool",
+        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Se o agendamento falhar, registre o problema e notifique o usuário.\n2. Confirme a reserva e notifique o usuário sobre o ID da reserva.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "schedule booking"
+            },
+            {
+              "name": "query.pacient_id",
+              "type": "numberValue",
+              "numberValue": "={{ $('userAccount').item.json.id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam\"\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5880,
+        1800
+      ],
+      "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
+      "name": "Schedule Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "cancel_appt_tool",
+        "description": "=Use esta ferramenta para cancelar um agendamento usando um ID de reserva.\n\n## Fluxo de trabalho:\n1. Verifique o ID de reserva antes de prosseguir.\n2. Confirme com o usuário antes de cancelar.\n3. Cancele o compromisso e notifique o usuário.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "cancel booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"booking_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Booking ID of the booking\"\n        },\n        \"cancellation_reason\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Reason for cancellation\"\n        }\n    },\n    \"required\":\n    [\n        \"booking_id\",\n        \"cancellation_reason\"\n    ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5880,
+        1960
+      ],
+      "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
+      "name": "Cancel Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "find_existing_appt_tool",
+        "description": "=Use esta ferramenta para encontrar reservas existentes usando o endereço de e-mail do usuário.\n\n## Fluxo de trabalho:\n1. Pesquise reservas que correspondam ao e-mail fornecido.\n2. Retorne reservas correspondentes ou notifique se não forem encontradas.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "list bookings"
+            },
+            {
+              "name": "remoteJid",
+              "stringValue": "={{ $('userAccount').item.json.phone }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"attendeeEmail\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Email address of the user\"\n        },\n        \"event_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Event ID to filter bookings\"\n        },\n        \"status\":\n        {\n            \"type\": \"string\",\n            \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n            \"default\": \"all\"\n        }\n    },\n    \"required\":\n    [\n        \"email\"\n    ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5720,
+        1960
+      ],
+      "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
+      "name": "Find Existing Appt Tool"
+    },
+    {
+      "parameters": {
+        "name": "reschedule_appt_tool",
+        "description": "=Use esta ferramenta para reagendar um agendamento usando um ID de reserva.\n\n## Fluxo de trabalho:\n1. Verifique o ID de reserva antes de prosseguir.\n2. Confirme com o usuário antes de reagendar.\n3. Reagende o compromisso e notifique o usuário.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "reschedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"booking_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"the id of the booking\"\n        },\n        \"start\":\n        {\n            \"type\": \"string\",\n            \"description\": \"date and time of the start of the booking\"\n        },\n        \"rescheduling_reason\":\n        {\n            \"type\": \"string\",\n            \"description\": \"rescheduling reason\"\n        }\n    },\n    \"required\":\n    [\n        \"booking_id\",\n        \"start\",\n        \"reschedulingReason\"\n    ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        6040,
+        1800
+      ],
+      "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
+      "name": "Reschedule Appt Tool"
     }
   ],
   "pinData": {
     "Execute Workflow Trigger": [
       {
         "json": {
-          "evo_api": "https://apicloud.pljeng.com.br",
-          "instance": "665e14737d3dd1915a4e348d",
-          "remoteJid": "5521981424221",
-          "pushName": "Gabriel Braga 1",
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
-          "unique_id": "665e14737d3dd1915a4e348d_5521981424221",
-          "evo_api_key": "apikey",
-          "client_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
-          "": "",
-          "conversation": "agendar raio x de torax para daqui a 3 dias"
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "A52AF0EF-CE9C-4F0D-BF08-BFCA11EADAFA",
+          "conversation": "oi cli, tenho algum agendamento marcado?"
         }
       }
     ]
@@ -2142,6 +2419,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-03-30T03:33:13.207Z",
-  "versionId": "5ba25f99-4d01-427e-97d0-781bfe1b614a"
+  "updatedAt": "2025-03-30T06:37:27.243Z",
+  "versionId": "4b0d307a-146e-488e-8f2f-10070da7ac30"
 }
