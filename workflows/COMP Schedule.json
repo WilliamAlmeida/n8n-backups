@@ -531,7 +531,7 @@
           "parameters": [
             {
               "name": "cancellation_reason",
-              "value": "={{ $('EWT').item.json.cancellation_reason ?? '' }}"
+              "value": "={{ $('EWT').item.json.cancellation_reason ?? $('EWT').item.json.query.cancellation_reason ?? '' }}"
             }
           ]
         },
@@ -1321,12 +1321,6 @@
         "assignments": {
           "assignments": [
             {
-              "id": "0dddcb7b-df63-4b9a-89ad-d426cdf9e16f",
-              "name": "response2",
-              "value": "={{ $json.status == 'success' && $json.data.id ? {\n    id: $json.data.id,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    event_id: $json.data.event_id,\n} : 'error on booking' }}",
-              "type": "string"
-            },
-            {
               "id": "da8ee72e-8e29-49ad-b4aa-a41a61542fcd",
               "name": "response",
               "value": "={{ \n    $json.status == 'success' && $json.data.id \n    ? `- ${$json.data.title}, with the description \"${$json.data.description || 'no description'}\". The status is ${$json.data.status}, starting on ${$json.data.start_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm')} and ending on ${$json.data.end_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm')}, duration ${$json.data.duration} min. Booking details: ID - ${$json.data.id}.`\n    : 'error on booking'\n}}",
@@ -1343,7 +1337,8 @@
         340
       ],
       "id": "0533e65d-25aa-496a-a60f-71aba4d20247",
-      "name": "Response Schedule Success"
+      "name": "Response Schedule Success",
+      "notes": "{{ $json.status == 'success' && $json.data.id ? {\n    id: $json.data.id,\n    title: $json.data.title,\n    description: $json.data.description,\n    status: $json.data.status,\n    start: $json.data.start_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    end: $json.data.end_time.toDateTime().toLocal().format('yyyy-MM-dd H:mm'),\n    duration: $json.data.duration,\n    event_id: $json.data.event_id,\n} : 'error on booking' }}"
     },
     {
       "parameters": {
@@ -1703,13 +1698,11 @@
     "EWT": [
       {
         "json": {
-          "action": "list bookings",
-          "remoteJid": "12982184879",
           "query": {
-            "email": "",
-            "event_id": "",
-            "status": "all"
-          }
+            "booking_id": "01jqjt0jwayk70j776etxyzzfk",
+            "cancellation_reason": "Viagem"
+          },
+          "action": "cancel booking"
         }
       }
     ]
@@ -1751,6 +1744,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-03-29T16:13:44.290Z",
-  "versionId": "4d74199b-2713-417f-9ba8-8c44a28868e8"
+  "updatedAt": "2025-03-30T06:15:01.126Z",
+  "versionId": "d4a6b3ae-a64b-48fb-be5a-c3420be27921"
 }
