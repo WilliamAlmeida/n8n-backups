@@ -1771,7 +1771,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
+        "toolDescription": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, event_id do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
         "url": "https://agendaclinic.com/api/v1/specialists",
         "sendQuery": true,
         "parametersQuery": {
@@ -1887,7 +1887,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
+        "toolDescription": "=Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
         "url": "https://agendaclinic.com/api/v1/exams",
         "sendQuery": true,
         "parametersQuery": {
@@ -1942,7 +1942,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
+        "toolDescription": "=Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o event_id do exame. O event_id pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o event_id correspondente antes de obter as informações detalhadas.",
         "url": "https://agendaclinic.com/api/v1/exams/{exam_id}",
         "sendQuery": true,
         "parametersQuery": {
@@ -2209,7 +2209,7 @@
     {
       "parameters": {
         "name": "get_availability_tool",
-        "description": "=Use esta ferramenta para obter disponibilidade para horários para agendamento usando o ID do evento do exame ou médico. O ID pode ser obtido a partir da lista de exames ou médicos.\n\nSe não informado o intervalo de tempo, use 24hrs como intervalo.",
+        "description": "=Use esta ferramenta para obter disponibilidade para horários para agendamento usando o event_id obtido nas speclialists_tool/exams_tool.\n\n## Fluxo de trabalho:\n1. Verifique o event_id antes de prosseguir com a speclialists_tool para consulta e exams_tool para exame.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2226,7 +2226,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -2262,7 +2262,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam\"\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam.\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -2382,7 +2382,7 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "evo_api_key": "A52AF0EF-CE9C-4F0D-BF08-BFCA11EADAFA",
-          "conversation": "oi cli, tenho algum agendamento marcado?"
+          "conversation": "sim e se tiver, agende já"
         }
       }
     ]
@@ -2419,6 +2419,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-03-30T06:37:27.243Z",
-  "versionId": "4b0d307a-146e-488e-8f2f-10070da7ac30"
+  "updatedAt": "2025-03-30T13:28:50.760Z",
+  "versionId": "26ecdb3c-588f-4b82-9eac-cebb8c3546ed"
 }
