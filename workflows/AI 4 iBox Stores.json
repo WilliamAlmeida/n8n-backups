@@ -113,7 +113,13 @@
     },
     "Execute Workflow Trigger": {
       "main": [
-        []
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Redis Chat Memory": {
@@ -1345,6 +1351,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2025-01-29T20:02:49.199Z",
-  "versionId": "769b40bc-6a43-4e6c-9607-7400cbdc7e9d"
+  "updatedAt": "2025-03-30T13:00:29.018Z",
+  "versionId": "f4fb2e24-cc5b-4b37-9298-b315b02897de"
 }
