@@ -1657,6 +1657,11 @@
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
         "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -2193,9 +2198,9 @@
       {
         "json": {
           "query": {
-            "exam_id": 8
+            "name": "pix"
           },
-          "tool": "exam details",
+          "tool": "payments",
           "messageInfo": {
             "evo_api": "https://apiwp.wmst.com.br",
             "instance": "ibox_cli_23",
@@ -2242,6 +2247,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-03-30T03:25:37.987Z",
-  "versionId": "c60e40a0-91ca-4cd1-b3dd-cbebd3f35a04"
+  "updatedAt": "2025-03-30T04:09:51.777Z",
+  "versionId": "a22ceed3-3c62-4332-9faa-f2a4c1987365"
 }
