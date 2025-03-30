@@ -296,15 +296,16 @@
     },
     "chat empty?": {
       "main": [
-        [],
+        [
+          {
+            "node": "Appointment Scheduling Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Insert Data User",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Appointment Scheduling Agent",
             "type": "main",
             "index": 0
           }
@@ -732,7 +733,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID of the professional for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID of the professional for which you want to check availability\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -1062,8 +1063,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1667,8 +1667,8 @@
       {
         "json": {
           "query": {
-            "query": "agendar consulta com a Dra. Samira Saab hoje as 17hrs",
-            "reason": "agendamento de consulta"
+            "query": "Agendar consulta com Dr. Fernando Cezar Franco para segunda-feira, 31 de março de 2025, às 15h.",
+            "reason": ""
           },
           "agent": "calendar",
           "messageInfo": {
@@ -1679,7 +1679,7 @@
             "fromMe": false,
             "unique_id": "william_5512982184879",
             "debounce_time": 5,
-            "conversation": "amanhã",
+            "conversation": "tem certeza?",
             "client_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96"
           },
           "userAccount": {
@@ -1688,7 +1688,7 @@
             "birthday": "1994-05-05",
             "cpf": "",
             "rg": "",
-            "full_address": "",
+            "full_address": "Rua Dr Laércio Lincoln Figueira D19 Portal das Palmeiras",
             "phone": "12982184879",
             "phone_verified_at": "2025-01-27T14:30:00.000000Z",
             "phone_is_whatsapp": 1,
@@ -1733,6 +1733,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-03-19T14:19:16.962Z",
-  "versionId": "d6277182-f4e9-46b8-b1c1-da5e542567ea"
+  "updatedAt": "2025-03-30T05:56:27.227Z",
+  "versionId": "3f0ac7a4-227b-4356-8f6f-8855c8f4b2a6"
 }
