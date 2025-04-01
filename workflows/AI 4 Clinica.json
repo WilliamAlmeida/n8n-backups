@@ -642,8 +642,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5020,
-        1500
+        5000,
+        1400
       ],
       "credentials": {
         "openAiApi": {
@@ -655,7 +655,7 @@
     {
       "parameters": {
         "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
-        "height": 424,
+        "height": 364,
         "width": 794
       },
       "id": "f7ebd1b8-6f22-43fe-8d7b-c51a8b49622e",
@@ -663,7 +663,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4940,
+        4960,
         1260
       ]
     },
@@ -683,7 +683,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6220,
+        6080,
         1300
       ]
     },
@@ -812,8 +812,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5140,
-        1520
+        5120,
+        1500
       ],
       "credentials": {
         "redis": {
@@ -825,7 +825,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "call this tool to clean chat memory.",
+        "toolDescription": "Use esta ferramenta para limpar a memória do bate-papo após ter finalizado um agendamento, reagendamento ou cancelamento.",
         "operation": "delete",
         "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
       },
@@ -834,16 +834,15 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        5620,
-        1420
+        5600,
+        1480
       ],
       "credentials": {
         "redis": {
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -893,7 +892,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5880,
+        5740,
         1340
       ]
     },
@@ -942,7 +941,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5020,
+        4960,
         920
       ],
       "alwaysOutputData": true,
@@ -964,7 +963,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5180,
+        5120,
         920
       ],
       "alwaysOutputData": true,
@@ -1016,8 +1015,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5520,
-        1800
+        5580,
+        1680
       ]
     },
     {
@@ -1032,8 +1031,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4940,
-        1760
+        5000,
+        1640
       ]
     },
     {
@@ -1048,7 +1047,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5660,
+        5600,
         900
       ],
       "credentials": {
@@ -1067,7 +1066,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        5020,
+        4960,
         1080
       ],
       "id": "58f49f4c-be64-493e-9135-af67cda099f4",
@@ -1090,7 +1089,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        5520,
+        5460,
         1100
       ],
       "id": "ecf1f01d-2048-4da2-9009-7fb9b0234fab",
@@ -1123,7 +1122,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        5340,
+        5280,
         1040
       ],
       "id": "6794285c-66d7-4c14-bb15-a0b4e5d9d0d8",
@@ -1160,7 +1159,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5840,
+        5780,
         1100
       ]
     },
@@ -1181,7 +1180,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6000,
+        5940,
         1100
       ]
     },
@@ -1201,7 +1200,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        6160,
+        6100,
         1100
       ],
       "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
@@ -1245,8 +1244,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6060,
-        2180
+        6040,
+        2740
       ],
       "disabled": true
     },
@@ -1495,7 +1494,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        6080,
+        5940,
         1300
       ]
     },
@@ -1504,7 +1503,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um assistente virtual da {{ $('instanceConfig').item.json.nome }}, responsável pelo gerenciamento eficiente e amigável dos agendamentos de consultas e exames.\n\n## Context:\nPara sua referência use como referencia para a data e hora atual (America/Sao_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('yyyy-MM-dd HH:mm:ss') }}\n\nNosso endereço: {{ $('instanceConfig').item.json.end_logradouro }}, {{ $('instanceConfig').item.json.end_numero }} - {{ $('instanceConfig').item.json.end_bairro }}, {{ $('instanceConfig').item.json.end_cidade }} - {{ $('instanceConfig').item.json.end_estado }}, {{ $('instanceConfig').item.json.end_cep }}.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Esforce-se para criar uma interação que pareça natural, empática e compreensiva.\n\nNão aceitamos encaminhamento pelo SUS.\nAgendamentos somente em dias uteis.\nSeja objetivo, não forneca detalhes que não forem perguntados.\nResponda sempre em primeira pessoa.\nSó informe o preço se for solicitado/perguntado.\nSe usuário tentar cancelar uma consulta, verifique se ele não remarca-la para outra data, caso contrário pode continuar com cancelamento.\nSe for fazer um agendamento precisa saber se é consulta ou exame.\nNunca busque informações de uma lista considerando seus índices e sim sua posição que sempre começa por 1 e não por 0.\nSempre verifique se as datas solicitadas para agendamento/reagendamento são dias uteis.\n\n# Tool Calls\n- Somente acione a `scheduling_tool` se de fato a data solicitada para agendamento/reagendamento for um dia util.\n- Quando o usuário menciona seu nome, o sistema chamará a ferramenta **save_user_data_tool** para atualizar seus detalhes no banco de dados.\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** until **{end}**\nLocation: **{location}**\nCode: **{id}**"
+          "systemMessage": "=Você é um assistente útil\n\n## Contexto:\nPara sua referência, use como referência a data e hora atuais (América/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/aaaa HH:mm:ss') }}\nNosso endereço: {{ $('instanceConfig').item.json.end_logradouro }}, {{ $('instanceConfig').item.json.end_numero }} - {{ $('instanceConfig').item.json.end_bairro }}, {{ $('instanceConfig').item.json.end_cidade }} - {{ $('instanceConfig').item.json.end_estado }}, {{ $('instanceConfig').item.json.end_cep }}.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Procure criar uma interação que pareça natural, empática e compreensiva.\n\n## Instruções:\n- Caso o usuário tente cancelar uma consulta, marque se ele não deseja remarcá-la para outra data; caso contrário, prossiga com o cancelamento.\n- Sempre retorne os horários disponíveis no seguinte formato:\n\n**{data}**: {hour1}, {hour2}, {hour3}\n\nPor exemplo:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\nCaso contrário, sempre retorne os horários disponíveis em uma única linha, com os horários separados por vírgulas, conforme mostrado acima.\n\n- Ao fornecer compromissos, use este formato:\n\nPor exemplo:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1512,12 +1511,11 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        5260,
+        5220,
         1340
       ],
       "retryOnFail": true,
-      "waitBetweenTries": 3000,
-      "notes": "## Workflow Guidelines:\n1. **Detalhes do exame**:\n- Peça o nome do exame para localizar se não for fornecido.\n- Use \"exam_details_tool\" para recuperar detalhes."
+      "waitBetweenTries": 3000
     },
     {
       "parameters": {
@@ -1765,13 +1763,13 @@
       "typeVersion": 1.2,
       "position": [
         5000,
-        2180
+        2740
       ],
       "disabled": true
     },
     {
       "parameters": {
-        "toolDescription": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, event_id do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
+        "toolDescription": "=Use esta ferramenta para buscar informações detalhadas sobre os médicos cadastrados na clínica.\n\nEssa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.\n\n**Entrada**\n- Nome\n- CRM\n- Especialidade do profissional\n\n**Retorno**\n- event_id do médico usado nos Agendamentos\n- Nome completo\n- Especialidades\n- Outros detalhes relevantes.",
         "url": "https://agendaclinic.com/api/v1/specialists",
         "sendQuery": true,
         "parametersQuery": {
@@ -1835,8 +1833,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5000,
-        1800
+        5060,
+        1680
       ],
       "id": "c5a6cbc6-8626-410a-84fe-008c425d0d69",
       "name": "Specialists Tool",
@@ -1879,8 +1877,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5160,
-        2180
+        5140,
+        2740
       ],
       "disabled": true,
       "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
@@ -1933,8 +1931,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5160,
-        1800
+        5220,
+        1680
       ],
       "id": "4d80baa6-f1f3-4a8f-8786-07c4f94e9167",
       "name": "Exams Tool",
@@ -1979,8 +1977,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5320,
-        1800
+        5380,
+        1680
       ],
       "id": "1b00c118-82fc-4859-84d6-86c8b4ded0eb",
       "name": "Exam Details Tool",
@@ -2018,8 +2016,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5640,
-        2180
+        5620,
+        2740
       ],
       "disabled": true
     },
@@ -2071,8 +2069,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5160,
-        1960
+        5220,
+        1840
       ],
       "id": "349ab654-b918-49b3-9866-dc1ae4bfa118",
       "name": "Health Plan Tool"
@@ -2109,8 +2107,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5320,
-        2180
+        5300,
+        2740
       ],
       "disabled": true,
       "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
@@ -2147,8 +2145,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5480,
-        2180
+        5460,
+        2740
       ],
       "disabled": true
     },
@@ -2200,8 +2198,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5000,
-        1960
+        5060,
+        1840
       ],
       "id": "d0dbbe0e-eb45-49fb-bcdc-3dca67abb1b0",
       "name": "Methods Payment Tool"
@@ -2209,7 +2207,7 @@
     {
       "parameters": {
         "name": "get_availability_tool",
-        "description": "=Use esta ferramenta para obter disponibilidade para horários para agendamento usando o event_id obtido nas speclialists_tool/exams_tool.\n\n## Fluxo de trabalho:\n1. Verifique o event_id antes de prosseguir com a speclialists_tool para consulta e exams_tool para exame.",
+        "description": "=Use esta ferramenta para obter disponibilidade para horários para agendamento usando o event_id obtido nas speclialists_tool/exams_tool.\n\n## Fluxo de trabalho:\n1. Obtenha o **event_id** usando a **speclialists_tool** para consulta e **exams_tool** para exame.\n2. Verifique a disponibilidade",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2226,13 +2224,13 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event_id from specialist or exam for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5720,
-        1800
+        5400,
+        1840
       ],
       "id": "93efa8ef-e8a5-4a9f-a2eb-1d87755d4f12",
       "name": "Get Availability Tool"
@@ -2267,8 +2265,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5880,
-        1800
+        5740,
+        1840
       ],
       "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
       "name": "Schedule Appt Tool"
@@ -2298,8 +2296,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5880,
-        1960
+        5900,
+        1840
       ],
       "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
       "name": "Cancel Appt Tool"
@@ -2333,8 +2331,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5720,
-        1960
+        5580,
+        1840
       ],
       "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
       "name": "Find Existing Appt Tool"
@@ -2364,8 +2362,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6040,
-        1800
+        6060,
+        1840
       ],
       "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
       "name": "Reschedule Appt Tool"
@@ -2419,6 +2417,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-03-30T13:28:50.760Z",
-  "versionId": "26ecdb3c-588f-4b82-9eac-cebb8c3546ed"
+  "updatedAt": "2025-04-01T01:58:47.164Z",
+  "versionId": "b267673c-3823-419b-af6f-f662d9e43565"
 }
