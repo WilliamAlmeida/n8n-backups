@@ -469,7 +469,7 @@
       "main": [
         [
           {
-            "node": "delete user account",
+            "node": "delete prompts",
             "type": "main",
             "index": 0
           }
@@ -621,6 +621,97 @@
           }
         ]
       ]
+    },
+    "get instance config1": {
+      "main": [
+        [
+          {
+            "node": "load instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete prompts": {
+      "main": [
+        [
+          {
+            "node": "get instance config1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance prompts": {
+      "main": [
+        [
+          {
+            "node": "set instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance prompts": {
+      "main": [
+        [
+          {
+            "node": "has instance prompts?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance prompts": {
+      "main": [
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance prompts?": {
+      "main": [
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instancePrompts": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -643,7 +734,7 @@
       "typeVersion": 1,
       "position": [
         5000,
-        1400
+        1420
       ],
       "credentials": {
         "openAiApi": {
@@ -664,7 +755,7 @@
       "typeVersion": 1,
       "position": [
         4960,
-        1260
+        1280
       ]
     },
     {
@@ -683,7 +774,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6080,
+        6160,
         1300
       ]
     },
@@ -698,8 +789,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2780,
-        1280
+        1980,
+        1300
       ]
     },
     {
@@ -716,7 +807,7 @@
       "typeVersion": 1,
       "position": [
         4760,
-        1540
+        1560
       ],
       "credentials": {
         "redis": {
@@ -739,7 +830,7 @@
       "typeVersion": 1,
       "position": [
         4100,
-        1360
+        1380
       ],
       "credentials": {
         "redis": {
@@ -759,7 +850,7 @@
       "typeVersion": 1,
       "position": [
         3940,
-        1360
+        1380
       ],
       "credentials": {
         "redis": {
@@ -781,7 +872,7 @@
       "typeVersion": 3.4,
       "position": [
         4760,
-        1340
+        1360
       ]
     },
     {
@@ -795,8 +886,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2560,
-        1220
+        1760,
+        1240
       ],
       "disabled": true
     },
@@ -813,7 +904,7 @@
       "typeVersion": 1.3,
       "position": [
         5120,
-        1500
+        1520
       ],
       "credentials": {
         "redis": {
@@ -835,7 +926,7 @@
       "typeVersion": 1,
       "position": [
         5600,
-        1480
+        1500
       ],
       "credentials": {
         "redis": {
@@ -856,8 +947,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        2400,
-        1220
+        1600,
+        1240
       ],
       "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
       "disabled": true
@@ -869,8 +960,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        2560,
-        1420
+        1760,
+        1440
       ]
     },
     {
@@ -892,7 +983,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5740,
+        5820,
         1340
       ]
     },
@@ -928,7 +1019,7 @@
       "typeVersion": 2.2,
       "position": [
         4300,
-        1360
+        1380
       ]
     },
     {
@@ -1015,8 +1106,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5580,
-        1680
+        5540,
+        1760
       ]
     },
     {
@@ -1031,8 +1122,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5000,
-        1640
+        4960,
+        1700
       ]
     },
     {
@@ -1274,8 +1365,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2940,
-        1360
+        2140,
+        1380
       ]
     },
     {
@@ -1298,7 +1389,7 @@
       "typeVersion": 3.4,
       "position": [
         4300,
-        1580
+        1600
       ]
     },
     {
@@ -1337,7 +1428,7 @@
       "typeVersion": 4.2,
       "position": [
         3940,
-        1620
+        1640
       ]
     },
     {
@@ -1395,7 +1486,7 @@
       "typeVersion": 4.2,
       "position": [
         4300,
-        1740
+        1760
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -1433,7 +1524,7 @@
       "typeVersion": 2.2,
       "position": [
         4100,
-        1620
+        1640
       ],
       "id": "c5e04892-a993-4e93-b5ab-e3fb051b9284",
       "name": "user found?"
@@ -1467,7 +1558,7 @@
       "typeVersion": 2.2,
       "position": [
         4640,
-        1720
+        1740
       ],
       "id": "2c6a6fe7-3134-4ba6-8ce8-d46534bc1081",
       "name": "user registred?"
@@ -1478,7 +1569,7 @@
       "typeVersion": 3,
       "position": [
         4540,
-        1540
+        1560
       ],
       "id": "3701f096-1a8d-4361-9628-0f07199a9ee4",
       "name": "Merge 2"
@@ -1494,7 +1585,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        5940,
+        6020,
         1300
       ]
     },
@@ -1503,7 +1594,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um assistente útil\n\n## Contexto:\nPara sua referência, use como referência a data e hora atuais (América/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/aaaa HH:mm:ss') }}\nNosso endereço: {{ $('instanceConfig').item.json.end_logradouro }}, {{ $('instanceConfig').item.json.end_numero }} - {{ $('instanceConfig').item.json.end_bairro }}, {{ $('instanceConfig').item.json.end_cidade }} - {{ $('instanceConfig').item.json.end_estado }}, {{ $('instanceConfig').item.json.end_cep }}.\nIdioma: pt-BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Procure criar uma interação que pareça natural, empática e compreensiva.\n\n## Instruções:\n- Caso o usuário tente cancelar uma consulta, marque se ele não deseja remarcá-la para outra data; caso contrário, prossiga com o cancelamento.\n- Sempre retorne os horários disponíveis no seguinte formato:\n\n**{data}**: {hour1}, {hour2}, {hour3}\n\nPor exemplo:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\nCaso contrário, sempre retorne os horários disponíveis em uma única linha, com os horários separados por vírgulas, conforme mostrado acima.\n\n- Ao fornecer compromissos, use este formato:\n\nPor exemplo:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**"
+          "systemMessage": "={{ $('instancePrompts').first().json.prompts.first().prompt_text }}\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1512,7 +1603,7 @@
       "typeVersion": 1.6,
       "position": [
         5220,
-        1340
+        1360
       ],
       "retryOnFail": true,
       "waitBetweenTries": 3000
@@ -1530,7 +1621,7 @@
       "typeVersion": 1,
       "position": [
         3900,
-        1260
+        1280
       ]
     },
     {
@@ -1545,22 +1636,22 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3100,
-        1260
+        2300,
+        1280
       ]
     },
     {
       "parameters": {
         "operation": "delete",
-        "key": "=instance_config_{{ $('baseInfo').first().json.instance }}"
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}"
       },
       "id": "b584c94b-3bcc-4e07-9f80-d0af0abe7eb0",
       "name": "delete instance config",
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3160,
-        1360
+        2360,
+        1380
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1568,7 +1659,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1600,15 +1692,15 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3420,
-        1380
+        2620,
+        1400
       ]
     },
     {
       "parameters": {
         "operation": "get",
         "propertyName": "=instance_config",
-        "key": "=instance_config_{{ $('baseInfo').first().json.instance }}",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
         "keyType": "string",
         "options": {}
       },
@@ -1617,8 +1709,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3160,
-        1560
+        2360,
+        1580
       ],
       "alwaysOutputData": false,
       "credentials": {
@@ -1639,14 +1731,14 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3700,
-        1360
+        2900,
+        1380
       ]
     },
     {
       "parameters": {
         "operation": "set",
-        "key": "=instance_config_{{ $('baseInfo').first().json.instance }}",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
         "value": "={{ $json.status == 'success' ? $json.data.toJsonString() : {}.toJsonString() }}",
         "keyType": "string",
         "expire": true,
@@ -1657,8 +1749,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3700,
-        1540
+        2900,
+        1560
       ],
       "credentials": {
         "redis": {
@@ -1686,8 +1778,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3320,
-        1560
+        2520,
+        1580
       ]
     },
     {
@@ -1707,8 +1799,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3500,
-        1560
+        2700,
+        1580
       ],
       "id": "f319fc47-7d1d-4510-9ca9-600012fa402b",
       "name": "fetch instance config",
@@ -1719,8 +1811,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3620,
-        1740
+        2820,
+        1760
       ],
       "id": "9ab5e30e-414c-4cf9-95eb-0424955c33a8",
       "name": "instance not found"
@@ -1833,8 +1925,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5060,
-        1680
+        5020,
+        1760
       ],
       "id": "c5a6cbc6-8626-410a-84fe-008c425d0d69",
       "name": "Specialists Tool",
@@ -1931,8 +2023,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5220,
-        1680
+        5180,
+        1760
       ],
       "id": "4d80baa6-f1f3-4a8f-8786-07c4f94e9167",
       "name": "Exams Tool",
@@ -1977,8 +2069,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5380,
-        1680
+        5340,
+        1760
       ],
       "id": "1b00c118-82fc-4859-84d6-86c8b4ded0eb",
       "name": "Exam Details Tool",
@@ -2069,8 +2161,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5220,
-        1840
+        5180,
+        1920
       ],
       "id": "349ab654-b918-49b3-9866-dc1ae4bfa118",
       "name": "Health Plan Tool"
@@ -2198,8 +2290,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5060,
-        1840
+        5020,
+        1920
       ],
       "id": "d0dbbe0e-eb45-49fb-bcdc-3dca67abb1b0",
       "name": "Methods Payment Tool"
@@ -2229,8 +2321,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5400,
-        1840
+        5360,
+        1920
       ],
       "id": "93efa8ef-e8a5-4a9f-a2eb-1d87755d4f12",
       "name": "Get Availability Tool"
@@ -2238,7 +2330,7 @@
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Se o agendamento falhar, registre o problema e notifique o usuário.\n2. Confirme a reserva e notifique o usuário sobre o ID da reserva.",
+        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Se o agendamento falhar, registre o problema e notifique o usuário.\n2. Confirme as informações antes de finalizar a reserva.\n3. Notifique o usuário sobre o ID da reserva.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2265,8 +2357,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5740,
-        1840
+        5700,
+        1920
       ],
       "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
       "name": "Schedule Appt Tool"
@@ -2296,8 +2388,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5900,
-        1840
+        5860,
+        1900
       ],
       "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
       "name": "Cancel Appt Tool"
@@ -2331,8 +2423,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5580,
-        1840
+        5540,
+        1920
       ],
       "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
       "name": "Find Existing Appt Tool"
@@ -2362,11 +2454,200 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6060,
-        1840
+        6020,
+        1900
       ],
       "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
       "name": "Reschedule Appt Tool"
+    },
+    {
+      "parameters": {
+        "content": "## Retorna os prompts da Instância",
+        "height": 643,
+        "width": 757,
+        "color": 2
+      },
+      "id": "77937441-f9a0-4bac-8d69-ea235eaa0a71",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_prompts",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "b4513884-283b-4006-9f3f-a6f98bed2ca4",
+      "name": "get instance config1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3160,
+        1580
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}"
+      },
+      "id": "3080d2ab-98ff-4ede-8911-8fd8fc532a5c",
+      "name": "delete prompts",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3160,
+        1380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/prompts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3500,
+        1580
+      ],
+      "id": "de6f1f48-bb26-4282-a761-49d09ead1132",
+      "name": "fetch instance prompts",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_prompts",
+              "value": "={{ $json.instance_prompts }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fc5492c4-ff73-4b0a-a88e-ceb8bbc97770",
+      "name": "load instance prompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3320,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json.status == 'success' ? $json.data.toJsonString() : {}.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "fa973be2-18eb-4a78-ae8b-9d51994eecf0",
+      "name": "set instance prompts",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "40c39acd-7376-4680-94bf-729f86a4c231",
+              "name": "prompts",
+              "value": "={{ $json.instance_prompts ?? $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39cd7ac7-cb78-43c8-9edd-cf5f82cdce3c",
+      "name": "instancePrompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3700,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_prompts }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e7a8db94-8241-47a8-ad9e-7984c07388b7",
+      "name": "has instance prompts?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        1400
+      ]
     }
   ],
   "pinData": {
@@ -2416,7 +2697,7 @@
       "name": "Clinic"
     }
   ],
-  "triggerCount": 2,
-  "updatedAt": "2025-04-01T01:58:47.164Z",
-  "versionId": "b267673c-3823-419b-af6f-f662d9e43565"
+  "triggerCount": 1,
+  "updatedAt": "2025-04-03T01:11:22.983Z",
+  "versionId": "65854340-c4ba-4456-a99a-d6d352a7e364"
 }
