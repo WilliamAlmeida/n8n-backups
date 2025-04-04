@@ -1678,7 +1678,7 @@
               "rightValue": "",
               "operator": {
                 "type": "string",
-                "operation": "exists",
+                "operation": "notEmpty",
                 "singleValue": true
               }
             }
@@ -2519,7 +2519,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -2661,7 +2662,7 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "evo_api_key": "A52AF0EF-CE9C-4F0D-BF08-BFCA11EADAFA",
-          "conversation": "sim e se tiver, agende já"
+          "conversation": "Oi"
         }
       }
     ]
@@ -2698,6 +2699,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-03T01:11:22.983Z",
-  "versionId": "65854340-c4ba-4456-a99a-d6d352a7e364"
+  "updatedAt": "2025-04-04T01:49:35.079Z",
+  "versionId": "bb34824c-f143-44f9-aa9b-7305fde128d2"
 }
