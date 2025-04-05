@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Loop Over Items": {
       "main": [
@@ -644,7 +644,7 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 11
+              "triggerAtHour": 12
             }
           ]
         }
@@ -684,7 +684,11 @@
     "saveManualExecutions": true,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [
     {
       "createdAt": "2024-09-27T17:42:17.034Z",
@@ -694,6 +698,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-11-08T23:35:54.003Z",
-  "versionId": "16f82965-ac37-4b2e-bdba-c0916ec4d92c"
+  "updatedAt": "2025-04-05T03:51:32.743Z",
+  "versionId": "1baaaecb-65db-4af4-8795-a7adde9f9a36"
 }
