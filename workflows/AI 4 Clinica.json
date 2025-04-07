@@ -1674,11 +1674,11 @@
           "conditions": [
             {
               "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
-              "leftValue": "={{ $json.instance_config.id }}",
+              "leftValue": "={{ $json.instance_config && $json.instance_config.hasField('id') }}",
               "rightValue": "",
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
+                "type": "boolean",
+                "operation": "true",
                 "singleValue": true
               }
             }
@@ -2649,6 +2649,22 @@
         3420,
         1400
       ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=Você é um assistente útil da [{company.name}]\n\n###### Instruções:\n- Nunca envie uma lista de forma enumerada, no lugar use hifen `-`.\n- **Nunca informe o Event ID** do Médico ou Exame para o usuário.\n- Caso o usuário tente cancelar uma consulta, marque se ele não deseja remarcá-la para outra data; caso contrário, prossiga com o cancelamento.\n- Sempre retorne os horários disponíveis no seguinte formato:\n\n**{data}**: {hour1}, {hour2}, {hour3}\n\nPor exemplo:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\nCaso contrário, sempre retorne os horários disponíveis em uma única linha, com os horários separados por vírgulas, conforme mostrado acima.\n\n- Ao fornecer compromissos, use este formato:\n\nPor exemplo:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n###### Tool Calls:\n- Quando o usuário menciona seu nome, o sistema chamará a ferramenta *save_user_data_tool* para atualizar seus detalhes no banco de dados.\n\n###### Contexto:\nNosso endereço: [{company.full_address}].\nIdioma: en\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Procure criar uma interação que pareça natural, empática e compreensiva.",
+        "options": {}
+      },
+      "id": "0349e48d-f13c-428f-9375-3381b69d5164",
+      "name": "prompt_original",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4700,
+        1100
+      ],
+      "disabled": true
     }
   ],
   "pinData": {
@@ -2661,8 +2677,8 @@
           "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "A52AF0EF-CE9C-4F0D-BF08-BFCA11EADAFA",
-          "conversation": "Oi"
+          "evo_api_key": "5E702623D52E-41F3-A3E0-482F7A7BD77E",
+          "conversation": "where are you from?"
         }
       }
     ]
@@ -2699,6 +2715,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-04T01:49:35.079Z",
-  "versionId": "bb34824c-f143-44f9-aa9b-7305fde128d2"
+  "updatedAt": "2025-04-07T03:37:07.922Z",
+  "versionId": "12cbcd60-c55c-4788-8e1a-3f79fcddb379"
 }
