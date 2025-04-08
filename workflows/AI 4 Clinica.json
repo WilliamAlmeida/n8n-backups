@@ -776,7 +776,8 @@
       "position": [
         6160,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -888,8 +889,7 @@
       "position": [
         1760,
         1240
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -950,8 +950,7 @@
         1600,
         1240
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
-      "disabled": true
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -1032,8 +1031,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4960,
-        920
+        4980,
+        880
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1054,8 +1053,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5120,
-        920
+        5140,
+        880
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1335,7 +1334,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6040,
+        5780,
         2740
       ],
       "disabled": true
@@ -2715,6 +2714,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-07T03:37:07.922Z",
-  "versionId": "12cbcd60-c55c-4788-8e1a-3f79fcddb379"
+  "updatedAt": "2025-04-08T03:46:12.952Z",
+  "versionId": "be977fc9-f11b-4ccf-a2d8-0e62f80ef4de"
 }
