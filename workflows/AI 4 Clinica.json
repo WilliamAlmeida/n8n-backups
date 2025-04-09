@@ -776,8 +776,7 @@
       "position": [
         6160,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -2676,8 +2675,8 @@
           "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "5E702623D52E-41F3-A3E0-482F7A7BD77E",
-          "conversation": "where are you from?"
+          "evo_api_key": "3246B56693A1-4BAD-A92A-183844A4CFBB",
+          "conversation": "oi cli"
         }
       }
     ]
@@ -2714,6 +2713,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-09T02:33:40.806Z",
-  "versionId": "e405d347-23a7-4033-a057-cfa8a567b703"
+  "updatedAt": "2025-04-09T14:49:50.692Z",
+  "versionId": "31d5ee99-9ca0-4737-9484-00d7866a3133"
 }
