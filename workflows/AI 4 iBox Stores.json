@@ -1321,7 +1321,7 @@
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
           "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
-          "conversation": "oi store"
+          "conversation": "poderia me informar os valores e imagem de algum lanche?"
         }
       }
     ]
@@ -1351,6 +1351,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2025-04-03T19:33:35.128Z",
-  "versionId": "f4fb2e24-cc5b-4b37-9298-b315b02897de"
+  "updatedAt": "2025-04-08T19:13:48.912Z",
+  "versionId": "8055fb94-2481-4252-8c66-31f4a0235c4c"
 }
