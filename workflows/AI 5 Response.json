@@ -190,7 +190,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
+        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '').replace('\\\\n', '\\n') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
         "options": {}
       },
       "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
@@ -451,7 +451,7 @@
                 "conditions": [
                   {
                     "id": "f15e38f0-16e6-4b30-b368-28f0b3c7fe6a",
-                    "leftValue": "{{ $json.output.type }}",
+                    "leftValue": "={{ $json.output.type }}",
                     "rightValue": "Audio",
                     "operator": {
                       "type": "string",
@@ -546,7 +546,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      // Quebra o texto com base em '\\n\\n'\n      const splitContent = content.split('\\\\n\\\\n');\n      splitContent.forEach(text => {\n        text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n        if (text) {\n          parts.push({ type: 'text', content: text });\n        }\n      });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    // Quebra o texto final com base em '\\n\\n'\n    const splitFinalContent = finalContent.split('\\\\n\\\\n');\n    splitFinalContent.forEach(text => {\n      text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      if (text) {\n        parts.push({ type: 'text', content: text });\n      }\n    });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\n// Loop para corrigir o '!' antes dos links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  const match = url.match(/[^\\/?&=]+\\.(jpeg|jpg|png|gif|bmp|webp|avif|ogg|mp3|wav|mp4|mov|avi|wmv)/i);\n  if (!match) return 'url';\n\n  const ext = match[1].toLowerCase();\n  if (['jpeg','jpg','png','gif','bmp','webp','avif'].includes(ext)) return 'image';\n  if (['ogg','mp3','wav'].includes(ext)) return 'audio';\n  if (['mp4','mov','avi','wmv'].includes(ext)) return 'video';\n  return 'url';\n}\n\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    let url = match[5] || match[6];\n    if(url.slice(-1) == '.') url = url.slice(0, -1);\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
       },
       "id": "572a607f-0dc9-4f7b-9bb6-6204d2c4e3b9",
       "name": "Categorizing Message with Split Break Line",
@@ -554,7 +554,7 @@
       "typeVersion": 2,
       "position": [
         1320,
-        400
+        380
       ],
       "executeOnce": false
     },
@@ -657,6 +657,38 @@
         }
       },
       "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/)) return 'image';\n  if (url.match(/\\.(ogg|mp3|wav)$/)) return 'audio';\n  if (url.match(/\\.(mp4|mov|avi|wmv)$/)) return 'video';\n  return 'url';\n}\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    const url = match[5] || match[6];\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+      },
+      "id": "0abe915c-8e3e-4708-84f7-07e32ba4055e",
+      "name": "Categorizing Message with Split Break Line1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        -120
+      ],
+      "executeOnce": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  const match = url.match(/[^\\/?&=]+\\.(jpeg|jpg|png|gif|bmp|webp|avif|ogg|mp3|wav|mp4|mov|avi|wmv)/i);\n  if (!match) return 'url';\n\n  const ext = match[1].toLowerCase();\n  if (['jpeg','jpg','png','gif','bmp','webp','avif'].includes(ext)) return 'image';\n  if (['ogg','mp3','wav'].includes(ext)) return 'audio';\n  if (['mp4','mov','avi','wmv'].includes(ext)) return 'video';\n  return 'url';\n}\n\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    let url = match[5] || match[6];\n    url = url.replaceAll('\\\\n', '');\n    if(url.slice(-1).endsWith('.') || url.slice(-1).endsWith('-')) url = url.slice(0, -1);\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+      },
+      "id": "89b0ee9e-aa75-465c-876a-469bf077cf88",
+      "name": "Categorizing Message with Split Break Line2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        660
+      ],
+      "executeOnce": false,
+      "disabled": true
     }
   ],
   "pinData": {
@@ -676,9 +708,9 @@
           "pushName": "W.M. Soluções Tecnologicas",
           "fromMe": false,
           "unique_id": "ibox_cli_23_5512982184879",
-          "evo_api_key": "A52AF0EF-CE9C-4F0D-BF08-BFCA11EADAFA",
-          "conversation": "oi doutor",
-          "output": "*AI 4 Doctor*:\\nOlá novamente! Como posso ajudá-lo hoje? Se tiver alguma dúvida ou precisar de assistência com exames, estou aqui para ajudar! 😊"
+          "evo_api_key": "3D48F896-1228-4268-8F5D-4200DA4C3661",
+          "conversation": "poderia me informar os valores e imagem de algum lanche?",
+          "output": "*AI 4 iBox Stores*:\\nAqui estão algumas opções de lanches disponíveis:\n\n1. **Octopus Burger**: Pão de brioche, blend de carne 200g, bacon, alface, tomate e molho especial. **Preço**: R$ 22,00\n   ![Octopus Burger](https://example.com/octopus_burger_image.jpg)\n\n2. **Double Bacon Burger**: Pão de brioche, blend de carne 200g, bacon, alface, tomate e molho especial. **Preço**: R$ 13,50\n   ![Double Bacon Burger](https://example.com/double_bacon_burger_image.jpg)\n\n3. **Rib Stake Burger**: Pão de brioche, blend de carne 200g, bacon, alface, tomate e molho especial. **Preço**: R$ 19,99\n   ![Rib Stake Burger](https://example.com/rib_stake_burger_image.jpg)\n\nSe você quiser mais informações sobre algum deles ou deseja fazer um pedido, é só avisar! 🍔😋"
         }
       }
     ]
@@ -710,6 +742,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-03T19:23:57.775Z",
-  "versionId": "7786df90-4043-4a8e-bf11-ff093d8048dd"
+  "updatedAt": "2025-04-09T02:36:25.546Z",
+  "versionId": "f2f59924-e9e3-4a88-85e7-affe98dd9873"
 }
