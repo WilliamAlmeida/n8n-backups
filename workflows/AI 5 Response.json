@@ -50,7 +50,7 @@
       "main": [
         [
           {
-            "node": "Categorizing Message with Split Break Line",
+            "node": "Categorizing Message with Split Break Line v3",
             "type": "main",
             "index": 0
           }
@@ -130,17 +130,6 @@
         ]
       ]
     },
-    "Categorizing Message with Split Break Line": {
-      "main": [
-        [
-          {
-            "node": "Split Out Messages",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Wait": {
       "main": [
         [
@@ -173,6 +162,27 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "Categorizing Message with Split Break Line v2": {
+      "main": [
+        []
+      ]
+    },
+    "Categorizing Message with Split Break Line v3": {
+      "main": [
+        [
+          {
+            "node": "Split Out Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-08T13:37:37.409Z",
@@ -189,8 +199,26 @@
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}\",\n  \"text\": \"{{ $json.output.content.replace(/^\\n+/g, '').replace('\\\\n', '\\n') }}\",\n  \"delay\": {{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}\n,\n  \"linkPreview\": false\n}",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0] }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.output.content.replace(/^\\n+/g, '').replaceAll('\\\\n','\\n') }}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ Math.floor(Math.max(250, Math.min(($json.output.content.length * (Math.random() * 50 + 150)) * (Math.random() * 0.02 + 0.09), 4000))) }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ false }}"
+            }
+          ]
+        },
         "options": {}
       },
       "id": "5f7c973d-a41e-41c8-a7a8-81f3ba7cbd35",
@@ -273,7 +301,7 @@
     {
       "parameters": {
         "content": "# Faz o tratamento da Resposta",
-        "height": 483,
+        "height": 283,
         "width": 694,
         "color": 5
       },
@@ -297,7 +325,7 @@
       "typeVersion": 2,
       "position": [
         1000,
-        300
+        180
       ],
       "executeOnce": false
     },
@@ -313,7 +341,7 @@
       "typeVersion": 1,
       "position": [
         1500,
-        300
+        180
       ]
     },
     {
@@ -336,7 +364,7 @@
       "typeVersion": 3.4,
       "position": [
         1160,
-        300
+        180
       ]
     },
     {
@@ -346,8 +374,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        620,
-        300
+        640,
+        180
       ]
     },
     {
@@ -361,8 +389,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        780,
-        300
+        820,
+        180
       ]
     },
     {
@@ -379,12 +407,14 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.output.type }}",
+                    "leftValue": "={{ $json.output.type == 'text' || $json.output.type == 'url' }}",
                     "rightValue": "text",
                     "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "32cfcba5-889a-459f-9dcf-4b3a48e794ca"
                   }
                 ],
                 "combinator": "and"
@@ -494,7 +524,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2160,
+        2120,
         500
       ],
       "credentials": {
@@ -514,7 +544,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        1940,
+        1900,
         500
       ]
     },
@@ -541,37 +571,6 @@
           "name": "william"
         }
       },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  const match = url.match(/[^\\/?&=]+\\.(jpeg|jpg|png|gif|bmp|webp|avif|ogg|mp3|wav|mp4|mov|avi|wmv)/i);\n  if (!match) return 'url';\n\n  const ext = match[1].toLowerCase();\n  if (['jpeg','jpg','png','gif','bmp','webp','avif'].includes(ext)) return 'image';\n  if (['ogg','mp3','wav'].includes(ext)) return 'audio';\n  if (['mp4','mov','avi','wmv'].includes(ext)) return 'video';\n  return 'url';\n}\n\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    let url = match[5] || match[6];\n    if(url.slice(-1) == '.') url = url.slice(0, -1);\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
-      },
-      "id": "572a607f-0dc9-4f7b-9bb6-6204d2c4e3b9",
-      "name": "Categorizing Message with Split Break Line",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1320,
-        380
-      ],
-      "executeOnce": false
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
-      },
-      "id": "001ed56a-9060-4778-8180-04f594585278",
-      "name": "Categorizing Message without Split",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1320,
-        180
-      ],
-      "executeOnce": false,
       "disabled": true
     },
     {
@@ -660,16 +659,32 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/)) return 'image';\n  if (url.match(/\\.(ogg|mp3|wav)$/)) return 'audio';\n  if (url.match(/\\.(mp4|mov|avi|wmv)$/)) return 'video';\n  return 'url';\n}\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    const url = match[5] || match[6];\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+        "mode": "raw",
+        "jsonOutput": "=  {\n    \"output\": \"Obrigada, Thiago! Aqui estão as informações de contato e localização da Bioestetic:\\n\\n**CONTATO E LOCALIZAÇÃO**  \\n📍 **Endereço:** Edifício Praia Corporate, R. Dr. Jairo de Matos Pereira, 600 - Sala 406, Praia da Costa, Vila Velha - ES, 29101-310  \\n📞 **Telefone:** (27) 99941-7253  \\n📧 **E-mail:** contato@bioestetic.com.br  \\nCNPJ: 58.132.806/0001-13  \\n\\n**🌐 Redes Sociais:**  \\n- [Instagram](https://www.instagram.com/clinbioestetic)  \\n- [Facebook](https://www.facebook.com/profile.php?id=61553252712512&locale=pt_BR)  \\n- [Site](https://bioestetic.bioestetic.com.br/)  \\n- [Google Maps](https://maps.app.goo.gl/oZg9JxkCcL8QoUS18)  \\n\\nSe precisar de mais alguma coisa, estou por aqui! 😊\"\n  }\n",
+        "options": {}
       },
-      "id": "0abe915c-8e3e-4708-84f7-07e32ba4055e",
-      "name": "Categorizing Message with Split Break Line1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        420
+      ],
+      "id": "8f7191b3-6746-4e3f-b8fe-ef2ad059a918",
+      "name": "Edit Fields",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:\\!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif)))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto entre os matches\n  if (match.index > lastIndex) {\n    let content = message.slice(lastIndex, match.index).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    // Remove o '-' desnecessário no final do texto, se presente\n    if (content.endsWith('-')) {\n      content = content.slice(0, -1).trim();\n    }\n    if (content) {\n      content = content.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n      parts.push({ type: 'text', content });\n    }\n  }\n\n  // Adiciona as imagens ou links encontrados\n  if (match[1]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    parts.push({ type: 'image', url: match[5] || match[6] });\n  }\n\n  // Atualiza o último índice processado\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona o texto final, se houver\nif (lastIndex < message.length) {\n  let finalContent = message.slice(lastIndex).replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (finalContent.endsWith('-')) {\n    finalContent = finalContent.slice(0, -1).trim();\n  }\n  if (finalContent) {\n    parts.push({ type: 'text', content: finalContent });\n  }\n}\n\n// Verifica se a parte é um vídeo e adiciona\nparts.forEach(part => {\n  if (part.type === 'url' && part.url.match(/\\.(mp4|mov|avi|wmv)$/)) {\n    part.type = 'video';\n  }\n});\n\nreturn { output: parts };\n"
+      },
+      "id": "001ed56a-9060-4778-8180-04f594585278",
+      "name": "Categorizing Message without Split v1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1680,
-        -120
+        980,
+        600
       ],
       "executeOnce": false,
       "disabled": true
@@ -677,15 +692,46 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  const match = url.match(/[^\\/?&=]+\\.(jpeg|jpg|png|gif|bmp|webp|avif|ogg|mp3|wav|mp4|mov|avi|wmv)/i);\n  if (!match) return 'url';\n\n  const ext = match[1].toLowerCase();\n  if (['jpeg','jpg','png','gif','bmp','webp','avif'].includes(ext)) return 'image';\n  if (['ogg','mp3','wav'].includes(ext)) return 'audio';\n  if (['mp4','mov','avi','wmv'].includes(ext)) return 'video';\n  return 'url';\n}\n\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    let url = match[5] || match[6];\n    url = url.replaceAll('\\\\n', '');\n    if(url.slice(-1).endsWith('.') || url.slice(-1).endsWith('-')) url = url.slice(0, -1);\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  const match = url.match(/[^\\/?&=]+\\.(jpeg|jpg|png|gif|bmp|webp|avif|ogg|mp3|wav|mp4|mov|avi|wmv)/i);\n  if (!match) return 'url';\n\n  const ext = match[1].toLowerCase();\n  if (['jpeg','jpg','png','gif','bmp','webp','avif'].includes(ext)) return 'image';\n  if (['ogg','mp3','wav'].includes(ext)) return 'audio';\n  if (['mp4','mov','avi','wmv'].includes(ext)) return 'video';\n  return 'url';\n}\n\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    let url = match[5] || match[6];\n    if(url.slice(-1) == '.') url = url.slice(0, -1);\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+      },
+      "id": "572a607f-0dc9-4f7b-9bb6-6204d2c4e3b9",
+      "name": "Categorizing Message with Split Break Line v2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        600
+      ],
+      "executeOnce": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  const match = url.match(/[^\\/?&=]+\\.(jpeg|jpg|png|gif|bmp|webp|avif|ogg|mp3|wav|mp4|mov|avi|wmv)/i);\n  if (!match) return 'url';\n\n  const ext = match[1].toLowerCase();\n  if (['jpeg','jpg','png','gif','bmp','webp','avif'].includes(ext)) return 'image';\n  if (['ogg','mp3','wav'].includes(ext)) return 'audio';\n  if (['mp4','mov','avi','wmv'].includes(ext)) return 'video';\n  return 'url';\n}\n\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    let url = match[5] || match[6];\n    url = url.replaceAll('\\\\n', '');\n    if(url.slice(-1).endsWith('.') || url.slice(-1).endsWith('-')) url = url.slice(0, -1);\n    const type = detectMediaType(url);\n    \n    if (type === 'image' || type === 'video' || type === 'audio') {\n      parts.push({ type, url });\n    } else {\n      // URL comum: adiciona ao texto anterior se possível\n      if (parts.length && parts[parts.length - 1].type === 'text') {\n        parts[parts.length - 1].content += `\\n${url}`;\n      } else {\n        parts.push({ type: 'text', content: url });\n      }\n    }\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
       },
       "id": "89b0ee9e-aa75-465c-876a-469bf077cf88",
-      "name": "Categorizing Message with Split Break Line2",
+      "name": "Categorizing Message with Split Break Line v3",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         1320,
-        660
+        180
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const message = $input.item.json.output;\n\nconst regex = /(?:!\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s]+?\\.(?:jpeg|jpg|png|gif|bmp|webp|avif))\\))|(?:\\((https?:\\/\\/[^\\s]+?)\\))|((https?:\\/\\/[^\\s]+))/gi;\n\nconst parts = [];\nlet lastIndex = 0;\nlet match;\n\n// Função para identificar o tipo de mídia baseado na URL\nfunction detectMediaType(url) {\n  if (url.match(/\\.(jpeg|jpg|png|gif|bmp|webp|avif)$/)) return 'image';\n  if (url.match(/\\.(ogg|mp3|wav)$/)) return 'audio';\n  if (url.match(/\\.(mp4|mov|avi|wmv)$/)) return 'video';\n  return 'url';\n}\n\n// Função para adicionar blocos de texto formatado\nfunction addTextBlock(text) {\n  if (!text) return;\n  text = text.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n  if (text.endsWith('-')) text = text.slice(0, -1).trim();\n  if (!text) return;\n\n  const splitContent = text.split('\\\\n\\\\n');\n  splitContent.forEach(item => {\n    item = item.replace(/^(\\\\n)+|(\\\\n)+$/g, '').trim();\n    if (item) {\n      parts.push({ type: 'text', content: item });\n    }\n  });\n}\n\n// Loop principal de parsing\nwhile ((match = regex.exec(message)) !== null) {\n  // Adiciona o texto antes do match\n  if (match.index > lastIndex) {\n    const raw = message.slice(lastIndex, match.index);\n    addTextBlock(raw);\n  }\n\n  // Detecta e adiciona mídias\n  if (match[1] && match[2]) {\n    parts.push({ type: 'image', caption: match[1], url: match[2] });\n  } else if (match[3] && match[4]) {\n    parts.push({ type: 'image', caption: match[3], url: match[4] });\n  } else if (match[5] || match[6]) {\n    const url = match[5] || match[6];\n    const type = detectMediaType(url);\n    parts.push({ type, url });\n  }\n\n  lastIndex = regex.lastIndex;\n}\n\n// Adiciona qualquer texto restante\nif (lastIndex < message.length) {\n  const remaining = message.slice(lastIndex);\n  addTextBlock(remaining);\n}\n\n// Corrige '!' antes de links que não são imagens\nparts.forEach(part => {\n  if (part.type === 'text') {\n    part.content = part.content.replace(/!\\s*(https?:\\/\\/[^\\s]+)/g, '$1');\n  }\n});\n\nreturn { output: parts };"
+      },
+      "id": "0abe915c-8e3e-4708-84f7-07e32ba4055e",
+      "name": "Categorizing Message with Split Break Line v0",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        600
       ],
       "executeOnce": false,
       "disabled": true
@@ -742,6 +788,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-09T02:36:25.546Z",
-  "versionId": "f2f59924-e9e3-4a88-85e7-affe98dd9873"
+  "updatedAt": "2025-04-09T05:10:22.032Z",
+  "versionId": "74012172-9e1e-4367-8a08-a18aa46a68a7"
 }
