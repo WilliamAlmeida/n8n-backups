@@ -129,8 +129,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        2400,
-        720
+        2420,
+        700
       ],
       "id": "b787f21c-d3ce-482a-a980-806beb747772",
       "name": "AI Clinic Trigger",
@@ -247,7 +247,7 @@
       "typeVersion": 3.2,
       "position": [
         2600,
-        700
+        680
       ],
       "id": "b304c550-da09-45cf-bc3a-71c40963c14f",
       "name": "Switch Appointment"
@@ -322,14 +322,14 @@
     {
       "parameters": {
         "content": "## Notificação de Mudança de Status do Agendamento\nAvisa o cliente pelo Whatsapp sobre o Status do Agendamento, quando sofrer modificação.\n\n**Status:** `Pending`, `Confirmed`, `Cancelled`, `Completed`",
-        "height": 520,
+        "height": 500,
         "width": 960
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
         2940,
-        480
+        500
       ],
       "id": "cb6825cc-ff04-4bd6-97d7-4b05e6a2e7e6",
       "name": "Sticky Note"
@@ -362,8 +362,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2960,
-        1080
+        3000,
+        1160
       ],
       "id": "62a4a0c8-1e5e-4aa8-bfdd-9f830dbfc3c0",
       "name": "reset prompts",
@@ -373,6 +373,22 @@
           "name": "vps"
         }
       }
+    },
+    {
+      "parameters": {
+        "content": "## Notificação de Mudança de Status do Agendamento\nLimpa o Cache do System Prompt para que a nova requisição venha atualiza",
+        "height": 300,
+        "width": 620,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        1040
+      ],
+      "id": "27ccfdc7-9fa9-406c-acad-9966dee5dd27",
+      "name": "Sticky Note1"
     }
   ],
   "pinData": {},
@@ -395,6 +411,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-07T03:34:59.823Z",
-  "versionId": "5ccef806-8b3f-48f1-8955-978d62f9da02"
+  "updatedAt": "2025-04-09T15:37:13.688Z",
+  "versionId": "73cd4d2d-92f7-43d7-8b2b-9f95afa71564"
 }
