@@ -762,7 +762,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "data",
-        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_payments",
+        "key": "={{ $('EWT').item.json.query.instance }}_{{ $workflow.id\n}}_payments",
         "keyType": "string",
         "options": {}
       },
@@ -1203,7 +1203,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_payments",
+        "key": "={{ $('EWT').item.json.query.instance }}_{{ $workflow.id\n}}_payments",
         "value": "={{ $json.data.toJsonString() }}",
         "keyType": "string",
         "expire": true,
@@ -2256,6 +2256,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-12T03:57:05.142Z",
-  "versionId": "e33c2b78-984b-47c5-98c4-e8519d7c1ac7"
+  "updatedAt": "2025-04-12T03:59:02.598Z",
+  "versionId": "3e693f77-6501-47d9-92ba-7b989416862c"
 }
