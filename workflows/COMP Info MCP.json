@@ -1,0 +1,2261 @@
+{
+  "active": false,
+  "connections": {
+    "EWT": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request to Tool?": {
+      "main": [
+        [
+          {
+            "node": "Switch Tool",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Exams": {
+      "main": [
+        [
+          {
+            "node": "Cached? 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Details Exam": {
+      "main": [
+        [
+          {
+            "node": "Cached? 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Specialists": {
+      "main": [
+        [
+          {
+            "node": "Cached? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Payments": {
+      "main": [
+        [
+          {
+            "node": "Cached? 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Health Plans": {
+      "main": [
+        [
+          {
+            "node": "Cached? 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 3": {
+      "main": [
+        [
+          {
+            "node": "List Payments",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 2": {
+      "main": [
+        [
+          {
+            "node": "List Specialists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 1": {
+      "main": [
+        [
+          {
+            "node": "List Health Plans",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 4": {
+      "main": [
+        [
+          {
+            "node": "List Exams",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Load Data 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached? 5": {
+      "main": [
+        [
+          {
+            "node": "Details Exam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 1": {
+      "main": [
+        [
+          {
+            "node": "Filter by 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 1": {
+      "main": [
+        [
+          {
+            "node": "Set Cache 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 3": {
+      "main": [
+        [
+          {
+            "node": "Set Save 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 2": {
+      "main": [
+        [
+          {
+            "node": "Set Cache 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Cache 2": {
+      "main": [
+        [
+          {
+            "node": "Filter by 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Cache 1": {
+      "main": [
+        [
+          {
+            "node": "Filter by 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 2": {
+      "main": [
+        [
+          {
+            "node": "Filter by 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 3": {
+      "main": [
+        [
+          {
+            "node": "Filter by 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 3": {
+      "main": [
+        [
+          {
+            "node": "Filter by 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hidden Fields 4": {
+      "main": [
+        [
+          {
+            "node": "Filter by 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 4": {
+      "main": [
+        [
+          {
+            "node": "Set Save 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 4": {
+      "main": [
+        [
+          {
+            "node": "Hidden Fields 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Save 5": {
+      "main": [
+        [
+          {
+            "node": "Response 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format 5": {
+      "main": [
+        [
+          {
+            "node": "Set Save 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Data 4": {
+      "main": [
+        [
+          {
+            "node": "Hidden Fields 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 1": {
+      "main": [
+        [
+          {
+            "node": "Response 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 2": {
+      "main": [
+        [
+          {
+            "node": "Response 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 3": {
+      "main": [
+        [
+          {
+            "node": "Response 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter by 4": {
+      "main": [
+        [
+          {
+            "node": "Response 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "Request to Tool?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Health Plans": {
+      "main": [
+        [
+          {
+            "node": "Not found? ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Payments": {
+      "main": [
+        [
+          {
+            "node": "Not found? 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Exams": {
+      "main": [
+        [
+          {
+            "node": "Not found? 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Details Exam": {
+      "main": [
+        [
+          {
+            "node": "Not found? 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Tool": {
+      "main": [
+        [
+          {
+            "node": "Get Health Plans",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Specialists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Payments",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Exams",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Details Exam",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Specialists": {
+      "main": [
+        [
+          {
+            "node": "Not found? 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? 2": {
+      "main": [
+        [
+          {
+            "node": "Response Error  2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? 3": {
+      "main": [
+        [
+          {
+            "node": "Response Error  3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? 4": {
+      "main": [
+        [
+          {
+            "node": "Response Error 4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? 5": {
+      "main": [
+        [
+          {
+            "node": "Response Error 5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not found? ": {
+      "main": [
+        [
+          {
+            "node": "Response Error  ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-12T03:57:05.142Z",
+  "id": "7CRRGbiCQ51Ho3ez",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "COMP Info MCP",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "6e449cb9-aa09-4787-96f6-923ec676a42e",
+      "name": "EWT",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d3f5973-0888-4a4a-9b95-74a7908fcf4c",
+              "leftValue": "={{ $json.agent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6d030358-10ce-4868-bf37-698c72019f1c",
+      "name": "Request to Tool?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2220,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Specialists\nList with Professionals, Procedures\nand ID",
+        "height": 360,
+        "width": 1266.4586534267564,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        -260
+      ],
+      "id": "9ac96f23-28f8-447a-ad43-e4dfbf3d3bfb",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Exams\nList with Exams and ID",
+        "height": 360,
+        "width": 1420,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        580
+      ],
+      "id": "3592455e-bf32-4b2f-87c4-226652775893",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exams",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        760
+      ],
+      "id": "b179c7f6-e8d5-44f4-979a-b394af67add3",
+      "name": "Get Exams",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Details Exam\nInformations about a Exam",
+        "height": 360,
+        "width": 1140.9918728790954,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        1000
+      ],
+      "id": "18eab64e-e030-4cb5-991e-d945328dbff7",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exam_detail_{{ $('EWT').item.json.query.exam_id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1180
+      ],
+      "id": "c64de145-b0e5-4ac3-8abf-4ad5d4e417f7",
+      "name": "Get Details Exam",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_specialists",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        -140
+      ],
+      "id": "0685e003-0e54-4687-917b-0e2975bc1150",
+      "name": "Get Specialists",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Payments\nList Payment Methods",
+        "height": 360,
+        "width": 1272.416101573684,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        160
+      ],
+      "id": "e65c35f4-3831-482b-9f69-47d2095fe7f9",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_payments",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        280
+      ],
+      "id": "2674eee8-df9b-4d3e-992f-1229b830c86c",
+      "name": "Get Payments",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Health Plans",
+        "height": 381.01112150694547,
+        "width": 1266.7623508673068
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        -698.7043335247513
+      ],
+      "id": "bd29d3da-02bf-4c97-a419-131bae9047e0",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_health_plans",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        -580
+      ],
+      "id": "993a6094-c230-4b62-bc2c-90e8e2050842",
+      "name": "Get Health Plans",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        280
+      ],
+      "id": "96977c5a-fa19-4f84-8d7d-dcdf05ea8e10",
+      "name": "Cached? 3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        -140
+      ],
+      "id": "be3c31de-1625-4846-a53b-660cc5d5aa79",
+      "name": "Cached? 2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        -580
+      ],
+      "id": "9f4543ed-42e8-4d98-8080-6409c9ed0672",
+      "name": "Cached? 1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        760
+      ],
+      "id": "cb500933-f1b4-4824-bc2c-256ada7630b6",
+      "name": "Cached? 4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "08781159-d933-43ce-8f8d-c043d0501403",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        1180
+      ],
+      "id": "7af3c1fb-9e85-4676-a442-dd9cc565ce87",
+      "name": "Cached? 5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3580,
+        -480
+      ],
+      "id": "14cc4988-7849-488e-a837-9988ae67e8da",
+      "name": "Load Data 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4575c98b-78f6-4829-be2c-e70d30cea179",
+              "name": "data",
+              "value": "={{ $json.data.compact().map(item => { return {\n  plan: item.title,\n  accept: item.accept ? 'yes' : 'no'\n} }) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3900,
+        -580
+      ],
+      "id": "039130bd-8d9f-47e4-9cd1-0c27e028f011",
+      "name": "Format 1",
+      "notes": "{{ $json.data.compact().map(item => { return {\n  plan: item.title,\n  accept: item.accept ? 'yes' : 'no'\n} }) }}"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
+              "name": "response",
+              "value": "={{\n    [\n        $json.data.filter(item => item.accept == 'yes').length > 0 \n            ? `We accept health insurance plans: ${$json.data.filter(item => item.accept == 'yes').map(item => `${item.plan}`).join(', ')}.`\n            : '',\n        $json.data.filter(item => item.accept == 'no').length > 0 \n            ? `We do not accept health insurance plans: ${$json.data.filter(item => item.accept == 'no').map(item => `${item.plan}`).join(', ')}.`\n            : ''\n    ].filter(section => section !== '').join('\\n\\n') \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "17c76783-6367-498b-9ff2-91762f76d36d",
+      "name": "Response 1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        -480
+      ],
+      "notes": "{{ $json.data.map(item => i = {item}).toJsonString() }}"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $json.data.map(item => {\n  return {\n  payment: item.title,\n  accept: item.accept ? 'yes' : 'no'\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3920,
+        260
+      ],
+      "id": "5f1bdfc8-f7f8-4357-a5da-904f07682168",
+      "name": "Format 3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $json.data.map(item => {\n  return {\n  professional: item.title,\n  procedure: item.procedure,\n  price: item.price,\n  crm: item.crm,\n  event_id: item.event_id,\n  id: item.id\n  }\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3920,
+        -160
+      ],
+      "id": "6197eb34-7c0f-4718-a7ea-5ab151632af2",
+      "name": "Format 2"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_specialists",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        -160
+      ],
+      "id": "a7dc1a6e-8895-4b58-96f4-ec21fdb0d43c",
+      "name": "Set Cache 2",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_health_plans",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4060,
+        -580
+      ],
+      "id": "3c0c68f3-f831-49f4-825d-63611fe8e0e6",
+      "name": "Set Cache 1",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
+              "name": "response",
+              "value": "={{ \n    $json.data.map(item => `- ${item.professional}, ${item.procedure}${item.crm ? `, CRM ${item.crm}` : ''}, event ID ${item.event_id}${item.price ? `, price ${item.price}` : ''}`).join('\\n') \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dc94b9d4-9f1d-48d9-8f48-97f785b679c0",
+      "name": "Response 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3580,
+        -60
+      ],
+      "id": "d9220d23-1ec7-4bbf-a872-6ce5301cae17",
+      "name": "Load Data 2"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_payments",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        260
+      ],
+      "id": "6607681c-aab0-4e1d-ae0c-beaac592d0a2",
+      "name": "Set Save 3",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e79ee57-938d-43a1-b3d4-084472693f30",
+              "name": "response",
+              "value": "={{\n    [\n        $json.data.filter(item => item.accept == 'yes').length > 0 \n            ? `We accept payments: ${$json.data.filter(item => item.accept == 'yes').map(item => `${item.payment}`).join(', ')}.`\n            : '',\n        $json.data.filter(item => item.accept == 'no').length > 0 \n            ? `We do not accept payments: ${$json.data.filter(item => item.accept == 'no').map(item => `${item.payment}`).join(', ')}.`\n            : ''\n    ].filter(section => section !== '').join('\\n\\n') \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d91b689d-65f9-4c44-a985-e2507a756a13",
+      "name": "Response 3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3580,
+        360
+      ],
+      "id": "0eb134e4-c6ed-467e-8083-50d971ed1433",
+      "name": "Load Data 3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=exam not found with id {{ $('EWT').first().json.query.exam_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c88fbc0-177a-47e6-8427-37b157cef2e2",
+      "name": "Response Error 4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "df2665f5-f799-449c-bce5-3758bc793f6c",
+              "name": "response",
+              "value": "={{ \n    $json.data.map(item => `- ${item.title}, event ID ${item.event_id} and exam ID ${item.id}`).join('\\n') \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "71e6b60b-a766-488a-aac3-e6809c36938c",
+      "name": "Response 4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4500,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    $('EWT').item.json.hasField('hidden_fields') && $('EWT').item.json.hidden_fields.length \n        ? $json.data.map(item => {\n            $('EWT').item.json.hidden_fields.forEach(field => {\n                delete item[field];\n            });\n            return item;\n          })\n        : $json.data \n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        780
+      ],
+      "id": "5c3f93d1-8457-493b-8c8e-f6b4b45c88f4",
+      "name": "Hidden Fields 4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $json.data.map(item => i = {\n  id: item.id,\n  title: item.title,\n  event_id: item.event_id,\n}) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3920,
+        680
+      ],
+      "id": "654000e2-1496-46a8-bee2-a91e0dd9c1f8",
+      "name": "Format 4"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exams",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        680
+      ],
+      "id": "d7419f6f-0f12-4bd7-9bcb-3ef1b15e7703",
+      "name": "Set Save 4",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=exam not found with id {{ $('EWT').first().json.query.exam_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eb437c1d-f7f5-45cf-bbae-f6f79da00c04",
+      "name": "Response Error 5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('EWT').item.json.messageInfo.instance }}_{{ $workflow.id\n}}_exam_detail_{{ $('EWT').item.json.query.exam_id }}",
+        "value": "={{ $json.data.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 120
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        1100
+      ],
+      "id": "628e64a9-81d3-47b6-9794-5f851a75e5e2",
+      "name": "Set Save 5",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8d70ac3-ee0f-45ae-a0f8-cb0d54876bb3",
+              "name": "data",
+              "value": "={{ $json.data.removeField('created_at') }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3920,
+        1100
+      ],
+      "id": "e78edd13-9c2f-40ee-8781-1797c6c48661",
+      "name": "Format 5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ed0e03d3-79a0-4123-9f2a-a2a6abee5253",
+      "name": "Response 5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27078474-0533-4004-8718-c55a54a5e46c",
+              "name": "data",
+              "value": "={{ $json.data.length ? $json.data.parseJson() : '' }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3560,
+        780
+      ],
+      "id": "1c31dea1-7767-4998-83c1-b26097f3d643",
+      "name": "Load Data 4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.plan.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        -480
+      ],
+      "id": "0a9df787-a089-4b62-a377-1fc6accbacd3",
+      "name": "Filter by 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.crm ? item.crm == query.crm : true,\n            item => query.name ? item.professional.toLowerCase().includes(query.name.toLowerCase()) : true,\n            item => query.specialist ? item.procedure.toLowerCase().includes(query.specialist.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        -60
+      ],
+      "id": "6de1c258-a6de-4ec4-b6ec-9b5eb1691be0",
+      "name": "Filter by 2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.payment.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        360
+      ],
+      "id": "cb185a60-8712-4ee7-81d3-8684859da045",
+      "name": "Filter by 3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4592b8-cc3a-48e9-8a39-a78ae2d3ad12",
+              "name": "data",
+              "value": "={{ \n    (() => {\n        const query = $('EWT').item.json.query;\n        const filters = [\n            item => query.name ? item.title.toLowerCase().includes(query.name.toLowerCase()) : true,\n        ];\n\n        const filteredData = $json.data.filter(item => filters.every(fn => fn(item)));\n        return filteredData.length ? filteredData : $json.data;\n    })()\n}}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4360,
+        780
+      ],
+      "id": "dde10e59-0419-4584-9b14-5dbe4d1328e3",
+      "name": "Filter by 4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://agendaclinic.com/api/v1",
+              "type": "string"
+            },
+            {
+              "id": "41a31c67-8ee1-4f3d-b1b6-3b78e499f17c",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.query.bearer_token ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8333dbec-0825-4606-b880-ce089a307304",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2040,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/health-plans",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "ebd8d660-8014-492a-8a80-eb5efa3018bf",
+      "name": "List Health Plans",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        -660
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/specialists",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "219ae5dd-4aed-4d7b-a73a-f37d0cac330f",
+      "name": "List Specialists",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/payment-methods",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "0ce3d155-6e3a-4f19-84fa-b40ee95d12f7",
+      "name": "List Payments",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/exams",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "1abe3ca4-bdab-4be1-bbe8-f2c0bbc8dd50",
+      "name": "List Exams",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3560,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/exams/{{ $('EWT').item.json.query.exam_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "257c165a-2615-4787-9791-d70364a0bce3",
+      "name": "Details Exam",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        1040
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "health plans",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c5bee94c-665a-451c-bb77-fb36e03e6b72"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "health plans"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5ece5fd9-4267-4bf2-a1b7-23b5d1c2362f",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "specialists",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Procedures"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "42639684-02d9-4a30-96b2-cf1cb1df7b74",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "payments",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "payments"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "82cfd93c-100b-4167-a74a-97be2345ff5e",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "exams",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exams"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "842d1b7b-1008-4d19-b983-c6cab57bb716",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "exam details",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "exam details"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9b5f5609-379c-4f48-acb1-f823cf989818",
+                    "leftValue": "={{ $('EWT').item.json.tool }}",
+                    "rightValue": "calendar details",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "calendar details"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2e9d1e5c-3cf6-4d56-a850-4068f7c41b9a",
+      "name": "Switch Tool",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2420,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=payment methods not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2451abb-4469-4fab-87b8-2d2dd1d1b984",
+      "name": "Response Error  3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=payment methods not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ce814c37-1b9b-46c1-bf80-4f80287d5e04",
+      "name": "Response Error  2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        -220
+      ],
+      "id": "cde244d3-7863-48e8-b0a4-fd5ef1567d3f",
+      "name": "Not found? 2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        200
+      ],
+      "id": "76c65c08-f0b3-4f51-9c41-16f8cd1b7dc0",
+      "name": "Not found? 3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3700,
+        620
+      ],
+      "id": "e5bd5156-e6a0-4fd6-848b-4c6325490420",
+      "name": "Not found? 4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        1040
+      ],
+      "id": "174eb524-f5e8-45c5-9d2e-68d0a31c2aef",
+      "name": "Not found? 5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb6571d7-b6a3-490b-bc53-0c463c4981bd",
+              "leftValue": "={{ $json.data.isEmpty() }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3720,
+        -660
+      ],
+      "id": "aa9df7fd-bf2f-4d6a-a29f-387d38835345",
+      "name": "Not found? "
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b49db797-0bdf-457d-8ba0-e7cf175881e5",
+              "name": "response",
+              "value": "=health plans not found",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d84c06b-36f5-4268-a2b1-9281ca5cefc3",
+      "name": "Response Error  ",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4220,
+        -680
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://agendaclinic.com/api/v1",
+              "type": "string"
+            },
+            {
+              "id": "41a31c67-8ee1-4f3d-b1b6-3b78e499f17c",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.messageInfo.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "448ddab4-ede9-46c5-ba12-fef7d116a79c",
+      "name": "baseInfo1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2140,
+        260
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "EWT": [
+      {
+        "json": {
+          "query": {
+            "bearer_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
+            "name": "pix"
+          },
+          "tool": "payments",
+          "messageInfo": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-12T03:57:05.142Z",
+  "versionId": "e33c2b78-984b-47c5-98c4-e8519d7c1ac7"
+}
