@@ -2193,29 +2193,7 @@
       ]
     }
   ],
-  "pinData": {
-    "EWT": [
-      {
-        "json": {
-          "query": {
-            "name": "pix"
-          },
-          "tool": "payments",
-          "messageInfo": {
-            "evo_api": "https://apiwp.wmst.com.br",
-            "instance": "ibox_cli_23",
-            "remoteJid": "5512982184879@s.whatsapp.net",
-            "pushName": "W.M. Soluções Tecnologicas",
-            "fromMe": false,
-            "unique_id": "william_5512982184879",
-            "debounce_time": 5,
-            "conversation": "quanto esta o exame hemograma completo?",
-            "client_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -2235,6 +2213,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-12T03:37:03.454Z",
-  "versionId": "3bb9c5ff-5182-4033-8ce2-f7400ee1149f"
+  "updatedAt": "2025-04-12T03:57:25.922Z",
+  "versionId": "36e19593-1859-4d3c-8697-46ca8e781b4a"
 }
