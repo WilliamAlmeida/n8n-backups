@@ -1607,7 +1607,7 @@
             {
               "id": "41a31c67-8ee1-4f3d-b1b6-3b78e499f17c",
               "name": "bearer_token",
-              "value": "=Bearer {{ $json.messageInfo.client_token }}",
+              "value": "=Bearer {{ $json.messageInfo.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
               "type": "string"
             }
           ]
@@ -2235,6 +2235,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-07T03:35:40.661Z",
-  "versionId": "4ac07a79-e1fb-4091-9364-bf1ce895e540"
+  "updatedAt": "2025-04-12T03:37:03.454Z",
+  "versionId": "3bb9c5ff-5182-4033-8ce2-f7400ee1149f"
 }
