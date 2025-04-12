@@ -776,7 +776,8 @@
       "position": [
         6160,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -2148,7 +2149,7 @@
           "values": [
             {
               "name": "title",
-              "description": "name of health plan",
+              "description": "name of health plan or empty for all health plans",
               "type": "string"
             }
           ]
@@ -2277,7 +2278,7 @@
           "values": [
             {
               "name": "title",
-              "description": "name of method payment",
+              "description": "name of method payment or empty for all payments",
               "type": "string"
             }
           ]
@@ -2713,6 +2714,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-09T14:49:50.692Z",
-  "versionId": "31d5ee99-9ca0-4737-9484-00d7866a3133"
+  "updatedAt": "2025-04-12T15:32:06.145Z",
+  "versionId": "8ef4a88e-ae40-4cd4-a339-a8c400ed4e86"
 }
