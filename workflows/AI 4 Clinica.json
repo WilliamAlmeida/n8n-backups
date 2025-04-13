@@ -61,17 +61,6 @@
         ]
       ]
     },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Chat": {
       "main": [
         [
@@ -712,6 +701,17 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -721,28 +721,6 @@
   },
   "name": "AI 4 Clinica",
   "nodes": [
-    {
-      "parameters": {
-        "options": {
-          "temperature": 0,
-          "topP": 1
-        }
-      },
-      "id": "edd3641c-d660-45e7-8a49-7754a9910ceb",
-      "name": "OpenAI Chat Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        5000,
-        1420
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
-        }
-      }
-    },
     {
       "parameters": {
         "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
@@ -776,8 +754,7 @@
       "position": [
         6160,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -933,7 +910,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1466,7 +1444,7 @@
             },
             {
               "name": "full_name",
-              "value": "={{ $('Execute Workflow Trigger').item.json.pushName }}"
+              "value": "={{ $('messageInfo').item.json.pushName }}"
             }
           ]
         },
@@ -2664,6 +2642,34 @@
         1100
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "temperature": 0,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5000,
+        1460
+      ],
+      "id": "7d735b0d-7e56-4569-be1c-cc92e8b781e2",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2714,6 +2720,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-12T15:32:06.145Z",
-  "versionId": "8ef4a88e-ae40-4cd4-a339-a8c400ed4e86"
+  "updatedAt": "2025-04-13T00:28:45.381Z",
+  "versionId": "d61f7900-172f-424e-9238-a154ca3dd8b1"
 }
