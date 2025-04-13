@@ -1,0 +1,832 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "reset tester",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scheduling Tool": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Specialists Tool3": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Exams Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Health Plan Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Exam Details Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Methods Payment Tool2": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "agent_clinic": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset agent clinic": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset tester": {
+      "main": [
+        [
+          {
+            "node": "reset agent clinic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-13T03:50:27.098Z",
+  "id": "mAYU3A811XkUELpz",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Tester",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
+        "height": 424,
+        "width": 794
+      },
+      "id": "20c376df-873e-42da-98e0-bb1e4609f6a9",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "0a56abef-bdce-497f-aabd-fb751cb31837",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4640,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
+        "options": {}
+      },
+      "id": "5cbef693-4dce-4cce-9772-5c1209e0b5ff",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4420,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_teste",
+        "sessionTTL": 30,
+        "contextWindowLength": 30
+      },
+      "id": "104f3516-5673-4e15-9cb8-3ef7f8b75284",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5300,
+        1520
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "41c8e492-594c-4503-8ef2-ab7a30a34389",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        4260,
+        1220
+      ],
+      "webhookId": "d826c56e-3911-426c-a388-a06176dcadfb"
+    },
+    {
+      "parameters": {
+        "name": "scheduling_tool",
+        "description": "=Call this tool to handle all requests related to appointment management.\n\nAppointments, Rescheduling, Cancellation, Check Appointment Availability, Check User Appointments.\n\nCancellation and Rescheduling also includes the reason provided by the user, otherwise leave it empty.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "JZY3GPC55leuxyHn",
+          "cachedResultName": "TOOL Clinica"
+        },
+        "responsePropertyName": "output",
+        "fields": {
+          "values": [
+            {
+              "name": "agent",
+              "stringValue": "calendar"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "userAccount",
+              "type": "objectValue",
+              "objectValue": "={{ $('userAccount').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n\"type\": \"object\",\n\"properties\": {\n\t\"query\": {\n\t\t\"type\": \"string\"\n\t\t},\n\t\"reason\": {\n\t\t\"type\": \"string\",\n\t\t\"description\": \"reason for cancellation or rescheduling\"\n\t\t}\n\t}\n}"
+      },
+      "id": "d341bbcc-4a1e-4e64-9085-b2b0a391987c",
+      "name": "Scheduling Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5780,
+        2740
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://agendaclinic.com/api/v1",
+              "type": "string"
+            },
+            {
+              "id": "dcb3ef37-7992-4f5c-8e60-31d9184dce47",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "724ebf57-dd1b-4c81-ac31-65fa3a375cb6",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4800,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "ef94dbc1-1a09-4924-b65c-5d6f69809adc",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6500,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=Você é um agente de IA usado para Testes de outras IA, seu objetivo será iniciar uma conversa um agente.\n\nVocê deve usar a tool para conversar com o agente até finalizar o objetivo passado pelo usuário.\n\n- Use de tom humanizado, de uma pessoa de 30 anos de idade.\n- Seja objetivo.\n- Fale com o agente sempre em primeira pessoa e de modo formal.\n- Não solicite tudo em uma requisição separe em etapas, conforme for sendo respondido pelo agente.\n- Você está limitado a 10 interações para conseguir realizar um agendamento.\n- No final gere alguma analise e dados que você acha relevante nesse teste.\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+          "maxIterations": 10,
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "1a9d9d2b-edac-45f0-92ba-66dedca00808",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5220,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "name": "list_specialists_tool",
+        "description": "=Esta ferramenta permite acessar informações detalhadas sobre os médicos cadastrados na clínica. É possível realizar buscas pelo nome, CRM ou pela especialidade do profissional, retornando dados como o nome completo, ID do médico, especialidades e outros detalhes relevantes. Essa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "specialists"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "hidden_fields",
+              "type": "arrayValue",
+              "arrayValue": "={{ ['event_id'] }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"crm\": {\n      \"type\": \"number\",\n      \"description\": \"crm of medical (optional)\"\n    },\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of medical (optional)\"\n    },\n    \"specialist\": {\n      \"type\": \"string\",\n      \"description\": \"specialist of medical (optional)\"\n    }\n  }\n}"
+      },
+      "id": "c4fe063a-cf8d-4a7c-9486-693c6efda922",
+      "name": "Specialists Tool3",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5000,
+        2740
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "list_exams_tool",
+        "description": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exams"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            },
+            {
+              "name": "hidden_fields",
+              "type": "arrayValue",
+              "arrayValue": "={{ ['event_id'] }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of exam (optional)\"\n    }\n  }\n}"
+      },
+      "id": "867bca43-07e0-45bb-aaab-1b921eecd441",
+      "name": "Exams Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5140,
+        2740
+      ],
+      "disabled": true,
+      "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
+    },
+    {
+      "parameters": {
+        "name": "list_health_plans_tool",
+        "description": "Call this tool to get information about available health plans and insurance options.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "health plans"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of health plan (optional)\"\n    }\n  }\n}"
+      },
+      "id": "b47f5210-47bd-497a-8ab4-9318e3e06639",
+      "name": "Health Plan Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5620,
+        2740
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "details_any_exam_tool",
+        "description": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o ID do exame. O ID pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o ID correspondente antes de obter as informações detalhadas",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "exam details"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"exam_id\": {\n      \"type\": \"number\",\n      \"description\": \"exam's id\"\n    }\n  }\n}"
+      },
+      "id": "d8675b96-57ea-48d1-855f-49050cef9828",
+      "name": "Exam Details Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5300,
+        2740
+      ],
+      "disabled": true,
+      "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
+    },
+    {
+      "parameters": {
+        "name": "list_payment_methods_tool",
+        "description": "Call this tool to get information about payment methods.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pliyk2HChCR880pK",
+          "mode": "list",
+          "cachedResultName": "Comp Clinica"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "tool",
+              "stringValue": "payments"
+            },
+            {
+              "name": "messageInfo",
+              "type": "objectValue",
+              "objectValue": "={{ $('messageInfo').first().json }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"name of method payment (optional)\"\n    }\n  }\n}"
+      },
+      "id": "f1bcbc70-9dbb-4cbf-b321-7f0c7125b810",
+      "name": "Methods Payment Tool2",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5460,
+        2740
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "temperature": 0,
+          "maxRetries": 2,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5160,
+        1520
+      ],
+      "id": "56ad5040-742e-41b7-8e02-d9a29a7dc1ce",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\n{{ $('AI Agent').item.json.output }}\n\n*Analizador*:\n{{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b65c0e2f-2e27-42ac-aabc-b1c29713b324",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6320,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa tool para falar com o agente da clinica e realizar objetivo solicitado pelo usuario.",
+        "method": "POST",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/a3b015c7-b143-47a9-bdb0-36332e651f9f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"evo_api\": \"https://apiwp.wmst.com.br\",\n  \"instance\": \"ibox_cli_23\",\n  \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n  \"pushName\": \"W.M. Soluções Tecnologicas\",\n  \"fromMe\": false,\n  \"unique_id\": \"ibox_cli_23_5512982184879\",\n  \"evo_api_key\": \"3246B56693A1-4BAD-A92A-183844A4CFBB\",\n  \"conversation\": \"{query}\"\n}\n",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "query",
+              "description": "query to comunicate to agent clinic",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5460,
+        1520
+      ],
+      "id": "b1e028b1-e9dc-4785-b291-092f21ebcf4b",
+      "name": "agent_clinic"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_teste"
+      },
+      "id": "2cff9c46-c565-49ab-8b7c-b91ab6d0a33a",
+      "name": "reset tester",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1040
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+      },
+      "id": "dc717137-ebaa-4f00-8b52-1aea82c9dfbe",
+      "name": "reset agent clinic",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5120,
+        1040
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1f65148-5aa8-4ba7-a671-d7dc35b6d1e3",
+              "name": "intermediateSteps",
+              "value": "={{ $json.intermediateSteps }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5800,
+        1360
+      ],
+      "id": "d07ab8b0-18ee-4b96-9667-cef99090548e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.intermediateSteps }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Extrai as seguintes informações:\n\n- Total de palavras e caracteres passadas para a toolInput.query do agent\n- Total de steps\n- Total Tokens usados\n- Objetivo alcançado\n- Observações"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        5980,
+        1360
+      ],
+      "id": "a1fa1fc3-077a-4469-985d-6be616326fe4",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "llama3-70b-8192",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        5940,
+        1520
+      ],
+      "id": "3af159cf-b325-443d-a3ed-e9ceb410e38b",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        5380,
+        1580
+      ],
+      "id": "b86b49c7-d2be-463c-aca0-75ac63e020a8",
+      "name": "Calculator"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-13T06:42:37.962Z",
+  "versionId": "29d10349-a64c-4c60-a3f5-a7baab78d5c7"
+}
