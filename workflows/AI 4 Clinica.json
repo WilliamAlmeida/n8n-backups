@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "messageInfo": {
       "main": [
@@ -348,6 +348,11 @@
             "node": "wk response whatsapp",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Response to Webhook",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -356,7 +361,7 @@
       "main": [
         [
           {
-            "node": "Sign Msg",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -712,6 +717,50 @@
           }
         ]
       ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -752,9 +801,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        6160,
+        6180,
         1300
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -866,7 +916,8 @@
       "position": [
         1760,
         1240
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -928,7 +979,8 @@
         1600,
         1240
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -939,7 +991,8 @@
       "position": [
         1760,
         1440
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -948,7 +1001,7 @@
             {
               "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
               "name": "output",
-              "value": "=*{{ $workflow.name }}*:\n{{ $json.output }}",
+              "value": "=*{{ $workflow.name }}*:\n{{ $('AI Agent').item.json.output }}{{ $json.output }}",
               "type": "string"
             }
           ]
@@ -1571,7 +1624,8 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "={{ $('instancePrompts').first().json.prompts.first().prompt_text }}\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
+          "systemMessage": "={{ $('instancePrompts').first().json.prompts.first().prompt_text }}\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+          "returnIntermediateSteps": true
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -2670,6 +2724,110 @@
           "name": "william"
         }
       }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a3b015c7-b143-47a9-bdb0-36332e651f9f",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        1640
+      ],
+      "id": "302606e7-3ece-42d5-9ef0-003b96e08f73",
+      "name": "Webhook",
+      "webhookId": "a3b015c7-b143-47a9-bdb0-36332e651f9f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "629ff4c1-b60b-4755-bec3-34309dcdf46c",
+              "name": "response",
+              "value": "={{ $json.output }}\n\n*estatistica*\n{{ $('Edit Fields').item.json.intermediateSteps.length ? $('Basic LLM Chain').item.json.text : 'Nenhuma' }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6180,
+        1500
+      ],
+      "id": "96ee1b5d-9c82-43c5-a390-9f954e6db18b",
+      "name": "Response to Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.intermediateSteps }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Extrai as seguintes informações:\n\n- Total de palavras e caracteres passadas para a toolInput.query do agent\n- Total de steps\n- Total Tokens usados\n- Objetivo alcançado\n- Observações"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        6340,
+        1700
+      ],
+      "id": "922f2030-0254-41f2-93f3-d0611d2d44ab",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        6300,
+        1860
+      ],
+      "id": "428bb8af-dc84-4539-baea-2f85a14add0f",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1f65148-5aa8-4ba7-a671-d7dc35b6d1e3",
+              "name": "intermediateSteps",
+              "value": "={{ $json.intermediateSteps }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6180,
+        1700
+      ],
+      "id": "a04df876-e708-4bb1-a9df-745041dad5ad",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {
@@ -2684,6 +2842,39 @@
           "unique_id": "ibox_cli_23_5512982184879",
           "evo_api_key": "3246B56693A1-4BAD-A92A-183844A4CFBB",
           "conversation": "oi cli"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.n8n.wmst.com.br",
+            "x-forwarded-scheme": "https",
+            "x-forwarded-proto": "https",
+            "x-forwarded-for": "10.0.0.2",
+            "x-real-ip": "10.0.0.2",
+            "connection": "close",
+            "content-length": "536",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "axios/1.8.2",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "evo_api": "https://apiwp.wmst.com.br",
+            "instance": "ibox_cli_23",
+            "remoteJid": "5512982184879@s.whatsapp.net",
+            "pushName": "W.M. Soluções Tecnologicas",
+            "fromMe": false,
+            "unique_id": "ibox_cli_23_5512982184879",
+            "evo_api_key": "3246B56693A1-4BAD-A92A-183844A4CFBB",
+            "conversation": "Olá, meu nome é William. Gostaria de agendar uma consulta com a Dra. Rita na próxima segunda-feira, dia 14 de abril, às 09:00. Meu número de telefone é 12982184879 e meu e-mail é williamkillerca@hotmail.com. Poderia confirmar a disponibilidade, por favor?"
+          },
+          "webhookUrl": "https://webhook.n8n.wmst.com.br/webhook/a3b015c7-b143-47a9-bdb0-36332e651f9f",
+          "executionMode": "production"
         }
       }
     ]
@@ -2720,6 +2911,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-13T00:28:45.381Z",
-  "versionId": "d61f7900-172f-424e-9238-a154ca3dd8b1"
+  "updatedAt": "2025-04-13T06:26:22.138Z",
+  "versionId": "c6a9183e-6f6a-4ce6-9fd0-5a4600e8e5aa"
 }
