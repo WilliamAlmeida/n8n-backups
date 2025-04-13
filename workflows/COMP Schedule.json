@@ -863,11 +863,11 @@
             },
             {
               "name": "bookingFieldsResponses",
-              "value": "={{ {\n  notes: $('EWT').item?.json?.query?.description || '',\n  cellphone: `+${$('EWT').item?.json?.query?.bookingFieldsResponses?.cellphone?.startsWith('55') \n    ? $('EWT').item.json.query.bookingFieldsResponses.cellphone \n    : '55' + $('EWT').item?.json?.query?.bookingFieldsResponses?.cellphone || ''}`,\n  title: $('EWT').item?.json?.query?.title || '',\n  professional: $('EWT').item?.json?.query?.bookingFieldsResponses?.professional || '',\n  procedure: $('EWT').item?.json?.query?.bookingFieldsResponses?.procedure || '',\n  method_payment: $('EWT').item?.json?.query?.bookingFieldsResponses?.method_payment || '',\n  name_plan: $('EWT').item?.json?.query?.bookingFieldsResponses?.name_plan || '',\n  price: $('EWT').item?.json?.query?.bookingFieldsResponses?.price || ''\n} }}"
+              "value": "={{ {\n  notes: $('EWT').item.json.query.bookingFieldsResponses.description || '',\n  cellphone: `+${$('EWT').item?.json?.query?.attendee?.cellphone?.startsWith('55') \n    ? $('EWT').item.json.query.attendee.cellphone \n    : '55' + $('EWT').item?.json?.query?.attendee?.cellphone || ''}`,\n  title: $('EWT').item.json.query.bookingFieldsResponses.title || '',\n  professional: $('EWT').item.json.query.bookingFieldsResponses.professional || '',\n  procedure: $('EWT').item.json.query.bookingFieldsResponses.procedure || '',\n  method_payment: $('EWT').item.json.query.bookingFieldsResponses.method_payment || '',\n  name_plan: $('EWT').item.json.query.bookingFieldsResponses.name_plan || '',\n  price: $('EWT').item.json.query.bookingFieldsResponses.price || ''\n} }}"
             },
             {
               "name": "attendee",
-              "value": "={{ {\n  name: $('EWT').item.json.query.attendee.name,\n  email: $('EWT').item.json.query.attendee.email,\n  timeZone: 'America/Sao_Paulo',\n  language: 'pt-BR'\n} }}"
+              "value": "={{ {\n  name: $('EWT').item.json.query.attendee.name,\n  email: $('EWT').item.json.query.attendee.email,\n  phone: $('EWT').item.json.query.attendee.cellphone,\n  timeZone: 'America/Sao_Paulo',\n  language: 'pt-BR'\n} }}"
             },
             {
               "name": "pacient_id",
@@ -1699,11 +1699,22 @@
       {
         "json": {
           "query": {
-            "event_id": "1",
-            "startTime": "2025-04-05T00:00:00",
-            "endTime": "2025-04-05T23:59:59"
+            "event_id": "4",
+            "start": "2025-04-14T10:00:00",
+            "attendee": {
+              "name": "William",
+              "email": "williamkillerca@hotmail.com",
+              "cellphone": "12982184879"
+            },
+            "bookingFieldsResponses": {
+              "title": "Consulta com a Dra. Samira Saab",
+              "description": "",
+              "method_payment": "",
+              "name_plan": ""
+            },
+            "pacient_id": 1
           },
-          "action": "availability"
+          "action": "schedule booking"
         }
       }
     ]
@@ -1733,6 +1744,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-07T03:35:44.297Z",
-  "versionId": "8a967324-a584-49a1-b799-126d5b1648a5"
+  "updatedAt": "2025-04-13T00:13:39.508Z",
+  "versionId": "c21fec78-bbfe-45d9-aec3-d5ca889c1d37"
 }
