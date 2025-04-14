@@ -298,7 +298,7 @@
       "main": [
         [
           {
-            "node": "Schedule a booking",
+            "node": "fromMe?",
             "type": "main",
             "index": 0
           }
@@ -350,6 +350,98 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "fromMe?": {
+      "main": [
+        [
+          {
+            "node": "Schedule a booking",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get first user": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch user": {
+      "main": [
+        [
+          {
+            "node": "user found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert user": {
+      "main": [
+        [
+          {
+            "node": "user registred?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user found?": {
+      "main": [
+        [
+          {
+            "node": "get first user",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user registred?": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Response Not Registred",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge 2": {
+      "main": [
+        []
       ]
     }
   },
@@ -887,8 +979,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1580,
-        420
+        1960,
+        500
       ],
       "id": "351b51d5-45da-4ae5-b215-62b23b99244a",
       "name": "Schedule a booking",
@@ -1310,8 +1402,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1760,
-        420
+        2140,
+        500
       ],
       "id": "eb0851e6-c452-4380-8db9-252250c09b5c",
       "name": "scheduled?"
@@ -1333,8 +1425,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1980,
-        340
+        2360,
+        420
       ],
       "id": "0533e65d-25aa-496a-a60f-71aba4d20247",
       "name": "Response Schedule Success",
@@ -1357,8 +1449,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1980,
-        520
+        2360,
+        600
       ],
       "id": "34229de4-1b8f-42a0-8a5b-cc01a06d5066",
       "name": "Response Schedule Error"
@@ -1525,8 +1617,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1580,
-        600
+        1520,
+        640
       ],
       "id": "0b28eafe-a45e-4b94-bea4-ec826bca597a",
       "name": "Response Not Availability"
@@ -1692,6 +1784,292 @@
       "id": "dbb57cb4-4294-4a69-91a8-eb4d632835f1",
       "name": "Response Not Availability1",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d9321178-39a0-4257-b05f-abc194757303",
+              "leftValue": "={{ $('EWT').item.json.query.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1620,
+        340
+      ],
+      "id": "1ef60bf0-1538-4769-b4e7-df8391776a35",
+      "name": "fromMe?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3dc387d1-961d-459e-ac7b-a2662290570e",
+              "name": "data",
+              "value": "={{ $json.data.first() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc1dc11e-9ea1-4579-9a3b-e3900e9ccb9e",
+      "name": "get first user",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        900
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacient",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').item.json.remoteJid.split('@')[0].slice(2) }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "df170de7-2d0a-4541-9259-6802f2397caa",
+      "name": "fetch user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1920,
+        900
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0].slice(2) }}"
+            },
+            {
+              "name": "origin",
+              "value": "whatsapp"
+            },
+            {
+              "name": "phone_is_whatsapp",
+              "value": "={{ true }}"
+            },
+            {
+              "name": "phone_verified_at",
+              "value": "={{ $now.toUTC() }}"
+            },
+            {
+              "name": "full_name",
+              "value": "={{ $('messageInfo').item.json.pushName }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "3004900c-396e-48a6-bb2a-a2ce3074fcf5",
+      "name": "insert user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2260,
+        1060
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2080,
+        900
+      ],
+      "id": "568cc88d-07f2-4a32-9168-f09f92363e29",
+      "name": "user found?",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2440,
+        1060
+      ],
+      "id": "aa4c148c-4e49-4b1a-9ba1-41d05ed44859",
+      "name": "user registred?",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2440,
+        900
+      ],
+      "id": "bedf9889-3768-488f-b022-962260ceec5d",
+      "name": "Merge 2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 649,
+        "width": 999,
+        "color": 5
+      },
+      "id": "72af048b-0671-48f9-9793-851bbe43d85b",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb30d710-9962-46c5-b3cb-f0993cfd6785",
+              "name": "response",
+              "value": "=error found: {{ $json.message ?? 'Requested register pacient has any error.' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2600,
+        1240
+      ],
+      "id": "74c32bd8-096c-4866-9377-308d5ea41f1a",
+      "name": "Response Not Registred",
+      "disabled": true
     }
   ],
   "pinData": {
@@ -1699,20 +2077,18 @@
       {
         "json": {
           "query": {
-            "event_id": "4",
-            "start": "2025-04-14T10:00:00",
+            "fromMe": true,
+            "event_id": "1",
+            "start": "2025-04-15T09:00:00",
             "attendee": {
               "name": "William",
               "email": "williamkillerca@hotmail.com",
               "cellphone": "12982184879"
             },
             "bookingFieldsResponses": {
-              "title": "Consulta com a Dra. Samira Saab",
-              "description": "",
-              "method_payment": "",
-              "name_plan": ""
+              "title": "Consulta com Dra. Rita"
             },
-            "pacient_id": 1
+            "pacient_id": 9
           },
           "action": "schedule booking"
         }
@@ -1744,6 +2120,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-13T00:13:39.508Z",
-  "versionId": "c21fec78-bbfe-45d9-aec3-d5ca889c1d37"
+  "updatedAt": "2025-04-14T03:17:05.411Z",
+  "versionId": "a14fa5fe-a16d-4d28-9561-30d8ea74a646"
 }
