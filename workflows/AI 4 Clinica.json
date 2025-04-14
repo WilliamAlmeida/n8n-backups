@@ -739,6 +739,28 @@
           }
         ]
       ]
+    },
+    "Pacient Tool 1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pacient Register Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -795,7 +817,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1980,
+        620,
         1300
       ]
     },
@@ -812,7 +834,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4760,
+        4000,
         1560
       ],
       "credentials": {
@@ -835,7 +857,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4100,
+        3340,
         1380
       ],
       "credentials": {
@@ -855,7 +877,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3940,
+        3180,
         1380
       ],
       "credentials": {
@@ -877,7 +899,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4760,
+        4000,
         1360
       ]
     },
@@ -892,7 +914,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1760,
+        400,
         1240
       ]
     },
@@ -953,7 +975,7 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        1600,
+        240,
         1240
       ],
       "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
@@ -965,7 +987,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        1760,
+        400,
         1440
       ]
     },
@@ -1023,7 +1045,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4300,
+        3540,
         1380
       ]
     },
@@ -1037,8 +1059,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4980,
-        880
+        4960,
+        900
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1059,8 +1081,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5140,
-        880
+        5120,
+        900
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1113,7 +1135,8 @@
       "position": [
         5540,
         1760
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1370,7 +1393,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2140,
+        780,
         1380
       ]
     },
@@ -1393,7 +1416,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4300,
+        3540,
         1600
       ]
     },
@@ -1432,7 +1455,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3940,
+        3180,
         1640
       ]
     },
@@ -1490,7 +1513,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4300,
+        3540,
         1760
       ],
       "credentials": {
@@ -1528,7 +1551,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4100,
+        3340,
         1640
       ],
       "id": "c5e04892-a993-4e93-b5ab-e3fb051b9284",
@@ -1562,7 +1585,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4640,
+        3880,
         1740
       ],
       "id": "2c6a6fe7-3134-4ba6-8ce8-d46534bc1081",
@@ -1573,7 +1596,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        4540,
+        3780,
         1560
       ],
       "id": "3701f096-1a8d-4361-9628-0f07199a9ee4",
@@ -1626,7 +1649,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3900,
+        3140,
         1280
       ]
     },
@@ -1642,7 +1665,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2300,
+        940,
         1280
       ]
     },
@@ -1656,7 +1679,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2360,
+        1000,
         1380
       ],
       "alwaysOutputData": true,
@@ -1698,7 +1721,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2620,
+        1260,
         1400
       ]
     },
@@ -1715,7 +1738,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2360,
+        1000,
         1580
       ],
       "alwaysOutputData": false,
@@ -1737,7 +1760,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2900,
+        1540,
         1380
       ]
     },
@@ -1755,7 +1778,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2900,
+        1540,
         1560
       ],
       "credentials": {
@@ -1784,7 +1807,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2520,
+        1160,
         1580
       ]
     },
@@ -1805,7 +1828,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2700,
+        1340,
         1580
       ],
       "id": "f319fc47-7d1d-4510-9ca9-600012fa402b",
@@ -1817,7 +1840,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2820,
+        1460,
         1760
       ],
       "id": "9ab5e30e-414c-4cf9-95eb-0424955c33a8",
@@ -2336,7 +2359,7 @@
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Pergunte se o agendamento é para o usuário ou outra pessoa.\n2. Confirme as informações antes de finalizar a reserva.\n3. Se o agendamento falhar, registre o problema e notifique o usuário.\n4. Notifique o usuário sobre o ID da reserva.",
+        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Pergunte se o agendamento é para o usuário ou outra pessoa.\n1.2 Se for agendamento para terceiro, verifique se o paciente já registrado com a tool \"pacient_tool\".\n2. Confirme as informações antes de finalizar a reserva.\n3. Se o agendamento falhar, registre o problema e notifique o usuário.\n4. Notifique o usuário sobre o ID da reserva.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2350,7 +2373,7 @@
               "stringValue": "schedule booking"
             },
             {
-              "name": "query.pacient_id",
+              "name": "query.pacient_id_me",
               "type": "numberValue",
               "numberValue": "={{ $('userAccount').item.json.id }}"
             }
@@ -2358,7 +2381,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"fromMe\": {\n      \"type\": \"boolean\",\n      \"description\": \"if booking is to use or another person\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam.\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"if booking is to use or another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"pacient_id returned from Pacient Tool if from_me was true\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam.\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"from_me\",\n    \"pacient_id\",\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -2478,7 +2501,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3100,
+        1740,
         1280
       ]
     },
@@ -2495,7 +2518,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3160,
+        1800,
         1580
       ],
       "alwaysOutputData": false,
@@ -2516,7 +2539,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3160,
+        1800,
         1380
       ],
       "alwaysOutputData": true,
@@ -2545,7 +2568,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3500,
+        2140,
         1580
       ],
       "id": "de6f1f48-bb26-4282-a761-49d09ead1132",
@@ -2571,7 +2594,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3320,
+        1960,
         1580
       ]
     },
@@ -2589,7 +2612,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3700,
+        2340,
         1560
       ],
       "credentials": {
@@ -2618,7 +2641,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3700,
+        2340,
         1380
       ]
     },
@@ -2652,7 +2675,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3420,
+        2060,
         1400
       ]
     },
@@ -2667,8 +2690,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4700,
-        1100
+        4400,
+        800
       ],
       "disabled": true
     },
@@ -2734,7 +2757,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        1760,
+        400,
         1640
       ],
       "id": "302606e7-3ece-42d5-9ef0-003b96e08f73",
@@ -2778,6 +2801,136 @@
       "id": "4939e107-6f74-49c8-96d2-92071f7a4105",
       "name": "Pacient Tool",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para encontrar um paciente cadastrado na clinica, quando o usuário querer registrar um agendamento em nome de terceiro.\n\nEssa funcionalidade facilita a identificação do paciente que será usado no agendamento em nome de terceiro.\n\n**Entrada**\n- Nome, sobrenome e último Nome (Nome Completo)\n- E-mail\n- Telefone\n\n**Retorno**\n- pacient_id do paciente usado no Agendamento\n- Nome completo\n- E-mail\n- Outros detalhes relevantes.",
+        "url": "https://agendaclinic.com/api/v1/pacient",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "full_name"
+            },
+            {
+              "name": "email",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "phone",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "full_name",
+              "description": "full name of pacient. e.g. William Luiz de Almeida",
+              "type": "string"
+            },
+            {
+              "name": "phone",
+              "description": "phone to contact. e.g. 12982184877 (ddd + number)",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4840,
+        1760
+      ],
+      "id": "2eaf4a6f-a0dd-4116-b5cf-2cd0e4b1a523",
+      "name": "Pacient Tool 1",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para registrar um novo paciente na clinica quando o usuário querer registrar um agendamento em nome de terceiro e não tiver sido encontrado o registro  pela Pacient Tool.\n\nEssa funcionalidade facilita o cadastro do paciente que será usado no agendamento em nome de terceiro.\n\n**Entrada**\n- Nome, sobrenome e último Nome (Nome Completo)\n- E-mail\n- Telefone\n\n**Retorno**\n- pacient_id do paciente usado no Agendamento\n- Nome completo\n- E-mail\n- Outros detalhes relevantes.",
+        "method": "POST",
+        "url": "https://agendaclinic.com/api/v1/pacients",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "full_name"
+            },
+            {
+              "name": "email",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "phone",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "full_name",
+              "description": "full name of pacient. e.g. William Luiz de Almeida",
+              "type": "string"
+            },
+            {
+              "name": "phone",
+              "description": "phone to contact. e.g. 12982184877 (ddd + number)",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4840,
+        1920
+      ],
+      "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
+      "name": "Pacient Register Tool",
+      "notesInFlow": false
     }
   ],
   "pinData": {
@@ -2828,6 +2981,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-14T03:16:58.953Z",
-  "versionId": "cf1539be-a813-487c-b55d-239abe962272"
+  "updatedAt": "2025-04-14T06:16:01.176Z",
+  "versionId": "227df372-6ddb-4fb2-ba45-bf7cd2fab41f"
 }
