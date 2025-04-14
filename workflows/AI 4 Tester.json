@@ -80,7 +80,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Steps",
             "type": "main",
             "index": 0
           }
@@ -150,17 +150,6 @@
         []
       ]
     },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Groq Chat Model": {
       "ai_languageModel": [
         [
@@ -204,6 +193,17 @@
           }
         ]
       ]
+    },
+    "Steps": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-04-13T03:50:27.098Z",
@@ -213,21 +213,6 @@
   },
   "name": "AI 4 Tester",
   "nodes": [
-    {
-      "parameters": {
-        "content": "## Gera a Resposta\nObs.: Seleciona a Base de Dados a ser usada de acordo com a Empresa de maneira Dinâmica e a usa para responder a solicitação",
-        "height": 424,
-        "width": 794
-      },
-      "id": "20c376df-873e-42da-98e0-bb1e4609f6a9",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        4960,
-        1220
-      ]
-    },
     {
       "parameters": {
         "mode": "raw",
@@ -270,7 +255,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.3,
       "position": [
-        5300,
+        5060,
         1520
       ],
       "credentials": {
@@ -380,7 +365,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        6500,
+        6160,
         1300
       ]
     },
@@ -389,7 +374,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=Você é um agente de IA usado para Testes de outras IA, seu objetivo será iniciar uma conversa um agente.\n\nVocê deve usar a tool para conversar com o agente até finalizar o objetivo passado pelo usuário.\n\n- Use de tom humanizado, de uma pessoa de 30 anos de idade.\n- Seja objetivo.\n- Fale com o agente sempre em primeira pessoa e de modo formal.\n- Não solicite tudo em uma requisição separe em etapas, conforme for sendo respondido pelo agente.\n- Você está limitado a 10 interações para conseguir realizar um agendamento.\n- No final gere alguma analise e dados que você acha relevante nesse teste.\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+          "systemMessage": "=Você é um agente de IA usado para Testes de outras IA, seu objetivo será iniciar uma conversa um agente.\n\nVocê deve usar a tool para conversar com o agente até finalizar o objetivo passado pelo usuário.\n\n- Use de tom humanizado, de uma pessoa de 30 anos de idade.\n- Seja objetivo.\n- Fale com o agente sempre em primeira pessoa e de modo formal.\n- Não solicite tudo em uma requisição separe em etapas, conforme for sendo respondido pelo agente.\n- Você está limitado a 10 interações para conseguir realizar o objetivo solicitado.\n- No final gere alguma analise e dados que você acha relevante nesse teste.\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
           "maxIterations": 10,
           "returnIntermediateSteps": true
         }
@@ -399,7 +384,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        5220,
+        5000,
         1360
       ],
       "retryOnFail": true,
@@ -619,7 +604,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        5160,
+        4920,
         1520
       ],
       "id": "56ad5040-742e-41b7-8e02-d9a29a7dc1ce",
@@ -650,13 +635,13 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6320,
+        5980,
         1360
       ]
     },
     {
       "parameters": {
-        "toolDescription": "use essa tool para falar com o agente da clinica e realizar objetivo solicitado pelo usuario.",
+        "toolDescription": "use essa tool para falar com o agente da clinica e realizar objetivo solicitado pelo usuário.",
         "method": "POST",
         "url": "https://webhook.n8n.wmst.com.br/webhook/a3b015c7-b143-47a9-bdb0-36332e651f9f",
         "sendBody": true,
@@ -676,7 +661,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5460,
+        5320,
         1520
       ],
       "id": "b1e028b1-e9dc-4785-b291-092f21ebcf4b",
@@ -692,8 +677,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4960,
-        1040
+        4800,
+        1140
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -713,8 +698,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5120,
-        1040
+        4960,
+        1140
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -723,6 +708,58 @@
           "name": "vps"
         }
       }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.intermediateSteps }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Extrai as seguintes informações:\n\n- Total de palavras e caracteres passadas para a toolInput.query do agent\n- Total de steps\n- Total Tokens usados\n- Objetivo alcançado\n- Observações"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        5640,
+        1360
+      ],
+      "id": "a1fa1fc3-077a-4469-985d-6be616326fe4",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "llama3-70b-8192",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        5600,
+        1520
+      ],
+      "id": "3af159cf-b325-443d-a3ed-e9ceb410e38b",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        5200,
+        1520
+      ],
+      "id": "b86b49c7-d2be-463c-aca0-75ac63e020a8",
+      "name": "Calculator"
     },
     {
       "parameters": {
@@ -741,63 +778,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5800,
+        5460,
         1360
       ],
       "id": "d07ab8b0-18ee-4b96-9667-cef99090548e",
-      "name": "Edit Fields"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.intermediateSteps }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "=Extrai as seguintes informações:\n\n- Total de palavras e caracteres passadas para a toolInput.query do agent\n- Total de steps\n- Total Tokens usados\n- Objetivo alcançado\n- Observações"
-            }
-          ]
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.6,
-      "position": [
-        5980,
-        1360
-      ],
-      "id": "a1fa1fc3-077a-4469-985d-6be616326fe4",
-      "name": "Basic LLM Chain"
-    },
-    {
-      "parameters": {
-        "model": "llama3-70b-8192",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        5940,
-        1520
-      ],
-      "id": "3af159cf-b325-443d-a3ed-e9ceb410e38b",
-      "name": "Groq Chat Model",
-      "credentials": {
-        "groqApi": {
-          "id": "Qc9IFal2C1clPmRn",
-          "name": "william"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
-      "typeVersion": 1,
-      "position": [
-        5380,
-        1580
-      ],
-      "id": "b86b49c7-d2be-463c-aca0-75ac63e020a8",
-      "name": "Calculator"
+      "name": "Steps"
     }
   ],
   "pinData": {},
@@ -827,6 +812,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-13T06:42:37.962Z",
-  "versionId": "29d10349-a64c-4c60-a3f5-a7baab78d5c7"
+  "updatedAt": "2025-04-14T02:48:56.362Z",
+  "versionId": "5f7cdd07-7bac-46db-9f30-b0ae8cdb2232"
 }
