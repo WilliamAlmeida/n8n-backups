@@ -740,7 +740,7 @@
         ]
       ]
     },
-    "Pacient Tool 1": {
+    "Pacient Find Tool": {
       "ai_tool": [
         [
           {
@@ -751,7 +751,7 @@
         ]
       ]
     },
-    "Pacient Register Tool": {
+    "Pacient Register New Tool": {
       "ai_tool": [
         [
           {
@@ -803,8 +803,7 @@
       "position": [
         6160,
         1320
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1142,7 +1141,7 @@
       "parameters": {
         "content": "## Tools",
         "height": 364,
-        "width": 1226,
+        "width": 1706,
         "color": 4
       },
       "id": "4fdb88c2-a4cc-4060-92d5-4a1f08f847ad",
@@ -1150,7 +1149,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4960,
+        4480,
         1700
       ]
     },
@@ -1622,8 +1621,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "={{ $('instancePrompts').first().json.prompts.first().prompt_text }}\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
-          "returnIntermediateSteps": true
+          "systemMessage": "={{ $('instancePrompts').first().json.prompts.first().prompt_text }}\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -2866,7 +2864,7 @@
         1760
       ],
       "id": "2eaf4a6f-a0dd-4116-b5cf-2cd0e4b1a523",
-      "name": "Pacient Tool 1",
+      "name": "Pacient Find Tool",
       "notesInFlow": false
     },
     {
@@ -2929,7 +2927,7 @@
         1920
       ],
       "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
-      "name": "Pacient Register Tool",
+      "name": "Pacient Register New Tool",
       "notesInFlow": false
     }
   ],
@@ -2981,6 +2979,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-14T06:16:01.176Z",
-  "versionId": "227df372-6ddb-4fb2-ba45-bf7cd2fab41f"
+  "updatedAt": "2025-04-15T01:40:38.891Z",
+  "versionId": "e8f18109-0ed7-42f2-bd44-e35860fbeb7e"
 }
