@@ -105,7 +105,7 @@
       "main": [
         [
           {
-            "node": "reset tool",
+            "node": "Get Chat Memory",
             "type": "main",
             "index": 0
           }
@@ -170,7 +170,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -329,11 +329,6 @@
       "main": [
         [
           {
-            "node": "Get Chat Memory",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "reset agent",
             "type": "main",
             "index": 0
@@ -474,7 +469,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -486,42 +481,9 @@
         []
       ]
     },
-    "Specialists Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Exams Tool2": {
       "ai_tool": [
         []
-      ]
-    },
-    "Exams Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Exam Details Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
       ]
     },
     "Health Plan Tool2": {
@@ -551,17 +513,6 @@
       ]
     },
     "Methods Payment Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Availability Tool": {
       "ai_tool": [
         [
           {
@@ -742,6 +693,21 @@
     },
     "Pacient Find Tool": {
       "ai_tool": [
+        []
+      ]
+    },
+    "Pacient Register New Tool": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Agent Information": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "specialist_consults": {
+      "ai_tool": [
         [
           {
             "node": "AI Agent",
@@ -751,7 +717,51 @@
         ]
       ]
     },
-    "Pacient Register New Tool": {
+    "exams": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "exam_details": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "event_slot_lookup": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
       "ai_tool": [
         [
           {
@@ -803,7 +813,8 @@
       "position": [
         6160,
         1320
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -905,7 +916,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput.replaceAll('\\n', '\\\\n') }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
         "options": {}
       },
       "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
@@ -1058,8 +1069,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4960,
-        900
+        4800,
+        1540
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1067,30 +1078,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica_calendar"
-      },
-      "id": "106431b9-cfcf-4ccc-a658-94c73009f90c",
-      "name": "reset tool",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        5120,
-        900
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1136,22 +1124,6 @@
         1760
       ],
       "disabled": true
-    },
-    {
-      "parameters": {
-        "content": "## Tools",
-        "height": 364,
-        "width": 1706,
-        "color": 4
-      },
-      "id": "4fdb88c2-a4cc-4060-92d5-4a1f08f847ad",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        4480,
-        1700
-      ]
     },
     {
       "parameters": {
@@ -1621,7 +1593,8 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "={{ $('instancePrompts').first().json.prompts.first().prompt_text }}\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
+          "systemMessage": "=Você é um assistente da Clinica ADM.\n\n# Regras de Atendimento:\n1. Somente faça apenas uma pergunta por vez.\n\n2. Se retornado mais de um paciente na Pacient Tool, informe somente um deles para confirmação.\n\n3. Nunca envie textões. Mantenha as mensagens curtas e diretas.\n3.1. Nunca envie uma lista de forma enumerada, no lugar use hifen `-`.\n3.2. *Nunca informe o Event ID* do Médico ou Exame para o usuário.\n3.3. Informe somente horários disponiveis retornados pela *get_availability* tool.\n\n6. Caso o usuário tente cancelar uma consulta, marque se ele não deseja remarcá-la para outra data; caso contrário, prossiga com o cancelamento.\n\n7. Sempre retorne os horários disponíveis no seguinte formato:\n**{data}**: {hour1}, {hour2}, {hour3}\n\ne.g.:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\nCaso contrário, sempre retorne os horários disponíveis em uma única linha, com os horários separados por vírgulas, conforme mostrado acima.\n\n8. Ao exibir agendamentos, use este formato:\n\ne.g.:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n# Contexto:\nNosso endereço: Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267.\nIdioma: pt_BR\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Procure criar uma interação que pareça natural, empática e compreensiva.\n\nPara sua referência, use a data e hora atuais (America/São_Paulo): {{ $now.setLocale(\"pt-BR\").weekdayLong }}, {{ $now.format(\"dd/MM/yyyy HH:mm:ss\") }}\n\n#### Tools:\n\n##### event_slot_lookup:\n- Antes de usar a tool valide o *event_id* usando a tool *specialist_consults* ou *exams*.\n- Utilize o *event_id* como parâmetro para consultar os horários disponíveis.\n- Retornado *Event not Found*, valide o *event_id* novamente.",
+          "returnIntermediateSteps": true
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1632,7 +1605,7 @@
         5220,
         1360
       ],
-      "retryOnFail": true,
+      "retryOnFail": false,
       "waitBetweenTries": 3000
     },
     {
@@ -1888,79 +1861,6 @@
     },
     {
       "parameters": {
-        "toolDescription": "=Use esta ferramenta para buscar informações detalhadas sobre os médicos cadastrados na clínica.\n\nEssa funcionalidade facilita a identificação do médico mais adequado às necessidades do usuário, permitindo uma navegação mais prática e eficiente.\n\n**Entrada**\n- Nome\n- CRM\n- Especialidade do profissional\n\n**Retorno**\n- event_id do médico usado nos Agendamentos\n- Nome completo\n- Especialidades\n- Outros detalhes relevantes.",
-        "url": "https://agendaclinic.com/api/v1/specialists",
-        "sendQuery": true,
-        "parametersQuery": {
-          "values": [
-            {
-              "name": "response_format",
-              "valueProvider": "fieldValue",
-              "value": "IA"
-            },
-            {
-              "name": "crm",
-              "valueProvider": "modelOptional"
-            },
-            {
-              "name": "title",
-              "valueProvider": "modelOptional"
-            },
-            {
-              "name": "procedure",
-              "valueProvider": "modelOptional"
-            },
-            {
-              "name": "all_if_empty",
-              "valueProvider": "fieldValue",
-              "value": "={{ true }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "parametersHeaders": {
-          "values": [
-            {
-              "name": "Authorization",
-              "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo').item.json.bearer_token }}"
-            }
-          ]
-        },
-        "placeholderDefinitions": {
-          "values": [
-            {
-              "name": "crm",
-              "description": "crm of medical",
-              "type": "number"
-            },
-            {
-              "name": "title",
-              "description": "name of medical",
-              "type": "string"
-            },
-            {
-              "name": "procedure",
-              "description": "specialist of medical. e.g. pediatra",
-              "type": "string"
-            }
-          ]
-        },
-        "optimizeResponse": true,
-        "dataField": "data"
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
-      "typeVersion": 1.1,
-      "position": [
-        5020,
-        1760
-      ],
-      "id": "c5a6cbc6-8626-410a-84fe-008c425d0d69",
-      "name": "Specialists Tool",
-      "notesInFlow": false
-    },
-    {
-      "parameters": {
         "name": "list_exams_tool",
         "description": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e ID do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
         "workflowId": {
@@ -2001,107 +1901,6 @@
       ],
       "disabled": true,
       "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
-    },
-    {
-      "parameters": {
-        "toolDescription": "=Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes",
-        "url": "https://agendaclinic.com/api/v1/exams",
-        "sendQuery": true,
-        "parametersQuery": {
-          "values": [
-            {
-              "name": "response_format",
-              "valueProvider": "fieldValue",
-              "value": "IA"
-            },
-            {
-              "name": "title",
-              "valueProvider": "modelOptional"
-            },
-            {
-              "name": "all_if_empty",
-              "valueProvider": "fieldValue",
-              "value": "={{ true }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "parametersHeaders": {
-          "values": [
-            {
-              "name": "Authorization",
-              "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo').item.json.bearer_token }}"
-            }
-          ]
-        },
-        "placeholderDefinitions": {
-          "values": [
-            {
-              "name": "title",
-              "description": "name of exam",
-              "type": "string"
-            }
-          ]
-        },
-        "optimizeResponse": true,
-        "dataField": "data"
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
-      "typeVersion": 1.1,
-      "position": [
-        5180,
-        1760
-      ],
-      "id": "4d80baa6-f1f3-4a8f-8786-07c4f94e9167",
-      "name": "Exams Tool",
-      "notesInFlow": false
-    },
-    {
-      "parameters": {
-        "toolDescription": "=Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o event_id do exame. O event_id pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o event_id correspondente antes de obter as informações detalhadas.",
-        "url": "https://agendaclinic.com/api/v1/exams/{exam_id}",
-        "sendQuery": true,
-        "parametersQuery": {
-          "values": [
-            {
-              "name": "response_format",
-              "valueProvider": "fieldValue",
-              "value": "IA"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "parametersHeaders": {
-          "values": [
-            {
-              "name": "Authorization",
-              "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo').item.json.bearer_token }}"
-            }
-          ]
-        },
-        "placeholderDefinitions": {
-          "values": [
-            {
-              "name": "exam_id",
-              "description": "exam's id",
-              "type": "number"
-            }
-          ]
-        },
-        "optimizeResponse": true,
-        "dataField": "data"
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
-      "typeVersion": 1.1,
-      "position": [
-        5340,
-        1760
-      ],
-      "id": "1b00c118-82fc-4859-84d6-86c8b4ded0eb",
-      "name": "Exam Details Tool",
-      "notesInFlow": false
     },
     {
       "parameters": {
@@ -2192,7 +1991,8 @@
         1920
       ],
       "id": "349ab654-b918-49b3-9866-dc1ae4bfa118",
-      "name": "Health Plan Tool"
+      "name": "Health Plan Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2283,7 +2083,8 @@
             },
             {
               "name": "title",
-              "valueProvider": "modelOptional"
+              "valueProvider": "fieldValue",
+              "value": "{title}"
             },
             {
               "name": "all_if_empty",
@@ -2306,7 +2107,7 @@
           "values": [
             {
               "name": "title",
-              "description": "name of method payment or empty for all payments",
+              "description": "name of method payment. null to all",
               "type": "string"
             }
           ]
@@ -2321,43 +2122,13 @@
         1920
       ],
       "id": "d0dbbe0e-eb45-49fb-bcdc-3dca67abb1b0",
-      "name": "Methods Payment Tool"
-    },
-    {
-      "parameters": {
-        "name": "get_availability_tool",
-        "description": "=Use esta ferramenta para obter disponibilidade para horários para agendamento usando o event_id obtido nas speclialists_tool/exams_tool.\n\n## Fluxo de trabalho:\n1. Obtenha o **event_id** usando a **speclialists_tool** para consulta e **exams_tool** para exame.\n2. Verifique a disponibilidade",
-        "workflowId": {
-          "__rl": true,
-          "value": "QTrKQkY4jxrACTpy",
-          "mode": "list",
-          "cachedResultName": "COMP AIClinic"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "action",
-              "stringValue": "availability"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event_id from specialist or exam for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        5360,
-        1920
-      ],
-      "id": "93efa8ef-e8a5-4a9f-a2eb-1d87755d4f12",
-      "name": "Get Availability Tool"
+      "name": "Methods Payment Tool",
+      "disabled": true
     },
     {
       "parameters": {
         "name": "schedule_appt_tool",
-        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Pergunte se o agendamento é para o usuário ou outra pessoa.\n1.2 Se for agendamento para terceiro, verifique se o paciente já registrado com a tool \"pacient_tool\".\n2. Confirme as informações antes de finalizar a reserva.\n3. Se o agendamento falhar, registre o problema e notifique o usuário.\n4. Notifique o usuário sobre o ID da reserva.",
+        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Pergunte se o agendamento é para o usuário ou outra pessoa.\n1.2 Se for agendamento para terceiro, verifique se o paciente já registrado com a tool \"pacient_tool\".\n1.3 Se for para o próprio usuário, use as informações que você possui dele e pergunte as que faltarem.\n2. Confirme as informações antes de finalizar a reserva.\n3. Se o agendamento falhar, registre o problema e notifique o usuário.\n4. Notifique o usuário sobre o ID da reserva.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2388,7 +2159,8 @@
         1920
       ],
       "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
-      "name": "Schedule Appt Tool"
+      "name": "Schedule Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2419,7 +2191,8 @@
         1920
       ],
       "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
-      "name": "Cancel Appt Tool"
+      "name": "Cancel Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2454,7 +2227,8 @@
         1920
       ],
       "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
-      "name": "Find Existing Appt Tool"
+      "name": "Find Existing Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2485,7 +2259,8 @@
         1920
       ],
       "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
-      "name": "Reschedule Appt Tool"
+      "name": "Reschedule Appt Tool",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2697,27 +2472,24 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4o-mini",
+          "value": "gpt-4.1-mini",
           "mode": "list",
-          "cachedResultName": "gpt-4o-mini"
+          "cachedResultName": "gpt-4.1-mini"
         },
-        "options": {
-          "temperature": 0,
-          "topP": 1
-        }
+        "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        5000,
-        1460
+        4980,
+        1480
       ],
       "id": "7d735b0d-7e56-4569-be1c-cc92e8b781e2",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
           "id": "Jv19EsZcsXzDgjjj",
-          "name": "Litellm"
+          "name": "Litellm OpenAI"
         }
       }
     },
@@ -2860,12 +2632,13 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4840,
+        6600,
         1760
       ],
       "id": "2eaf4a6f-a0dd-4116-b5cf-2cd0e4b1a523",
       "name": "Pacient Find Tool",
-      "notesInFlow": false
+      "notesInFlow": false,
+      "disabled": true
     },
     {
       "parameters": {
@@ -2923,12 +2696,275 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        4840,
+        6600,
         1920
       ],
       "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
       "name": "Pacient Register New Tool",
+      "notesInFlow": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "agent_information",
+        "description": "=Use this agent to retrieve the necessary information to answer user questions and to collect data required for performing actions using other tools.\n\n## Available Tools\n\n### 📄 Health_Plan_Tool  \n**Description:** Retrieves available health insurance plans and related details.  \n**Inputs:**  \n- `title`: Name of the health plan (leave empty to list all plans).  \n**Outputs:**  \n- List of available health plans with detailed information and options.\n\n### 💳 Methods_Payment_Tool  \n**Description:** Provides information on accepted and unaccepted payment methods.  \n**Inputs:**  \n- `title`: Payment method name (null to retrieve all).  \n**Outputs:**  \n- Status and details of each payment method (accepted or not).\n\n### 👨‍⚕️ Specialists_Tool  \n**Description:** Returns detailed information about doctors registered at the clinic.  \n**Inputs:**  \n- `crm`: Doctor’s registration number.  \n- `title`: Doctor’s name (null to fetch all).  \n- `procedure`: Doctor’s specialty (e.g., pediatrician).  \n**Outputs:**  \n- Full profile of each doctor, including name, specialties, consultation price and `event_id`.\n\n### 🔬 Exam_Details_Tool  \n**Description:** Retrieves specific information about an exam using its event ID.  \n**Inputs:**  \n- `exam_id`: Unique identifier of the exam.  \n**Outputs:**  \n- Detailed exam info including price, duration, fasting requirement, collected materials, etc.\n\n### 🧪 Exams_Tool  \n**Description:** Lists all exams offered by the clinic.  \n**Inputs:**  \n- `title`: Name of the exam.  \n**Outputs:**  \n- List of available exams, including name and `event_id`.\n\nThese tools enable fast and practical access to information about health plans, payment methods, doctors, and exams.",
+        "workflowId": {
+          "__rl": true,
+          "value": "UcK1fI4zOm0eB4D9",
+          "mode": "list",
+          "cachedResultName": "Clinic - Agent Info"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        6420,
+        1920
+      ],
+      "id": "d1bfefd7-4aaf-437b-b8de-e48df29f78c4",
+      "name": "Agent Information",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Esta ferramenta fornece uma lista de todos os consultas médicos disponíveis na clínica, incluindo nome e crm do especialista, valor e event_id da consulta. É útil para identificar rapidamente as opções de consulta e médicos que podemos oferecer.",
+        "url": "https://agendaclinic.com/api/v1/specialists",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "crm",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "title",
+              "valueProvider": "fieldValue",
+              "value": "{title}"
+            },
+            {
+              "name": "procedure",
+              "valueProvider": "fieldValue",
+              "value": "{procedure}"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of medical not your specialist. empty to list",
+              "type": "string"
+            },
+            {
+              "name": "procedure",
+              "description": "specialist of medical. e.g.: pediatra. empty to list",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "responseType": "text"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5020,
+        1760
+      ],
+      "id": "c5a6cbc6-8626-410a-84fe-008c425d0d69",
+      "name": "specialist_consults",
       "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes.",
+        "url": "https://agendaclinic.com/api/v1/exams",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "fieldValue",
+              "value": "{title}"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of exam. null to all",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5180,
+        1760
+      ],
+      "id": "4d80baa6-f1f3-4a8f-8786-07c4f94e9167",
+      "name": "exams",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o event_id do exame. O event_id pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o event_id correspondente antes de obter as informações detalhadas.",
+        "url": "https://agendaclinic.com/api/v1/exams/{exam_id}",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "exam_id",
+              "description": "exam's id",
+              "type": "number"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5340,
+        1760
+      ],
+      "id": "1b00c118-82fc-4859-84d6-86c8b4ded0eb",
+      "name": "exam_details",
+      "notesInFlow": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "event_slot_lookup",
+        "description": "=Use sempre esta ferramenta para obter a disponibilidade de horários de uma consulta médica ou exame.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "QTrKQkY4jxrACTpy",
+          "cachedResultName": "COMP Schedule"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "availability"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event_id from tool specialist_consult or exam for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start date and time of the appointment in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default will be 24 hours.\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5340,
+        1920
+      ],
+      "id": "93efa8ef-e8a5-4a9f-a2eb-1d87755d4f12",
+      "name": "event_slot_lookup"
+    },
+    {
+      "parameters": {
+        "amount": 0.5
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        6440,
+        1020
+      ],
+      "id": "733cb2f4-65b8-49bf-8e05-c4f8707847d9",
+      "name": "Wait",
+      "webhookId": "05e066fc-a535-4eef-9557-0fcc8edf2249"
+    },
+    {
+      "parameters": {
+        "description": "=Use a ferramenta para pensar sobre algo. Ela não obterá novas informações nem alterará o banco de dados, apenas anexará o pensamento ao registro. Use-a quando for necessário raciocínio complexo ou alguma memória cache."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        5820,
+        1560
+      ],
+      "id": "cdbdbc7f-ab4a-46e2-8223-5a1698e4e265",
+      "name": "Think",
+      "disabled": true
     }
   ],
   "pinData": {
@@ -2979,6 +3015,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-15T01:40:38.891Z",
-  "versionId": "e8f18109-0ed7-42f2-bd44-e35860fbeb7e"
+  "updatedAt": "2025-04-17T15:39:06.658Z",
+  "versionId": "41c733e6-d9d4-498e-9274-a7ed4986d59b"
 }
