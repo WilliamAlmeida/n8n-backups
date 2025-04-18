@@ -871,7 +871,7 @@
             },
             {
               "name": "pacient_id",
-              "value": "={{ $('EWT').item.json.query.pacient_id }}"
+              "value": "={{ $('EWT').item.json.query.from_me ? $('EWT').item.json.query.pacient_id_me : $('EWT').item.json.query.pacient_id }}"
             }
           ]
         },
@@ -1699,18 +1699,17 @@
       {
         "json": {
           "query": {
-            "fromMe": false,
+            "from_me": true,
+            "pacient_id": "",
             "event_id": "1",
-            "start": "2025-04-15T09:00:00",
+            "start": "2025-04-23T12:00:00",
             "attendee": {
-              "name": "William",
+              "name": "William Almeida",
               "email": "williamkillerca@hotmail.com",
               "cellphone": "12982184879"
             },
-            "bookingFieldsResponses": {
-              "title": "Consulta com Dra. Rita"
-            },
-            "pacient_id": 0
+            "bookingFieldsResponses": {},
+            "pacient_id_me": 9
           },
           "action": "schedule booking"
         }
@@ -1742,6 +1741,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-14T04:28:18.051Z",
-  "versionId": "ff13e8f3-576f-42c7-b18f-019a6b9e6396"
+  "updatedAt": "2025-04-18T03:14:23.409Z",
+  "versionId": "747c3534-4595-4820-aab4-d4a7544ae112"
 }
