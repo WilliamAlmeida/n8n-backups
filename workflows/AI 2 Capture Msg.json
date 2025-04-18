@@ -2247,7 +2247,7 @@
           "query": {},
           "body": {
             "event": "messages.upsert",
-            "instance": "ac_ibox_cli_23",
+            "instance": "ibox_cli_23",
             "data": {
               "key": {
                 "remoteJid": "5512982184879@s.whatsapp.net",
@@ -2322,6 +2322,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-09T14:37:02.022Z",
-  "versionId": "9be87264-3a1d-4dc4-9aee-44107834bf9e"
+  "updatedAt": "2025-04-18T04:33:38.250Z",
+  "versionId": "6e53d5da-dc7e-41ca-8cdc-67990d865569"
 }
