@@ -448,12 +448,24 @@
     },
     "Find Existing Appt Tool": {
       "ai_tool": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     },
     "Reschedule Appt Tool": {
       "ai_tool": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     },
     "get instance config1": {
@@ -558,28 +570,12 @@
         ]
       ]
     },
-    "Pacient Register New Tool": {
-      "ai_tool": [
-        []
-      ]
-    },
     "Wait": {
       "main": [
         [
           {
             "node": "AI Agent",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Think": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -635,22 +631,6 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "GPT 4.1-mini": {
-      "ai_languageModel": [
-        []
-      ]
-    },
-    "GPT 4o-mini": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -731,7 +711,7 @@
         ]
       ]
     },
-    "info_agent": {
+    "cancel_appt": {
       "ai_tool": [
         [
           {
@@ -742,7 +722,56 @@
         ]
       ]
     },
-    "cancel_appt": {
+    "register_new_pacient": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT 4.1-mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT 4o-mini": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "agent_information": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset_memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "think": {
       "ai_tool": [
         [
           {
@@ -1493,7 +1522,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=# Overview\nYou are a helpful assistant\n\nOur address: Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n## Tool\nThink - Use this tool to *Think* deeply\n\nInfo Agent: Use this tool agent to get all information about exams, specialists/consults, health plans and payment methods and also return the *event_id* used in scheduling actions.\n\ngetScheduleAvailability: Use this tool to lookup availability of schedules using event_id from exam or specialist.\n\n## Important\n- Never make up an event_id. If you can't find it, think about what you should do.\n- Your data/time reference is: **{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}**\n- **Strict Rule**: You are not allowed to use, check, query, or schedule any date/time that is **before or equal** to this reference.\n- You must **validate** every date/time before taking any action. If the date/time is not strictly after the reference above, then:\n  1. Do **not** proceed.\n  2. Do **not** query any tool.\n  3. Trigger a new reasoning step to choose another date/time.\n\n- **Ask only one question at a time**:\n  - Do not ask multiple questions in a single response.\n  - Ensure you give the user enough time to respond to each question before asking another.\n  - Focus on one specific query or clarification per interaction.\n\n## Rules\n- Never provide the price of a consultation or examination unless you have explicitly requested it.\n- Never use times like 1:13pm, 3:19pm. Only use rounded times like 1:10pm, 3:20pm.\n- **Retroactive operations are forbidden**:\n  - Do not check availability for past dates.\n  - Do not display, consider or suggest time slots that are not strictly after the current reference.\n  - Do not suggest the current time. Only **future** rounded time slots.\n- If a requested date/time is not valid (i.e., retroactive), explain this and guide to reschedule with a valid one.\n\n## Sanity Check (Mandatory in every reasoning step):\nBefore using any tool, you must always:\n1. Compare the selected date/time with the current reference `{{ $now }}`\n2. If the selected date/time is **before or equal**, **abort** the action.\n3. If it's after, proceed.\n\n# Output Formatting\n\n1. Always return available times in the following format:\n**{date}**: {time1}, {time2}, {time3}\n\nExample:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\n\nIf there are no multiple dates, display all times on a single line, separated by commas.\n\n2. When displaying appointments, use this format:\n\nExample:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** to **{end}**\nLocation: **{location}**\nCode: **{id}**\n"
+          "systemMessage": "=# Overview\nYou are a helpful assistant\n\nOur address: Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n## Tool\nThink - Use this tool to *Think* deeply\n\nInfo Agent: Use this tool agent to get all information about exams, specialists/consults, health plans and payment methods and also return the *event_id* used in scheduling actions.\n\nGet Third Patient: Use this tool to lookup patient_id when performing some scheduling action for another person.\n\n## Important\n- Never make up an event_id. If you can't find it, think about what you should do.\n- Your data/time reference is: **{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}**\n- **Strict Rule**: You are not allowed to use, check, query, or schedule any date/time that is **before or equal** to this reference.\n- You must **validate** every date/time before taking any action. If the date/time is not strictly after the reference above, then:\n  1. Do **not** proceed.\n  2. Do **not** query any tool.\n  3. Trigger a new reasoning step to choose another date/time.\n\n- **Ask only one question at a time**:\n  - Do not ask multiple questions in a single response.\n  - Ensure you give the user enough time to respond to each question before asking another.\n  - Focus on one specific query or clarification per interaction.\n\n- When you find schedulings, please provide the schedule ID along with the response.\n\n## Rules\n- Never provide the price of a consultation or examination unless you have explicitly requested it.\n- Never use times like 1:13pm, 3:19pm. Only use rounded times like 1:10pm, 3:20pm.\n- **Retroactive operations are forbidden**:\n  - Do not check availability for past dates.\n  - Do not display, consider or suggest time slots that are not strictly after the current reference.\n  - Do not suggest the current time. Only **future** rounded time slots.\n- If a requested date/time is not valid (i.e., retroactive), explain this and guide to reschedule with a valid one.\n- When finishing a service, use the Reset Memory tool, but do not inform the user.\n\n## Sanity Check (Mandatory in every reasoning step):\nBefore using any tool, you must always:\n1. Compare the selected date/time with the current reference `{{ $now }}`\n2. If the selected date/time is **before or equal**, **abort** the action.\n3. If it's after, proceed.\n\n## Always return available times in the following format\n**{date}**: {time1}, {time2}, {time3}\n\ne.g.:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\n\nIf there are no multiple dates, display all times on a single line, separated by commas.\n\n## Always return appointments, in the following format\n\nWas found...\n\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** to **{end}**\nLocation: **{location}**\nCode: **{id}**\n"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -1918,7 +1947,7 @@
     {
       "parameters": {
         "name": "find_existing_appt_tool",
-        "description": "=Use esta ferramenta para encontrar reservas existentes usando o endereço de e-mail do usuário.\n\n## Fluxo de trabalho:\n1. Pesquise reservas que correspondam ao e-mail fornecido.\n2. Retorne reservas correspondentes ou notifique se não forem encontradas.",
+        "description": "=Use esta ferramenta para encontrar reservas existentes usando o endereço de e-mail do usuário.\n\n## Fluxo de trabalho:\n1. Pesquise reservas que correspondam ao e-mail fornecido.\n2. Informe reservas correspondentes ou notifique se não forem encontradas.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -1944,12 +1973,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5540,
-        1920
+        5820,
+        1740
       ],
       "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
-      "name": "Find Existing Appt Tool",
-      "disabled": true
+      "name": "Find Existing Appt Tool"
     },
     {
       "parameters": {
@@ -1976,12 +2004,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        6020,
-        1920
+        5980,
+        1740
       ],
       "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
-      "name": "Reschedule Appt Tool",
-      "disabled": true
+      "name": "Reschedule Appt Tool"
     },
     {
       "parameters": {
@@ -2206,8 +2233,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6160,
-        1520
+        6420,
+        1320
       ],
       "id": "96ee1b5d-9c82-43c5-a390-9f954e6db18b",
       "name": "Response to Webhook",
@@ -2233,70 +2260,6 @@
     },
     {
       "parameters": {
-        "toolDescription": "=Use esta ferramenta para registrar um novo paciente na clinica quando o usuário querer registrar um agendamento em nome de terceiro e não tiver sido encontrado o registro  pela Pacient Tool.\n\nEssa funcionalidade facilita o cadastro do paciente que será usado no agendamento em nome de terceiro.\n\n**Entrada**\n- Nome, sobrenome e último Nome (Nome Completo)\n- E-mail\n- Telefone\n\n**Retorno**\n- pacient_id do paciente usado no Agendamento\n- Nome completo\n- E-mail\n- Outros detalhes relevantes.",
-        "method": "POST",
-        "url": "https://agendaclinic.com/api/v1/pacients",
-        "sendQuery": true,
-        "parametersQuery": {
-          "values": [
-            {
-              "name": "full_name"
-            },
-            {
-              "name": "email",
-              "valueProvider": "modelOptional"
-            },
-            {
-              "name": "phone",
-              "valueProvider": "modelOptional"
-            },
-            {
-              "name": "all_if_empty",
-              "valueProvider": "fieldValue",
-              "value": "={{ true }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "parametersHeaders": {
-          "values": [
-            {
-              "name": "Authorization",
-              "valueProvider": "fieldValue",
-              "value": "={{ $('baseInfo').item.json.bearer_token }}"
-            }
-          ]
-        },
-        "placeholderDefinitions": {
-          "values": [
-            {
-              "name": "full_name",
-              "description": "full name of pacient. e.g. William Luiz de Almeida",
-              "type": "string"
-            },
-            {
-              "name": "phone",
-              "description": "phone to contact. e.g. 12982184877 (ddd + number)",
-              "type": "string"
-            }
-          ]
-        },
-        "optimizeResponse": true,
-        "dataField": "data"
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
-      "typeVersion": 1.1,
-      "position": [
-        6600,
-        1920
-      ],
-      "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
-      "name": "Pacient Register New Tool",
-      "notesInFlow": false,
-      "disabled": true
-    },
-    {
-      "parameters": {
         "amount": 0.5
       },
       "type": "n8n-nodes-base.wait",
@@ -2308,19 +2271,6 @@
       "id": "733cb2f4-65b8-49bf-8e05-c4f8707847d9",
       "name": "Wait",
       "webhookId": "05e066fc-a535-4eef-9557-0fcc8edf2249"
-    },
-    {
-      "parameters": {
-        "description": "Use a ferramenta para pensar sobre algo. Ela não obterá novas informações nem alterará o banco de dados, apenas anexará o pensamento ao registro. Use-a quando for necessário raciocínio complexo ou alguma memória cache."
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1,
-      "position": [
-        5640,
-        1540
-      ],
-      "id": "a9496300-3cfb-41ee-aa95-5c7bda190484",
-      "name": "Think"
     },
     {
       "parameters": {
@@ -2660,58 +2610,6 @@
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4.1-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
-        },
-        "options": {
-          "topP": 1
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        4740,
-        1500
-      ],
-      "id": "7d735b0d-7e56-4569-be1c-cc92e8b781e2",
-      "name": "GPT 4.1-mini",
-      "credentials": {
-        "openAiApi": {
-          "id": "Jv19EsZcsXzDgjjj",
-          "name": "Litellm OpenAI"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4.1-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        4860,
-        1500
-      ],
-      "id": "3ece7bdf-4d4d-451b-b1c0-9c009f11c902",
-      "name": "GPT 4o-mini",
-      "credentials": {
-        "openAiApi": {
-          "id": "Jv19EsZcsXzDgjjj",
-          "name": "Litellm OpenAI"
-        }
-      }
-    },
-    {
-      "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
         "sessionTTL": 300,
@@ -2827,8 +2725,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        5380,
-        1660
+        5240,
+        1580
       ],
       "id": "8b382878-e899-4adc-8b12-291b66187eef",
       "name": "delete interaction postgres",
@@ -2841,7 +2739,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "=Use esta ferramenta para encontrar os dados do paciente, como o pacient_id para usar em outras ações.\n\nInputs: Nome, sobrenome e último Nome (Nome Completo), E-mail, Telefone\n\nResponse: *pacient_id do paciente usado no Agendamento*, Nome completo, E-mail, Outros detalhes relevantes.",
+        "toolDescription": "=Use esta ferramenta para encontrar os dados do paciente, como o pacient_id para usar em outras ações.\n\nInputs: Nome, sobrenome e último Nome (Nome Completo), E-mail e Telefone (opcional)\n\nResponse: *pacient_id do paciente usado no Agendamento*, Nome completo, E-mail, Outros detalhes relevantes.",
         "url": "https://agendaclinic.com/api/v1/pacient",
         "sendQuery": true,
         "parametersQuery": {
@@ -2899,8 +2797,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        5920,
-        1700
+        6220,
+        1540
       ],
       "id": "2eaf4a6f-a0dd-4116-b5cf-2cd0e4b1a523",
       "name": "get_third_patient",
@@ -2909,7 +2807,7 @@
     {
       "parameters": {
         "name": "schedule_appt",
-        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Pergunte se o agendamento é para o usuário ou outra pessoa.\n1.2 Se for agendamento para terceiro, verifique se o paciente já registrado com a tool \"pacient_tool\".\n1.3 Se for para o próprio usuário, use as informações que você possui dele e pergunte as que faltarem.\n2. Confirme as informações antes de finalizar a reserva.\n3. Se o agendamento falhar, registre o problema e notifique o usuário.\n4. Notifique o usuário sobre o ID da reserva.",
+        "description": "=Use esta ferramenta para agendar uma consulta ou exame.\n\n## Fluxo de trabalho:\n1. Pergunte se o agendamento é para o usuário ou outra pessoa.\n1.2 Se for agendamento para terceiro, verifique se o paciente já registrado com a *Get Third Patient* tool.\n1.3 Se for para o próprio usuário, use as informações que você possui dele e pergunte as que faltarem.\n2. Confirme as informações antes de finalizar a reserva.\n3. Se o agendamento falhar, registre o problema e notifique o usuário.\n4. Notifique o usuário sobre o ID da reserva.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2931,7 +2829,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"if booking is to user or another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"empty if booking is to user\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam.\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"from_me\",\n    \"pacient_id\",\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if booking is self-user, false to another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"empty if booking is to user, e.g.: 11\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam, e.g: 3\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"from_me\",\n    \"pacient_id\",\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -2941,6 +2839,152 @@
       ],
       "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
       "name": "schedule_appt"
+    },
+    {
+      "parameters": {
+        "name": "cancel_appt",
+        "description": "=Use esta ferramenta para cancelar um agendamento usando um ID de reserva.\n\n## Fluxo de trabalho:\n1. Verifique o ID de reserva antes de prosseguir.\n2. Confirme com o usuário antes de cancelar.\n3. Cancele o compromisso e notifique somente se foi cancelado ou não.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "cancel booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"Booking ID of the booking\"\n    },\n    \"cancellation_reason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\n    \"booking_id\",\n    \"cancellation_reason\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        6060,
+        1540
+      ],
+      "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
+      "name": "cancel_appt"
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para registrar um novo paciente na clinica quando o usuário querer registrar um agendamento em nome de terceiro e não tiver sido encontrado o registro pela *Get Third Patient* tool.\n\nInputs: Nome, sobrenome e último Nome (Nome Completo), E-mail, Telefone\n\nResponse: *pacient_id do paciente usado no Agendamento*, Nome completo, E-mail, Outros detalhes relevantes.",
+        "method": "POST",
+        "url": "https://agendaclinic.com/api/v1/pacients",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "full_name"
+            },
+            {
+              "name": "email",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "phone",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "full_name",
+              "description": "full name of pacient. e.g. William Luiz de Almeida",
+              "type": "string"
+            },
+            {
+              "name": "phone",
+              "description": "phone to contact. e.g. 12982184877 (ddd + number)",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        6380,
+        1540
+      ],
+      "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
+      "name": "register_new_pacient",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4860,
+        1500
+      ],
+      "id": "3ece7bdf-4d4d-451b-b1c0-9c009f11c902",
+      "name": "GPT 4.1-mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4740,
+        1500
+      ],
+      "id": "7d735b0d-7e56-4569-be1c-cc92e8b781e2",
+      "name": "GPT 4o-mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
     },
     {
       "parameters": {
@@ -2969,38 +3013,47 @@
         1540
       ],
       "id": "d1bfefd7-4aaf-437b-b8de-e48df29f78c4",
-      "name": "info_agent"
+      "name": "agent_information"
     },
     {
       "parameters": {
-        "name": "cancel_appt",
-        "description": "=Use esta ferramenta para cancelar um agendamento usando um ID de reserva.\n\n## Fluxo de trabalho:\n1. Verifique o ID de reserva antes de prosseguir.\n2. Confirme com o usuário antes de cancelar.\n3. Cancele o compromisso e notifique somente se foi cancelado ou não.",
-        "workflowId": {
-          "__rl": true,
-          "value": "QTrKQkY4jxrACTpy",
-          "mode": "list",
-          "cachedResultName": "COMP AIClinic"
-        },
-        "fields": {
+        "toolDescription": "Call this tool after completing a service with the user's confirmation.",
+        "method": "DELETE",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/69047f52-ce83-481c-9f10-af632b978886",
+        "sendBody": true,
+        "parametersBody": {
           "values": [
             {
-              "name": "action",
-              "stringValue": "cancel booking"
+              "name": "memory_id",
+              "valueProvider": "fieldValue",
+              "value": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
             }
           ]
         },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"Booking ID of the booking\"\n    },\n    \"cancellation_reason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\n    \"booking_id\",\n    \"cancellation_reason\"\n  ]\n}"
+        "optimizeResponse": true,
+        "responseType": "text"
       },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
       "position": [
-        5760,
-        1700
+        5400,
+        1560
       ],
-      "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
-      "name": "cancel_appt"
+      "id": "ce4704ae-6156-47a1-9ee5-b7d786ef1189",
+      "name": "reset_memory"
+    },
+    {
+      "parameters": {
+        "description": "Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed. For example, if you found error about event_id or pacient_id to book."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        5640,
+        1540
+      ],
+      "id": "a9496300-3cfb-41ee-aa95-5c7bda190484",
+      "name": "think"
     }
   ],
   "pinData": {
@@ -3051,6 +3104,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-18T03:16:35.349Z",
-  "versionId": "c78ac348-3c9d-4e1d-ad96-0b7a98edcb4b"
+  "updatedAt": "2025-04-18T07:03:33.667Z",
+  "versionId": "67369cf7-53ee-4c11-85c9-40cde9230c2c"
 }
