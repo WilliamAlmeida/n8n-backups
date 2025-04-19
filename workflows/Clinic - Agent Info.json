@@ -1,0 +1,527 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "info_agent": {
+      "main": [
+        [
+          {
+            "node": "Response Ok",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Methods Payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Health Plan": {
+      "ai_tool": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Exams": {
+      "ai_tool": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Details Exam": {
+      "ai_tool": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Specialists": {
+      "ai_tool": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EW": {
+      "main": [
+        [
+          {
+            "node": "info_agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-17T05:01:13.524Z",
+  "id": "UcK1fI4zOm0eB4D9",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Clinic - Agent Info",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -240,
+        100
+      ],
+      "id": "1e1b9a1c-992e-4a5f-98f1-fc57f73f52be",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "328fb009-d65f-4090-8ace-81964770540f",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        520,
+        -160
+      ],
+      "id": "784eb681-5baa-4119-8c43-6f46a3948a4a",
+      "name": "Response Ok"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "328fb009-d65f-4090-8ace-81964770540f",
+              "name": "response",
+              "value": "=houve um erro ao tentar realizar a solicitação",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        520,
+        20
+      ],
+      "id": "1b7fd600-9f46-42ca-ae82-d3dfe87ea514",
+      "name": "Response Error"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "=# Agente de Informações\nVocê é responsável por responder solicitações sobre exames, especialistas, planos de saúde e métodos de pagamento. Utilize as ferramentas apropriadas para buscar e retornar informações, seguindo sempre o formato de resposta especificado.\n\n## Regras:\n- Nunca realize agendamentos ou alterações em compromissos, só responda com as informações solicitadas.\n- Sempre siga o formato de resposta definido no sistema.\n- Solicite informações adicionais se necessário para buscar dados precisos.\n- Se não tiver acesso a nenhuma Tool que lhe informe o solicitado, informe ao usuário.\n- Seja objetivo.\n- Sempre retorne o *event_id*.\n\n## Exemplo:\nEntrada: Quais métodos de pagamento vocês aceitam?\nAção: Use List Methods Payment e retorne a resposta no formato correto."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        40,
+        -80
+      ],
+      "id": "5d3fce23-ccfa-4296-bcf6-7c2e3f1c9204",
+      "name": "info_agent",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter métodos de pagamento aceitos e não aceitos.",
+        "url": "https://agendaclinic.com/api/v1/payment-methods",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "fieldValue",
+              "value": "{title}"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of method payment. null to all",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        -20,
+        340
+      ],
+      "id": "4fb704a9-f481-4dfe-9081-2db0382f4ab8",
+      "name": "List Methods Payment"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter planos de saúde/convênios aceitos e não aceitos.",
+        "url": "https://agendaclinic.com/api/v1/health-plans",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of health plan or empty for all health plans",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        340
+      ],
+      "id": "098b7e43-d699-4269-860e-45c9d52e2810",
+      "name": "List Health Plan"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para retorna lista *somente de exames* disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente os exames que ofereceremos, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes.",
+        "url": "https://agendaclinic.com/api/v1/exams",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "valueProvider": "fieldValue",
+              "value": "{title}"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "name of exam. null to all",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        340
+      ],
+      "id": "ed454f28-32c1-442a-b7d3-274356457aa7",
+      "name": "List Exams",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o event_id do exame. O event_id pode ser obtido a partir da lista de exames. Isso inclui informações como preço, duração, jejum necessário, material coletado, entre outros. O usuário pode solicitar detalhes de um exame pelo nome, e eu buscarei o event_id correspondente antes de obter as informações detalhadas.",
+        "url": "https://agendaclinic.com/api/v1/exams/{exam_id}",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "exam_id",
+              "description": "exam's id",
+              "type": "number"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        340
+      ],
+      "id": "efc46cbc-072d-42a5-92cc-738100bd6f59",
+      "name": "Details Exam",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta tool para retornar os dados de todos ou um profissional especifico que possa fornecer consultas médicas na clínica. Será retornado seu nome e crm do especialista, valor e event_id da consulta para ser usado em outras ferramentas.",
+        "url": "https://agendaclinic.com/api/v1/specialists",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "crm",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "title",
+              "valueProvider": "fieldValue",
+              "value": "{title}"
+            },
+            {
+              "name": "procedure",
+              "valueProvider": "fieldValue",
+              "value": "{specialty}"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "title",
+              "description": "Just the doctor's name, not his/her specialist or prefixes e.g. Dr., Dra.; Leave blank for all.",
+              "type": "string"
+            },
+            {
+              "name": "specialty",
+              "description": "medical specialty. e.g.: pediatra. empty to all",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        -200,
+        340
+      ],
+      "id": "663399a0-7407-4d72-8d14-55b5d80e64d6",
+      "name": "List Specialists",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "query"
+            },
+            {
+              "name": "bearer_token"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -140,
+        -80
+      ],
+      "id": "1c4ef45c-1f6f-4dd0-8cce-f87d1065ad53",
+      "name": "EW"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-18T20:42:05.053Z",
+  "versionId": "a28c8c8e-bfd2-4eaa-8993-95e06c961293"
+}
