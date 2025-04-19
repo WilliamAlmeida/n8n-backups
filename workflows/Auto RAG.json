@@ -1,0 +1,1792 @@
+{
+  "active": false,
+  "connections": {
+    "Google Drive Trigger (File Created)": {
+      "main": [
+        [
+          {
+            "node": "Get File Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger (File Updated)": {
+      "main": [
+        [
+          {
+            "node": "Get File Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File Metadata": {
+      "main": [
+        [
+          {
+            "node": "Download Drive File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Extract Docx to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract Doc to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract MD to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from PDF",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from CSV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from XLSX",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from XLS",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from Text",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract MD to Base64": {
+      "main": [
+        [
+          {
+            "node": "Convert Markdown to Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Docx to Base64": {
+      "main": [
+        [
+          {
+            "node": "Convert Docx to Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Doc to Base64": {
+      "main": [
+        [
+          {
+            "node": "Convert Doc to Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Drive File": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from PDF": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Doc to Text": {
+      "main": [
+        [
+          {
+            "node": "Set Data From Lambda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Docx to Text": {
+      "main": [
+        [
+          {
+            "node": "Set Data From Lambda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from CSV": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from XLSX": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from XLS": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from Text": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Markdown to Text": {
+      "main": [
+        [
+          {
+            "node": "Set Data From Lambda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from JSON": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Add Document to VectorDB",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Add Document to VectorDB",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data": {
+      "main": [
+        [
+          {
+            "node": "Add Document to VectorDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Document Data & DB Data": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data From Lambda": {
+      "main": [
+        [
+          {
+            "node": "Document Data & DB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Data Already Exists": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "If Data Already Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-18T19:57:42.104Z",
+  "id": "v9VBue5vZyoTa3zE",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Auto RAG",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo",
+          "mode": "list",
+          "cachedResultName": "N8N RAG",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        1060
+      ],
+      "id": "96f41d85-4318-4f6e-b04b-a08e611c795f",
+      "name": "Google Drive Trigger (File Created)",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "Ue9HyjR3ljM44OcP",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo",
+          "mode": "list",
+          "cachedResultName": "N8N RAG",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo"
+        },
+        "event": "fileUpdated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        1260
+      ],
+      "id": "d58226f1-0667-4dee-8af1-321924ba4d39",
+      "name": "Google Drive Trigger (File Updated)",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "Ue9HyjR3ljM44OcP",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Getting Advanced Metadata + File\nDepending on the action full metadata isn't always returned so we use this node to standardize that.",
+        "height": 420,
+        "width": 500,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        980
+      ],
+      "id": "aa529426-7fea-4d86-a7e6-33fad4d17da2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/drive/v3/files/{{ $json.id }}?fields=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -160,
+        1160
+      ],
+      "id": "9ca8eeea-965d-4a79-a727-1c12fe27632b",
+      "name": "Get File Metadata",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "Ue9HyjR3ljM44OcP",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "docx",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "2dc43d56-3b1e-4ce4-9379-1ec4e80b711f"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "docx (Word)"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4a36d50f-22bb-4b8e-ac48-65d9f38bc229",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "doc",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "doc (Word)"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "408b664c-228f-4f2a-b2a8-20986220b233",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "md (Markdown)",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "md (Markdown)"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "de951052-5bad-4a54-9eb9-f0fb98adeb11",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "pdf",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "pdf"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "031a0331-c657-4bad-a02c-25b5a8cf53e5",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "csv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "csv"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6c650c09-13c3-43b5-af4b-254adb1fae3b",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "xlsx",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "xlsx (Excel)"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a3be894d-b171-4701-8c3d-098f025e5dd5",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "=xls",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "xls (Excel)"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "26d1ef1d-d441-441c-86c4-c7181a1e6831",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "txt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "txt (Text)"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "96c7bdcb-db58-4207-b92b-86153f6b2cf8",
+                    "leftValue": "={{ $('Get File Metadata').item.json.fileExtension }}",
+                    "rightValue": "json",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "json"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        280,
+        1040
+      ],
+      "id": "5caa6c31-32bd-441a-bc93-95926cac35be",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1360
+      ],
+      "id": "90b86b8b-dc5d-48c5-a8ac-50898ce90d9d",
+      "name": "Extract from XLSX"
+    },
+    {
+      "parameters": {
+        "operation": "xls",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1560
+      ],
+      "id": "fea09542-3fcd-48c3-aa82-0deaf936173d",
+      "name": "Extract from XLS"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1760
+      ],
+      "id": "4d84d849-eb06-4dce-a16c-f857bf82e087",
+      "name": "Extract from Text"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1160
+      ],
+      "id": "b6c75ff9-e829-4adb-b804-743395a59ba5",
+      "name": "Extract from CSV"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1960
+      ],
+      "id": "ff581b52-e35a-4a9a-8eef-c4842ca3a24d",
+      "name": "Extract from JSON",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        960
+      ],
+      "id": "0873dda3-c77c-4002-97d3-31c972b9093b",
+      "name": "Extract from PDF"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        760
+      ],
+      "id": "30498159-8e9d-4baa-afad-fe2de31b7db9",
+      "name": "Extract MD to Base64"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:381492058603:function:pandoc-lambda-function",
+        "payload": "={\n  \"input_format\": \"markdown\",\n  \"output_format\": \"markdown\",\n  \"content\": \"{{ $json.data }}\",\n  \"options\": [\"--wrap=none\"]\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        860,
+        760
+      ],
+      "id": "49e7bc62-31a9-40b3-abd5-2c020286a886",
+      "name": "Convert Markdown to Text"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:381492058603:function:pandoc-lambda-function",
+        "payload": "={\n  \"input_format\": \"docx\",\n  \"output_format\": \"markdown\",\n  \"content\": \"{{ $json.data }}\",\n  \"options\": [\"--wrap=none\"]\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        860,
+        440
+      ],
+      "id": "ac761d2c-f17d-4f75-89c8-473ed3c3d76e",
+      "name": "Convert Docx to Text"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        440
+      ],
+      "id": "8d93faf5-a845-48e7-aadb-0bdbb6d7cc5f",
+      "name": "Extract Docx to Base64"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        600
+      ],
+      "id": "90d81c93-128a-40a2-a72f-aff3680a799d",
+      "name": "Extract Doc to Base64"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:381492058603:function:pandoc-lambda-function",
+        "payload": "={\n  \"input_format\": \"doc\",\n  \"output_format\": \"markdown\",\n  \"content\": \"{{ $json.data }}\",\n  \"options\": [\"--wrap=none\"]\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        860,
+        600
+      ],
+      "id": "51de5bb5-88fb-40f8-aacc-4b0af5e6a3ec",
+      "name": "Convert Doc to Text"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "embeddingBatchSize": 512,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        2420,
+        1140
+      ],
+      "id": "d9af9243-1db6-41c6-bf71-f12c1815e822",
+      "name": "Add Document to VectorDB",
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        60,
+        1160
+      ],
+      "id": "ec4aa713-e3c8-4e7a-9a7d-987e40abb026",
+      "name": "Download Drive File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "Ue9HyjR3ljM44OcP",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536,
+          "batchSize": 512
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2380,
+        1340
+      ],
+      "id": "2f3c4011-d332-49c6-b1e1-070bf811cf0b",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "url",
+                "value": "={{ $('Get File Metadata').item.json.webContentLink }}"
+              },
+              {
+                "name": "name",
+                "value": "={{ $('Get File Metadata').item.json.originalFilename }}"
+              },
+              {
+                "name": "title",
+                "value": "={{ $('Get File Metadata').item.json.originalFilename.split(\".\")[0] }}"
+              },
+              {
+                "name": "source",
+                "value": "=google-drive://{{ $('Get File Metadata').item.json.id }}"
+              },
+              {
+                "name": "status",
+                "value": "processed"
+              },
+              {
+                "name": "file_id",
+                "value": "={{ $('Get File Metadata').item.json.id }}"
+              },
+              {
+                "name": "doc_type",
+                "value": "google_drive"
+              },
+              {
+                "name": "language",
+                "value": "=en"
+              },
+              {
+                "name": "file_name",
+                "value": "={{ $('Get File Metadata').item.json.name }}"
+              },
+              {
+                "name": "mime_type",
+                "value": "={{ $('Get File Metadata').item.json.mimeType }}"
+              },
+              {
+                "name": "parent_id",
+                "value": "={{ $('Get File Metadata').item.json.parents[0] }}"
+              },
+              {
+                "name": "permissions",
+                "value": "={{ $('Get File Metadata').item.json.permissions }}"
+              },
+              {
+                "name": "source_type",
+                "value": "google_drive"
+              },
+              {
+                "name": "content_type",
+                "value": "={{ $('Get File Metadata').item.json.mimeType }}"
+              },
+              {
+                "name": "created_time",
+                "value": "={{ $('Get File Metadata').item.json.createdTime }}"
+              },
+              {
+                "name": "processed_at",
+                "value": "={{ $now.toUTC().toString() }}"
+              },
+              {
+                "name": "version_info",
+                "value": "={{ $('Get File Metadata').item.json.version }}"
+              },
+              {
+                "name": "modified_time",
+                "value": "={{ $('Get File Metadata').item.json.modifiedTime }}"
+              },
+              {
+                "name": "access_summary",
+                "value": "={{ $('Get File Metadata').item.json.permissions }}"
+              },
+              {
+                "name": "collection_name",
+                "value": "langchain_docs"
+              },
+              {
+                "name": "ingestion_engine",
+                "value": "n8n-langchain"
+              },
+              {
+                "name": "file_id",
+                "value": "={{ $('Document Data & DB Data').item.json.file_id }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        1360
+      ],
+      "id": "83a0fd21-40db-460a-9fcb-f2ec231c4190",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 200,
+        "options": {
+          "splitCode": "markdown"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        2600,
+        1500
+      ],
+      "id": "4f0cb8f3-daa4-4ad0-a3ed-7db8a710db6d",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "content": "## Extração Personalizada de Dados com Função Lambda AWS e Conversão via Pandoc\n\nPandoc é uma ferramenta de conversão de documentos de código aberto e altamente versátil, capaz de ler e escrever uma ampla variedade de formatos de marcação, incluindo Markdown, HTML, LaTeX, docx, EPUB, entre outros. Ele funciona como um \"tradutor universal\" de documentos, permitindo que usuários transformem facilmente conteúdos entre diferentes tipos de arquivos, preservando sua estrutura.\n\nDevido à sua flexibilidade e ao amplo suporte de formatos, o Pandoc é amplamente utilizado em publicações, escrita acadêmica e qualquer ambiente onde a interoperabilidade entre documentos seja essencial.\n\nImplementei essa funcionalidade em uma função AWS Lambda que pode ser utilizada como um conversor universal, indo além deste projeto. Tenho utilizado isso para extração de dados a partir de formatos de arquivos que não são suportados nativamente pelo n8n, como `.doc`, `.docx`, entre outros.\n\nRepositório:\n[https://github.com/Getting-Automated/pandoc-lambda-python](https://github.com/Getting-Automated/pandoc-lambda-python)\n",
+        "height": 920,
+        "width": 760,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        20
+      ],
+      "id": "f67e8abc-5f01-451a-88a3-fdb81e5161aa",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Extração de Dados",
+        "height": 2160,
+        "width": 820
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        260,
+        -40
+      ],
+      "id": "cae781c9-2c4d-436f-a961-acc99f1f38b9",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Documentos Existentes\n\nEste processo exclui a versão existente do documento que você já possui e o reprocessa (re-embed). A funcionalidade nativa de atualização de documentos do Supabase no n8n é limitada, portanto, essa abordagem é atualmente a mais eficiente.\n",
+        "height": 380,
+        "width": 440
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        720
+      ],
+      "id": "2bfbd820-132f-4364-a5d4-79bfca244c20",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6fce5c15-7c37-460e-9022-d52d70d320dc",
+              "name": "content",
+              "value": "={{ $('Document Data & DB Data').item.json.data.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2200,
+        1140
+      ],
+      "id": "1f0b527f-31f4-4c29-aafd-05a69490eb73",
+      "name": "Set Data",
+      "notes": "{{ $('Document Data & DB Data').item.json.data.toJsonString() }}"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3d8865f5-2629-4286-af68-06349fdc6b80",
+              "name": "data",
+              "value": "={{ $json.data }}{{ $json.toJsonString() }}",
+              "type": "object"
+            },
+            {
+              "id": "790cf601-42f4-43f4-b754-13c24cc80221",
+              "name": "db_url_identifier",
+              "value": "fbqdvjpzqivcyqgujzlw",
+              "type": "string"
+            },
+            {
+              "id": "f14ea8e9-cc2c-409e-b1e9-94219c8d7771",
+              "name": "table_name",
+              "value": "documents",
+              "type": "string"
+            },
+            {
+              "id": "cdc446c1-e9cc-477f-b316-585587d0f5c0",
+              "name": "file_id",
+              "value": "={{ $('Download Drive File').item.json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1240,
+        1120
+      ],
+      "id": "93a22ae3-8450-41a6-8929-647e8a17c40d",
+      "name": "Document Data & DB Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2967e340-c395-4863-8221-6e9cfab3987b",
+              "name": "data",
+              "value": "={{ $json.result.body }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        600
+      ],
+      "id": "1ea470d4-ac99-4209-8c7e-4add1e274fce",
+      "name": "Set Data From Lambda"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "documents",
+        "filterType": "string",
+        "filterString": "=metadata->>file_id=eq.{{ $('Download Drive File').item.json.id }}&select=*"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        920
+      ],
+      "id": "417b142c-7f2f-43f3-a7c0-4a9093a3f5bf",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "944a178a-0e46-4fa1-9dca-4a2e348daefb",
+              "leftValue": "={{ $json.content }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1640,
+        1120
+      ],
+      "id": "aa116baf-30dd-48d9-abe1-dee7c487ccab",
+      "name": "If Data Already Exists"
+    },
+    {
+      "parameters": {
+        "content": "## Fragmentação Avançada Indisponível + Dificuldade no Match dos Fragmentos + Impossibilidade de Atualizar Metadados de Embedding\n\nO n8n não oferece suporte nativo para fragmentação avançada (como respeitar os limites de conteúdo, parágrafos, etc.). Isso pode ser resolvido com um nó de código de forma relativamente simples, mas é pouco provável que funcione exatamente como foi configurado na versão em Python.\n\nAlém disso, na nossa versão em Python, usamos como ID único a combinação do ID do Google Doc com o número do fragmento. O problema é que, devido às limitações nativas de fragmentação do Langchain, torna-se difícil fazer a correspondência exata dos fragmentos ao tentar atualizar.\n",
+        "height": 380,
+        "width": 460,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        720
+      ],
+      "id": "672cfc19-ac8e-49a2-937c-ac98d39c4a9a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Por Que Suportar Tantos Tipos de Arquivo?\n\nOs métodos de extração de dados podem variar bastante dependendo do tipo de arquivo. Ao oferecer suporte a múltiplos formatos, você amplia o leque de documentos que podem ser processados, enriquecendo as capacidades gerais da sua solução RAG.",
+        "height": 200,
+        "width": 500
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        1700
+      ],
+      "id": "b637f575-cf1e-4e68-a4a0-48e05cd4d2f1",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "documents",
+        "returnAll": true,
+        "filterType": "string",
+        "filterString": "=metadata->>file_id=eq.{{ $('Download Drive File').item.json.id }}&select=*"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1120
+      ],
+      "id": "8a8aa5a0-de66-4727-a542-d9124824d1ad",
+      "name": "Supabase1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "WWYYqpMcDDFZTW3g",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        920
+      ],
+      "id": "231e1450-887e-4e5e-883c-0580ae24e045",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "content": "## Versão Baseada em Código + Documentação\n\nConsulte https://github.com/Getting-Automated/n8n-and-code-rag para a versão baseada em código, bem como documentação adicional.",
+        "height": 180,
+        "width": 498,
+        "color": 6
+      },
+      "id": "c38c99d4-9db5-47bd-870a-68eac3e1f8b3",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        1460
+      ]
+    }
+  ],
+  "pinData": {
+    "Google Drive Trigger (File Updated)": [
+      {
+        "json": {
+          "kind": "drive#file",
+          "fileExtension": "pdf",
+          "copyRequiresWriterPermission": false,
+          "md5Checksum": "f60fad57f8c64e83dc35b3e8f96967a4",
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/pdf",
+          "parents": [
+            "1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo"
+          ],
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNpZ88I0GJp7-v69IK79ibtVgN_2ApZ9D7ARRajIPdefjZmOt-K5tDQ2UzHgjk0H9rOpMD-jB9Bz7BfkSP9bAsMgUJVK8URDyiqy5ezGfAQP0k=s220",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "William Almeida (William Hatake)",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "16064567649239955818",
+            "emailAddress": "williamkillerca@gmail.com",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64"
+          },
+          "owners": [
+            {
+              "displayName": "William Almeida (William Hatake)",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "16064567649239955818",
+              "emailAddress": "williamkillerca@gmail.com",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64"
+            }
+          ],
+          "headRevisionId": "0B-e3h6wv2dlWYXFGYTVMVU8wdm4xalp0TUtTZnNZbSswWlVBPQ",
+          "webViewLink": "https://drive.google.com/file/d/1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST/view?usp=drivesdk",
+          "webContentLink": "https://drive.google.com/uc?id=1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST&export=download",
+          "size": "470637",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "16064567649239955818",
+              "displayName": "William Almeida (William Hatake)",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+              "emailAddress": "williamkillerca@gmail.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST",
+          "name": "bula_174476284028.pdf",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2025-04-18T20:14:40.813Z",
+          "modifiedTime": "2025-04-18T20:22:14.455Z",
+          "modifiedByMeTime": "2025-04-18T20:22:14.455Z",
+          "viewedByMeTime": "2025-04-18T20:14:40.813Z",
+          "quotaBytesUsed": "470637",
+          "version": "4",
+          "originalFilename": "bula_1744762840286.pdf",
+          "ownedByMe": true,
+          "fullFileExtension": "pdf",
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true
+          },
+          "thumbnailVersion": "2",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "16064567649239955818"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "sha1Checksum": "5473e70a8253be5e351eab0a6c8af377d09bcb53",
+          "sha256Checksum": "57ab3c43057c2f3dfed6cb4f600daa479c54fe14920a62616cbd1d34bd962af0",
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ],
+    "Get File Metadata": [
+      {
+        "json": {
+          "kind": "drive#file",
+          "id": "1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST",
+          "name": "bula_174476284028.pdf",
+          "mimeType": "application/pdf",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "parents": [
+            "1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo"
+          ],
+          "spaces": [
+            "drive"
+          ],
+          "version": "4",
+          "webContentLink": "https://drive.google.com/uc?id=1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST&export=download",
+          "webViewLink": "https://drive.google.com/file/d/1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST/view?usp=drivesdk",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+          "hasThumbnail": true,
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPrzuLPQR091X5p58ha4SKNwdxRHEQZRHjvkxcrSSxDJylxk6YLCgSxQVE2dNb5uyIKjVxRnnu5Q6eHdF-2_1rz_NfnoLvknZmanUaOjkjHrbQ=s220",
+          "thumbnailVersion": "2",
+          "viewedByMe": true,
+          "viewedByMeTime": "2025-04-18T20:14:40.813Z",
+          "createdTime": "2025-04-18T20:14:40.813Z",
+          "modifiedTime": "2025-04-18T20:22:14.455Z",
+          "modifiedByMeTime": "2025-04-18T20:22:14.455Z",
+          "modifiedByMe": true,
+          "owners": [
+            {
+              "kind": "drive#user",
+              "displayName": "William Almeida (William Hatake)",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+              "me": true,
+              "permissionId": "16064567649239955818",
+              "emailAddress": "williamkillerca@gmail.com"
+            }
+          ],
+          "lastModifyingUser": {
+            "kind": "drive#user",
+            "displayName": "William Almeida (William Hatake)",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+            "me": true,
+            "permissionId": "16064567649239955818",
+            "emailAddress": "williamkillerca@gmail.com"
+          },
+          "shared": false,
+          "ownedByMe": true,
+          "capabilities": {
+            "canAcceptOwnership": false,
+            "canAddChildren": false,
+            "canAddMyDriveParent": false,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canChangeViewersCanCopyContent": true,
+            "canComment": true,
+            "canCopy": true,
+            "canDelete": true,
+            "canDisableInheritedPermissions": false,
+            "canDownload": true,
+            "canEdit": true,
+            "canEnableInheritedPermissions": true,
+            "canListChildren": false,
+            "canModifyContent": true,
+            "canModifyContentRestriction": true,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canModifyLabels": false,
+            "canMoveChildrenWithinDrive": false,
+            "canMoveItemIntoTeamDrive": true,
+            "canMoveItemOutOfDrive": true,
+            "canMoveItemWithinDrive": true,
+            "canReadLabels": false,
+            "canReadRevisions": true,
+            "canRemoveChildren": false,
+            "canRemoveContentRestriction": false,
+            "canRemoveMyDriveParent": true,
+            "canRename": true,
+            "canShare": true,
+            "canTrash": true,
+            "canUntrash": true
+          },
+          "viewersCanCopyContent": true,
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "permissions": [
+            {
+              "kind": "drive#permission",
+              "id": "16064567649239955818",
+              "type": "user",
+              "emailAddress": "williamkillerca@gmail.com",
+              "role": "owner",
+              "displayName": "William Almeida (William Hatake)",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "permissionIds": [
+            "16064567649239955818"
+          ],
+          "originalFilename": "bula_1744762840286.pdf",
+          "fullFileExtension": "pdf",
+          "fileExtension": "pdf",
+          "md5Checksum": "f60fad57f8c64e83dc35b3e8f96967a4",
+          "sha1Checksum": "5473e70a8253be5e351eab0a6c8af377d09bcb53",
+          "sha256Checksum": "57ab3c43057c2f3dfed6cb4f600daa479c54fe14920a62616cbd1d34bd962af0",
+          "size": "470637",
+          "quotaBytesUsed": "470637",
+          "headRevisionId": "0B-e3h6wv2dlWYXFGYTVMVU8wdm4xalp0TUtTZnNZbSswWlVBPQ",
+          "isAppAuthorized": false,
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ],
+    "Download Drive File": [
+      {
+        "json": {
+          "kind": "drive#file",
+          "id": "1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST",
+          "name": "bula_174476284028.pdf",
+          "mimeType": "application/pdf",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "parents": [
+            "1K9PL2c7lvy2EJ_jdxmL2qQyDDV2yXEyo"
+          ],
+          "spaces": [
+            "drive"
+          ],
+          "version": "4",
+          "webContentLink": "https://drive.google.com/uc?id=1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST&export=download",
+          "webViewLink": "https://drive.google.com/file/d/1fqIr-JRapnxztq4zYaEzdiYKPGyQGcST/view?usp=drivesdk",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+          "hasThumbnail": true,
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPrzuLPQR091X5p58ha4SKNwdxRHEQZRHjvkxcrSSxDJylxk6YLCgSxQVE2dNb5uyIKjVxRnnu5Q6eHdF-2_1rz_NfnoLvknZmanUaOjkjHrbQ=s220",
+          "thumbnailVersion": "2",
+          "viewedByMe": true,
+          "viewedByMeTime": "2025-04-18T20:14:40.813Z",
+          "createdTime": "2025-04-18T20:14:40.813Z",
+          "modifiedTime": "2025-04-18T20:22:14.455Z",
+          "modifiedByMeTime": "2025-04-18T20:22:14.455Z",
+          "modifiedByMe": true,
+          "owners": [
+            {
+              "kind": "drive#user",
+              "displayName": "William Almeida (William Hatake)",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+              "me": true,
+              "permissionId": "16064567649239955818",
+              "emailAddress": "williamkillerca@gmail.com"
+            }
+          ],
+          "lastModifyingUser": {
+            "kind": "drive#user",
+            "displayName": "William Almeida (William Hatake)",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+            "me": true,
+            "permissionId": "16064567649239955818",
+            "emailAddress": "williamkillerca@gmail.com"
+          },
+          "shared": false,
+          "ownedByMe": true,
+          "capabilities": {
+            "canAcceptOwnership": false,
+            "canAddChildren": false,
+            "canAddMyDriveParent": false,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canChangeViewersCanCopyContent": true,
+            "canComment": true,
+            "canCopy": true,
+            "canDelete": true,
+            "canDisableInheritedPermissions": false,
+            "canDownload": true,
+            "canEdit": true,
+            "canEnableInheritedPermissions": true,
+            "canListChildren": false,
+            "canModifyContent": true,
+            "canModifyContentRestriction": true,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canModifyLabels": false,
+            "canMoveChildrenWithinDrive": false,
+            "canMoveItemIntoTeamDrive": true,
+            "canMoveItemOutOfDrive": true,
+            "canMoveItemWithinDrive": true,
+            "canReadLabels": false,
+            "canReadRevisions": true,
+            "canRemoveChildren": false,
+            "canRemoveContentRestriction": false,
+            "canRemoveMyDriveParent": true,
+            "canRename": true,
+            "canShare": true,
+            "canTrash": true,
+            "canUntrash": true
+          },
+          "viewersCanCopyContent": true,
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "permissions": [
+            {
+              "kind": "drive#permission",
+              "id": "16064567649239955818",
+              "type": "user",
+              "emailAddress": "williamkillerca@gmail.com",
+              "role": "owner",
+              "displayName": "William Almeida (William Hatake)",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocJZ6HnAgZeZcK-r-CjCim9pAXT8TWigY4R5teB6hQUpEXQzeXu7Ig=s64",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "permissionIds": [
+            "16064567649239955818"
+          ],
+          "originalFilename": "bula_1744762840286.pdf",
+          "fullFileExtension": "pdf",
+          "fileExtension": "pdf",
+          "md5Checksum": "f60fad57f8c64e83dc35b3e8f96967a4",
+          "sha1Checksum": "5473e70a8253be5e351eab0a6c8af377d09bcb53",
+          "sha256Checksum": "57ab3c43057c2f3dfed6cb4f600daa479c54fe14920a62616cbd1d34bd962af0",
+          "size": "470637",
+          "quotaBytesUsed": "470637",
+          "headRevisionId": "0B-e3h6wv2dlWYXFGYTVMVU8wdm4xalp0TUtTZnNZbSswWlVBPQ",
+          "isAppAuthorized": false,
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ],
+    "Extract from PDF": [
+      {
+        "json": {
+          "numpages": 10,
+          "numrender": 10,
+          "info": {
+            "PDFFormatVersion": "1.6",
+            "Language": "PT-BR",
+            "EncryptFilterName": null,
+            "IsLinearized": true,
+            "IsAcroFormPresent": false,
+            "IsXFAPresent": false,
+            "IsCollectionPresent": false,
+            "IsSignaturesPresent": false,
+            "Author": "Gilmara da Silva Ribeiro",
+            "Custom": {
+              "Company": "",
+              "SourceModified": "D:20240111190755"
+            },
+            "CreationDate": "D:20240111160810-03'00'",
+            "Creator": "Acrobat PDFMaker 23 para Word",
+            "ModDate": "D:20240111160815-03'00'",
+            "Producer": "Adobe PDF Library 23.8.234"
+          },
+          "metadata": {
+            "xmp:modifydate": "2024-01-11T16:08:15-03:00",
+            "xmp:createdate": "2024-01-11T16:08:10-03:00",
+            "xmp:metadatadate": "2024-01-11T16:08:15-03:00",
+            "xmp:creatortool": "Acrobat PDFMaker 23 para Word",
+            "xmpmm:documentid": "uuid:6e4da966-8c3f-498d-aecc-bc9745539654",
+            "xmpmm:instanceid": "uuid:095cadb7-5938-4bfb-9162-27dbca1b6b11",
+            "xmpmm:subject": "80",
+            "dc:format": "application/pdf",
+            "dc:creator": [
+              "Gilmara da Silva Ribeiro"
+            ],
+            "pdf:producer": "Adobe PDF Library 23.8.234",
+            "pdfx:sourcemodified": "D:20240111190755",
+            "pdfx:company": ""
+          },
+          "text": "amoxicilina\nAurobindo Pharma Indústria Farmacêutica Ltda.\nCápsulas\n500 mg\nBula para o paciente\n\n1\namoxicilina\nMedicamento Genérico, Lei nº 9.787, de 1999.\nI) IDENTIFICAÇÃO DO MEDICAMENTO\namoxicilina\nMedicamento Genérico, Lei nº 9.787, de 1999.\nAPRESENTAÇÕES\nAmoxicilina cápsulas de 500 mg em embalagens contendo 21 e 350 cápsulas.\nUSO ORAL\nUSO ADULTO E PEDIÁTRICO (ACIMA DE 40 KG)\nCOMPOSIÇÃO\nCada cápsula de amoxicilina tri – hidratada contém:\nAmoxicilina tri-hidratada...................................................................................................................574 mg*\n* Equivalente a 500mg de amoxicilina base.\nExcipientes q.s.p...............................................................................................................................1 cápsula\nExcipientes: celulose microcristalina e estearato de magnésio\nII) INFORMAÇÕES AO PACIENTE\n1. PARA QUE ESTE MEDICAMENTO É INDICADO?\nA amoxicilina, antibiótico eficaz contra grande variedade de bactérias, é indicada para tratamento de\ninfecções bacterianas causadas por germes sensíveis à ação da amoxicilina. Entretanto, seu médico pode\nreceitar este medicamento para outro uso. Se desejar mais informações, pergunte ao seu médico.\n2. COMO ESTE MEDICAMENTO FUNCIONA?\nEste medicamento contém uma penicilina chamada amoxicilina como ingrediente ativo. A amoxicilina\npertence ao grupo dos antibióticos penicilânicos. A amoxicilina é usada no tratamento de uma gama de\ninfecções causadas por bactérias, que podem manifestar-se nos pulmões (pneumonia e bronquite), nas\namígdalas (amigdalite), nos seios da face (sinusite), no trato urinário e genital, na pele e nas mucosas. A\namoxicilina atua destruindo as bactérias que causam essas infecções.\n3. QUANDO NÃO DEVO USAR ESTE MEDICAMENTO?\nEste medicamento não pode ser administrado nem ingerido por pessoas alérgicas à amoxicilina, a outros\nantibióticos penicilínicos ou antibióticos similares, chamados cefalosporinas. Se você já teve uma reação\nalérgica (como erupções da pele) ao tomar um antibiótico, deve conversar com seu médico antes de usar\namoxicilina.\n4. O QUE DEVO SABER ANTES DE USAR ESTE MEDICAMENTO?\nAntes de iniciar o tratamento com amoxicilina, informe seu médico:\n- se você já apresentou reação alérgica a algum antibiótico. Isso pode incluir reações na pele ou inchaço\nna face ou pescoço ou dores no peito.\n- se você apresenta febre glandular.\n- se você toma medicamentos usados para prevenir coágulos sanguíneos (anticoagulantes), tais como\nvarfarina, o seu médico fará um monitoramento e, se necessário, poderá sugerir ajustes na dose dos\nanticoagulantes.\n- se você apresenta problema nos rins.\n- se você não estiver urinando regularmente.\n- se você já teve diarreia durante ou após o uso de antibióticos.\nO uso prolongado também pode resultar, ocasionalmente, em supercrescimento de microrganismos\nresistentes a amoxicilina.\nA amoxicilina pode piorar algumas condições existentes ou causar efeitos colaterais graves, como reações\nalérgicas severas, reações cutâneas severas, dor no peito, vômitos repetitivos dentro de 1 a 4 horas após a\nadministração de amoxicilina ou diarreia grave (colite pseudomembranosa). Você deve estar atento a\n\n2\ndeterminados sintomas enquanto estiver recebendo amoxicilina para ajudar a reduzir o risco de quaisquer\nproblemas.\nEfeitos sobre a capacidade de dirigir veículos e de operar máquinas\nNão se observaram efeitos adversos sobre a capacidade de dirigir veículos e de operar máquinas.\nGravidez e amamentação\nA amoxicilina pode ser usada na gravidez desde que os benefícios potenciais sejam maiores que os riscos\npotenciais associados ao tratamento. Informe seu médico se você estiver grávida ou suspeitar que está\ngrávida. Você não deve tomar este medicamento se estiver grávida, exceto se seu médico recomendar.\nVocê pode amamentar seu bebê enquanto estiver tomando amoxicilina, mas há excreção de quantidades\nmínimas de amoxicilina no leite materno. Se você estiver amamentando, informe ao seu médico antes de\niniciar o tratamento com amoxicilina.\nEste medicamento não deve ser usado por mulheres grávidas sem orientação médica ou do\ncirurgião-dentista.\nUso em idosos, crianças e outros grupos de risco\nAs recomendações especiais se referem às doses (ver Posologia, em Como Devo Usar Este\nMedicamento?).\nInterações medicamentosas\nAlguns medicamentos podem causar efeitos indesejáveis se você os ingerir durante o tratamento com\namoxicilina. Não deixe de avisar seu médico caso você esteja tomando:\n- medicamentos usados no tratamento de gota (probenecida ou alopurinol);\n- outros antibióticos;\n- pílulas anticoncepcionais (como acontece com outros antibióticos, talvez sejam necessárias precauções\nadicionais para evitar a gravidez);\n- anticoagulantes.\n- metotrexato (usado para tratar doenças como câncer e psoríase grave).\nA alimentação não interfere na ação de amoxicilina, que pode ser ingerido nas refeições.\nInforme ao seu médico ou cirurgião-dentista se você está fazendo uso de algum outro medicamento.\nNão use medicamento sem o conhecimento do seu médico. Pode ser perigoso para a sua saúde.\n5. ONDE, COMO E POR QUANTO TEMPO POSSO GUARDAR ESTE MEDICAMENTO?\nCuidados de armazenamento\nManter fora do alcance de crianças\nNa sua embalagem original, amoxicilina deve ser conservada em temperatura ambiente (entre 15ºC e\n30°C) e protegida da luz e umidade.\nNúmero de lote e datas de fabricação e validade: vide embalagem.\nNão use medicamento com o prazo de validade vencido. Guarde-o em sua embalagem original.\nAspecto físico/características organolépticas\namoxicilina tri-hidratada 500 mg: cápsula azul escura e azul clara, tamanho “0EL” contendo um pó\nbranco a quase branco, disperso a pré-compactado.\nAntes de usar, observe o aspecto do medicamento. Caso ele esteja no prazo de validade e você\nobserve alguma mudança no aspecto, consulte o farmacêutico para saber se poderá utilizá-lo.\nTodo medicamento deve ser mantido fora do alcance das crianças.\n6. COMO DEVO USAR ESTE MEDICAMENTO?\nModo de usar\nSiga as orientações de seu médico sobre a maneira e a hora correta de tomar o medicamento. Ele vai\ndecidir a quantidade diária que você precisa e o tempo durante o qual você deve usar este medicamento.\nLeia esta bula com cautela. Se você tiver alguma dúvida, fale com seu médico.\nRecomenda-se ingerir o medicamento nas refeições, embora ele continue eficaz mesmo que você o tome\nem outros horários.\n\n3\nContinue tomando este medicamento até o fim do tratamento prescrito pelo médico. Não pare somente\nporque se sente melhor.\nAs cápsulas devem ser ingeridas inteiras com água. Não as mastigue.\nPosologia\nAtenção! Para algumas doses indicadas abaixo (doses inferiores a 500 mg) é necessário o uso da\nsuspensão oral, converse com seu médico ou farmacêutico em caso de dúvida.\nDose para adultos e crianças acima de 40 kg\n- Dose padrão: 500 mg (uma cápsula) três vezes ao dia (de 8 em 8 horas) nas infecções mais graves.\n- Tratamento com dosagem alta (máximo recomendável de 6 g ao dia em doses divididas): Recomenda-se\numa dose de 3 g (seis cápsulas) duas vezes ao dia (de 12 em 12 horas) em casos que requerem tratamento\nde infecção respiratória purulenta (com a presença de pus) grave ou recorrente.\n- Tratamento de curta duração (gonorreia): dose única de 3 g.\nErradicação de Helicobacter pylori: para combater o Helicobacter (bactéria que ataca o estômago e o\nduodeno), recomenda-se o uso de amoxicilina no esquema de 1 g duas vezes ao dia (de 12 em 12 horas),\nem associação com um medicamento conhecido como inibidor da bomba de prótons (exemplo:\nomeprazol, lansoprazol) e outro agente antimicrobiano (por exemplo claritromicina, metronidazol), por 7\ndias.\nPacientes com insuficiência renal (dos rins)\nNa insuficiência renal, a eliminação do antibiótico é mais lenta. Conforme o grau dessa condição, seu\nmédico pode indicar a redução da dose diária total de acordo com o esquema descrito a seguir.\nAdultos e crianças acima de 40 kg\n- insuficiência leve: nenhuma alteração de dose;\n- insuficiência moderada: máximo de 500 mg (uma cápsula) duas vezes ao dia (de 12 em 12 horas);\n- insuficiência grave: máximo de 500 mg (uma cápsula) ao dia;\nPacientes que recebem diálise peritoneal\nUsa-se a mesma posologia indicada para pacientes com insuficiência renal grave. A diálise peritoneal\n(processo de limpeza das substâncias tóxicas do organismo através do peritônio, membrana que envolve o\nabdômen) não remove a amoxicilina do corpo.\nPacientes que recebem hemodiálise\nUsa-se a mesma posologia indicada para pacientes com insuficiência renal grave.\nA amoxicilina é removida do sangue por hemodiálise (processo que substitui os rins na filtragem\nsanguínea). Portanto, uma dose adicional (500 mg para adultos e crianças acima de 40 Kg ou 15 mg/kg\npara crianças abaixo de 40 kg) pode ser administrada durante e no final de cada diálise.\nSeu médico poderá indicar tratamento por via parenteral (feito com aplicação de injeções intravenosas,\nintramusculares ou subcutâneas) nos casos em que a via oral for considerada inadequada (particularmente\nnos tratamentos urgentes de infecções graves).\nConforme o grau de insuficiência renal, talvez seu médico ache necessário reduzir a dose diária total.\nSiga a orientação de seu médico, respeitando sempre os horários, as doses e a duração do\ntratamento.\nNão interrompa o tratamento sem o conhecimento de seu médico.\nEste medicamento não deve ser partido ou mastigado.\n7. O QUE DEVO FAZER QUANDO EU ME ESQUECER DE USAR ESTE MEDICAMENTO?\nSe você esquecer uma dose, tome-a assim que se lembrar, mas continue com o horário normal das\ndemais. Só não tome duas doses com intervalo igual ou menor que 1 hora.\nEm caso de dúvidas, procure orientação do farmacêutico ou de seu médico, ou cirurgião – dentista.\n\n4\n8. QUAIS OS MALES QUE ESTE MEDICAMENTO PODE ME CAUSAR?\nAvise seu médico o mais cedo possível se você não se sentir bem durante o tratamento com amoxicilina.\nAssim como todo medicamento, amoxicilina pode provocar reações adversas, porém isso não ocorre com\ntodas as pessoas.\nOs efeitos colaterais deste medicamento geralmente são leves.\nReações comuns (ocorrem entre 1% e 10% dos pacientes que utilizam este medicamento):\n- Diarreia (várias evacuações amolecidas por dia) e enjoo; quando isso acontece, os sintomas\nnormalmente são leves e com frequência podem ser evitados tomando-se o medicamento no início das\nrefeições. Se continuarem ou se tornarem graves, consulte o médico.\n- Erupções da pele.\nReações incomuns (ocorrem entre 0,1% e 1% dos pacientes que utilizam este medicamento):\n- Vômito, urticária e coceira.\nReações muito raras (ocorrem em menos de 0,01% dos pacientes que utilizam este medicamento):\n- Diminuição de glóbulos brancos (leucopenia reversível), que pode resultar em infecções frequentes,\ncomo febre, calafrios, inflamação da garganta ou úlceras na boca;\n- Baixa contagem de plaquetas (trombocitopenia reversível), que pode resultar em sangramento ou\nhematomas (manchas roxas) que surgem com mais facilidade que o normal;\n- Destruição de glóbulos vermelhos e consequentemente anemia (anemia hemolítica), que pode resultar\nem cansaço, dores de cabeça e falta de ar causada pela prática de exercícios físicos, vertigem, palidez e\namarelamento da pele e/ou dos olhos;\n- Sinais repentinos de alergia, como erupções da pele, prurido (coceira) ou urticária, inchaço da face, dos\nlábios, da língua ou de outras partes do corpo, falta de ar, respiração ofegante ou problemas para respirar;\nse esses sintomas ocorrerem, pare de usar amoxicilina e procure socorro médico o mais rápido possível;\n- Dor no peito, que pode ser um sinal de uma reação alérgica potencialmente grave chamada síndrome de\nKounis;\n- Vômitos repetitivos (1 a 4 horas após a administração de amoxicilina), dores no estômago, sonolência\nanormal, diarreia e pressão baixa, que podem ser um sinal de uma reação alérgica grave denominada\nsíndrome de enterocolite induzida por medicamentos;\n- Convulsões (ataques) podem ocorrer em pacientes com função renal prejudicada ou que estejam\nrecebendo doses altas do medicamento;\n- Hipercinesia (presença de movimentos exacerbados e incontrolados), tontura;\n- Candidíase mucocutânea, infecção micótica (causada por fungos) que normalmente afeta as partes\níntimas ou a boca; na área genital, pode provocar coceira e queimação (com a presença de uma fina\ncamada de secreção branca), e na boca ou na língua podem surgir pintas brancas dolorosas;\n- Colite associada a antibióticos (inflamação no cólon (intestino grosso), causando diarreia grave, que\ntambém pode conter sangue e ser acompanhada de cólicas abdominais;\n- Sua língua pode mudar de cor, ficando amarela, marrom ou preta, e dar a impressão de ter pelos (língua\npilosa negra);\n- Inflamação da membrana que reveste o cérebro (meningite asséptica);\n- Erupção cutânea com bolhas dispostas em círculo com crosta central ou como um colar de pérolas\n(doença IgA linear).\n- Efeitos relacionados ao fígado; esses sintomas podem manifestar-se como enjoo, vômito, perda de\napetite, sensação geral de mal-estar, febre, coceira, amarelamento da pele e dos olhos e escurecimento da\nurina e aumento de algumas substâncias (enzimas) produzidas pelo fígado;\n- Reações cutâneas graves: erupção cutânea (eritema multiforme), que pode formar bolhas (com pequenas\nmanchas escuras centrais rodeadas por uma área pálida, com um anel escuro ao redor da borda); erupção\ncutânea generalizada com bolhas e descamação da pele na maior parte da superfície corporal (necrólise\nepidérmica tóxica); erupções na pele com bolhas e descamação, especialmente ao redor da boca, nariz,\nolhos e genitais (síndrome de Stevens-Johnson); erupções na pele com bolhas contendo pus (dermatite\nesfoliativa bolhosa); erupções escamosas na pele, com bolhas e inchaços sob a pele (exantema pustuloso).\n- Doença renal (problemas para urinar, possivelmente com dor e presença de sangue ou cristais na urina).\n- Sintomas semelhantes aos da gripe com erupção cutânea, febre, glândulas inchadas e resultados\nanormais de exames de sangue (incluindo o aumento dos glóbulos brancos (eosinofilia) e enzimas\nhepáticas) (Reação do medicamento com eosinofilia e sintomas sistêmicos (DRESS)) \n.\n- Uma erupção cutânea vermelha comumente observada em ambos os lados das nádegas, parte interna superior\ndas coxas, axilas, pescoço (Exantema Intertriginoso e Flexural Simétrico Relacionado a Medicamentos\n(SDRIFE)).\n\n5\nSe qualquer desconforto incomum se manifestar enquanto você estiver tomando o medicamento, informe\nseu médico o mais breve possível.\nInforme seu médico, cirurgião-dentista ou farmacêutico o aparecimento de reações indesejáveis\npelo uso do medicamento. Informe também à empresa através do seu serviço de atendimento.\n9. O QUE FAZER SE ALGUÉM USAR UMA QUANTIDADE MAIOR QUE A INDICADA\nDESTE MEDICAMENTO?\nÉ pouco provável que ocorram problemas graves em caso de superdosagem de amoxicilina. As reações\nmais comuns são enjoo, vômito e diarreia. Procure seu médico para que os sintomas sejam tratados.\nEm caso de uso de grande quantidade deste medicamento, procure rapidamente socorro médico e\nleve a embalagem ou bula do medicamento se possível. Ligue para 0800 722 6001, se você precisar\nde mais orientações.\nIII) DIZERES LEGAIS\nMS: 1.5167.0019\nFarmacêutico Responsável: Paulo Fernando Bertachini – CRF - GO: 3506\nFabricado por:\nAurobindo Pharma Limited\nBachupally, Telangana– Índia\nImportado por:\nAurobindo Pharma Indústria Farmacêutica Ltda\nVia Principal 06E, Qd. 09, Md. 12- 15, DAIA\nAnápolis – Goiás\nCNPJ: 04.301.884/001-75\nVENDA SOB PRESCRIÇÃO MÉDICA.\nSÓ PODE SER VENDIDO COM RETENÇÃO DA RECEITA.\nEsta bula foi atualizada conforme Bula Padrão aprovada pela Anvisa em 15/12/2023.\n\nHistórico de alteração para a bula\nDados da Submissão eletrônica Dados da petição/notificação que altera a bula Dados das alterações de bulas\nData do\nexpediente\nN°\nexpediente\nAssunto Data do\nexpediente\nN° Do\nexpediente\nAssunto Data de\naprovação\nItens de Bula Versões\n(VP/VPS)\nApresentações\nrelacionadas\n20/12/2013 1073057135\n(10459) –\nGENÉRICO\n– Inclusão\nInicial de\nTexto de\nBula\n20/12/2013 1073057135\n(10459) –\nGENÉRICO\n– Inclusão\nInicial de\nTexto de\nBula\n20/12/2013\nAtualização de texto de bula\nconforme bula padrão publicada\nno bulário.\nSubmissão eletrônica para\ndisponibilização do texto de\nbula no Bulário eletrônico da\nANVISA\nVP/VPS \n500mg (21 e\n350 cápsulas)\n04/03/2015 0190646151\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n04/03/2015 0190646151\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n04/03/2015\nIdentificação do medicamento\nPosologia e modo de usar\nComo devo usar este\nmedicamento?\nVP/VPS \n500mg (15, 21\ne 350 cápsulas)\n28/11/2016 2531999160\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n28/11/2016 2531999160\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n28/11/2016\nVPS:\n7. CUIDADOS DE\nARMAZENAMENTO DO\nMEDICAMENTO\n8. POSOLOGIA E MODO\nDE USAR\nVP:\n4. O QUE DEVO SABER\nANTES DE USAR ESTE\nMEDICAMENTO?\n5. ONDE, COMO E POR\nQUANTO TEMPO POSSO\nGUARDAR ESTE\nMEDICAMENTO?\n6. COMO DEVO USAR\nESTE MEDICAMENTO\nVP/VPS \n500mg (15, 21\ne 350 cápsulas)\n\n7\n14/03/2017 0405062172\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n14/03/2017 0405062172\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n14/03/2017\nVPS:\nIDENTIFICAÇÃO DO\nMEDICAMENTO –\nCOMPOSIÇÃO\nVP:\nIDENTIFICAÇÃO DO\nMEDICAMENTO –\nCOMPOSIÇÃO\nVP/VPS \n500mg (15, 21\ne 350 cápsulas)\n13/11/2017 2195507177\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n13/11/2017 2195507177\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n13/11/2017\nVP:\n8. QUAIS OS MALES QUE\nESTE MEDICAMENTO PODE\nME CAUSAR?\nVPS:\n5. ADVERTÊNCIAS E\nPRECAUÇÕES\n9. REAÇÕES ADVERSAS\nVP/VPS \n500mg (15, 21\ne 350 cápsulas)\n30/08/2018 0851851183\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n30/08/2018 0851851183\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n30/08/2018\nVP:\n6. COMO DEVO USAR\nESTE MEDICAMENTO\nVPS:\n1.INDICAÇÕES\n3. CARACTERÍSTICAS\nFARMACOLÓGICAS\n8. POSOLOGIA\nVP/VPS \n500mg (15, 21\ne 350 cápsulas)\n26/06/2019 0559817196\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n26/06/2019 0559817196\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n26/06/2019 \nIDENTIFICAÇÃO DO\nMEDICAMENTO \nVP/VPS \n500mg (21 e\n350 cápsulas)\n28/08/2019 0092324209\n(10452) –\nGENÉRICO\n– Notificação\n28/08/2019 0092324209\n(10452) –\nGENÉRICO\n–\n28/08/2019\nVP:\nComo devo usar este\nmedicamento?; Quais males este\nVP/VPS \n500mg (21 e\n350 cápsulas)\n\n8\nAlteração de\nTexto de\nBula\nNotificação\nAlteração\nde Texto de\nBula\nmedicamento pode me causar?\nVPS:\nCaracterísticas farmacológicas;\nReações adversas.\n30/09/2020 3352099202\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n30/09/2020 3352099202\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n30/09/2020 \nVP e VPS:\nApresentações \nVP/VPS 500 mg\n24/03/2021 1138804218\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n24/03/2021 1138804218\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n24/03/2021 \nVPS:\n9. Reações adversas \nVPS \n500mg (21 e\n350 cápsulas)\n13/07/2022 4422661221\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n13/07/2022 4422661221\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n13/07/2022\nVPS:\n5. Advertências e precauções;\n7. Cuidados de armazenamento\ndo medicamento;\n9. Reações adversas;\nIII) Dizeres legais\nVP:\n4. O que devo saber antes de\nusar este medicamento?\n5. Onde, como e por quanto\ntempo posso guardar este\nmedicamento?\nIII) Dizeres legais;\nVPS/VPS \n500 mg (21 e\n350 cápsulas)\n\n9\n8. Quais os males que este\nmedicamento pode me causar?\n06/06/2023 0577584235\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n06/06/2023 0577584235\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n06/06/2023\nVPS:\nApresentações;\n3. Características\nfarmacológicas;\n5. Advertências e precauções;\n6. Interações medicamentosas;\n8. Posologia e Modo de Usar;\n9. Reações adversas;\nIII. Dizeres legais\nVP:\nApresentações;\n4. O que devo saber antes de\nusar este medicamento?\n6. Como devo usar este\nmedicamento?\n8. Quais os males que este\nmedicamento pode me causar?\nIII. Dizeres legais\nVP/VPS \n500 mg (21 e\n350 cápsulas)\n11/01/2024 ---\n(10452) –\nGENÉRICO\n– Notificação\nAlteração de\nTexto de\nBula\n11/01/2024 ---\n(10452) –\nGENÉRICO\n–\nNotificação\nAlteração\nde Texto de\nBula\n11/01/2024\nVPS:\n9. Reações adversas\nVP:\n8. Quais os males que este\nmedicamento pode me causar?\nVP/VPS \n500 mg (21 e\n350 cápsulas)\n VPS – Via para o profissional de saúde;\n VP – Via para o paciente",
+          "version": "2.16.105"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-10-31T06:44:33.847Z",
+      "updatedAt": "2024-10-31T06:44:33.847Z",
+      "id": "6vgbvfx4GT5juXVA",
+      "name": "Component"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-18T20:41:05.093Z",
+  "versionId": "ca689515-73d7-4e0f-b9b3-22e5a316a975"
+}
