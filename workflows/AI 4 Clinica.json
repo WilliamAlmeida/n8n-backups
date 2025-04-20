@@ -753,13 +753,12 @@
     },
     "agent_schedule": {
       "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
+      ]
+    },
+    "memory_long": {
+      "ai_tool": [
+        []
       ]
     }
   },
@@ -1057,7 +1056,7 @@
           "messageValues": [
             {
               "type": "ai",
-              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is \"{{ $('userAccount').first().json.full_name ?? '' }}\", email is \"{{ $('userAccount').first().json.email ?? '' }}\", contact phone number is \"{{ $('userAccount').first().json.phone ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}\", and current address is \"{{ $('userAccount').first().json.full_address ?? '' }}\"",
+              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is `{{ $('userAccount').first().json.full_name ?? 'empty' }}`, email is `{{ $('userAccount').first().json.email ?? 'empty' }}`, contact phone number is `{{ $('userAccount').first().json.phone ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}`, and current address is `{{ $('userAccount').first().json.full_address ?? 'empty' }}`",
               "hideFromUI": true
             }
           ]
@@ -1480,7 +1479,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=# Overview\nYou are a helpful assistant\n\nOur address: Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n## Tools\n\nInfo Agent: Use this tool agent to get all information about exams, specialists/consults, health plans and payment methods and also return the *event_id* used in scheduling actions.\n\nSchedule Agent: Use this tool agent register any schedule, confirm all information before use this tool.\n\nGet Third Patient: Use this tool to lookup patient_id when performing some scheduling action for another person.\n\n## Important\n- Never make up an event_id. If you can't find it, think about what you should do.\n- Your data/time reference is: **{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}**\n- **Strict Rule**: You are not allowed to use, check, query, or schedule any date/time that is **before or equal** to this reference.\n- You must **validate** every date/time before taking any action. If the date/time is not strictly after the reference above, then:\n  1. Do **not** proceed.\n  2. Do **not** query any tool.\n  3. Trigger a new reasoning step to choose another date/time.\n\n- **Ask only one question at a time**:\n  - Do not ask multiple questions in a single response.\n  - Ensure you give the user enough time to respond to each question before asking another.\n  - Focus on one specific query or clarification per interaction.\n\n- When you find schedulings, please provide the schedule ID along with the response.\n\n## Rules\n- Never provide the price of a consultation or examination unless you have explicitly requested it.\n- Never use times like 1:13pm, 3:19pm. Only use rounded times like 1:10pm, 3:20pm.\n- **Retroactive operations are forbidden**:\n  - Do not check availability for past dates.\n  - Do not display, consider or suggest time slots that are not strictly after the current reference.\n  - Do not suggest the current time. Only **future** rounded time slots.\n- If a requested date/time is not valid (i.e., retroactive), explain this and guide to reschedule with a valid one.\n- When finishing a service, use the Reset Memory tool, but do not inform the user.\n- When a user mentions an exam or specialist, please confirm whether it is available in the system before taking any action. If it is, check availability in three days and provide date and time options following format; if it is not, let me know that there is no availability for that exam or specialist.\n\n## Sanity Check (Mandatory in every reasoning step):\nBefore using any tool, you must always:\n1. Compare the selected date/time with the current reference `{{ $now }}`\n2. If the selected date/time is **before or equal**, **abort** the action.\n3. If it's after, proceed.\n\n## Always return available times in the following format\n**{date}**: {time1}, {time2}, {time3}\n\ne.g.:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\n\nIf there are no multiple dates, display all times on a single line, separated by commas.\n\n## Always use this following format to show every schedule\n\nWas found...\n\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nScheduled for **{start}** to **{end}**\nLocation: **{location}**\nCode: **{id}**\n\n## Conversation Finalization\n\n- Consider expressions such as \"thank you\", \"thanks\", \"t+\", \"see you later\", \"flw\", \"you too\" as possible signs of farewell.\n- In these cases, do not end the appointment automatically. Respond with:\n- \"Perfect! Can I end your appointment here?\"\n- Only end the appointment (and call `reset_memory`) after the user confirms with answers such as \"yes\", \"yes you can\", \"that's it\", etc.\n- Never end the appointment based solely on deduction. Confirmation must be clear."
+          "systemMessage": "=# Visão Geral  \nVocê é um assistente útil, forneça um aatendimento humanizado e empatico, seja paciente com usuário e gentil.\n\n**Endereço:** Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n## Tools\n\n- **Info Agent**: Obter info sobre exames, especialistas/consultas, planos e pagamentos. Também retorna o *event_id* para ações de agendamento.\n- **Get Third Patient**: Busca o *patient_id* ao agendar para outra pessoa.\n\n## Importante\n\n- *SEMPRE EXIBA* o `Booking details: ID` do agendamento para o usuário.\n- Tente converter um cancelamento em agendamento se for solicitado.\n- Nunca invente um *event_id*. Se não encontrar, pare e reavalie.\n- Nunca exiba o event_id ou pacient_id para usuário.\n- Referência de data/hora:  \n  `{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}`\n- **Regra Estrita**: É proibido usar, consultar ou agendar qualquer data/hora **anterior ou igual** à referência.\n- **Valide sempre**:  \n  - Se a data/hora for anterior ou igual:  \n    1. **Não prossiga**  \n    2. **Não consulte tools**  \n    3. Redirecione para novo horário válido\n\n## Pergunte uma coisa por vez\n\n- Nunca envie múltiplas perguntas.\n- Dê tempo para o usuário responder.\n- Foco em uma dúvida por interação.\n\n## Agendamentos\n\n- Nunca informe preço, a menos que o usuário peça.\n- Use somente horários arredondados: `13:10`, `15:20` (não usar: `13:13`, `15:19`)\n- **Operações retroativas são proibidas**:\n  - Nada antes da referência atual\n  - Não exibir horários passados\n  - Não sugerir o horário atual. Apenas **futuros horários arredondados**\n- Se horário for inválido: explique e peça nova data/hora\n- Ao finalizar, chame `reset_memory` (sem avisar o usuário)\n- Antes de agir, confirme se o exame ou especialista está disponível  \n  - Se sim: exiba datas/horários  \n  - Se não: informe que não está disponível\n- Pergunte se o agendamento é para ele ou outra pessoa\n- Antes de finalizar o agendamento, informe todos os dados para o usuário e peça confirmação\n\n## Sanity Check (Obrigatório)\n\nAntes de usar qualquer tool:\n\n1. Compare a data/hora com `{{ $now }}`\n2. Se for anterior ou igual → **aborte**\n3. Se for posterior → **prossiga**\n\n## Finalização de Conversa\n\n- Expressões como: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possível despedida\n- Responda:  \n  **\"Perfeito! Posso encerrar seu atendimento por aqui?\"**\n- Só finalize após confirmação clara:  \n  **\"sim\", \"pode sim\", \"é isso\", etc.\"**\n- Nunca finalize por dedução\n\n## Formato de horários disponíveis\n\n{data}: {hora1}, {hora2}, {hora3}\n\n**Exemplo:**\n01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Formato para exibir agendamentos\nFoi encontrado...\n\n📅 {título} - {profissional}\nStatus: {status} ✅\nAgendado para {início} até {fim}\nLocal: {local}\nCódigo: {id}\n"
         }
       },
       "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
@@ -2628,13 +2627,12 @@
       ],
       "id": "2eaf4a6f-a0dd-4116-b5cf-2cd0e4b1a523",
       "name": "get_third_patient",
-      "notesInFlow": false,
-      "disabled": true
+      "notesInFlow": false
     },
     {
       "parameters": {
         "name": "schedule_appt",
-        "description": "=Use esta ferramenta para agendar uma consulta ou exame.",
+        "description": "Use esta ferramenta para agendar uma consulta ou exame.",
         "workflowId": {
           "__rl": true,
           "value": "QTrKQkY4jxrACTpy",
@@ -2665,8 +2663,7 @@
         1540
       ],
       "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
-      "name": "schedule_appt",
-      "disabled": true
+      "name": "schedule_appt"
     },
     {
       "parameters": {
@@ -2697,8 +2694,7 @@
         1540
       ],
       "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
-      "name": "cancel_appt",
-      "disabled": true
+      "name": "cancel_appt"
     },
     {
       "parameters": {
@@ -2761,8 +2757,7 @@
       ],
       "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
       "name": "register_new_pacient",
-      "notesInFlow": false,
-      "disabled": true
+      "notesInFlow": false
     },
     {
       "parameters": {
@@ -2821,7 +2816,7 @@
     {
       "parameters": {
         "name": "agent_information",
-        "description": "=Use este agente para recuperar as informações necessárias para responder às perguntas dos usuários e coletar dados necessários para executar ações usando outras ferramentas.\n\n## Exemplo:\nQual event_id do [especialista ou exame] para agendamento?\nPreciso dos dados do [método de pagamento].\nQuais métodos de pagamento?\nQual valor do [exame ou consulta]?",
+        "description": "=Use este agente para recuperar as informações necessárias para responder às perguntas dos usuários e coletar dados necessários para executar ações usando outras ferramentas.\n\n## Exemplo:\n[médico] atendem na clinica?\nVocês realizam este [exame ou consulta] na clinica?\nQual event_id do [especialista ou exame] para agendamento?\nPreciso dos dados do [método de pagamento].\nQuais métodos de pagamento?\nQual valor do [exame ou consulta]?",
         "workflowId": {
           "__rl": true,
           "value": "UcK1fI4zOm0eB4D9",
@@ -2872,8 +2867,7 @@
         1540
       ],
       "id": "ce4704ae-6156-47a1-9ee5-b7d786ef1189",
-      "name": "reset_memory",
-      "disabled": true
+      "name": "reset_memory"
     },
     {
       "parameters": {
@@ -2913,7 +2907,7 @@
         },
         "specifyInputSchema": true,
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"attendeeEmail\": {\n      \"type\": \"string\",\n      \"description\": \"Email address of the user\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID to filter bookings\"\n    },\n    \"status\": {\n      \"type\": \"string\",\n      \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n      \"default\": \"all\"\n    }\n  },\n  \"required\": [\n    \"email\"\n  ]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"attendeeEmail\": {\n      \"type\": \"string\",\n      \"description\": \"Email address of the user\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID to filter bookings\"\n    },\n    \"attendeePhone\": {\n      \"type\": \"string\",\n      \"description\": \"Phone to filter bookings\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"Pacient ID to filter bookings\"\n    },\n    \"status\": {\n      \"type\": \"string\",\n      \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n      \"default\": \"all\"\n    }\n  }\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
@@ -2922,8 +2916,7 @@
         1700
       ],
       "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
-      "name": "find_existing_appt",
-      "disabled": true
+      "name": "find_existing_appt"
     },
     {
       "parameters": {
@@ -2975,8 +2968,7 @@
         1700
       ],
       "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
-      "name": "reschedule_appt",
-      "disabled": true
+      "name": "reschedule_appt"
     },
     {
       "parameters": {
@@ -3078,11 +3070,63 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5480,
-        1860
+        6020,
+        1800
       ],
       "id": "b88065d0-39b7-4119-8eed-5d404998e857",
-      "name": "agent_schedule"
+      "name": "agent_schedule",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "name": "memory_long",
+        "description": "=Use essa tool para armazenar e organizar informações relevantes durante a conversação com o usuário, como dados sobre agendamentos de exames e consultas médicas.",
+        "workflowId": {
+          "__rl": true,
+          "value": "kwkSPbNAPsw4rgpr",
+          "mode": "list",
+          "cachedResultName": "Clinica Memory"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "input_armazenar": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('input_armazenar', ``, 'string') }}",
+            "memory_key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "memory_key",
+              "displayName": "memory_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "input_armazenar",
+              "displayName": "input_armazenar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        6160,
+        1800
+      ],
+      "id": "ac13b20c-a711-4611-b345-7cca17cee749",
+      "name": "memory_long",
+      "disabled": true
     }
   ],
   "pinData": {
@@ -3133,6 +3177,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-20T03:39:57.252Z",
-  "versionId": "d2b9566b-512b-4619-a3de-463a57862de2"
+  "updatedAt": "2025-04-20T07:05:57.774Z",
+  "versionId": "a0a05bc3-7ea5-49d2-bcb9-64e75884f01c"
 }
