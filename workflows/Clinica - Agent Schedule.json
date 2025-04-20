@@ -1,0 +1,238 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "info_agent": {
+      "main": [
+        [
+          {
+            "node": "Response Ok",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EW": {
+      "main": [
+        [
+          {
+            "node": "info_agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "schedule_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "info_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-20T02:54:40.453Z",
+  "id": "4n6B2Z26zYbKY7Dx",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Clinica - Agent Schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -60,
+        100
+      ],
+      "id": "57f36f1f-8570-4a57-9199-b29fe2cda436",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "328fb009-d65f-4090-8ace-81964770540f",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        520,
+        -160
+      ],
+      "id": "b6cce176-2eb3-42de-8c68-27cb7c875325",
+      "name": "Response Ok"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "328fb009-d65f-4090-8ace-81964770540f",
+              "name": "response",
+              "value": "=houve um erro ao tentar realizar a solicitação",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        520,
+        20
+      ],
+      "id": "cfefabb8-0216-47d2-a3ca-4150706a0032",
+      "name": "Response Error"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "=# Agente de Informações\nVocê é responsável por responder solicitações sobre exames, especialistas, planos de saúde e métodos de pagamento. Utilize as ferramentas apropriadas para buscar e retornar informações, seguindo sempre o formato de resposta especificado.\n\n## Regras:\n- Nunca realize agendamentos ou alterações em compromissos, só responda com as informações solicitadas.\n- Sempre siga o formato de resposta definido no sistema.\n- Solicite informações adicionais se necessário para buscar dados precisos.\n- Se não tiver acesso a nenhuma Tool que lhe informe o solicitado, informe ao usuário.\n- Seja objetivo.\n- Sempre retorne o *event_id*.\n\n## Exemplo:\nEntrada: Quais métodos de pagamento vocês aceitam?\nAção: Use List Methods Payment e retorne a resposta no formato correto."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        40,
+        -80
+      ],
+      "id": "4fd0e0f0-adab-4745-85cb-660c9b9122c5",
+      "name": "info_agent",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "query"
+            },
+            {
+              "name": "bearer_token"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -140,
+        -80
+      ],
+      "id": "6a84ff75-a4ea-4540-9df7-36155fdc4a7a",
+      "name": "EW"
+    },
+    {
+      "parameters": {
+        "name": "schedule_appt",
+        "description": "=Use esta ferramenta para agendar uma consulta ou exame.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "schedule booking"
+            },
+            {
+              "name": "query.pacient_id_me",
+              "type": "numberValue",
+              "numberValue": "={{ $('userAccount').item.json.id }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if booking is self-user, false to another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"empty if booking is to user, e.g.: 11\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam, e.g: 3\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"from_me\",\n    \"pacient_id\",\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        200,
+        120
+      ],
+      "id": "41e14afb-3506-4324-ad36-ec358455d7fd",
+      "name": "schedule_appt"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-20T02:59:24.498Z",
+  "versionId": "445e5eb6-ce80-4186-8894-e75a90f9b153"
+}
