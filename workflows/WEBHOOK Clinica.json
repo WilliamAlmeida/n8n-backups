@@ -1,17 +1,6 @@
 {
   "active": true,
   "connections": {
-    "AI Clinic Trigger": {
-      "main": [
-        [
-          {
-            "node": "Switch Appointment",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Switch Appointment": {
       "main": [
         [],
@@ -91,6 +80,39 @@
           }
         ]
       ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "End_Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgendaClinicTrigger": {
+      "main": [
+        [
+          {
+            "node": "Switch Appointment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AgentTrigger": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-12-19T14:37:32.328Z",
@@ -119,22 +141,6 @@
         3740,
         700
       ]
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "87ba2dd2-0786-4070-935a-eb325495000a",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        2420,
-        700
-      ],
-      "id": "b787f21c-d3ce-482a-a980-806beb747772",
-      "name": "AI Clinic Trigger",
-      "webhookId": "87ba2dd2-0786-4070-935a-eb325495000a"
     },
     {
       "parameters": {
@@ -255,7 +261,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=# Comportamentos\n- Responda tudo em pt-BR\n\n# Regras\n- O template deve ser informado após a mensagem de aviso\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n# Dados do Paciente\nNome: {{ $('AI Clinic Trigger').item.json.body.data.pacient.full_name }}\n\n# Dados do Agendamento\n- Título: {{ $json.body.data.title }}\n- Descrição: {{ $json.body.data.description }}\n- Período: {{ $json.body.data.start_time.toDateTime().toLocal().format('dd/MM/yyyy') }} das {{ $json.body.data.start_time.toDateTime().toLocal().format('hh:mm') }} - {{ $json.body.data.end_time.toDateTime().toLocal().format('hh:mm') }}\n- Status Atual: {{ $json.body.data.status }} (traduza para pt-br)\n- Código: {{ $json.body.data.id }}\n- Local: Na Clínica\n\n# Objetivo\nVocê deve gerar uma mensagem de notificação de status informado ao usuário o que houve com o agendamento dele."
+        "text": "=# Comportamentos\n- Responda tudo em pt-BR\n\n# Regras\n- O template deve ser informado após a mensagem de aviso\n\n# Output Booking Template\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n# Dados do Paciente\nNome: {{ $('AgendaClinicTrigger').item.json.body.data.pacient.full_name }}\n\n# Dados do Agendamento\n- Título: {{ $json.body.data.title }}\n- Descrição: {{ $json.body.data.description }}\n- Período: {{ $json.body.data.start_time.toDateTime().toLocal().format('dd/MM/yyyy') }} das {{ $json.body.data.start_time.toDateTime().toLocal().format('hh:mm') }} - {{ $json.body.data.end_time.toDateTime().toLocal().format('hh:mm') }}\n- Status Atual: {{ $json.body.data.status }} (traduza para pt-br)\n- Código: {{ $json.body.data.id }}\n- Local: Na Clínica\n\n# Objetivo\nVocê deve gerar uma mensagem de notificação de status informado ao usuário o que houve com o agendamento dele."
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
@@ -389,6 +395,91 @@
       ],
       "id": "27ccfdc7-9fa9-406c-acad-9966dee5dd27",
       "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT move_chat_history_to_end('{{ $json.body.memory_id }}');",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3380,
+        280
+      ],
+      "id": "05404081-ed7b-4d8e-93fa-a3fd62aa89f0",
+      "name": "End_Chat",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3200,
+        280
+      ],
+      "id": "bf43a7d8-ff27-4645-bbdf-7bb04e824bd9",
+      "name": "Wait",
+      "webhookId": "7059c62f-b3ac-45a1-8c6b-438595450ede"
+    },
+    {
+      "parameters": {
+        "content": "## Finaliza o Atendimento\nSalva o Histórico de Mensagens em uma Nova Tabela",
+        "height": 280,
+        "width": 620,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        180
+      ],
+      "id": "6fe26b00-e20f-4338-94de-ed777dd78c81",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "87ba2dd2-0786-4070-935a-eb325495000a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        700
+      ],
+      "id": "b787f21c-d3ce-482a-a980-806beb747772",
+      "name": "AgendaClinicTrigger",
+      "webhookId": "87ba2dd2-0786-4070-935a-eb325495000a"
+    },
+    {
+      "parameters": {
+        "httpMethod": "DELETE",
+        "path": "69047f52-ce83-481c-9f10-af632b978886",
+        "options": {
+          "responseData": "memory reseted with success."
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3000,
+        280
+      ],
+      "id": "bedcbacd-c3d7-4487-bdec-9649efc6b6b5",
+      "name": "AgentTrigger",
+      "webhookId": "69047f52-ce83-481c-9f10-af632b978886"
     }
   ],
   "pinData": {},
@@ -410,7 +501,7 @@
       "name": "Backup"
     }
   ],
-  "triggerCount": 1,
-  "updatedAt": "2025-04-09T15:37:13.688Z",
-  "versionId": "73cd4d2d-92f7-43d7-8b2b-9f95afa71564"
+  "triggerCount": 2,
+  "updatedAt": "2025-04-19T16:26:09.671Z",
+  "versionId": "b1491c14-54c0-4712-84ea-055ea9d2fe6b"
 }
