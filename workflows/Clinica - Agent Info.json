@@ -161,7 +161,7 @@
             {
               "id": "328fb009-d65f-4090-8ace-81964770540f",
               "name": "response",
-              "value": "=houve um erro ao tentar realizar a solicitação",
+              "value": "=houve um erro ao tentar realizar a solicitação, tente só mais uma vez.",
               "type": "string"
             }
           ]
@@ -182,7 +182,7 @@
         "promptType": "define",
         "text": "={{ $json.query }}",
         "options": {
-          "systemMessage": "=# Agente de Informações\nVocê é responsável por responder solicitações sobre exames, especialistas, planos de saúde e métodos de pagamento. Utilize as ferramentas apropriadas para buscar e retornar informações, seguindo sempre o formato de resposta especificado.\n\n## Regras:\n- Nunca realize agendamentos ou alterações em compromissos, só responda com as informações solicitadas.\n- Sempre siga o formato de resposta definido no sistema.\n- Solicite informações adicionais se necessário para buscar dados precisos.\n- Se não tiver acesso a nenhuma Tool que lhe informe o solicitado, informe ao usuário.\n- Seja objetivo.\n- Sempre retorne o *event_id*.\n\n## Exemplo:\nEntrada: Quais métodos de pagamento vocês aceitam?\nAção: Use List Methods Payment e retorne a resposta no formato correto."
+          "systemMessage": "=# Agente de Informações\nVocê é responsável por responder solicitações sobre exames, especialistas, planos de saúde e métodos de pagamento. Utilize as ferramentas apropriadas para buscar e retornar informações, seguindo sempre o formato de resposta especificado.\n\n## Regras:\n- Nunca realize agendamentos ou alterações em compromissos, só responda com as informações solicitadas.\n- Sempre siga o formato de resposta definido no sistema.\n- Solicite informações adicionais se necessário para buscar dados precisos.\n- Se não tiver acesso a nenhuma Tool que lhe informe o solicitado, informe ao usuário.\n- Seja objetivo.\n- Sempre retorne o *event_id*.\n- Se não encontrado o Exame ou Médico,só informe que não foi encontrado e peça mais informações.\n\n## Exemplo:\nEntrada: Quais métodos de pagamento vocês aceitam?\nAção: Use List Methods Payment e retorne a resposta no formato correto."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -502,7 +502,16 @@
       "name": "EW"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "EW": [
+      {
+        "json": {
+          "query": "quais exames são realizados na clinica",
+          "bearer_token": "Bearer 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -522,6 +531,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-19T15:47:59.184Z",
-  "versionId": "aa646b81-cc44-45ab-ba56-c76bdf4503ef"
+  "updatedAt": "2025-04-20T06:59:02.286Z",
+  "versionId": "7de88af6-0b18-48c9-a355-79a847fe6bb8"
 }
