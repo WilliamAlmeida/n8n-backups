@@ -1105,7 +1105,7 @@
             {
               "id": "4db37e4c-1025-406f-9498-363df3cbd585",
               "name": "response",
-              "value": "=slots found: {{ $json.data.toJsonString() }}",
+              "value": "=slots found: {{ \n  Array.isArray($json.data) && $json.data.length > 0 \n    ? (\n        $json.data\n          .filter(item => item.date && Array.isArray(item.times) && item.times.length > 0)\n          .map(item => `${item.date}:${item.times.join(',')}`)\n          .join(',') \n      ) || $json.data.toJsonString()\n    : $json.data.toJsonString()\n}}",
               "type": "string"
             }
           ]
@@ -1120,7 +1120,7 @@
       ],
       "id": "10676d8a-44e3-4db7-afe9-586388a54ba6",
       "name": "Response Slots",
-      "notes": "{{ $json.data.map(item => i = {\n    id: item.id,\n    uid: item.uid,\n    title: item.title,\n    description: item.description,\n    status: item.status,\n    start: item.start,\n    end: item.end,\n    duration: item.duration,\n    eventType: item.eventType,\n    location: item.location == 'integrations:daily' ? 'Cal Vídeo' : item.location,\n}) }}"
+      "notes": "{{ $json.data.toJsonString() }}"
     },
     {
       "parameters": {
@@ -1699,19 +1699,11 @@
       {
         "json": {
           "query": {
-            "from_me": true,
-            "pacient_id": "",
-            "event_id": "1",
-            "start": "2025-04-23T12:00:00",
-            "attendee": {
-              "name": "William Almeida",
-              "email": "williamkillerca@hotmail.com",
-              "cellphone": "12982184879"
-            },
-            "bookingFieldsResponses": {},
-            "pacient_id_me": 9
+            "event_id": 12,
+            "startTime": "2025-04-21T00:00:00",
+            "endTime": "2025-04-24T23:59:59"
           },
-          "action": "schedule booking"
+          "action": "availability"
         }
       }
     ]
@@ -1741,6 +1733,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-18T03:14:23.409Z",
-  "versionId": "747c3534-4595-4820-aab4-d4a7544ae112"
+  "updatedAt": "2025-04-20T03:28:06.007Z",
+  "versionId": "2a9044bc-f64f-4a35-9c64-87ebe41137bf"
 }
