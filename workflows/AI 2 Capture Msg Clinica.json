@@ -1794,7 +1794,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"{{ $('baseInfo').item.json.remoteJid }}\",\n  \"text\": \"{{ $json.msgs[Math.floor(Math.random() * $json.msgs.length)] }}\",\n  \"delay\": 250\n,\n  \"linkPreview\": false\n}",
+        "jsonBody": "={\n  \"number\": \"{{ $('baseInfo').item.json.remoteJid }}\",\n  \"text\": \"{{ $json.msgs.randomItem() }}\",\n  \"delay\": 250\n,\n  \"linkPreview\": false\n}",
         "options": {
           "response": {
             "response": {
@@ -1877,6 +1877,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-07T03:34:25.895Z",
-  "versionId": "df223259-a2ec-4505-aa94-d2032d2604ea"
+  "updatedAt": "2025-04-21T16:39:00.691Z",
+  "versionId": "bd635649-a8d9-4d78-9370-8bf6ab05fbff"
 }
