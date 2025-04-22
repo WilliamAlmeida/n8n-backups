@@ -390,7 +390,7 @@
       "typeVersion": 3.4,
       "position": [
         860,
-        20
+        60
       ],
       "id": "590bc879-f29c-41a5-b1b3-d1369862aa29",
       "name": "baseInfo"
@@ -515,11 +515,10 @@
       "typeVersion": 1,
       "position": [
         680,
-        20
+        60
       ],
       "id": "108143d7-c8bf-49b2-98e7-e368e136bd11",
-      "name": "EWT",
-      "disabled": true
+      "name": "EWT"
     },
     {
       "parameters": {
@@ -1424,8 +1423,6 @@
     {
       "parameters": {
         "url": "={{ $('baseInfo').item.json.url_api }}/slots/available",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -1447,6 +1444,15 @@
             }
           ]
         },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('EWT').item.json.bearer_token }}"
+            }
+          ]
+        },
         "options": {
           "response": {
             "response": {
@@ -1463,17 +1469,7 @@
         -480
       ],
       "id": "5c1a5ccd-1080-4ca1-83cc-335a0cb0fbe5",
-      "name": "Cal Availability",
-      "credentials": {
-        "calApi": {
-          "id": "xICGic9UQ3lxjrpb",
-          "name": "william"
-        },
-        "httpHeaderAuth": {
-          "id": "nmUmytqX7rLnklTQ",
-          "name": "AI Clinic Token"
-        }
-      }
+      "name": "Cal Availability"
     },
     {
       "parameters": {
@@ -1704,6 +1700,7 @@
             "startTime": "2025-04-21T00:00:00",
             "endTime": "2025-04-24T23:59:59"
           },
+          "bearer_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
           "action": "availability"
         }
       }
@@ -1734,6 +1731,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-20T04:23:01.528Z",
-  "versionId": "b6feac91-9b00-42a4-b3ba-7e0955879db8"
+  "updatedAt": "2025-04-21T16:34:37.537Z",
+  "versionId": "f62f2cfc-c039-4cdf-8b14-cef933b89891"
 }
