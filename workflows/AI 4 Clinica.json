@@ -787,8 +787,7 @@
       "position": [
         6960,
         1320
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -2876,7 +2875,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1,
       "position": [
-        5040,
+        5200,
         2020
       ],
       "id": "a9496300-3cfb-41ee-aa95-5c7bda190484",
@@ -3177,6 +3176,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-20T07:05:57.774Z",
-  "versionId": "a0a05bc3-7ea5-49d2-bcb9-64e75884f01c"
+  "updatedAt": "2025-04-21T16:27:41.482Z",
+  "versionId": "b05d06fa-4ccb-4e7a-b81e-7a101698b7f6"
 }
