@@ -645,8 +645,9 @@
         "description": "Call this tool to get the appointment availability using event id.",
         "workflowId": {
           "__rl": true,
-          "mode": "id",
-          "value": "5LfFRdaepFJdM4yE"
+          "mode": "list",
+          "value": "5LfFRdaepFJdM4yE",
+          "cachedResultName": "COMP Cal.com"
         },
         "fields": {
           "values": [
@@ -697,8 +698,9 @@
         "description": "=Call this tool to get an existing booking.\n\n## To detail an existing booking\n* Ask the user for their booking_id of the existing booking\n* Use the user's booking_id to search for the existing booking.\n* If the user's booking_id do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.",
         "workflowId": {
           "__rl": true,
+          "mode": "list",
           "value": "5LfFRdaepFJdM4yE",
-          "mode": "id"
+          "cachedResultName": "COMP Cal.com"
         },
         "fields": {
           "values": [
@@ -726,8 +728,9 @@
         "description": "=Call this tool to search for an existing booking with the user's email address using event id.\n\n## To find an existing appointment\n* Ask the user for their email address and date of the existing booking\n* Use the user's email and date to search for the existing booking.\n* If the user's email and date do not match the results or no results are returned, then the existing booking is not found.\n* If the existing booking is not found, notify the user and suggest a new booking should be made.\n\n# Status options upcoming, recurring, past, cancelled, unconfirmed. If no \"status\" is given, pass as \"all\"",
         "workflowId": {
           "__rl": true,
+          "mode": "list",
           "value": "5LfFRdaepFJdM4yE",
-          "mode": "id"
+          "cachedResultName": "COMP Cal.com"
         },
         "fields": {
           "values": [
@@ -755,8 +758,9 @@
         "description": "=Call this tool to cancel a user's existing booking using a booking uid.\n\n# To cancel an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking UID.\n* Display this booking UID to the user.\n* Use this booking UID to cancel an existing booking.\n* If an existing booking UID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to cancel an booking, ask for a reason for the cancellation and suggest rescheduling as an alternative. Confirm with user before cancelling an booking.",
         "workflowId": {
           "__rl": true,
+          "mode": "list",
           "value": "5LfFRdaepFJdM4yE",
-          "mode": "id"
+          "cachedResultName": "COMP Cal.com"
         },
         "fields": {
           "values": [
@@ -784,8 +788,9 @@
         "description": "=Call this tool to schedule an appointment using event id.\n\n## To book an booking\n* Before booking an booking, ask if the user has an existing booking.\n* Ensure you have the user's email address, full name, cellphone and proposed date, preferred start time before booking an booking.\n* Always check the calendar availability of the user's proposed date and time. If there is no availability, suggest the next available booking slot.\n* If the booking booking is successful, notify the user that an email confirmation will be sent to their provided email address.\n* If the booking booking is unsuccessful, notify the user that you are unable to complete their request at the moment and to try again later.",
         "workflowId": {
           "__rl": true,
+          "mode": "list",
           "value": "5LfFRdaepFJdM4yE",
-          "mode": "id"
+          "cachedResultName": "COMP Cal.com"
         },
         "fields": {
           "values": [
@@ -813,8 +818,9 @@
         "description": "=Call this tool to reschedule a user's appointment using a booking id and event id.\n\n# To reschedule an existing booking\n* First find the existing booking so that you may obtain the existing booking's booking ID.\n* Display this booking ID to the user.\n* Use this booking ID to reschedule an existing appointment.\n* If an existing booking ID is not found or given, then notify the user that it is not possible to complete their request at this time and they should contact via email.\n* when user wants to reschedule an booking, ask for a reason for the rescheduling. Confirm with user before rescheduling an booking.",
         "workflowId": {
           "__rl": true,
+          "mode": "list",
           "value": "5LfFRdaepFJdM4yE",
-          "mode": "id"
+          "cachedResultName": "COMP Cal.com"
         },
         "fields": {
           "values": [
@@ -1266,6 +1272,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-03T19:27:41.373Z",
-  "versionId": "5a60ff8f-3bf7-46cf-a5f9-60323d380220"
+  "updatedAt": "2025-04-22T21:25:42.424Z",
+  "versionId": "335fd3da-1a78-45a6-9700-f83bfe51df53"
 }
