@@ -1,0 +1,525 @@
+{
+  "active": false,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "reset tester",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Steps",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "agent_clinic": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset agent clinic": {
+      "main": [
+        []
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset tester": {
+      "main": [
+        [
+          {
+            "node": "reset agent clinic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Steps": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-13T03:50:27.098Z",
+  "id": "mAYU3A811XkUELpz",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Tester Agents",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "0a56abef-bdce-497f-aabd-fb751cb31837",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4640,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
+        "options": {}
+      },
+      "id": "5cbef693-4dce-4cce-9772-5c1209e0b5ff",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4420,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_teste",
+        "sessionTTL": 30,
+        "contextWindowLength": 30
+      },
+      "id": "104f3516-5673-4e15-9cb8-3ef7f8b75284",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        5060,
+        1520
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "41c8e492-594c-4503-8ef2-ab7a30a34389",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        4260,
+        1220
+      ],
+      "webhookId": "d826c56e-3911-426c-a388-a06176dcadfb"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://agendaclinic.com/api/v1",
+              "type": "string"
+            },
+            {
+              "id": "dcb3ef37-7992-4f5c-8e60-31d9184dce47",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "724ebf57-dd1b-4c81-ac31-65fa3a375cb6",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4800,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "ef94dbc1-1a09-4924-b65c-5d6f69809adc",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6060,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=Você é um agente de IA usado para Testes de outras IA, seu objetivo será iniciar uma conversa um agente.\n\nVocê deve usar a tool para conversar com o agente até finalizar o objetivo passado pelo usuário.\n\n- Use de tom humanizado, de uma pessoa de 30 anos de idade.\n- Seja objetivo.\n- Fale com o agente sempre em primeira pessoa e de modo formal.\n- Não solicite tudo em uma requisição separe em etapas, conforme for sendo respondido pelo agente.\n- Você está limitado a 10 interações para conseguir realizar o objetivo solicitado.\n- No final gere alguma analise e dados que você acha relevante nesse teste.\n\n###### Reference values:\nFor your reference, use the current date and time (America/São_Paulo): {{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+          "maxIterations": 10,
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "1a9d9d2b-edac-45f0-92ba-66dedca00808",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        5000,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "temperature": 0,
+          "maxRetries": 2,
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4920,
+        1520
+      ],
+      "id": "56ad5040-742e-41b7-8e02-d9a29a7dc1ce",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\n{{ $('AI Agent').item.json.output }}\n\n*Analizador*:\n{{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b65c0e2f-2e27-42ac-aabc-b1c29713b324",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5880,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "use essa tool para falar com o agente da clinica e realizar objetivo solicitado pelo usuário.",
+        "method": "POST",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/a3b015c7-b143-47a9-bdb0-36332e651f9f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"evo_api\": \"https://apiwp.wmst.com.br\",\n  \"instance\": \"ibox_cli_23\",\n  \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n  \"pushName\": \"W.M. Soluções Tecnologicas\",\n  \"fromMe\": false,\n  \"unique_id\": \"ibox_cli_23_5512982184879\",\n  \"evo_api_key\": \"3246B56693A1-4BAD-A92A-183844A4CFBB\",\n  \"conversation\": \"{query}\"\n}\n",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "query",
+              "description": "query to comunicate to agent clinic",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5240,
+        1560
+      ],
+      "id": "b1e028b1-e9dc-4785-b291-092f21ebcf4b",
+      "name": "agent_clinic"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_teste"
+      },
+      "id": "2cff9c46-c565-49ab-8b7c-b91ab6d0a33a",
+      "name": "reset tester",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4800,
+        1140
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+      },
+      "id": "dc717137-ebaa-4f00-8b52-1aea82c9dfbe",
+      "name": "reset agent clinic",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4960,
+        1140
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.intermediateSteps }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Extrai as seguintes informações:\n\n- Total de palavras e caracteres passadas para a toolInput.query do agent\n- Total de steps\n- Total Tokens usados\n- Objetivo alcançado\n- Observações"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        5540,
+        1360
+      ],
+      "id": "a1fa1fc3-077a-4469-985d-6be616326fe4",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "llama3-70b-8192",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        5500,
+        1540
+      ],
+      "id": "3af159cf-b325-443d-a3ed-e9ceb410e38b",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Qc9IFal2C1clPmRn",
+          "name": "william"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1f65148-5aa8-4ba7-a671-d7dc35b6d1e3",
+              "name": "intermediateSteps",
+              "value": "={{ $json.intermediateSteps }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5340,
+        1360
+      ],
+      "id": "d07ab8b0-18ee-4b96-9667-cef99090548e",
+      "name": "Steps"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T21:20:21.624Z",
+  "versionId": "5f5c1827-3437-44d4-a040-4be56e8c214c"
+}
