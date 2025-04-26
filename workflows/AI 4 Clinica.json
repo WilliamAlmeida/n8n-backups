@@ -683,11 +683,6 @@
         ]
       ]
     },
-    "think": {
-      "ai_tool": [
-        []
-      ]
-    },
     "find_existing_appt": {
       "ai_tool": [
         [
@@ -750,16 +745,6 @@
       "ai_languageModel": [
         []
       ]
-    },
-    "agent_schedule": {
-      "ai_tool": [
-        []
-      ]
-    },
-    "memory_long": {
-      "ai_tool": [
-        []
-      ]
     }
   },
   "createdAt": "2024-11-15T18:19:39.691Z",
@@ -787,7 +772,8 @@
       "position": [
         6960,
         1320
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1219,8 +1205,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5780,
-        2740
+        5360,
+        2440
       ],
       "disabled": true
     },
@@ -1739,8 +1725,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5000,
-        2740
+        4580,
+        2440
       ],
       "disabled": true
     },
@@ -1781,8 +1767,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5140,
-        2740
+        4720,
+        2440
       ],
       "disabled": true,
       "notes": "Use this tool to obtain and verify basic information about exams as name and exam id provided by the clinic to use in another actions and tools.\n\n---\n\nCall this tool once to return all exams provided and get/verify basic information about exams.\n\n## Workflow:\n1. Use the tool.\n2. Returns list with name, exam ID to use in other actions and tools."
@@ -1819,8 +1805,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5620,
-        2740
+        5200,
+        2440
       ],
       "disabled": true
     },
@@ -1856,8 +1842,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5300,
-        2740
+        4880,
+        2440
       ],
       "disabled": true,
       "notes": "Call this tool to get all (calendar id, price, category, duration, jejum, collected_material, lab_partner, age_limit, notes, discount_convenio) details about a specific exam using the exam ID.\n\n## Required inputs:\n- Exam ID (number, required).\n\n## Workflow:\n1. Use the exam ID to retrieve the exam details.\n2. Return all information for the specified exam."
@@ -1894,8 +1880,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 1.2,
       "position": [
-        5460,
-        2740
+        5040,
+        2440
       ],
       "disabled": true
     },
@@ -2512,6 +2498,10 @@
             {
               "name": "action",
               "stringValue": "availability"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
             }
           ]
         },
@@ -2648,6 +2638,10 @@
               "name": "query.pacient_id_me",
               "type": "numberValue",
               "numberValue": "={{ $('userAccount').item.json.id }}"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
             }
           ]
         },
@@ -2679,6 +2673,10 @@
             {
               "name": "action",
               "stringValue": "cancel booking"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
             }
           ]
         },
@@ -2870,20 +2868,6 @@
     },
     {
       "parameters": {
-        "description": "Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed. For example, if you found error about event_id or pacient_id to book."
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1,
-      "position": [
-        5200,
-        2020
-      ],
-      "id": "a9496300-3cfb-41ee-aa95-5c7bda190484",
-      "name": "think",
-      "disabled": true
-    },
-    {
-      "parameters": {
         "name": "find_existing_appt_tool",
         "description": "=Use esta ferramenta para encontrar reservas existentes usando o endereço de e-mail do usuário.\n\n## Fluxo de trabalho:\n1. Pesquise reservas que correspondam ao e-mail fornecido.\n2. Informe reservas correspondentes ou notifique se não forem encontradas.",
         "workflowId": {
@@ -2901,6 +2885,10 @@
             {
               "name": "remoteJid",
               "stringValue": "={{ $('userAccount').item.json.phone }}"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
             }
           ]
         },
@@ -2953,6 +2941,10 @@
             {
               "name": "action",
               "stringValue": "reschedule booking"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
             }
           ]
         },
@@ -3034,98 +3026,6 @@
           "name": "Supabase"
         }
       }
-    },
-    {
-      "parameters": {
-        "name": "schedule_appt",
-        "description": "=Use este agente para registrar um agendamento de uma consulta ou exame.\n\n## Exemplo:\nQuero realizar um agendamento [consulta ou exame] para o usuário [nome]...",
-        "workflowId": {
-          "__rl": true,
-          "value": "QTrKQkY4jxrACTpy",
-          "mode": "list",
-          "cachedResultName": "COMP AIClinic"
-        },
-        "fields": {
-          "values": [
-            {
-              "name": "bearer_token",
-              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
-            },
-            {
-              "name": "query.pacient_id_me",
-              "type": "numberValue",
-              "numberValue": "={{ $('userAccount').item.json.id }}"
-            },
-            {
-              "name": "action",
-              "stringValue": "schedule booking"
-            }
-          ]
-        },
-        "specifyInputSchema": true,
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if booking is self-user, false to another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"empty if booking is to user or number (pacient_id) from another person\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam, e.g: 3\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"from_me\",\n    \"pacient_id\",\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        6020,
-        1800
-      ],
-      "id": "b88065d0-39b7-4119-8eed-5d404998e857",
-      "name": "agent_schedule",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "name": "memory_long",
-        "description": "=Use essa tool para armazenar e organizar informações relevantes durante a conversação com o usuário, como dados sobre agendamentos de exames e consultas médicas.",
-        "workflowId": {
-          "__rl": true,
-          "value": "kwkSPbNAPsw4rgpr",
-          "mode": "list",
-          "cachedResultName": "Clinica Memory"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "input_armazenar": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('input_armazenar', ``, 'string') }}",
-            "memory_key": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "memory_key",
-              "displayName": "memory_key",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
-            },
-            {
-              "id": "input_armazenar",
-              "displayName": "input_armazenar",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.1,
-      "position": [
-        6160,
-        1800
-      ],
-      "id": "ac13b20c-a711-4611-b345-7cca17cee749",
-      "name": "memory_long",
-      "disabled": true
     }
   ],
   "pinData": {
@@ -3176,6 +3076,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-21T16:27:41.482Z",
-  "versionId": "b05d06fa-4ccb-4e7a-b81e-7a101698b7f6"
+  "updatedAt": "2025-04-26T11:30:31.930Z",
+  "versionId": "8bd58b1f-0fcd-4a22-89c3-fcbda309af20"
 }
