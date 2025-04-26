@@ -1,0 +1,544 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "MsgB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Chat Memory Manager",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "set cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "MsgA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MsgB": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MsgA": {
+      "main": [
+        [
+          {
+            "node": "get cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cached?": {
+      "main": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get cache": {
+      "main": [
+        [
+          {
+            "node": "cached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "output 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set cache": {
+      "main": [
+        [
+          {
+            "node": "output 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "planos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-11T23:58:45.632Z",
+  "id": "uPdZ5pJ3wh3qwoEh",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MCP Client",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -800,
+        -100
+      ],
+      "id": "2d66df70-b9c6-428c-968f-10b5f404dc8c",
+      "name": "When chat message received",
+      "webhookId": "63824fa0-f923-44f2-b553-02156acdc2ea"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('MsgA').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a helpful assistant\n\nUse the Think tool to think.\n\nbearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\ninstance: ibox_cli_23\n\n*Quando for necessário executar mais de uma tool, chame a ferramenta de forma sincrona, espera seu retorno e só assim chame a próxima ferramenta até finalizar seu processo.*",
+          "returnIntermediateSteps": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        220,
+        0
+      ],
+      "id": "549a5cf2-5a9c-413a-9053-2d1cc0c6ba36",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/server-1/sse",
+        "include": "selected",
+        "includeTools": [
+          "list_payment_methods_tool",
+          "list_health_plans_tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        480,
+        180
+      ],
+      "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
+      "name": "MCP Client"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        100,
+        180
+      ],
+      "id": "1419ea6d-d6b7-4c03-b756-3ae92e9581e7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('MsgA').item.json.sessionId }}",
+        "sessionTTL": "={{ $('MsgA').item.json.ttl }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        240,
+        180
+      ],
+      "id": "1d3c71fc-c2fc-4253-b297-75a4067f214b",
+      "name": "Memory",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        360,
+        180
+      ],
+      "id": "5c2cf80b-9236-4b78-9ef9-f7c57f3b561b",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "value": "={{ $json.chatInput.toLowerCase()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^\\w\\s]/g, '')\n    .replace(/_/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim() }}",
+        "dataPropertyName": "hash"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -100
+      ],
+      "id": "2f847f7f-a715-4e58-b541-abad889d3ace",
+      "name": "Crypto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "41b114b6-5730-43d9-8257-9c8d02c66b74",
+              "name": "sessionId",
+              "value": "={{ $workflow.id }}",
+              "type": "string"
+            },
+            {
+              "id": "1e6ba3f1-e9db-47cc-8128-150a78803664",
+              "name": "ttl",
+              "value": "={{ 1*24*60*60 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -640,
+        -100
+      ],
+      "id": "f888d237-7601-4c9a-b108-e0b64644e59b",
+      "name": "MsgB"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "11abf18a-aef7-4382-9a8e-a754d58ca40e",
+              "name": "expiresAt",
+              "value": "={{ $now.plus($json.ttl, 'seconds') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        -100
+      ],
+      "id": "2133a08b-8d38-4822-903d-e59d7066111a",
+      "name": "MsgA"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "10b8986a-ec88-4927-b948-db3617eabc3f",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        -100
+      ],
+      "id": "061dd716-7f28-4fe4-9018-3270e7fb8edb",
+      "name": "cached?"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=chat-cache-{{ $('MsgA').item.json.hash }}",
+        "value": "={{ $json.output }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": "={{ $('MsgA').item.json.ttl }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        540,
+        0
+      ],
+      "id": "6b4ccd9e-0370-4cc0-b5c9-6d5bf5ab8539",
+      "name": "set cache",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "output",
+        "key": "=chat-cache-{{ $json.hash }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -100
+      ],
+      "id": "e39d821f-dc19-4981-959c-67a1c63e733f",
+      "name": "get cache",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "user",
+              "message": "={{ $('MsgA').item.json.chatInput }}",
+              "hideFromUI": true
+            },
+            {
+              "type": "ai",
+              "message": "={{ $json.output }}",
+              "hideFromUI": true
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -200
+      ],
+      "id": "59b6dcce-f7f1-4c7e-b1cb-84c2ecc27d51",
+      "name": "Chat Memory Manager"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "978480dd-1fbf-429f-880a-bd487fb78ce4",
+              "name": "output",
+              "value": "={{ $('AI Agent').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        700,
+        0
+      ],
+      "id": "8716b296-a7cf-4de9-a806-99f8bcb79dc1",
+      "name": "output 2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "978480dd-1fbf-429f-880a-bd487fb78ce4",
+              "name": "output",
+              "value": "={{ $('get cache').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        -200
+      ],
+      "id": "230a0607-d8a5-41b3-8749-1d2d2c10eba6",
+      "name": "output 1"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/server-2/sse",
+        "include": "selected",
+        "includeTools": [
+          "list_health_plans_tool1"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        620,
+        180
+      ],
+      "id": "ef64aee8-0a90-4e87-b8e4-2e934ca04561",
+      "name": "planos",
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-26T03:35:51.945Z",
+  "versionId": "e1c99475-7d14-435d-be5a-5c4aeaf7946a"
+}
