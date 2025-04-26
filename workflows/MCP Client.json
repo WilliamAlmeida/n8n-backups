@@ -12,17 +12,6 @@
         ]
       ]
     },
-    "MCP Client": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
@@ -38,12 +27,12 @@
       "ai_memory": [
         [
           {
-            "node": "AI Agent",
+            "node": "Chat Memory Manager",
             "type": "ai_memory",
             "index": 0
           },
           {
-            "node": "Chat Memory Manager",
+            "node": "AI Agent",
             "type": "ai_memory",
             "index": 0
           }
@@ -101,6 +90,11 @@
             "node": "get cache",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "reset memory",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -156,7 +150,7 @@
         ]
       ]
     },
-    "planos": {
+    "mcp information": {
       "ai_tool": [
         [
           {
@@ -165,6 +159,33 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "mcp pacient": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mcp booking": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        []
       ]
     }
   },
@@ -194,8 +215,7 @@
         "promptType": "define",
         "text": "={{ $('MsgA').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=You are a helpful assistant\n\nUse the Think tool to think.\n\nbearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\ninstance: ibox_cli_23\n\n*Quando for necessário executar mais de uma tool, chame a ferramenta de forma sincrona, espera seu retorno e só assim chame a próxima ferramenta até finalizar seu processo.*",
-          "returnIntermediateSteps": true
+          "systemMessage": "=Você é um assistente que responde perguntas sobre métodos de pagamento e planos de saúde disponíveis.\n\nVocê pode usar as ferramentas disponíveis abaixo para obter essas informações:\n\n- `list_specialists_tool` and `list_exams_tool`: retorna event_id usado nas tools de MCP para agendamento.\n- `get_pacient_tool`: retorna o pacient_id usado nas tools MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas tools MCP para cancelamento.\n- `list_payment_methods_tool`: retorna uma lista dos métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista dos planos de saúde disponíveis.\n\nQuando o usuário solicitar informações que requeiram mais de uma dessas ferramentas, **chame cada uma de forma síncrona**, ou seja, espere o retorno da primeira ferramenta antes de chamar a próxima.\n\nApós obter as respostas, envie uma mensagem clara, organizada e simpática com emojis, apresentando ao usuário todas as informações solicitadas. Não invente dados — use apenas os retornos reais das ferramentas.\n\nSe ocorrer algum erro ao executar alguma ferramenta, envie uma mensagem explicando o erro de forma amigável, com emojis.\n\nFaça somente verificações de intervalo de 3 dias somente, nunca um periodo acima disso.\n\nUse the Think tool to think.\n\nbearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\ninstance: ibox_cli_23\n\nfull_name: William Almeida\nuser_emaill: williamkillerca@hotmail.com\nuser_phone: 5512982184879"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -205,25 +225,9 @@
         0
       ],
       "id": "549a5cf2-5a9c-413a-9053-2d1cc0c6ba36",
-      "name": "AI Agent"
-    },
-    {
-      "parameters": {
-        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/server-1/sse",
-        "include": "selected",
-        "includeTools": [
-          "list_payment_methods_tool",
-          "list_health_plans_tool"
-        ]
-      },
-      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
-      "typeVersion": 1,
-      "position": [
-        480,
-        180
-      ],
-      "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
-      "name": "MCP Client"
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "maxTries": 2
     },
     {
       "parameters": {
@@ -233,12 +237,14 @@
           "mode": "list",
           "cachedResultName": "gpt-4.1-mini"
         },
-        "options": {}
+        "options": {
+          "responseFormat": "text"
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        100,
+        80,
         180
       ],
       "id": "1419ea6d-d6b7-4c03-b756-3ae92e9581e7",
@@ -260,7 +266,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        240,
+        220,
         180
       ],
       "id": "1d3c71fc-c2fc-4253-b297-75a4067f214b",
@@ -310,7 +316,7 @@
             {
               "id": "1e6ba3f1-e9db-47cc-8128-150a78803664",
               "name": "ttl",
-              "value": "={{ 1*24*60*60 }}",
+              "value": "={{ 60 }}",
               "type": "number"
             }
           ]
@@ -430,8 +436,7 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -508,21 +513,109 @@
     },
     {
       "parameters": {
-        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/server-2/sse",
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
         "include": "selected",
         "includeTools": [
-          "list_health_plans_tool1"
+          "Health_Plan_Tool",
+          "Methods_Payment_Tool",
+          "Exams_Tool",
+          "Exam_Details_Tool",
+          "Specialists_Tool"
         ]
       },
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
       "typeVersion": 1,
       "position": [
-        620,
+        500,
+        180
+      ],
+      "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
+      "name": "mcp information"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-3/sse",
+        "include": "selected",
+        "includeTools": [
+          "Register_New_Pacient",
+          "Get_Patient_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        780,
+        180
+      ],
+      "id": "9ddebfae-deb4-435e-b3fa-bd546e04c365",
+      "name": "mcp pacient"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-2/sse",
+        "authentication": "headerAuth",
+        "include": "selected",
+        "includeTools": [
+          "get_schedule_availability",
+          "find_existing_appt_tool",
+          "schedule_appt",
+          "cancel_appt",
+          "reschedule_appt_tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        640,
         180
       ],
       "id": "ef64aee8-0a90-4e87-b8e4-2e934ca04561",
-      "name": "planos",
-      "disabled": true
+      "name": "mcp booking",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('MsgA').item.json.sessionId }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -300
+      ],
+      "id": "2e8b69a6-d090-4489-8250-4625f8cc3ecf",
+      "name": "reset memory",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        -80,
+        180
+      ],
+      "id": "5f7357f7-4e4f-4c32-977b-731b77f57a78",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -539,6 +632,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-26T03:35:51.945Z",
-  "versionId": "e1c99475-7d14-435d-be5a-5c4aeaf7946a"
+  "updatedAt": "2025-04-26T05:47:43.632Z",
+  "versionId": "84b1ef51-37b1-43e1-88d7-73e152b7028d"
 }
