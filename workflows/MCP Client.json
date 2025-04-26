@@ -52,13 +52,7 @@
     },
     "Think": {
       "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Crypto": {
@@ -172,6 +166,11 @@
         ]
       ]
     },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
     "mcp booking": {
       "ai_tool": [
         [
@@ -183,9 +182,15 @@
         ]
       ]
     },
-    "Postgres Chat Memory": {
-      "ai_memory": [
-        []
+    "mcp consults": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -215,7 +220,7 @@
         "promptType": "define",
         "text": "={{ $('MsgA').item.json.chatInput }}",
         "options": {
-          "systemMessage": "=Você é um assistente que responde perguntas sobre métodos de pagamento e planos de saúde disponíveis.\n\nVocê pode usar as ferramentas disponíveis abaixo para obter essas informações:\n\n- `list_specialists_tool` and `list_exams_tool`: retorna event_id usado nas tools de MCP para agendamento.\n- `get_pacient_tool`: retorna o pacient_id usado nas tools MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas tools MCP para cancelamento.\n- `list_payment_methods_tool`: retorna uma lista dos métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista dos planos de saúde disponíveis.\n\nQuando o usuário solicitar informações que requeiram mais de uma dessas ferramentas, **chame cada uma de forma síncrona**, ou seja, espere o retorno da primeira ferramenta antes de chamar a próxima.\n\nApós obter as respostas, envie uma mensagem clara, organizada e simpática com emojis, apresentando ao usuário todas as informações solicitadas. Não invente dados — use apenas os retornos reais das ferramentas.\n\nSe ocorrer algum erro ao executar alguma ferramenta, envie uma mensagem explicando o erro de forma amigável, com emojis.\n\nFaça somente verificações de intervalo de 3 dias somente, nunca um periodo acima disso.\n\nUse the Think tool to think.\n\nbearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\ninstance: ibox_cli_23\n\nfull_name: William Almeida\nuser_emaill: williamkillerca@hotmail.com\nuser_phone: 5512982184879"
+          "systemMessage": "=# Overview  \nYou are William, the assistant at Med Center Clinic, who answers questions and manages appointment scheduling for **medical appointments** only, using the tools available. Our don't do exams.\n\nBe objective, but with humanized answers, you can use some emojis.\n\n**Clinic Address:** Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n## Extras Config:\n- bearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\n- instance: ibox_cli_23\n- full_name: William Almeida\n- user_emaill: williamkillerca@hotmail.com\n- user_phone: 5512982184879\n\n## Tools\n- `get_pacient_tool`: returns the pacient_id used in MCP tools for scheduling.\n- `find_existing_appt`: returns the booking_id used in MCP tools for cancellations.\n- `list_payment_methods_tool`: returns a list of accepted payment methods.\n- `list_health_plans_tool`: returns a list of available health plans.\n\nWhen the user requests information requiring more than one of these tools, **call each one synchronously**, meaning wait for the return of the first tool before calling the next.\nAfter obtaining the responses, send a clear, organized, and friendly message with emojis, presenting all requested information to the user. Do not invent data — only use real responses from the tools.\nIf any error occurs when executing a tool, send a friendly message explaining the error with emojis.\nUse the Think tool to think.\n\n## Important\n- *ALWAYS DISPLAY* the `Booking details: ID` of the appointment to the user.\n- Try to convert a cancellation request into a new scheduling if requested.\n- Never invent an *event_id*. If not found, stop and reassess.\n- Never display the event_id or pacient_id to the user.\n- Date/time reference:  \n  `sábado, 26/04/2025 11:51:10`\n- **Strict Rule**: It is forbidden to use, query, or schedule any date/time **earlier than or equal to** the reference.\n- **Always validate**:  \n  - If the date/time is earlier or equal:  \n    1. **Do not proceed**  \n    2. **Do not query tools**  \n    3. Redirect to a valid new time\n\n## Ask One Thing at a Time\n- Never send multiple questions at once.\n- Give the user time to respond.\n- Focus on one doubt per interaction.\n\n## Appointments\n- Never inform prices unless the user asks.\n- Use only rounded times: `13:10`, `15:20` (do not use: `13:13`, `15:19`)\n- **Retroactive operations are forbidden**:\n  - Nothing before the current reference\n  - Do not display past times\n  - Do not suggest the current time, only **future rounded times**\n- If the time is invalid: explain and ask for a new date/time\n- After completing, call `reset_memory` (without notifying the user)\n- Before taking action, confirm specialist availability:  \n  - If available: show dates/times  \n  - If unavailable: inform the user\n- Ask if the appointment is for the user or another person\n- Before finalizing the appointment, inform all details to the user and ask for confirmation\n\n## Sanity Check (Mandatory)\nBefore using any tool:\n\n1. Compare the date/time with `26/04/2025 11:25:10`\n2. If earlier or equal → **abort**\n3. If later → **proceed**\n\n## Conversation Closure\n- Expressions like: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possible farewell\n- Respond:  \n  **\"Perfeito! Posso encerrar o seu atendimento agora?\"**\n- Only finalize after clear confirmation:  \n  **\"sim\", \"você pode\", \"é isso\", etc.\"**\n- Never close by assumption\n\n## Available Times Format\n{date}: {hour1}, {hour2}, {hour3}\ne.g.: 01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Appointment Display Format\n\nThe following was found:\n\n📅 {title} - {professional}\nStatus: {status} ✅\nScheduled from {init} to {end}\nLocation: {local}\nCode: {id}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -227,7 +232,8 @@
       "id": "549a5cf2-5a9c-413a-9053-2d1cc0c6ba36",
       "name": "AI Agent",
       "retryOnFail": true,
-      "maxTries": 2
+      "maxTries": 2,
+      "notes": "Você é um assistente que responde perguntas sobre métodos de pagamento e planos de saúde disponíveis.\n\nVocê pode usar as ferramentas disponíveis abaixo para obter essas informações:\n\n- `list_specialists_tool` and `list_exams_tool`: retorna event_id usado nas tools de MCP para agendamento.\n- `get_pacient_tool`: retorna o pacient_id usado nas tools MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas tools MCP para cancelamento.\n- `list_payment_methods_tool`: retorna uma lista dos métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista dos planos de saúde disponíveis.\n\nQuando o usuário solicitar informações que requeiram mais de uma dessas ferramentas, **chame cada uma de forma síncrona**, ou seja, espere o retorno da primeira ferramenta antes de chamar a próxima.\n\nApós obter as respostas, envie uma mensagem clara, organizada e simpática com emojis, apresentando ao usuário todas as informações solicitadas. Não invente dados — use apenas os retornos reais das ferramentas.\n\nSe ocorrer algum erro ao executar alguma ferramenta, envie uma mensagem explicando o erro de forma amigável, com emojis.\n\nFaça somente verificações de intervalo de 3 dias somente, nunca um periodo acima disso.\n\nUse the Think tool to think.\n\nbearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\ninstance: ibox_cli_23\n\nfull_name: William Almeida\nuser_emaill: williamkillerca@hotmail.com\nuser_phone: 5512982184879"
     },
     {
       "parameters": {
@@ -284,10 +290,11 @@
       "typeVersion": 1,
       "position": [
         360,
-        180
+        260
       ],
       "id": "5c2cf80b-9236-4b78-9ef9-f7c57f3b561b",
-      "name": "Think"
+      "name": "Think",
+      "disabled": true
     },
     {
       "parameters": {
@@ -436,7 +443,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -517,10 +525,7 @@
         "include": "selected",
         "includeTools": [
           "Health_Plan_Tool",
-          "Methods_Payment_Tool",
-          "Exams_Tool",
-          "Exam_Details_Tool",
-          "Specialists_Tool"
+          "Methods_Payment_Tool"
         ]
       },
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
@@ -530,7 +535,8 @@
         180
       ],
       "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
-      "name": "mcp information"
+      "name": "mcp information",
+      "disabled": true
     },
     {
       "parameters": {
@@ -548,35 +554,8 @@
         180
       ],
       "id": "9ddebfae-deb4-435e-b3fa-bd546e04c365",
-      "name": "mcp pacient"
-    },
-    {
-      "parameters": {
-        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-2/sse",
-        "authentication": "headerAuth",
-        "include": "selected",
-        "includeTools": [
-          "get_schedule_availability",
-          "find_existing_appt_tool",
-          "schedule_appt",
-          "cancel_appt",
-          "reschedule_appt_tool"
-        ]
-      },
-      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
-      "typeVersion": 1,
-      "position": [
-        640,
-        180
-      ],
-      "id": "ef64aee8-0a90-4e87-b8e4-2e934ca04561",
-      "name": "mcp booking",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "nmUmytqX7rLnklTQ",
-          "name": "AI Clinic Token"
-        }
-      }
+      "name": "mcp pacient",
+      "disabled": true
     },
     {
       "parameters": {
@@ -616,6 +595,71 @@
           "name": "Supabase"
         }
       }
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-2/sse",
+        "authentication": "headerAuth",
+        "include": "selected",
+        "includeTools": [
+          "get_schedule_availability",
+          "find_existing_appt_tool",
+          "schedule_appt",
+          "cancel_appt",
+          "reschedule_appt_tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        640,
+        180
+      ],
+      "id": "ef64aee8-0a90-4e87-b8e4-2e934ca04561",
+      "name": "mcp booking",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
+        "include": "selected",
+        "includeTools": [
+          "Exams_Tool",
+          "Exam_Details_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        180
+      ],
+      "id": "b148782b-b665-4dd2-bfc3-28144da62f1c",
+      "name": "mcp exams",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
+        "include": "selected",
+        "includeTools": [
+          "Specialists_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        940,
+        180
+      ],
+      "id": "1bab046a-5b48-4ba8-8c26-9b7b966ba28f",
+      "name": "mcp consults",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -632,6 +676,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-26T05:47:43.632Z",
-  "versionId": "84b1ef51-37b1-43e1-88d7-73e152b7028d"
+  "updatedAt": "2025-04-26T15:37:20.820Z",
+  "versionId": "b65d6bb2-6ef3-410f-92b1-b26ae7c859d1"
 }
