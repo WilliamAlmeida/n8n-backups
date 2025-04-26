@@ -871,7 +871,7 @@
             },
             {
               "name": "pacient_id",
-              "value": "={{ $('EWT').item.json.query.from_me ? $('EWT').item.json.query.pacient_id_me : $('EWT').item.json.query.pacient_id }}"
+              "value": "={{ $('EWT').item.json.query.from_me ? ($('EWT').item.json.query.pacient_id_me || $('EWT').item.json.query.pacient_id) : $('EWT').item.json.query.pacient_id }}"
             }
           ]
         },
@@ -1449,7 +1449,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('EWT').item.json.bearer_token }}"
+              "value": "=Bearer {{ $('EWT').item.json.query.bearer_token || $('EWT').item.json.bearer_token }}"
             }
           ]
         },
@@ -1696,12 +1696,19 @@
       {
         "json": {
           "query": {
-            "event_id": 12,
-            "startTime": "2025-04-21T00:00:00",
-            "endTime": "2025-04-24T23:59:59"
+            "bearer_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
+            "from_me": true,
+            "pacient_id": "9",
+            "event_id": "1",
+            "start": "2024-06-18T10:00:00",
+            "attendee": {
+              "name": "William Almeida",
+              "email": "williamkillerca@hotmail.com",
+              "cellphone": "5512982184879"
+            },
+            "bookingFieldsResponses": {}
           },
-          "bearer_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
-          "action": "availability"
+          "action": "schedule booking"
         }
       }
     ]
@@ -1731,6 +1738,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-21T16:34:37.537Z",
-  "versionId": "f62f2cfc-c039-4cdf-8b14-cef933b89891"
+  "updatedAt": "2025-04-26T05:13:53.023Z",
+  "versionId": "b2774e5f-18aa-4c7c-ad2e-5a2179782860"
 }
