@@ -1,0 +1,754 @@
+{
+  "active": true,
+  "connections": {
+    "Specialists Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Information",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exams Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Information",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exam Details Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Information",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Methods Payment Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Information",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Health Plan Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Information",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_schedule_availability": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Booking",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "schedule_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Booking",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cancel_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Booking",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reschedule_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Booking",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_existing_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Booking",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Patient Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Extras",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register New Pacient": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Extras",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset Memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Extras",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-10T14:53:18.606Z",
+  "id": "vsJhsY3LHza8wCvd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MCP Server - Agenda Clinic",
+  "nodes": [
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to search for detailed information about doctors registered at the clinic.\n\n**Return**\n- event_id of the doctor used in the appointments, full name, specialty, other relevant details.",
+        "url": "https://agendaclinic.com/api/v1/specialists",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "response_format",
+              "value": "IA"
+            },
+            {
+              "name": "crm",
+              "value": "={{ $fromAI('crm', `crm of medical`, 'string') }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $fromAI('title', `name of medical`, 'string') }}"
+            },
+            {
+              "name": "procedure",
+              "value": "={{ $fromAI('specialist', `specialist of medical. e.g. pediatra`, 'string') }}"
+            },
+            {
+              "name": "all_if_empty",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $fromAI('bearer_token', `bearer_token`, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -1340,
+        600
+      ],
+      "id": "23ad8138-acdd-4990-8c30-30df4871a07c",
+      "name": "Specialists Tool"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes.\n\n**Retorno**\n- event_id do exame\n- Nome do exame\n- Outros detalhes relevantes sobre o exame, se disponíveis.",
+        "url": "https://agendaclinic.com/api/v1/exams",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "response_format",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "value": "={{ $fromAI('title', `name of exam`, 'string') }}"
+            },
+            {
+              "name": "all_if_empty",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $fromAI('bearer_token', `bearer_token`, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -1200,
+        600
+      ],
+      "id": "6d087cde-b06b-4e15-9f04-12b6902c3315",
+      "name": "Exams Tool"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o `exam_id`. O `exam_id` pode ser obtido a partir da lista de exames.\n\n**Retorno**\n- Preço\n- Duração\n- Jejum necessário\n- Material coletado\n- Outros detalhes relevantes.",
+        "url": "=https://agendaclinic.com/api/v1/exams/{{ $fromAI('exam_id', 'exam id') }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "response_format",
+              "value": "IA"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $fromAI('bearer_token', `bearer_token`, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -1060,
+        600
+      ],
+      "id": "60c7b3e3-46e3-4a8d-b8e5-754d6bb19938",
+      "name": "Exam Details Tool"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter métodos de pagamento aceitos e não aceitos e detalhes adicionais conforme disponíveis.",
+        "url": "https://agendaclinic.com/api/v1/payment-methods",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "response_format",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "value": "={{ $fromAI('title', `name of method payment. empty to all`, 'string') }}"
+            },
+            {
+              "name": "all_if_empty",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $fromAI('bearer_token', `bearer_token`, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -900,
+        600
+      ],
+      "id": "6fd3d2d7-0078-4108-804b-dcba151b6c18",
+      "name": "Methods Payment Tool"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para obter informações sobre planos de saúde e opções de seguro disponíveis.\n\n**Retorno**\n- Nome do plano\n- Detalhes sobre cobertura\n- Informações complementares conforme disponíveis.",
+        "url": "https://agendaclinic.com/api/v1/health-plans",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "response_format",
+              "value": "IA"
+            },
+            {
+              "name": "title",
+              "value": "={{ $fromAI('title', `name of health plan`, 'string') }}"
+            },
+            {
+              "name": "all_if_empty",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $fromAI('bearer_token', `bearer_token`, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -740,
+        600
+      ],
+      "id": "000acc86-9496-45ea-a6b4-f43ae7c2c099",
+      "name": "Health Plan Tool"
+    },
+    {
+      "parameters": {
+        "name": "get_schedule_availability",
+        "description": "Use this tool to get time availability and then schedule or reschedule.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "QTrKQkY4jxrACTpy",
+          "cachedResultName": "COMP Schedule"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "availability"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"bearer_token\": {\n      \"type\": \"string\"\n    },\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event_id from for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start datetime in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default is 24 hours\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the booking. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"bearer_token\",\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -500,
+        620
+      ],
+      "id": "03950ba3-f50a-4bf0-9902-6d9b2667bd22",
+      "name": "get_schedule_availability"
+    },
+    {
+      "parameters": {
+        "name": "schedule_appt",
+        "description": "Use this tool to schedule.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "schedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"bearer_token\": {\n      \"type\": \"string\"\n    },\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if booking is self-user, false to another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"e.g.: 11\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from for which you want to booking, e.g: 3\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"extra_fields\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"bearer_token\",\n    \"from_me\",\n    \"pacient_id\",\n    \"event_id\",\n    \"start\",\n    \"attendee\",\n    \"extra_fields\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -360,
+        620
+      ],
+      "id": "5be1fb33-4bf9-477f-b92c-ac2bf719b222",
+      "name": "schedule_appt"
+    },
+    {
+      "parameters": {
+        "name": "cancel_appt",
+        "description": "Use this tool to cancel a schedule using a schedule ID.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "cancel booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"bearer_token\": {\n      \"type\": \"string\"\n    },\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"booking_id\"\n    },\n    \"cancellation_reason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\n    \"bearer_token\",\n    \"booking_id\",\n    \"cancellation_reason\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -220,
+        620
+      ],
+      "id": "2aef187b-9f8e-4fe7-a676-444861c69135",
+      "name": "cancel_appt"
+    },
+    {
+      "parameters": {
+        "name": "find_existing_appt_tool",
+        "description": "Use this tool to find existing appointments using the patient_id found.\n\nFields event_id, phone, e-mail, only use if explicitly informed, otherwise leave empty.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "list bookings"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"bearer_token\": {\n      \"type\": \"string\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"pacient_id to filter bookings\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id to filter bookings\"\n    },\n    \"status\": {\n      \"type\": \"string\",\n      \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n      \"default\": \"all\"\n    }\n  },\n  \"required\": [\n    \"bearer_token\",\n    \"pacient_id\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        60,
+        620
+      ],
+      "id": "7a8b3d6e-6fe0-4c14-a5d8-6652d6c29d8e",
+      "name": "find_existing_appt"
+    },
+    {
+      "parameters": {
+        "name": "reschedule_appt_tool",
+        "description": "Use this tool to reschedule a booking using an appointment ID.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "reschedule booking"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"bearer_token\": {\n      \"type\": \"string\"\n    },\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"booking_id\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"date and time of the start of the booking\"\n    },\n    \"rescheduling_reason\": {\n      \"type\": \"string\",\n      \"description\": \"rescheduling reason\"\n    }\n  },\n  \"required\": [\n    \"bearer_token\",\n    \"booking_id\",\n    \"start\",\n    \"reschedulingReason\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        620
+      ],
+      "id": "c40effb9-236f-4ad4-8db3-e11c566c5592",
+      "name": "reschedule_appt"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use esta ferramenta para encontrar os dados do paciente, como o pacient_id para usar em outras ações.\n\n**Inputs**: Nome completo, E-mail e Telefone (opcional)\n\n**Retorno**:\n- pacient_id do paciente (usado no Agendamento)\n- Nome completo\n- E-mail\n- Outros detalhes relevantes.",
+        "url": "https://agendaclinic.com/api/v1/pacient",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "response_format",
+              "value": "IA"
+            },
+            {
+              "name": "full_name",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters1_Value', `full name of pacient. e.g. William Luiz de Almeida`, 'string') }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters2_Value', `email of pacient`, 'string', true) }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters3_Value', `phone number,onyl numbers. e.g.: 12982184877`, 'string') }}"
+            },
+            {
+              "name": "all_if_empty",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        300,
+        600
+      ],
+      "id": "cdc26386-ac81-4180-b668-a5232369aa06",
+      "name": "Get Patient Tool",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para registrar um novo paciente na clinica quando o usuário quiser registrar um agendamento em nome de terceiro e não tiver sido encontrado o registro pela *Get Third Patient* tool.\n\nResponse: *pacient_id do paciente usado no Agendamento*, Nome completo, E-mail, Outros detalhes relevantes.",
+        "method": "POST",
+        "url": "https://agendaclinic.com/api/v1/pacients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "full_name",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters1_Value', `full name of pacient. e.g. William Luiz de Almeida`, 'string') }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters2_Value', `email`, 'string') }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters3_Value', `phone to contact. e.g. 12982184877`, 'string') }}"
+            },
+            {
+              "name": "all_if_empty",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        600
+      ],
+      "id": "65c3a23d-35d6-4c88-a7cd-44759c6bf3e0",
+      "name": "Register New Pacient",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool after completing a service with the user's confirmation.",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/69047f52-ce83-481c-9f10-af632b978886",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "memory_id",
+              "value": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+            }
+          ]
+        },
+        "options": {},
+        "optimizeResponse": true,
+        "responseType": "text"
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        600
+      ],
+      "id": "da0bef53-99bd-4fad-8968-1717b7e91b00",
+      "name": "Reset Memory"
+    },
+    {
+      "parameters": {
+        "path": "aiclinic-server-2"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        400
+      ],
+      "id": "db46a07b-ea9a-4315-8dec-9d54bfaf3ffb",
+      "name": "MCP Booking",
+      "webhookId": "faa5d4ed-fa82-428d-853a-275912785da7"
+    },
+    {
+      "parameters": {
+        "path": "aiclinic-server-1"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1360,
+        400
+      ],
+      "id": "c7ca4473-253c-4d84-9a26-6bc440ef40cb",
+      "name": "MCP Information",
+      "webhookId": "faa5d4ed-fa82-428d-853a-275912785da7"
+    },
+    {
+      "parameters": {
+        "path": "aiclinic-server-3"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        280,
+        400
+      ],
+      "id": "9acaf976-514d-4246-9b9a-601f87e0523a",
+      "name": "MCP Extras",
+      "webhookId": "faa5d4ed-fa82-428d-853a-275912785da7"
+    },
+    {
+      "parameters": {
+        "content": "## Informações sobre a Clinica",
+        "height": 420,
+        "width": 800,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1400,
+        340
+      ],
+      "id": "28469d90-a950-4787-a660-c2c49d4745c6",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Ações de Agendamento",
+        "height": 420,
+        "width": 760,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        340
+      ],
+      "id": "4bd4a6ab-0edd-4ae1-a4ed-a7f55ed820b9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Ações Extras",
+        "height": 420,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        240,
+        340
+      ],
+      "id": "d1c640b8-952e-48af-a8f2-cb5224650706",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    }
+  ],
+  "triggerCount": 3,
+  "updatedAt": "2025-04-26T15:56:53.551Z",
+  "versionId": "37db7dc1-ca10-4583-a679-5acfbe906e62"
+}
