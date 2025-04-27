@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "When chat message received": {
       "main": [
@@ -203,7 +203,16 @@
   "nodes": [
     {
       "parameters": {
-        "options": {}
+        "public": true,
+        "initialMessages": "Olá! 👋 Meu nome é William. Em que posso lhe ajudar?",
+        "options": {
+          "inputPlaceholder": "Digite sua pergunta...",
+          "responseMode": "lastNode",
+          "showWelcomeScreen": true,
+          "getStarted": "Iniciar Agendamento",
+          "subtitle": "https://agendaclinic.com",
+          "title": "Agenda Clinic - Assist. AI"
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
@@ -323,7 +332,7 @@
             {
               "id": "1e6ba3f1-e9db-47cc-8128-150a78803664",
               "name": "ttl",
-              "value": "={{ 60 }}",
+              "value": 300,
               "type": "number"
             }
           ]
@@ -535,8 +544,7 @@
         180
       ],
       "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
-      "name": "mcp information",
-      "disabled": true
+      "name": "mcp information"
     },
     {
       "parameters": {
@@ -544,7 +552,8 @@
         "include": "selected",
         "includeTools": [
           "Register_New_Pacient",
-          "Get_Patient_Tool"
+          "Get_Patient_Tool",
+          "Reset_Memory"
         ]
       },
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
@@ -554,8 +563,7 @@
         180
       ],
       "id": "9ddebfae-deb4-435e-b3fa-bd546e04c365",
-      "name": "mcp pacient",
-      "disabled": true
+      "name": "mcp pacient"
     },
     {
       "parameters": {
@@ -575,7 +583,8 @@
           "id": "ePjUcKkuSrLqo1Tt",
           "name": "vps"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -658,8 +667,7 @@
         180
       ],
       "id": "1bab046a-5b48-4ba8-8c26-9b7b966ba28f",
-      "name": "mcp consults",
-      "disabled": true
+      "name": "mcp consults"
     }
   ],
   "pinData": {},
@@ -676,6 +684,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-26T15:37:20.820Z",
-  "versionId": "b65d6bb2-6ef3-410f-92b1-b26ae7c859d1"
+  "updatedAt": "2025-04-26T16:24:37.348Z",
+  "versionId": "c3ba9ad8-2d78-43ea-8e64-0a38b4ae1d20"
 }
