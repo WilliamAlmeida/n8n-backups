@@ -670,8 +670,7 @@
       "position": [
         6180,
         1300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -783,7 +782,8 @@
       "position": [
         2140,
         1240
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -800,7 +800,8 @@
         1980,
         1240
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -2228,7 +2229,7 @@
       "name": "Clinic"
     }
   ],
-  "triggerCount": 1,
-  "updatedAt": "2025-04-28T03:30:53.711Z",
-  "versionId": "101325ed-69e4-46e8-8745-27d3562126b2"
+  "triggerCount": 0,
+  "updatedAt": "2025-04-28T04:38:40.373Z",
+  "versionId": "1fefc798-f4b9-4be2-b370-b54ef2539762"
 }
