@@ -1,0 +1,2234 @@
+{
+  "active": true,
+  "connections": {
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "user cached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user cached?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Chat Memory": {
+      "main": [
+        [
+          {
+            "node": "first msg?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config to Find All Bookings": {
+      "main": [
+        [
+          {
+            "node": "wk bring bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk bring bookings": {
+      "main": [
+        [
+          {
+            "node": "Insert Data Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data User": {
+      "main": [
+        [
+          {
+            "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "delete instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch user": {
+      "main": [
+        [
+          {
+            "node": "user found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get first user": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user found?": {
+      "main": [
+        [
+          {
+            "node": "get first user",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert user": {
+      "main": [
+        [
+          {
+            "node": "user registred?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "user registred?": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge 2": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "reset postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "delete instance config": {
+      "main": [
+        [
+          {
+            "node": "get instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance config?": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get instance config": {
+      "main": [
+        [
+          {
+            "node": "load instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance config": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance config": {
+      "main": [
+        [
+          {
+            "node": "has instance config?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance config": {
+      "main": [
+        [
+          {
+            "node": "set instance config",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "instance not found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instanceConfig": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data Bookings": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get instance config1": {
+      "main": [
+        [
+          {
+            "node": "load instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete prompts": {
+      "main": [
+        [
+          {
+            "node": "get instance config1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance prompts": {
+      "main": [
+        [
+          {
+            "node": "set instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance prompts": {
+      "main": [
+        [
+          {
+            "node": "has instance prompts?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance prompts": {
+      "main": [
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance prompts?": {
+      "main": [
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instancePrompts": {
+      "main": [
+        []
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_schedule_availability": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset postgres": {
+      "main": [
+        [
+          {
+            "node": "Get Chat Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_third_patient": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "schedule_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cancel_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "register_new_pacient": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT 4.1-mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "agent_information": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset_memory": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_existing_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reschedule_appt": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "postgres": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Get Chat Memory",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Insert Data Bookings",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Insert Data User",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "first msg?": {
+      "main": [
+        [
+          {
+            "node": "Insert Data User",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-15T18:19:39.691Z",
+  "id": "ds3jAJzOq9bxFmE1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Clinica - Tools",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "7140f0a0-f4d8-42a7-806b-3a78754f3030",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6180,
+        1300
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "42efc5bc-85fc-47b2-9e77-b82583b7bb2b",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2360,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.data.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": 120
+      },
+      "id": "4d31fa4a-aaad-4b90-a029-c3202e27e448",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4340,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "c38cce3e-1edb-4e17-92d7-af14679d5bd7",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        1380
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "7d833f79-a8df-4c90-aa3e-e5c2f3cb6217",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        1380
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.data ?? $json ?? {} }}",
+        "options": {}
+      },
+      "id": "78719e6e-04fd-4f99-937f-e5bde1c4cd1d",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4340,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput.replaceAll('\\n', '\\\\n') }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
+        "options": {}
+      },
+      "id": "0cc9491d-d4e1-47e3-a012-6ff1b02e8e9b",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2140,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "372e405f-57ff-422d-bfb9-bb2797c49a28",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1980,
+        1240
+      ],
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+    },
+    {
+      "parameters": {},
+      "id": "a2182a31-5d55-4811-a476-23a5eca970ed",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\n{{ $('AI Agent').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58f6d211-0ccc-40df-80f9-089086cd570a",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5840,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "3ccca82f-6473-4681-9ff1-ceb45dc0a4b4",
+      "name": "user cached?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3880,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "groupMessages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        4740,
+        1000
+      ],
+      "id": "58f49f4c-be64-493e-9135-af67cda099f4",
+      "name": "Get Chat Memory"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "insertMode": "override",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is `{{ $('userAccount').first().json.full_name ?? 'empty' }}`, email is `{{ $('userAccount').first().json.email ?? 'empty' }}`, contact phone number is `{{ $('userAccount').first().json.phone ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}`, and current address is `{{ $('userAccount').first().json.full_address ?? 'empty' }}`",
+              "hideFromUI": true
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        5240,
+        1000
+      ],
+      "id": "ecf1f01d-2048-4da2-9009-7fb9b0234fab",
+      "name": "Insert Data User"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "19e9b408-9bdb-4535-b265-1f714a0dde0d",
+              "name": "action",
+              "value": "list bookings",
+              "type": "string"
+            },
+            {
+              "id": "d6788f61-2c2f-42c1-a263-62d052127dc0",
+              "name": "remoteJid",
+              "value": "={{ $('userAccount').item.json.phone.toString().split('@')[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b5c318d-4909-4140-8465-7bb6bf8f2116",
+              "name": "query",
+              "value": "={\n  \"email\": \"\",\n  \"event_id\": \"\",\n  \"status\": \"all\"\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0ab1a04-c81a-44ca-84a5-5cae09cd9d80",
+      "name": "Config to Find All Bookings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5560,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "QTrKQkY4jxrACTpy",
+          "cachedResultName": "COMP Schedule"
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "417aefb5-fc99-4f3e-afda-f8d48ac3aec4",
+      "name": "wk bring bookings",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        5720,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "={{ $json.response && $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}",
+              "hideFromUI": true
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        5880,
+        1000
+      ],
+      "id": "80d5c8ad-4885-4de9-a586-1decd4613059",
+      "name": "Insert Data Bookings"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://agendaclinic.com/api/v1",
+              "type": "string"
+            },
+            {
+              "id": "dcb3ef37-7992-4f5c-8e60-31d9184dce47",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "be317669-395b-410e-ac3a-ae5470740f5c",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3dc387d1-961d-459e-ac7b-a2662290570e",
+              "name": "data",
+              "value": "={{ $json.data.first() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8ad15b18-b398-469f-9681-3dbeee76ccfc",
+      "name": "get first user",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3880,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacient",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').item.json.remoteJid.split('@')[0].slice(2) }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "e28da1fa-9183-47b3-8f99-e977139294b2",
+      "name": "fetch user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3520,
+        1640
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0].slice(2) }}"
+            },
+            {
+              "name": "origin",
+              "value": "whatsapp"
+            },
+            {
+              "name": "phone_is_whatsapp",
+              "value": "={{ true }}"
+            },
+            {
+              "name": "phone_verified_at",
+              "value": "={{ $now.toUTC() }}"
+            },
+            {
+              "name": "full_name",
+              "value": "={{ $('messageInfo').item.json.pushName }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "64c2d75c-5248-424e-baaa-7fbfd2a1f53d",
+      "name": "insert user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3880,
+        1760
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3680,
+        1640
+      ],
+      "id": "c5e04892-a993-4e93-b5ab-e3fb051b9284",
+      "name": "user found?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4220,
+        1740
+      ],
+      "id": "2c6a6fe7-3134-4ba6-8ce8-d46534bc1081",
+      "name": "user registred?"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4120,
+        1560
+      ],
+      "id": "3701f096-1a8d-4361-9628-0f07199a9ee4",
+      "name": "Merge 2"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "6d4f63cd-58da-492b-ab55-aa84e4b6377b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6020,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=# Visão Geral  \nVocê é um assistente útil, forneça um aatendimento humanizado e empatico, seja paciente com usuário e gentil.\n\n**Endereço:** Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n## Tools\n\n- **Info Agent**: Obter info sobre exames, especialistas/consultas, planos e pagamentos. Também retorna o *event_id* para ações de agendamento.\n- **Get Third Patient**: Busca o *patient_id* ao agendar para outra pessoa.\n\n## Importante\n\n- *SEMPRE EXIBA* o `Booking details: ID` do agendamento para o usuário.\n- Tente converter um cancelamento em agendamento se for solicitado.\n- Nunca invente um *event_id*. Se não encontrar, pare e reavalie.\n- Nunca exiba o event_id ou pacient_id para usuário.\n- Referência de data/hora:  \n  `{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}`\n- **Regra Estrita**: É proibido usar, consultar ou agendar qualquer data/hora **anterior ou igual** à referência.\n- **Valide sempre**:  \n  - Se a data/hora for anterior ou igual:  \n    1. **Não prossiga**  \n    2. **Não consulte tools**  \n    3. Redirecione para novo horário válido\n\n## Pergunte uma coisa por vez\n\n- Nunca envie múltiplas perguntas.\n- Dê tempo para o usuário responder.\n- Foco em uma dúvida por interação.\n\n## Agendamentos\n\n- Nunca informe preço, a menos que o usuário peça.\n- Use somente horários arredondados: `13:10`, `15:20` (não usar: `13:13`, `15:19`)\n- **Operações retroativas são proibidas**:\n  - Nada antes da referência atual\n  - Não exibir horários passados\n  - Não sugerir o horário atual. Apenas **futuros horários arredondados**\n- Se horário for inválido: explique e peça nova data/hora\n- Ao finalizar, chame `reset_memory` (sem avisar o usuário)\n- Antes de agir, confirme se o exame ou especialista está disponível  \n  - Se sim: exiba datas/horários  \n  - Se não: informe que não está disponível\n- Pergunte se o agendamento é para ele ou outra pessoa\n- Antes de finalizar o agendamento, informe todos os dados para o usuário e peça confirmação\n\n## Sanity Check (Obrigatório)\n\nAntes de usar qualquer tool:\n\n1. Compare a data/hora com `{{ $now }}`\n2. Se for anterior ou igual → **aborte**\n3. Se for posterior → **prossiga**\n\n## Finalização de Conversa\n\n- Expressões como: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possível despedida\n- Responda:  \n  **\"Perfeito! Posso encerrar seu atendimento por aqui?\"**\n- Só finalize após confirmação clara:  \n  **\"sim\", \"pode sim\", \"é isso\", etc.\"**\n- Nunca finalize por dedução\n\n## Formato de horários disponíveis\n\n{data}: {hora1}, {hora2}, {hora3}\n\n**Exemplo:**\n01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Formato para exibir agendamentos\nFoi encontrado...\n\n📅 {título} - {profissional}\nStatus: {status} ✅\nAgendado para {início} até {fim}\nLocal: {local}\nCódigo: {id}\n"
+        }
+      },
+      "id": "27ce7d17-3081-4018-96d8-f06974820cf5",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        4780,
+        1360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 649,
+        "width": 999,
+        "color": 5
+      },
+      "id": "5c0dbf7e-f98a-4f34-a7f3-2449f63c7e25",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3480,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Retorna as configurações da Instância",
+        "height": 643,
+        "width": 757,
+        "color": 4
+      },
+      "id": "a42e8703-a160-4e7b-9093-d12491293005",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}"
+      },
+      "id": "b584c94b-3bcc-4e07-9f80-d0af0abe7eb0",
+      "name": "delete instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_config && $json.instance_config.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "15e5b562-1ffc-4299-96f1-089eb812cb23",
+      "name": "has instance config?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3000,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_config",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "e000568a-d763-49e0-a683-0cbc8ab1ecf7",
+      "name": "get instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1580
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.instance_config ?? $json.data }}",
+        "options": {}
+      },
+      "id": "7e67c6c3-8058-4ac7-857d-31a0fd3146fe",
+      "name": "instanceConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3280,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json.status == 'success' ? $json.data.toJsonString() : {}.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "cec1eccc-7116-49a5-b436-455df0b35b2c",
+      "name": "set instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1560
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_config",
+              "value": "={{ $json.instance_config }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc0c4352-69b0-4757-9c1a-df813e6d9645",
+      "name": "load instance config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2900,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/tenant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3080,
+        1580
+      ],
+      "id": "f319fc47-7d1d-4510-9ca9-600012fa402b",
+      "name": "fetch instance config",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        1760
+      ],
+      "id": "9ab5e30e-414c-4cf9-95eb-0424955c33a8",
+      "name": "instance not found"
+    },
+    {
+      "parameters": {
+        "content": "## Retorna os prompts da Instância",
+        "height": 503,
+        "width": 757,
+        "color": 2
+      },
+      "id": "77937441-f9a0-4bac-8d69-ea235eaa0a71",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_prompts",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "b4513884-283b-4006-9f3f-a6f98bed2ca4",
+      "name": "get instance config1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        2260
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}"
+      },
+      "id": "3080d2ab-98ff-4ede-8911-8fd8fc532a5c",
+      "name": "delete prompts",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        2060
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/prompts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3080,
+        2260
+      ],
+      "id": "de6f1f48-bb26-4282-a761-49d09ead1132",
+      "name": "fetch instance prompts",
+      "disabled": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_prompts",
+              "value": "={{ $json.instance_prompts }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fc5492c4-ff73-4b0a-a88e-ceb8bbc97770",
+      "name": "load instance prompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2900,
+        2260
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json.status == 'success' ? $json.data.toJsonString() : {}.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "fa973be2-18eb-4a78-ae8b-9d51994eecf0",
+      "name": "set instance prompts",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        2240
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "40c39acd-7376-4680-94bf-729f86a4c231",
+              "name": "prompts",
+              "value": "={{ $json.instance_prompts ?? $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39cd7ac7-cb78-43c8-9edd-cf5f82cdce3c",
+      "name": "instancePrompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3280,
+        2060
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_prompts }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e7a8db94-8241-47a8-ad9e-7984c07388b7",
+      "name": "has instance prompts?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3000,
+        2080
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 0.5
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4600,
+        1360
+      ],
+      "id": "733cb2f4-65b8-49bf-8e05-c4f8707847d9",
+      "name": "Wait",
+      "webhookId": "05e066fc-a535-4eef-9557-0fcc8edf2249"
+    },
+    {
+      "parameters": {
+        "name": "get_schedule_availability",
+        "description": "=Use esta ferramenta para obter a disponibilidade de horários de um médico para consulta ou exame para então realizar um agendamento, reagendamento.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "QTrKQkY4jxrACTpy",
+          "cachedResultName": "COMP Schedule"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "availability"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"event_id\": {\n      \"type\": \"number\",\n      \"description\": \"event_id from specialist consult or exam for which you want to check availability.\"\n    },\n    \"startTime\": {\n      \"type\": \"string\",\n      \"description\": \"Start datetime in format (YYYY-MM-DDTHH:mm:ss). If not provided, the default is 24 hours\"\n    },\n    \"endTime\": {\n      \"type\": \"string\",\n      \"description\": \"End date and time of the appointment. If not provided, the default will be 24 hours after 'startTime'. If provided, the end time must be within 3 days of the 'startTime'.\"\n    }\n  },\n  \"required\": [\n    \"event_id\",\n    \"startTime\",\n    \"endTime\"\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5120,
+        1580
+      ],
+      "id": "93efa8ef-e8a5-4a9f-a2eb-1d87755d4f12",
+      "name": "get_schedule_availability"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories"
+        },
+        "restartSequences": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        4580,
+        1000
+      ],
+      "id": "28b0ddd9-fe95-4b05-b728-904179ecdca1",
+      "name": "reset postgres",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para encontrar os dados do paciente, como o pacient_id para usar em outras ações.\n\nInputs: Nome, sobrenome e último Nome (Nome Completo), E-mail e Telefone (opcional)\n\nResponse: *pacient_id do paciente usado no Agendamento*, Nome completo, E-mail, Outros detalhes relevantes.",
+        "url": "https://agendaclinic.com/api/v1/pacient",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "response_format",
+              "valueProvider": "fieldValue",
+              "value": "IA"
+            },
+            {
+              "name": "full_name"
+            },
+            {
+              "name": "email",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "phone",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "full_name",
+              "description": "full name of pacient. e.g. William Luiz de Almeida",
+              "type": "string"
+            },
+            {
+              "name": "phone",
+              "description": "phone to contact. e.g. 12982184877 (ddd + number)",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5280,
+        1740
+      ],
+      "id": "2eaf4a6f-a0dd-4116-b5cf-2cd0e4b1a523",
+      "name": "get_third_patient",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "name": "schedule_appt",
+        "description": "Use esta ferramenta para agendar uma consulta ou exame.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "schedule booking"
+            },
+            {
+              "name": "query.pacient_id_me",
+              "type": "numberValue",
+              "numberValue": "={{ $('userAccount').item.json.id }}"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"from_me\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if booking is self-user, false to another person\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"empty if booking is to user, e.g.: 11\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"event_id from specialist or exam, e.g: 3\"\n    },\n    \"start\": {\n      \"type\": \"string\",\n      \"description\": \"Date and time of the start of the booking in format (YYYY-MM-DDTHH:mm:ss)\"\n    },\n    \"attendee\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"cellphone\": {\n          \"type\": \"string\",\n          \"description\": \"12982184877\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"email\",\n        \"cellphone\"\n      ]\n    },\n    \"bookingFieldsResponses\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"method_payment\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        },\n        \"name_plan\": {\n          \"type\": \"string\",\n          \"description\": \"optional\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"from_me\",\n    \"pacient_id\",\n    \"start\",\n    \"attendee\",\n    \"event_id\",\n    \"bookingFieldsResponses\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5280,
+        1580
+      ],
+      "id": "cb137b12-947e-432c-b64d-d71de2cf8cef",
+      "name": "schedule_appt"
+    },
+    {
+      "parameters": {
+        "name": "cancel_appt",
+        "description": "=Use esta ferramenta para cancelar um agendamento usando um ID de reserva.\n\n## Fluxo de trabalho:\n1. Verifique o ID de reserva antes de prosseguir.\n2. Confirme com o usuário antes de cancelar.\n3. Cancele o compromisso e notifique somente se foi cancelado ou não.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "cancel booking"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"booking_id\": {\n      \"type\": \"string\",\n      \"description\": \"Booking ID of the booking\"\n    },\n    \"cancellation_reason\": {\n      \"type\": \"string\",\n      \"description\": \"Reason for cancellation\"\n    }\n  },\n  \"required\": [\n    \"booking_id\",\n    \"cancellation_reason\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5440,
+        1580
+      ],
+      "id": "c2231b90-e115-4efb-8a85-2597214bd1bc",
+      "name": "cancel_appt"
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Use esta ferramenta para registrar um novo paciente na clinica quando o usuário querer registrar um agendamento em nome de terceiro e não tiver sido encontrado o registro pela *Get Third Patient* tool.\n\nInputs: Nome, sobrenome e último Nome (Nome Completo), E-mail, Telefone\n\nResponse: *pacient_id do paciente usado no Agendamento*, Nome completo, E-mail, Outros detalhes relevantes.",
+        "method": "POST",
+        "url": "https://agendaclinic.com/api/v1/pacients",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "full_name"
+            },
+            {
+              "name": "email",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "phone",
+              "valueProvider": "modelOptional"
+            },
+            {
+              "name": "all_if_empty",
+              "valueProvider": "fieldValue",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Authorization",
+              "valueProvider": "fieldValue",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "full_name",
+              "description": "full name of pacient. e.g. William Luiz de Almeida",
+              "type": "string"
+            },
+            {
+              "name": "phone",
+              "description": "phone to contact. e.g. 12982184877 (ddd + number)",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "data"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5440,
+        1740
+      ],
+      "id": "8e9c4c4f-9a30-4495-a6cb-d65b0f847c18",
+      "name": "register_new_pacient",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4560,
+        1520
+      ],
+      "id": "3ece7bdf-4d4d-451b-b1c0-9c009f11c902",
+      "name": "GPT 4.1-mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "agent_information",
+        "description": "=Use este agente para recuperar as informações necessárias para responder às perguntas dos usuários e coletar dados necessários para executar ações usando outras ferramentas.\n\n## Exemplo:\n[médico] atendem na clinica?\nVocês realizam este [exame ou consulta] na clinica?\nQual event_id do [especialista ou exame] para agendamento?\nPreciso dos dados do [método de pagamento].\nQuais métodos de pagamento?\nQual valor do [exame ou consulta]?",
+        "workflowId": {
+          "__rl": true,
+          "value": "UcK1fI4zOm0eB4D9",
+          "mode": "list",
+          "cachedResultName": "Clinic - Agent Info"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": ""
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        4960,
+        1580
+      ],
+      "id": "d1bfefd7-4aaf-437b-b8de-e48df29f78c4",
+      "name": "agent_information"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool after completing a service with the user's confirmation.",
+        "method": "DELETE",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/69047f52-ce83-481c-9f10-af632b978886",
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "memory_id",
+              "valueProvider": "fieldValue",
+              "value": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "responseType": "text"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5600,
+        1580
+      ],
+      "id": "ce4704ae-6156-47a1-9ee5-b7d786ef1189",
+      "name": "reset_memory"
+    },
+    {
+      "parameters": {
+        "name": "find_existing_appt_tool",
+        "description": "=Use esta ferramenta para encontrar reservas existentes usando o endereço de e-mail do usuário.\n\n## Fluxo de trabalho:\n1. Pesquise reservas que correspondam ao e-mail fornecido.\n2. Informe reservas correspondentes ou notifique se não forem encontradas.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "list bookings"
+            },
+            {
+              "name": "remoteJid",
+              "stringValue": "={{ $('userAccount').item.json.phone }}"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"strict\": true,\n  \"properties\": {\n    \"attendeeEmail\": {\n      \"type\": \"string\",\n      \"description\": \"Email address of the user\"\n    },\n    \"event_id\": {\n      \"type\": \"string\",\n      \"description\": \"Event ID to filter bookings\"\n    },\n    \"attendeePhone\": {\n      \"type\": \"string\",\n      \"description\": \"Phone to filter bookings\"\n    },\n    \"pacient_id\": {\n      \"type\": \"string\",\n      \"description\": \"Pacient ID to filter bookings\"\n    },\n    \"status\": {\n      \"type\": \"string\",\n      \"description\": \"Status of the booking (e.g., upcoming, past, cancelled)\",\n      \"default\": \"all\"\n    }\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        4960,
+        1740
+      ],
+      "id": "93b22bc7-5428-413f-9a2e-3c5b9b09fb6d",
+      "name": "find_existing_appt"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM n8n_chat_histories\nWHERE id in (\n    SELECT id FROM n8n_chat_histories\n    ORDER BY id DESC\n    LIMIT 2\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        4700,
+        1520
+      ],
+      "id": "8b382878-e899-4adc-8b12-291b66187eef",
+      "name": "delete last interaction",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "reschedule_appt_tool",
+        "description": "=Use esta ferramenta para reagendar um agendamento usando um ID de reserva.\n\n## Fluxo de trabalho:\n1. Verifique o ID de reserva antes de prosseguir.\n2. Confirme com o usuário antes de reagendar.\n3. Reagende o compromisso e notifique o usuário.",
+        "workflowId": {
+          "__rl": true,
+          "value": "QTrKQkY4jxrACTpy",
+          "mode": "list",
+          "cachedResultName": "COMP AIClinic"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "action",
+              "stringValue": "reschedule booking"
+            },
+            {
+              "name": "bearer_token",
+              "stringValue": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"object\",\n    \"properties\":\n    {\n        \"booking_id\":\n        {\n            \"type\": \"string\",\n            \"description\": \"the id of the booking\"\n        },\n        \"start\":\n        {\n            \"type\": \"string\",\n            \"description\": \"date and time of the start of the booking\"\n        },\n        \"rescheduling_reason\":\n        {\n            \"type\": \"string\",\n            \"description\": \"rescheduling reason\"\n        }\n    },\n    \"required\":\n    [\n        \"booking_id\",\n        \"start\",\n        \"reschedulingReason\"\n    ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        5120,
+        1740
+      ],
+      "id": "bd9dc77b-64b7-4e29-a3c4-e5c352b31d5f",
+      "name": "reschedule_appt"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
+        "contextWindowLength": 30
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        5060,
+        1220
+      ],
+      "id": "13ffd115-e496-403a-ab4a-21dc568eb1c8",
+      "name": "postgres",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9914c630-b523-42ae-a3a0-b224b821f6ca",
+              "leftValue": "={{ $json.messagesCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5060,
+        1000
+      ],
+      "id": "8b1114e7-648c-4cf2-b03a-523ee6add7f3",
+      "name": "first msg?"
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3246B56693A1-4BAD-A92A-183844A4CFBB",
+          "conversation": "oi cli"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-28T03:30:53.711Z",
+  "versionId": "101325ed-69e4-46e8-8745-27d3562126b2"
+}
