@@ -1153,6 +1153,10 @@
             {
               "name": "event_id",
               "value": "={{ $('EWT').item.json.query.event_id }}"
+            },
+            {
+              "name": "pacient_id",
+              "value": "={{ $('EWT').item.json.query.pacient_id }}"
             }
           ]
         },
@@ -1697,18 +1701,11 @@
         "json": {
           "query": {
             "bearer_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
-            "from_me": true,
             "pacient_id": "9",
-            "event_id": "1",
-            "start": "2024-06-18T10:00:00",
-            "attendee": {
-              "name": "William Almeida",
-              "email": "williamkillerca@hotmail.com",
-              "cellphone": "5512982184879"
-            },
-            "bookingFieldsResponses": {}
+            "event_id": "2",
+            "status": "upcoming"
           },
-          "action": "schedule booking"
+          "action": "list bookings"
         }
       }
     ]
@@ -1738,6 +1735,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-26T05:13:53.023Z",
-  "versionId": "b2774e5f-18aa-4c7c-ad2e-5a2179782860"
+  "updatedAt": "2025-04-28T04:34:28.629Z",
+  "versionId": "ce9ff7c5-2615-4cdc-afec-b5fdc3031620"
 }
