@@ -1,73 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Crypto": {
-      "main": [
-        [
-          {
-            "node": "MsgA",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "MsgB": {
-      "main": [
-        [
-          {
-            "node": "Crypto",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "MsgA": {
-      "main": [
-        [
-          {
-            "node": "get cache",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "cached?": {
-      "main": [
-        [
-          {
-            "node": "Chat Memory Manager",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        []
-      ]
-    },
-    "get cache": {
-      "main": [
-        [
-          {
-            "node": "cached?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Chat Memory Manager": {
-      "main": [
-        [
-          {
-            "node": "output 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "mcp information": {
       "ai_tool": [
         [
@@ -633,7 +566,13 @@
     },
     "mcp exams": {
       "ai_tool": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     },
     "first msg?": {
@@ -684,188 +623,6 @@
   },
   "name": "AI 4 Clinica - MCP",
   "nodes": [
-    {
-      "parameters": {
-        "value": "={{ $json.chatInput.toLowerCase()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^\\w\\s]/g, '')\n    .replace(/_/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim() }}",
-        "dataPropertyName": "hash"
-      },
-      "type": "n8n-nodes-base.crypto",
-      "typeVersion": 1,
-      "position": [
-        -460,
-        -780
-      ],
-      "id": "2f847f7f-a715-4e58-b541-abad889d3ace",
-      "name": "Crypto",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "41b114b6-5730-43d9-8257-9c8d02c66b74",
-              "name": "sessionId",
-              "value": "={{ $workflow.id }}",
-              "type": "string"
-            },
-            {
-              "id": "1e6ba3f1-e9db-47cc-8128-150a78803664",
-              "name": "ttl",
-              "value": 300,
-              "type": "number"
-            }
-          ]
-        },
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -620,
-        -780
-      ],
-      "id": "f888d237-7601-4c9a-b108-e0b64644e59b",
-      "name": "MsgB",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "11abf18a-aef7-4382-9a8e-a754d58ca40e",
-              "name": "expiresAt",
-              "value": "={{ $now.plus($json.ttl, 'seconds') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -300,
-        -780
-      ],
-      "id": "2133a08b-8d38-4822-903d-e59d7066111a",
-      "name": "MsgA",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "10b8986a-ec88-4927-b948-db3617eabc3f",
-              "leftValue": "={{ $json.output }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        20,
-        -780
-      ],
-      "id": "061dd716-7f28-4fe4-9018-3270e7fb8edb",
-      "name": "cached?",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "output",
-        "key": "=chat-cache-{{ $json.hash }}",
-        "keyType": "string",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -140,
-        -780
-      ],
-      "id": "e39d821f-dc19-4981-959c-67a1c63e733f",
-      "name": "get cache",
-      "credentials": {
-        "redis": {
-          "id": "ePjUcKkuSrLqo1Tt",
-          "name": "vps"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "mode": "insert",
-        "messages": {
-          "messageValues": [
-            {
-              "type": "user",
-              "message": "={{ $('MsgA').item.json.chatInput }}",
-              "hideFromUI": true
-            },
-            {
-              "type": "ai",
-              "message": "={{ $json.output }}",
-              "hideFromUI": true
-            }
-          ]
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryManager",
-      "typeVersion": 1.1,
-      "position": [
-        -520,
-        -580
-      ],
-      "id": "59b6dcce-f7f1-4c7e-b1cb-84c2ecc27d51",
-      "name": "Chat Memory Manager",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "978480dd-1fbf-429f-880a-bd487fb78ce4",
-              "name": "output",
-              "value": "={{ $('get cache').item.json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -200,
-        -580
-      ],
-      "id": "230a0607-d8a5-41b3-8749-1d2d2c10eba6",
-      "name": "output 1",
-      "disabled": true
-    },
     {
       "parameters": {
         "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
@@ -928,8 +685,7 @@
         260
       ],
       "id": "b148782b-b665-4dd2-bfc3-28144da62f1c",
-      "name": "mcp exams",
-      "disabled": true
+      "name": "mcp exams"
     },
     {
       "parameters": {
@@ -1058,7 +814,8 @@
       "position": [
         -2220,
         -240
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1075,7 +832,8 @@
         -2380,
         -240
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -1801,8 +1559,7 @@
       "position": [
         1860,
         -180
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1963,7 +1720,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=# Visão Geral  \nVocê é um assistente útil, forneça um aatendimento humanizado e empatico, seja paciente com usuário e gentil.\n\n**Endereço:** Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n*bearer_token:* 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\n\n## Tools\n- `get_pacient_tool`: retorna o patient_id usado nas ferramentas MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas ferramentas MCP para cancelamentos.\n- `list_payment_methods_tool`: retorna uma lista de métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista de planos de saúde disponíveis.\n- `end_conversaion`: finaliza atendimento\n\nQuando o usuário solicitar informações que exijam mais de uma dessas ferramentas, **chame cada uma delas de forma síncrona**, ou seja, aguarde o retorno da primeira ferramenta antes de chamar a próxima.\nApós obter as respostas, envie uma mensagem clara, organizada e amigável com emojis, apresentando todas as informações solicitadas ao usuário. Não invente dados — use apenas respostas reais das ferramentas.\n\n## Importante\n\n- *SEMPRE EXIBA* o `Booking details: ID` do agendamento para o usuário.\n- Tente converter um cancelamento em agendamento se for solicitado.\n- Nunca invente um *event_id*. Se não encontrar, pare e reavalie.\n- Nunca exiba o event_id ou pacient_id para usuário.\n- Referência de data/hora:  \n  `{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}`\n- **Regra Estrita**: É proibido usar, consultar ou agendar qualquer data/hora **anterior ou igual** à referência.\n- **Valide sempre**:  \n  - Se a data/hora for anterior ou igual:  \n    1. **Não prossiga**  \n    2. **Não consulte tools**  \n    3. Redirecione para novo horário válido\n\n## Pergunte uma coisa por vez\n\n- Nunca envie múltiplas perguntas.\n- Dê tempo para o usuário responder.\n- Foco em uma dúvida por interação.\n\n## Agendamentos\n\n- Nunca informe preço, a menos que o usuário peça.\n- Use somente horários arredondados: `13:10`, `15:20` (não usar: `13:13`, `15:19`)\n- **Operações retroativas são proibidas**:\n  - Nada antes da referência atual\n  - Não exibir horários passados\n  - Não sugerir o horário atual. Apenas **futuros horários arredondados**\n- Se horário for inválido: explique e peça nova data/hora\n- Ao finalizar, chame `reset_memory` (sem avisar o usuário)\n- Antes de agir, confirme se o exame ou especialista está disponível  \n  - Se sim: exiba datas/horários  \n  - Se não: informe que não está disponível\n- Pergunte se o agendamento é para ele ou outra pessoa\n- Antes de finalizar o agendamento, informe todos os dados para o usuário e peça confirmação\n\n## Sanity Check (Obrigatório)\n\nAntes de usar qualquer tool:\n\n1. Compare a data/hora com `{{ $now }}`\n2. Se for anterior ou igual → **aborte**\n3. Se for posterior → **prossiga**\n\n## Finalização de Conversa\n\n- Expressões como: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possível despedida\n- Responda:  \n  **\"Perfeito! Posso encerrar seu atendimento por aqui?\"**\n- Só finalize após confirmação clara:  \n  **\"sim\", \"pode sim\", \"é isso\", etc.\"**\n- Nunca finalize por dedução\n\n## Formato de horários disponíveis\n\n{data}: {hora1}, {hora2}, {hora3}\n\n**Exemplo:**\n01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Formato para exibir agendamentos\nFoi encontrado...\n\n📅 {título} - {profissional}\nStatus: {status} ✅\nAgendado para {início} até {fim}\nLocal: {local}\nCódigo: {id}\n"
+          "systemMessage": "=# Visão Geral  \nVocê é um assistente útil da {{ $('instanceConfig').first().json.nome }}, forneça um atendimento humanizado e empatico, seja paciente com usuário e gentil.\n\n**Endereço:** {{ $('instanceConfig').first().json.end_logradouro }}, {{ $('instanceConfig').first().json.end_numero }}, {{ $('instanceConfig').first().json.end_bairro\n}}, {{ $('instanceConfig').first().json.end_cidade }} - {{ $('instanceConfig').first().json.end_estado }} - {{ $('instanceConfig').first().json.end_cep }}\n\n*bearer_token:* 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\n\n## Tools\n- `get_pacient_tool`: retorna o patient_id usado nas ferramentas MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas ferramentas MCP para cancelamentos.\n- `list_specialists_tool`: retorna uma lista médicos/especialidades com seu event_id.\n- `list_exams_tool`: retorna uma lista exames com seu event_id.\n- `list_payment_methods_tool`: retorna uma lista de métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista de planos de saúde disponíveis.\n- `details_exams_tool`: retorna informações sobre exames e valores usando event_id.\n- `end_conversaion`: finaliza atendimento\n\nQuando o usuário solicitar informações que exijam mais de uma dessas ferramentas, **chame cada uma delas de forma síncrona**, ou seja, aguarde o retorno da primeira ferramenta antes de chamar a próxima.\nApós obter as respostas, envie uma mensagem clara, organizada e amigável com emojis, apresentando todas as informações solicitadas ao usuário. Não invente dados — use apenas respostas reais das ferramentas.\n\n## Importante\n\n- *SEMPRE EXIBA* o `Booking details: ID` do agendamento para o usuário.\n- Tente converter um cancelamento em agendamento se for solicitado.\n- Nunca invente um *event_id*. Se não encontrar, pare e reavalie.\n- Nunca exiba o event_id ou pacient_id para usuário.\n- Referência de data/hora:  \n  `{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}`\n- **Regra Estrita**: É proibido usar, consultar ou agendar qualquer data/hora **anterior ou igual** à referência.\n- **Valide sempre**:  \n  - Se a data/hora for anterior ou igual:  \n    1. **Não prossiga**  \n    2. **Não consulte tools**  \n    3. Redirecione para novo horário válido\n\n## Pergunte uma coisa por vez\n\n- Nunca envie múltiplas perguntas.\n- Dê tempo para o usuário responder.\n- Foco em uma dúvida por interação.\n\n## Agendamentos\n\n- Nunca informe preço, a menos que o usuário pergunte.\n- Use somente horários arredondados: `13:10`, `15:20` (não usar: `13:13`, `15:19`)\n- **Operações retroativas são proibidas**:\n  - Nada antes da referência atual\n  - Não exibir horários passados\n  - Não sugerir o horário atual. Apenas **futuros horários arredondados**\n- Se horário for inválido: explique e peça nova data/hora\n- Ao finalizar, chame `reset_memory` (sem avisar o usuário)\n- Antes de agir, confirme se o exame ou especialista está disponível  \n  - Se sim: exiba datas/horários  \n  - Se não: informe que não está disponível\n- Pergunte se o agendamento é para ele ou outra pessoa\n- Antes de finalizar o agendamento, informe todos os dados para o usuário e peça confirmação\n\n## Sanity Check (Obrigatório)\n\nAntes de usar qualquer tool:\n\n1. Compare a data/hora com `{{ $now }}`\n2. Se for anterior ou igual → **aborte**\n3. Se for posterior → **prossiga**\n\n## Finalização de Conversa\n\n- Expressões como: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possível despedida\n- Responda:  \n  **\"Perfeito! Posso encerrar seu atendimento por aqui?\"**\n- Só finalize após confirmação clara:  \n  **\"sim\", \"pode sim\", \"é isso\", etc.\"**\n- Nunca finalize por dedução\n\n## Formato de horários disponíveis\n\n{data}: {hora1}, {hora2}, {hora3}\n\n**Exemplo:**\n01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Formato para exibir agendamentos\nFoi encontrado...\n\n📅 {título} - {profissional}\nStatus: {status} ✅\nAgendado para {início} até {fim}\nLocal: {local}\nCódigo: {id}\n"
         }
       },
       "id": "6ca8d10c-d8d0-4b8d-acb8-65ab02511a10",
@@ -1977,22 +1734,6 @@
       "retryOnFail": true,
       "waitBetweenTries": 3000,
       "maxTries": 2
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "=Você é um assistente útil da [{company.name}]\n\n###### Instruções:\n- Nunca envie uma lista de forma enumerada, no lugar use hifen `-`.\n- **Nunca informe o Event ID** do Médico ou Exame para o usuário.\n- Caso o usuário tente cancelar uma consulta, marque se ele não deseja remarcá-la para outra data; caso contrário, prossiga com o cancelamento.\n- Sempre retorne os horários disponíveis no seguinte formato:\n\n**{data}**: {hour1}, {hour2}, {hour3}\n\nPor exemplo:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\nCaso contrário, sempre retorne os horários disponíveis em uma única linha, com os horários separados por vírgulas, conforme mostrado acima.\n\n- Ao fornecer compromissos, use este formato:\n\nPor exemplo:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n###### Tool Calls:\n- Quando o usuário menciona seu nome, o sistema chamará a ferramenta *save_user_data_tool* para atualizar seus detalhes no banco de dados.\n\n###### Contexto:\nNosso endereço: [{company.full_address}].\nIdioma: en\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Procure criar uma interação que pareça natural, empática e compreensiva.",
-        "options": {}
-      },
-      "id": "464edbdc-5c10-4a40-a8f2-b9d5ec68da0b",
-      "name": "prompt_original",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        0,
-        -580
-      ],
-      "disabled": true
     },
     {
       "parameters": {
@@ -2078,7 +1819,7 @@
       "typeVersion": 2.6,
       "position": [
         360,
-        40
+        100
       ],
       "id": "83be236c-f040-470a-8710-5b9e6c75bca1",
       "name": "delete last interaction",
@@ -2258,6 +1999,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-28T03:37:11.544Z",
-  "versionId": "1d8d0636-611e-4555-9caa-d8de1c4aa152"
+  "updatedAt": "2025-04-28T04:19:12.558Z",
+  "versionId": "b49a46dc-6b5a-475c-b31b-2182fde56571"
 }
