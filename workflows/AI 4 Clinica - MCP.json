@@ -1,0 +1,2263 @@
+{
+  "active": false,
+  "connections": {
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "MsgA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MsgB": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MsgA": {
+      "main": [
+        [
+          {
+            "node": "get cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cached?": {
+      "main": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "get cache": {
+      "main": [
+        [
+          {
+            "node": "cached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "output 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mcp information": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mcp booking": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mcp consults": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messageInfo": {
+      "main": [
+        [
+          {
+            "node": "baseInfo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set user account": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get user account": {
+      "main": [
+        [
+          {
+            "node": "user cached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete user account": {
+      "main": [
+        [
+          {
+            "node": "get user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chatConfig": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "chatConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "messageInfo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user cached?": {
+      "main": [
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baseInfo": {
+      "main": [
+        [
+          {
+            "node": "delete instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get first user": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch user": {
+      "main": [
+        [
+          {
+            "node": "user found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert user": {
+      "main": [
+        [
+          {
+            "node": "user registred?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user found?": {
+      "main": [
+        [
+          {
+            "node": "get first user",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user registred?": {
+      "main": [
+        [
+          {
+            "node": "Merge 2",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "userAccount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge 2": {
+      "main": [
+        [
+          {
+            "node": "set user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete instance config": {
+      "main": [
+        [
+          {
+            "node": "get instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has instance config?": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get instance config": {
+      "main": [
+        [
+          {
+            "node": "load instance config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instanceConfig": {
+      "main": [
+        [
+          {
+            "node": "delete user account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance config": {
+      "main": [
+        [
+          {
+            "node": "instanceConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance config": {
+      "main": [
+        [
+          {
+            "node": "has instance config?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance config": {
+      "main": [
+        [
+          {
+            "node": "set instance config",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "instance not found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get instance config1": {
+      "main": [
+        [
+          {
+            "node": "load instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete prompts": {
+      "main": [
+        [
+          {
+            "node": "get instance config1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch instance prompts": {
+      "main": [
+        [
+          {
+            "node": "set instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load instance prompts": {
+      "main": [
+        [
+          {
+            "node": "has instance prompts?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set instance prompts": {
+      "main": [
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instancePrompts": {
+      "main": [
+        []
+      ]
+    },
+    "has instance prompts?": {
+      "main": [
+        [
+          {
+            "node": "instancePrompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fetch instance prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        []
+      ]
+    },
+    "Sign Msg": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get Chat Memory": {
+      "main": [
+        [
+          {
+            "node": "first msg?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data User": {
+      "main": [
+        [
+          {
+            "node": "Config to Find All Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config to Find All Bookings": {
+      "main": [
+        [
+          {
+            "node": "wk bring bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wk bring bookings": {
+      "main": [
+        [
+          {
+            "node": "Insert Data Bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Data Bookings": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "wk response whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Sign Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reset postgres": {
+      "main": [
+        [
+          {
+            "node": "Get Chat Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT 4.1-mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "userAccount": {
+      "main": [
+        [
+          {
+            "node": "reset postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "postgres": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Get Chat Memory",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Insert Data Bookings",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Insert Data User",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mcp exams": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "first msg?": {
+      "main": [
+        [
+          {
+            "node": "Insert Data User",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mcp extra": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "end_conversation": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-11T23:58:45.632Z",
+  "id": "uPdZ5pJ3wh3qwoEh",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 4 Clinica - MCP",
+  "nodes": [
+    {
+      "parameters": {
+        "value": "={{ $json.chatInput.toLowerCase()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^\\w\\s]/g, '')\n    .replace(/_/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim() }}",
+        "dataPropertyName": "hash"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        -780
+      ],
+      "id": "2f847f7f-a715-4e58-b541-abad889d3ace",
+      "name": "Crypto",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "41b114b6-5730-43d9-8257-9c8d02c66b74",
+              "name": "sessionId",
+              "value": "={{ $workflow.id }}",
+              "type": "string"
+            },
+            {
+              "id": "1e6ba3f1-e9db-47cc-8128-150a78803664",
+              "name": "ttl",
+              "value": 300,
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -620,
+        -780
+      ],
+      "id": "f888d237-7601-4c9a-b108-e0b64644e59b",
+      "name": "MsgB",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "11abf18a-aef7-4382-9a8e-a754d58ca40e",
+              "name": "expiresAt",
+              "value": "={{ $now.plus($json.ttl, 'seconds') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -300,
+        -780
+      ],
+      "id": "2133a08b-8d38-4822-903d-e59d7066111a",
+      "name": "MsgA",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "10b8986a-ec88-4927-b948-db3617eabc3f",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        20,
+        -780
+      ],
+      "id": "061dd716-7f28-4fe4-9018-3270e7fb8edb",
+      "name": "cached?",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "output",
+        "key": "=chat-cache-{{ $json.hash }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        -780
+      ],
+      "id": "e39d821f-dc19-4981-959c-67a1c63e733f",
+      "name": "get cache",
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "user",
+              "message": "={{ $('MsgA').item.json.chatInput }}",
+              "hideFromUI": true
+            },
+            {
+              "type": "ai",
+              "message": "={{ $json.output }}",
+              "hideFromUI": true
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        -520,
+        -580
+      ],
+      "id": "59b6dcce-f7f1-4c7e-b1cb-84c2ecc27d51",
+      "name": "Chat Memory Manager",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "978480dd-1fbf-429f-880a-bd487fb78ce4",
+              "name": "output",
+              "value": "={{ $('get cache').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -200,
+        -580
+      ],
+      "id": "230a0607-d8a5-41b3-8749-1d2d2c10eba6",
+      "name": "output 1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
+        "include": "selected",
+        "includeTools": [
+          "Health_Plan_Tool",
+          "Methods_Payment_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        680,
+        100
+      ],
+      "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
+      "name": "mcp information"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-2/sse",
+        "authentication": "headerAuth",
+        "include": "selected",
+        "includeTools": [
+          "get_schedule_availability",
+          "find_existing_appt_tool",
+          "schedule_appt",
+          "cancel_appt",
+          "reschedule_appt_tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        820,
+        100
+      ],
+      "id": "ef64aee8-0a90-4e87-b8e4-2e934ca04561",
+      "name": "mcp booking",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
+        "include": "selected",
+        "includeTools": [
+          "Exams_Tool",
+          "Exam_Details_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        820,
+        260
+      ],
+      "id": "b148782b-b665-4dd2-bfc3-28144da62f1c",
+      "name": "mcp exams",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-1/sse",
+        "include": "selected",
+        "includeTools": [
+          "Specialists_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        680,
+        260
+      ],
+      "id": "1bab046a-5b48-4ba8-8c26-9b7b966ba28f",
+      "name": "mcp consults"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body ?? $json }}",
+        "options": {}
+      },
+      "id": "13ffe6cb-00e3-4696-adf4-50d05ebcddb3",
+      "name": "messageInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2000,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=user_account_{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}",
+        "value": "={{ $json.data.toJsonString() ?? {} }}",
+        "expire": true,
+        "ttl": 120
+      },
+      "id": "be68b6e1-4ae8-43dd-a66e-a8ee79e07816",
+      "name": "set user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        0,
+        80
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "b7549092-5836-4514-b840-edf9c754864a",
+      "name": "get user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        -100
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}"
+      },
+      "id": "6ea3f0ae-1d90-45bb-aa3f-8fcaea68cfeb",
+      "name": "delete user account",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -820,
+        -100
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.data ?? $json ?? {} }}",
+        "options": {}
+      },
+      "id": "6673100a-0503-49d4-bf06-68582ae5e338",
+      "name": "userAccount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n    \"evo_api\": \"https://apiwp.wmst.com.br\",\n    \"instance\": \"ibox_cli_23\",\n    \"remoteJid\": \"5512982184879@s.whatsapp.net\",\n    \"pushName\": \"W.M. Soluções Tecnologicas\",\n    \"fromMe\": false,\n    \"unique_id\": \"william_5512982184879\",\n    \"debounce_time\": 5,\n    \"conversation\": \"{{ $json.chatInput.replaceAll('\\n', '\\\\n') }}\",\n    \"client_token\": \"4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\"\n  }",
+        "options": {}
+      },
+      "id": "d315e42f-51ad-4beb-bf62-ceb9ad3ac228",
+      "name": "chatConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2220,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "f2944d9c-f60c-4b0f-af62-3a26525d7187",
+      "name": "Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2380,
+        -240
+      ],
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
+    },
+    {
+      "parameters": {},
+      "id": "06d21658-4e7f-425d-9dbb-c450c90a367a",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2220,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "25b94f5b-ba61-42b1-9a84-4ab7b62ebdf6",
+      "name": "user cached?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -460,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5e68ae0-e5c0-4770-91f9-3d9e67965ef8",
+              "name": "url_api",
+              "value": "https://agendaclinic.com/api/v1",
+              "type": "string"
+            },
+            {
+              "id": "dcb3ef37-7992-4f5c-8e60-31d9184dce47",
+              "name": "bearer_token",
+              "value": "=Bearer {{ $json.client_token ?? '4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e489b3b4-9b8e-4f31-aec1-effc63a34bef",
+      "name": "baseInfo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1840,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3dc387d1-961d-459e-ac7b-a2662290570e",
+              "name": "data",
+              "value": "={{ $json.data.first() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ba1a407e-b0f8-46a9-84cd-9ce1d3c72e19",
+      "name": "get first user",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -460,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacient",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').item.json.remoteJid.split('@')[0].slice(2) }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "3a54ef3f-fd84-4e18-b5da-a4357a34720e",
+      "name": "fetch user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -820,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('baseInfo').item.json.url_api }}/pacients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('messageInfo').first().json.remoteJid.split('@')[0].slice(2) }}"
+            },
+            {
+              "name": "origin",
+              "value": "whatsapp"
+            },
+            {
+              "name": "phone_is_whatsapp",
+              "value": "={{ true }}"
+            },
+            {
+              "name": "phone_verified_at",
+              "value": "={{ $now.toUTC() }}"
+            },
+            {
+              "name": "full_name",
+              "value": "={{ $('messageInfo').item.json.pushName }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "e04c7b5f-6396-49b3-8c42-bc4044dd19d2",
+      "name": "insert user",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -460,
+        280
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nmUmytqX7rLnklTQ",
+          "name": "AI Clinic Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -660,
+        160
+      ],
+      "id": "020735e9-a265-464e-bc0e-2f97f9ce9541",
+      "name": "user found?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d94d8b68-f7be-4c70-9965-d947f68cdc7c",
+              "leftValue": "={{ $json.status == 'success' && $json.data.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -120,
+        280
+      ],
+      "id": "28285381-3344-4316-a55f-8a0ed6e7456c",
+      "name": "user registred?"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -220,
+        80
+      ],
+      "id": "7a329f5a-59bd-4ecc-ba1a-a4bcaaf0923b",
+      "name": "Merge 2"
+    },
+    {
+      "parameters": {
+        "content": "## Tenta retornar os dados do Usuário",
+        "height": 649,
+        "width": 999,
+        "color": 5
+      },
+      "id": "b6947eee-e9fe-450f-bd6b-bb79b154d5b7",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Retorna as configurações da Instância",
+        "height": 643,
+        "width": 757,
+        "color": 4
+      },
+      "id": "1240e54f-6c29-4131-b829-d0476acf6ae1",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1680,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}"
+      },
+      "id": "fc0ba0e1-cee0-4407-8d2c-3fe005679664",
+      "name": "delete instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1620,
+        -100
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_config && $json.instance_config.hasField('id') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2472b3ff-55de-45d1-bd9a-a4a5f2fa3eaa",
+      "name": "has instance config?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1360,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_config",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "11c96ea4-e02c-4a5d-aa71-62f1374ff59e",
+      "name": "get instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1620,
+        100
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.instance_config ?? $json.data }}",
+        "options": {}
+      },
+      "id": "f8aa3628-f4c1-43ac-93e9-d760cf69d2bb",
+      "name": "instanceConfig",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1080,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_config_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json.status == 'success' ? $json.data.toJsonString() : {}.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "11003a12-9a5f-44a2-b767-f0437f40d66c",
+      "name": "set instance config",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        80
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_config",
+              "value": "={{ $json.instance_config }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bba31fb1-b697-4cc3-807c-7ba17b352706",
+      "name": "load instance config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1460,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/tenant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1280,
+        100
+      ],
+      "id": "4ef8fc1b-e87a-4084-b7b4-24a2db920834",
+      "name": "fetch instance config",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1160,
+        280
+      ],
+      "id": "0392bc37-b445-4324-b3be-e3781beee779",
+      "name": "instance not found"
+    },
+    {
+      "parameters": {
+        "content": "## Retorna os prompts da Instância",
+        "height": 483,
+        "width": 757,
+        "color": 2
+      },
+      "id": "905081f8-2567-44e2-8268-44c4d45a4d8f",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1680,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=instance_prompts",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "cac9d98f-e778-4016-bc39-7836df640a01",
+      "name": "get instance config1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1620,
+        780
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}"
+      },
+      "id": "45ed0a33-533f-4324-a498-21a3257dc377",
+      "name": "delete prompts",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1620,
+        580
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('baseInfo').item.json.url_api }}/prompts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('baseInfo').item.json.bearer_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1280,
+        780
+      ],
+      "id": "e66ec5fd-a488-4f9a-bdcc-42b1e1b07422",
+      "name": "fetch instance prompts",
+      "disabled": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c664cddb-67f9-44b8-9342-ed6d3e2373ec",
+              "name": "instance_prompts",
+              "value": "={{ $json.instance_prompts }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "25309a96-8b7f-4937-a840-2de664c89645",
+      "name": "load instance prompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1460,
+        780
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=instance_prompts_{{ $('messageInfo').first().json.instance }}",
+        "value": "={{ $json.status == 'success' ? $json.data.toJsonString() : {}.toJsonString() }}",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 600
+      },
+      "id": "3d9d79f4-b3eb-47b9-9374-918f48d11ba7",
+      "name": "set instance prompts",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        760
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "40c39acd-7376-4680-94bf-729f86a4c231",
+              "name": "prompts",
+              "value": "={{ $json.instance_prompts ?? $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4158d91f-495b-4f92-8b35-1e75be7b65c4",
+      "name": "instancePrompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1080,
+        580
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc151548-39ab-4280-8766-cb8f68fc41d8",
+              "leftValue": "={{ $json.instance_prompts }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "393763e0-58df-4550-897f-45fff49bb735",
+      "name": "has instance prompts?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1360,
+        600
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=",
+        "options": {
+          "systemMessage": "=# Overview  \nYou are William, the assistant at Med Center Clinic, who answers questions and manages appointment scheduling for **medical appointments** only, using the tools available. Our don't do exams.\n\nBe objective, but with humanized answers, you can use some emojis.\n\n**Clinic Address:** Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n*bearer_token:* 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\n\n## Tools\n- `get_pacient_tool`: returns the pacient_id used in MCP tools for scheduling.\n- `find_existing_appt`: returns the booking_id used in MCP tools for cancellations.\n- `list_payment_methods_tool`: returns a list of accepted payment methods.\n- `list_health_plans_tool`: returns a list of available health plans.\n- `end_conversaion`: to end conversation\n\nWhen the user requests information requiring more than one of these tools, **call each one synchronously**, meaning wait for the return of the first tool before calling the next.\nAfter obtaining the responses, send a clear, organized, and friendly message with emojis, presenting all requested information to the user. Do not invent data — only use real responses from the tools.\nIf any error occurs when executing a tool, send a friendly message explaining the error with emojis.\n\n## Important\n- *ALWAYS DISPLAY* the `Booking details: ID` of the appointment to the user.\n- Try to convert a cancellation request into a new scheduling if requested.\n- Never invent an *event_id*. If not found, stop and reassess.\n- Never display the event_id or pacient_id to the user.\n- Date/time reference:  \n  `sábado, 26/04/2025 11:51:10`\n- **Strict Rule**: It is forbidden to use, query, or schedule any date/time **earlier than or equal to** the reference.\n- **Always validate**:  \n  - If the date/time is earlier or equal:  \n    1. **Do not proceed**  \n    2. **Do not query tools**  \n    3. Redirect to a valid new time\n\n## Ask One Thing at a Time\n- Never send multiple questions at once.\n- Give the user time to respond.\n- Focus on one doubt per interaction.\n\n## Appointments\n- Never inform prices unless the user asks.\n- Use only rounded times: `13:10`, `15:20` (do not use: `13:13`, `15:19`)\n- **Retroactive operations are forbidden**:\n  - Nothing before the current reference\n  - Do not display past times\n  - Do not suggest the current time, only **future rounded times**\n- If the time is invalid: explain and ask for a new date/time\n- After completing, call `reset_memory` (without notifying the user)\n- Before taking action, confirm specialist availability:  \n  - If available: show dates/times  \n  - If unavailable: inform the user\n- Ask if the appointment is for the user or another person\n- Before finalizing the appointment, inform all details to the user and ask for confirmation\n\n## Sanity Check (Mandatory)\nBefore using any tool:\n\n1. Compare the date/time with `26/04/2025 11:25:10`\n2. If earlier or equal → **abort**\n3. If later → **proceed**\n\n## Conversation Closure\n- Expressions like: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possible farewell\n- Respond:  \n  **\"Perfeito! Posso encerrar o seu atendimento agora?\"**\n- Only finalize after clear confirmation:  \n  **\"sim\", \"você pode\", \"é isso\", etc.\"**\n- Never close by assumption\n\n## Available Times Format\n{date}: {hour1}, {hour2}, {hour3}\ne.g.: 01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Appointment Display Format\n\nThe following was found:\n\n📅 {title} - {professional}\nStatus: {status} ✅\nScheduled from {init} to {end}\nLocation: {local}\nCode: {id}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        260,
+        -760
+      ],
+      "id": "549a5cf2-5a9c-413a-9053-2d1cc0c6ba36",
+      "name": "AI Agent2",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "disabled": true,
+      "notes": "Você é um assistente que responde perguntas sobre métodos de pagamento e planos de saúde disponíveis.\n\nVocê pode usar as ferramentas disponíveis abaixo para obter essas informações:\n\n- `list_specialists_tool` and `list_exams_tool`: retorna event_id usado nas tools de MCP para agendamento.\n- `get_pacient_tool`: retorna o pacient_id usado nas tools MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas tools MCP para cancelamento.\n- `list_payment_methods_tool`: retorna uma lista dos métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista dos planos de saúde disponíveis.\n\nQuando o usuário solicitar informações que requeiram mais de uma dessas ferramentas, **chame cada uma de forma síncrona**, ou seja, espere o retorno da primeira ferramenta antes de chamar a próxima.\n\nApós obter as respostas, envie uma mensagem clara, organizada e simpática com emojis, apresentando ao usuário todas as informações solicitadas. Não invente dados — use apenas os retornos reais das ferramentas.\n\nSe ocorrer algum erro ao executar alguma ferramenta, envie uma mensagem explicando o erro de forma amigável, com emojis.\n\nFaça somente verificações de intervalo de 3 dias somente, nunca um periodo acima disso.\n\nUse the Think tool to think.\n\nbearer_token: 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\ninstance: ibox_cli_23\n\nfull_name: William Almeida\nuser_emaill: williamkillerca@hotmail.com\nuser_phone: 5512982184879"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "K7oBqF1vnvw165RG"
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "id": "3f2a77d4-eb6a-47a0-b58f-67555fa77d0e",
+      "name": "wk response whatsapp",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        1860,
+        -180
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098d3cb2-41df-4d2a-8640-ef5506938e1d",
+              "name": "output",
+              "value": "=*{{ $workflow.name }}*:\n{{ $('AI Agent').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0873dec8-d14e-4366-a985-8ac432a0977e",
+      "name": "Sign Msg",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1520,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "groupMessages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        420,
+        -480
+      ],
+      "id": "91d9b2d5-3d0d-45f2-ad63-5450c6032e94",
+      "name": "Get Chat Memory"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "insertMode": "override",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "=User {{ $('userAccount').item.json.id ? 'is' : 'is not yet' }} registered, their name is `{{ $('userAccount').first().json.full_name ?? 'empty' }}`, email is `{{ $('userAccount').first().json.email ?? 'empty' }}`, contact phone number is `{{ $('userAccount').first().json.phone ?? $('messageInfo').first().json.remoteJid.split('@')[0] }}`, and current address is `{{ $('userAccount').first().json.full_address ?? 'empty' }}`",
+              "hideFromUI": true
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        -480
+      ],
+      "id": "26bba3f3-f591-41cc-b02f-33f7d272dbc9",
+      "name": "Insert Data User"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "19e9b408-9bdb-4535-b265-1f714a0dde0d",
+              "name": "action",
+              "value": "list bookings",
+              "type": "string"
+            },
+            {
+              "id": "d6788f61-2c2f-42c1-a263-62d052127dc0",
+              "name": "remoteJid",
+              "value": "={{ $('userAccount').item.json.phone.toString().split('@')[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b5c318d-4909-4140-8465-7bb6bf8f2116",
+              "name": "query",
+              "value": "={\n  \"email\": \"\",\n  \"event_id\": \"\",\n  \"status\": \"all\"\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "71f2afd2-1a81-4712-b5f1-1f7f085f065a",
+      "name": "Config to Find All Bookings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1240,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "QTrKQkY4jxrACTpy",
+          "cachedResultName": "COMP Schedule"
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "9e32d0fa-bb05-4655-870b-6da6de04b7b4",
+      "name": "wk bring bookings",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        1400,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "={{ $json.response && $json.response.length ? `User has this bookings: ${$json.response}\n` : 'User does not have any booking at moment' }}",
+              "hideFromUI": true
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        1560,
+        -480
+      ],
+      "id": "888598e0-f2af-4101-800c-4b6af1a8efd6",
+      "name": "Insert Data Bookings"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "cb29ad1f-4bcd-4cb3-bf31-a1cafce1fe25",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1700,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messageInfo').first().json.conversation }}",
+        "options": {
+          "systemMessage": "=# Visão Geral  \nVocê é um assistente útil, forneça um aatendimento humanizado e empatico, seja paciente com usuário e gentil.\n\n**Endereço:** Rua Murilo de Oliveira, 252, Índia, das Neves do Leste - RO, 35855-267\n\n*bearer_token:* 4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96\n\n## Tools\n- `get_pacient_tool`: retorna o patient_id usado nas ferramentas MCP para agendamento.\n- `find_existing_appt`: retorna o booking_id usado nas ferramentas MCP para cancelamentos.\n- `list_payment_methods_tool`: retorna uma lista de métodos de pagamento aceitos.\n- `list_health_plans_tool`: retorna uma lista de planos de saúde disponíveis.\n- `end_conversaion`: finaliza atendimento\n\nQuando o usuário solicitar informações que exijam mais de uma dessas ferramentas, **chame cada uma delas de forma síncrona**, ou seja, aguarde o retorno da primeira ferramenta antes de chamar a próxima.\nApós obter as respostas, envie uma mensagem clara, organizada e amigável com emojis, apresentando todas as informações solicitadas ao usuário. Não invente dados — use apenas respostas reais das ferramentas.\n\n## Importante\n\n- *SEMPRE EXIBA* o `Booking details: ID` do agendamento para o usuário.\n- Tente converter um cancelamento em agendamento se for solicitado.\n- Nunca invente um *event_id*. Se não encontrar, pare e reavalie.\n- Nunca exiba o event_id ou pacient_id para usuário.\n- Referência de data/hora:  \n  `{{ $now.setLocale('pt-BR').weekdayLong }}, {{ $now.format('dd/MM/yyyy HH:mm:ss') }}`\n- **Regra Estrita**: É proibido usar, consultar ou agendar qualquer data/hora **anterior ou igual** à referência.\n- **Valide sempre**:  \n  - Se a data/hora for anterior ou igual:  \n    1. **Não prossiga**  \n    2. **Não consulte tools**  \n    3. Redirecione para novo horário válido\n\n## Pergunte uma coisa por vez\n\n- Nunca envie múltiplas perguntas.\n- Dê tempo para o usuário responder.\n- Foco em uma dúvida por interação.\n\n## Agendamentos\n\n- Nunca informe preço, a menos que o usuário peça.\n- Use somente horários arredondados: `13:10`, `15:20` (não usar: `13:13`, `15:19`)\n- **Operações retroativas são proibidas**:\n  - Nada antes da referência atual\n  - Não exibir horários passados\n  - Não sugerir o horário atual. Apenas **futuros horários arredondados**\n- Se horário for inválido: explique e peça nova data/hora\n- Ao finalizar, chame `reset_memory` (sem avisar o usuário)\n- Antes de agir, confirme se o exame ou especialista está disponível  \n  - Se sim: exiba datas/horários  \n  - Se não: informe que não está disponível\n- Pergunte se o agendamento é para ele ou outra pessoa\n- Antes de finalizar o agendamento, informe todos os dados para o usuário e peça confirmação\n\n## Sanity Check (Obrigatório)\n\nAntes de usar qualquer tool:\n\n1. Compare a data/hora com `{{ $now }}`\n2. Se for anterior ou igual → **aborte**\n3. Se for posterior → **prossiga**\n\n## Finalização de Conversa\n\n- Expressões como: \"obrigado\", \"valeu\", \"t+\", \"flw\", \"até logo\" = possível despedida\n- Responda:  \n  **\"Perfeito! Posso encerrar seu atendimento por aqui?\"**\n- Só finalize após confirmação clara:  \n  **\"sim\", \"pode sim\", \"é isso\", etc.\"**\n- Nunca finalize por dedução\n\n## Formato de horários disponíveis\n\n{data}: {hora1}, {hora2}, {hora3}\n\n**Exemplo:**\n01/04/2025: 09:00, 10:00, 11:00, 12:00, 13:00\n\n## Formato para exibir agendamentos\nFoi encontrado...\n\n📅 {título} - {profissional}\nStatus: {status} ✅\nAgendado para {início} até {fim}\nLocal: {local}\nCódigo: {id}\n"
+        }
+      },
+      "id": "6ca8d10c-d8d0-4b8d-acb8-65ab02511a10",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        440,
+        -120
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=Você é um assistente útil da [{company.name}]\n\n###### Instruções:\n- Nunca envie uma lista de forma enumerada, no lugar use hifen `-`.\n- **Nunca informe o Event ID** do Médico ou Exame para o usuário.\n- Caso o usuário tente cancelar uma consulta, marque se ele não deseja remarcá-la para outra data; caso contrário, prossiga com o cancelamento.\n- Sempre retorne os horários disponíveis no seguinte formato:\n\n**{data}**: {hour1}, {hour2}, {hour3}\n\nPor exemplo:\n**01/04/2025**: 09:00, 10:00, 11:00, 12:00, 13:00\nCaso contrário, sempre retorne os horários disponíveis em uma única linha, com os horários separados por vírgulas, conforme mostrado acima.\n\n- Ao fornecer compromissos, use este formato:\n\nPor exemplo:\n📅 **{title} - {professional}**\nStatus: **{status}** ✅\nAgendado para **{start}** até **{end}**\nLocalização: **{location}**\nCódigo: **{id}**\n\n###### Tool Calls:\n- Quando o usuário menciona seu nome, o sistema chamará a ferramenta *save_user_data_tool* para atualizar seus detalhes no banco de dados.\n\n###### Contexto:\nNosso endereço: [{company.full_address}].\nIdioma: en\nTom: Amigável, educado, prestativo, eficiente, acolhedor e humanizado. Procure criar uma interação que pareça natural, empática e compreensiva.",
+        "options": {}
+      },
+      "id": "464edbdc-5c10-4a40-a8f2-b9d5ec68da0b",
+      "name": "prompt_original",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        -580
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 0.5
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        -120
+      ],
+      "id": "0d601660-28d2-4ee4-abda-4c50e5a58231",
+      "name": "Wait",
+      "webhookId": "05e066fc-a535-4eef-9557-0fcc8edf2249"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories"
+        },
+        "restartSequences": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        260,
+        -480
+      ],
+      "id": "d799e55b-f5e3-406b-9689-c3a6b5278e37",
+      "name": "reset postgres",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {
+          "topP": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        40
+      ],
+      "id": "2e2c1860-faec-46ef-88a5-fe4bd24dc54f",
+      "name": "GPT 4.1-mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "Jv19EsZcsXzDgjjj",
+          "name": "Litellm OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM n8n_chat_histories\nWHERE id in (\n    SELECT id FROM n8n_chat_histories\n    ORDER BY id DESC\n    LIMIT 2\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        360,
+        40
+      ],
+      "id": "83be236c-f040-470a-8710-5b9e6c75bca1",
+      "name": "delete last interaction",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
+        "contextWindowLength": 30
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        700,
+        -260
+      ],
+      "id": "697a62a2-b345-4d45-9c37-033a08156a73",
+      "name": "postgres",
+      "credentials": {
+        "postgres": {
+          "id": "4e7WG955cWzVT2V5",
+          "name": "Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica",
+        "sessionTTL": 300,
+        "contextWindowLength": 30
+      },
+      "id": "bbbd475a-f615-4731-af5b-c2a4765ecd45",
+      "name": "redis",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.3,
+      "position": [
+        820,
+        -260
+      ],
+      "credentials": {
+        "redis": {
+          "id": "ePjUcKkuSrLqo1Tt",
+          "name": "vps"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9914c630-b523-42ae-a3a0-b224b821f6ca",
+              "leftValue": "={{ $json.messagesCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        -480
+      ],
+      "id": "dfe5bab9-1de2-4431-a3d5-cd08735b14d3",
+      "name": "first msg?"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://webhook.n8n.wmst.com.br/mcp/aiclinic-server-3/sse",
+        "include": "selected",
+        "includeTools": [
+          "Register_New_Pacient",
+          "Get_Patient_Tool"
+        ]
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        960,
+        100
+      ],
+      "id": "9ddebfae-deb4-435e-b3fa-bd546e04c365",
+      "name": "mcp extra"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://webhook.n8n.wmst.com.br/webhook/69047f52-ce83-481c-9f10-af632b978886",
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "memory_id",
+              "valueProvider": "fieldValue",
+              "value": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "responseType": "text"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        100
+      ],
+      "id": "ffe4f105-8089-4eaf-8b14-0b3b3390b7c3",
+      "name": "end_conversation"
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "evo_api": "https://apiwp.wmst.com.br",
+          "instance": "ibox_cli_23",
+          "remoteJid": "5512982184879@s.whatsapp.net",
+          "pushName": "W.M. Soluções Tecnologicas",
+          "fromMe": false,
+          "unique_id": "ibox_cli_23_5512982184879",
+          "evo_api_key": "3246B56693A1-4BAD-A92A-183844A4CFBB",
+          "conversation": "oi cli"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-27T17:42:17.034Z",
+      "updatedAt": "2024-09-27T17:42:17.034Z",
+      "id": "TsfCA8eZuTObjOfy",
+      "name": "Backup"
+    },
+    {
+      "createdAt": "2024-09-27T14:34:01.317Z",
+      "updatedAt": "2024-09-27T14:34:01.317Z",
+      "id": "ZoTSEGR97fzorfDz",
+      "name": "AI"
+    },
+    {
+      "createdAt": "2024-10-08T13:33:46.636Z",
+      "updatedAt": "2024-10-08T13:33:46.636Z",
+      "id": "aSNW5tPyOIOEr9rS",
+      "name": "Agent"
+    },
+    {
+      "createdAt": "2024-12-18T13:55:11.434Z",
+      "updatedAt": "2024-12-18T13:55:11.434Z",
+      "id": "02kkCHve480aFjG4",
+      "name": "Clinic"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-28T03:37:11.544Z",
+  "versionId": "1d8d0636-611e-4555-9caa-d8de1c4aa152"
+}
