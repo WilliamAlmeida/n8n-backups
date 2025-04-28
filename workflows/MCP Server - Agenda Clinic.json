@@ -132,17 +132,6 @@
           }
         ]
       ]
-    },
-    "Reset Memory": {
-      "ai_tool": [
-        [
-          {
-            "node": "MCP Extras",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "createdAt": "2025-04-10T14:53:18.606Z",
@@ -621,32 +610,6 @@
     },
     {
       "parameters": {
-        "toolDescription": "Call this tool after completing a service with the user's confirmation.",
-        "url": "https://webhook.n8n.wmst.com.br/webhook/69047f52-ce83-481c-9f10-af632b978886",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "memory_id",
-              "value": "=memo_{{ $('messageInfo').first().json.unique_id }}_clinica"
-            }
-          ]
-        },
-        "options": {},
-        "optimizeResponse": true,
-        "responseType": "text"
-      },
-      "type": "n8n-nodes-base.httpRequestTool",
-      "typeVersion": 4.2,
-      "position": [
-        580,
-        600
-      ],
-      "id": "da0bef53-99bd-4fad-8968-1717b7e91b00",
-      "name": "Reset Memory"
-    },
-    {
-      "parameters": {
         "path": "aiclinic-server-2"
       },
       "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
@@ -749,6 +712,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2025-04-26T15:56:53.551Z",
-  "versionId": "37db7dc1-ca10-4583-a679-5acfbe906e62"
+  "updatedAt": "2025-04-28T03:08:11.380Z",
+  "versionId": "b3b404ff-6a60-4568-9d3a-6998fdf5bf34"
 }
