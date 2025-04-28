@@ -194,7 +194,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes.\n\n**Retorno**\n- event_id do exame\n- Nome do exame\n- Outros detalhes relevantes sobre o exame, se disponíveis.",
+        "toolDescription": "Esta ferramenta fornece uma lista de todos os exames disponíveis na clínica, incluindo nome e event_id do exame. É útil para identificar rapidamente as opções de exames que podemos oferecer, permitindo que o usuário escolha um exame pelo nome para obter mais detalhes.\n\n**Retorno**\n- event_id do exame, nome do exame, outros detalhes relevantes sobre o exame, se disponíveis.",
         "url": "https://agendaclinic.com/api/v1/exams",
         "sendQuery": true,
         "queryParameters": {
@@ -237,7 +237,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o `exam_id`. O `exam_id` pode ser obtido a partir da lista de exames.\n\n**Retorno**\n- Preço\n- Duração\n- Jejum necessário\n- Material coletado\n- Outros detalhes relevantes.",
+        "toolDescription": "Use esta ferramenta para obter detalhes específicos sobre um exame utilizando o `exam_id`. O `exam_id` pode ser obtido a partir da lista de exames.\n\n**Retorno**\n- Preço, Duração, Jejum necessário, Material coletado, Outros detalhes relevantes.",
         "url": "=https://agendaclinic.com/api/v1/exams/{{ $fromAI('exam_id', 'exam id') }}",
         "sendQuery": true,
         "queryParameters": {
@@ -686,7 +686,7 @@
       "parameters": {
         "content": "## Ações Extras",
         "height": 420,
-        "width": 480
+        "width": 340
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -712,6 +712,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2025-04-28T03:08:11.380Z",
-  "versionId": "b3b404ff-6a60-4568-9d3a-6998fdf5bf34"
+  "updatedAt": "2025-04-28T04:00:06.484Z",
+  "versionId": "172c8fba-01a6-48f8-b1a0-39f72c68ef26"
 }
