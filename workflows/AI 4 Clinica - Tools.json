@@ -1984,7 +1984,7 @@
           "__rl": true,
           "value": "UcK1fI4zOm0eB4D9",
           "mode": "list",
-          "cachedResultName": "Clinic - Agent Info"
+          "cachedResultName": "SubAgent - Info - Clinica"
         },
         "fields": {
           "values": [
@@ -2230,6 +2230,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-28T04:38:40.373Z",
-  "versionId": "1fefc798-f4b9-4be2-b370-b54ef2539762"
+  "updatedAt": "2025-05-12T15:05:08.440Z",
+  "versionId": "c7cdb9ef-9bdc-4677-99b7-16c9efe4a300"
 }
