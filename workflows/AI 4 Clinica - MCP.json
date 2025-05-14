@@ -494,17 +494,6 @@
         ]
       ]
     },
-    "Wait": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "reset postgres": {
       "main": [
         [
@@ -614,10 +603,22 @@
           }
         ]
       ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-04-11T23:58:45.632Z",
   "id": "uPdZ5pJ3wh3qwoEh",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -1737,20 +1738,6 @@
     },
     {
       "parameters": {
-        "amount": 0.5
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        260,
-        -120
-      ],
-      "id": "0d601660-28d2-4ee4-abda-4c50e5a58231",
-      "name": "Wait",
-      "webhookId": "05e066fc-a535-4eef-9557-0fcc8edf2249"
-    },
-    {
-      "parameters": {
         "operation": "deleteTable",
         "schema": {
           "__rl": true,
@@ -1950,6 +1937,20 @@
       ],
       "id": "ffe4f105-8089-4eaf-8b14-0b3b3390b7c3",
       "name": "end_conversation"
+    },
+    {
+      "parameters": {
+        "amount": 0.5
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        -120
+      ],
+      "id": "0d601660-28d2-4ee4-abda-4c50e5a58231",
+      "name": "Wait",
+      "webhookId": "05e066fc-a535-4eef-9557-0fcc8edf2249"
     }
   ],
   "pinData": {
@@ -1999,6 +2000,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-28T04:19:12.558Z",
-  "versionId": "b49a46dc-6b5a-475c-b31b-2182fde56571"
+  "updatedAt": "2025-05-14T04:47:46.049Z",
+  "versionId": "e954f837-796f-4f24-8348-b3738a66c038"
 }
