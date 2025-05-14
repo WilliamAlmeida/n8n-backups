@@ -355,6 +355,7 @@
   },
   "createdAt": "2024-10-29T11:55:57.140Z",
   "id": "KTXZLYmNC2MMPqAM",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
