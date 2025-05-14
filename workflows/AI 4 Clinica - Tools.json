@@ -714,7 +714,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "data",
-        "key": "=user_account_{{ $('messageInfo').item.json.remoteJid.split('@')[0] }}",
+        "key": "=user_account_{{ $('messageInfo').first().json.remoteJid.split('@')[0] }}",
         "keyType": "string",
         "options": {}
       },
@@ -1206,7 +1206,7 @@
       "typeVersion": 2.2,
       "position": [
         4220,
-        1740
+        1760
       ],
       "id": "2c6a6fe7-3134-4ba6-8ce8-d46534bc1081",
       "name": "user registred?"
@@ -2230,6 +2230,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-05-12T15:05:08.440Z",
-  "versionId": "c7cdb9ef-9bdc-4677-99b7-16c9efe4a300"
+  "updatedAt": "2025-05-14T01:56:07.339Z",
+  "versionId": "e484ee5b-e92d-4e86-8efc-a07343af4984"
 }
