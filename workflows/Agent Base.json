@@ -492,6 +492,7 @@
   },
   "createdAt": "2024-11-05T18:04:59.652Z",
   "id": "kPxlxWthgkfZzqXk",
+  "isArchived": false,
   "meta": null,
   "name": "Agent Base",
   "nodes": [
