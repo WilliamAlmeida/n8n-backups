@@ -408,13 +408,7 @@
     },
     "Sign Msg": {
       "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
+        []
       ]
     },
     "Get Chat Memory": {
@@ -815,8 +809,7 @@
       "position": [
         -2220,
         -240
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -833,8 +826,7 @@
         -2380,
         -240
       ],
-      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454",
-      "disabled": true
+      "webhookId": "e3d20b54-2754-4118-a536-febb3389a454"
     },
     {
       "parameters": {},
@@ -1560,7 +1552,8 @@
       "position": [
         1860,
         -180
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1714,7 +1707,8 @@
       "position": [
         1700,
         -180
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -2000,6 +1994,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-05-14T04:47:46.049Z",
-  "versionId": "e954f837-796f-4f24-8348-b3738a66c038"
+  "updatedAt": "2025-05-19T14:45:58.039Z",
+  "versionId": "7db5acf2-e7fc-4de3-87c2-79b3b7700912"
 }
