@@ -1703,7 +1703,7 @@
           "query": {
             "bearer_token": "4|93netMrGJ7Bto6QllQy8z3LpTxwXtTAJV1jjxCO5343aba96",
             "pacient_id": "9",
-            "event_id": "2",
+            "event_id": "",
             "status": "upcoming"
           },
           "action": "list bookings"
@@ -1736,6 +1736,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-28T04:34:28.629Z",
-  "versionId": "ce9ff7c5-2615-4cdc-afec-b5fdc3031620"
+  "updatedAt": "2025-05-20T15:04:29.477Z",
+  "versionId": "6fce6335-0445-4f18-a373-e2e182a3fb32"
 }
