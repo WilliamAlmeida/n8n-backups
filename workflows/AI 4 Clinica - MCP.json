@@ -1768,8 +1768,7 @@
         "model": {
           "__rl": true,
           "value": "gpt-4.1-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
+          "mode": "id"
         },
         "options": {
           "topP": 1
@@ -1994,6 +1993,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-05-19T14:45:58.039Z",
-  "versionId": "7db5acf2-e7fc-4de3-87c2-79b3b7700912"
+  "updatedAt": "2025-05-19T15:29:50.897Z",
+  "versionId": "98aa56b1-2a08-4de9-b8fc-687d6d5e1369"
 }
