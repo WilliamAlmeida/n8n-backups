@@ -1568,7 +1568,7 @@
         "promptType": "define",
         "text": "={{ $('messageInfo').first().json.conversation }}",
         "options": {
-          "systemMessage": "=O fuso horário do usuário é \"America/Rio_Branco\"."
+          "systemMessage": "=Horário do Servidor é UTC e do usuário (resposta final) é America/Rio_Branco, faça conversão antes de responder."
         }
       },
       "id": "4e902db1-09e0-4278-8ed4-b383462e09c3",
@@ -1803,6 +1803,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-05-21T03:10:21.867Z",
-  "versionId": "eadae52d-7860-4251-bc39-25e1977c4681"
+  "updatedAt": "2025-05-21T04:38:35.884Z",
+  "versionId": "d53f8ae3-f341-4e26-87f2-fecbb2cd4cc7"
 }
