@@ -1767,8 +1767,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4.1-mini",
-          "mode": "id"
+          "value": "n8n",
+          "mode": "list",
+          "cachedResultName": "n8n"
         },
         "options": {
           "topP": 1
@@ -1784,8 +1785,8 @@
       "name": "GPT 4.1-mini",
       "credentials": {
         "openAiApi": {
-          "id": "Jv19EsZcsXzDgjjj",
-          "name": "Litellm OpenAI"
+          "id": "Td2OgX3Ksl8hMGFf",
+          "name": "Agenda Clinic"
         }
       }
     },
@@ -1993,6 +1994,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-05-19T15:29:50.897Z",
-  "versionId": "98aa56b1-2a08-4de9-b8fc-687d6d5e1369"
+  "updatedAt": "2025-05-21T02:12:07.522Z",
+  "versionId": "753a2cbc-4edf-48ec-a5f9-2629e0c59bd0"
 }
