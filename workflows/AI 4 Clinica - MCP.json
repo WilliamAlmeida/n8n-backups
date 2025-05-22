@@ -1760,16 +1760,15 @@
           "id": "4e7WG955cWzVT2V5",
           "name": "Supabase"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "n8n",
+          "value": "gpt-4.1-mini",
           "mode": "list",
-          "cachedResultName": "n8n"
+          "cachedResultName": "gpt-4.1-mini"
         },
         "options": {
           "topP": 1
@@ -1785,8 +1784,8 @@
       "name": "GPT 4.1-mini",
       "credentials": {
         "openAiApi": {
-          "id": "Td2OgX3Ksl8hMGFf",
-          "name": "Agenda Clinic"
+          "id": "dRR3EqW0FEAbSHgt",
+          "name": "william"
         }
       }
     },
@@ -1994,6 +1993,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-05-21T02:12:07.522Z",
-  "versionId": "753a2cbc-4edf-48ec-a5f9-2629e0c59bd0"
+  "updatedAt": "2025-05-22T14:52:40.689Z",
+  "versionId": "26e91cfc-0d5b-41be-9a65-36ab93be4f0c"
 }
