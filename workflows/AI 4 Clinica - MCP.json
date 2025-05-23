@@ -634,7 +634,8 @@
         100
       ],
       "id": "57bbbf83-b767-4010-bbda-0f4542271b7a",
-      "name": "mcp information"
+      "name": "mcp information",
+      "disabled": true
     },
     {
       "parameters": {
@@ -662,7 +663,8 @@
           "id": "nmUmytqX7rLnklTQ",
           "name": "AI Clinic Token"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -680,7 +682,8 @@
         260
       ],
       "id": "b148782b-b665-4dd2-bfc3-28144da62f1c",
-      "name": "mcp exams"
+      "name": "mcp exams",
+      "disabled": true
     },
     {
       "parameters": {
@@ -697,7 +700,8 @@
         260
       ],
       "id": "1bab046a-5b48-4ba8-8c26-9b7b966ba28f",
-      "name": "mcp consults"
+      "name": "mcp consults",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1766,9 +1770,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4.1-mini",
+          "value": "n8n-full",
           "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
+          "cachedResultName": "n8n-full"
         },
         "options": {
           "topP": 1
@@ -1784,8 +1788,8 @@
       "name": "GPT 4.1-mini",
       "credentials": {
         "openAiApi": {
-          "id": "dRR3EqW0FEAbSHgt",
-          "name": "william"
+          "id": "Td2OgX3Ksl8hMGFf",
+          "name": "Agenda Clinic"
         }
       }
     },
@@ -1903,7 +1907,8 @@
         100
       ],
       "id": "9ddebfae-deb4-435e-b3fa-bd546e04c365",
-      "name": "mcp extra"
+      "name": "mcp extra",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1929,7 +1934,8 @@
         100
       ],
       "id": "ffe4f105-8089-4eaf-8b14-0b3b3390b7c3",
-      "name": "end_conversation"
+      "name": "end_conversation",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1993,6 +1999,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-05-22T14:52:40.689Z",
-  "versionId": "26e91cfc-0d5b-41be-9a65-36ab93be4f0c"
+  "updatedAt": "2025-05-23T01:40:24.833Z",
+  "versionId": "18dad316-1837-4b20-a5ea-3097bb401d1c"
 }
